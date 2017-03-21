@@ -1,8 +1,7 @@
+package interpreter;
+
 import javax.sound.midi.*;
 
-/**
- * Created by juan.miguel.de.haro on 21/03/2017.
- */
 public class Main {
 
     public static void main(String[] args){
