@@ -12,11 +12,16 @@ public class Interpreter {
     private Sequence sequence;
     private int actualTick = 0;
 
+    public Sequence getSequence() {
+        return sequence;
+    }
+
     public Interpreter() throws InvalidMidiDataException {
-            Sequence sequence = new Sequence(Sequence.PPQ, 1);
+        sequence = new Sequence(Sequence.PPQ, 1);
     }
 
     public void executeListInstruction(AmlTree tree) throws Exception {
+        System.out.println("Estoy en el nodo "+tree.getText());
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
         }
@@ -36,6 +41,9 @@ public class Interpreter {
 
     public void createTrack(AmlTree tree) throws Exception {
         Track track = sequence.createTrack();
+        byte[] num = new byte[]{(byte)0x01,(byte)0xe8,(byte)0x48};
+        MetaMessage tempo = new MetaMessage(0x51, num, 3);
+        track.add(new MidiEvent(tempo, 0));
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             addCompas(track, child);
         }
@@ -76,8 +84,11 @@ public class Interpreter {
             default:
                 throw new Exception("This shouldn't happen D: the note is " + noteText);
         }
-        ShortMessage onMsg = new ShortMessage(ShortMessage.NOTE_ON, 0,pitch,10);
-        ShortMessage offMsg = new ShortMessage(ShortMessage.NOTE_OFF, 0,pitch,10);
+        ShortMessage onMsg = new ShortMessage();
+        onMsg.setMessage(ShortMessage.NOTE_ON, 0,pitch,100);
+        ShortMessage offMsg = new ShortMessage();
+        offMsg.setMessage(ShortMessage.NOTE_OFF, 0,pitch,100);
+
 
         track.add(new MidiEvent(onMsg, actualTick));
         actualTick += duration;

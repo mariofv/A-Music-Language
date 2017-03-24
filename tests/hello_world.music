@@ -1,6 +1,5 @@
 main() {
     Song {
-        Track Trumpet || La.c La.c La.c Fa.c* Do.sq | La.c Fa.c* Do.sq La.m | Mi.c Mi Mi Fa.c* #Do.sq | &La.c Fa.c* Do.sq La.m ||
-        Track Saxo    || Mi.c Mi.c Mi.c Mi.c | Mi.c Mi.c  Mi.m  | La.c La La La.c  | La.m     Mi.m  ||
+        Track Trumpet || Mi.c Mi.c Fa.c Sol.c  | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.sc Re.c||
     }
 }

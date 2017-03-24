@@ -2,7 +2,7 @@ grammar Music;
 
 options {
 	output = AST;
-	ASTLabelType = AslTree;
+	ASTLabelType = AmlTree;
 }
 
 // Imaginary tokens to create some AST nodes
@@ -17,7 +17,6 @@ tokens {
 
 @header {
 package parser;
-    // interp.MusicTree;
     import interpreter.AmlTree;
 }
 

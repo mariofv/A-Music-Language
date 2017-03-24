@@ -18,116 +18,57 @@ digraph {
   n5 [label="COMPAS_LIST"];
   n6 [label="NOTE_LIST"];
   n6 [label="NOTE_LIST"];
-  n7 [label="La"];
-  n7 [label="La"];
+  n7 [label="Mi"];
+  n7 [label="Mi"];
   n8 [label="c"];
-  n9 [label="La"];
-  n9 [label="La"];
+  n9 [label="Mi"];
+  n9 [label="Mi"];
   n10 [label="c"];
-  n11 [label="La"];
-  n11 [label="La"];
+  n11 [label="Fa"];
+  n11 [label="Fa"];
   n12 [label="c"];
-  n13 [label="Fa"];
-  n13 [label="Fa"];
+  n13 [label="Sol"];
+  n13 [label="Sol"];
   n14 [label="c"];
-  n15 [label="*"];
-  n16 [label="Do"];
-  n16 [label="Do"];
-  n17 [label="sq"];
-  n18 [label="NOTE_LIST"];
-  n18 [label="NOTE_LIST"];
-  n19 [label="La"];
-  n19 [label="La"];
-  n20 [label="c"];
-  n21 [label="Fa"];
-  n21 [label="Fa"];
-  n22 [label="c"];
-  n23 [label="*"];
-  n24 [label="Do"];
-  n24 [label="Do"];
-  n25 [label="sq"];
-  n26 [label="La"];
-  n26 [label="La"];
-  n27 [label="m"];
-  n28 [label="NOTE_LIST"];
-  n28 [label="NOTE_LIST"];
-  n29 [label="Mi"];
-  n29 [label="Mi"];
+  n15 [label="NOTE_LIST"];
+  n15 [label="NOTE_LIST"];
+  n16 [label="Sol"];
+  n16 [label="Sol"];
+  n17 [label="c"];
+  n18 [label="Fa"];
+  n18 [label="Fa"];
+  n19 [label="c"];
+  n20 [label="Mi"];
+  n20 [label="Mi"];
+  n21 [label="c"];
+  n22 [label="Re"];
+  n22 [label="Re"];
+  n23 [label="c"];
+  n24 [label="NOTE_LIST"];
+  n24 [label="NOTE_LIST"];
+  n25 [label="Do"];
+  n25 [label="Do"];
+  n26 [label="c"];
+  n27 [label="Do"];
+  n27 [label="Do"];
+  n28 [label="c"];
+  n29 [label="Re"];
+  n29 [label="Re"];
   n30 [label="c"];
   n31 [label="Mi"];
-  n32 [label="Mi"];
-  n33 [label="Fa"];
-  n33 [label="Fa"];
-  n34 [label="c"];
-  n35 [label="*"];
-  n36 [label="Do"];
-  n36 [label="Do"];
-  n37 [label="#"];
-  n38 [label="sq"];
-  n39 [label="NOTE_LIST"];
-  n39 [label="NOTE_LIST"];
-  n40 [label="La"];
-  n40 [label="La"];
-  n41 [label="&"];
-  n42 [label="c"];
-  n43 [label="Fa"];
-  n43 [label="Fa"];
-  n44 [label="c"];
-  n45 [label="*"];
-  n46 [label="Do"];
-  n46 [label="Do"];
-  n47 [label="sq"];
-  n48 [label="La"];
-  n48 [label="La"];
-  n49 [label="m"];
-  n50 [label="Track"];
-  n50 [label="Track"];
-  n51 [label="Saxo"];
-  n52 [label="COMPAS_LIST"];
-  n52 [label="COMPAS_LIST"];
-  n53 [label="NOTE_LIST"];
-  n53 [label="NOTE_LIST"];
-  n54 [label="Mi"];
-  n54 [label="Mi"];
-  n55 [label="c"];
-  n56 [label="Mi"];
-  n56 [label="Mi"];
-  n57 [label="c"];
-  n58 [label="Mi"];
-  n58 [label="Mi"];
-  n59 [label="c"];
-  n60 [label="Mi"];
-  n60 [label="Mi"];
-  n61 [label="c"];
-  n62 [label="NOTE_LIST"];
-  n62 [label="NOTE_LIST"];
-  n63 [label="Mi"];
-  n63 [label="Mi"];
-  n64 [label="c"];
-  n65 [label="Mi"];
-  n65 [label="Mi"];
-  n66 [label="c"];
-  n67 [label="Mi"];
-  n67 [label="Mi"];
-  n68 [label="m"];
-  n69 [label="NOTE_LIST"];
-  n69 [label="NOTE_LIST"];
-  n70 [label="La"];
-  n70 [label="La"];
-  n71 [label="c"];
-  n72 [label="La"];
-  n73 [label="La"];
-  n74 [label="La"];
-  n74 [label="La"];
-  n75 [label="c"];
-  n76 [label="NOTE_LIST"];
-  n76 [label="NOTE_LIST"];
-  n77 [label="La"];
-  n77 [label="La"];
-  n78 [label="m"];
-  n79 [label="Mi"];
-  n79 [label="Mi"];
-  n80 [label="m"];
+  n31 [label="Mi"];
+  n32 [label="c"];
+  n33 [label="NOTE_LIST"];
+  n33 [label="NOTE_LIST"];
+  n34 [label="Mi"];
+  n34 [label="Mi"];
+  n35 [label="n"];
+  n36 [label="Re"];
+  n36 [label="Re"];
+  n37 [label="sc"];
+  n38 [label="Re"];
+  n38 [label="Re"];
+  n39 [label="c"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "Song"
@@ -135,79 +76,38 @@ digraph {
   n3 -> n4 // "Track" -> "Trumpet"
   n3 -> n5 // "Track" -> "COMPAS_LIST"
   n5 -> n6 // "COMPAS_LIST" -> "NOTE_LIST"
-  n6 -> n7 // "NOTE_LIST" -> "La"
-  n7 -> n8 // "La" -> "c"
-  n6 -> n9 // "NOTE_LIST" -> "La"
-  n9 -> n10 // "La" -> "c"
-  n6 -> n11 // "NOTE_LIST" -> "La"
-  n11 -> n12 // "La" -> "c"
-  n6 -> n13 // "NOTE_LIST" -> "Fa"
-  n13 -> n14 // "Fa" -> "c"
-  n13 -> n15 // "Fa" -> "*"
-  n6 -> n16 // "NOTE_LIST" -> "Do"
-  n16 -> n17 // "Do" -> "sq"
-  n5 -> n18 // "COMPAS_LIST" -> "NOTE_LIST"
-  n18 -> n19 // "NOTE_LIST" -> "La"
-  n19 -> n20 // "La" -> "c"
-  n18 -> n21 // "NOTE_LIST" -> "Fa"
-  n21 -> n22 // "Fa" -> "c"
-  n21 -> n23 // "Fa" -> "*"
-  n18 -> n24 // "NOTE_LIST" -> "Do"
-  n24 -> n25 // "Do" -> "sq"
-  n18 -> n26 // "NOTE_LIST" -> "La"
-  n26 -> n27 // "La" -> "m"
-  n5 -> n28 // "COMPAS_LIST" -> "NOTE_LIST"
-  n28 -> n29 // "NOTE_LIST" -> "Mi"
-  n29 -> n30 // "Mi" -> "c"
-  n28 -> n31 // "NOTE_LIST" -> "Mi"
-  n28 -> n32 // "NOTE_LIST" -> "Mi"
-  n28 -> n33 // "NOTE_LIST" -> "Fa"
-  n33 -> n34 // "Fa" -> "c"
-  n33 -> n35 // "Fa" -> "*"
-  n28 -> n36 // "NOTE_LIST" -> "Do"
-  n36 -> n37 // "Do" -> "#"
-  n36 -> n38 // "Do" -> "sq"
-  n5 -> n39 // "COMPAS_LIST" -> "NOTE_LIST"
-  n39 -> n40 // "NOTE_LIST" -> "La"
-  n40 -> n41 // "La" -> "&"
-  n40 -> n42 // "La" -> "c"
-  n39 -> n43 // "NOTE_LIST" -> "Fa"
-  n43 -> n44 // "Fa" -> "c"
-  n43 -> n45 // "Fa" -> "*"
-  n39 -> n46 // "NOTE_LIST" -> "Do"
-  n46 -> n47 // "Do" -> "sq"
-  n39 -> n48 // "NOTE_LIST" -> "La"
-  n48 -> n49 // "La" -> "m"
-  n2 -> n50 // "Song" -> "Track"
-  n50 -> n51 // "Track" -> "Saxo"
-  n50 -> n52 // "Track" -> "COMPAS_LIST"
-  n52 -> n53 // "COMPAS_LIST" -> "NOTE_LIST"
-  n53 -> n54 // "NOTE_LIST" -> "Mi"
-  n54 -> n55 // "Mi" -> "c"
-  n53 -> n56 // "NOTE_LIST" -> "Mi"
-  n56 -> n57 // "Mi" -> "c"
-  n53 -> n58 // "NOTE_LIST" -> "Mi"
-  n58 -> n59 // "Mi" -> "c"
-  n53 -> n60 // "NOTE_LIST" -> "Mi"
-  n60 -> n61 // "Mi" -> "c"
-  n52 -> n62 // "COMPAS_LIST" -> "NOTE_LIST"
-  n62 -> n63 // "NOTE_LIST" -> "Mi"
-  n63 -> n64 // "Mi" -> "c"
-  n62 -> n65 // "NOTE_LIST" -> "Mi"
-  n65 -> n66 // "Mi" -> "c"
-  n62 -> n67 // "NOTE_LIST" -> "Mi"
-  n67 -> n68 // "Mi" -> "m"
-  n52 -> n69 // "COMPAS_LIST" -> "NOTE_LIST"
-  n69 -> n70 // "NOTE_LIST" -> "La"
-  n70 -> n71 // "La" -> "c"
-  n69 -> n72 // "NOTE_LIST" -> "La"
-  n69 -> n73 // "NOTE_LIST" -> "La"
-  n69 -> n74 // "NOTE_LIST" -> "La"
-  n74 -> n75 // "La" -> "c"
-  n52 -> n76 // "COMPAS_LIST" -> "NOTE_LIST"
-  n76 -> n77 // "NOTE_LIST" -> "La"
-  n77 -> n78 // "La" -> "m"
-  n76 -> n79 // "NOTE_LIST" -> "Mi"
-  n79 -> n80 // "Mi" -> "m"
+  n6 -> n7 // "NOTE_LIST" -> "Mi"
+  n7 -> n8 // "Mi" -> "c"
+  n6 -> n9 // "NOTE_LIST" -> "Mi"
+  n9 -> n10 // "Mi" -> "c"
+  n6 -> n11 // "NOTE_LIST" -> "Fa"
+  n11 -> n12 // "Fa" -> "c"
+  n6 -> n13 // "NOTE_LIST" -> "Sol"
+  n13 -> n14 // "Sol" -> "c"
+  n5 -> n15 // "COMPAS_LIST" -> "NOTE_LIST"
+  n15 -> n16 // "NOTE_LIST" -> "Sol"
+  n16 -> n17 // "Sol" -> "c"
+  n15 -> n18 // "NOTE_LIST" -> "Fa"
+  n18 -> n19 // "Fa" -> "c"
+  n15 -> n20 // "NOTE_LIST" -> "Mi"
+  n20 -> n21 // "Mi" -> "c"
+  n15 -> n22 // "NOTE_LIST" -> "Re"
+  n22 -> n23 // "Re" -> "c"
+  n5 -> n24 // "COMPAS_LIST" -> "NOTE_LIST"
+  n24 -> n25 // "NOTE_LIST" -> "Do"
+  n25 -> n26 // "Do" -> "c"
+  n24 -> n27 // "NOTE_LIST" -> "Do"
+  n27 -> n28 // "Do" -> "c"
+  n24 -> n29 // "NOTE_LIST" -> "Re"
+  n29 -> n30 // "Re" -> "c"
+  n24 -> n31 // "NOTE_LIST" -> "Mi"
+  n31 -> n32 // "Mi" -> "c"
+  n5 -> n33 // "COMPAS_LIST" -> "NOTE_LIST"
+  n33 -> n34 // "NOTE_LIST" -> "Mi"
+  n34 -> n35 // "Mi" -> "n"
+  n33 -> n36 // "NOTE_LIST" -> "Re"
+  n36 -> n37 // "Re" -> "sc"
+  n33 -> n38 // "NOTE_LIST" -> "Re"
+  n38 -> n39 // "Re" -> "c"
 
 }

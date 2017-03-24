@@ -2,7 +2,7 @@ grammar Music;
 
 options {
 	output = AST;
-	ASTLabelType = AslTree;
+	ASTLabelType = AmlTree;
 }
 
 // Imaginary tokens to create some AST nodes
@@ -17,8 +17,7 @@ tokens {
 
 @header {
 package parser;
-    // interp.MusicTree;
-    import interpreter.AslTree;
+    import interpreter.AmlTree;
 }
 
 @lexer::header {
@@ -118,7 +117,7 @@ END_REPETITION      : ':||';
 BEMOL               : '&';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si');
 SUSTAIN             : '#';
-FIGURE              : ('sb'|'m'|'c'|'q'|'sq'|'dsq'|'hdsq');
+FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
 DOT                 : '*';
 TIE                 : '~';
 BEAT                : 'Beat';

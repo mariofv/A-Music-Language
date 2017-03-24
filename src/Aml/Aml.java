@@ -30,6 +30,7 @@ package Aml;
 // Imports for ANTLR
 import interpreter.AmlTree;
 import interpreter.AmlTreeAdaptor;
+import interpreter.Interpreter;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 
@@ -38,6 +39,10 @@ import org.apache.commons.cli.*; // Command Language Interface
 import java.io.*;
 
 import parser.*;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequencer;
+
 /**
  * The class <code>Aml</code> implement the main function of the
  * interpreter. It accepts a set of options to generate the AST in
@@ -61,8 +66,10 @@ public class Aml {
     /** Main program that invokes the parser and the interpreter. */
     
     public static void main(String[] args) throws Exception {
+        System.out.println("hola");
         // Parser for command line options
         if (!readOptions (args)) System.exit(1);
+        System.out.println("adios");
 
         // Parsing of the input file
         
@@ -109,6 +116,15 @@ public class Aml {
                 output.write(t.toStringTree());
             }
             output.close();
+        }
+
+        if (execute) {
+            Interpreter interpreter = new Interpreter();
+
+            interpreter.executeListInstruction(t.getChild(0));
+
+            File f = new File("midifile.mid");
+            MidiSystem.write(interpreter.getSequence(),1,f);
         }
 
     }
