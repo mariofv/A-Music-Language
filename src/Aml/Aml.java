@@ -25,9 +25,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package interpreter;
+package Aml;
 
 // Imports for ANTLR
+import interpreter.AmlTree;
+import interpreter.AmlTreeAdaptor;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 
@@ -37,13 +39,13 @@ import java.io.*;
 
 import parser.*;
 /**
- * The class <code>Asl</code> implement the main function of the
+ * The class <code>Aml</code> implement the main function of the
  * interpreter. It accepts a set of options to generate the AST in
  * dot format and avoid the execution of the program. To know about
- * the accepted options, run the command Asl -help.
+ * the accepted options, run the command Aml -help.
  */
 
-public class Asl{
+public class Aml {
 
     /** The file name of the program. */
     private static String infile = null;
@@ -78,7 +80,7 @@ public class Asl{
 
         // Creates and runs the parser. As a result, an AST is created
         MusicParser parser = new MusicParser(tokens);
-        AslTreeAdaptor adaptor = new AslTreeAdaptor();
+        AmlTreeAdaptor adaptor = new AmlTreeAdaptor();
         parser.setTreeAdaptor(adaptor);
         MusicParser.prog_return result = null;
         try {
@@ -94,7 +96,7 @@ public class Asl{
         }
 
         // Get the AST
-        AslTree t = (AslTree)result.getTree();
+        AmlTree t = (AmlTree)result.getTree();
 
         // Generate a file for the AST (option -ast file)
         if (astfile != null) {
@@ -142,7 +144,7 @@ public class Asl{
         CommandLineParser clp = new GnuParser();
         CommandLine line = null;
 
-        String cmdline = "Asl [options] file";
+        String cmdline = "Aml [options] file";
         
         
         // Parse the options

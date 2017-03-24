@@ -1,8 +1,8 @@
-// $ANTLR 3.4 F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g 2017-03-21 20:18:05
+// $ANTLR 3.4 F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g 2017-03-24 17:38:12
 
 package parser;
     // interp.MusicTree;
-    import interpreter.AslTree;
+    import interpreter.AmlTree;
 
 
 import org.antlr.runtime.*;

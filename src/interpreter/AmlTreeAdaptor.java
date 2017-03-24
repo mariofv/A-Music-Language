@@ -27,58 +27,30 @@
 
 package interpreter;
 
+// Imports from ANTLR
+import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
-import org.antlr.runtime.Token;
+
 
 /**
- * Class to extend the nodes of the AST. It includes two fields
- * to store the value of literals and strings.
- * This class is not strictly necessary, since the literals could
- * be extracted from the "text" fields of the tokens.
- * However, it helps to understand how to extend AST nodes in ANTLR.
+ * This is the tree adaptor for the extended class of AST nodes.
+ * It re-defines some required methods to cast the AST tree nodes
+ * to the new AST nodes.
  */
  
-public class AslTree extends CommonTree {
-    /** Field to store integer literals */
-    private int intValue;
-
-    /** Field to store string literals (without the enclosing quotes) */
-    private String strValue;
-
-    /** Constructor of the class */
-    public AslTree(Token t) {
-        super(t);
+public class AmlTreeAdaptor extends CommonTreeAdaptor {
+    public Object create(Token t) {
+        return new AmlTree(t);
     }
 
-    /** Function to get the child of the node. */
-    public AslTree getChild(int i) {
-        return (AslTree) super.getChild(i);
+    public Object dupNode(Object t) {
+        if ( t==null ) return null;
+        return create(((AmlTree)t).token);
     }
-
-    /** Get the integer value of the node. */
-    public int getIntValue() { return intValue;}
-
-    /** Define the integer value of the node. */
-    public void setIntValue() { intValue = Integer.parseInt(getText()); }
-
-    /** Get the Boolean value of the node. */
-    public boolean getBooleanValue() { return intValue != 0; }
-
-    /** Define the Boolean value of the node. */
-    public void setBooleanValue() {
-        intValue = getText().equals("true") ? 1 : 0;
-    }
-
-    /** Get the string value of the node. */
-    public String getStringValue() { return strValue; }
-
-    /**
-     * Define the string value of the node. It removes the
-     * enclosing quotes. In this way, it can be printed as it is.
-     */
-    public void setStringValue() {
-        String s = getText();
-        // Do not store the " at the extremes of the string
-        strValue = s.substring(1,s.length()-1);
+    
+    public Object errorNode(TokenStream input, Token start, Token stop,
+                             RecognitionException e) {
+        return null;
     }
 }
+
