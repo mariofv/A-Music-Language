@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sound.midi.*;
 
+import music.AmlNote;
 import parser.MusicLexer;
 
 public class Interpreter {
@@ -58,64 +59,12 @@ public class Interpreter {
     }
 
     public void addNote(Track track, AmlTree tree) throws Exception {
-        String noteText = tree.getText();
-        int pitch, duration;
-        duration = getDuration(tree.getChild(0));
-        switch(noteText) {
-            case "Do":
-                pitch = 60;
-                break;
-            case "Re":
-                pitch = 62;
-                break;
-            case "Mi":
-                pitch = 64;
-                break;
-            case "Fa":
-                pitch = 65;
-                break;
-            case "Sol":
-                pitch = 67;
-                break;
-            case "La":
-                pitch = 69;
-                break;
-            case "Si":
-                pitch = 71;
-                break;
-            default:
-                throw new Exception("This shouldn't happen D: the note is " + noteText);
-        }
-        ShortMessage onMsg = new ShortMessage();
-        onMsg.setMessage(ShortMessage.NOTE_ON, 0,pitch,100);
-        ShortMessage offMsg = new ShortMessage();
-        offMsg.setMessage(ShortMessage.NOTE_OFF, 0,pitch,100);
+        AmlNote note = new AmlNote(tree);
 
-        track.add(new MidiEvent(onMsg, actualTick));
-        actualTick += duration;
-        track.add(new MidiEvent(offMsg, actualTick));
+        track.add(new MidiEvent(note.getOnMessage(), actualTick));
+        actualTick += note.getDuration();
+        track.add(new MidiEvent(note.getOffMessage(), actualTick));
     }
 
-    public int getDuration(AmlTree tree) throws Exception {
-        String figure = tree.getText();
-        switch (figure) {
-            case "r":
-                return  NEGRA_DURATION*4;
-            case "b" :
-                return  NEGRA_DURATION*2;
-            case "n" :
-                return  NEGRA_DURATION;
-            case "c" :
-                return  NEGRA_DURATION/2;
-            case "sc" :
-                return  NEGRA_DURATION/4;
-            case "f" :
-                return  NEGRA_DURATION/8;
-            case "sf" :
-                return  NEGRA_DURATION/16;
-            default:
-                throw new Exception("This shouldn't happen D: the figure is " + figure);
-        }
-    }
 
 }
