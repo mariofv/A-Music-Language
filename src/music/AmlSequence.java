@@ -11,16 +11,7 @@ public class AmlSequence {
     private int tone;
 
     public static byte[] intToByteArray(int number) throws Exception {
-        byte num = (byte)(number >>> 24);
-        if (num != 0) return new byte[]{num, (byte)(num >>> 16), (byte)(number >>> 8), (byte)number};
-        num = (byte)(number >>> 16);
-        if (num != 0) return new byte[]{num, (byte)(number >>> 8), (byte)number};
-        num = (byte)(number >>> 8);
-        if (num != 0) return new byte[]{num, (byte)number};
-        num = (byte)number;
-        if (num != 0) return new byte[]{num};
-        throw new Exception("BPM must be grater than zero!");
-        //return new byte[]{(byte)(number >>> 24), (byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
+        return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
     }
 
     public AmlSequence(int bpm, int[] metric, int tone) {
@@ -42,7 +33,7 @@ public class AmlSequence {
             MetaMessage tempo;
             try {
                 byte[] number = intToByteArray(60000000 / bpm);
-                tempo = new MetaMessage(0x51, number, number.length);
+                tempo = new MetaMessage(0x51, number, 3);
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new Error();
