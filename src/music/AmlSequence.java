@@ -3,6 +3,7 @@ package music;
 import javax.sound.midi.*;
 
 public class AmlSequence {
+
     private Sequence sequence;
     private int bpm;
     private int[] metric;
@@ -34,8 +35,17 @@ public class AmlSequence {
             e.printStackTrace();
             throw new Error();
         }
+
         track.add(new MidiEvent(tempo, 0));
-        return new AmlTrack(track, metric, tone);
+        return new AmlTrack(track, metric[0]*AmlNote.PPQ*4/metric[1], tone);
     }
 
+    public Sequence getSequence() {
+        return sequence;
+    }
+
+    @Override
+    public String toString() {
+        return "Bpm: " + bpm + ", metric " + metric[0] + ":" + metric[1] + ", tone " + tone + ".";
+    }
 }
