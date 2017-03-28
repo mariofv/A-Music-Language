@@ -14,11 +14,6 @@ import parser.MusicLexer;
 
 public class Interpreter {
 
-
-
-    public Interpreter()  {
-    }
-
     public void executeListInstruction(AmlTree tree) throws Exception {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
@@ -32,7 +27,7 @@ public class Interpreter {
                 int[] metric = createMetric(tree.getChild(0));
                 int bpm = createBPM(tree.getChild(1));
                 AmlSequence sequence = new AmlSequence(bpm, metric, 0);
-                for( int i =  2; i < tree.getChildCount(); ++i) {
+                for(int i =  2; i < tree.getChildCount(); ++i) {
                     AmlTree child  = tree.getChild(i);
                     createTrack(child.getChild(1),sequence);
                 }
@@ -77,8 +72,7 @@ public class Interpreter {
     public AmlNote createNote(AmlTree tree) throws Exception {
         String noteName = tree.getText();
         String figureName = tree.getChild(0).getText();
-        AmlNote note = new AmlNote(noteName, figureName);
-        return note;
+        return new AmlNote(noteName, figureName);
     }
 
 

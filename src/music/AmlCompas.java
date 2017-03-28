@@ -1,15 +1,9 @@
 package music;
 
-
-import aml.Aml;
-
 import java.util.ArrayList;
 
-/**
- * Created by juanm on 28/03/2017.
- */
 public class AmlCompas {
-    ArrayList<AmlNote> notes;
+    private ArrayList<AmlNote> notes;
 
     private int actualTicks, ticksPerCompas;
 
