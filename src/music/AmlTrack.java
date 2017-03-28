@@ -6,11 +6,11 @@ import javax.sound.midi.Track;
 public class AmlTrack {
 
     private int currentTick;
-    private int[] metric;
+    private int metric;
     private int tone;
     private Track track;
 
-    public AmlTrack(Track track, int[] metric, int tone) {
+    public AmlTrack(Track track, int metric, int tone) {
         this.track = track;
         this.metric = metric;
         this.tone = tone;
@@ -29,32 +29,13 @@ public class AmlTrack {
         return track;
     }
 
-    public void setTrack(Track track) {
-        this.track = track;
-    }
-
-    public int getCurrentTick() {
-        return currentTick;
-    }
-
-    public void setCurrentTick(int currentTick) {
-        this.currentTick = currentTick;
-    }
-
-    public int[] getMetric() {
-        return metric;
-    }
-
-    public void setMetric(int[] metric) {
-        this.metric = metric;
-    }
-
-    public int getTone() {
-        return tone;
-    }
-
-    public void setTone(int tone) {
-        this.tone = tone;
+    @Override
+    public String toString() {
+        return  "Track Details:" + "\n" +
+                "=============================" + "\n" +
+                "CurrentTick = " + currentTick + "\n" +
+                "Metric = " + metric + "\n" +
+                "Tone = " + tone + "\n";
     }
 
 
