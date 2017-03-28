@@ -66,13 +66,10 @@ public class Aml {
     /** Main program that invokes the parser and the interpreter. */
     
     public static void main(String[] args) throws Exception {
-        System.out.println("hola");
         // Parser for command line options
         if (!readOptions (args)) System.exit(1);
-        System.out.println("adios");
 
         // Parsing of the input file
-        
         CharStream input = null;
         try {
             input = new ANTLRFileStream(infile);
@@ -92,7 +89,7 @@ public class Aml {
         MusicParser.prog_return result = null;
         try {
             result = parser.prog();
-        } catch (Exception e) {} // Just catch the exception (nothing to do)
+        } catch (Exception ignored) {} // Just catch the exception (nothing to do)
         
         // Check for parsing errors
         int nerrors = parser.getNumberOfSyntaxErrors();

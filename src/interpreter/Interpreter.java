@@ -10,18 +10,17 @@ public class Interpreter {
     private final static int NEGRA_DURATION = 16;
 
     private Sequence sequence;
-    private int actualTick = 0;
+    private int actualTick;
 
     public Sequence getSequence() {
         return sequence;
     }
 
     public Interpreter() throws InvalidMidiDataException {
-        sequence = new Sequence(Sequence.PPQ, 1);
+        sequence = new Sequence(Sequence.PPQ, NEGRA_DURATION);
     }
 
     public void executeListInstruction(AmlTree tree) throws Exception {
-        System.out.println("Estoy en el nodo "+tree.getText());
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
         }
@@ -30,7 +29,9 @@ public class Interpreter {
     public void executeInstruction(AmlTree tree) throws Exception {
         switch(tree.getType()) {
             case MusicLexer.SONG:
+                //Crear secuencia
                 for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
+                    actualTick = 0;
                     createTrack(child.getChild(1));
                 }
                 break;
@@ -42,10 +43,11 @@ public class Interpreter {
     public void createTrack(AmlTree tree) throws Exception {
         Track track = sequence.createTrack();
         byte[] num = new byte[]{(byte)0x01,(byte)0xe8,(byte)0x48};
-        MetaMessage tempo = new MetaMessage(0x51, num, 3);
-        track.add(new MidiEvent(tempo, 0));
+        //MetaMessage tempo = new MetaMessage(0x51, num, 3);
+        //track.add(new MidiEvent(tempo, 0));
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             addCompas(track, child);
+
         }
     }
 
@@ -89,11 +91,9 @@ public class Interpreter {
         ShortMessage offMsg = new ShortMessage();
         offMsg.setMessage(ShortMessage.NOTE_OFF, 0,pitch,100);
 
-
         track.add(new MidiEvent(onMsg, actualTick));
         actualTick += duration;
         track.add(new MidiEvent(offMsg, actualTick));
-
     }
 
     public int getDuration(AmlTree tree) throws Exception {
