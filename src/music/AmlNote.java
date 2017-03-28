@@ -10,6 +10,7 @@ public class AmlNote {
     final static  int PPQ = 16;
 
     private ShortMessage onMessage, offMessage;
+    private String noteName, figureName;
     private int pitch;
 
     public ShortMessage getOffMessage() {
@@ -29,7 +30,7 @@ public class AmlNote {
 
     public AmlNote(AmlTree node) throws Exception {
         duration = getDuration(node.getChild(0));
-        pitch = mapNote(node.getText());
+        pitch = mapNote(node);
 
         onMessage = new ShortMessage();
         onMessage.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
@@ -41,27 +42,36 @@ public class AmlNote {
         String figure = node.getText();
         switch (figure) {
             case "r":
+                figureName = "Redonda";
                 return  PPQ*4;
             case "b" :
+                figureName = "Blanca";
                 return  PPQ*2;
             case "n" :
+                figureName = "Negra";
                 return  PPQ;
             case "c" :
+                figureName = "Corchera";
                 return  PPQ/2;
             case "sc" :
+                figureName = "Semi-corchera";
                 return  PPQ/4;
             case "f" :
+                figureName = "Fusa";
                 return  PPQ/8;
             case "sf" :
+                figureName = "Semi-fusa";
                 return  PPQ/16;
             default:
+                figureName = "Error";
                 throw new Exception("This shouldn't happen D: the figure is " + figure);
         }
     }
 
-    private int mapNote(String noteText) throws Exception {
+    private int mapNote(AmlTree node) throws Exception {
+        noteName = node.getText();
         int pitch;
-        switch(noteText) {
+        switch(noteName) {
             case "Do":
                 pitch = 60;
                 break;
@@ -84,10 +94,17 @@ public class AmlNote {
                 pitch = 71;
                 break;
             default:
-                throw new Exception("This shouldn't happen D: the note is " + noteText);
+                throw new Exception("This shouldn't happen D: the note is " + noteName);
         }
 
         return pitch;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Note " + noteName + " with figure " + figureName;
     }
 
 }
