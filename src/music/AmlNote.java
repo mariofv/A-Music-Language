@@ -31,10 +31,10 @@ public class AmlNote {
         duration = getDuration(node.getChild(0));
         pitch = mapNote(node.getText());
 
-        ShortMessage onMsg = new ShortMessage();
-        onMsg.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
-        ShortMessage offMsg = new ShortMessage();
-        offMsg.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+        onMessage = new ShortMessage();
+        onMessage.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
+        offMessage = new ShortMessage();
+        offMessage.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
     }
 
     private int getDuration(AmlTree node) throws Exception {
