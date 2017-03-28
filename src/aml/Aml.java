@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package Aml;
+package aml;
 
 // Imports for ANTLR
 import interpreter.AmlTree;
@@ -41,13 +41,12 @@ import java.io.*;
 import parser.*;
 
 import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequencer;
 
 /**
- * The class <code>Aml</code> implement the main function of the
+ * The class <code>aml</code> implement the main function of the
  * interpreter. It accepts a set of options to generate the AST in
  * dot format and avoid the execution of the program. To know about
- * the accepted options, run the command Aml -help.
+ * the accepted options, run the command aml -help.
  */
 
 public class Aml {
@@ -157,7 +156,7 @@ public class Aml {
         CommandLineParser clp = new GnuParser();
         CommandLine line = null;
 
-        String cmdline = "Aml [options] file";
+        String cmdline = "aml [options] file";
         
         
         // Parse the options
