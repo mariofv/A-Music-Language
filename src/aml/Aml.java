@@ -66,10 +66,7 @@ public class Aml {
     /** Main program that invokes the parser and the interpreter. */
     
     public static void main(String[] args) throws Exception {
-        int bpm = -2145386496;
-        for (byte x : AmlSequence.intToByteArray(bpm)) {
-            System.out.println(Byte.toUnsignedInt(x));
-        }
+
         // Parser for command line options
         if (!readOptions (args)) System.exit(1);
 
@@ -124,8 +121,7 @@ public class Aml {
 
             interpreter.executeListInstruction(t.getChild(0));
 
-            File f = new File("midifile.mid");
-            MidiSystem.write(interpreter.getSequence(),1,f);
+
         }
 
     }

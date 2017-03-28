@@ -36,8 +36,6 @@ listInst    :   (inst)*;
 
 inst        :   declaration
             |   assignation
-            |   beat
-            |   speed
             |   while_stmt
             |   for_stmt
             |   if_stmt
@@ -68,7 +66,7 @@ if_stmt          :   IF^
             ;
 //END TODO
 
-song        :   SONG^ '{'! (track)+ '}'!
+song        :   SONG^ '{'! beat speed (track)+ '}'!
             ;
 
 

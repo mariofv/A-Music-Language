@@ -1,8 +1,5 @@
 package music;
 
-import interpreter.AmlTree;
-
-import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
 
 public class AmlNote {
@@ -28,9 +25,11 @@ public class AmlNote {
     private int duration;
 
 
-    public AmlNote(AmlTree node) throws Exception {
-        duration = getDuration(node.getChild(0));
-        pitch = mapNote(node);
+    public AmlNote(String noteName, String figureName) throws Exception {
+        this.noteName = noteName;
+        this.figureName = figureName;
+        duration = mapDuration();
+        pitch = mapNote();
 
         onMessage = new ShortMessage();
         onMessage.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
@@ -38,9 +37,8 @@ public class AmlNote {
         offMessage.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
     }
 
-    private int getDuration(AmlTree node) throws Exception {
-        String figure = node.getText();
-        switch (figure) {
+    private int mapDuration() throws Exception {
+        switch (figureName) {
             case "r":
                 figureName = "Redonda";
                 return  PPQ*4;
@@ -64,12 +62,11 @@ public class AmlNote {
                 return  PPQ/16;
             default:
                 figureName = "Error";
-                throw new Exception("This shouldn't happen D: the figure is " + figure);
+                throw new Exception("This shouldn't happen D: the figure is " + figureName);
         }
     }
 
-    private int mapNote(AmlTree node) throws Exception {
-        noteName = node.getText();
+    private int mapNote() throws Exception {
         int pitch;
         switch(noteName) {
             case "Do":

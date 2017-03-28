@@ -30,13 +30,14 @@ public class AmlSequence {
         Track track = sequence.createTrack();
         MetaMessage tempo;
         try {
-            tempo = new MetaMessage(0x51, intToByteArray(bpm), 4);
+            //TODO: Arreglar tempo
+            tempo = new MetaMessage(0x51, intToByteArray(60000000/bpm), 4);
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
             throw new Error();
         }
 
-        track.add(new MidiEvent(tempo, 0));
+        //track.add(new MidiEvent(tempo, 0));
         return new AmlTrack(track, metric[0]*AmlNote.PPQ*4/metric[1], tone);
     }
 

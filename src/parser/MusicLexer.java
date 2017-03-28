@@ -1,4 +1,4 @@
-// $ANTLR 3.4 F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g 2017-03-24 17:57:36
+// $ANTLR 3.4 src/parser/Music.g 2017-03-28 19:39:58
 
     package parser;
 
@@ -80,15 +80,15 @@ public class MusicLexer extends Lexer {
     public MusicLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g"; }
+    public String getGrammarFileName() { return "src/parser/Music.g"; }
 
     // $ANTLR start "T__51"
     public final void mT__51() throws RecognitionException {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:6:7: ( '(' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:6:9: '('
+            // src/parser/Music.g:6:7: ( '(' )
+            // src/parser/Music.g:6:9: '('
             {
             match('('); 
 
@@ -108,8 +108,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:7:7: ( ')' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:7:9: ')'
+            // src/parser/Music.g:7:7: ( ')' )
+            // src/parser/Music.g:7:9: ')'
             {
             match(')'); 
 
@@ -129,8 +129,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:8:7: ( ',' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:8:9: ','
+            // src/parser/Music.g:8:7: ( ',' )
+            // src/parser/Music.g:8:9: ','
             {
             match(','); 
 
@@ -150,8 +150,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:9:7: ( '.' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:9:9: '.'
+            // src/parser/Music.g:9:7: ( '.' )
+            // src/parser/Music.g:9:9: '.'
             {
             match('.'); 
 
@@ -171,8 +171,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:10:7: ( ':' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:10:9: ':'
+            // src/parser/Music.g:10:7: ( ':' )
+            // src/parser/Music.g:10:9: ':'
             {
             match(':'); 
 
@@ -192,8 +192,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:11:7: ( ';' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:11:9: ';'
+            // src/parser/Music.g:11:7: ( ';' )
+            // src/parser/Music.g:11:9: ';'
             {
             match(';'); 
 
@@ -213,8 +213,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:12:7: ( '{' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:12:9: '{'
+            // src/parser/Music.g:12:7: ( '{' )
+            // src/parser/Music.g:12:9: '{'
             {
             match('{'); 
 
@@ -234,8 +234,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:13:7: ( '}' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:13:9: '}'
+            // src/parser/Music.g:13:7: ( '}' )
+            // src/parser/Music.g:13:9: '}'
             {
             match('}'); 
 
@@ -255,8 +255,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:113:21: ( '|' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:113:23: '|'
+            // src/parser/Music.g:111:21: ( '|' )
+            // src/parser/Music.g:111:23: '|'
             {
             match('|'); 
 
@@ -276,8 +276,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DOUBLE_BAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:114:22: ( '||' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:114:24: '||'
+            // src/parser/Music.g:112:22: ( '||' )
+            // src/parser/Music.g:112:24: '||'
             {
             match("||"); 
 
@@ -299,8 +299,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = START_REPETITION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:115:21: ( '||:' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:115:23: '||:'
+            // src/parser/Music.g:113:21: ( '||:' )
+            // src/parser/Music.g:113:23: '||:'
             {
             match("||:"); 
 
@@ -322,8 +322,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = END_REPETITION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:116:21: ( ':||' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:116:23: ':||'
+            // src/parser/Music.g:114:21: ( ':||' )
+            // src/parser/Music.g:114:23: ':||'
             {
             match(":||"); 
 
@@ -345,8 +345,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BEMOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:117:21: ( '&' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:117:23: '&'
+            // src/parser/Music.g:115:21: ( '&' )
+            // src/parser/Music.g:115:23: '&'
             {
             match('&'); 
 
@@ -366,10 +366,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:21: ( ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' ) )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' )
+            // src/parser/Music.g:116:21: ( ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' ) )
+            // src/parser/Music.g:116:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' )
             {
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' )
+            // src/parser/Music.g:116:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' )
             int alt1=7;
             switch ( input.LA(1) ) {
             case 'D':
@@ -426,7 +426,7 @@ public class MusicLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:24: 'Do'
+                    // src/parser/Music.g:116:24: 'Do'
                     {
                     match("Do"); 
 
@@ -435,7 +435,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:29: 'Re'
+                    // src/parser/Music.g:116:29: 'Re'
                     {
                     match("Re"); 
 
@@ -444,7 +444,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:34: 'Mi'
+                    // src/parser/Music.g:116:34: 'Mi'
                     {
                     match("Mi"); 
 
@@ -453,7 +453,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:39: 'Fa'
+                    // src/parser/Music.g:116:39: 'Fa'
                     {
                     match("Fa"); 
 
@@ -462,7 +462,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:44: 'Sol'
+                    // src/parser/Music.g:116:44: 'Sol'
                     {
                     match("Sol"); 
 
@@ -471,7 +471,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:50: 'La'
+                    // src/parser/Music.g:116:50: 'La'
                     {
                     match("La"); 
 
@@ -480,7 +480,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:118:55: 'Si'
+                    // src/parser/Music.g:116:55: 'Si'
                     {
                     match("Si"); 
 
@@ -508,8 +508,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SUSTAIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:119:21: ( '#' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:119:23: '#'
+            // src/parser/Music.g:117:21: ( '#' )
+            // src/parser/Music.g:117:23: '#'
             {
             match('#'); 
 
@@ -529,10 +529,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FIGURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:21: ( ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' ) )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
+            // src/parser/Music.g:118:21: ( ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' ) )
+            // src/parser/Music.g:118:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
             {
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
+            // src/parser/Music.g:118:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
             int alt2=7;
             switch ( input.LA(1) ) {
             case 'r':
@@ -589,35 +589,35 @@ public class MusicLexer extends Lexer {
 
             switch (alt2) {
                 case 1 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:24: 'r'
+                    // src/parser/Music.g:118:24: 'r'
                     {
                     match('r'); 
 
                     }
                     break;
                 case 2 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:28: 'b'
+                    // src/parser/Music.g:118:28: 'b'
                     {
                     match('b'); 
 
                     }
                     break;
                 case 3 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:32: 'n'
+                    // src/parser/Music.g:118:32: 'n'
                     {
                     match('n'); 
 
                     }
                     break;
                 case 4 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:36: 'c'
+                    // src/parser/Music.g:118:36: 'c'
                     {
                     match('c'); 
 
                     }
                     break;
                 case 5 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:40: 'sc'
+                    // src/parser/Music.g:118:40: 'sc'
                     {
                     match("sc"); 
 
@@ -626,14 +626,14 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:45: 'f'
+                    // src/parser/Music.g:118:45: 'f'
                     {
                     match('f'); 
 
                     }
                     break;
                 case 7 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:120:49: 'sf'
+                    // src/parser/Music.g:118:49: 'sf'
                     {
                     match("sf"); 
 
@@ -661,8 +661,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:121:21: ( '*' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:121:23: '*'
+            // src/parser/Music.g:119:21: ( '*' )
+            // src/parser/Music.g:119:23: '*'
             {
             match('*'); 
 
@@ -682,8 +682,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TIE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:122:21: ( '~' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:122:23: '~'
+            // src/parser/Music.g:120:21: ( '~' )
+            // src/parser/Music.g:120:23: '~'
             {
             match('~'); 
 
@@ -703,8 +703,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BEAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:123:21: ( 'Beat' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:123:23: 'Beat'
+            // src/parser/Music.g:121:21: ( 'Beat' )
+            // src/parser/Music.g:121:23: 'Beat'
             {
             match("Beat"); 
 
@@ -726,8 +726,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SPEED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:124:21: ( 'Speed' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:124:23: 'Speed'
+            // src/parser/Music.g:122:21: ( 'Speed' )
+            // src/parser/Music.g:122:23: 'Speed'
             {
             match("Speed"); 
 
@@ -749,8 +749,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SONG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:125:21: ( 'Song' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:125:23: 'Song'
+            // src/parser/Music.g:123:21: ( 'Song' )
+            // src/parser/Music.g:123:23: 'Song'
             {
             match("Song"); 
 
@@ -772,8 +772,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TRACK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:126:21: ( 'Track' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:126:23: 'Track'
+            // src/parser/Music.g:124:21: ( 'Track' )
+            // src/parser/Music.g:124:23: 'Track'
             {
             match("Track"); 
 
@@ -795,8 +795,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:129:7: ( '=' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:129:9: '='
+            // src/parser/Music.g:127:7: ( '=' )
+            // src/parser/Music.g:127:9: '='
             {
             match('='); 
 
@@ -816,8 +816,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOT_EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:130:10: ( '!=' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:130:12: '!='
+            // src/parser/Music.g:128:10: ( '!=' )
+            // src/parser/Music.g:128:12: '!='
             {
             match("!="); 
 
@@ -839,8 +839,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:131:8: ( '<' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:131:10: '<'
+            // src/parser/Music.g:129:8: ( '<' )
+            // src/parser/Music.g:129:10: '<'
             {
             match('<'); 
 
@@ -860,8 +860,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = LE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:132:8: ( '<=' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:132:10: '<='
+            // src/parser/Music.g:130:8: ( '<=' )
+            // src/parser/Music.g:130:10: '<='
             {
             match("<="); 
 
@@ -883,8 +883,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:133:8: ( '>' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:133:10: '>'
+            // src/parser/Music.g:131:8: ( '>' )
+            // src/parser/Music.g:131:10: '>'
             {
             match('>'); 
 
@@ -904,8 +904,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = GE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:134:8: ( '>=' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:134:10: '>='
+            // src/parser/Music.g:132:8: ( '>=' )
+            // src/parser/Music.g:132:10: '>='
             {
             match(">="); 
 
@@ -927,8 +927,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:135:6: ( '+' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:135:8: '+'
+            // src/parser/Music.g:133:6: ( '+' )
+            // src/parser/Music.g:133:8: '+'
             {
             match('+'); 
 
@@ -948,8 +948,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:136:7: ( '-' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:136:9: '-'
+            // src/parser/Music.g:134:7: ( '-' )
+            // src/parser/Music.g:134:9: '-'
             {
             match('-'); 
 
@@ -969,8 +969,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:137:9: ( '/' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:137:11: '/'
+            // src/parser/Music.g:135:9: ( '/' )
+            // src/parser/Music.g:135:11: '/'
             {
             match('/'); 
 
@@ -990,8 +990,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:138:9: ( '%' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:138:11: '%'
+            // src/parser/Music.g:136:9: ( '%' )
+            // src/parser/Music.g:136:11: '%'
             {
             match('%'); 
 
@@ -1011,8 +1011,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:139:9: ( 'not' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:139:11: 'not'
+            // src/parser/Music.g:137:9: ( 'not' )
+            // src/parser/Music.g:137:11: 'not'
             {
             match("not"); 
 
@@ -1034,8 +1034,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:140:9: ( 'and' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:140:11: 'and'
+            // src/parser/Music.g:138:9: ( 'and' )
+            // src/parser/Music.g:138:11: 'and'
             {
             match("and"); 
 
@@ -1057,8 +1057,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:141:8: ( 'or' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:141:10: 'or'
+            // src/parser/Music.g:139:8: ( 'or' )
+            // src/parser/Music.g:139:10: 'or'
             {
             match("or"); 
 
@@ -1080,8 +1080,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:142:6: ( 'if' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:142:8: 'if'
+            // src/parser/Music.g:140:6: ( 'if' )
+            // src/parser/Music.g:140:8: 'if'
             {
             match("if"); 
 
@@ -1103,8 +1103,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:143:6: ( 'else' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:143:8: 'else'
+            // src/parser/Music.g:141:6: ( 'else' )
+            // src/parser/Music.g:141:8: 'else'
             {
             match("else"); 
 
@@ -1126,8 +1126,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:144:7: ( 'while' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:144:9: 'while'
+            // src/parser/Music.g:142:7: ( 'while' )
+            // src/parser/Music.g:142:9: 'while'
             {
             match("while"); 
 
@@ -1149,8 +1149,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:145:9: ( 'for' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:145:11: 'for'
+            // src/parser/Music.g:143:9: ( 'for' )
+            // src/parser/Music.g:143:11: 'for'
             {
             match("for"); 
 
@@ -1172,8 +1172,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = RETURN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:146:8: ( 'return' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:146:10: 'return'
+            // src/parser/Music.g:144:8: ( 'return' )
+            // src/parser/Music.g:144:10: 'return'
             {
             match("return"); 
 
@@ -1195,8 +1195,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:147:9: ( 'true' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:147:11: 'true'
+            // src/parser/Music.g:145:9: ( 'true' )
+            // src/parser/Music.g:145:11: 'true'
             {
             match("true"); 
 
@@ -1218,8 +1218,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:148:9: ( 'false' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:148:11: 'false'
+            // src/parser/Music.g:146:9: ( 'false' )
+            // src/parser/Music.g:146:11: 'false'
             {
             match("false"); 
 
@@ -1241,8 +1241,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:149:9: ( 'int' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:149:11: 'int'
+            // src/parser/Music.g:147:9: ( 'int' )
+            // src/parser/Music.g:147:11: 'int'
             {
             match("int"); 
 
@@ -1264,8 +1264,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:150:9: ( 'bool' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:150:11: 'bool'
+            // src/parser/Music.g:148:9: ( 'bool' )
+            // src/parser/Music.g:148:11: 'bool'
             {
             match("bool"); 
 
@@ -1287,8 +1287,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:151:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:151:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/parser/Music.g:149:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // src/parser/Music.g:149:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1300,7 +1300,7 @@ public class MusicLexer extends Lexer {
             }
 
 
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:151:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/parser/Music.g:149:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop3:
             do {
                 int alt3=2;
@@ -1313,7 +1313,7 @@ public class MusicLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:
+            	    // src/parser/Music.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
@@ -1350,10 +1350,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:152:6: ( ( '0' .. '9' )+ )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:152:8: ( '0' .. '9' )+
+            // src/parser/Music.g:150:6: ( ( '0' .. '9' )+ )
+            // src/parser/Music.g:150:8: ( '0' .. '9' )+
             {
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:152:8: ( '0' .. '9' )+
+            // src/parser/Music.g:150:8: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1367,7 +1367,7 @@ public class MusicLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:
+            	    // src/parser/Music.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -1408,7 +1408,7 @@ public class MusicLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:155:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/parser/Music.g:153:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1438,13 +1438,13 @@ public class MusicLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:155:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // src/parser/Music.g:153:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:155:16: (~ ( '\\n' | '\\r' ) )*
+                    // src/parser/Music.g:153:16: (~ ( '\\n' | '\\r' ) )*
                     loop5:
                     do {
                         int alt5=2;
@@ -1457,7 +1457,7 @@ public class MusicLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:
+                    	    // src/parser/Music.g:
                     	    {
                     	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
                     	        input.consume();
@@ -1478,7 +1478,7 @@ public class MusicLexer extends Lexer {
                     } while (true);
 
 
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:155:30: ( '\\r' )?
+                    // src/parser/Music.g:153:30: ( '\\r' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1487,7 +1487,7 @@ public class MusicLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:155:30: '\\r'
+                            // src/parser/Music.g:153:30: '\\r'
                             {
                             match('\r'); 
 
@@ -1504,13 +1504,13 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:156:5: '/*' ( options {greedy=false; } : . )* '*/'
+                    // src/parser/Music.g:154:5: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:156:10: ( options {greedy=false; } : . )*
+                    // src/parser/Music.g:154:10: ( options {greedy=false; } : . )*
                     loop7:
                     do {
                         int alt7=2;
@@ -1535,7 +1535,7 @@ public class MusicLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:156:38: .
+                    	    // src/parser/Music.g:154:38: .
                     	    {
                     	    matchAny(); 
 
@@ -1572,12 +1572,12 @@ public class MusicLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:160:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:160:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // src/parser/Music.g:158:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // src/parser/Music.g:158:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:160:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // src/parser/Music.g:158:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop9:
             do {
                 int alt9=3;
@@ -1593,7 +1593,7 @@ public class MusicLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:160:18: ESC_SEQ
+            	    // src/parser/Music.g:158:18: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -1601,7 +1601,7 @@ public class MusicLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:160:28: ~ ( '\\\\' | '\"' )
+            	    // src/parser/Music.g:158:28: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -1638,8 +1638,8 @@ public class MusicLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:166:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:166:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // src/parser/Music.g:164:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // src/parser/Music.g:164:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             match('\\'); 
 
@@ -1668,8 +1668,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:169:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:169:8: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // src/parser/Music.g:167:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // src/parser/Music.g:167:8: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -1695,12 +1695,12 @@ public class MusicLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | BEMOL | NOTE | SUSTAIN | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | EQUAL | NOT_EQUAL | LT | LE | GT | GE | PLUS | MINUS | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | ID | NUM | COMMENT | STRING | WS )
+        // src/parser/Music.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | BEMOL | NOTE | SUSTAIN | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | EQUAL | NOT_EQUAL | LT | LE | GT | GE | PLUS | MINUS | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | ID | NUM | COMMENT | STRING | WS )
         int alt10=49;
         alt10 = dfa10.predict(input);
         switch (alt10) {
             case 1 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:10: T__51
+                // src/parser/Music.g:1:10: T__51
                 {
                 mT__51(); 
 
@@ -1708,7 +1708,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:16: T__52
+                // src/parser/Music.g:1:16: T__52
                 {
                 mT__52(); 
 
@@ -1716,7 +1716,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:22: T__53
+                // src/parser/Music.g:1:22: T__53
                 {
                 mT__53(); 
 
@@ -1724,7 +1724,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 4 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:28: T__54
+                // src/parser/Music.g:1:28: T__54
                 {
                 mT__54(); 
 
@@ -1732,7 +1732,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 5 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:34: T__55
+                // src/parser/Music.g:1:34: T__55
                 {
                 mT__55(); 
 
@@ -1740,7 +1740,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 6 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:40: T__56
+                // src/parser/Music.g:1:40: T__56
                 {
                 mT__56(); 
 
@@ -1748,7 +1748,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 7 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:46: T__57
+                // src/parser/Music.g:1:46: T__57
                 {
                 mT__57(); 
 
@@ -1756,7 +1756,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 8 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:52: T__58
+                // src/parser/Music.g:1:52: T__58
                 {
                 mT__58(); 
 
@@ -1764,7 +1764,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:58: BAR
+                // src/parser/Music.g:1:58: BAR
                 {
                 mBAR(); 
 
@@ -1772,7 +1772,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:62: DOUBLE_BAR
+                // src/parser/Music.g:1:62: DOUBLE_BAR
                 {
                 mDOUBLE_BAR(); 
 
@@ -1780,7 +1780,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 11 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:73: START_REPETITION
+                // src/parser/Music.g:1:73: START_REPETITION
                 {
                 mSTART_REPETITION(); 
 
@@ -1788,7 +1788,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 12 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:90: END_REPETITION
+                // src/parser/Music.g:1:90: END_REPETITION
                 {
                 mEND_REPETITION(); 
 
@@ -1796,7 +1796,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 13 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:105: BEMOL
+                // src/parser/Music.g:1:105: BEMOL
                 {
                 mBEMOL(); 
 
@@ -1804,7 +1804,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 14 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:111: NOTE
+                // src/parser/Music.g:1:111: NOTE
                 {
                 mNOTE(); 
 
@@ -1812,7 +1812,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 15 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:116: SUSTAIN
+                // src/parser/Music.g:1:116: SUSTAIN
                 {
                 mSUSTAIN(); 
 
@@ -1820,7 +1820,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 16 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:124: FIGURE
+                // src/parser/Music.g:1:124: FIGURE
                 {
                 mFIGURE(); 
 
@@ -1828,7 +1828,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 17 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:131: DOT
+                // src/parser/Music.g:1:131: DOT
                 {
                 mDOT(); 
 
@@ -1836,7 +1836,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 18 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:135: TIE
+                // src/parser/Music.g:1:135: TIE
                 {
                 mTIE(); 
 
@@ -1844,7 +1844,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 19 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:139: BEAT
+                // src/parser/Music.g:1:139: BEAT
                 {
                 mBEAT(); 
 
@@ -1852,7 +1852,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 20 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:144: SPEED
+                // src/parser/Music.g:1:144: SPEED
                 {
                 mSPEED(); 
 
@@ -1860,7 +1860,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 21 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:150: SONG
+                // src/parser/Music.g:1:150: SONG
                 {
                 mSONG(); 
 
@@ -1868,7 +1868,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:155: TRACK
+                // src/parser/Music.g:1:155: TRACK
                 {
                 mTRACK(); 
 
@@ -1876,7 +1876,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 23 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:161: EQUAL
+                // src/parser/Music.g:1:161: EQUAL
                 {
                 mEQUAL(); 
 
@@ -1884,7 +1884,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 24 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:167: NOT_EQUAL
+                // src/parser/Music.g:1:167: NOT_EQUAL
                 {
                 mNOT_EQUAL(); 
 
@@ -1892,7 +1892,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 25 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:177: LT
+                // src/parser/Music.g:1:177: LT
                 {
                 mLT(); 
 
@@ -1900,7 +1900,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 26 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:180: LE
+                // src/parser/Music.g:1:180: LE
                 {
                 mLE(); 
 
@@ -1908,7 +1908,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 27 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:183: GT
+                // src/parser/Music.g:1:183: GT
                 {
                 mGT(); 
 
@@ -1916,7 +1916,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 28 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:186: GE
+                // src/parser/Music.g:1:186: GE
                 {
                 mGE(); 
 
@@ -1924,7 +1924,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 29 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:189: PLUS
+                // src/parser/Music.g:1:189: PLUS
                 {
                 mPLUS(); 
 
@@ -1932,7 +1932,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 30 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:194: MINUS
+                // src/parser/Music.g:1:194: MINUS
                 {
                 mMINUS(); 
 
@@ -1940,7 +1940,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 31 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:200: DIV
+                // src/parser/Music.g:1:200: DIV
                 {
                 mDIV(); 
 
@@ -1948,7 +1948,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 32 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:204: MOD
+                // src/parser/Music.g:1:204: MOD
                 {
                 mMOD(); 
 
@@ -1956,7 +1956,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 33 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:208: NOT
+                // src/parser/Music.g:1:208: NOT
                 {
                 mNOT(); 
 
@@ -1964,7 +1964,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 34 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:212: AND
+                // src/parser/Music.g:1:212: AND
                 {
                 mAND(); 
 
@@ -1972,7 +1972,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 35 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:216: OR
+                // src/parser/Music.g:1:216: OR
                 {
                 mOR(); 
 
@@ -1980,7 +1980,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 36 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:219: IF
+                // src/parser/Music.g:1:219: IF
                 {
                 mIF(); 
 
@@ -1988,7 +1988,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 37 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:222: ELSE
+                // src/parser/Music.g:1:222: ELSE
                 {
                 mELSE(); 
 
@@ -1996,7 +1996,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 38 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:227: WHILE
+                // src/parser/Music.g:1:227: WHILE
                 {
                 mWHILE(); 
 
@@ -2004,7 +2004,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 39 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:233: FOR
+                // src/parser/Music.g:1:233: FOR
                 {
                 mFOR(); 
 
@@ -2012,7 +2012,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 40 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:237: RETURN
+                // src/parser/Music.g:1:237: RETURN
                 {
                 mRETURN(); 
 
@@ -2020,7 +2020,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 41 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:244: TRUE
+                // src/parser/Music.g:1:244: TRUE
                 {
                 mTRUE(); 
 
@@ -2028,7 +2028,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 42 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:249: FALSE
+                // src/parser/Music.g:1:249: FALSE
                 {
                 mFALSE(); 
 
@@ -2036,7 +2036,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 43 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:255: INT
+                // src/parser/Music.g:1:255: INT
                 {
                 mINT(); 
 
@@ -2044,7 +2044,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 44 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:259: BOOL
+                // src/parser/Music.g:1:259: BOOL
                 {
                 mBOOL(); 
 
@@ -2052,7 +2052,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 45 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:264: ID
+                // src/parser/Music.g:1:264: ID
                 {
                 mID(); 
 
@@ -2060,7 +2060,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 46 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:267: NUM
+                // src/parser/Music.g:1:267: NUM
                 {
                 mNUM(); 
 
@@ -2068,7 +2068,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 47 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:271: COMMENT
+                // src/parser/Music.g:1:271: COMMENT
                 {
                 mCOMMENT(); 
 
@@ -2076,7 +2076,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 48 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:279: STRING
+                // src/parser/Music.g:1:279: STRING
                 {
                 mSTRING(); 
 
@@ -2084,7 +2084,7 @@ public class MusicLexer extends Lexer {
                 }
                 break;
             case 49 :
-                // F:\\Assig\\CL\\PRACTICA-CL\\src\\parser\\Music.g:1:286: WS
+                // src/parser/Music.g:1:286: WS
                 {
                 mWS(); 
 

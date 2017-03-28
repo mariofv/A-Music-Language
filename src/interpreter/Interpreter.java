@@ -1,24 +1,22 @@
 package interpreter;
 
+import java.io.File;
 import java.util.List;
 
 import javax.sound.midi.*;
 
+import aml.Aml;
+import music.AmlCompas;
 import music.AmlNote;
+import music.AmlSequence;
+import music.AmlTrack;
 import parser.MusicLexer;
 
 public class Interpreter {
-    private final static int NEGRA_DURATION = 16;
 
-    private Sequence sequence;
-    private int actualTick;
 
-    public Sequence getSequence() {
-        return sequence;
-    }
 
-    public Interpreter() throws InvalidMidiDataException {
-        sequence = new Sequence(Sequence.PPQ, NEGRA_DURATION);
+    public Interpreter()  {
     }
 
     public void executeListInstruction(AmlTree tree) throws Exception {
@@ -31,39 +29,56 @@ public class Interpreter {
         switch(tree.getType()) {
             case MusicLexer.SONG:
                 //Crear secuencia
-                for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-                    actualTick = 0;
-                    createTrack(child.getChild(1));
+                int[] metric = createMetric(tree.getChild(0));
+                int bpm = createBPM(tree.getChild(1));
+                AmlSequence sequence = new AmlSequence(bpm, metric, 0);
+                for( int i =  2; i < tree.getChildCount(); ++i) {
+                    AmlTree child  = tree.getChild(i);
+                    createTrack(child.getChild(1),sequence);
                 }
+                File f = new File("midifile.mid");
+                MidiSystem.write(sequence.getSequence(),1,f);
                 break;
             default:
                 break;
         }
     }
 
-    public void createTrack(AmlTree tree) throws Exception {
-        Track track = sequence.createTrack();
-        byte[] num = new byte[]{(byte)0x01,(byte)0xe8,(byte)0x48};
-        //MetaMessage tempo = new MetaMessage(0x51, num, 3);
-        //track.add(new MidiEvent(tempo, 0));
-        for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            addCompas(track, child);
+    private int[] createMetric(AmlTree tree) {
+        int[] metric = new int[2];
+        metric[0] = Integer.parseInt(tree.getChild(0).getText());
+        metric[1] = Integer.parseInt(tree.getChild(1).getText());
+        return metric;
+    }
 
+    private int createBPM(AmlTree tree) {
+        return Integer.parseInt(tree.getChild(0).getText());
+    }
+
+    public void createTrack(AmlTree tree, AmlSequence sequence) throws Exception {
+        AmlTrack track = sequence.addTrack();
+
+        for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
+            track.addCompas(createCompas(child, track.getMetric()));
         }
     }
 
-    public void addCompas(Track track, AmlTree tree) throws Exception {
+    public AmlCompas createCompas(AmlTree tree, int metric) throws Exception {
+        AmlCompas compas = new AmlCompas(metric);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            addNote(track, child);
+            compas.addNote(createNote(child));
         }
+        if (!compas.check()) {
+            throw new Exception("The duration of the compas is incorrect!");
+        }
+        return compas;
     }
 
-    public void addNote(Track track, AmlTree tree) throws Exception {
-        AmlNote note = new AmlNote(tree);
-
-        track.add(new MidiEvent(note.getOnMessage(), actualTick));
-        actualTick += note.getDuration();
-        track.add(new MidiEvent(note.getOffMessage(), actualTick));
+    public AmlNote createNote(AmlTree tree) throws Exception {
+        String noteName = tree.getText();
+        String figureName = tree.getChild(0).getText();
+        AmlNote note = new AmlNote(noteName, figureName);
+        return note;
     }
 
 

@@ -6,6 +6,7 @@ import javax.sound.midi.Track;
 public class AmlTrack {
 
     private int currentTick;
+
     private int metric;
     private int tone;
     private Track track;
@@ -27,6 +28,10 @@ public class AmlTrack {
 
     public Track getTrack() {
         return track;
+    }
+
+    public int getMetric() {
+        return metric;
     }
 
     @Override
