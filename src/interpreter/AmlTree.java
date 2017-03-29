@@ -27,8 +27,12 @@
 
 package interpreter;
 
+import music.AmlNote;
 import org.antlr.runtime.tree.*;
 import org.antlr.runtime.Token;
+
+import static music.AmlNote.Figure.*;
+import static music.AmlNote.Note.*;
 
 /**
  * Class to extend the nodes of the AST. It includes two fields
@@ -46,6 +50,9 @@ public class AmlTree extends CommonTree {
     /** Field to store string literals (without the enclosing quotes) */
     private String strValue;
 
+    private AmlNote.Note noteValue;
+    private AmlNote.Figure figureValue;
+
     /** Constructor of the class */
     public AmlTree(Token t) {
         super(t);
@@ -58,6 +65,62 @@ public class AmlTree extends CommonTree {
 
     /** Get the integer value of the node. */
     public int getIntValue() { return intValue;}
+
+    public void setNoteValue(String note) {
+        switch (note) {
+            case "Do":
+                noteValue = Do;
+                break;
+            case "Re":
+                noteValue = Re;
+                break;
+            case "Mi":
+                noteValue = Mi;
+                break;
+            case "Fa":
+                noteValue = Fa;
+                break;
+            case "Sol":
+                noteValue = Sol;
+                break;
+            case "La":
+                noteValue = La;
+                break;
+            case "Si":
+                noteValue = Si;
+                break;
+            default:
+                throw new Error("This should never happen, found invalid note token: " + note);
+        }
+    }
+
+    public void setFigureValue(String figure) {
+        switch (figure) {
+            case "r":
+                figureValue = Redonda;
+                break;
+            case "b":
+                figureValue = Blanca;
+                break;
+            case "n":
+                figureValue = Negra;
+                break;
+            case "c":
+                figureValue = Corchera;
+                break;
+            case "sc":
+                figureValue = Semicorchera;
+                break;
+            case "f":
+                figureValue = Fusa;
+                break;
+            case "sf":
+                figureValue = SemiFusa;
+                break;
+            default:
+                throw new Error("This should never happen, found invalid figure token: " + figure);
+        }
+    }
 
     /** Define the integer value of the node. */
     public void setIntValue() { intValue = Integer.parseInt(getText()); }
@@ -73,6 +136,13 @@ public class AmlTree extends CommonTree {
     /** Get the string value of the node. */
     public String getStringValue() { return strValue; }
 
+    public AmlNote.Note getNoteValude() {
+        return noteValue;
+    }
+
+    public AmlNote.Figure getFigureValue() {
+        return figureValue;
+    }
     /**
      * Define the string value of the node. It removes the
      * enclosing quotes. In this way, it can be printed as it is.

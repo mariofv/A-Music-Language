@@ -4,10 +4,25 @@ import javax.sound.midi.ShortMessage;
 
 public class AmlNote {
 
+    public enum Note {
+        Do,Re,Mi,Fa,Sol,La,Si
+    }
+
+    public enum Figure {
+        Redonda,
+        Blanca,
+        Negra,
+        Corchera,
+        Semicorchera,
+        Fusa,
+        SemiFusa
+    }
+
     final static  int PPQ = 16;
 
     private ShortMessage onMessage, offMessage;
-    private String noteName, figureName;
+    private Note note;
+    private Figure figure;
     private int pitch;
 
     public ShortMessage getOffMessage() {
@@ -25,9 +40,9 @@ public class AmlNote {
     private int duration;
 
 
-    public AmlNote(String noteName, String figureName) throws Exception {
-        this.noteName = noteName;
-        this.figureName = figureName;
+    public AmlNote(Note note, Figure figure) throws Exception {
+        this.note = note;
+        this.figure = figure;
         duration = mapDuration();
         pitch = mapNote();
 
@@ -37,71 +52,60 @@ public class AmlNote {
         offMessage.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
     }
 
-    private int mapDuration() throws Exception {
-        switch (figureName) {
-            case "r":
-                figureName = "Redonda";
+    private int mapDuration() {
+        switch (figure) {
+            case Redonda:
                 return  PPQ*4;
-            case "b" :
-                figureName = "Blanca";
+            case Blanca :
                 return  PPQ*2;
-            case "n" :
-                figureName = "Negra";
+            case Negra :
                 return  PPQ;
-            case "c" :
-                figureName = "Corchera";
+            case Corchera :
                 return  PPQ/2;
-            case "sc" :
-                figureName = "Semi-corchera";
+            case Semicorchera:
                 return  PPQ/4;
-            case "f" :
-                figureName = "Fusa";
+            case Fusa:
                 return  PPQ/8;
-            case "sf" :
-                figureName = "Semi-fusa";
+            case SemiFusa:
                 return  PPQ/16;
             default:
-                figureName = "Error";
-                throw new Exception("This shouldn't happen D: the figure is " + figureName);
+                return PPQ;
         }
     }
 
-    private int mapNote() throws Exception {
+    private int mapNote() {
         int pitch;
-        switch(noteName) {
-            case "Do":
+        switch(note) {
+            case Do:
                 pitch = 60;
                 break;
-            case "Re":
+            case Re:
                 pitch = 62;
                 break;
-            case "Mi":
+            case Mi:
                 pitch = 64;
                 break;
-            case "Fa":
+            case Fa:
                 pitch = 65;
                 break;
-            case "Sol":
+            case Sol:
                 pitch = 67;
                 break;
-            case "La":
+            case La:
                 pitch = 69;
                 break;
-            case "Si":
+            case Si:
                 pitch = 71;
                 break;
             default:
-                throw new Exception("This shouldn't happen D: the note is " + noteName);
+                 pitch = -1;
         }
-
         return pitch;
     }
 
-
-
     @Override
     public String toString() {
-        return "Note " + noteName + " with figure " + figureName;
+        return "Note " + note + " with figure " + figure;
     }
 
 }

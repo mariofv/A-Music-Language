@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.sound.midi.*;
 
-import aml.Aml;
 import music.AmlCompas;
 import music.AmlNote;
 import music.AmlSequence;
@@ -13,6 +12,16 @@ import music.AmlTrack;
 import parser.MusicLexer;
 
 public class Interpreter {
+
+    public void preprocessAst(AmlTree tree) {
+        if (tree.getType() == MusicLexer.FIGURE) tree.setFigureValue(tree.getText());
+        else if (tree.getType() == MusicLexer.NOTE) tree.setNoteValue(tree.getText());
+
+        if (tree.getChildren() == null) return;
+        for (AmlTree child : (List<AmlTree>)tree.getChildren()) {
+            preprocessAst(child);
+        }
+    }
 
     public void executeListInstruction(AmlTree tree) throws Exception {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
@@ -70,9 +79,9 @@ public class Interpreter {
     }
 
     public AmlNote createNote(AmlTree tree) throws Exception {
-        String noteName = tree.getText();
-        String figureName = tree.getChild(0).getText();
-        return new AmlNote(noteName, figureName);
+        AmlNote.Note note = tree.getNoteValude();
+        AmlNote.Figure figure = tree.getChild(0).getFigureValue();
+        return new AmlNote(note, figure);
     }
 
 

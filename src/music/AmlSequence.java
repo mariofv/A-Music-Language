@@ -10,7 +10,7 @@ public class AmlSequence {
     private int[] metric;
     private int tone;
 
-    public static byte[] intToByteArray(int number) throws Exception {
+    public static byte[] intToByteArray(int number) {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
     }
 

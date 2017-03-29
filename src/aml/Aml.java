@@ -118,10 +118,8 @@ public class Aml {
 
         if (execute) {
             Interpreter interpreter = new Interpreter();
-
+            interpreter.preprocessAst(t);
             interpreter.executeListInstruction(t.getChild(0));
-
-
         }
 
     }
