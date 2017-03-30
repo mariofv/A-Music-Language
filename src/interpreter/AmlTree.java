@@ -66,8 +66,8 @@ public class AmlTree extends CommonTree {
     /** Get the integer value of the node. */
     public int getIntValue() { return intValue;}
 
-    public void setNoteValue(String note) {
-        switch (note) {
+    public void setNoteValue() {
+        switch (getText()) {
             case "Do":
                 noteValue = Do;
                 break;
@@ -90,12 +90,12 @@ public class AmlTree extends CommonTree {
                 noteValue = Si;
                 break;
             default:
-                throw new Error("This should never happen, found invalid note token: " + note);
+                throw new Error("This should never happen, found invalid note token: " + getText());
         }
     }
 
-    public void setFigureValue(String figure) {
-        switch (figure) {
+    public void setFigureValue() {
+        switch (getText()) {
             case "r":
                 figureValue = Redonda;
                 break;
@@ -118,7 +118,7 @@ public class AmlTree extends CommonTree {
                 figureValue = SemiFusa;
                 break;
             default:
-                throw new Error("This should never happen, found invalid figure token: " + figure);
+                throw new Error("This should never happen, found invalid figure token: " + getText());
         }
     }
 
