@@ -191,7 +191,6 @@ public class AmlInstrument {
     }
 
     public ShortMessage getMessage(int channel) throws InvalidMidiDataException {
-        System.out.println("Im creating the message of Instrument "+ name + " with channel "+ channel);
         return new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, program, 0);
     }
 
