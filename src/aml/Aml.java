@@ -31,6 +31,7 @@ package aml;
 import interpreter.AmlTree;
 import interpreter.AmlTreeAdaptor;
 import interpreter.Interpreter;
+import music.AmlInstrument;
 import music.AmlSequence;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
@@ -66,7 +67,6 @@ public class Aml {
     /** Main program that invokes the parser and the interpreter. */
     
     public static void main(String[] args) throws Exception {
-
         // Parser for command line options
         if (!readOptions (args)) System.exit(1);
 
