@@ -89,6 +89,9 @@ public class AmlTree extends CommonTree {
             case "Si":
                 noteValue = Si;
                 break;
+            case "Silence":
+                noteValue = Silence;
+                break;
             default:
                 throw new Error("This should never happen, found invalid note token: " + getText());
         }
@@ -136,7 +139,7 @@ public class AmlTree extends CommonTree {
     /** Get the string value of the node. */
     public String getStringValue() { return strValue; }
 
-    public AmlNote.Note getNoteValude() {
+    public AmlNote.Note getNoteValue() {
         return noteValue;
     }
 

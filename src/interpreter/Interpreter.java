@@ -85,9 +85,20 @@ public class Interpreter {
     }
 
     public AmlNote createNote(AmlTree tree) throws Exception {
-        AmlNote.Note note = tree.getNoteValude();
-        AmlNote.Figure figure = tree.getChild(0).getFigureValue();
-        return new AmlNote(note, figure);
+        AmlNote.Note note = tree.getNoteValue();
+        AmlNote.Figure figure = null;
+        int octave = 5;
+        for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
+            switch (child.getType()) {
+                case MusicLexer.FIGURE:
+                    figure = child.getFigureValue();
+                    break;
+                case MusicLexer.NUM:
+                    octave = child.getIntValue();
+                    break;
+            }
+        }
+        return new AmlNote(note, figure, octave);
     }
 
 

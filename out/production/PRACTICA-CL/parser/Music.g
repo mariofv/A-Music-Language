@@ -79,7 +79,7 @@ compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST co
 compas      :   (note)+    -> ^(NOTE_LIST note+)
             ;
 
-note        :   (BEMOL | SUSTAIN)? NOTE^ ('.'! FIGURE)? DOT? TIE?
+note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)? ('.'! FIGURE)? DOT? TIE?
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -113,7 +113,7 @@ DOUBLE_BAR           : '||';
 START_REPETITION    : '||:';
 END_REPETITION      : ':||';
 BEMOL               : '&';
-NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si');
+NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 SUSTAIN             : '#';
 FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
 DOT                 : '*';

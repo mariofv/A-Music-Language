@@ -1,15 +1,16 @@
 package music;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
 public class AmlNote {
 
     public enum Note {
-        Do,Re,Mi,Fa,Sol,La,Si
+        Do,Re,Mi,Fa,Sol,La,Si,Silence
     }
 
     public enum Figure {
-        Redonda,
+        Redonda ,
         Blanca,
         Negra,
         Corchera,
@@ -18,19 +19,23 @@ public class AmlNote {
         SemiFusa
     }
 
+
+
+
     final static  int PPQ = 16;
 
     private ShortMessage onMessage, offMessage;
     private Note note;
     private Figure figure;
-    private int pitch;
+    private int pitch, octave;
 
-    public ShortMessage getOffMessage() {
-        return offMessage;
+    public ShortMessage getOffMessage() throws InvalidMidiDataException {
+        return new ShortMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+
     }
 
-    public ShortMessage getOnMessage() {
-        return onMessage;
+    public ShortMessage getOnMessage() throws InvalidMidiDataException {
+        return new ShortMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
     }
 
     public int getDuration() {
@@ -40,16 +45,14 @@ public class AmlNote {
     private int duration;
 
 
-    public AmlNote(Note note, Figure figure) throws Exception {
+    public AmlNote(Note note, Figure figure, int octave) {
         this.note = note;
         this.figure = figure;
+        this.octave = octave;
         duration = mapDuration();
         pitch = mapNote();
 
-        onMessage = new ShortMessage();
-        onMessage.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
-        offMessage = new ShortMessage();
-        offMessage.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+
     }
 
     private int mapDuration() {
@@ -97,10 +100,15 @@ public class AmlNote {
             case Si:
                 pitch = 71;
                 break;
+            case Silence:
             default:
-                 pitch = -1;
+                 return -1;
         }
-        return pitch;
+        return pitch + (octave-5)*12;
+    }
+
+    public boolean isSilence() {
+        return note == Note.Silence;
     }
 
     @Override

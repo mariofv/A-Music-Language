@@ -1,5 +1,6 @@
 package music;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.Track;
 
@@ -20,9 +21,20 @@ public class AmlTrack {
 
     public void addCompas(AmlCompas compas) {
         for(AmlNote note : compas.getNotes()){
-            track.add(new MidiEvent(note.getOnMessage(), currentTick));
-            currentTick += note.getDuration();
-            track.add(new MidiEvent(note.getOffMessage(), currentTick));
+            if (note.isSilence()) {
+                currentTick += note.getDuration();
+            }
+            else {
+                try {
+                    track.add(new MidiEvent(note.getOnMessage(), currentTick));
+                    currentTick += note.getDuration();
+                    track.add(new MidiEvent(note.getOffMessage(), currentTick));
+                } catch (InvalidMidiDataException e) {
+                    e.printStackTrace();
+                    throw new Error();
+                }
+
+            }
         }
     }
 
