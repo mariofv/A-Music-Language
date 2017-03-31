@@ -9,6 +9,7 @@ public class AmlSequence {
     private int bpm;
     private int[] metric;
     private int tone;
+    private int actualChannel;
 
     public static byte[] intToByteArray(int number) {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
@@ -19,6 +20,7 @@ public class AmlSequence {
         this.metric = metric;
         this.tone = tone;
         first = true;
+        actualChannel = -1;
         try {
             sequence = new Sequence(Sequence.PPQ, AmlNote.PPQ);
         } catch (InvalidMidiDataException e) {
@@ -39,9 +41,11 @@ public class AmlSequence {
                 throw new Error();
             }
             track.add(new MidiEvent(tempo, 0));
-            first = false;
+        first = false;
         }
-        return new AmlTrack(track, metric[0]*AmlNote.PPQ*4/metric[1], tone);
+        ++actualChannel;
+
+        return new AmlTrack(track, actualChannel, metric[0]*AmlNote.PPQ*4/metric[1], tone);
     }
 
     public Sequence getSequence() {

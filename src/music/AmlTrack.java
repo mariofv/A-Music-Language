@@ -10,12 +10,14 @@ public class AmlTrack {
 
     private int metric;
     private int tone;
+    private int channel;
     private Track track;
 
-    public AmlTrack(Track track, int metric, int tone) {
+    public AmlTrack(Track track, int channel, int metric, int tone) {
         this.track = track;
         this.metric = metric;
         this.tone = tone;
+        this.channel = channel;
         currentTick = 0;
     }
 
@@ -26,9 +28,9 @@ public class AmlTrack {
             }
             else {
                 try {
-                    track.add(new MidiEvent(note.getOnMessage(), currentTick));
+                    track.add(new MidiEvent(note.getOnMessage(channel), currentTick));
                     currentTick += note.getDuration();
-                    track.add(new MidiEvent(note.getOffMessage(), currentTick));
+                    track.add(new MidiEvent(note.getOffMessage(channel), currentTick));
                 } catch (InvalidMidiDataException e) {
                     e.printStackTrace();
                     throw new Error();
@@ -36,6 +38,15 @@ public class AmlTrack {
 
             }
         }
+    }
+
+    public void addInstrument(AmlInstrument instrument) {
+        try {
+            track.add(new MidiEvent(instrument.getMessage(channel),0));
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        }
+        return;
     }
 
     public Track getTrack() {

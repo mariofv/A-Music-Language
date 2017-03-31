@@ -44,7 +44,7 @@ public class Interpreter {
                 AmlSequence sequence = new AmlSequence(bpm, metric, 0);
                 for(int i =  2; i < tree.getChildCount(); ++i) {
                     AmlTree child  = tree.getChild(i);
-                    createTrack(child.getChild(1),sequence);
+                    createTrack(child.getChild(1), child.getChild(0).getText(), sequence);
                 }
                 File f = new File("midifile.mid");
                 MidiSystem.write(sequence.getSequence(),1,f);
@@ -65,8 +65,10 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createTrack(AmlTree tree, AmlSequence sequence) throws Exception {
+    public void createTrack(AmlTree tree, String instrumentName, AmlSequence sequence) throws Exception {
         AmlTrack track = sequence.addTrack();
+        AmlInstrument instrument = new AmlInstrument(instrumentName);
+        track.addInstrument(instrument);
 
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             track.addCompas(createCompas(child, track.getMetric()));
@@ -88,6 +90,8 @@ public class Interpreter {
         AmlNote.Note note = tree.getNoteValue();
         AmlNote.Figure figure = null;
         int octave = 5;
+        int semiToneModifier = 0;
+        int figureModifier = 0;
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             switch (child.getType()) {
                 case MusicLexer.FIGURE:
@@ -96,9 +100,18 @@ public class Interpreter {
                 case MusicLexer.NUM:
                     octave = child.getIntValue();
                     break;
+                case MusicLexer.BEMOL:
+                    semiToneModifier = -1;
+                    break;
+                case MusicLexer.SUSTAIN:
+                    semiToneModifier = 1;
+                    break;
+                case MusicLexer.DOT:
+                    figureModifier = 1;
+                    break;
             }
         }
-        return new AmlNote(note, figure, octave);
+        return new AmlNote(note, figure, octave, semiToneModifier, figureModifier);
     }
 
 

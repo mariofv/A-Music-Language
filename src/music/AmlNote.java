@@ -27,15 +27,15 @@ public class AmlNote {
     private ShortMessage onMessage, offMessage;
     private Note note;
     private Figure figure;
-    private int pitch, octave;
+    private int pitch, octave, semiToneModifier, figureModifier;
 
-    public ShortMessage getOffMessage() throws InvalidMidiDataException {
-        return new ShortMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+    public ShortMessage getOffMessage(int channel) throws InvalidMidiDataException {
+        return new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
 
     }
 
-    public ShortMessage getOnMessage() throws InvalidMidiDataException {
-        return new ShortMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
+    public ShortMessage getOnMessage(int channel) throws InvalidMidiDataException {
+        return new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
     }
 
     public int getDuration() {
@@ -45,10 +45,12 @@ public class AmlNote {
     private int duration;
 
 
-    public AmlNote(Note note, Figure figure, int octave) {
+    public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier) {
         this.note = note;
         this.figure = figure;
         this.octave = octave;
+        this.semiToneModifier = semiToneModifier;
+        this.figureModifier = figureModifier;
         duration = mapDuration();
         pitch = mapNote();
 
@@ -56,24 +58,34 @@ public class AmlNote {
     }
 
     private int mapDuration() {
+        int value;
         switch (figure) {
             case Redonda:
-                return  PPQ*4;
+                value = PPQ*4;
+                break;
             case Blanca :
-                return  PPQ*2;
+                value =   PPQ*2;
+                break;
             case Negra :
-                return  PPQ;
+                value =   PPQ;
+                break;
             case Corchera :
-                return  PPQ/2;
+                value =   PPQ/2;
+                break;
             case Semicorchera:
-                return  PPQ/4;
+                value =   PPQ/4;
+                break;
             case Fusa:
-                return  PPQ/8;
+                value =   PPQ/8;
+                break;
             case SemiFusa:
-                return  PPQ/16;
+                value =   PPQ/16;
+                break;
             default:
-                return PPQ;
+                value =  PPQ;
         }
+        return value + value*figureModifier/2;
+
     }
 
     private int mapNote() {
@@ -104,7 +116,7 @@ public class AmlNote {
             default:
                  return -1;
         }
-        return pitch + (octave-5)*12;
+        return pitch + (octave-5)*12 + semiToneModifier;
     }
 
     public boolean isSilence() {

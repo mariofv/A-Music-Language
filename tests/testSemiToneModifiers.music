@@ -1,0 +1,7 @@
+main() {
+     Song {
+         Beat 4:8
+         Speed 60
+         Track Trumpet   || &Do.c Do.c #Do.c Re.c ||
+     }
+ }

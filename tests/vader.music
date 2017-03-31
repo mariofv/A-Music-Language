@@ -1,0 +1,8 @@
+main() {
+    Song {
+        Beat 4:4
+        Speed 120
+        Track Trumpet || La.n La.n La.n Fa.c* Do-6.sc | La.n Fa.c* Do-6.sc La.b | Mi-6.n Mi-6.n Mi-6.n Fa-6.c* Do-6.sc | &La.n Fa.c* Do-6.sc La.b ||
+        Track Oboe    || Mi.n Mi.n Mi.n Silence.n    | Mi.n Silence.n     Mi.b  | La.n La.n La.n Silence.n          | Silence.b           Mi.b ||
+    }
+}
