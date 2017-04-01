@@ -16,7 +16,7 @@ public class AmlCompas {
     public boolean addNote(AmlNote note) throws Exception {
         actualTicks += note.getDuration();
         if (actualTicks > ticksPerCompas) {
-            throw new Exception("The compass is incorrect because you are overflowing the metric.");
+            throw new Exception("The compass is incorrect because you are overflowing the metric.\n" + toString());
         }
         return notes.add(note);
     }

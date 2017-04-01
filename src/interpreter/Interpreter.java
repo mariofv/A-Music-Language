@@ -82,7 +82,7 @@ public class Interpreter {
             compas.addNote(createNote(child));
         }
         if (!compas.check()) {
-            throw new Exception("The duration of the compas is incorrect!");
+            throw new Exception("The duration of the compas is incorrect!\n" + compas);
         }
         return compas;
     }
