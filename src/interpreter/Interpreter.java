@@ -44,7 +44,8 @@ public class Interpreter {
                 AmlSequence sequence = new AmlSequence(bpm, metric, 0);
                 for(int i =  2; i < tree.getChildCount(); ++i) {
                     AmlTree child  = tree.getChild(i);
-                    createTrack(child.getChild(1), child.getChild(0).getText(), sequence);
+                    child.getChild(0).setInstrumentValue();
+                    createTrack(child.getChild(1), child.getChild(0).getInstrumentValue(), sequence);
                 }
                 File f = new File("midifile.mid");
                 MidiSystem.write(sequence.getSequence(),1,f);
@@ -65,10 +66,10 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createTrack(AmlTree tree, String instrumentName, AmlSequence sequence) throws Exception {
+    public void createTrack(AmlTree tree, AmlInstrument.Instruments instrumentEnum, AmlSequence sequence) throws Exception {
         AmlTrack track = sequence.addTrack();
-        AmlInstrument instrument = new AmlInstrument(instrumentName);
-        track.addInstrument(instrument);
+        AmlInstrument instrument = new AmlInstrument(instrumentEnum);
+        track.setInstrument(instrument);
 
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             track.addCompas(createCompas(child, track.getMetric()));

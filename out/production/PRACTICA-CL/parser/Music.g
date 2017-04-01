@@ -69,8 +69,7 @@ if_stmt          :   IF^
 song        :   SONG^ '{'! beat speed (track)+ '}'!
             ;
 
-
-track       :   TRACK^ ID compas_list
+track       :   TRACK^ STRING compas_list
             ;
 
 compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST compas+)

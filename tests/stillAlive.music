@@ -3,14 +3,13 @@ main() {
         Beat 4:4
         Speed 110
 
-        Track Ocarina || Silence.b Sol-6.c #Fa-6.c Mi-6.c Mi-6.c | #Fa-6.b Silence.b | Silence.n* La.c Sol-6.c #Fa-6.c Mi-6.c Mi-6.c |
+        Track "Ocarina" || Silence.b Sol-6.c #Fa-6.c Mi-6.c Mi-6.c | #Fa-6.b Silence.b | Silence.n* La.c Sol-6.c #Fa-6.c Mi-6.c Mi-6.c |
                          Silence.c #Fa-6.n* Re-6.n Mi-6.c La.c | Silence.b* Silence.c La.c | Mi-6.n #Fa-6.c Sol-6.n* Mi-6.c #Do-6.c |
                          #Do-6.c Re-6.n* Mi-6.n La.c La.c | La.c #Fa-6.n* #Fa-6.b ||
 
-        Track Celesta || Silence.r | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |  La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
+        Track "Celesta" || Silence.r | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |  La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         Si.c Mi-6.c Sol-6.c Mi-6.c Si.c Mi-6.c Sol-6.c Mi-6.c | La.c #Do-6.c Mi-6.c #Do-6.c La.c #Do-6.c Mi-6.c #Do-6.c ||
 
     }
-
 }

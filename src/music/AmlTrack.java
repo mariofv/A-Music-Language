@@ -40,7 +40,7 @@ public class AmlTrack {
         }
     }
 
-    public void addInstrument(AmlInstrument instrument) {
+    public void setInstrument(AmlInstrument instrument) {
         try {
             track.add(new MidiEvent(instrument.getMessage(channel),0));
         } catch (InvalidMidiDataException e) {
