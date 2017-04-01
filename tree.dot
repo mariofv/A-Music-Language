@@ -17,7 +17,7 @@ digraph {
   n5 [label="4"];
   n6 [label="Speed"];
   n6 [label="Speed"];
-  n7 [label="110"];
+  n7 [label="120"];
   n8 [label="Track"];
   n8 [label="Track"];
   n9 [label="\"Ocarina\""];
@@ -183,8 +183,8 @@ digraph {
   n125 [label="Silence"];
   n125 [label="Silence"];
   n126 [label="b"];
-  n127 [label="Mi"];
-  n127 [label="Mi"];
+  n127 [label="Sol"];
+  n127 [label="Sol"];
   n128 [label="6"];
   n129 [label="c"];
   n130 [label="Fa"];
@@ -946,8 +946,8 @@ digraph {
   n680 [label="Re"];
   n681 [label="6"];
   n682 [label="c"];
-  n683 [label="La"];
-  n683 [label="La"];
+  n683 [label="Si"];
+  n683 [label="Si"];
   n684 [label="c"];
   n685 [label="Re"];
   n685 [label="Re"];
@@ -962,6 +962,91 @@ digraph {
   n692 [label="Re"];
   n693 [label="6"];
   n694 [label="c"];
+  n695 [label="NOTE_LIST"];
+  n695 [label="NOTE_LIST"];
+  n696 [label="Si"];
+  n696 [label="Si"];
+  n697 [label="c"];
+  n698 [label="Mi"];
+  n698 [label="Mi"];
+  n699 [label="6"];
+  n700 [label="c"];
+  n701 [label="Sol"];
+  n701 [label="Sol"];
+  n702 [label="6"];
+  n703 [label="c"];
+  n704 [label="Mi"];
+  n704 [label="Mi"];
+  n705 [label="6"];
+  n706 [label="c"];
+  n707 [label="Si"];
+  n707 [label="Si"];
+  n708 [label="c"];
+  n709 [label="Mi"];
+  n709 [label="Mi"];
+  n710 [label="6"];
+  n711 [label="c"];
+  n712 [label="Sol"];
+  n712 [label="Sol"];
+  n713 [label="6"];
+  n714 [label="c"];
+  n715 [label="Mi"];
+  n715 [label="Mi"];
+  n716 [label="6"];
+  n717 [label="c"];
+  n718 [label="NOTE_LIST"];
+  n718 [label="NOTE_LIST"];
+  n719 [label="La"];
+  n719 [label="La"];
+  n720 [label="c"];
+  n721 [label="Mi"];
+  n721 [label="Mi"];
+  n722 [label="6"];
+  n723 [label="c"];
+  n724 [label="Sol"];
+  n724 [label="Sol"];
+  n725 [label="6"];
+  n726 [label="c"];
+  n727 [label="Mi"];
+  n727 [label="Mi"];
+  n728 [label="6"];
+  n729 [label="c"];
+  n730 [label="La"];
+  n730 [label="La"];
+  n731 [label="c"];
+  n732 [label="Mi"];
+  n732 [label="Mi"];
+  n733 [label="6"];
+  n734 [label="c"];
+  n735 [label="Sol"];
+  n735 [label="Sol"];
+  n736 [label="6"];
+  n737 [label="c"];
+  n738 [label="Mi"];
+  n738 [label="Mi"];
+  n739 [label="6"];
+  n740 [label="c"];
+  n741 [label="NOTE_LIST"];
+  n741 [label="NOTE_LIST"];
+  n742 [label="Si"];
+  n742 [label="Si"];
+  n743 [label="&"];
+  n744 [label="c"];
+  n745 [label="Re"];
+  n745 [label="Re"];
+  n746 [label="6"];
+  n747 [label="c"];
+  n748 [label="Fa"];
+  n748 [label="Fa"];
+  n749 [label="6"];
+  n750 [label="c"];
+  n751 [label="La"];
+  n751 [label="La"];
+  n752 [label="6"];
+  n753 [label="c"];
+  n754 [label="Silence"];
+  n754 [label="Silence"];
+  n755 [label="b"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "Song"
@@ -969,7 +1054,7 @@ digraph {
   n3 -> n4 // "Beat" -> "4"
   n3 -> n5 // "Beat" -> "4"
   n2 -> n6 // "Song" -> "Speed"
-  n6 -> n7 // "Speed" -> "110"
+  n6 -> n7 // "Speed" -> "120"
   n2 -> n8 // "Song" -> "Track"
   n8 -> n9 // "Track" -> "\"Ocarina\""
   n8 -> n10 // "Track" -> "COMPAS_LIST"
@@ -1089,9 +1174,9 @@ digraph {
   n10 -> n124 // "COMPAS_LIST" -> "NOTE_LIST"
   n124 -> n125 // "NOTE_LIST" -> "Silence"
   n125 -> n126 // "Silence" -> "b"
-  n124 -> n127 // "NOTE_LIST" -> "Mi"
-  n127 -> n128 // "Mi" -> "6"
-  n127 -> n129 // "Mi" -> "c"
+  n124 -> n127 // "NOTE_LIST" -> "Sol"
+  n127 -> n128 // "Sol" -> "6"
+  n127 -> n129 // "Sol" -> "c"
   n124 -> n130 // "NOTE_LIST" -> "Fa"
   n130 -> n131 // "Fa" -> "#"
   n130 -> n132 // "Fa" -> "6"
@@ -1645,8 +1730,8 @@ digraph {
   n670 -> n680 // "NOTE_LIST" -> "Re"
   n680 -> n681 // "Re" -> "6"
   n680 -> n682 // "Re" -> "c"
-  n670 -> n683 // "NOTE_LIST" -> "La"
-  n683 -> n684 // "La" -> "c"
+  n670 -> n683 // "NOTE_LIST" -> "Si"
+  n683 -> n684 // "Si" -> "c"
   n670 -> n685 // "NOTE_LIST" -> "Re"
   n685 -> n686 // "Re" -> "6"
   n685 -> n687 // "Re" -> "c"
@@ -1657,5 +1742,66 @@ digraph {
   n670 -> n692 // "NOTE_LIST" -> "Re"
   n692 -> n693 // "Re" -> "6"
   n692 -> n694 // "Re" -> "c"
+  n391 -> n695 // "COMPAS_LIST" -> "NOTE_LIST"
+  n695 -> n696 // "NOTE_LIST" -> "Si"
+  n696 -> n697 // "Si" -> "c"
+  n695 -> n698 // "NOTE_LIST" -> "Mi"
+  n698 -> n699 // "Mi" -> "6"
+  n698 -> n700 // "Mi" -> "c"
+  n695 -> n701 // "NOTE_LIST" -> "Sol"
+  n701 -> n702 // "Sol" -> "6"
+  n701 -> n703 // "Sol" -> "c"
+  n695 -> n704 // "NOTE_LIST" -> "Mi"
+  n704 -> n705 // "Mi" -> "6"
+  n704 -> n706 // "Mi" -> "c"
+  n695 -> n707 // "NOTE_LIST" -> "Si"
+  n707 -> n708 // "Si" -> "c"
+  n695 -> n709 // "NOTE_LIST" -> "Mi"
+  n709 -> n710 // "Mi" -> "6"
+  n709 -> n711 // "Mi" -> "c"
+  n695 -> n712 // "NOTE_LIST" -> "Sol"
+  n712 -> n713 // "Sol" -> "6"
+  n712 -> n714 // "Sol" -> "c"
+  n695 -> n715 // "NOTE_LIST" -> "Mi"
+  n715 -> n716 // "Mi" -> "6"
+  n715 -> n717 // "Mi" -> "c"
+  n391 -> n718 // "COMPAS_LIST" -> "NOTE_LIST"
+  n718 -> n719 // "NOTE_LIST" -> "La"
+  n719 -> n720 // "La" -> "c"
+  n718 -> n721 // "NOTE_LIST" -> "Mi"
+  n721 -> n722 // "Mi" -> "6"
+  n721 -> n723 // "Mi" -> "c"
+  n718 -> n724 // "NOTE_LIST" -> "Sol"
+  n724 -> n725 // "Sol" -> "6"
+  n724 -> n726 // "Sol" -> "c"
+  n718 -> n727 // "NOTE_LIST" -> "Mi"
+  n727 -> n728 // "Mi" -> "6"
+  n727 -> n729 // "Mi" -> "c"
+  n718 -> n730 // "NOTE_LIST" -> "La"
+  n730 -> n731 // "La" -> "c"
+  n718 -> n732 // "NOTE_LIST" -> "Mi"
+  n732 -> n733 // "Mi" -> "6"
+  n732 -> n734 // "Mi" -> "c"
+  n718 -> n735 // "NOTE_LIST" -> "Sol"
+  n735 -> n736 // "Sol" -> "6"
+  n735 -> n737 // "Sol" -> "c"
+  n718 -> n738 // "NOTE_LIST" -> "Mi"
+  n738 -> n739 // "Mi" -> "6"
+  n738 -> n740 // "Mi" -> "c"
+  n391 -> n741 // "COMPAS_LIST" -> "NOTE_LIST"
+  n741 -> n742 // "NOTE_LIST" -> "Si"
+  n742 -> n743 // "Si" -> "&"
+  n742 -> n744 // "Si" -> "c"
+  n741 -> n745 // "NOTE_LIST" -> "Re"
+  n745 -> n746 // "Re" -> "6"
+  n745 -> n747 // "Re" -> "c"
+  n741 -> n748 // "NOTE_LIST" -> "Fa"
+  n748 -> n749 // "Fa" -> "6"
+  n748 -> n750 // "Fa" -> "c"
+  n741 -> n751 // "NOTE_LIST" -> "La"
+  n751 -> n752 // "La" -> "6"
+  n751 -> n753 // "La" -> "c"
+  n741 -> n754 // "NOTE_LIST" -> "Silence"
+  n754 -> n755 // "Silence" -> "b"
 
 }
