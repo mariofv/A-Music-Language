@@ -79,7 +79,8 @@ public class Interpreter {
     public AmlCompas createCompas(AmlTree tree, int metric) throws Exception {
         AmlCompas compas = new AmlCompas(metric);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            compas.addNote(createNote(child));
+            AmlNote note = createNote(child);
+            compas.addNote(note);
         }
         if (!compas.check()) {
             throw new Exception("The duration of the compas is incorrect!\n" + compas);
@@ -89,7 +90,7 @@ public class Interpreter {
 
     public AmlNote createNote(AmlTree tree) throws Exception {
         AmlNote.Note note = tree.getNoteValue();
-        AmlNote.Figure figure = null;
+        AmlNote.Figure figure = AmlNote.Figure.NoFigure;
         int octave = 5;
         int semiToneModifier = 0;
         int figureModifier = 0;
@@ -114,6 +115,4 @@ public class Interpreter {
         }
         return new AmlNote(note, figure, octave, semiToneModifier, figureModifier);
     }
-
-
 }

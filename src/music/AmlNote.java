@@ -16,13 +16,11 @@ public class AmlNote {
         Corchera,
         Semicorchera,
         Fusa,
-        SemiFusa
+        SemiFusa,
+        NoFigure
     }
 
-
-
-
-    final static  int PPQ = 16;
+    public final static  int PPQ = 16;
 
     private ShortMessage onMessage, offMessage;
     private Note note;
@@ -31,7 +29,6 @@ public class AmlNote {
 
     public ShortMessage getOffMessage(int channel) throws InvalidMidiDataException {
         return new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
-
     }
 
     public ShortMessage getOnMessage(int channel) throws InvalidMidiDataException {
@@ -44,7 +41,6 @@ public class AmlNote {
 
     private int duration;
 
-
     public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier) {
         this.note = note;
         this.figure = figure;
@@ -53,11 +49,10 @@ public class AmlNote {
         this.figureModifier = figureModifier;
         duration = mapDuration();
         pitch = mapNote();
-
-
     }
 
     private int mapDuration() {
+        if (figure == null) return 0;
         int value;
         switch (figure) {
             case Redonda:
@@ -81,11 +76,11 @@ public class AmlNote {
             case SemiFusa:
                 value =   PPQ/16;
                 break;
+            case NoFigure:
             default:
-                value =  PPQ;
+                return -1;
         }
         return value + value*figureModifier/2;
-
     }
 
     private int mapNote() {
@@ -122,6 +117,7 @@ public class AmlNote {
     public boolean isSilence() {
         return note == Note.Silence;
     }
+    public boolean hasFigure() { return figure != Figure.NoFigure; }
 
     @Override
     public String toString() {

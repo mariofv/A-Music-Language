@@ -11,6 +11,7 @@ public class AmlTrack {
     private int metric;
     private int tone;
     private int channel;
+    private int lastNoteDuration;
     private Track track;
 
     public AmlTrack(Track track, int channel, int metric, int tone) {
@@ -19,10 +20,11 @@ public class AmlTrack {
         this.tone = tone;
         this.channel = channel;
         currentTick = 0;
+        lastNoteDuration = AmlNote.PPQ;
     }
 
     public void addCompas(AmlCompas compas) {
-        for(AmlNote note : compas.getNotes()){
+        for(AmlNote note : compas.getNotes()) {
             if (note.isSilence()) {
                 currentTick += note.getDuration();
             }
@@ -35,9 +37,9 @@ public class AmlTrack {
                     e.printStackTrace();
                     throw new Error();
                 }
-
             }
         }
+        lastNoteDuration = compas.getLastNote().getDuration();
     }
 
     public void setInstrument(AmlInstrument instrument) {
@@ -65,7 +67,4 @@ public class AmlTrack {
                 "Metric = " + metric + "\n" +
                 "Tone = " + tone + "\n";
     }
-
-
-
 }

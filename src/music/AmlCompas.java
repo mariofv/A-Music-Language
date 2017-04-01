@@ -37,13 +37,13 @@ public class AmlCompas {
 
     @Override
     public String toString() {
-        String message ="Compas notes: \n";
+        StringBuilder message = new StringBuilder("Compas notes: \n");
 
         for (AmlNote note : notes) {
-            message += note.toString() + "\n";
+            message.append(note.toString()).append("\n");
         }
 
-        return  message;
+        return message.toString();
     }
 
 }
