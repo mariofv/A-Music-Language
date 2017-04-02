@@ -26,6 +26,7 @@ public class AmlNote {
     private Note note;
     private Figure figure;
     private int pitch, octave, semiToneModifier, figureModifier;
+    private int duration;
 
     public ShortMessage getOffMessage(int channel) throws InvalidMidiDataException {
         return new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
@@ -39,7 +40,9 @@ public class AmlNote {
         return duration;
     }
 
-    private int duration;
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier) {
         this.note = note;

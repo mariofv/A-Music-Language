@@ -72,12 +72,12 @@ public class Interpreter {
         track.setInstrument(instrument);
 
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            track.addCompas(createCompas(child, track.getMetric()));
+            track.addCompas(createCompas(child, track.getMetric(), track.getLastNoteDuration()));
         }
     }
 
-    public AmlCompas createCompas(AmlTree tree, int metric) throws Exception {
-        AmlCompas compas = new AmlCompas(metric);
+    public AmlCompas createCompas(AmlTree tree, int metric, int lastNoteDuration) throws Exception {
+        AmlCompas compas = new AmlCompas(metric, lastNoteDuration);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             AmlNote note = createNote(child);
             compas.addNote(note);
@@ -94,23 +94,25 @@ public class Interpreter {
         int octave = 5;
         int semiToneModifier = 0;
         int figureModifier = 0;
-        for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            switch (child.getType()) {
-                case MusicLexer.FIGURE:
-                    figure = child.getFigureValue();
-                    break;
-                case MusicLexer.NUM:
-                    octave = child.getIntValue();
-                    break;
-                case MusicLexer.BEMOL:
-                    semiToneModifier = -1;
-                    break;
-                case MusicLexer.SUSTAIN:
-                    semiToneModifier = 1;
-                    break;
-                case MusicLexer.DOT:
-                    figureModifier = 1;
-                    break;
+        if (tree.getChildren() != null) {
+            for (AmlTree child : (List<AmlTree>) tree.getChildren()) {
+                switch (child.getType()) {
+                    case MusicLexer.FIGURE:
+                        figure = child.getFigureValue();
+                        break;
+                    case MusicLexer.NUM:
+                        octave = child.getIntValue();
+                        break;
+                    case MusicLexer.BEMOL:
+                        semiToneModifier = -1;
+                        break;
+                    case MusicLexer.SUSTAIN:
+                        semiToneModifier = 1;
+                        break;
+                    case MusicLexer.DOT:
+                        figureModifier = 1;
+                        break;
+                }
             }
         }
         return new AmlNote(note, figure, octave, semiToneModifier, figureModifier);

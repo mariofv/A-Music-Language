@@ -23,6 +23,10 @@ public class AmlTrack {
         lastNoteDuration = AmlNote.PPQ;
     }
 
+    public int getLastNoteDuration() {
+        return lastNoteDuration;
+    }
+
     public void addCompas(AmlCompas compas) {
         for(AmlNote note : compas.getNotes()) {
             if (note.isSilence()) {
@@ -48,7 +52,6 @@ public class AmlTrack {
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
         }
-        return;
     }
 
     public Track getTrack() {

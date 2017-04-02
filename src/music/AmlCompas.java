@@ -5,19 +5,22 @@ import java.util.ArrayList;
 public class AmlCompas {
     private ArrayList<AmlNote> notes;
 
-    private int actualTicks, ticksPerCompas;
+    private int actualTicks, ticksPerCompas, lastNoteDuration;
 
-    public AmlCompas(int maxValue) {
+    public AmlCompas(int maxValue, int lastNoteDuration) {
+        this.lastNoteDuration = lastNoteDuration;
         notes = new ArrayList<>();
         actualTicks = 0;
         this.ticksPerCompas = maxValue;
     }
 
     public boolean addNote(AmlNote note) throws Exception {
+        if (!note.hasFigure()) note.setDuration(lastNoteDuration);
         actualTicks += note.getDuration();
         if (actualTicks > ticksPerCompas) {
             throw new Exception("The compass is incorrect because you are overflowing the metric.\n" + toString());
         }
+        lastNoteDuration = note.getDuration();
         return notes.add(note);
     }
 
