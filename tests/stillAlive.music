@@ -10,15 +10,37 @@ main() {
                          Mi-6.n #Fa-6.c Sol-6.c Silence.n Mi-6.c #Do-6.c | Silence.n Re-6.c Mi-6.c Silence.c La.c Re-6.c Mi-6.c  |
                          Fa-6.c Mi-6.c Re-6.c Do-6.c Silence.n La.c &Si.c| Do-6.n Fa-6.n Mi-6.c Re-6.c Re-6.c Do-6.c | Re-6.c Do-6.c Do-6.n Do-6.n La.c &Si.c |
                          Do-6.n Fa-6.n Sol-6.c Fa-6.c Mi-6.c Re-6.c | Re-6.c Mi-6.c Fa-6.n Fa-6.n Sol-6.c La-6.c | &Si-6.c &Si-6.c La-6.n Sol-6.n Fa-6.c Sol-6.c |
-                         La-6.c La-6.c Sol-6.n Fa-6.n Re-6.c Do-6.c | Re-6.c Fa-6.c Fa-6.c Mi-6.c Silence.c Mi-6.c #Fa-6.c #Fa-6.c||
+                         La-6.c La-6.c Sol-6.n Fa-6.n Re-6.c Do-6.c | Re-6.c Fa-6.c Fa-6.c Mi-6.c Silence.c Mi-6.c #Fa-6.c #Fa-6.c ||
 
-        Track "Celesta" || Silence.r | La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
+        Track "Orchestral Harp" || Silence.r | La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         Si.c Mi-6.c Sol-6.c Mi-6.c Si.c Mi-6.c Sol-6.c Mi-6.c | La.c #Do-6.c Mi-6.c #Do-6.c La.c #Do-6.c Mi-6.c #Do-6.c |
                         La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                         Si.c Mi-6.c Sol-6.c Mi-6.c Si.c Mi-6.c Sol-6.c Mi-6.c | La.c Mi-6.c Sol-6.c Mi-6.c La.c Mi-6.c Sol-6.c Mi-6.c |
-                        &Si.c Re-6.c Fa-6.c La-6.c Silence.b ||
+                        &Si.c Re-6.c Fa-6.c La-6.c Silence.b                  |
+                        Silence.r |    Silence.r |    Silence.r |    Silence.r |   Silence.r |    Silence.r |    Silence.r  |
+                        La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
+                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c ||
+
+
+        Track "Celesta" ||   Silence.r  |    Silence.r  |   Silence.r   |   Silence.r   |   Silence.r   |
+                                 Silence.r  |    Silence.r  |   Silence.r   |   Silence.r   |   Silence.r   |
+                                 Silence.r  |    Silence.r  |   Silence.r   |   Silence.r   |   Silence.r   |
+                                 Silence.r  | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                                 Do-7.c #La-6.c La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                                 Do-7.c #La-6.c La-6.n Fa-6.n Fa-6.n | #La.c #La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
+                                 Fa.c Do-7.c Mi.c Do-7.c #La-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c |
+                                 La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
+                                 La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c ||
+
+        Track "Electric Bass (finger)" || Silence.r| Silence.r | Silence.r | Silence.r | Silence.r| Silence.r | Silence.r| Silence.r | Silence.r| Silence.r |
+                                          Silence.r| Silence.r | Silence.r | Silence.r | Silence.r| Silence.r | Silence.r| Silence.r | Silence.r| Silence.r |
+                                          Silence.r| Silence.r | Silence.r | Re-3.n* Re-3.c Si-2.n* Si-2.c| Re-3.n* Re-3.c Si-2.n* Si-2.c|
+                                           Re-3.n* Re-3.c Si-2.n* Si-2.c| Re-3.n* Re-3.c Si-2.n* Si-2.c ||
+
+
+
     }
 }
