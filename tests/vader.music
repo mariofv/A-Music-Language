@@ -3,9 +3,10 @@ main() {
         Beat 4:4
         Speed 120
         Track "Trumpet" || La.n La.n La.n Fa.c* Do-6.sc | La.n Fa.c* Do-6.sc La.b | Mi-6.n Mi-6.n Mi-6.n Fa-6.c* Do-6.sc | &La.n Fa.c* Do-6.sc La.b |
-        La-6.n La.c* La.sc La-6.n &La-6.c Sol-6.c | &Sol-6.sc Fa-6.sc &Sol-6.c Silence.c &Si.c &Mi-6.n Re-6.c &Re-6.c | Do-6.sc Si Do-6.c Silence.c Fa.c &La.n Fa.c* La.sc |
-        Do-6.n La.c* Do-6.sc Mi-6.b | La-6.n La.c* La.sc La-6.n &La-6.c Sol-6.c | &Sol-6.sc Fa-6.sc &Sol-6.c Silence.c Si.c &Mi-6.n Re-6.c &Re-6 |
+        La-6.n La.c* La.sc La-6.n &La-6.c* Sol-6.sc | &Sol-6.sc Fa-6.sc &Sol-6.c Silence.c &Si.c &Mi-6.n Re-6.c* &Re-6.sc | Do-6.sc Si Do-6.c Silence.c Fa.c &La.n Fa.c* La.sc |
+        Do-6.n La.c* Do-6.sc Mi-6.b | La-6.n La.c* La.sc La-6.n &La-6.c* Sol-6.sc | &Sol-6.sc Fa-6.sc &Sol-6.c Silence.c Si.c &Mi-6.n Re-6.c* &Re-6.sc |
         Do-6.sc Si Do-6.c Silence.c Fa.c &La.n Fa.c* Do-6.sc | La.n Fa.c* Do-6.sc La.b||
+
         Track "Oboe"    || Mi.n Mi.n Mi.n Silence.n    | Mi.n Silence.n     Mi.b  | La.n La.n La.n Silence.n          | Silence.b           Mi.b ||
     }
 }
