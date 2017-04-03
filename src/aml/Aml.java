@@ -31,8 +31,6 @@ package aml;
 import interpreter.AmlTree;
 import interpreter.AmlTreeAdaptor;
 import interpreter.Interpreter;
-import music.AmlInstrument;
-import music.AmlSequence;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 

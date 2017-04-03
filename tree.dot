@@ -20,1006 +20,351 @@ digraph {
   n7 [label="120"];
   n8 [label="Track"];
   n8 [label="Track"];
-  n9 [label="\"Ocarina\""];
+  n9 [label="\"Trumpet\""];
   n10 [label="COMPAS_LIST"];
   n10 [label="COMPAS_LIST"];
   n11 [label="NOTE_LIST"];
   n11 [label="NOTE_LIST"];
-  n12 [label="Silence"];
-  n12 [label="Silence"];
-  n13 [label="b"];
-  n14 [label="Sol"];
-  n14 [label="Sol"];
-  n15 [label="6"];
-  n16 [label="c"];
-  n17 [label="Fa"];
-  n17 [label="Fa"];
-  n18 [label="#"];
-  n19 [label="6"];
-  n20 [label="Mi"];
-  n20 [label="Mi"];
-  n21 [label="6"];
-  n22 [label="Mi"];
-  n22 [label="Mi"];
-  n23 [label="6"];
+  n12 [label="La"];
+  n12 [label="La"];
+  n13 [label="n"];
+  n14 [label="La"];
+  n14 [label="La"];
+  n15 [label="n"];
+  n16 [label="La"];
+  n16 [label="La"];
+  n17 [label="n"];
+  n18 [label="Fa"];
+  n18 [label="Fa"];
+  n19 [label="c"];
+  n20 [label="*"];
+  n21 [label="Do"];
+  n21 [label="Do"];
+  n22 [label="6"];
+  n23 [label="sc"];
   n24 [label="NOTE_LIST"];
   n24 [label="NOTE_LIST"];
-  n25 [label="Fa"];
-  n25 [label="Fa"];
-  n26 [label="#"];
-  n27 [label="6"];
-  n28 [label="b"];
-  n29 [label="Silence"];
-  n29 [label="Silence"];
-  n30 [label="b"];
-  n31 [label="NOTE_LIST"];
-  n31 [label="NOTE_LIST"];
-  n32 [label="Silence"];
-  n32 [label="Silence"];
-  n33 [label="n"];
-  n34 [label="*"];
-  n35 [label="La"];
-  n35 [label="La"];
-  n36 [label="c"];
-  n37 [label="Sol"];
-  n37 [label="Sol"];
-  n38 [label="6"];
-  n39 [label="Fa"];
-  n39 [label="Fa"];
-  n40 [label="#"];
-  n41 [label="6"];
+  n25 [label="La"];
+  n25 [label="La"];
+  n26 [label="n"];
+  n27 [label="Fa"];
+  n27 [label="Fa"];
+  n28 [label="c"];
+  n29 [label="*"];
+  n30 [label="Do"];
+  n30 [label="Do"];
+  n31 [label="6"];
+  n32 [label="sc"];
+  n33 [label="La"];
+  n33 [label="La"];
+  n34 [label="b"];
+  n35 [label="NOTE_LIST"];
+  n35 [label="NOTE_LIST"];
+  n36 [label="Mi"];
+  n36 [label="Mi"];
+  n37 [label="6"];
+  n38 [label="n"];
+  n39 [label="Mi"];
+  n39 [label="Mi"];
+  n40 [label="6"];
+  n41 [label="n"];
   n42 [label="Mi"];
   n42 [label="Mi"];
   n43 [label="6"];
-  n44 [label="Mi"];
-  n44 [label="Mi"];
-  n45 [label="6"];
-  n46 [label="NOTE_LIST"];
-  n46 [label="NOTE_LIST"];
-  n47 [label="Silence"];
-  n48 [label="Fa"];
-  n48 [label="Fa"];
-  n49 [label="#"];
+  n44 [label="n"];
+  n45 [label="Fa"];
+  n45 [label="Fa"];
+  n46 [label="6"];
+  n47 [label="c"];
+  n48 [label="*"];
+  n49 [label="Do"];
+  n49 [label="Do"];
   n50 [label="6"];
-  n51 [label="n"];
-  n52 [label="*"];
-  n53 [label="Re"];
-  n53 [label="Re"];
-  n54 [label="6"];
+  n51 [label="sc"];
+  n52 [label="NOTE_LIST"];
+  n52 [label="NOTE_LIST"];
+  n53 [label="La"];
+  n53 [label="La"];
+  n54 [label="&"];
   n55 [label="n"];
-  n56 [label="Mi"];
-  n56 [label="Mi"];
-  n57 [label="6"];
-  n58 [label="c"];
-  n59 [label="La"];
-  n59 [label="La"];
-  n60 [label="c"];
-  n61 [label="NOTE_LIST"];
-  n61 [label="NOTE_LIST"];
-  n62 [label="Silence"];
-  n62 [label="Silence"];
+  n56 [label="Fa"];
+  n56 [label="Fa"];
+  n57 [label="c"];
+  n58 [label="*"];
+  n59 [label="Do"];
+  n59 [label="Do"];
+  n60 [label="6"];
+  n61 [label="sc"];
+  n62 [label="La"];
+  n62 [label="La"];
   n63 [label="b"];
-  n64 [label="*"];
-  n65 [label="Silence"];
-  n65 [label="Silence"];
-  n66 [label="c"];
-  n67 [label="La"];
-  n67 [label="La"];
-  n68 [label="c"];
-  n69 [label="NOTE_LIST"];
-  n69 [label="NOTE_LIST"];
-  n70 [label="Mi"];
-  n70 [label="Mi"];
-  n71 [label="6"];
-  n72 [label="n"];
-  n73 [label="Fa"];
-  n73 [label="Fa"];
-  n74 [label="#"];
-  n75 [label="6"];
-  n76 [label="c"];
-  n77 [label="Sol"];
-  n77 [label="Sol"];
+  n64 [label="NOTE_LIST"];
+  n64 [label="NOTE_LIST"];
+  n65 [label="La"];
+  n65 [label="La"];
+  n66 [label="6"];
+  n67 [label="n"];
+  n68 [label="La"];
+  n68 [label="La"];
+  n69 [label="c"];
+  n70 [label="*"];
+  n71 [label="La"];
+  n71 [label="La"];
+  n72 [label="sc"];
+  n73 [label="La"];
+  n73 [label="La"];
+  n74 [label="6"];
+  n75 [label="n"];
+  n76 [label="La"];
+  n76 [label="La"];
+  n77 [label="&"];
   n78 [label="6"];
-  n79 [label="n"];
-  n80 [label="*"];
-  n81 [label="Mi"];
-  n81 [label="Mi"];
-  n82 [label="6"];
-  n83 [label="c"];
-  n84 [label="Do"];
-  n84 [label="Do"];
-  n85 [label="#"];
+  n79 [label="c"];
+  n80 [label="Sol"];
+  n80 [label="Sol"];
+  n81 [label="6"];
+  n82 [label="c"];
+  n83 [label="NOTE_LIST"];
+  n83 [label="NOTE_LIST"];
+  n84 [label="Sol"];
+  n84 [label="Sol"];
+  n85 [label="&"];
   n86 [label="6"];
-  n87 [label="c"];
-  n88 [label="NOTE_LIST"];
-  n88 [label="NOTE_LIST"];
-  n89 [label="Do"];
-  n89 [label="Do"];
-  n90 [label="#"];
-  n91 [label="6"];
-  n92 [label="c"];
-  n93 [label="Re"];
-  n93 [label="Re"];
-  n94 [label="6"];
-  n95 [label="n"];
-  n96 [label="*"];
-  n97 [label="Mi"];
-  n97 [label="Mi"];
-  n98 [label="6"];
-  n99 [label="n"];
-  n100 [label="La"];
-  n100 [label="La"];
-  n101 [label="c"];
-  n102 [label="La"];
-  n102 [label="La"];
-  n103 [label="c"];
-  n104 [label="NOTE_LIST"];
-  n104 [label="NOTE_LIST"];
-  n105 [label="La"];
-  n105 [label="La"];
+  n87 [label="sc"];
+  n88 [label="Fa"];
+  n88 [label="Fa"];
+  n89 [label="6"];
+  n90 [label="sc"];
+  n91 [label="Sol"];
+  n91 [label="Sol"];
+  n92 [label="&"];
+  n93 [label="6"];
+  n94 [label="c"];
+  n95 [label="Silence"];
+  n95 [label="Silence"];
+  n96 [label="c"];
+  n97 [label="Si"];
+  n97 [label="Si"];
+  n98 [label="&"];
+  n99 [label="c"];
+  n100 [label="Mi"];
+  n100 [label="Mi"];
+  n101 [label="&"];
+  n102 [label="6"];
+  n103 [label="n"];
+  n104 [label="Re"];
+  n104 [label="Re"];
+  n105 [label="6"];
   n106 [label="c"];
-  n107 [label="Fa"];
-  n107 [label="Fa"];
-  n108 [label="#"];
+  n107 [label="Re"];
+  n107 [label="Re"];
+  n108 [label="&"];
   n109 [label="6"];
-  n110 [label="n"];
-  n111 [label="*"];
-  n112 [label="Fa"];
-  n112 [label="Fa"];
-  n113 [label="#"];
-  n114 [label="6"];
-  n115 [label="b"];
-  n116 [label="NOTE_LIST"];
-  n116 [label="NOTE_LIST"];
-  n117 [label="Silence"];
-  n117 [label="Silence"];
-  n118 [label="b"];
-  n119 [label="Sol"];
-  n119 [label="Sol"];
-  n120 [label="6"];
-  n121 [label="c"];
-  n122 [label="Fa"];
-  n122 [label="Fa"];
-  n123 [label="#"];
-  n124 [label="6"];
-  n125 [label="c"];
-  n126 [label="Mi"];
-  n126 [label="Mi"];
-  n127 [label="6"];
-  n128 [label="c"];
-  n129 [label="Mi"];
-  n129 [label="Mi"];
-  n130 [label="6"];
-  n131 [label="c"];
-  n132 [label="NOTE_LIST"];
-  n132 [label="NOTE_LIST"];
-  n133 [label="Fa"];
-  n133 [label="Fa"];
-  n134 [label="#"];
-  n135 [label="6"];
-  n136 [label="b"];
-  n137 [label="Silence"];
-  n137 [label="Silence"];
-  n138 [label="b"];
-  n139 [label="NOTE_LIST"];
-  n139 [label="NOTE_LIST"];
-  n140 [label="Silence"];
-  n140 [label="Silence"];
-  n141 [label="n"];
-  n142 [label="Silence"];
-  n142 [label="Silence"];
-  n143 [label="c"];
-  n144 [label="La"];
-  n144 [label="La"];
-  n145 [label="c"];
-  n146 [label="Sol"];
-  n146 [label="Sol"];
-  n147 [label="6"];
-  n148 [label="c"];
-  n149 [label="Fa"];
-  n149 [label="Fa"];
-  n150 [label="#"];
-  n151 [label="6"];
-  n152 [label="c"];
-  n153 [label="Mi"];
-  n153 [label="Mi"];
+  n110 [label="c"];
+  n111 [label="NOTE_LIST"];
+  n111 [label="NOTE_LIST"];
+  n112 [label="Do"];
+  n112 [label="Do"];
+  n113 [label="6"];
+  n114 [label="sc"];
+  n115 [label="Si"];
+  n116 [label="Do"];
+  n116 [label="Do"];
+  n117 [label="6"];
+  n118 [label="c"];
+  n119 [label="Silence"];
+  n119 [label="Silence"];
+  n120 [label="c"];
+  n121 [label="Fa"];
+  n121 [label="Fa"];
+  n122 [label="c"];
+  n123 [label="La"];
+  n123 [label="La"];
+  n124 [label="&"];
+  n125 [label="n"];
+  n126 [label="Fa"];
+  n126 [label="Fa"];
+  n127 [label="c"];
+  n128 [label="*"];
+  n129 [label="La"];
+  n129 [label="La"];
+  n130 [label="sc"];
+  n131 [label="NOTE_LIST"];
+  n131 [label="NOTE_LIST"];
+  n132 [label="Do"];
+  n132 [label="Do"];
+  n133 [label="6"];
+  n134 [label="n"];
+  n135 [label="La"];
+  n135 [label="La"];
+  n136 [label="c"];
+  n137 [label="*"];
+  n138 [label="Do"];
+  n138 [label="Do"];
+  n139 [label="6"];
+  n140 [label="sc"];
+  n141 [label="Mi"];
+  n141 [label="Mi"];
+  n142 [label="6"];
+  n143 [label="b"];
+  n144 [label="NOTE_LIST"];
+  n144 [label="NOTE_LIST"];
+  n145 [label="La"];
+  n145 [label="La"];
+  n146 [label="6"];
+  n147 [label="n"];
+  n148 [label="La"];
+  n148 [label="La"];
+  n149 [label="c"];
+  n150 [label="*"];
+  n151 [label="La"];
+  n151 [label="La"];
+  n152 [label="sc"];
+  n153 [label="La"];
+  n153 [label="La"];
   n154 [label="6"];
-  n155 [label="c"];
-  n156 [label="Mi"];
-  n156 [label="Mi"];
-  n157 [label="6"];
-  n158 [label="c"];
-  n159 [label="NOTE_LIST"];
-  n159 [label="NOTE_LIST"];
-  n160 [label="Silence"];
-  n160 [label="Silence"];
-  n161 [label="n"];
-  n162 [label="Fa"];
-  n162 [label="Fa"];
-  n163 [label="#"];
-  n164 [label="6"];
-  n165 [label="c"];
-  n166 [label="Re"];
-  n166 [label="Re"];
-  n167 [label="6"];
-  n168 [label="c"];
-  n169 [label="Silence"];
-  n169 [label="Silence"];
-  n170 [label="n"];
-  n171 [label="Mi"];
-  n171 [label="Mi"];
-  n172 [label="6"];
-  n173 [label="c"];
-  n174 [label="La"];
-  n174 [label="La"];
-  n175 [label="c"];
-  n176 [label="NOTE_LIST"];
-  n176 [label="NOTE_LIST"];
-  n177 [label="Silence"];
-  n177 [label="Silence"];
-  n178 [label="b"];
-  n179 [label="Silence"];
-  n179 [label="Silence"];
-  n180 [label="b"];
-  n181 [label="NOTE_LIST"];
-  n181 [label="NOTE_LIST"];
-  n182 [label="Mi"];
-  n182 [label="Mi"];
-  n183 [label="6"];
-  n184 [label="n"];
-  n185 [label="Fa"];
-  n185 [label="Fa"];
-  n186 [label="#"];
-  n187 [label="6"];
-  n188 [label="c"];
-  n189 [label="Sol"];
-  n189 [label="Sol"];
-  n190 [label="6"];
-  n191 [label="c"];
-  n192 [label="Silence"];
-  n192 [label="Silence"];
-  n193 [label="n"];
-  n194 [label="Mi"];
-  n194 [label="Mi"];
+  n155 [label="n"];
+  n156 [label="La"];
+  n156 [label="La"];
+  n157 [label="&"];
+  n158 [label="6"];
+  n159 [label="c"];
+  n160 [label="Sol"];
+  n160 [label="Sol"];
+  n161 [label="6"];
+  n162 [label="c"];
+  n163 [label="NOTE_LIST"];
+  n163 [label="NOTE_LIST"];
+  n164 [label="Sol"];
+  n164 [label="Sol"];
+  n165 [label="&"];
+  n166 [label="6"];
+  n167 [label="sc"];
+  n168 [label="Fa"];
+  n168 [label="Fa"];
+  n169 [label="6"];
+  n170 [label="sc"];
+  n171 [label="Sol"];
+  n171 [label="Sol"];
+  n172 [label="&"];
+  n173 [label="6"];
+  n174 [label="c"];
+  n175 [label="Silence"];
+  n175 [label="Silence"];
+  n176 [label="c"];
+  n177 [label="Si"];
+  n177 [label="Si"];
+  n178 [label="c"];
+  n179 [label="Mi"];
+  n179 [label="Mi"];
+  n180 [label="&"];
+  n181 [label="6"];
+  n182 [label="n"];
+  n183 [label="Re"];
+  n183 [label="Re"];
+  n184 [label="6"];
+  n185 [label="c"];
+  n186 [label="Re"];
+  n186 [label="Re"];
+  n187 [label="&"];
+  n188 [label="6"];
+  n189 [label="NOTE_LIST"];
+  n189 [label="NOTE_LIST"];
+  n190 [label="Do"];
+  n190 [label="Do"];
+  n191 [label="6"];
+  n192 [label="sc"];
+  n193 [label="Si"];
+  n194 [label="Do"];
+  n194 [label="Do"];
   n195 [label="6"];
   n196 [label="c"];
-  n197 [label="Do"];
-  n197 [label="Do"];
-  n198 [label="#"];
-  n199 [label="6"];
+  n197 [label="Silence"];
+  n197 [label="Silence"];
+  n198 [label="c"];
+  n199 [label="Fa"];
+  n199 [label="Fa"];
   n200 [label="c"];
-  n201 [label="NOTE_LIST"];
-  n201 [label="NOTE_LIST"];
-  n202 [label="Silence"];
-  n202 [label="Silence"];
+  n201 [label="La"];
+  n201 [label="La"];
+  n202 [label="&"];
   n203 [label="n"];
-  n204 [label="Re"];
-  n204 [label="Re"];
-  n205 [label="6"];
-  n206 [label="c"];
-  n207 [label="Mi"];
-  n207 [label="Mi"];
+  n204 [label="Fa"];
+  n204 [label="Fa"];
+  n205 [label="c"];
+  n206 [label="*"];
+  n207 [label="Do"];
+  n207 [label="Do"];
   n208 [label="6"];
-  n209 [label="c"];
-  n210 [label="Silence"];
-  n210 [label="Silence"];
-  n211 [label="c"];
-  n212 [label="La"];
-  n212 [label="La"];
-  n213 [label="c"];
-  n214 [label="Re"];
-  n214 [label="Re"];
-  n215 [label="6"];
-  n216 [label="c"];
-  n217 [label="Mi"];
-  n217 [label="Mi"];
-  n218 [label="6"];
-  n219 [label="c"];
-  n220 [label="NOTE_LIST"];
-  n220 [label="NOTE_LIST"];
-  n221 [label="Fa"];
-  n221 [label="Fa"];
-  n222 [label="6"];
-  n223 [label="c"];
-  n224 [label="Mi"];
-  n224 [label="Mi"];
-  n225 [label="6"];
-  n226 [label="c"];
-  n227 [label="Re"];
-  n227 [label="Re"];
-  n228 [label="6"];
-  n229 [label="c"];
-  n230 [label="Do"];
-  n230 [label="Do"];
-  n231 [label="6"];
-  n232 [label="c"];
-  n233 [label="Silence"];
-  n233 [label="Silence"];
-  n234 [label="n"];
-  n235 [label="La"];
-  n235 [label="La"];
-  n236 [label="c"];
-  n237 [label="Si"];
-  n237 [label="Si"];
-  n238 [label="&"];
-  n239 [label="c"];
+  n209 [label="sc"];
+  n210 [label="NOTE_LIST"];
+  n210 [label="NOTE_LIST"];
+  n211 [label="La"];
+  n211 [label="La"];
+  n212 [label="n"];
+  n213 [label="Fa"];
+  n213 [label="Fa"];
+  n214 [label="c"];
+  n215 [label="*"];
+  n216 [label="Do"];
+  n216 [label="Do"];
+  n217 [label="6"];
+  n218 [label="sc"];
+  n219 [label="La"];
+  n219 [label="La"];
+  n220 [label="b"];
+  n221 [label="Track"];
+  n221 [label="Track"];
+  n222 [label="\"Oboe\""];
+  n223 [label="COMPAS_LIST"];
+  n223 [label="COMPAS_LIST"];
+  n224 [label="NOTE_LIST"];
+  n224 [label="NOTE_LIST"];
+  n225 [label="Mi"];
+  n225 [label="Mi"];
+  n226 [label="n"];
+  n227 [label="Mi"];
+  n227 [label="Mi"];
+  n228 [label="n"];
+  n229 [label="Mi"];
+  n229 [label="Mi"];
+  n230 [label="n"];
+  n231 [label="Silence"];
+  n231 [label="Silence"];
+  n232 [label="n"];
+  n233 [label="NOTE_LIST"];
+  n233 [label="NOTE_LIST"];
+  n234 [label="Mi"];
+  n234 [label="Mi"];
+  n235 [label="n"];
+  n236 [label="Silence"];
+  n236 [label="Silence"];
+  n237 [label="n"];
+  n238 [label="Mi"];
+  n238 [label="Mi"];
+  n239 [label="b"];
   n240 [label="NOTE_LIST"];
   n240 [label="NOTE_LIST"];
-  n241 [label="Do"];
-  n241 [label="Do"];
-  n242 [label="6"];
-  n243 [label="n"];
-  n244 [label="Fa"];
-  n244 [label="Fa"];
-  n245 [label="6"];
+  n241 [label="La"];
+  n241 [label="La"];
+  n242 [label="n"];
+  n243 [label="La"];
+  n243 [label="La"];
+  n244 [label="n"];
+  n245 [label="La"];
+  n245 [label="La"];
   n246 [label="n"];
-  n247 [label="Mi"];
-  n247 [label="Mi"];
-  n248 [label="6"];
-  n249 [label="c"];
-  n250 [label="Re"];
-  n250 [label="Re"];
-  n251 [label="6"];
-  n252 [label="c"];
-  n253 [label="Re"];
-  n253 [label="Re"];
-  n254 [label="6"];
-  n255 [label="c"];
-  n256 [label="Do"];
-  n256 [label="Do"];
-  n257 [label="6"];
-  n258 [label="c"];
-  n259 [label="NOTE_LIST"];
-  n259 [label="NOTE_LIST"];
-  n260 [label="Re"];
-  n260 [label="Re"];
-  n261 [label="6"];
-  n262 [label="c"];
-  n263 [label="Do"];
-  n263 [label="Do"];
-  n264 [label="6"];
-  n265 [label="c"];
-  n266 [label="Do"];
-  n266 [label="Do"];
-  n267 [label="6"];
-  n268 [label="n"];
-  n269 [label="Do"];
-  n269 [label="Do"];
-  n270 [label="6"];
-  n271 [label="n"];
-  n272 [label="La"];
-  n272 [label="La"];
-  n273 [label="c"];
-  n274 [label="Si"];
-  n274 [label="Si"];
-  n275 [label="&"];
-  n276 [label="c"];
-  n277 [label="NOTE_LIST"];
-  n277 [label="NOTE_LIST"];
-  n278 [label="Do"];
-  n278 [label="Do"];
-  n279 [label="6"];
-  n280 [label="n"];
-  n281 [label="Fa"];
-  n281 [label="Fa"];
-  n282 [label="6"];
-  n283 [label="n"];
-  n284 [label="Sol"];
-  n284 [label="Sol"];
-  n285 [label="6"];
-  n286 [label="c"];
-  n287 [label="Fa"];
-  n287 [label="Fa"];
-  n288 [label="6"];
-  n289 [label="c"];
-  n290 [label="Mi"];
-  n290 [label="Mi"];
-  n291 [label="6"];
-  n292 [label="c"];
-  n293 [label="Re"];
-  n293 [label="Re"];
-  n294 [label="6"];
-  n295 [label="c"];
-  n296 [label="NOTE_LIST"];
-  n296 [label="NOTE_LIST"];
-  n297 [label="Re"];
-  n297 [label="Re"];
-  n298 [label="6"];
-  n299 [label="c"];
-  n300 [label="Mi"];
-  n300 [label="Mi"];
-  n301 [label="6"];
-  n302 [label="c"];
-  n303 [label="Fa"];
-  n303 [label="Fa"];
-  n304 [label="6"];
-  n305 [label="n"];
-  n306 [label="Fa"];
-  n306 [label="Fa"];
-  n307 [label="6"];
-  n308 [label="n"];
-  n309 [label="Sol"];
-  n309 [label="Sol"];
-  n310 [label="6"];
-  n311 [label="c"];
-  n312 [label="La"];
-  n312 [label="La"];
-  n313 [label="6"];
-  n314 [label="c"];
-  n315 [label="NOTE_LIST"];
-  n315 [label="NOTE_LIST"];
-  n316 [label="Si"];
-  n316 [label="Si"];
-  n317 [label="&"];
-  n318 [label="6"];
-  n319 [label="c"];
-  n320 [label="Si"];
-  n320 [label="Si"];
-  n321 [label="&"];
-  n322 [label="6"];
-  n323 [label="c"];
-  n324 [label="La"];
-  n324 [label="La"];
-  n325 [label="6"];
-  n326 [label="n"];
-  n327 [label="Sol"];
-  n327 [label="Sol"];
-  n328 [label="6"];
-  n329 [label="n"];
-  n330 [label="Fa"];
-  n330 [label="Fa"];
-  n331 [label="6"];
-  n332 [label="c"];
-  n333 [label="Sol"];
-  n333 [label="Sol"];
-  n334 [label="6"];
-  n335 [label="c"];
-  n336 [label="NOTE_LIST"];
-  n336 [label="NOTE_LIST"];
-  n337 [label="La"];
-  n337 [label="La"];
-  n338 [label="6"];
-  n339 [label="c"];
-  n340 [label="La"];
-  n340 [label="La"];
-  n341 [label="6"];
-  n342 [label="c"];
-  n343 [label="Sol"];
-  n343 [label="Sol"];
-  n344 [label="6"];
-  n345 [label="n"];
-  n346 [label="Fa"];
-  n346 [label="Fa"];
-  n347 [label="6"];
-  n348 [label="n"];
-  n349 [label="Re"];
-  n349 [label="Re"];
-  n350 [label="6"];
-  n351 [label="c"];
-  n352 [label="Do"];
-  n352 [label="Do"];
-  n353 [label="6"];
-  n354 [label="c"];
-  n355 [label="NOTE_LIST"];
-  n355 [label="NOTE_LIST"];
-  n356 [label="Re"];
-  n356 [label="Re"];
-  n357 [label="6"];
-  n358 [label="c"];
-  n359 [label="Fa"];
-  n359 [label="Fa"];
-  n360 [label="6"];
-  n361 [label="c"];
-  n362 [label="Fa"];
-  n362 [label="Fa"];
-  n363 [label="6"];
-  n364 [label="c"];
-  n365 [label="Mi"];
-  n365 [label="Mi"];
-  n366 [label="6"];
-  n367 [label="c"];
-  n368 [label="Silence"];
-  n368 [label="Silence"];
-  n369 [label="c"];
-  n370 [label="Mi"];
-  n370 [label="Mi"];
-  n371 [label="6"];
-  n372 [label="c"];
-  n373 [label="Fa"];
-  n373 [label="Fa"];
-  n374 [label="#"];
-  n375 [label="6"];
-  n376 [label="c"];
-  n377 [label="Fa"];
-  n377 [label="Fa"];
-  n378 [label="#"];
-  n379 [label="6"];
-  n380 [label="c"];
-  n381 [label="Track"];
-  n381 [label="Track"];
-  n382 [label="\"Celesta\""];
-  n383 [label="COMPAS_LIST"];
-  n383 [label="COMPAS_LIST"];
-  n384 [label="NOTE_LIST"];
-  n384 [label="NOTE_LIST"];
-  n385 [label="Silence"];
-  n385 [label="Silence"];
-  n386 [label="r"];
-  n387 [label="NOTE_LIST"];
-  n387 [label="NOTE_LIST"];
-  n388 [label="La"];
-  n388 [label="La"];
-  n389 [label="c"];
-  n390 [label="Re"];
-  n390 [label="Re"];
-  n391 [label="6"];
-  n392 [label="Fa"];
-  n392 [label="Fa"];
-  n393 [label="#"];
-  n394 [label="6"];
-  n395 [label="Re"];
-  n395 [label="Re"];
-  n396 [label="6"];
-  n397 [label="Si"];
-  n398 [label="Re"];
-  n398 [label="Re"];
-  n399 [label="6"];
-  n400 [label="Fa"];
-  n400 [label="Fa"];
-  n401 [label="#"];
-  n402 [label="6"];
-  n403 [label="Re"];
-  n403 [label="Re"];
-  n404 [label="6"];
-  n405 [label="NOTE_LIST"];
-  n405 [label="NOTE_LIST"];
-  n406 [label="La"];
-  n407 [label="Re"];
-  n407 [label="Re"];
-  n408 [label="6"];
-  n409 [label="Fa"];
-  n409 [label="Fa"];
-  n410 [label="#"];
-  n411 [label="6"];
-  n412 [label="Re"];
-  n412 [label="Re"];
-  n413 [label="6"];
-  n414 [label="Si"];
-  n415 [label="Re"];
-  n415 [label="Re"];
-  n416 [label="6"];
-  n417 [label="Fa"];
-  n417 [label="Fa"];
-  n418 [label="#"];
-  n419 [label="6"];
-  n420 [label="Re"];
-  n420 [label="Re"];
-  n421 [label="6"];
-  n422 [label="NOTE_LIST"];
-  n422 [label="NOTE_LIST"];
-  n423 [label="La"];
-  n423 [label="La"];
-  n424 [label="c"];
-  n425 [label="Re"];
-  n425 [label="Re"];
-  n426 [label="6"];
-  n427 [label="c"];
-  n428 [label="Fa"];
-  n428 [label="Fa"];
-  n429 [label="#"];
-  n430 [label="6"];
-  n431 [label="c"];
-  n432 [label="Re"];
-  n432 [label="Re"];
-  n433 [label="6"];
-  n434 [label="c"];
-  n435 [label="Si"];
-  n435 [label="Si"];
-  n436 [label="c"];
-  n437 [label="Re"];
-  n437 [label="Re"];
-  n438 [label="6"];
-  n439 [label="c"];
-  n440 [label="Fa"];
-  n440 [label="Fa"];
-  n441 [label="#"];
-  n442 [label="6"];
-  n443 [label="c"];
-  n444 [label="Re"];
-  n444 [label="Re"];
-  n445 [label="6"];
-  n446 [label="c"];
-  n447 [label="NOTE_LIST"];
-  n447 [label="NOTE_LIST"];
-  n448 [label="La"];
-  n448 [label="La"];
-  n449 [label="c"];
-  n450 [label="Re"];
-  n450 [label="Re"];
-  n451 [label="6"];
-  n452 [label="c"];
-  n453 [label="Fa"];
-  n453 [label="Fa"];
-  n454 [label="#"];
-  n455 [label="6"];
-  n456 [label="c"];
-  n457 [label="Re"];
-  n457 [label="Re"];
-  n458 [label="6"];
-  n459 [label="c"];
-  n460 [label="Si"];
-  n460 [label="Si"];
-  n461 [label="c"];
-  n462 [label="Re"];
-  n462 [label="Re"];
-  n463 [label="6"];
-  n464 [label="c"];
-  n465 [label="Fa"];
-  n465 [label="Fa"];
-  n466 [label="#"];
-  n467 [label="6"];
-  n468 [label="c"];
-  n469 [label="Re"];
-  n469 [label="Re"];
-  n470 [label="6"];
-  n471 [label="c"];
-  n472 [label="NOTE_LIST"];
-  n472 [label="NOTE_LIST"];
-  n473 [label="Si"];
-  n473 [label="Si"];
-  n474 [label="c"];
-  n475 [label="Mi"];
-  n475 [label="Mi"];
-  n476 [label="6"];
-  n477 [label="c"];
-  n478 [label="Sol"];
-  n478 [label="Sol"];
-  n479 [label="6"];
-  n480 [label="c"];
-  n481 [label="Mi"];
-  n481 [label="Mi"];
-  n482 [label="6"];
-  n483 [label="c"];
-  n484 [label="Si"];
-  n484 [label="Si"];
-  n485 [label="c"];
-  n486 [label="Mi"];
-  n486 [label="Mi"];
-  n487 [label="6"];
-  n488 [label="c"];
-  n489 [label="Sol"];
-  n489 [label="Sol"];
-  n490 [label="6"];
-  n491 [label="c"];
-  n492 [label="Mi"];
-  n492 [label="Mi"];
-  n493 [label="6"];
-  n494 [label="c"];
-  n495 [label="NOTE_LIST"];
-  n495 [label="NOTE_LIST"];
-  n496 [label="La"];
-  n496 [label="La"];
-  n497 [label="c"];
-  n498 [label="Do"];
-  n498 [label="Do"];
-  n499 [label="#"];
-  n500 [label="6"];
-  n501 [label="c"];
-  n502 [label="Mi"];
-  n502 [label="Mi"];
-  n503 [label="6"];
-  n504 [label="c"];
-  n505 [label="Do"];
-  n505 [label="Do"];
-  n506 [label="#"];
-  n507 [label="6"];
-  n508 [label="c"];
-  n509 [label="La"];
-  n509 [label="La"];
-  n510 [label="c"];
-  n511 [label="Do"];
-  n511 [label="Do"];
-  n512 [label="#"];
-  n513 [label="6"];
-  n514 [label="c"];
-  n515 [label="Mi"];
-  n515 [label="Mi"];
-  n516 [label="6"];
-  n517 [label="c"];
-  n518 [label="Do"];
-  n518 [label="Do"];
-  n519 [label="#"];
-  n520 [label="6"];
-  n521 [label="c"];
-  n522 [label="NOTE_LIST"];
-  n522 [label="NOTE_LIST"];
-  n523 [label="La"];
-  n523 [label="La"];
-  n524 [label="c"];
-  n525 [label="Re"];
-  n525 [label="Re"];
-  n526 [label="6"];
-  n527 [label="c"];
-  n528 [label="Fa"];
-  n528 [label="Fa"];
-  n529 [label="#"];
-  n530 [label="6"];
-  n531 [label="c"];
-  n532 [label="Re"];
-  n532 [label="Re"];
-  n533 [label="6"];
-  n534 [label="c"];
-  n535 [label="Si"];
-  n535 [label="Si"];
-  n536 [label="c"];
-  n537 [label="Re"];
-  n537 [label="Re"];
-  n538 [label="6"];
-  n539 [label="c"];
-  n540 [label="Fa"];
-  n540 [label="Fa"];
-  n541 [label="#"];
-  n542 [label="6"];
-  n543 [label="c"];
-  n544 [label="Re"];
-  n544 [label="Re"];
-  n545 [label="6"];
-  n546 [label="c"];
-  n547 [label="NOTE_LIST"];
-  n547 [label="NOTE_LIST"];
-  n548 [label="La"];
-  n548 [label="La"];
-  n549 [label="c"];
-  n550 [label="Re"];
-  n550 [label="Re"];
-  n551 [label="6"];
-  n552 [label="c"];
-  n553 [label="Fa"];
-  n553 [label="Fa"];
-  n554 [label="#"];
-  n555 [label="6"];
-  n556 [label="c"];
-  n557 [label="Re"];
-  n557 [label="Re"];
-  n558 [label="6"];
-  n559 [label="c"];
-  n560 [label="Si"];
-  n560 [label="Si"];
-  n561 [label="c"];
-  n562 [label="Re"];
-  n562 [label="Re"];
-  n563 [label="6"];
-  n564 [label="c"];
-  n565 [label="Fa"];
-  n565 [label="Fa"];
-  n566 [label="#"];
-  n567 [label="6"];
-  n568 [label="c"];
-  n569 [label="Re"];
-  n569 [label="Re"];
-  n570 [label="6"];
-  n571 [label="c"];
-  n572 [label="NOTE_LIST"];
-  n572 [label="NOTE_LIST"];
-  n573 [label="La"];
-  n573 [label="La"];
-  n574 [label="c"];
-  n575 [label="Re"];
-  n575 [label="Re"];
-  n576 [label="6"];
-  n577 [label="c"];
-  n578 [label="Fa"];
-  n578 [label="Fa"];
-  n579 [label="#"];
-  n580 [label="6"];
-  n581 [label="c"];
-  n582 [label="Re"];
-  n582 [label="Re"];
-  n583 [label="6"];
-  n584 [label="c"];
-  n585 [label="Si"];
-  n585 [label="Si"];
-  n586 [label="c"];
-  n587 [label="Re"];
-  n587 [label="Re"];
-  n588 [label="6"];
-  n589 [label="c"];
-  n590 [label="Fa"];
-  n590 [label="Fa"];
-  n591 [label="#"];
-  n592 [label="6"];
-  n593 [label="c"];
-  n594 [label="Re"];
-  n594 [label="Re"];
-  n595 [label="6"];
-  n596 [label="c"];
-  n597 [label="NOTE_LIST"];
-  n597 [label="NOTE_LIST"];
-  n598 [label="La"];
-  n598 [label="La"];
-  n599 [label="c"];
-  n600 [label="Re"];
-  n600 [label="Re"];
-  n601 [label="6"];
-  n602 [label="c"];
-  n603 [label="Fa"];
-  n603 [label="Fa"];
-  n604 [label="#"];
-  n605 [label="6"];
-  n606 [label="c"];
-  n607 [label="Re"];
-  n607 [label="Re"];
-  n608 [label="6"];
-  n609 [label="c"];
-  n610 [label="Si"];
-  n610 [label="Si"];
-  n611 [label="c"];
-  n612 [label="Re"];
-  n612 [label="Re"];
-  n613 [label="6"];
-  n614 [label="c"];
-  n615 [label="Fa"];
-  n615 [label="Fa"];
-  n616 [label="#"];
-  n617 [label="6"];
-  n618 [label="c"];
-  n619 [label="Re"];
-  n619 [label="Re"];
-  n620 [label="6"];
-  n621 [label="c"];
-  n622 [label="NOTE_LIST"];
-  n622 [label="NOTE_LIST"];
-  n623 [label="La"];
-  n623 [label="La"];
-  n624 [label="c"];
-  n625 [label="Re"];
-  n625 [label="Re"];
-  n626 [label="6"];
-  n627 [label="c"];
-  n628 [label="Fa"];
-  n628 [label="Fa"];
-  n629 [label="#"];
-  n630 [label="6"];
-  n631 [label="c"];
-  n632 [label="Re"];
-  n632 [label="Re"];
-  n633 [label="6"];
-  n634 [label="c"];
-  n635 [label="Si"];
-  n635 [label="Si"];
-  n636 [label="c"];
-  n637 [label="Re"];
-  n637 [label="Re"];
-  n638 [label="6"];
-  n639 [label="c"];
-  n640 [label="Fa"];
-  n640 [label="Fa"];
-  n641 [label="#"];
-  n642 [label="6"];
-  n643 [label="c"];
-  n644 [label="Re"];
-  n644 [label="Re"];
-  n645 [label="6"];
-  n646 [label="c"];
-  n647 [label="NOTE_LIST"];
-  n647 [label="NOTE_LIST"];
-  n648 [label="La"];
-  n648 [label="La"];
-  n649 [label="c"];
-  n650 [label="Re"];
-  n650 [label="Re"];
-  n651 [label="6"];
-  n652 [label="c"];
-  n653 [label="Fa"];
-  n653 [label="Fa"];
-  n654 [label="#"];
-  n655 [label="6"];
-  n656 [label="c"];
-  n657 [label="Re"];
-  n657 [label="Re"];
-  n658 [label="6"];
-  n659 [label="c"];
-  n660 [label="Si"];
-  n660 [label="Si"];
-  n661 [label="c"];
-  n662 [label="Re"];
-  n662 [label="Re"];
-  n663 [label="6"];
-  n664 [label="c"];
-  n665 [label="Fa"];
-  n665 [label="Fa"];
-  n666 [label="#"];
-  n667 [label="6"];
-  n668 [label="c"];
-  n669 [label="Re"];
-  n669 [label="Re"];
-  n670 [label="6"];
-  n671 [label="c"];
-  n672 [label="NOTE_LIST"];
-  n672 [label="NOTE_LIST"];
-  n673 [label="Si"];
-  n673 [label="Si"];
-  n674 [label="c"];
-  n675 [label="Mi"];
-  n675 [label="Mi"];
-  n676 [label="6"];
-  n677 [label="c"];
-  n678 [label="Sol"];
-  n678 [label="Sol"];
-  n679 [label="6"];
-  n680 [label="c"];
-  n681 [label="Mi"];
-  n681 [label="Mi"];
-  n682 [label="6"];
-  n683 [label="c"];
-  n684 [label="Si"];
-  n684 [label="Si"];
-  n685 [label="c"];
-  n686 [label="Mi"];
-  n686 [label="Mi"];
-  n687 [label="6"];
-  n688 [label="c"];
-  n689 [label="Sol"];
-  n689 [label="Sol"];
-  n690 [label="6"];
-  n691 [label="c"];
-  n692 [label="Mi"];
-  n692 [label="Mi"];
-  n693 [label="6"];
-  n694 [label="c"];
-  n695 [label="NOTE_LIST"];
-  n695 [label="NOTE_LIST"];
-  n696 [label="La"];
-  n696 [label="La"];
-  n697 [label="c"];
-  n698 [label="Mi"];
-  n698 [label="Mi"];
-  n699 [label="6"];
-  n700 [label="c"];
-  n701 [label="Sol"];
-  n701 [label="Sol"];
-  n702 [label="6"];
-  n703 [label="c"];
-  n704 [label="Mi"];
-  n704 [label="Mi"];
-  n705 [label="6"];
-  n706 [label="c"];
-  n707 [label="La"];
-  n707 [label="La"];
-  n708 [label="c"];
-  n709 [label="Mi"];
-  n709 [label="Mi"];
-  n710 [label="6"];
-  n711 [label="c"];
-  n712 [label="Sol"];
-  n712 [label="Sol"];
-  n713 [label="6"];
-  n714 [label="c"];
-  n715 [label="Mi"];
-  n715 [label="Mi"];
-  n716 [label="6"];
-  n717 [label="c"];
-  n718 [label="NOTE_LIST"];
-  n718 [label="NOTE_LIST"];
-  n719 [label="Si"];
-  n719 [label="Si"];
-  n720 [label="&"];
-  n721 [label="c"];
-  n722 [label="Re"];
-  n722 [label="Re"];
-  n723 [label="6"];
-  n724 [label="c"];
-  n725 [label="Fa"];
-  n725 [label="Fa"];
-  n726 [label="6"];
-  n727 [label="c"];
-  n728 [label="La"];
-  n728 [label="La"];
-  n729 [label="6"];
-  n730 [label="c"];
-  n731 [label="Silence"];
-  n731 [label="Silence"];
-  n732 [label="b"];
+  n247 [label="Silence"];
+  n247 [label="Silence"];
+  n248 [label="n"];
+  n249 [label="NOTE_LIST"];
+  n249 [label="NOTE_LIST"];
+  n250 [label="Silence"];
+  n250 [label="Silence"];
+  n251 [label="b"];
+  n252 [label="Mi"];
+  n252 [label="Mi"];
+  n253 [label="b"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "Song"
@@ -1029,729 +374,250 @@ digraph {
   n2 -> n6 // "Song" -> "Speed"
   n6 -> n7 // "Speed" -> "120"
   n2 -> n8 // "Song" -> "Track"
-  n8 -> n9 // "Track" -> "\"Ocarina\""
+  n8 -> n9 // "Track" -> "\"Trumpet\""
   n8 -> n10 // "Track" -> "COMPAS_LIST"
   n10 -> n11 // "COMPAS_LIST" -> "NOTE_LIST"
-  n11 -> n12 // "NOTE_LIST" -> "Silence"
-  n12 -> n13 // "Silence" -> "b"
-  n11 -> n14 // "NOTE_LIST" -> "Sol"
-  n14 -> n15 // "Sol" -> "6"
-  n14 -> n16 // "Sol" -> "c"
-  n11 -> n17 // "NOTE_LIST" -> "Fa"
-  n17 -> n18 // "Fa" -> "#"
-  n17 -> n19 // "Fa" -> "6"
-  n11 -> n20 // "NOTE_LIST" -> "Mi"
-  n20 -> n21 // "Mi" -> "6"
-  n11 -> n22 // "NOTE_LIST" -> "Mi"
-  n22 -> n23 // "Mi" -> "6"
+  n11 -> n12 // "NOTE_LIST" -> "La"
+  n12 -> n13 // "La" -> "n"
+  n11 -> n14 // "NOTE_LIST" -> "La"
+  n14 -> n15 // "La" -> "n"
+  n11 -> n16 // "NOTE_LIST" -> "La"
+  n16 -> n17 // "La" -> "n"
+  n11 -> n18 // "NOTE_LIST" -> "Fa"
+  n18 -> n19 // "Fa" -> "c"
+  n18 -> n20 // "Fa" -> "*"
+  n11 -> n21 // "NOTE_LIST" -> "Do"
+  n21 -> n22 // "Do" -> "6"
+  n21 -> n23 // "Do" -> "sc"
   n10 -> n24 // "COMPAS_LIST" -> "NOTE_LIST"
-  n24 -> n25 // "NOTE_LIST" -> "Fa"
-  n25 -> n26 // "Fa" -> "#"
-  n25 -> n27 // "Fa" -> "6"
-  n25 -> n28 // "Fa" -> "b"
-  n24 -> n29 // "NOTE_LIST" -> "Silence"
-  n29 -> n30 // "Silence" -> "b"
-  n10 -> n31 // "COMPAS_LIST" -> "NOTE_LIST"
-  n31 -> n32 // "NOTE_LIST" -> "Silence"
-  n32 -> n33 // "Silence" -> "n"
-  n32 -> n34 // "Silence" -> "*"
-  n31 -> n35 // "NOTE_LIST" -> "La"
-  n35 -> n36 // "La" -> "c"
-  n31 -> n37 // "NOTE_LIST" -> "Sol"
-  n37 -> n38 // "Sol" -> "6"
-  n31 -> n39 // "NOTE_LIST" -> "Fa"
-  n39 -> n40 // "Fa" -> "#"
-  n39 -> n41 // "Fa" -> "6"
-  n31 -> n42 // "NOTE_LIST" -> "Mi"
+  n24 -> n25 // "NOTE_LIST" -> "La"
+  n25 -> n26 // "La" -> "n"
+  n24 -> n27 // "NOTE_LIST" -> "Fa"
+  n27 -> n28 // "Fa" -> "c"
+  n27 -> n29 // "Fa" -> "*"
+  n24 -> n30 // "NOTE_LIST" -> "Do"
+  n30 -> n31 // "Do" -> "6"
+  n30 -> n32 // "Do" -> "sc"
+  n24 -> n33 // "NOTE_LIST" -> "La"
+  n33 -> n34 // "La" -> "b"
+  n10 -> n35 // "COMPAS_LIST" -> "NOTE_LIST"
+  n35 -> n36 // "NOTE_LIST" -> "Mi"
+  n36 -> n37 // "Mi" -> "6"
+  n36 -> n38 // "Mi" -> "n"
+  n35 -> n39 // "NOTE_LIST" -> "Mi"
+  n39 -> n40 // "Mi" -> "6"
+  n39 -> n41 // "Mi" -> "n"
+  n35 -> n42 // "NOTE_LIST" -> "Mi"
   n42 -> n43 // "Mi" -> "6"
-  n31 -> n44 // "NOTE_LIST" -> "Mi"
-  n44 -> n45 // "Mi" -> "6"
-  n10 -> n46 // "COMPAS_LIST" -> "NOTE_LIST"
-  n46 -> n47 // "NOTE_LIST" -> "Silence"
-  n46 -> n48 // "NOTE_LIST" -> "Fa"
-  n48 -> n49 // "Fa" -> "#"
-  n48 -> n50 // "Fa" -> "6"
-  n48 -> n51 // "Fa" -> "n"
-  n48 -> n52 // "Fa" -> "*"
-  n46 -> n53 // "NOTE_LIST" -> "Re"
-  n53 -> n54 // "Re" -> "6"
-  n53 -> n55 // "Re" -> "n"
-  n46 -> n56 // "NOTE_LIST" -> "Mi"
-  n56 -> n57 // "Mi" -> "6"
-  n56 -> n58 // "Mi" -> "c"
-  n46 -> n59 // "NOTE_LIST" -> "La"
-  n59 -> n60 // "La" -> "c"
-  n10 -> n61 // "COMPAS_LIST" -> "NOTE_LIST"
-  n61 -> n62 // "NOTE_LIST" -> "Silence"
-  n62 -> n63 // "Silence" -> "b"
-  n62 -> n64 // "Silence" -> "*"
-  n61 -> n65 // "NOTE_LIST" -> "Silence"
-  n65 -> n66 // "Silence" -> "c"
-  n61 -> n67 // "NOTE_LIST" -> "La"
-  n67 -> n68 // "La" -> "c"
-  n10 -> n69 // "COMPAS_LIST" -> "NOTE_LIST"
-  n69 -> n70 // "NOTE_LIST" -> "Mi"
-  n70 -> n71 // "Mi" -> "6"
-  n70 -> n72 // "Mi" -> "n"
-  n69 -> n73 // "NOTE_LIST" -> "Fa"
-  n73 -> n74 // "Fa" -> "#"
-  n73 -> n75 // "Fa" -> "6"
-  n73 -> n76 // "Fa" -> "c"
-  n69 -> n77 // "NOTE_LIST" -> "Sol"
-  n77 -> n78 // "Sol" -> "6"
-  n77 -> n79 // "Sol" -> "n"
-  n77 -> n80 // "Sol" -> "*"
-  n69 -> n81 // "NOTE_LIST" -> "Mi"
-  n81 -> n82 // "Mi" -> "6"
-  n81 -> n83 // "Mi" -> "c"
-  n69 -> n84 // "NOTE_LIST" -> "Do"
-  n84 -> n85 // "Do" -> "#"
-  n84 -> n86 // "Do" -> "6"
-  n84 -> n87 // "Do" -> "c"
-  n10 -> n88 // "COMPAS_LIST" -> "NOTE_LIST"
-  n88 -> n89 // "NOTE_LIST" -> "Do"
-  n89 -> n90 // "Do" -> "#"
-  n89 -> n91 // "Do" -> "6"
-  n89 -> n92 // "Do" -> "c"
-  n88 -> n93 // "NOTE_LIST" -> "Re"
-  n93 -> n94 // "Re" -> "6"
-  n93 -> n95 // "Re" -> "n"
-  n93 -> n96 // "Re" -> "*"
-  n88 -> n97 // "NOTE_LIST" -> "Mi"
-  n97 -> n98 // "Mi" -> "6"
-  n97 -> n99 // "Mi" -> "n"
-  n88 -> n100 // "NOTE_LIST" -> "La"
-  n100 -> n101 // "La" -> "c"
-  n88 -> n102 // "NOTE_LIST" -> "La"
-  n102 -> n103 // "La" -> "c"
-  n10 -> n104 // "COMPAS_LIST" -> "NOTE_LIST"
-  n104 -> n105 // "NOTE_LIST" -> "La"
-  n105 -> n106 // "La" -> "c"
-  n104 -> n107 // "NOTE_LIST" -> "Fa"
-  n107 -> n108 // "Fa" -> "#"
-  n107 -> n109 // "Fa" -> "6"
-  n107 -> n110 // "Fa" -> "n"
-  n107 -> n111 // "Fa" -> "*"
-  n104 -> n112 // "NOTE_LIST" -> "Fa"
-  n112 -> n113 // "Fa" -> "#"
-  n112 -> n114 // "Fa" -> "6"
-  n112 -> n115 // "Fa" -> "b"
-  n10 -> n116 // "COMPAS_LIST" -> "NOTE_LIST"
-  n116 -> n117 // "NOTE_LIST" -> "Silence"
-  n117 -> n118 // "Silence" -> "b"
-  n116 -> n119 // "NOTE_LIST" -> "Sol"
-  n119 -> n120 // "Sol" -> "6"
-  n119 -> n121 // "Sol" -> "c"
-  n116 -> n122 // "NOTE_LIST" -> "Fa"
-  n122 -> n123 // "Fa" -> "#"
-  n122 -> n124 // "Fa" -> "6"
-  n122 -> n125 // "Fa" -> "c"
-  n116 -> n126 // "NOTE_LIST" -> "Mi"
-  n126 -> n127 // "Mi" -> "6"
-  n126 -> n128 // "Mi" -> "c"
-  n116 -> n129 // "NOTE_LIST" -> "Mi"
-  n129 -> n130 // "Mi" -> "6"
-  n129 -> n131 // "Mi" -> "c"
-  n10 -> n132 // "COMPAS_LIST" -> "NOTE_LIST"
-  n132 -> n133 // "NOTE_LIST" -> "Fa"
-  n133 -> n134 // "Fa" -> "#"
-  n133 -> n135 // "Fa" -> "6"
-  n133 -> n136 // "Fa" -> "b"
-  n132 -> n137 // "NOTE_LIST" -> "Silence"
-  n137 -> n138 // "Silence" -> "b"
-  n10 -> n139 // "COMPAS_LIST" -> "NOTE_LIST"
-  n139 -> n140 // "NOTE_LIST" -> "Silence"
-  n140 -> n141 // "Silence" -> "n"
-  n139 -> n142 // "NOTE_LIST" -> "Silence"
-  n142 -> n143 // "Silence" -> "c"
-  n139 -> n144 // "NOTE_LIST" -> "La"
-  n144 -> n145 // "La" -> "c"
-  n139 -> n146 // "NOTE_LIST" -> "Sol"
-  n146 -> n147 // "Sol" -> "6"
-  n146 -> n148 // "Sol" -> "c"
-  n139 -> n149 // "NOTE_LIST" -> "Fa"
-  n149 -> n150 // "Fa" -> "#"
-  n149 -> n151 // "Fa" -> "6"
-  n149 -> n152 // "Fa" -> "c"
-  n139 -> n153 // "NOTE_LIST" -> "Mi"
-  n153 -> n154 // "Mi" -> "6"
-  n153 -> n155 // "Mi" -> "c"
-  n139 -> n156 // "NOTE_LIST" -> "Mi"
-  n156 -> n157 // "Mi" -> "6"
-  n156 -> n158 // "Mi" -> "c"
-  n10 -> n159 // "COMPAS_LIST" -> "NOTE_LIST"
-  n159 -> n160 // "NOTE_LIST" -> "Silence"
-  n160 -> n161 // "Silence" -> "n"
-  n159 -> n162 // "NOTE_LIST" -> "Fa"
-  n162 -> n163 // "Fa" -> "#"
-  n162 -> n164 // "Fa" -> "6"
-  n162 -> n165 // "Fa" -> "c"
-  n159 -> n166 // "NOTE_LIST" -> "Re"
-  n166 -> n167 // "Re" -> "6"
-  n166 -> n168 // "Re" -> "c"
-  n159 -> n169 // "NOTE_LIST" -> "Silence"
-  n169 -> n170 // "Silence" -> "n"
-  n159 -> n171 // "NOTE_LIST" -> "Mi"
-  n171 -> n172 // "Mi" -> "6"
-  n171 -> n173 // "Mi" -> "c"
-  n159 -> n174 // "NOTE_LIST" -> "La"
-  n174 -> n175 // "La" -> "c"
-  n10 -> n176 // "COMPAS_LIST" -> "NOTE_LIST"
-  n176 -> n177 // "NOTE_LIST" -> "Silence"
-  n177 -> n178 // "Silence" -> "b"
-  n176 -> n179 // "NOTE_LIST" -> "Silence"
-  n179 -> n180 // "Silence" -> "b"
-  n10 -> n181 // "COMPAS_LIST" -> "NOTE_LIST"
-  n181 -> n182 // "NOTE_LIST" -> "Mi"
-  n182 -> n183 // "Mi" -> "6"
-  n182 -> n184 // "Mi" -> "n"
-  n181 -> n185 // "NOTE_LIST" -> "Fa"
-  n185 -> n186 // "Fa" -> "#"
-  n185 -> n187 // "Fa" -> "6"
-  n185 -> n188 // "Fa" -> "c"
-  n181 -> n189 // "NOTE_LIST" -> "Sol"
-  n189 -> n190 // "Sol" -> "6"
-  n189 -> n191 // "Sol" -> "c"
-  n181 -> n192 // "NOTE_LIST" -> "Silence"
-  n192 -> n193 // "Silence" -> "n"
-  n181 -> n194 // "NOTE_LIST" -> "Mi"
-  n194 -> n195 // "Mi" -> "6"
-  n194 -> n196 // "Mi" -> "c"
-  n181 -> n197 // "NOTE_LIST" -> "Do"
-  n197 -> n198 // "Do" -> "#"
-  n197 -> n199 // "Do" -> "6"
-  n197 -> n200 // "Do" -> "c"
-  n10 -> n201 // "COMPAS_LIST" -> "NOTE_LIST"
-  n201 -> n202 // "NOTE_LIST" -> "Silence"
-  n202 -> n203 // "Silence" -> "n"
-  n201 -> n204 // "NOTE_LIST" -> "Re"
-  n204 -> n205 // "Re" -> "6"
-  n204 -> n206 // "Re" -> "c"
-  n201 -> n207 // "NOTE_LIST" -> "Mi"
-  n207 -> n208 // "Mi" -> "6"
-  n207 -> n209 // "Mi" -> "c"
-  n201 -> n210 // "NOTE_LIST" -> "Silence"
-  n210 -> n211 // "Silence" -> "c"
-  n201 -> n212 // "NOTE_LIST" -> "La"
-  n212 -> n213 // "La" -> "c"
-  n201 -> n214 // "NOTE_LIST" -> "Re"
-  n214 -> n215 // "Re" -> "6"
-  n214 -> n216 // "Re" -> "c"
-  n201 -> n217 // "NOTE_LIST" -> "Mi"
-  n217 -> n218 // "Mi" -> "6"
-  n217 -> n219 // "Mi" -> "c"
-  n10 -> n220 // "COMPAS_LIST" -> "NOTE_LIST"
-  n220 -> n221 // "NOTE_LIST" -> "Fa"
-  n221 -> n222 // "Fa" -> "6"
-  n221 -> n223 // "Fa" -> "c"
-  n220 -> n224 // "NOTE_LIST" -> "Mi"
-  n224 -> n225 // "Mi" -> "6"
-  n224 -> n226 // "Mi" -> "c"
-  n220 -> n227 // "NOTE_LIST" -> "Re"
-  n227 -> n228 // "Re" -> "6"
-  n227 -> n229 // "Re" -> "c"
-  n220 -> n230 // "NOTE_LIST" -> "Do"
-  n230 -> n231 // "Do" -> "6"
-  n230 -> n232 // "Do" -> "c"
-  n220 -> n233 // "NOTE_LIST" -> "Silence"
-  n233 -> n234 // "Silence" -> "n"
-  n220 -> n235 // "NOTE_LIST" -> "La"
-  n235 -> n236 // "La" -> "c"
-  n220 -> n237 // "NOTE_LIST" -> "Si"
-  n237 -> n238 // "Si" -> "&"
-  n237 -> n239 // "Si" -> "c"
-  n10 -> n240 // "COMPAS_LIST" -> "NOTE_LIST"
-  n240 -> n241 // "NOTE_LIST" -> "Do"
-  n241 -> n242 // "Do" -> "6"
-  n241 -> n243 // "Do" -> "n"
-  n240 -> n244 // "NOTE_LIST" -> "Fa"
-  n244 -> n245 // "Fa" -> "6"
-  n244 -> n246 // "Fa" -> "n"
-  n240 -> n247 // "NOTE_LIST" -> "Mi"
-  n247 -> n248 // "Mi" -> "6"
-  n247 -> n249 // "Mi" -> "c"
-  n240 -> n250 // "NOTE_LIST" -> "Re"
-  n250 -> n251 // "Re" -> "6"
-  n250 -> n252 // "Re" -> "c"
-  n240 -> n253 // "NOTE_LIST" -> "Re"
-  n253 -> n254 // "Re" -> "6"
-  n253 -> n255 // "Re" -> "c"
-  n240 -> n256 // "NOTE_LIST" -> "Do"
-  n256 -> n257 // "Do" -> "6"
-  n256 -> n258 // "Do" -> "c"
-  n10 -> n259 // "COMPAS_LIST" -> "NOTE_LIST"
-  n259 -> n260 // "NOTE_LIST" -> "Re"
-  n260 -> n261 // "Re" -> "6"
-  n260 -> n262 // "Re" -> "c"
-  n259 -> n263 // "NOTE_LIST" -> "Do"
-  n263 -> n264 // "Do" -> "6"
-  n263 -> n265 // "Do" -> "c"
-  n259 -> n266 // "NOTE_LIST" -> "Do"
-  n266 -> n267 // "Do" -> "6"
-  n266 -> n268 // "Do" -> "n"
-  n259 -> n269 // "NOTE_LIST" -> "Do"
-  n269 -> n270 // "Do" -> "6"
-  n269 -> n271 // "Do" -> "n"
-  n259 -> n272 // "NOTE_LIST" -> "La"
-  n272 -> n273 // "La" -> "c"
-  n259 -> n274 // "NOTE_LIST" -> "Si"
-  n274 -> n275 // "Si" -> "&"
-  n274 -> n276 // "Si" -> "c"
-  n10 -> n277 // "COMPAS_LIST" -> "NOTE_LIST"
-  n277 -> n278 // "NOTE_LIST" -> "Do"
-  n278 -> n279 // "Do" -> "6"
-  n278 -> n280 // "Do" -> "n"
-  n277 -> n281 // "NOTE_LIST" -> "Fa"
-  n281 -> n282 // "Fa" -> "6"
-  n281 -> n283 // "Fa" -> "n"
-  n277 -> n284 // "NOTE_LIST" -> "Sol"
-  n284 -> n285 // "Sol" -> "6"
-  n284 -> n286 // "Sol" -> "c"
-  n277 -> n287 // "NOTE_LIST" -> "Fa"
-  n287 -> n288 // "Fa" -> "6"
-  n287 -> n289 // "Fa" -> "c"
-  n277 -> n290 // "NOTE_LIST" -> "Mi"
-  n290 -> n291 // "Mi" -> "6"
-  n290 -> n292 // "Mi" -> "c"
-  n277 -> n293 // "NOTE_LIST" -> "Re"
-  n293 -> n294 // "Re" -> "6"
-  n293 -> n295 // "Re" -> "c"
-  n10 -> n296 // "COMPAS_LIST" -> "NOTE_LIST"
-  n296 -> n297 // "NOTE_LIST" -> "Re"
-  n297 -> n298 // "Re" -> "6"
-  n297 -> n299 // "Re" -> "c"
-  n296 -> n300 // "NOTE_LIST" -> "Mi"
-  n300 -> n301 // "Mi" -> "6"
-  n300 -> n302 // "Mi" -> "c"
-  n296 -> n303 // "NOTE_LIST" -> "Fa"
-  n303 -> n304 // "Fa" -> "6"
-  n303 -> n305 // "Fa" -> "n"
-  n296 -> n306 // "NOTE_LIST" -> "Fa"
-  n306 -> n307 // "Fa" -> "6"
-  n306 -> n308 // "Fa" -> "n"
-  n296 -> n309 // "NOTE_LIST" -> "Sol"
-  n309 -> n310 // "Sol" -> "6"
-  n309 -> n311 // "Sol" -> "c"
-  n296 -> n312 // "NOTE_LIST" -> "La"
-  n312 -> n313 // "La" -> "6"
-  n312 -> n314 // "La" -> "c"
-  n10 -> n315 // "COMPAS_LIST" -> "NOTE_LIST"
-  n315 -> n316 // "NOTE_LIST" -> "Si"
-  n316 -> n317 // "Si" -> "&"
-  n316 -> n318 // "Si" -> "6"
-  n316 -> n319 // "Si" -> "c"
-  n315 -> n320 // "NOTE_LIST" -> "Si"
-  n320 -> n321 // "Si" -> "&"
-  n320 -> n322 // "Si" -> "6"
-  n320 -> n323 // "Si" -> "c"
-  n315 -> n324 // "NOTE_LIST" -> "La"
-  n324 -> n325 // "La" -> "6"
-  n324 -> n326 // "La" -> "n"
-  n315 -> n327 // "NOTE_LIST" -> "Sol"
-  n327 -> n328 // "Sol" -> "6"
-  n327 -> n329 // "Sol" -> "n"
-  n315 -> n330 // "NOTE_LIST" -> "Fa"
-  n330 -> n331 // "Fa" -> "6"
-  n330 -> n332 // "Fa" -> "c"
-  n315 -> n333 // "NOTE_LIST" -> "Sol"
-  n333 -> n334 // "Sol" -> "6"
-  n333 -> n335 // "Sol" -> "c"
-  n10 -> n336 // "COMPAS_LIST" -> "NOTE_LIST"
-  n336 -> n337 // "NOTE_LIST" -> "La"
-  n337 -> n338 // "La" -> "6"
-  n337 -> n339 // "La" -> "c"
-  n336 -> n340 // "NOTE_LIST" -> "La"
-  n340 -> n341 // "La" -> "6"
-  n340 -> n342 // "La" -> "c"
-  n336 -> n343 // "NOTE_LIST" -> "Sol"
-  n343 -> n344 // "Sol" -> "6"
-  n343 -> n345 // "Sol" -> "n"
-  n336 -> n346 // "NOTE_LIST" -> "Fa"
-  n346 -> n347 // "Fa" -> "6"
-  n346 -> n348 // "Fa" -> "n"
-  n336 -> n349 // "NOTE_LIST" -> "Re"
-  n349 -> n350 // "Re" -> "6"
-  n349 -> n351 // "Re" -> "c"
-  n336 -> n352 // "NOTE_LIST" -> "Do"
-  n352 -> n353 // "Do" -> "6"
-  n352 -> n354 // "Do" -> "c"
-  n10 -> n355 // "COMPAS_LIST" -> "NOTE_LIST"
-  n355 -> n356 // "NOTE_LIST" -> "Re"
-  n356 -> n357 // "Re" -> "6"
-  n356 -> n358 // "Re" -> "c"
-  n355 -> n359 // "NOTE_LIST" -> "Fa"
-  n359 -> n360 // "Fa" -> "6"
-  n359 -> n361 // "Fa" -> "c"
-  n355 -> n362 // "NOTE_LIST" -> "Fa"
-  n362 -> n363 // "Fa" -> "6"
-  n362 -> n364 // "Fa" -> "c"
-  n355 -> n365 // "NOTE_LIST" -> "Mi"
-  n365 -> n366 // "Mi" -> "6"
-  n365 -> n367 // "Mi" -> "c"
-  n355 -> n368 // "NOTE_LIST" -> "Silence"
-  n368 -> n369 // "Silence" -> "c"
-  n355 -> n370 // "NOTE_LIST" -> "Mi"
-  n370 -> n371 // "Mi" -> "6"
-  n370 -> n372 // "Mi" -> "c"
-  n355 -> n373 // "NOTE_LIST" -> "Fa"
-  n373 -> n374 // "Fa" -> "#"
-  n373 -> n375 // "Fa" -> "6"
-  n373 -> n376 // "Fa" -> "c"
-  n355 -> n377 // "NOTE_LIST" -> "Fa"
-  n377 -> n378 // "Fa" -> "#"
-  n377 -> n379 // "Fa" -> "6"
-  n377 -> n380 // "Fa" -> "c"
-  n2 -> n381 // "Song" -> "Track"
-  n381 -> n382 // "Track" -> "\"Celesta\""
-  n381 -> n383 // "Track" -> "COMPAS_LIST"
-  n383 -> n384 // "COMPAS_LIST" -> "NOTE_LIST"
-  n384 -> n385 // "NOTE_LIST" -> "Silence"
-  n385 -> n386 // "Silence" -> "r"
-  n383 -> n387 // "COMPAS_LIST" -> "NOTE_LIST"
-  n387 -> n388 // "NOTE_LIST" -> "La"
-  n388 -> n389 // "La" -> "c"
-  n387 -> n390 // "NOTE_LIST" -> "Re"
-  n390 -> n391 // "Re" -> "6"
-  n387 -> n392 // "NOTE_LIST" -> "Fa"
-  n392 -> n393 // "Fa" -> "#"
-  n392 -> n394 // "Fa" -> "6"
-  n387 -> n395 // "NOTE_LIST" -> "Re"
-  n395 -> n396 // "Re" -> "6"
-  n387 -> n397 // "NOTE_LIST" -> "Si"
-  n387 -> n398 // "NOTE_LIST" -> "Re"
-  n398 -> n399 // "Re" -> "6"
-  n387 -> n400 // "NOTE_LIST" -> "Fa"
-  n400 -> n401 // "Fa" -> "#"
-  n400 -> n402 // "Fa" -> "6"
-  n387 -> n403 // "NOTE_LIST" -> "Re"
-  n403 -> n404 // "Re" -> "6"
-  n383 -> n405 // "COMPAS_LIST" -> "NOTE_LIST"
-  n405 -> n406 // "NOTE_LIST" -> "La"
-  n405 -> n407 // "NOTE_LIST" -> "Re"
-  n407 -> n408 // "Re" -> "6"
-  n405 -> n409 // "NOTE_LIST" -> "Fa"
-  n409 -> n410 // "Fa" -> "#"
-  n409 -> n411 // "Fa" -> "6"
-  n405 -> n412 // "NOTE_LIST" -> "Re"
-  n412 -> n413 // "Re" -> "6"
-  n405 -> n414 // "NOTE_LIST" -> "Si"
-  n405 -> n415 // "NOTE_LIST" -> "Re"
-  n415 -> n416 // "Re" -> "6"
-  n405 -> n417 // "NOTE_LIST" -> "Fa"
-  n417 -> n418 // "Fa" -> "#"
-  n417 -> n419 // "Fa" -> "6"
-  n405 -> n420 // "NOTE_LIST" -> "Re"
-  n420 -> n421 // "Re" -> "6"
-  n383 -> n422 // "COMPAS_LIST" -> "NOTE_LIST"
-  n422 -> n423 // "NOTE_LIST" -> "La"
-  n423 -> n424 // "La" -> "c"
-  n422 -> n425 // "NOTE_LIST" -> "Re"
-  n425 -> n426 // "Re" -> "6"
-  n425 -> n427 // "Re" -> "c"
-  n422 -> n428 // "NOTE_LIST" -> "Fa"
-  n428 -> n429 // "Fa" -> "#"
-  n428 -> n430 // "Fa" -> "6"
-  n428 -> n431 // "Fa" -> "c"
-  n422 -> n432 // "NOTE_LIST" -> "Re"
-  n432 -> n433 // "Re" -> "6"
-  n432 -> n434 // "Re" -> "c"
-  n422 -> n435 // "NOTE_LIST" -> "Si"
-  n435 -> n436 // "Si" -> "c"
-  n422 -> n437 // "NOTE_LIST" -> "Re"
-  n437 -> n438 // "Re" -> "6"
-  n437 -> n439 // "Re" -> "c"
-  n422 -> n440 // "NOTE_LIST" -> "Fa"
-  n440 -> n441 // "Fa" -> "#"
-  n440 -> n442 // "Fa" -> "6"
-  n440 -> n443 // "Fa" -> "c"
-  n422 -> n444 // "NOTE_LIST" -> "Re"
-  n444 -> n445 // "Re" -> "6"
-  n444 -> n446 // "Re" -> "c"
-  n383 -> n447 // "COMPAS_LIST" -> "NOTE_LIST"
-  n447 -> n448 // "NOTE_LIST" -> "La"
-  n448 -> n449 // "La" -> "c"
-  n447 -> n450 // "NOTE_LIST" -> "Re"
-  n450 -> n451 // "Re" -> "6"
-  n450 -> n452 // "Re" -> "c"
-  n447 -> n453 // "NOTE_LIST" -> "Fa"
-  n453 -> n454 // "Fa" -> "#"
-  n453 -> n455 // "Fa" -> "6"
-  n453 -> n456 // "Fa" -> "c"
-  n447 -> n457 // "NOTE_LIST" -> "Re"
-  n457 -> n458 // "Re" -> "6"
-  n457 -> n459 // "Re" -> "c"
-  n447 -> n460 // "NOTE_LIST" -> "Si"
-  n460 -> n461 // "Si" -> "c"
-  n447 -> n462 // "NOTE_LIST" -> "Re"
-  n462 -> n463 // "Re" -> "6"
-  n462 -> n464 // "Re" -> "c"
-  n447 -> n465 // "NOTE_LIST" -> "Fa"
-  n465 -> n466 // "Fa" -> "#"
-  n465 -> n467 // "Fa" -> "6"
-  n465 -> n468 // "Fa" -> "c"
-  n447 -> n469 // "NOTE_LIST" -> "Re"
-  n469 -> n470 // "Re" -> "6"
-  n469 -> n471 // "Re" -> "c"
-  n383 -> n472 // "COMPAS_LIST" -> "NOTE_LIST"
-  n472 -> n473 // "NOTE_LIST" -> "Si"
-  n473 -> n474 // "Si" -> "c"
-  n472 -> n475 // "NOTE_LIST" -> "Mi"
-  n475 -> n476 // "Mi" -> "6"
-  n475 -> n477 // "Mi" -> "c"
-  n472 -> n478 // "NOTE_LIST" -> "Sol"
-  n478 -> n479 // "Sol" -> "6"
-  n478 -> n480 // "Sol" -> "c"
-  n472 -> n481 // "NOTE_LIST" -> "Mi"
-  n481 -> n482 // "Mi" -> "6"
-  n481 -> n483 // "Mi" -> "c"
-  n472 -> n484 // "NOTE_LIST" -> "Si"
-  n484 -> n485 // "Si" -> "c"
-  n472 -> n486 // "NOTE_LIST" -> "Mi"
-  n486 -> n487 // "Mi" -> "6"
-  n486 -> n488 // "Mi" -> "c"
-  n472 -> n489 // "NOTE_LIST" -> "Sol"
-  n489 -> n490 // "Sol" -> "6"
-  n489 -> n491 // "Sol" -> "c"
-  n472 -> n492 // "NOTE_LIST" -> "Mi"
-  n492 -> n493 // "Mi" -> "6"
-  n492 -> n494 // "Mi" -> "c"
-  n383 -> n495 // "COMPAS_LIST" -> "NOTE_LIST"
-  n495 -> n496 // "NOTE_LIST" -> "La"
-  n496 -> n497 // "La" -> "c"
-  n495 -> n498 // "NOTE_LIST" -> "Do"
-  n498 -> n499 // "Do" -> "#"
-  n498 -> n500 // "Do" -> "6"
-  n498 -> n501 // "Do" -> "c"
-  n495 -> n502 // "NOTE_LIST" -> "Mi"
-  n502 -> n503 // "Mi" -> "6"
-  n502 -> n504 // "Mi" -> "c"
-  n495 -> n505 // "NOTE_LIST" -> "Do"
-  n505 -> n506 // "Do" -> "#"
-  n505 -> n507 // "Do" -> "6"
-  n505 -> n508 // "Do" -> "c"
-  n495 -> n509 // "NOTE_LIST" -> "La"
-  n509 -> n510 // "La" -> "c"
-  n495 -> n511 // "NOTE_LIST" -> "Do"
-  n511 -> n512 // "Do" -> "#"
-  n511 -> n513 // "Do" -> "6"
-  n511 -> n514 // "Do" -> "c"
-  n495 -> n515 // "NOTE_LIST" -> "Mi"
-  n515 -> n516 // "Mi" -> "6"
-  n515 -> n517 // "Mi" -> "c"
-  n495 -> n518 // "NOTE_LIST" -> "Do"
-  n518 -> n519 // "Do" -> "#"
-  n518 -> n520 // "Do" -> "6"
-  n518 -> n521 // "Do" -> "c"
-  n383 -> n522 // "COMPAS_LIST" -> "NOTE_LIST"
-  n522 -> n523 // "NOTE_LIST" -> "La"
-  n523 -> n524 // "La" -> "c"
-  n522 -> n525 // "NOTE_LIST" -> "Re"
-  n525 -> n526 // "Re" -> "6"
-  n525 -> n527 // "Re" -> "c"
-  n522 -> n528 // "NOTE_LIST" -> "Fa"
-  n528 -> n529 // "Fa" -> "#"
-  n528 -> n530 // "Fa" -> "6"
-  n528 -> n531 // "Fa" -> "c"
-  n522 -> n532 // "NOTE_LIST" -> "Re"
-  n532 -> n533 // "Re" -> "6"
-  n532 -> n534 // "Re" -> "c"
-  n522 -> n535 // "NOTE_LIST" -> "Si"
-  n535 -> n536 // "Si" -> "c"
-  n522 -> n537 // "NOTE_LIST" -> "Re"
-  n537 -> n538 // "Re" -> "6"
-  n537 -> n539 // "Re" -> "c"
-  n522 -> n540 // "NOTE_LIST" -> "Fa"
-  n540 -> n541 // "Fa" -> "#"
-  n540 -> n542 // "Fa" -> "6"
-  n540 -> n543 // "Fa" -> "c"
-  n522 -> n544 // "NOTE_LIST" -> "Re"
-  n544 -> n545 // "Re" -> "6"
-  n544 -> n546 // "Re" -> "c"
-  n383 -> n547 // "COMPAS_LIST" -> "NOTE_LIST"
-  n547 -> n548 // "NOTE_LIST" -> "La"
-  n548 -> n549 // "La" -> "c"
-  n547 -> n550 // "NOTE_LIST" -> "Re"
-  n550 -> n551 // "Re" -> "6"
-  n550 -> n552 // "Re" -> "c"
-  n547 -> n553 // "NOTE_LIST" -> "Fa"
-  n553 -> n554 // "Fa" -> "#"
-  n553 -> n555 // "Fa" -> "6"
-  n553 -> n556 // "Fa" -> "c"
-  n547 -> n557 // "NOTE_LIST" -> "Re"
-  n557 -> n558 // "Re" -> "6"
-  n557 -> n559 // "Re" -> "c"
-  n547 -> n560 // "NOTE_LIST" -> "Si"
-  n560 -> n561 // "Si" -> "c"
-  n547 -> n562 // "NOTE_LIST" -> "Re"
-  n562 -> n563 // "Re" -> "6"
-  n562 -> n564 // "Re" -> "c"
-  n547 -> n565 // "NOTE_LIST" -> "Fa"
-  n565 -> n566 // "Fa" -> "#"
-  n565 -> n567 // "Fa" -> "6"
-  n565 -> n568 // "Fa" -> "c"
-  n547 -> n569 // "NOTE_LIST" -> "Re"
-  n569 -> n570 // "Re" -> "6"
-  n569 -> n571 // "Re" -> "c"
-  n383 -> n572 // "COMPAS_LIST" -> "NOTE_LIST"
-  n572 -> n573 // "NOTE_LIST" -> "La"
-  n573 -> n574 // "La" -> "c"
-  n572 -> n575 // "NOTE_LIST" -> "Re"
-  n575 -> n576 // "Re" -> "6"
-  n575 -> n577 // "Re" -> "c"
-  n572 -> n578 // "NOTE_LIST" -> "Fa"
-  n578 -> n579 // "Fa" -> "#"
-  n578 -> n580 // "Fa" -> "6"
-  n578 -> n581 // "Fa" -> "c"
-  n572 -> n582 // "NOTE_LIST" -> "Re"
-  n582 -> n583 // "Re" -> "6"
-  n582 -> n584 // "Re" -> "c"
-  n572 -> n585 // "NOTE_LIST" -> "Si"
-  n585 -> n586 // "Si" -> "c"
-  n572 -> n587 // "NOTE_LIST" -> "Re"
-  n587 -> n588 // "Re" -> "6"
-  n587 -> n589 // "Re" -> "c"
-  n572 -> n590 // "NOTE_LIST" -> "Fa"
-  n590 -> n591 // "Fa" -> "#"
-  n590 -> n592 // "Fa" -> "6"
-  n590 -> n593 // "Fa" -> "c"
-  n572 -> n594 // "NOTE_LIST" -> "Re"
-  n594 -> n595 // "Re" -> "6"
-  n594 -> n596 // "Re" -> "c"
-  n383 -> n597 // "COMPAS_LIST" -> "NOTE_LIST"
-  n597 -> n598 // "NOTE_LIST" -> "La"
-  n598 -> n599 // "La" -> "c"
-  n597 -> n600 // "NOTE_LIST" -> "Re"
-  n600 -> n601 // "Re" -> "6"
-  n600 -> n602 // "Re" -> "c"
-  n597 -> n603 // "NOTE_LIST" -> "Fa"
-  n603 -> n604 // "Fa" -> "#"
-  n603 -> n605 // "Fa" -> "6"
-  n603 -> n606 // "Fa" -> "c"
-  n597 -> n607 // "NOTE_LIST" -> "Re"
-  n607 -> n608 // "Re" -> "6"
-  n607 -> n609 // "Re" -> "c"
-  n597 -> n610 // "NOTE_LIST" -> "Si"
-  n610 -> n611 // "Si" -> "c"
-  n597 -> n612 // "NOTE_LIST" -> "Re"
-  n612 -> n613 // "Re" -> "6"
-  n612 -> n614 // "Re" -> "c"
-  n597 -> n615 // "NOTE_LIST" -> "Fa"
-  n615 -> n616 // "Fa" -> "#"
-  n615 -> n617 // "Fa" -> "6"
-  n615 -> n618 // "Fa" -> "c"
-  n597 -> n619 // "NOTE_LIST" -> "Re"
-  n619 -> n620 // "Re" -> "6"
-  n619 -> n621 // "Re" -> "c"
-  n383 -> n622 // "COMPAS_LIST" -> "NOTE_LIST"
-  n622 -> n623 // "NOTE_LIST" -> "La"
-  n623 -> n624 // "La" -> "c"
-  n622 -> n625 // "NOTE_LIST" -> "Re"
-  n625 -> n626 // "Re" -> "6"
-  n625 -> n627 // "Re" -> "c"
-  n622 -> n628 // "NOTE_LIST" -> "Fa"
-  n628 -> n629 // "Fa" -> "#"
-  n628 -> n630 // "Fa" -> "6"
-  n628 -> n631 // "Fa" -> "c"
-  n622 -> n632 // "NOTE_LIST" -> "Re"
-  n632 -> n633 // "Re" -> "6"
-  n632 -> n634 // "Re" -> "c"
-  n622 -> n635 // "NOTE_LIST" -> "Si"
-  n635 -> n636 // "Si" -> "c"
-  n622 -> n637 // "NOTE_LIST" -> "Re"
-  n637 -> n638 // "Re" -> "6"
-  n637 -> n639 // "Re" -> "c"
-  n622 -> n640 // "NOTE_LIST" -> "Fa"
-  n640 -> n641 // "Fa" -> "#"
-  n640 -> n642 // "Fa" -> "6"
-  n640 -> n643 // "Fa" -> "c"
-  n622 -> n644 // "NOTE_LIST" -> "Re"
-  n644 -> n645 // "Re" -> "6"
-  n644 -> n646 // "Re" -> "c"
-  n383 -> n647 // "COMPAS_LIST" -> "NOTE_LIST"
-  n647 -> n648 // "NOTE_LIST" -> "La"
-  n648 -> n649 // "La" -> "c"
-  n647 -> n650 // "NOTE_LIST" -> "Re"
-  n650 -> n651 // "Re" -> "6"
-  n650 -> n652 // "Re" -> "c"
-  n647 -> n653 // "NOTE_LIST" -> "Fa"
-  n653 -> n654 // "Fa" -> "#"
-  n653 -> n655 // "Fa" -> "6"
-  n653 -> n656 // "Fa" -> "c"
-  n647 -> n657 // "NOTE_LIST" -> "Re"
-  n657 -> n658 // "Re" -> "6"
-  n657 -> n659 // "Re" -> "c"
-  n647 -> n660 // "NOTE_LIST" -> "Si"
-  n660 -> n661 // "Si" -> "c"
-  n647 -> n662 // "NOTE_LIST" -> "Re"
-  n662 -> n663 // "Re" -> "6"
-  n662 -> n664 // "Re" -> "c"
-  n647 -> n665 // "NOTE_LIST" -> "Fa"
-  n665 -> n666 // "Fa" -> "#"
-  n665 -> n667 // "Fa" -> "6"
-  n665 -> n668 // "Fa" -> "c"
-  n647 -> n669 // "NOTE_LIST" -> "Re"
-  n669 -> n670 // "Re" -> "6"
-  n669 -> n671 // "Re" -> "c"
-  n383 -> n672 // "COMPAS_LIST" -> "NOTE_LIST"
-  n672 -> n673 // "NOTE_LIST" -> "Si"
-  n673 -> n674 // "Si" -> "c"
-  n672 -> n675 // "NOTE_LIST" -> "Mi"
-  n675 -> n676 // "Mi" -> "6"
-  n675 -> n677 // "Mi" -> "c"
-  n672 -> n678 // "NOTE_LIST" -> "Sol"
-  n678 -> n679 // "Sol" -> "6"
-  n678 -> n680 // "Sol" -> "c"
-  n672 -> n681 // "NOTE_LIST" -> "Mi"
-  n681 -> n682 // "Mi" -> "6"
-  n681 -> n683 // "Mi" -> "c"
-  n672 -> n684 // "NOTE_LIST" -> "Si"
-  n684 -> n685 // "Si" -> "c"
-  n672 -> n686 // "NOTE_LIST" -> "Mi"
-  n686 -> n687 // "Mi" -> "6"
-  n686 -> n688 // "Mi" -> "c"
-  n672 -> n689 // "NOTE_LIST" -> "Sol"
-  n689 -> n690 // "Sol" -> "6"
-  n689 -> n691 // "Sol" -> "c"
-  n672 -> n692 // "NOTE_LIST" -> "Mi"
-  n692 -> n693 // "Mi" -> "6"
-  n692 -> n694 // "Mi" -> "c"
-  n383 -> n695 // "COMPAS_LIST" -> "NOTE_LIST"
-  n695 -> n696 // "NOTE_LIST" -> "La"
-  n696 -> n697 // "La" -> "c"
-  n695 -> n698 // "NOTE_LIST" -> "Mi"
-  n698 -> n699 // "Mi" -> "6"
-  n698 -> n700 // "Mi" -> "c"
-  n695 -> n701 // "NOTE_LIST" -> "Sol"
-  n701 -> n702 // "Sol" -> "6"
-  n701 -> n703 // "Sol" -> "c"
-  n695 -> n704 // "NOTE_LIST" -> "Mi"
-  n704 -> n705 // "Mi" -> "6"
-  n704 -> n706 // "Mi" -> "c"
-  n695 -> n707 // "NOTE_LIST" -> "La"
-  n707 -> n708 // "La" -> "c"
-  n695 -> n709 // "NOTE_LIST" -> "Mi"
-  n709 -> n710 // "Mi" -> "6"
-  n709 -> n711 // "Mi" -> "c"
-  n695 -> n712 // "NOTE_LIST" -> "Sol"
-  n712 -> n713 // "Sol" -> "6"
-  n712 -> n714 // "Sol" -> "c"
-  n695 -> n715 // "NOTE_LIST" -> "Mi"
-  n715 -> n716 // "Mi" -> "6"
-  n715 -> n717 // "Mi" -> "c"
-  n383 -> n718 // "COMPAS_LIST" -> "NOTE_LIST"
-  n718 -> n719 // "NOTE_LIST" -> "Si"
-  n719 -> n720 // "Si" -> "&"
-  n719 -> n721 // "Si" -> "c"
-  n718 -> n722 // "NOTE_LIST" -> "Re"
-  n722 -> n723 // "Re" -> "6"
-  n722 -> n724 // "Re" -> "c"
-  n718 -> n725 // "NOTE_LIST" -> "Fa"
-  n725 -> n726 // "Fa" -> "6"
-  n725 -> n727 // "Fa" -> "c"
-  n718 -> n728 // "NOTE_LIST" -> "La"
-  n728 -> n729 // "La" -> "6"
-  n728 -> n730 // "La" -> "c"
-  n718 -> n731 // "NOTE_LIST" -> "Silence"
-  n731 -> n732 // "Silence" -> "b"
+  n42 -> n44 // "Mi" -> "n"
+  n35 -> n45 // "NOTE_LIST" -> "Fa"
+  n45 -> n46 // "Fa" -> "6"
+  n45 -> n47 // "Fa" -> "c"
+  n45 -> n48 // "Fa" -> "*"
+  n35 -> n49 // "NOTE_LIST" -> "Do"
+  n49 -> n50 // "Do" -> "6"
+  n49 -> n51 // "Do" -> "sc"
+  n10 -> n52 // "COMPAS_LIST" -> "NOTE_LIST"
+  n52 -> n53 // "NOTE_LIST" -> "La"
+  n53 -> n54 // "La" -> "&"
+  n53 -> n55 // "La" -> "n"
+  n52 -> n56 // "NOTE_LIST" -> "Fa"
+  n56 -> n57 // "Fa" -> "c"
+  n56 -> n58 // "Fa" -> "*"
+  n52 -> n59 // "NOTE_LIST" -> "Do"
+  n59 -> n60 // "Do" -> "6"
+  n59 -> n61 // "Do" -> "sc"
+  n52 -> n62 // "NOTE_LIST" -> "La"
+  n62 -> n63 // "La" -> "b"
+  n10 -> n64 // "COMPAS_LIST" -> "NOTE_LIST"
+  n64 -> n65 // "NOTE_LIST" -> "La"
+  n65 -> n66 // "La" -> "6"
+  n65 -> n67 // "La" -> "n"
+  n64 -> n68 // "NOTE_LIST" -> "La"
+  n68 -> n69 // "La" -> "c"
+  n68 -> n70 // "La" -> "*"
+  n64 -> n71 // "NOTE_LIST" -> "La"
+  n71 -> n72 // "La" -> "sc"
+  n64 -> n73 // "NOTE_LIST" -> "La"
+  n73 -> n74 // "La" -> "6"
+  n73 -> n75 // "La" -> "n"
+  n64 -> n76 // "NOTE_LIST" -> "La"
+  n76 -> n77 // "La" -> "&"
+  n76 -> n78 // "La" -> "6"
+  n76 -> n79 // "La" -> "c"
+  n64 -> n80 // "NOTE_LIST" -> "Sol"
+  n80 -> n81 // "Sol" -> "6"
+  n80 -> n82 // "Sol" -> "c"
+  n10 -> n83 // "COMPAS_LIST" -> "NOTE_LIST"
+  n83 -> n84 // "NOTE_LIST" -> "Sol"
+  n84 -> n85 // "Sol" -> "&"
+  n84 -> n86 // "Sol" -> "6"
+  n84 -> n87 // "Sol" -> "sc"
+  n83 -> n88 // "NOTE_LIST" -> "Fa"
+  n88 -> n89 // "Fa" -> "6"
+  n88 -> n90 // "Fa" -> "sc"
+  n83 -> n91 // "NOTE_LIST" -> "Sol"
+  n91 -> n92 // "Sol" -> "&"
+  n91 -> n93 // "Sol" -> "6"
+  n91 -> n94 // "Sol" -> "c"
+  n83 -> n95 // "NOTE_LIST" -> "Silence"
+  n95 -> n96 // "Silence" -> "c"
+  n83 -> n97 // "NOTE_LIST" -> "Si"
+  n97 -> n98 // "Si" -> "&"
+  n97 -> n99 // "Si" -> "c"
+  n83 -> n100 // "NOTE_LIST" -> "Mi"
+  n100 -> n101 // "Mi" -> "&"
+  n100 -> n102 // "Mi" -> "6"
+  n100 -> n103 // "Mi" -> "n"
+  n83 -> n104 // "NOTE_LIST" -> "Re"
+  n104 -> n105 // "Re" -> "6"
+  n104 -> n106 // "Re" -> "c"
+  n83 -> n107 // "NOTE_LIST" -> "Re"
+  n107 -> n108 // "Re" -> "&"
+  n107 -> n109 // "Re" -> "6"
+  n107 -> n110 // "Re" -> "c"
+  n10 -> n111 // "COMPAS_LIST" -> "NOTE_LIST"
+  n111 -> n112 // "NOTE_LIST" -> "Do"
+  n112 -> n113 // "Do" -> "6"
+  n112 -> n114 // "Do" -> "sc"
+  n111 -> n115 // "NOTE_LIST" -> "Si"
+  n111 -> n116 // "NOTE_LIST" -> "Do"
+  n116 -> n117 // "Do" -> "6"
+  n116 -> n118 // "Do" -> "c"
+  n111 -> n119 // "NOTE_LIST" -> "Silence"
+  n119 -> n120 // "Silence" -> "c"
+  n111 -> n121 // "NOTE_LIST" -> "Fa"
+  n121 -> n122 // "Fa" -> "c"
+  n111 -> n123 // "NOTE_LIST" -> "La"
+  n123 -> n124 // "La" -> "&"
+  n123 -> n125 // "La" -> "n"
+  n111 -> n126 // "NOTE_LIST" -> "Fa"
+  n126 -> n127 // "Fa" -> "c"
+  n126 -> n128 // "Fa" -> "*"
+  n111 -> n129 // "NOTE_LIST" -> "La"
+  n129 -> n130 // "La" -> "sc"
+  n10 -> n131 // "COMPAS_LIST" -> "NOTE_LIST"
+  n131 -> n132 // "NOTE_LIST" -> "Do"
+  n132 -> n133 // "Do" -> "6"
+  n132 -> n134 // "Do" -> "n"
+  n131 -> n135 // "NOTE_LIST" -> "La"
+  n135 -> n136 // "La" -> "c"
+  n135 -> n137 // "La" -> "*"
+  n131 -> n138 // "NOTE_LIST" -> "Do"
+  n138 -> n139 // "Do" -> "6"
+  n138 -> n140 // "Do" -> "sc"
+  n131 -> n141 // "NOTE_LIST" -> "Mi"
+  n141 -> n142 // "Mi" -> "6"
+  n141 -> n143 // "Mi" -> "b"
+  n10 -> n144 // "COMPAS_LIST" -> "NOTE_LIST"
+  n144 -> n145 // "NOTE_LIST" -> "La"
+  n145 -> n146 // "La" -> "6"
+  n145 -> n147 // "La" -> "n"
+  n144 -> n148 // "NOTE_LIST" -> "La"
+  n148 -> n149 // "La" -> "c"
+  n148 -> n150 // "La" -> "*"
+  n144 -> n151 // "NOTE_LIST" -> "La"
+  n151 -> n152 // "La" -> "sc"
+  n144 -> n153 // "NOTE_LIST" -> "La"
+  n153 -> n154 // "La" -> "6"
+  n153 -> n155 // "La" -> "n"
+  n144 -> n156 // "NOTE_LIST" -> "La"
+  n156 -> n157 // "La" -> "&"
+  n156 -> n158 // "La" -> "6"
+  n156 -> n159 // "La" -> "c"
+  n144 -> n160 // "NOTE_LIST" -> "Sol"
+  n160 -> n161 // "Sol" -> "6"
+  n160 -> n162 // "Sol" -> "c"
+  n10 -> n163 // "COMPAS_LIST" -> "NOTE_LIST"
+  n163 -> n164 // "NOTE_LIST" -> "Sol"
+  n164 -> n165 // "Sol" -> "&"
+  n164 -> n166 // "Sol" -> "6"
+  n164 -> n167 // "Sol" -> "sc"
+  n163 -> n168 // "NOTE_LIST" -> "Fa"
+  n168 -> n169 // "Fa" -> "6"
+  n168 -> n170 // "Fa" -> "sc"
+  n163 -> n171 // "NOTE_LIST" -> "Sol"
+  n171 -> n172 // "Sol" -> "&"
+  n171 -> n173 // "Sol" -> "6"
+  n171 -> n174 // "Sol" -> "c"
+  n163 -> n175 // "NOTE_LIST" -> "Silence"
+  n175 -> n176 // "Silence" -> "c"
+  n163 -> n177 // "NOTE_LIST" -> "Si"
+  n177 -> n178 // "Si" -> "c"
+  n163 -> n179 // "NOTE_LIST" -> "Mi"
+  n179 -> n180 // "Mi" -> "&"
+  n179 -> n181 // "Mi" -> "6"
+  n179 -> n182 // "Mi" -> "n"
+  n163 -> n183 // "NOTE_LIST" -> "Re"
+  n183 -> n184 // "Re" -> "6"
+  n183 -> n185 // "Re" -> "c"
+  n163 -> n186 // "NOTE_LIST" -> "Re"
+  n186 -> n187 // "Re" -> "&"
+  n186 -> n188 // "Re" -> "6"
+  n10 -> n189 // "COMPAS_LIST" -> "NOTE_LIST"
+  n189 -> n190 // "NOTE_LIST" -> "Do"
+  n190 -> n191 // "Do" -> "6"
+  n190 -> n192 // "Do" -> "sc"
+  n189 -> n193 // "NOTE_LIST" -> "Si"
+  n189 -> n194 // "NOTE_LIST" -> "Do"
+  n194 -> n195 // "Do" -> "6"
+  n194 -> n196 // "Do" -> "c"
+  n189 -> n197 // "NOTE_LIST" -> "Silence"
+  n197 -> n198 // "Silence" -> "c"
+  n189 -> n199 // "NOTE_LIST" -> "Fa"
+  n199 -> n200 // "Fa" -> "c"
+  n189 -> n201 // "NOTE_LIST" -> "La"
+  n201 -> n202 // "La" -> "&"
+  n201 -> n203 // "La" -> "n"
+  n189 -> n204 // "NOTE_LIST" -> "Fa"
+  n204 -> n205 // "Fa" -> "c"
+  n204 -> n206 // "Fa" -> "*"
+  n189 -> n207 // "NOTE_LIST" -> "Do"
+  n207 -> n208 // "Do" -> "6"
+  n207 -> n209 // "Do" -> "sc"
+  n10 -> n210 // "COMPAS_LIST" -> "NOTE_LIST"
+  n210 -> n211 // "NOTE_LIST" -> "La"
+  n211 -> n212 // "La" -> "n"
+  n210 -> n213 // "NOTE_LIST" -> "Fa"
+  n213 -> n214 // "Fa" -> "c"
+  n213 -> n215 // "Fa" -> "*"
+  n210 -> n216 // "NOTE_LIST" -> "Do"
+  n216 -> n217 // "Do" -> "6"
+  n216 -> n218 // "Do" -> "sc"
+  n210 -> n219 // "NOTE_LIST" -> "La"
+  n219 -> n220 // "La" -> "b"
+  n2 -> n221 // "Song" -> "Track"
+  n221 -> n222 // "Track" -> "\"Oboe\""
+  n221 -> n223 // "Track" -> "COMPAS_LIST"
+  n223 -> n224 // "COMPAS_LIST" -> "NOTE_LIST"
+  n224 -> n225 // "NOTE_LIST" -> "Mi"
+  n225 -> n226 // "Mi" -> "n"
+  n224 -> n227 // "NOTE_LIST" -> "Mi"
+  n227 -> n228 // "Mi" -> "n"
+  n224 -> n229 // "NOTE_LIST" -> "Mi"
+  n229 -> n230 // "Mi" -> "n"
+  n224 -> n231 // "NOTE_LIST" -> "Silence"
+  n231 -> n232 // "Silence" -> "n"
+  n223 -> n233 // "COMPAS_LIST" -> "NOTE_LIST"
+  n233 -> n234 // "NOTE_LIST" -> "Mi"
+  n234 -> n235 // "Mi" -> "n"
+  n233 -> n236 // "NOTE_LIST" -> "Silence"
+  n236 -> n237 // "Silence" -> "n"
+  n233 -> n238 // "NOTE_LIST" -> "Mi"
+  n238 -> n239 // "Mi" -> "b"
+  n223 -> n240 // "COMPAS_LIST" -> "NOTE_LIST"
+  n240 -> n241 // "NOTE_LIST" -> "La"
+  n241 -> n242 // "La" -> "n"
+  n240 -> n243 // "NOTE_LIST" -> "La"
+  n243 -> n244 // "La" -> "n"
+  n240 -> n245 // "NOTE_LIST" -> "La"
+  n245 -> n246 // "La" -> "n"
+  n240 -> n247 // "NOTE_LIST" -> "Silence"
+  n247 -> n248 // "Silence" -> "n"
+  n223 -> n249 // "COMPAS_LIST" -> "NOTE_LIST"
+  n249 -> n250 // "NOTE_LIST" -> "Silence"
+  n250 -> n251 // "Silence" -> "b"
+  n249 -> n252 // "NOTE_LIST" -> "Mi"
+  n252 -> n253 // "Mi" -> "b"
 
 }
