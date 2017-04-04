@@ -4,6 +4,9 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.Track;
 
+import static music.AmlNote.Figure.*;
+import static music.AmlNote.Note.*;
+
 public class AmlTrack {
 
     private int currentTick;
@@ -11,7 +14,7 @@ public class AmlTrack {
     private int metric;
     private int tone;
     private int channel;
-    private int lastNoteDuration;
+    private AmlNote lastNote;
     private Track track;
 
     public AmlTrack(Track track, int channel, int metric, int tone) {
@@ -20,30 +23,53 @@ public class AmlTrack {
         this.tone = tone;
         this.channel = channel;
         currentTick = 0;
-        lastNoteDuration = AmlNote.PPQ;
+        lastNote = new AmlNote(Silence, NoFigure, -1, 0, 0, false);
+        lastNote.setDuration(AmlNote.PPQ);
     }
 
     public int getLastNoteDuration() {
-        return lastNoteDuration;
+        return lastNote.getDuration();
     }
 
     public void addCompas(AmlCompas compas) {
         for(AmlNote note : compas.getNotes()) {
-            if (note.isSilence()) {
-                currentTick += note.getDuration();
-            }
-            else {
-                try {
-                    track.add(new MidiEvent(note.getOnMessage(channel), currentTick));
-                    currentTick += note.getDuration();
-                    track.add(new MidiEvent(note.getOffMessage(channel), currentTick));
-                } catch (InvalidMidiDataException e) {
-                    e.printStackTrace();
-                    throw new Error();
+            try {
+                if (lastNote.isTied() && lastNote.getPitch() != note.getPitch()){
+                    throw new Exception(
+                        "The pitch of two tied notes is different. " +
+                        "The notes are:\n" + lastNote.toString() +
+                        "," + note.toString()
+                    );
                 }
+                addOnMessage(note);
+                currentTick += note.getDuration();
+                addOffMessage(note);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new Error();
             }
+            lastNote = note;
         }
-        lastNoteDuration = compas.getLastNote().getDuration();
+    }
+
+    private void addOnMessage(AmlNote note) throws InvalidMidiDataException {
+        if (note.isSilence()) {
+            return;
+        }
+        if (lastNote.isTied()) {
+            return;
+        }
+        track.add(new MidiEvent(note.getOnMessage(channel), currentTick));
+    }
+
+    private void addOffMessage(AmlNote note) throws InvalidMidiDataException {
+        if (note.isSilence()) {
+            return;
+        }
+        if (note.isTied()) {
+            return;
+        }
+        track.add(new MidiEvent(note.getOffMessage(channel), currentTick));
     }
 
     public void setInstrument(AmlInstrument instrument) {

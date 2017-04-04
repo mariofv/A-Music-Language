@@ -94,6 +94,7 @@ public class Interpreter {
         int octave = 5;
         int semiToneModifier = 0;
         int figureModifier = 0;
+        boolean tie = false;
         if (tree.getChildren() != null) {
             for (AmlTree child : (List<AmlTree>) tree.getChildren()) {
                 switch (child.getType()) {
@@ -112,9 +113,12 @@ public class Interpreter {
                     case MusicLexer.DOT:
                         figureModifier = 1;
                         break;
+                    case MusicLexer.TIE:
+                        tie = true;
+                        break;
                 }
             }
         }
-        return new AmlNote(note, figure, octave, semiToneModifier, figureModifier);
+        return new AmlNote(note, figure, octave, semiToneModifier, figureModifier, tie);
     }
 }

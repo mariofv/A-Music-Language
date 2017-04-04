@@ -27,6 +27,7 @@ public class AmlNote {
     private Figure figure;
     private int pitch, octave, semiToneModifier, figureModifier;
     private int duration;
+    private boolean tie;
 
     public ShortMessage getOffMessage(int channel) throws InvalidMidiDataException {
         return new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
@@ -36,6 +37,8 @@ public class AmlNote {
         return new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
     }
 
+    public int getPitch() {return pitch;}
+
     public int getDuration() {
         return duration;
     }
@@ -44,12 +47,15 @@ public class AmlNote {
         this.duration = duration;
     }
 
-    public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier) {
+    public boolean isTied() { return tie; }
+
+    public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier, boolean tie) {
         this.note = note;
         this.figure = figure;
         this.octave = octave;
         this.semiToneModifier = semiToneModifier;
         this.figureModifier = figureModifier;
+        this.tie = tie;
         duration = mapDuration();
         pitch = mapNote();
     }
