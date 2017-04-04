@@ -73,7 +73,10 @@ if_stmt          :   IF^
 song        :   SONG^ ID? '{'! beat speed (track)+ '}'!
             ;
 
-track       :   TRACK^ ID? STRING compas_list
+track       :   TRACK^ ID? STRING compas_aux
+            ;
+
+compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
 
 //compas_list: (START_REP compases END_REP | DOUBLE_BAR compases barra)    ;
@@ -81,23 +84,30 @@ track       :   TRACK^ ID? STRING compas_list
 //compasses   :   compas ((BAR! compas) | repetition compas?)*;
 
 
+//compas_list :   (DOUBLE_BAR | repetition*) compas (BAR compas | repetition+ compas)* (MINUS repetition | DOUBLE_BAR)
+//            ;
 
-
-
-compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST compas+)
+compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR! | repetition)
             ;
 
-compas      :   tone? (notes_group)+    -> ^(COMPAS tone? notes_group+)
+//compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST compas+)
+//            ;
+
+compasses   :   compas (BAR! compas)*;
+
+repetition  :   (NUM 'x')? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
+            ;
+
+compas      :   tone? (options {greedy=true;} : notes_group)+    -> ^(COMPAS tone? notes_group+)
             ;
 
 tone        :   NUM (x=SUSTAIN | x=BEMOL)   ->  ^(TONE NUM $x)
             ;
 
-notes_group :   note_list ('.' FIGURE)? DOT? TIE? -> ^(NOTE_LIST note_list FIGURE? DOT? TIE?)
+notes_group :   notes_type ('.' FIGURE)? DOT? TIE? -> ^(NOTE_LIST notes_type FIGURE? DOT? TIE?)
             ;
 
-note_list   :   chord | notes
-            ;
+notes_type  :	chord | notes;
 
 chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH|MAJ7)? ')'!
             ;
@@ -140,6 +150,7 @@ START_REPETITION    : '||:';
 END_REPETITION      : ':||';
 BEMOL               : '&';
 CHORD               : 'Chord';
+TONE                : 'Tone';
 MINOR               : 'm';
 DIMINUTION          : 'º';
 MAJ7                : 'maj7';

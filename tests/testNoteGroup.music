@@ -2,6 +2,6 @@ main() {
     Song Mario {
         Beat 4:8
         Speed 60
-        Track Main "TT"  ||3# Sol-1.c (#Sol-2 &La-2).c Chord(Do m maj7) Chord(Re+ 7th)||
+        Track Main "TT"  ||3# Sol-1.c (#Sol-2 &La-2).c Chord(Do m maj7) Chord(Re+ 7th) ||
     }
 }
