@@ -11,8 +11,12 @@ tokens {
     LIST_FUNCTIONS;
     FUNCTION;
     COMPAS_LIST;
+    COMPAS;
     NOTE_LIST;
+    NOTES;
+    REPETITION;
     BOOLEAN;
+    TONE;
 }
 
 @header {
@@ -66,19 +70,42 @@ if_stmt          :   IF^
             ;
 //END TODO
 
-song        :   SONG^ '{'! beat speed (track)+ '}'!
+song        :   SONG^ ID? '{'! beat speed (track)+ '}'!
             ;
 
-track       :   TRACK^ STRING compas_list
+track       :   TRACK^ ID? STRING compas_list
             ;
+
+//compas_list: (START_REP compases END_REP | DOUBLE_BAR compases barra)    ;
+
+//compasses   :   compas ((BAR! compas) | repetition compas?)*;
+
+
+
+
 
 compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST compas+)
             ;
 
-compas      :   (note)+    -> ^(NOTE_LIST note+)
+compas      :   tone? (notes_group)+    -> ^(COMPAS tone? notes_group+)
             ;
 
-note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)? ('.'! FIGURE)? DOT? TIE?
+tone        :   NUM (x=SUSTAIN | x=BEMOL)   ->  ^(TONE NUM $x)
+            ;
+
+notes_group :   note_list ('.' FIGURE)? DOT? TIE? -> ^(NOTE_LIST note_list FIGURE? DOT? TIE?)
+            ;
+
+note_list   :   chord | notes
+            ;
+
+chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH|MAJ7)? ')'!
+            ;
+
+notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
+            ;
+
+note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)?
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -112,6 +139,12 @@ DOUBLE_BAR           : '||';
 START_REPETITION    : '||:';
 END_REPETITION      : ':||';
 BEMOL               : '&';
+CHORD               : 'Chord';
+MINOR               : 'm';
+DIMINUTION          : 'º';
+MAJ7                : 'maj7';
+SEVENTH             : '7th';
+
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 SUSTAIN             : '#';
 FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
