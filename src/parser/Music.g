@@ -8,14 +8,20 @@ options {
 // Imaginary tokens to create some AST nodes
 
 tokens {
+    BOOLEAN;
+    POST;
+    PRE;
+    ELSEIF;
     LIST_FUNCTIONS;
     FUNCTION;
+    FUNCALL;
+    LIST_INSTRUCTIONS;
+    LIST_ARGUMENTS;
     COMPAS_LIST;
     COMPAS;
     NOTE_LIST;
     NOTES;
     REPETITION;
-    BOOLEAN;
     TONE;
 }
 
@@ -31,26 +37,52 @@ package parser;
 prog	    :   function+ EOF -> ^(LIST_FUNCTIONS function+)
             ;
 
-function    :   id=ID '('params?')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] params? listInst)
+function    :   id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] list_arguments listInst)
             ;
+
+
+
+list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
+                ;
+
+argument  :   ((INT|BOOL)^ ID)
+          ;
 
 params      :   expr (','! expr)*;
 
-listInst    :   (inst)*;
+listInst    :   (inst)* -> ^(LIST_INSTRUCTIONS inst*)
+            ;
 
 inst        :   declaration
             |   assignation
             |   while_stmt
+            |   funcall
             |   for_stmt
             |   if_stmt
             |   song
             ;
 
-declaration :   INT^ ID (EQUAL! atom)? ';'!
-            |   BOOL^ ID (EQUAL! atom)? ';'!
+funcall     :   id=ID '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
             ;
 
-assignation :   ID EQUAL^ atom
+declaration :   (INT | BOOL)^ assig_opt (','! assig_opt)* ';'!
+            ;
+
+assig_opt   :   ID (ASSIG^ expr)?
+            ;
+
+assignation :   assig ';'!
+            ;
+
+assig       :   ID (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ expr
+            |   post
+            |   pre
+            ;
+
+post        :   ID (x=INCR | x=DECR) ->  ^(POST ID $x)
+            ;
+
+pre         :   (x=INCR | x=DECR) ID  -> ^(PRE  ID $x)
             ;
 
 beat        :   BEAT^ NUM ':'! NUM
@@ -59,16 +91,20 @@ beat        :   BEAT^ NUM ':'! NUM
 speed       :   SPEED^ NUM
             ;
 
-//TODO:
-while_stmt       :   WHILE^
+while_stmt       :   WHILE^ '('! expr ')'! '{'! listInst '}'!
             ;
 
-for_stmt         :   FOR^
+for_stmt    :   FOR^ '('! (declaration | assignation) expr ';'! assig (','! assig)* ')'! '{'! listInst '}'!
             ;
 
-if_stmt          :   IF^
+if_stmt     :   IF^ '('! expr ')'! '{'! listInst '}'! elseif_stmt* else_stmt?
             ;
-//END TODO
+
+elseif_stmt :   ELSE IF '(' expr ')' '{' listInst '}' -> ^(ELSEIF expr listInst)
+            ;
+
+else_stmt   :   ELSE^ '{'! listInst '}'!
+            ;
 
 song        :   SONG^ ID? '{'! beat speed (track)+ '}'!
             ;
@@ -79,19 +115,8 @@ track       :   TRACK^ ID? STRING compas_aux
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
 
-//compas_list: (START_REP compases END_REP | DOUBLE_BAR compases barra)    ;
-
-//compasses   :   compas ((BAR! compas) | repetition compas?)*;
-
-
-//compas_list :   (DOUBLE_BAR | repetition*) compas (BAR compas | repetition+ compas)* (MINUS repetition | DOUBLE_BAR)
-//            ;
-
 compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR! | repetition)
             ;
-
-//compas_list :   (DOUBLE_BAR compas) (BAR compas)* DOUBLE_BAR -> ^(COMPAS_LIST compas+)
-//            ;
 
 compasses   :   compas (BAR! compas)*;
 
@@ -138,7 +163,7 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 		;
 
 atom    :   ID
-		|   INT
+		|   NUM
 		|   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
 		|   '('! expr ')'!
 		;
@@ -167,14 +192,22 @@ SONG                : 'Song';
 TRACK               : 'Track';
 
 // Programming tokens
-EQUAL	: '=' ;
+EQUAL	: '==' ;
 NOT_EQUAL: '!=' ;
+ASSIG:  '=';
+PLUS_ASSIG: '+=';
+MINUS_ASSIG: '-=';
+PROD_ASSIG: '*=';
+DIVIDE_ASSIG: '/=';
+MOD_ASSIG: '%=';
 LT	    : '<' ;
 LE	    : '<=';
 GT	    : '>';
 GE	    : '>=';
 PLUS	: '+' ;
+INCR    : '++';
 MINUS	: '-' ;
+DECR    : '--';
 DIV	    : '/';
 MOD	    : '%' ;
 NOT	    : 'not';

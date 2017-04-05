@@ -1,0 +1,33 @@
+holas(int y) {
+    int a = 42;
+    if (gx < 4) {
+        if (4) {
+           gf = 3;
+        }
+        else if (43) {
+            gf = 3;
+        }
+        else {
+            dd = 4;
+        }
+    }
+    else {
+        fd();
+    }
+}
+
+main() {
+    int a = 2, fb, cf = 4+5, fd;
+    bool fx = false;
+    a = 1;
+    i += 3;
+    ++bf;
+    j--;
+    while (rt < 4) {
+        j--;
+    }
+    for (int i = 0, j = 4; i < 32; ++i, ++j) {
+          j++;
+    }
+    funcc(fx+4, 5);
+}
