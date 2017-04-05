@@ -91,6 +91,9 @@ beat        :   BEAT^ NUM ':'! NUM
 speed       :   SPEED^ NUM
             ;
 
+transport   :   TRANSPORT^ NUM
+            ;
+
 while_stmt       :   WHILE^ '('! expr ')'! '{'! listInst '}'!
             ;
 
@@ -106,7 +109,7 @@ elseif_stmt :   ELSE IF '(' expr ')' '{' listInst '}' -> ^(ELSEIF expr listInst)
 else_stmt   :   ELSE^ '{'! listInst '}'!
             ;
 
-song        :   SONG^ ID? '{'! beat speed (track)+ '}'!
+song        :   SONG^ ID? '{'! beat speed transport? (track)+ '}'!
             ;
 
 track       :   TRACK^ ID? STRING compas_aux
@@ -176,6 +179,7 @@ END_REPETITION      : ':||';
 BEMOL               : '&';
 CHORD               : 'Chord';
 TONE                : 'Tone';
+TRANSPORT           : 'Transport';
 MINOR               : 'm';
 DIMINUTION          : 'º';
 MAJ7                : 'maj7';
