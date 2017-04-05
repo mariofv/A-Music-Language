@@ -41,8 +41,6 @@ prog	    :   function+ EOF -> ^(LIST_FUNCTIONS function+)
 function    :   id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] list_arguments listInst)
             ;
 
-
-
 list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
                 ;
 
@@ -51,7 +49,7 @@ argument  :   ((INT|BOOL)^ ID)
 
 params      :   expr (','! expr)*;
 
-listInst    :   (inst)* -> ^(LIST_INSTRUCTIONS inst*)
+listInst    :  inst*  -> ^(LIST_INSTRUCTIONS inst*)
             ;
 
 list_music_inst :   music_inst* -> ^(LIST_MUSIC_INST music_inst*)
@@ -64,6 +62,7 @@ inst        :   declaration
             |   for_stmt
             |   if_stmt
             |   song
+            |   compas_list
             ;
 
 music_inst  :   declaration
@@ -73,7 +72,7 @@ music_inst  :   declaration
             |   for_music_stmt
             |   if_music_stmt
             |   song
-            | 	notes_group+ ';'!
+            | 	(options {greedy=true;} : notes_group)+ ';'!?
             ;
 
 funcall     :   id=ID '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
@@ -150,7 +149,7 @@ track       :   TRACK^ ID? STRING compas_aux
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
 
-compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR! | )
+compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
             ;
 
 compasses   :   compas (BAR! compas)*;

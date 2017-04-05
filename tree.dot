@@ -7,252 +7,318 @@ digraph {
 	edge [arrowsize=.5, color="black", style="bold"]
 
   n0 [label="LIST_FUNCTIONS"];
-  n1 [label="holas"];
-  n1 [label="holas"];
+  n1 [label="main"];
+  n1 [label="main"];
   n2 [label="LIST_ARGUMENTS"];
-  n2 [label="LIST_ARGUMENTS"];
-  n3 [label="int"];
-  n3 [label="int"];
-  n4 [label="y"];
-  n5 [label="LIST_INSTRUCTIONS"];
-  n5 [label="LIST_INSTRUCTIONS"];
-  n6 [label="int"];
-  n6 [label="int"];
-  n7 [label="="];
-  n7 [label="="];
-  n8 [label="a"];
-  n9 [label="42"];
-  n10 [label="if"];
-  n10 [label="if"];
-  n11 [label="<"];
-  n11 [label="<"];
-  n12 [label="gx"];
-  n13 [label="4"];
-  n14 [label="LIST_INSTRUCTIONS"];
-  n14 [label="LIST_INSTRUCTIONS"];
-  n15 [label="if"];
-  n15 [label="if"];
-  n16 [label="4"];
-  n17 [label="LIST_INSTRUCTIONS"];
-  n17 [label="LIST_INSTRUCTIONS"];
-  n18 [label="="];
-  n18 [label="="];
-  n19 [label="gf"];
-  n20 [label="3"];
-  n21 [label="ELSEIF"];
-  n21 [label="ELSEIF"];
-  n22 [label="43"];
-  n23 [label="LIST_INSTRUCTIONS"];
-  n23 [label="LIST_INSTRUCTIONS"];
-  n24 [label="="];
-  n24 [label="="];
-  n25 [label="gf"];
-  n26 [label="3"];
-  n27 [label="else"];
-  n27 [label="else"];
-  n28 [label="LIST_INSTRUCTIONS"];
-  n28 [label="LIST_INSTRUCTIONS"];
-  n29 [label="="];
-  n29 [label="="];
-  n30 [label="dd"];
-  n31 [label="4"];
-  n32 [label="else"];
-  n32 [label="else"];
-  n33 [label="LIST_INSTRUCTIONS"];
-  n33 [label="LIST_INSTRUCTIONS"];
-  n34 [label="fd"];
-  n35 [label="main"];
-  n35 [label="main"];
-  n36 [label="LIST_ARGUMENTS"];
-  n37 [label="LIST_INSTRUCTIONS"];
-  n37 [label="LIST_INSTRUCTIONS"];
-  n38 [label="int"];
-  n38 [label="int"];
-  n39 [label="="];
-  n39 [label="="];
-  n40 [label="a"];
-  n41 [label="2"];
-  n42 [label="fb"];
-  n43 [label="="];
-  n43 [label="="];
-  n44 [label="cf"];
-  n45 [label="+"];
-  n45 [label="+"];
-  n46 [label="4"];
-  n47 [label="5"];
-  n48 [label="fd"];
-  n49 [label="bool"];
-  n49 [label="bool"];
-  n50 [label="="];
-  n50 [label="="];
-  n51 [label="fx"];
-  n52 [label="false"];
-  n53 [label="="];
-  n53 [label="="];
-  n54 [label="a"];
-  n55 [label="1"];
-  n56 [label="+="];
-  n56 [label="+="];
-  n57 [label="i"];
-  n58 [label="3"];
-  n59 [label="PRE"];
-  n59 [label="PRE"];
-  n60 [label="bf"];
-  n61 [label="++"];
-  n62 [label="POST"];
-  n62 [label="POST"];
-  n63 [label="j"];
-  n64 [label="--"];
-  n65 [label="while"];
-  n65 [label="while"];
-  n66 [label="<"];
-  n66 [label="<"];
-  n67 [label="rt"];
-  n68 [label="4"];
-  n69 [label="LIST_INSTRUCTIONS"];
-  n69 [label="LIST_INSTRUCTIONS"];
-  n70 [label="POST"];
-  n70 [label="POST"];
-  n71 [label="j"];
-  n72 [label="--"];
-  n73 [label="for"];
-  n73 [label="for"];
-  n74 [label="int"];
-  n74 [label="int"];
-  n75 [label="="];
-  n75 [label="="];
-  n76 [label="i"];
-  n77 [label="0"];
-  n78 [label="="];
-  n78 [label="="];
-  n79 [label="j"];
-  n80 [label="4"];
-  n81 [label="<"];
-  n81 [label="<"];
-  n82 [label="i"];
-  n83 [label="32"];
-  n84 [label="LIST_ASSIG"];
-  n84 [label="LIST_ASSIG"];
-  n85 [label="PRE"];
-  n85 [label="PRE"];
-  n86 [label="i"];
-  n87 [label="++"];
-  n88 [label="PRE"];
-  n88 [label="PRE"];
-  n89 [label="j"];
-  n90 [label="++"];
-  n91 [label="LIST_INSTRUCTIONS"];
-  n91 [label="LIST_INSTRUCTIONS"];
-  n92 [label="POST"];
-  n92 [label="POST"];
-  n93 [label="j"];
-  n94 [label="++"];
-  n95 [label="funcc"];
-  n95 [label="funcc"];
-  n96 [label="+"];
-  n96 [label="+"];
-  n97 [label="fx"];
-  n98 [label="4"];
-  n99 [label="5"];
+  n3 [label="LIST_INSTRUCTIONS"];
+  n3 [label="LIST_INSTRUCTIONS"];
+  n4 [label="REPETITION"];
+  n4 [label="REPETITION"];
+  n5 [label="3"];
+  n6 [label="COMPAS"];
+  n6 [label="COMPAS"];
+  n7 [label="NOTE_LIST"];
+  n7 [label="NOTE_LIST"];
+  n8 [label="NOTES"];
+  n8 [label="NOTES"];
+  n9 [label="La"];
+  n10 [label="c"];
+  n11 [label="NOTE_LIST"];
+  n11 [label="NOTE_LIST"];
+  n12 [label="NOTES"];
+  n12 [label="NOTES"];
+  n13 [label="Do"];
+  n14 [label="NOTE_LIST"];
+  n14 [label="NOTE_LIST"];
+  n15 [label="NOTES"];
+  n15 [label="NOTES"];
+  n16 [label="Re"];
+  n17 [label="c"];
+  n18 [label="COMPAS"];
+  n18 [label="COMPAS"];
+  n19 [label="if"];
+  n19 [label="if"];
+  n20 [label="=="];
+  n20 [label="=="];
+  n21 [label="d"];
+  n22 [label="3"];
+  n23 [label="LIST_MUSIC_INST"];
+  n23 [label="LIST_MUSIC_INST"];
+  n24 [label="NOTE_LIST"];
+  n24 [label="NOTE_LIST"];
+  n25 [label="NOTES"];
+  n25 [label="NOTES"];
+  n26 [label="La"];
+  n27 [label="COMPAS"];
+  n27 [label="COMPAS"];
+  n28 [label="NOTE_LIST"];
+  n28 [label="NOTE_LIST"];
+  n29 [label="NOTES"];
+  n29 [label="NOTES"];
+  n30 [label="La"];
+  n31 [label="NOTE_LIST"];
+  n31 [label="NOTE_LIST"];
+  n32 [label="NOTES"];
+  n32 [label="NOTES"];
+  n33 [label="Do"];
+  n34 [label="n"];
+  n35 [label="Song"];
+  n35 [label="Song"];
+  n36 [label="Beat"];
+  n36 [label="Beat"];
+  n37 [label="4"];
+  n38 [label="8"];
+  n39 [label="Speed"];
+  n39 [label="Speed"];
+  n40 [label="60"];
+  n41 [label="Transport"];
+  n41 [label="Transport"];
+  n42 [label="5"];
+  n43 [label="Track"];
+  n43 [label="Track"];
+  n44 [label="\"Trumpet\""];
+  n45 [label="COMPAS_LIST"];
+  n45 [label="COMPAS_LIST"];
+  n46 [label="COMPAS"];
+  n46 [label="COMPAS"];
+  n47 [label="NOTE_LIST"];
+  n47 [label="NOTE_LIST"];
+  n48 [label="NOTES"];
+  n48 [label="NOTES"];
+  n49 [label="Do"];
+  n49 [label="Do"];
+  n50 [label="&"];
+  n51 [label="c"];
+  n52 [label="NOTE_LIST"];
+  n52 [label="NOTE_LIST"];
+  n53 [label="NOTES"];
+  n53 [label="NOTES"];
+  n54 [label="Do"];
+  n55 [label="c"];
+  n56 [label="NOTE_LIST"];
+  n56 [label="NOTE_LIST"];
+  n57 [label="NOTES"];
+  n57 [label="NOTES"];
+  n58 [label="Do"];
+  n58 [label="Do"];
+  n59 [label="#"];
+  n60 [label="c"];
+  n61 [label="NOTE_LIST"];
+  n61 [label="NOTE_LIST"];
+  n62 [label="NOTES"];
+  n62 [label="NOTES"];
+  n63 [label="Re"];
+  n64 [label="c"];
+  n65 [label="COMPAS"];
+  n65 [label="COMPAS"];
+  n66 [label="if"];
+  n66 [label="if"];
+  n67 [label="=="];
+  n67 [label="=="];
+  n68 [label="Times"];
+  n69 [label="2"];
+  n70 [label="LIST_MUSIC_INST"];
+  n70 [label="LIST_MUSIC_INST"];
+  n71 [label="NOTE_LIST"];
+  n71 [label="NOTE_LIST"];
+  n72 [label="NOTES"];
+  n72 [label="NOTES"];
+  n73 [label="La"];
+  n74 [label="n"];
+  n75 [label="ELSEIF"];
+  n75 [label="ELSEIF"];
+  n76 [label="=="];
+  n76 [label="=="];
+  n77 [label="Time"];
+  n78 [label="2"];
+  n79 [label="LIST_MUSIC_INST"];
+  n79 [label="LIST_MUSIC_INST"];
+  n80 [label="NOTE_LIST"];
+  n80 [label="NOTE_LIST"];
+  n81 [label="NOTES"];
+  n81 [label="NOTES"];
+  n82 [label="La"];
+  n83 [label="n"];
+  n84 [label="NOTE_LIST"];
+  n84 [label="NOTE_LIST"];
+  n85 [label="NOTES"];
+  n85 [label="NOTES"];
+  n86 [label="Re"];
+  n87 [label="n"];
+  n88 [label="NOTE_LIST"];
+  n88 [label="NOTE_LIST"];
+  n89 [label="NOTES"];
+  n89 [label="NOTES"];
+  n90 [label="Do"];
+  n91 [label="Si"];
+  n92 [label="int"];
+  n92 [label="int"];
+  n93 [label="="];
+  n93 [label="="];
+  n94 [label="ex"];
+  n95 [label="3"];
+  n96 [label="COMPAS"];
+  n96 [label="COMPAS"];
+  n97 [label="while"];
+  n97 [label="while"];
+  n98 [label="true"];
+  n99 [label="LIST_MUSIC_INST"];
+  n99 [label="LIST_MUSIC_INST"];
+  n100 [label="NOTE_LIST"];
+  n100 [label="NOTE_LIST"];
+  n101 [label="NOTES"];
+  n101 [label="NOTES"];
+  n102 [label="Re"];
+  n103 [label="n"];
+  n104 [label="="];
+  n104 [label="="];
+  n105 [label="rr"];
+  n106 [label="42"];
+  n107 [label="if"];
+  n107 [label="if"];
+  n108 [label="ch"];
+  n109 [label="LIST_MUSIC_INST"];
+  n109 [label="LIST_MUSIC_INST"];
+  n110 [label="="];
+  n110 [label="="];
+  n111 [label="tt"];
+  n112 [label="3"];
+  n113 [label="NOTE_LIST"];
+  n113 [label="NOTE_LIST"];
+  n114 [label="NOTES"];
+  n114 [label="NOTES"];
+  n115 [label="La"];
+  n116 [label="else"];
+  n116 [label="else"];
+  n117 [label="LIST_MUSIC_INST"];
+  n117 [label="LIST_MUSIC_INST"];
+  n118 [label="NOTE_LIST"];
+  n118 [label="NOTE_LIST"];
+  n119 [label="NOTES"];
+  n119 [label="NOTES"];
+  n120 [label="Re"];
+  n121 [label="n"];
 
-  n0 -> n1 // "LIST_FUNCTIONS" -> "holas"
-  n1 -> n2 // "holas" -> "LIST_ARGUMENTS"
-  n2 -> n3 // "LIST_ARGUMENTS" -> "int"
-  n3 -> n4 // "int" -> "y"
-  n1 -> n5 // "holas" -> "LIST_INSTRUCTIONS"
-  n5 -> n6 // "LIST_INSTRUCTIONS" -> "int"
-  n6 -> n7 // "int" -> "="
-  n7 -> n8 // "=" -> "a"
-  n7 -> n9 // "=" -> "42"
-  n5 -> n10 // "LIST_INSTRUCTIONS" -> "if"
-  n10 -> n11 // "if" -> "<"
-  n11 -> n12 // "<" -> "gx"
-  n11 -> n13 // "<" -> "4"
-  n10 -> n14 // "if" -> "LIST_INSTRUCTIONS"
-  n14 -> n15 // "LIST_INSTRUCTIONS" -> "if"
-  n15 -> n16 // "if" -> "4"
-  n15 -> n17 // "if" -> "LIST_INSTRUCTIONS"
-  n17 -> n18 // "LIST_INSTRUCTIONS" -> "="
-  n18 -> n19 // "=" -> "gf"
-  n18 -> n20 // "=" -> "3"
-  n15 -> n21 // "if" -> "ELSEIF"
-  n21 -> n22 // "ELSEIF" -> "43"
-  n21 -> n23 // "ELSEIF" -> "LIST_INSTRUCTIONS"
-  n23 -> n24 // "LIST_INSTRUCTIONS" -> "="
-  n24 -> n25 // "=" -> "gf"
-  n24 -> n26 // "=" -> "3"
-  n15 -> n27 // "if" -> "else"
-  n27 -> n28 // "else" -> "LIST_INSTRUCTIONS"
-  n28 -> n29 // "LIST_INSTRUCTIONS" -> "="
-  n29 -> n30 // "=" -> "dd"
-  n29 -> n31 // "=" -> "4"
-  n10 -> n32 // "if" -> "else"
-  n32 -> n33 // "else" -> "LIST_INSTRUCTIONS"
-  n33 -> n34 // "LIST_INSTRUCTIONS" -> "fd"
-  n0 -> n35 // "LIST_FUNCTIONS" -> "main"
-  n35 -> n36 // "main" -> "LIST_ARGUMENTS"
-  n35 -> n37 // "main" -> "LIST_INSTRUCTIONS"
-  n37 -> n38 // "LIST_INSTRUCTIONS" -> "int"
-  n38 -> n39 // "int" -> "="
-  n39 -> n40 // "=" -> "a"
-  n39 -> n41 // "=" -> "2"
-  n38 -> n42 // "int" -> "fb"
-  n38 -> n43 // "int" -> "="
-  n43 -> n44 // "=" -> "cf"
-  n43 -> n45 // "=" -> "+"
-  n45 -> n46 // "+" -> "4"
-  n45 -> n47 // "+" -> "5"
-  n38 -> n48 // "int" -> "fd"
-  n37 -> n49 // "LIST_INSTRUCTIONS" -> "bool"
-  n49 -> n50 // "bool" -> "="
-  n50 -> n51 // "=" -> "fx"
-  n50 -> n52 // "=" -> "false"
-  n37 -> n53 // "LIST_INSTRUCTIONS" -> "="
-  n53 -> n54 // "=" -> "a"
-  n53 -> n55 // "=" -> "1"
-  n37 -> n56 // "LIST_INSTRUCTIONS" -> "+="
-  n56 -> n57 // "+=" -> "i"
-  n56 -> n58 // "+=" -> "3"
-  n37 -> n59 // "LIST_INSTRUCTIONS" -> "PRE"
-  n59 -> n60 // "PRE" -> "bf"
-  n59 -> n61 // "PRE" -> "++"
-  n37 -> n62 // "LIST_INSTRUCTIONS" -> "POST"
-  n62 -> n63 // "POST" -> "j"
-  n62 -> n64 // "POST" -> "--"
-  n37 -> n65 // "LIST_INSTRUCTIONS" -> "while"
-  n65 -> n66 // "while" -> "<"
-  n66 -> n67 // "<" -> "rt"
-  n66 -> n68 // "<" -> "4"
-  n65 -> n69 // "while" -> "LIST_INSTRUCTIONS"
-  n69 -> n70 // "LIST_INSTRUCTIONS" -> "POST"
-  n70 -> n71 // "POST" -> "j"
-  n70 -> n72 // "POST" -> "--"
-  n37 -> n73 // "LIST_INSTRUCTIONS" -> "for"
-  n73 -> n74 // "for" -> "int"
-  n74 -> n75 // "int" -> "="
-  n75 -> n76 // "=" -> "i"
-  n75 -> n77 // "=" -> "0"
-  n74 -> n78 // "int" -> "="
-  n78 -> n79 // "=" -> "j"
-  n78 -> n80 // "=" -> "4"
-  n73 -> n81 // "for" -> "<"
-  n81 -> n82 // "<" -> "i"
-  n81 -> n83 // "<" -> "32"
-  n73 -> n84 // "for" -> "LIST_ASSIG"
-  n84 -> n85 // "LIST_ASSIG" -> "PRE"
-  n85 -> n86 // "PRE" -> "i"
-  n85 -> n87 // "PRE" -> "++"
-  n84 -> n88 // "LIST_ASSIG" -> "PRE"
-  n88 -> n89 // "PRE" -> "j"
-  n88 -> n90 // "PRE" -> "++"
-  n73 -> n91 // "for" -> "LIST_INSTRUCTIONS"
-  n91 -> n92 // "LIST_INSTRUCTIONS" -> "POST"
-  n92 -> n93 // "POST" -> "j"
-  n92 -> n94 // "POST" -> "++"
-  n37 -> n95 // "LIST_INSTRUCTIONS" -> "funcc"
-  n95 -> n96 // "funcc" -> "+"
-  n96 -> n97 // "+" -> "fx"
-  n96 -> n98 // "+" -> "4"
-  n95 -> n99 // "funcc" -> "5"
+  n0 -> n1 // "LIST_FUNCTIONS" -> "main"
+  n1 -> n2 // "main" -> "LIST_ARGUMENTS"
+  n1 -> n3 // "main" -> "LIST_INSTRUCTIONS"
+  n3 -> n4 // "LIST_INSTRUCTIONS" -> "REPETITION"
+  n4 -> n5 // "REPETITION" -> "3"
+  n4 -> n6 // "REPETITION" -> "COMPAS"
+  n6 -> n7 // "COMPAS" -> "NOTE_LIST"
+  n7 -> n8 // "NOTE_LIST" -> "NOTES"
+  n8 -> n9 // "NOTES" -> "La"
+  n7 -> n10 // "NOTE_LIST" -> "c"
+  n6 -> n11 // "COMPAS" -> "NOTE_LIST"
+  n11 -> n12 // "NOTE_LIST" -> "NOTES"
+  n12 -> n13 // "NOTES" -> "Do"
+  n6 -> n14 // "COMPAS" -> "NOTE_LIST"
+  n14 -> n15 // "NOTE_LIST" -> "NOTES"
+  n15 -> n16 // "NOTES" -> "Re"
+  n14 -> n17 // "NOTE_LIST" -> "c"
+  n4 -> n18 // "REPETITION" -> "COMPAS"
+  n18 -> n19 // "COMPAS" -> "if"
+  n19 -> n20 // "if" -> "=="
+  n20 -> n21 // "==" -> "d"
+  n20 -> n22 // "==" -> "3"
+  n19 -> n23 // "if" -> "LIST_MUSIC_INST"
+  n23 -> n24 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n24 -> n25 // "NOTE_LIST" -> "NOTES"
+  n25 -> n26 // "NOTES" -> "La"
+  n3 -> n27 // "LIST_INSTRUCTIONS" -> "COMPAS"
+  n27 -> n28 // "COMPAS" -> "NOTE_LIST"
+  n28 -> n29 // "NOTE_LIST" -> "NOTES"
+  n29 -> n30 // "NOTES" -> "La"
+  n27 -> n31 // "COMPAS" -> "NOTE_LIST"
+  n31 -> n32 // "NOTE_LIST" -> "NOTES"
+  n32 -> n33 // "NOTES" -> "Do"
+  n31 -> n34 // "NOTE_LIST" -> "n"
+  n3 -> n35 // "LIST_INSTRUCTIONS" -> "Song"
+  n35 -> n36 // "Song" -> "Beat"
+  n36 -> n37 // "Beat" -> "4"
+  n36 -> n38 // "Beat" -> "8"
+  n35 -> n39 // "Song" -> "Speed"
+  n39 -> n40 // "Speed" -> "60"
+  n35 -> n41 // "Song" -> "Transport"
+  n41 -> n42 // "Transport" -> "5"
+  n35 -> n43 // "Song" -> "Track"
+  n43 -> n44 // "Track" -> "\"Trumpet\""
+  n43 -> n45 // "Track" -> "COMPAS_LIST"
+  n45 -> n46 // "COMPAS_LIST" -> "COMPAS"
+  n46 -> n47 // "COMPAS" -> "NOTE_LIST"
+  n47 -> n48 // "NOTE_LIST" -> "NOTES"
+  n48 -> n49 // "NOTES" -> "Do"
+  n49 -> n50 // "Do" -> "&"
+  n47 -> n51 // "NOTE_LIST" -> "c"
+  n46 -> n52 // "COMPAS" -> "NOTE_LIST"
+  n52 -> n53 // "NOTE_LIST" -> "NOTES"
+  n53 -> n54 // "NOTES" -> "Do"
+  n52 -> n55 // "NOTE_LIST" -> "c"
+  n46 -> n56 // "COMPAS" -> "NOTE_LIST"
+  n56 -> n57 // "NOTE_LIST" -> "NOTES"
+  n57 -> n58 // "NOTES" -> "Do"
+  n58 -> n59 // "Do" -> "#"
+  n56 -> n60 // "NOTE_LIST" -> "c"
+  n46 -> n61 // "COMPAS" -> "NOTE_LIST"
+  n61 -> n62 // "NOTE_LIST" -> "NOTES"
+  n62 -> n63 // "NOTES" -> "Re"
+  n61 -> n64 // "NOTE_LIST" -> "c"
+  n45 -> n65 // "COMPAS_LIST" -> "COMPAS"
+  n65 -> n66 // "COMPAS" -> "if"
+  n66 -> n67 // "if" -> "=="
+  n67 -> n68 // "==" -> "Times"
+  n67 -> n69 // "==" -> "2"
+  n66 -> n70 // "if" -> "LIST_MUSIC_INST"
+  n70 -> n71 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n71 -> n72 // "NOTE_LIST" -> "NOTES"
+  n72 -> n73 // "NOTES" -> "La"
+  n71 -> n74 // "NOTE_LIST" -> "n"
+  n66 -> n75 // "if" -> "ELSEIF"
+  n75 -> n76 // "ELSEIF" -> "=="
+  n76 -> n77 // "==" -> "Time"
+  n76 -> n78 // "==" -> "2"
+  n75 -> n79 // "ELSEIF" -> "LIST_MUSIC_INST"
+  n79 -> n80 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n80 -> n81 // "NOTE_LIST" -> "NOTES"
+  n81 -> n82 // "NOTES" -> "La"
+  n80 -> n83 // "NOTE_LIST" -> "n"
+  n79 -> n84 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n84 -> n85 // "NOTE_LIST" -> "NOTES"
+  n85 -> n86 // "NOTES" -> "Re"
+  n84 -> n87 // "NOTE_LIST" -> "n"
+  n79 -> n88 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n88 -> n89 // "NOTE_LIST" -> "NOTES"
+  n89 -> n90 // "NOTES" -> "Do"
+  n89 -> n91 // "NOTES" -> "Si"
+  n79 -> n92 // "LIST_MUSIC_INST" -> "int"
+  n92 -> n93 // "int" -> "="
+  n93 -> n94 // "=" -> "ex"
+  n93 -> n95 // "=" -> "3"
+  n45 -> n96 // "COMPAS_LIST" -> "COMPAS"
+  n96 -> n97 // "COMPAS" -> "while"
+  n97 -> n98 // "while" -> "true"
+  n97 -> n99 // "while" -> "LIST_MUSIC_INST"
+  n99 -> n100 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n100 -> n101 // "NOTE_LIST" -> "NOTES"
+  n101 -> n102 // "NOTES" -> "Re"
+  n100 -> n103 // "NOTE_LIST" -> "n"
+  n99 -> n104 // "LIST_MUSIC_INST" -> "="
+  n104 -> n105 // "=" -> "rr"
+  n104 -> n106 // "=" -> "42"
+  n99 -> n107 // "LIST_MUSIC_INST" -> "if"
+  n107 -> n108 // "if" -> "ch"
+  n107 -> n109 // "if" -> "LIST_MUSIC_INST"
+  n109 -> n110 // "LIST_MUSIC_INST" -> "="
+  n110 -> n111 // "=" -> "tt"
+  n110 -> n112 // "=" -> "3"
+  n109 -> n113 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n113 -> n114 // "NOTE_LIST" -> "NOTES"
+  n114 -> n115 // "NOTES" -> "La"
+  n107 -> n116 // "if" -> "else"
+  n116 -> n117 // "else" -> "LIST_MUSIC_INST"
+  n117 -> n118 // "LIST_MUSIC_INST" -> "NOTE_LIST"
+  n118 -> n119 // "NOTE_LIST" -> "NOTES"
+  n119 -> n120 // "NOTES" -> "Re"
+  n118 -> n121 // "NOTE_LIST" -> "n"
 
 }
