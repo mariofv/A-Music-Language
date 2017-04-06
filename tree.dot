@@ -12,313 +12,70 @@ digraph {
   n2 [label="LIST_ARGUMENTS"];
   n3 [label="LIST_INSTRUCTIONS"];
   n3 [label="LIST_INSTRUCTIONS"];
-  n4 [label="REPETITION"];
-  n4 [label="REPETITION"];
-  n5 [label="3"];
-  n6 [label="COMPAS"];
-  n6 [label="COMPAS"];
+  n4 [label="Note"];
+  n4 [label="Note"];
+  n5 [label="="];
+  n5 [label="="];
+  n6 [label="a"];
   n7 [label="NOTE_LIST"];
   n7 [label="NOTE_LIST"];
   n8 [label="NOTES"];
   n8 [label="NOTES"];
   n9 [label="La"];
-  n10 [label="c"];
-  n11 [label="NOTE_LIST"];
-  n11 [label="NOTE_LIST"];
-  n12 [label="NOTES"];
-  n12 [label="NOTES"];
-  n13 [label="Do"];
-  n14 [label="NOTE_LIST"];
-  n14 [label="NOTE_LIST"];
-  n15 [label="NOTES"];
-  n15 [label="NOTES"];
-  n16 [label="Re"];
-  n17 [label="c"];
-  n18 [label="COMPAS"];
-  n18 [label="COMPAS"];
-  n19 [label="if"];
-  n19 [label="if"];
-  n20 [label="=="];
-  n20 [label="=="];
-  n21 [label="d"];
-  n22 [label="3"];
-  n23 [label="LIST_MUSIC_INST"];
-  n23 [label="LIST_MUSIC_INST"];
-  n24 [label="NOTE_LIST"];
-  n24 [label="NOTE_LIST"];
-  n25 [label="NOTES"];
-  n25 [label="NOTES"];
-  n26 [label="La"];
-  n27 [label="COMPAS"];
-  n27 [label="COMPAS"];
-  n28 [label="NOTE_LIST"];
-  n28 [label="NOTE_LIST"];
-  n29 [label="NOTES"];
-  n29 [label="NOTES"];
-  n30 [label="La"];
-  n31 [label="NOTE_LIST"];
-  n31 [label="NOTE_LIST"];
-  n32 [label="NOTES"];
-  n32 [label="NOTES"];
-  n33 [label="Do"];
-  n34 [label="n"];
-  n35 [label="Song"];
-  n35 [label="Song"];
-  n36 [label="Beat"];
-  n36 [label="Beat"];
-  n37 [label="4"];
-  n38 [label="8"];
-  n39 [label="Speed"];
-  n39 [label="Speed"];
-  n40 [label="60"];
-  n41 [label="Transport"];
-  n41 [label="Transport"];
-  n42 [label="5"];
-  n43 [label="Track"];
-  n43 [label="Track"];
-  n44 [label="\"Trumpet\""];
-  n45 [label="COMPAS_LIST"];
-  n45 [label="COMPAS_LIST"];
-  n46 [label="COMPAS"];
-  n46 [label="COMPAS"];
-  n47 [label="NOTE_LIST"];
-  n47 [label="NOTE_LIST"];
-  n48 [label="NOTES"];
-  n48 [label="NOTES"];
-  n49 [label="Do"];
-  n49 [label="Do"];
-  n50 [label="&"];
-  n51 [label="c"];
-  n52 [label="NOTE_LIST"];
-  n52 [label="NOTE_LIST"];
-  n53 [label="NOTES"];
-  n53 [label="NOTES"];
-  n54 [label="Do"];
-  n55 [label="c"];
-  n56 [label="NOTE_LIST"];
-  n56 [label="NOTE_LIST"];
-  n57 [label="NOTES"];
-  n57 [label="NOTES"];
-  n58 [label="Do"];
-  n58 [label="Do"];
-  n59 [label="#"];
-  n60 [label="c"];
-  n61 [label="NOTE_LIST"];
-  n61 [label="NOTE_LIST"];
-  n62 [label="NOTES"];
-  n62 [label="NOTES"];
-  n63 [label="Re"];
-  n64 [label="c"];
-  n65 [label="COMPAS"];
-  n65 [label="COMPAS"];
-  n66 [label="if"];
-  n66 [label="if"];
-  n67 [label="=="];
-  n67 [label="=="];
-  n68 [label="Times"];
-  n69 [label="2"];
-  n70 [label="LIST_MUSIC_INST"];
-  n70 [label="LIST_MUSIC_INST"];
-  n71 [label="NOTE_LIST"];
-  n71 [label="NOTE_LIST"];
-  n72 [label="NOTES"];
-  n72 [label="NOTES"];
-  n73 [label="La"];
-  n74 [label="n"];
-  n75 [label="ELSEIF"];
-  n75 [label="ELSEIF"];
-  n76 [label="=="];
-  n76 [label="=="];
-  n77 [label="Time"];
-  n78 [label="2"];
-  n79 [label="LIST_MUSIC_INST"];
-  n79 [label="LIST_MUSIC_INST"];
-  n80 [label="NOTE_LIST"];
-  n80 [label="NOTE_LIST"];
-  n81 [label="NOTES"];
-  n81 [label="NOTES"];
-  n82 [label="La"];
-  n83 [label="n"];
-  n84 [label="NOTE_LIST"];
-  n84 [label="NOTE_LIST"];
-  n85 [label="NOTES"];
-  n85 [label="NOTES"];
-  n86 [label="Re"];
-  n87 [label="n"];
-  n88 [label="NOTE_LIST"];
-  n88 [label="NOTE_LIST"];
-  n89 [label="NOTES"];
-  n89 [label="NOTES"];
-  n90 [label="Do"];
-  n91 [label="Si"];
-  n92 [label="int"];
-  n92 [label="int"];
-  n93 [label="="];
-  n93 [label="="];
-  n94 [label="ex"];
-  n95 [label="3"];
-  n96 [label="COMPAS"];
-  n96 [label="COMPAS"];
-  n97 [label="while"];
-  n97 [label="while"];
-  n98 [label="true"];
-  n99 [label="LIST_MUSIC_INST"];
-  n99 [label="LIST_MUSIC_INST"];
-  n100 [label="NOTE_LIST"];
-  n100 [label="NOTE_LIST"];
-  n101 [label="NOTES"];
-  n101 [label="NOTES"];
-  n102 [label="Re"];
-  n103 [label="n"];
-  n104 [label="="];
-  n104 [label="="];
-  n105 [label="rr"];
-  n106 [label="42"];
-  n107 [label="if"];
-  n107 [label="if"];
-  n108 [label="ch"];
-  n109 [label="LIST_MUSIC_INST"];
-  n109 [label="LIST_MUSIC_INST"];
-  n110 [label="="];
-  n110 [label="="];
-  n111 [label="tt"];
-  n112 [label="3"];
-  n113 [label="NOTE_LIST"];
-  n113 [label="NOTE_LIST"];
-  n114 [label="NOTES"];
-  n114 [label="NOTES"];
-  n115 [label="La"];
-  n116 [label="else"];
-  n116 [label="else"];
-  n117 [label="LIST_MUSIC_INST"];
-  n117 [label="LIST_MUSIC_INST"];
-  n118 [label="NOTE_LIST"];
-  n118 [label="NOTE_LIST"];
-  n119 [label="NOTES"];
-  n119 [label="NOTES"];
-  n120 [label="Re"];
-  n121 [label="n"];
+  n10 [label="n"];
+  n11 [label="="];
+  n11 [label="="];
+  n12 [label="ht"];
+  n13 [label="NOTE_LIST"];
+  n13 [label="NOTE_LIST"];
+  n14 [label="Chord"];
+  n14 [label="Chord"];
+  n15 [label="Do"];
+  n16 [label="m"];
+  n17 [label="maj7"];
+  n18 [label="="];
+  n18 [label="="];
+  n19 [label="LEL"];
+  n20 [label="NOTE_LIST"];
+  n20 [label="NOTE_LIST"];
+  n21 [label="NOTES"];
+  n21 [label="NOTES"];
+  n22 [label="Do"];
+  n23 [label="Re"];
+  n24 [label="Mi"];
+  n24 [label="Mi"];
+  n25 [label="#"];
+  n26 [label="Fa"];
+  n27 [label="Sol"];
+  n28 [label="c"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "LIST_ARGUMENTS"
   n1 -> n3 // "main" -> "LIST_INSTRUCTIONS"
-  n3 -> n4 // "LIST_INSTRUCTIONS" -> "REPETITION"
-  n4 -> n5 // "REPETITION" -> "3"
-  n4 -> n6 // "REPETITION" -> "COMPAS"
-  n6 -> n7 // "COMPAS" -> "NOTE_LIST"
+  n3 -> n4 // "LIST_INSTRUCTIONS" -> "Note"
+  n4 -> n5 // "Note" -> "="
+  n5 -> n6 // "=" -> "a"
+  n5 -> n7 // "=" -> "NOTE_LIST"
   n7 -> n8 // "NOTE_LIST" -> "NOTES"
   n8 -> n9 // "NOTES" -> "La"
-  n7 -> n10 // "NOTE_LIST" -> "c"
-  n6 -> n11 // "COMPAS" -> "NOTE_LIST"
-  n11 -> n12 // "NOTE_LIST" -> "NOTES"
-  n12 -> n13 // "NOTES" -> "Do"
-  n6 -> n14 // "COMPAS" -> "NOTE_LIST"
-  n14 -> n15 // "NOTE_LIST" -> "NOTES"
-  n15 -> n16 // "NOTES" -> "Re"
-  n14 -> n17 // "NOTE_LIST" -> "c"
-  n4 -> n18 // "REPETITION" -> "COMPAS"
-  n18 -> n19 // "COMPAS" -> "if"
-  n19 -> n20 // "if" -> "=="
-  n20 -> n21 // "==" -> "d"
-  n20 -> n22 // "==" -> "3"
-  n19 -> n23 // "if" -> "LIST_MUSIC_INST"
-  n23 -> n24 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n24 -> n25 // "NOTE_LIST" -> "NOTES"
-  n25 -> n26 // "NOTES" -> "La"
-  n3 -> n27 // "LIST_INSTRUCTIONS" -> "COMPAS"
-  n27 -> n28 // "COMPAS" -> "NOTE_LIST"
-  n28 -> n29 // "NOTE_LIST" -> "NOTES"
-  n29 -> n30 // "NOTES" -> "La"
-  n27 -> n31 // "COMPAS" -> "NOTE_LIST"
-  n31 -> n32 // "NOTE_LIST" -> "NOTES"
-  n32 -> n33 // "NOTES" -> "Do"
-  n31 -> n34 // "NOTE_LIST" -> "n"
-  n3 -> n35 // "LIST_INSTRUCTIONS" -> "Song"
-  n35 -> n36 // "Song" -> "Beat"
-  n36 -> n37 // "Beat" -> "4"
-  n36 -> n38 // "Beat" -> "8"
-  n35 -> n39 // "Song" -> "Speed"
-  n39 -> n40 // "Speed" -> "60"
-  n35 -> n41 // "Song" -> "Transport"
-  n41 -> n42 // "Transport" -> "5"
-  n35 -> n43 // "Song" -> "Track"
-  n43 -> n44 // "Track" -> "\"Trumpet\""
-  n43 -> n45 // "Track" -> "COMPAS_LIST"
-  n45 -> n46 // "COMPAS_LIST" -> "COMPAS"
-  n46 -> n47 // "COMPAS" -> "NOTE_LIST"
-  n47 -> n48 // "NOTE_LIST" -> "NOTES"
-  n48 -> n49 // "NOTES" -> "Do"
-  n49 -> n50 // "Do" -> "&"
-  n47 -> n51 // "NOTE_LIST" -> "c"
-  n46 -> n52 // "COMPAS" -> "NOTE_LIST"
-  n52 -> n53 // "NOTE_LIST" -> "NOTES"
-  n53 -> n54 // "NOTES" -> "Do"
-  n52 -> n55 // "NOTE_LIST" -> "c"
-  n46 -> n56 // "COMPAS" -> "NOTE_LIST"
-  n56 -> n57 // "NOTE_LIST" -> "NOTES"
-  n57 -> n58 // "NOTES" -> "Do"
-  n58 -> n59 // "Do" -> "#"
-  n56 -> n60 // "NOTE_LIST" -> "c"
-  n46 -> n61 // "COMPAS" -> "NOTE_LIST"
-  n61 -> n62 // "NOTE_LIST" -> "NOTES"
-  n62 -> n63 // "NOTES" -> "Re"
-  n61 -> n64 // "NOTE_LIST" -> "c"
-  n45 -> n65 // "COMPAS_LIST" -> "COMPAS"
-  n65 -> n66 // "COMPAS" -> "if"
-  n66 -> n67 // "if" -> "=="
-  n67 -> n68 // "==" -> "Times"
-  n67 -> n69 // "==" -> "2"
-  n66 -> n70 // "if" -> "LIST_MUSIC_INST"
-  n70 -> n71 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n71 -> n72 // "NOTE_LIST" -> "NOTES"
-  n72 -> n73 // "NOTES" -> "La"
-  n71 -> n74 // "NOTE_LIST" -> "n"
-  n66 -> n75 // "if" -> "ELSEIF"
-  n75 -> n76 // "ELSEIF" -> "=="
-  n76 -> n77 // "==" -> "Time"
-  n76 -> n78 // "==" -> "2"
-  n75 -> n79 // "ELSEIF" -> "LIST_MUSIC_INST"
-  n79 -> n80 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n80 -> n81 // "NOTE_LIST" -> "NOTES"
-  n81 -> n82 // "NOTES" -> "La"
-  n80 -> n83 // "NOTE_LIST" -> "n"
-  n79 -> n84 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n84 -> n85 // "NOTE_LIST" -> "NOTES"
-  n85 -> n86 // "NOTES" -> "Re"
-  n84 -> n87 // "NOTE_LIST" -> "n"
-  n79 -> n88 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n88 -> n89 // "NOTE_LIST" -> "NOTES"
-  n89 -> n90 // "NOTES" -> "Do"
-  n89 -> n91 // "NOTES" -> "Si"
-  n79 -> n92 // "LIST_MUSIC_INST" -> "int"
-  n92 -> n93 // "int" -> "="
-  n93 -> n94 // "=" -> "ex"
-  n93 -> n95 // "=" -> "3"
-  n45 -> n96 // "COMPAS_LIST" -> "COMPAS"
-  n96 -> n97 // "COMPAS" -> "while"
-  n97 -> n98 // "while" -> "true"
-  n97 -> n99 // "while" -> "LIST_MUSIC_INST"
-  n99 -> n100 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n100 -> n101 // "NOTE_LIST" -> "NOTES"
-  n101 -> n102 // "NOTES" -> "Re"
-  n100 -> n103 // "NOTE_LIST" -> "n"
-  n99 -> n104 // "LIST_MUSIC_INST" -> "="
-  n104 -> n105 // "=" -> "rr"
-  n104 -> n106 // "=" -> "42"
-  n99 -> n107 // "LIST_MUSIC_INST" -> "if"
-  n107 -> n108 // "if" -> "ch"
-  n107 -> n109 // "if" -> "LIST_MUSIC_INST"
-  n109 -> n110 // "LIST_MUSIC_INST" -> "="
-  n110 -> n111 // "=" -> "tt"
-  n110 -> n112 // "=" -> "3"
-  n109 -> n113 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n113 -> n114 // "NOTE_LIST" -> "NOTES"
-  n114 -> n115 // "NOTES" -> "La"
-  n107 -> n116 // "if" -> "else"
-  n116 -> n117 // "else" -> "LIST_MUSIC_INST"
-  n117 -> n118 // "LIST_MUSIC_INST" -> "NOTE_LIST"
-  n118 -> n119 // "NOTE_LIST" -> "NOTES"
-  n119 -> n120 // "NOTES" -> "Re"
-  n118 -> n121 // "NOTE_LIST" -> "n"
+  n7 -> n10 // "NOTE_LIST" -> "n"
+  n4 -> n11 // "Note" -> "="
+  n11 -> n12 // "=" -> "ht"
+  n11 -> n13 // "=" -> "NOTE_LIST"
+  n13 -> n14 // "NOTE_LIST" -> "Chord"
+  n14 -> n15 // "Chord" -> "Do"
+  n14 -> n16 // "Chord" -> "m"
+  n14 -> n17 // "Chord" -> "maj7"
+  n3 -> n18 // "LIST_INSTRUCTIONS" -> "="
+  n18 -> n19 // "=" -> "LEL"
+  n18 -> n20 // "=" -> "NOTE_LIST"
+  n20 -> n21 // "NOTE_LIST" -> "NOTES"
+  n21 -> n22 // "NOTES" -> "Do"
+  n21 -> n23 // "NOTES" -> "Re"
+  n21 -> n24 // "NOTES" -> "Mi"
+  n24 -> n25 // "Mi" -> "#"
+  n21 -> n26 // "NOTES" -> "Fa"
+  n21 -> n27 // "NOTES" -> "Sol"
+  n20 -> n28 // "NOTE_LIST" -> "c"
 
 }

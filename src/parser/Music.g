@@ -44,10 +44,11 @@ function    :   id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION
 list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
                 ;
 
-argument  :   ((INT|BOOL)^ ID)
+argument  :   type^ ID
           ;
 
-params      :   expr (','! expr)*;
+params      :   expr (','! expr)*
+            ;
 
 listInst    :  inst*  -> ^(LIST_INSTRUCTIONS inst*)
             ;
@@ -56,6 +57,10 @@ list_music_inst :   music_inst* -> ^(LIST_MUSIC_INST music_inst*)
                 ;
 
 inst        :   declaration
+            |   tone
+            |   beat
+            |   speed
+            |   instrument
             |   assignation
             |   while_stmt
             |   funcall
@@ -78,16 +83,22 @@ music_inst  :   declaration
 funcall     :   id=ID '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
             ;
 
-declaration :   (INT | BOOL)^ assig_opt (','! assig_opt)* ';'!
+declaration :   type^ assig_opt (','! assig_opt)* ';'!
             ;
 
-assig_opt   :   ID (ASSIG^ expr)?
+type        :   INT
+            |   BOOL
+            |   NOTE_TYPE
+            |   CHORD
+            ;
+
+assig_opt   :   ID (ASSIG^ (expr | notes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   ID (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ expr
+assig       :   ID (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable)
             |   post
             |   pre
             ;
@@ -107,17 +118,20 @@ speed       :   SPEED^ NUM
 transport   :   TRANSPORT^ NUM
             ;
 
-while_stmt       :   WHILE^ '('! expr ')'! '{'! listInst '}'!
+instrument  :   INSTRUMENT^ STRING
             ;
 
-while_music_stmt       :   WHILE^ '('! expr ')'! '{'! list_music_inst '}'!
+while_stmt  :   WHILE^ '('! expr ')'! '{'! listInst '}'!
             ;
+
+while_music_stmt    :   WHILE^ '('! expr ')'! '{'! list_music_inst '}'!
+                    ;
 
 for_stmt    :   FOR^ '('! (declaration | list_assig ';'!) expr ';'! list_assig ')'! '{'! listInst '}'!
             ;
 
-for_music_stmt    :   FOR^ '('! (declaration | list_assig ';'!) expr ';'! list_assig ')'! '{'! list_music_inst '}'!
-            ;
+for_music_stmt  :   FOR^ '('! (declaration | list_assig ';'!) expr ';'! list_assig ')'! '{'! list_music_inst '}'!
+                ;
 
 list_assig  :   assig (',' assig)* -> ^(LIST_ASSIG assig+)
             ;
@@ -131,16 +145,16 @@ elseif_stmt :   ELSE IF '(' expr ')' '{' listInst '}' -> ^(ELSEIF expr listInst)
 else_stmt   :   ELSE^ '{'! listInst '}'!
             ;
 
-if_music_stmt     :   IF^ '('! expr ')'! '{'! list_music_inst '}'! elseif_music_stmt* else_music_stmt?
-            ;
+if_music_stmt   :   IF^ '('! expr ')'! '{'! list_music_inst '}'! elseif_music_stmt* else_music_stmt?
+                ;
 
-elseif_music_stmt :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF expr list_music_inst)
-            ;
+elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF expr list_music_inst)
+                    ;
 
-else_music_stmt   :   ELSE^ '{'! list_music_inst '}'!
-            ;
+else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
+                ;
 
-song        :   SONG^ ID? '{'! beat speed transport? (track)+ '}'!
+song        :   SONG^ ID? '{'! beat? speed? transport? (track)+ '}'!
             ;
 
 track       :   TRACK^ ID? STRING compas_aux
@@ -152,7 +166,8 @@ compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
 compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
             ;
 
-compasses   :   compas (BAR! compas)*;
+compasses   :   compas (BAR! compas)*
+            ;
 
 repetition  :   (NUM 'x')? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
             ;
@@ -163,8 +178,11 @@ compas      :   tone? (options {greedy=true;} : music_inst)+    -> ^(COMPAS tone
 tone        :   TONE^ NUM (SUSTAIN | BEMOL)
             ;
 
-notes_group :   notes_type ('.' FIGURE)? DOT? TIE? -> ^(NOTE_LIST notes_type FIGURE? DOT? TIE?)
+notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTE_LIST notes_type FIGURE? DOT? TIE?)
             ;
+
+notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTE_LIST notes_type FIGURE? DOT?)
+                ;
 
 notes_type  :	chord | notes;
 
@@ -215,7 +233,7 @@ MINOR               : 'm';
 DIMINUTION          : 'º';
 MAJ7                : 'maj7';
 SEVENTH             : '7th';
-
+NOTE_TYPE           : 'Note';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 SUSTAIN             : '#';
 FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
@@ -225,6 +243,7 @@ BEAT                : 'Beat';
 SPEED               : 'Speed';
 SONG                : 'Song';
 TRACK               : 'Track';
+INSTRUMENT          : 'Instrument';
 
 // Programming tokens
 EQUAL	: '==' ;

@@ -1,0 +1,12 @@
+fragment holas() {
+    La.n Re.r
+}
+
+void adioses() {
+    || La.n Re.r ||
+}
+
+void main() {
+    Note a = La.n, ht = Chord(Do m maj7);
+    LEL = (Do Re #Mi Fa Sol).c;
+}
