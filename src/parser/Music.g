@@ -35,11 +35,19 @@ package parser;
     package parser;
 }
 
-prog	    :   function+ EOF -> ^(LIST_FUNCTIONS function+)
+prog	    :   (global_stmt)+ EOF -> ^(LIST_FUNCTIONS global_stmt+)
             ;
 
-function    :   id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] list_arguments listInst)
+global_stmt :   function
+            |   frag
+            |   song
             ;
+
+function    :  type_void id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
+            ;
+
+frag    : FRAGMENT^ ID '('! list_arguments ')'! '{'! list_music_inst '}'!
+        ;
 
 list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
                 ;
@@ -90,6 +98,9 @@ type        :   INT
             |   BOOL
             |   NOTE_TYPE
             |   CHORD
+            ;
+type_void   :   type
+            |   VOID
             ;
 
 assig_opt   :   ID (ASSIG^ (expr | notes_variable))?
@@ -157,7 +168,7 @@ else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
 song        :   SONG^ ID? '{'! beat? speed? transport? (track)+ '}'!
             ;
 
-track       :   TRACK^ ID? STRING compas_aux
+track       :   TRACK^ ID? STRING? compas_aux
             ;
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
@@ -184,7 +195,8 @@ notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTE_LIST notes_type FIG
 notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTE_LIST notes_type FIGURE? DOT?)
                 ;
 
-notes_type  :	chord | notes;
+notes_type  :	chord | notes
+            ;
 
 chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH|MAJ7)? ')'!
             ;
@@ -199,14 +211,14 @@ note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)?
 expr    :   boolterm (OR^ boolterm)*
 		;
 
-boolterm:   boolfact (AND^ boolfact)*
-		;
+boolterm    :   boolfact (AND^ boolfact)*
+		    ;
 
-boolfact:   num_expr ((EQUAL^ | NOT_EQUAL^ | LT^ | LE^ | GT^ | GE^) num_expr)?
-		;
+boolfact    :   num_expr ((EQUAL^ | NOT_EQUAL^ | LT^ | LE^ | GT^ | GE^) num_expr)?
+		    ;
 
-num_expr:   term ( (PLUS^ | MINUS^) term)*
-		;
+num_expr    :   term ( (PLUS^ | MINUS^) term)*
+		    ;
 
 term    :   factor ( (DOT^ | DIV^ | MOD^) factor)*
 		;
@@ -246,6 +258,8 @@ TRACK               : 'Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
+FRAGMENT: 'fragment';
+VOID    : 'void';
 EQUAL	: '==' ;
 NOT_EQUAL: '!=' ;
 ASSIG:  '=';

@@ -2,6 +2,13 @@ fragment holas() {
     La.n Re.r
 }
 
+Song MySong {
+         Beat 4:8
+         Speed 120
+         Track    || Mi.c Mi.c Fa.c Sol.c  | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
+         Track    || Sol.c Sol.c La.c Si.c  | Si.c La.c Sol.c Fa.c | Mi.c Mi.c Fa.c Sol.c  | Sol.n Fa.c Fa.c||
+}
+
 void adioses() {
     || La.n Re.r ||
 }
