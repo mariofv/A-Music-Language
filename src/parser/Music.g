@@ -16,6 +16,7 @@ tokens {
     LIST_ASSIG;
     FUNCTION;
     FUNCALL;
+    VAR_ACCESS;
     LIST_INSTRUCTIONS;
     LIST_MUSIC_INST;
     LIST_ARGUMENTS;
@@ -43,16 +44,26 @@ global_stmt :   function
             |   song
             ;
 
-function    :  type_void id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
+var_access  :   id=id_rule'.'id2=id_rule ('(' params ')')? ';'   ->  ^(VAR_ACCESS[$id.text] $id2 params?)
             ;
 
-frag    : FRAGMENT^ ID '('! list_arguments ')'! '{'! list_music_inst '}'!
+id_rule     :   ID
+            |   LETTER_X
+            ;
+
+function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
+            ;
+
+funcall     :   id=id_rule '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
+            ;
+
+frag    : FRAGMENT^ id_rule '('! list_arguments ')'! '{'! list_music_inst '}'!
         ;
 
 list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
                 ;
 
-argument  :   type^ ID
+argument  :   type^ id_rule
           ;
 
 params      :   expr (','! expr)*
@@ -65,6 +76,7 @@ list_music_inst :   music_inst* -> ^(LIST_MUSIC_INST music_inst*)
                 ;
 
 inst        :   declaration
+            |   var_access
             |   tone
             |   beat
             |   speed
@@ -79,6 +91,7 @@ inst        :   declaration
             ;
 
 music_inst  :   declaration
+            |   var_access
             |   assignation
             |   while_music_stmt
             |   funcall
@@ -86,9 +99,6 @@ music_inst  :   declaration
             |   if_music_stmt
             |   song
             | 	(options {greedy=true;} : notes_group)+ ';'!?
-            ;
-
-funcall     :   id=ID '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
             ;
 
 declaration :   type^ assig_opt (','! assig_opt)* ';'!
@@ -103,21 +113,21 @@ type_void   :   type
             |   VOID
             ;
 
-assig_opt   :   ID (ASSIG^ (expr | notes_variable))?
+assig_opt   :   id_rule (ASSIG^ (expr | notes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   ID (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable)
+assig       :   id_rule (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable)
             |   post
             |   pre
             ;
 
-post        :   ID (x=INCR | x=DECR) ->  ^(POST ID $x)
+post        :   id_rule (x=INCR | x=DECR) ->  ^(POST id_rule $x)
             ;
 
-pre         :   (x=INCR | x=DECR) ID  -> ^(PRE  ID $x)
+pre         :   (x=INCR | x=DECR) id_rule  -> ^(PRE  id_rule $x)
             ;
 
 beat        :   BEAT^ NUM ':'! NUM
@@ -165,10 +175,10 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ ID? '{'! beat? speed? transport? (track)+ '}'!
+song        :   SONG^ id_rule? '{'! beat? speed? transport? (track)+ '}'!
             ;
 
-track       :   TRACK^ ID? STRING? compas_aux
+track       :   TRACK^ id_rule? STRING? compas_aux
             ;
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
@@ -180,7 +190,7 @@ compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
 compasses   :   compas (BAR! compas)*
             ;
 
-repetition  :   (NUM 'x')? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
+repetition  :   (NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
             ;
 
 compas      :   tone? (options {greedy=true;} : music_inst)+    -> ^(COMPAS tone? music_inst+)
@@ -226,7 +236,7 @@ term    :   factor ( (DOT^ | DIV^ | MOD^) factor)*
 factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 		;
 
-atom    :   ID
+atom    :   id_rule
 		|   NUM
 		|   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
 		|   '('! expr ')'!
@@ -258,6 +268,7 @@ TRACK               : 'Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
+LETTER_X:   'x';
 FRAGMENT: 'fragment';
 VOID    : 'void';
 EQUAL	: '==' ;
