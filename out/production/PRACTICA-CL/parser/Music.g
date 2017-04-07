@@ -16,6 +16,8 @@ tokens {
     LIST_ASSIG;
     FUNCTION;
     FUNCALL;
+    ATTR_ACCESS;
+    VAR_FUNCALL;
     LIST_INSTRUCTIONS;
     LIST_MUSIC_INST;
     LIST_ARGUMENTS;
@@ -43,32 +45,47 @@ global_stmt :   function
             |   song
             ;
 
-function    :  type_void id=ID '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
+var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
             ;
 
-frag    : FRAGMENT^ ID '('! list_arguments ')'! '{'! list_music_inst '}'!
+var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
+            |   id_rule
+            ;
+
+id_rule     :   ID
+            |   LETTER_X
+            ;
+
+function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
+            ;
+
+funcall     :   id=id_rule '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
+            ;
+
+frag    : FRAGMENT^ id_rule '('! list_arguments ')'! '{'! list_music_inst '}'!
         ;
 
 list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
                 ;
 
-argument  :   type^ ID
+argument  :   type^ id_rule
           ;
 
-params      :   expr (','! expr)*
+params      :   (expr | notes_variable) (','! (expr | notes_variable))*
             ;
 
-listInst    :  inst*  -> ^(LIST_INSTRUCTIONS inst*)
+listInst    :  inst+  -> ^(LIST_INSTRUCTIONS inst+)
             ;
 
-list_music_inst :   music_inst* -> ^(LIST_MUSIC_INST music_inst*)
+list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
                 ;
 
 inst        :   declaration
-            |   tone
-            |   beat
-            |   speed
-            |   instrument
+            |   var_funcall
+            |   tone ';'!
+            |   beat ';'!
+            |   speed ';'!
+            |   instrument ';'!
             |   assignation
             |   while_stmt
             |   funcall
@@ -79,6 +96,11 @@ inst        :   declaration
             ;
 
 music_inst  :   declaration
+            |   tone ';'!
+            |   beat ';'!
+            |   speed ';'!
+            |   instrument ';'!
+            |   var_funcall
             |   assignation
             |   while_music_stmt
             |   funcall
@@ -86,9 +108,6 @@ music_inst  :   declaration
             |   if_music_stmt
             |   song
             | 	(options {greedy=true;} : notes_group)+ ';'!?
-            ;
-
-funcall     :   id=ID '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
             ;
 
 declaration :   type^ assig_opt (','! assig_opt)* ';'!
@@ -99,25 +118,26 @@ type        :   INT
             |   NOTE_TYPE
             |   CHORD
             ;
+
 type_void   :   type
             |   VOID
             ;
 
-assig_opt   :   ID (ASSIG^ (expr | notes_variable))?
+assig_opt   :   id_rule (ASSIG^ (expr | notes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   ID (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable)
+assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | FIGURE)
             |   post
             |   pre
             ;
 
-post        :   ID (x=INCR | x=DECR) ->  ^(POST ID $x)
+post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
             ;
 
-pre         :   (x=INCR | x=DECR) ID  -> ^(PRE  ID $x)
+pre         :   (x=INCR | x=DECR) var_access  -> ^(PRE  var_access $x)
             ;
 
 beat        :   BEAT^ NUM ':'! NUM
@@ -126,10 +146,10 @@ beat        :   BEAT^ NUM ':'! NUM
 speed       :   SPEED^ NUM
             ;
 
-transport   :   TRANSPORT^ NUM
+transport   :   TRANSPORT^ NUM ';'
             ;
 
-instrument  :   INSTRUMENT^ STRING
+instrument  :   INSTRUMENT^ STRING ';'
             ;
 
 while_stmt  :   WHILE^ '('! expr ')'! '{'! listInst '}'!
@@ -165,10 +185,10 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ ID? '{'! beat? speed? transport? (track)+ '}'!
+song        :   SONG^ id_rule? '{'! beat? speed? transport? (track)+ '}'!
             ;
 
-track       :   TRACK^ ID? STRING? compas_aux
+track       :   TRACK^ id_rule? STRING? compas_aux
             ;
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
@@ -180,10 +200,10 @@ compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
 compasses   :   compas (BAR! compas)*
             ;
 
-repetition  :   (NUM 'x')? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
+repetition  :   (NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
             ;
 
-compas      :   tone? (options {greedy=true;} : music_inst)+    -> ^(COMPAS tone? music_inst+)
+compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+)
             ;
 
 tone        :   TONE^ NUM (SUSTAIN | BEMOL)
@@ -198,7 +218,7 @@ notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTE_LIST notes_type FIGU
 notes_type  :	chord | notes
             ;
 
-chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH|MAJ7)? ')'!
+chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
@@ -226,7 +246,7 @@ term    :   factor ( (DOT^ | DIV^ | MOD^) factor)*
 factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 		;
 
-atom    :   ID
+atom    :   var_access
 		|   NUM
 		|   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
 		|   '('! expr ')'!
@@ -258,6 +278,7 @@ TRACK               : 'Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
+LETTER_X:   'x';
 FRAGMENT: 'fragment';
 VOID    : 'void';
 EQUAL	: '==' ;
@@ -314,5 +335,3 @@ WS  	: ( ' '
 		| '\n'
 		) {$channel=HIDDEN;}
 		;
-
-
