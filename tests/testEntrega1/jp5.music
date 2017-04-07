@@ -1,0 +1,12 @@
+void main() {
+    Song {
+        Beat 4:8;
+        Speed 60;
+        Tone 3#;
+        Transport 5;
+        Track "Sitar"  || Sol-1.c Sol-2.c Sol-3.c Sol-4.c ||
+        Track   || Sol-1.c Sol-2.c Sol-3.c Sol-4.c ||
+        Track "Celesta"  || Sol-1.c Sol-2.c Sol-3.c Sol-4.c ||
+
+    }
+}

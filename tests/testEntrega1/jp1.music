@@ -1,0 +1,30 @@
+void main() {
+    int var1, var2;
+    bool var3, var4;
+    var3 = true;
+    int var5 = 2, var6 = 4+5, var7;
+    bool var8 = false;
+
+    var1 = 1;
+    while (var1 > 0) {
+        --var1;
+    }
+
+    for (int i = 9; i >= var1; ++i) {
+        var3 = true;
+     }
+
+    var2 = funcion1(var3, var4);
+
+
+}
+
+int funcion1(int var1, bool var2) {
+    /* Do something */
+    if (var2) {
+        return var1;
+    }
+    else {
+        return 0;
+    }
+}

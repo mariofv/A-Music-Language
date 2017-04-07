@@ -9,4 +9,5 @@ void main() {
     fkdf = pi.mm;
     ++lel.pop;
     pp.l++;
+    string aaa =  "aaa";
 }

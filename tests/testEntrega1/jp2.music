@@ -1,0 +1,9 @@
+void main() {
+    Note note = La.n, notes;
+    notes = (Do Re #Mi Fa Sol).c;
+
+    note.raiseTone(2);
+    notes.isQuiet();
+    notes.figure = 2 + 3;
+    note.tone = 2 + notes.figure;
+}

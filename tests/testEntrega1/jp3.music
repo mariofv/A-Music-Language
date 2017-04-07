@@ -1,0 +1,5 @@
+void main() {
+    Chord C = Chord(Do 7th);
+    Chord Dm7 = Chord(Re m 7th);
+    C.alterMode("augmented");
+}

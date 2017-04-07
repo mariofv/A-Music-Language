@@ -59,7 +59,7 @@ id_rule     :   ID
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
             ;
 
-funcall     :   id=id_rule '(' params? ')' ';' -> ^(FUNCALL[$id.text] params?)
+funcall     :   id=id_rule '(' params? ')' -> ^(FUNCALL[$id.text] params?)
             ;
 
 frag    : FRAGMENT^ id_rule '('! list_arguments ')'! '{'! list_music_inst '}'!
@@ -81,6 +81,7 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
                 ;
 
 inst        :   declaration
+            |   'return'^ (expr | notes_group) ';'!
             |   var_funcall
             |   tone ';'!
             |   beat ';'!
@@ -88,7 +89,7 @@ inst        :   declaration
             |   instrument ';'!
             |   assignation
             |   while_stmt
-            |   funcall
+            |   funcall ';'!
             |   for_stmt
             |   if_stmt
             |   song
@@ -103,7 +104,7 @@ music_inst  :   declaration
             |   var_funcall
             |   assignation
             |   while_music_stmt
-            |   funcall
+            |   funcall ';'!
             |   for_music_stmt
             |   if_music_stmt
             |   song
@@ -117,6 +118,7 @@ type        :   INT
             |   BOOL
             |   NOTE_TYPE
             |   CHORD
+            |   STRING_TYPE
             ;
 
 type_void   :   type
@@ -146,7 +148,7 @@ beat        :   BEAT^ NUM ':'! NUM
 speed       :   SPEED^ NUM
             ;
 
-transport   :   TRANSPORT^ NUM ';'
+transport   :   TRANSPORT^ expr
             ;
 
 instrument  :   INSTRUMENT^ STRING ';'
@@ -185,7 +187,7 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ id_rule? '{'! beat? speed? transport? (track)+ '}'!
+song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ '}'!
             ;
 
 track       :   TRACK^ id_rule? STRING? compas_aux
@@ -248,6 +250,8 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 
 atom    :   var_access
 		|   NUM
+		|   STRING
+		|   funcall
 		|   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
 		|   '('! expr ')'!
 		;
@@ -311,6 +315,7 @@ TRUE    : 'true' ;
 FALSE   : 'false';
 INT     : 'int';
 BOOL    : 'bool';
+STRING_TYPE : 'string';
 ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 NUM 	:	'0'..'9'+ ;
 
