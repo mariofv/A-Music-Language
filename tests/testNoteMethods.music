@@ -1,7 +1,12 @@
 void main() {
     Note a = La.n, ht = Chord(Do m maj7);
     LEL = (Do Re #Mi Fa Sol).c;
+    LEL = (5+4);
     a.raiseTone(2);
     LEL.canJuanmiAim(false);
     lel.figure = 3;
+    x.rel = lal.te;
+    fkdf = pi.mm;
+    ++lel.pop;
+    pp.l++;
 }

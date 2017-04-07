@@ -49,14 +49,53 @@ digraph {
   n27 [label="Fa"];
   n28 [label="Sol"];
   n29 [label="c"];
-  n30 [label="a"];
-  n30 [label="a"];
-  n31 [label="raiseTone"];
-  n32 [label="2"];
-  n33 [label="LEL"];
-  n33 [label="LEL"];
-  n34 [label="canJuanmiAim"];
-  n35 [label="false"];
+  n30 [label="="];
+  n30 [label="="];
+  n31 [label="LEL"];
+  n32 [label="+"];
+  n32 [label="+"];
+  n33 [label="5"];
+  n34 [label="4"];
+  n35 [label="a"];
+  n35 [label="a"];
+  n36 [label="raiseTone"];
+  n37 [label="2"];
+  n38 [label="LEL"];
+  n38 [label="LEL"];
+  n39 [label="canJuanmiAim"];
+  n40 [label="false"];
+  n41 [label="="];
+  n41 [label="="];
+  n42 [label="lel"];
+  n42 [label="lel"];
+  n43 [label="figure"];
+  n44 [label="3"];
+  n45 [label="="];
+  n45 [label="="];
+  n46 [label="x"];
+  n46 [label="x"];
+  n47 [label="rel"];
+  n48 [label="lal"];
+  n48 [label="lal"];
+  n49 [label="te"];
+  n50 [label="="];
+  n50 [label="="];
+  n51 [label="fkdf"];
+  n52 [label="pi"];
+  n52 [label="pi"];
+  n53 [label="mm"];
+  n54 [label="PRE"];
+  n54 [label="PRE"];
+  n55 [label="lel"];
+  n55 [label="lel"];
+  n56 [label="pop"];
+  n57 [label="++"];
+  n58 [label="POST"];
+  n58 [label="POST"];
+  n59 [label="pp"];
+  n59 [label="pp"];
+  n60 [label="l"];
+  n61 [label="++"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "void"
@@ -87,11 +126,37 @@ digraph {
   n22 -> n27 // "NOTES" -> "Fa"
   n22 -> n28 // "NOTES" -> "Sol"
   n21 -> n29 // "NOTE_LIST" -> "c"
-  n4 -> n30 // "LIST_INSTRUCTIONS" -> "a"
-  n30 -> n31 // "a" -> "raiseTone"
-  n30 -> n32 // "a" -> "2"
-  n4 -> n33 // "LIST_INSTRUCTIONS" -> "LEL"
-  n33 -> n34 // "LEL" -> "canJuanmiAim"
-  n33 -> n35 // "LEL" -> "false"
+  n4 -> n30 // "LIST_INSTRUCTIONS" -> "="
+  n30 -> n31 // "=" -> "LEL"
+  n30 -> n32 // "=" -> "+"
+  n32 -> n33 // "+" -> "5"
+  n32 -> n34 // "+" -> "4"
+  n4 -> n35 // "LIST_INSTRUCTIONS" -> "a"
+  n35 -> n36 // "a" -> "raiseTone"
+  n35 -> n37 // "a" -> "2"
+  n4 -> n38 // "LIST_INSTRUCTIONS" -> "LEL"
+  n38 -> n39 // "LEL" -> "canJuanmiAim"
+  n38 -> n40 // "LEL" -> "false"
+  n4 -> n41 // "LIST_INSTRUCTIONS" -> "="
+  n41 -> n42 // "=" -> "lel"
+  n42 -> n43 // "lel" -> "figure"
+  n41 -> n44 // "=" -> "3"
+  n4 -> n45 // "LIST_INSTRUCTIONS" -> "="
+  n45 -> n46 // "=" -> "x"
+  n46 -> n47 // "x" -> "rel"
+  n45 -> n48 // "=" -> "lal"
+  n48 -> n49 // "lal" -> "te"
+  n4 -> n50 // "LIST_INSTRUCTIONS" -> "="
+  n50 -> n51 // "=" -> "fkdf"
+  n50 -> n52 // "=" -> "pi"
+  n52 -> n53 // "pi" -> "mm"
+  n4 -> n54 // "LIST_INSTRUCTIONS" -> "PRE"
+  n54 -> n55 // "PRE" -> "lel"
+  n55 -> n56 // "lel" -> "pop"
+  n54 -> n57 // "PRE" -> "++"
+  n4 -> n58 // "LIST_INSTRUCTIONS" -> "POST"
+  n58 -> n59 // "POST" -> "pp"
+  n59 -> n60 // "pp" -> "l"
+  n58 -> n61 // "POST" -> "++"
 
 }
