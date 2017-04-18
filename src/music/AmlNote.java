@@ -2,6 +2,9 @@ package music;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class AmlNote {
 
@@ -22,22 +25,38 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-    private ShortMessage onMessage, offMessage;
-    private Note note;
+    private ArrayList<Integer> pitches;
     private Figure figure;
-    private int pitch, octave, semiToneModifier, figureModifier;
+    private int figureModifier;
     private int duration;
     private boolean tie;
 
-    public ShortMessage getOffMessage(int channel) throws InvalidMidiDataException {
-        return new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
+    public ArrayList<ShortMessage> getOffMessages(int channel) throws InvalidMidiDataException {
+        ArrayList<ShortMessage> offMessages = new ArrayList<>(pitches.size());
+        for (int pitch : pitches ) {
+            ShortMessage offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
+            offMessages.add(offMessage);
+        }
+        return offMessages;
     }
 
-    public ShortMessage getOnMessage(int channel) throws InvalidMidiDataException {
-        return new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
+    public ArrayList<ShortMessage> getOnMessages(int channel) throws InvalidMidiDataException {
+        ArrayList<ShortMessage> onMessages = new ArrayList<>(pitches.size());
+        for (int pitch : pitches ) {
+            ShortMessage offMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
+            onMessages.add(offMessage);
+        }
+        return onMessages;
     }
 
-    public int getPitch() {return pitch;}
+    public void addNotePitch(Note noteName, int octave, int semiToneModifier) {
+        pitches.add(mapNote(noteName, octave, semiToneModifier));
+    }
+
+    public ArrayList<Integer> getSortedPitches() {
+        Collections.sort(pitches);
+        return pitches;
+    }
 
     public int getDuration() {
         return duration;
@@ -49,19 +68,15 @@ public class AmlNote {
 
     public boolean isTied() { return tie; }
 
-    public AmlNote(Note note, Figure figure, int octave, int semiToneModifier, int figureModifier, boolean tie) {
-        this.note = note;
+    public AmlNote(Figure figure, int figureModifier, boolean tie) {
         this.figure = figure;
-        this.octave = octave;
-        this.semiToneModifier = semiToneModifier;
         this.figureModifier = figureModifier;
         this.tie = tie;
-        duration = mapDuration();
-        pitch = mapNote();
+        mapDuration();
+        pitches = new ArrayList<>();
     }
 
-    private int mapDuration() {
-        if (figure == null) return 0;
+    private void mapDuration() {
         int value;
         switch (figure) {
             case Redonda:
@@ -86,13 +101,14 @@ public class AmlNote {
                 value =   PPQ/16;
                 break;
             case NoFigure:
+                duration = -1;
             default:
-                return -1;
+                return;
         }
-        return value + value*figureModifier/2;
+        duration = value + value*figureModifier/2;
     }
 
-    private int mapNote() {
+    private int mapNote(Note note, int octave, int semiToneModifier) {
         int pitch;
         switch(note) {
             case Do:
@@ -124,13 +140,13 @@ public class AmlNote {
     }
 
     public boolean isSilence() {
-        return note == Note.Silence;
+        return pitches.size() ==  1 && pitches.get(0) == -1;
     }
     public boolean hasFigure() { return figure != Figure.NoFigure; }
 
     @Override
     public String toString() {
-        return "Note " + note + " with figure " + figure;
+        return "Note " + " with figure " + figure;
     }
 
 }

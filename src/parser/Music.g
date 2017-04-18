@@ -211,10 +211,10 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ NUM (SUSTAIN | BEMOL)
             ;
 
-notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTE_LIST notes_type FIGURE? DOT? TIE?)
+notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
             ;
 
-notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTE_LIST notes_type FIGURE? DOT?)
+notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
                 ;
 
 notes_type  :	chord | notes
@@ -223,7 +223,7 @@ notes_type  :	chord | notes
 chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
-notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
+notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
             ;
 
 note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)?
