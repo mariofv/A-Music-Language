@@ -2,9 +2,6 @@ package music;
 
 import javax.sound.midi.*;
 
-/**
- * Created by carlos.roldan on 31/03/2017.
- */
 public class AmlInstrument {
 
     public enum Instruments {
@@ -169,15 +166,15 @@ public class AmlInstrument {
         Gunshot
     }
 
-    private Soundbank soundBank;
-    private static Instrument[] instrumentSet;
+    //private Soundbank soundBank;
+    //private static Instrument[] instrumentSet;
     private Instruments name;
     private int program;
 
-    public AmlInstrument(Instruments instrument) throws Exception {
+    public AmlInstrument(Instruments instrument) {
         program = mapInstrument(instrument);
         name = instrument;
-        /* TODO: Esto esta mal localizado, deberia ir en otra clase
+        /*
         try {
             soundBank = MidiSystem.getSynthesizer().getDefaultSoundbank();
             instrumentSet = MidiSystem.getSynthesizer().getAvailableInstruments();
@@ -189,8 +186,13 @@ public class AmlInstrument {
         */
     }
 
-    public ShortMessage getMessage(int channel) throws InvalidMidiDataException {
-        return new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, program, 0);
+    public ShortMessage getMessage(int channel) {
+        try {
+            return new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, program, 0);
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+            throw new Error();
+        }
     }
 
     private static int mapInstrument(Instruments instrument) {

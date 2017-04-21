@@ -36,7 +36,8 @@ public class AmlSequence {
             try {
                 byte[] number = intToByteArray(60000000 / bpm);
                 tempo = new MetaMessage(0x51, number, 3);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 e.printStackTrace();
                 throw new Error();
             }

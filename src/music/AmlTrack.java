@@ -1,5 +1,7 @@
 package music;
 
+import exceptions.AmlMusicException;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
@@ -34,28 +36,23 @@ public class AmlTrack {
         return lastNote.getDuration();
     }
 
-    public void addCompas(AmlCompas compas) {
+    public void addCompas(AmlCompas compas) throws AmlMusicException {
         for(AmlNote note : compas.getNotes()) {
-            try {
-                if (lastNote.isTied() && !Arrays.equals(lastNote.getSortedPitches().toArray(), note.getSortedPitches().toArray())){
-                    throw new Exception(
+            if (lastNote.isTied() && !Arrays.equals(lastNote.getSortedPitches().toArray(), note.getSortedPitches().toArray())){
+                throw new AmlMusicException(
                         "The pitch of two tied notes is different. " +
                         "The notes are:\n" + lastNote.toString() +
                         "," + note.toString()
-                    );
-                }
-                addOnMessage(note);
-                currentTick += note.getDuration();
-                addOffMessage(note);
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new Error();
+                );
             }
+            addOnMessage(note);
+            currentTick += note.getDuration();
+            addOffMessage(note);
             lastNote = note;
         }
     }
 
-    private void addOnMessage(AmlNote note) throws InvalidMidiDataException {
+    private void addOnMessage(AmlNote note) {
         if (note.isSilence()) {
             return;
         }
@@ -67,7 +64,7 @@ public class AmlTrack {
         }
     }
 
-    private void addOffMessage(AmlNote note) throws InvalidMidiDataException {
+    private void addOffMessage(AmlNote note) {
         if (note.isSilence()) {
             return;
         }
@@ -80,11 +77,7 @@ public class AmlTrack {
     }
 
     public void setInstrument(AmlInstrument instrument) {
-        try {
-            track.add(new MidiEvent(instrument.getMessage(channel), 0));
-        } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-        }
+        track.add(new MidiEvent(instrument.getMessage(channel), 0));
     }
 
     public Track getTrack() {

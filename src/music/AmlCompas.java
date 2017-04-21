@@ -1,5 +1,7 @@
 package music;
 
+import exceptions.AmlMusicException;
+
 import java.util.ArrayList;
 
 public class AmlCompas {
@@ -14,14 +16,14 @@ public class AmlCompas {
         this.ticksPerCompas = maxValue;
     }
 
-    public boolean addNote(AmlNote note) throws Exception {
+    public void addNote(AmlNote note) throws AmlMusicException {
         if (!note.hasFigure()) note.setDuration(lastNoteDuration);
         actualTicks += note.getDuration();
         if (actualTicks > ticksPerCompas) {
-            throw new Exception("The compass is incorrect because you are overflowing the metric.\n" + toString());
+            throw new AmlMusicException("The compass is incorrect because you are overflowing the metric.\n" + toString());
         }
         lastNoteDuration = note.getDuration();
-        return notes.add(note);
+        notes.add(note);
     }
 
     public AmlNote getFirstNote() {
