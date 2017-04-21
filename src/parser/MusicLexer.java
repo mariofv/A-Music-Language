@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-21 16:25:02
+// $ANTLR 3.4 src/parser/Music.g 2017-04-21 18:02:52
 
     package parser;
 

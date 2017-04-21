@@ -3,6 +3,6 @@ void main() {
     Song {
         Beat 4:4;
         Speed 120;
-        Track "Overdriven Guitar" ||Chord(Do 7th).b Chord(Do maj7).b||
+        Track "Overdriven Guitar" || 100x||:Chord(La-4 m).r | Chord(Fa-4).r | Chord(Do).r | Chord(Sol-4).r :|| ||
     }
 }

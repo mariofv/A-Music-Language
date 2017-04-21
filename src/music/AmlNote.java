@@ -31,20 +31,32 @@ public class AmlNote {
     private int duration;
     private boolean tie;
 
-    public ArrayList<ShortMessage> getOffMessages(int channel) throws InvalidMidiDataException {
+    public ArrayList<ShortMessage> getOffMessages(int channel) {
         ArrayList<ShortMessage> offMessages = new ArrayList<>(pitches.size());
         for (int pitch : pitches ) {
-            ShortMessage offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
+            ShortMessage offMessage = null;
+            try {
+                offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
+            } catch (InvalidMidiDataException e) {
+                e.printStackTrace();
+                throw new Error();
+            }
             offMessages.add(offMessage);
         }
         return offMessages;
     }
 
-    public ArrayList<ShortMessage> getOnMessages(int channel) throws InvalidMidiDataException {
+    public ArrayList<ShortMessage> getOnMessages(int channel) {
         ArrayList<ShortMessage> onMessages = new ArrayList<>(pitches.size());
         for (int pitch : pitches ) {
-            ShortMessage offMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
-            onMessages.add(offMessage);
+            ShortMessage onMessage = null;
+            try {
+                onMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
+            } catch (InvalidMidiDataException e) {
+                e.printStackTrace();
+                throw new Error();
+            }
+            onMessages.add(onMessage);
         }
         return onMessages;
     }

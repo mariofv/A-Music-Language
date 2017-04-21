@@ -220,7 +220,7 @@ notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? 
 notes_type  :	chord | notes
             ;
 
-chord       :   CHORD^ '('! NOTE (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
+chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)

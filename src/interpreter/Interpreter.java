@@ -254,7 +254,7 @@ public class Interpreter {
             for (AmlTree child : (List<AmlTree>) noteList.getChildren()) {
                 switch (child.getType()) {
                     case MusicLexer.NOTE:
-                        child.getNoteValue();
+                        rootNote = child.getNoteValue();
                         if (child.getChildren() != null) {
                             for (AmlTree pitchModifier : (List<AmlTree>) child.getChildren()) {
                                 switch (pitchModifier.getType()) {
