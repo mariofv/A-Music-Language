@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-18 20:01:21
+// $ANTLR 3.4 src/parser/Music.g 2017-04-21 16:25:02
 
 package parser;
     import interpreter.AmlTree;

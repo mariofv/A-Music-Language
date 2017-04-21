@@ -2,4 +2,10 @@ void main() {
     Chord C = Chord(Do 7th);
     Chord Dm7 = Chord(Re m 7th);
     C.alterMode("augmented");
+
+    Song {
+        Beat 4:4;
+        Speed 120;
+        Track "Electric Guitar" ||Chord(Do 7th).b Chord(Do maj7).b||
+    }
 }

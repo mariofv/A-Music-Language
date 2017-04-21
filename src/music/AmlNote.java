@@ -25,7 +25,7 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-    private ArrayList<Integer> pitches;
+    ArrayList<Integer> pitches;
     private Figure figure;
     private int figureModifier;
     private int duration;
@@ -68,6 +68,8 @@ public class AmlNote {
 
     public boolean isTied() { return tie; }
 
+    public AmlNote(){};
+
     public AmlNote(Figure figure, int figureModifier, boolean tie) {
         this.figure = figure;
         this.figureModifier = figureModifier;
@@ -108,7 +110,7 @@ public class AmlNote {
         duration = value + value*figureModifier/2;
     }
 
-    private int mapNote(Note note, int octave, int semiToneModifier) {
+    int mapNote(Note note, int octave, int semiToneModifier) {
         int pitch;
         switch(note) {
             case Do:
