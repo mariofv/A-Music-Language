@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sound.midi.*;
 
+import aml.Aml;
 import music.*;
 import parser.MusicLexer;
 
@@ -214,34 +215,83 @@ public class Interpreter {
             }
         }
 
-        AmlNote note = new AmlNote(figure, figureModifier, tie);
+        if (noteList.getType() == MusicLexer.NOTE_LIST) {
 
-        /* Loops over the list of notes */
-        for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
-            AmlNote.Note noteName = noteChild.getNoteValue();
-            int octave = 5;
-            int semiToneModifier = 0;
+            AmlNote note = new AmlNote(figure, figureModifier, tie);
 
-            if (noteChild.getChildren() != null) {
-                for (AmlTree pitchModifier : (List<AmlTree>) noteChild.getChildren()) {
-                    switch (pitchModifier.getType()) {
-                        case MusicLexer.NUM:
-                            octave = pitchModifier.getIntValue();
-                            break;
-                        case MusicLexer.BEMOL:
-                            semiToneModifier = -1;
-                            break;
-                        case MusicLexer.SUSTAIN:
-                            semiToneModifier = 1;
-                            break;
+            /* Loops over the list of notes */
+            for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
+                AmlNote.Note noteName = noteChild.getNoteValue();
+                int octave = 5;
+                int semiToneModifier = 0;
+
+                if (noteChild.getChildren() != null) {
+                    for (AmlTree pitchModifier : (List<AmlTree>) noteChild.getChildren()) {
+                        switch (pitchModifier.getType()) {
+                            case MusicLexer.NUM:
+                                octave = pitchModifier.getIntValue();
+                                break;
+                            case MusicLexer.BEMOL:
+                                semiToneModifier = -1;
+                                break;
+                            case MusicLexer.SUSTAIN:
+                                semiToneModifier = 1;
+                                break;
+                        }
                     }
                 }
+
+                note.addNotePitch(noteName, octave, semiToneModifier);
             }
-
-            note.addNotePitch(noteName, octave, semiToneModifier);
+            return note;
         }
+        else if (noteList.getType() == MusicLexer.CHORD) {
+            AmlNote.Note rootNote = AmlNote.Note.Silence;
+            int octave = 5;
+            int semiToneModifier = 0;
+            AmlChord.Quality quality = AmlChord.Quality.Mayor;
+            AmlChord.Interval interval = AmlChord.Interval.NoInterval;
+            for (AmlTree child : (List<AmlTree>) noteList.getChildren()) {
+                switch (child.getType()) {
+                    case MusicLexer.NOTE:
+                        child.getNoteValue();
+                        if (child.getChildren() != null) {
+                            for (AmlTree pitchModifier : (List<AmlTree>) child.getChildren()) {
+                                switch (pitchModifier.getType()) {
+                                    case MusicLexer.NUM:
+                                        octave = pitchModifier.getIntValue();
+                                        break;
+                                    case MusicLexer.BEMOL:
+                                        semiToneModifier = -1;
+                                        break;
+                                    case MusicLexer.SUSTAIN:
+                                        semiToneModifier = 1;
+                                        break;
+                                }
+                            }
+                        }
+                        break;
+                    case MusicLexer.MINOR:
+                        quality = AmlChord.Quality.Menor;
+                        break;
+                    case MusicLexer.PLUS:
+                        quality = AmlChord.Quality.Aumentado;
+                        break;
+                    case MusicLexer.DIMINUTION:
+                        quality = AmlChord.Quality.Disminuido;
+                        break;
+                    case MusicLexer.SEVENTH:
+                        interval = AmlChord.Interval.Septima;
+                        break;
+                    case MusicLexer.MAJ7:
+                        interval = AmlChord.Interval.Maj7;
+                        break;
+                }
+            }
+            AmlChord note = new AmlChord(rootNote, octave, semiToneModifier, quality, interval, figure, figureModifier, tie);
+            return note;
+        }
+        return null;
 
-
-        return note;
     }
 }

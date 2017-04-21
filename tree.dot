@@ -13,128 +13,105 @@ digraph {
   n3 [label="LIST_ARGUMENTS"];
   n4 [label="LIST_INSTRUCTIONS"];
   n4 [label="LIST_INSTRUCTIONS"];
-  n5 [label="Song"];
-  n5 [label="Song"];
-  n6 [label="Beat"];
-  n6 [label="Beat"];
-  n7 [label="4"];
-  n8 [label="4"];
-  n9 [label="Speed"];
-  n9 [label="Speed"];
-  n10 [label="120"];
-  n11 [label="Track"];
-  n11 [label="Track"];
-  n12 [label="\"Ocarina\""];
-  n13 [label="COMPAS_LIST"];
-  n13 [label="COMPAS_LIST"];
-  n14 [label="REPETITION"];
-  n14 [label="REPETITION"];
-  n15 [label="100"];
-  n16 [label="COMPAS"];
-  n16 [label="COMPAS"];
-  n17 [label="NOTES"];
-  n17 [label="NOTES"];
-  n18 [label="NOTE_LIST"];
-  n18 [label="NOTE_LIST"];
-  n19 [label="La"];
-  n19 [label="La"];
-  n20 [label="6"];
-  n21 [label="b"];
-  n22 [label="NOTES"];
-  n22 [label="NOTES"];
-  n23 [label="NOTE_LIST"];
-  n23 [label="NOTE_LIST"];
-  n24 [label="Sol"];
-  n24 [label="Sol"];
-  n25 [label="6"];
-  n26 [label="c"];
-  n27 [label="NOTES"];
-  n27 [label="NOTES"];
-  n28 [label="NOTE_LIST"];
-  n28 [label="NOTE_LIST"];
-  n29 [label="Fa"];
-  n29 [label="Fa"];
-  n30 [label="#"];
-  n31 [label="6"];
-  n32 [label="NOTES"];
-  n32 [label="NOTES"];
-  n33 [label="NOTE_LIST"];
-  n33 [label="NOTE_LIST"];
-  n34 [label="Mi"];
-  n34 [label="Mi"];
-  n35 [label="6"];
-  n36 [label="NOTES"];
-  n36 [label="NOTES"];
-  n37 [label="NOTE_LIST"];
-  n37 [label="NOTE_LIST"];
-  n38 [label="Mi"];
-  n38 [label="Mi"];
-  n39 [label="6"];
-  n40 [label="COMPAS"];
-  n40 [label="COMPAS"];
-  n41 [label="NOTES"];
-  n41 [label="NOTES"];
-  n42 [label="NOTE_LIST"];
-  n42 [label="NOTE_LIST"];
-  n43 [label="Fa"];
-  n43 [label="Fa"];
-  n44 [label="#"];
-  n45 [label="6"];
-  n46 [label="b"];
-  n47 [label="NOTES"];
-  n47 [label="NOTES"];
-  n48 [label="NOTE_LIST"];
-  n48 [label="NOTE_LIST"];
-  n49 [label="Silence"];
+  n5 [label="Chord"];
+  n5 [label="Chord"];
+  n6 [label="="];
+  n6 [label="="];
+  n7 [label="C"];
+  n8 [label="NOTES"];
+  n8 [label="NOTES"];
+  n9 [label="Chord"];
+  n9 [label="Chord"];
+  n10 [label="Do"];
+  n11 [label="7th"];
+  n12 [label="Chord"];
+  n12 [label="Chord"];
+  n13 [label="="];
+  n13 [label="="];
+  n14 [label="Dm7"];
+  n15 [label="NOTES"];
+  n15 [label="NOTES"];
+  n16 [label="Chord"];
+  n16 [label="Chord"];
+  n17 [label="Re"];
+  n18 [label="m"];
+  n19 [label="7th"];
+  n20 [label="C"];
+  n20 [label="C"];
+  n21 [label="alterMode"];
+  n22 [label="\"augmented\""];
+  n23 [label="Song"];
+  n23 [label="Song"];
+  n24 [label="Beat"];
+  n24 [label="Beat"];
+  n25 [label="4"];
+  n26 [label="4"];
+  n27 [label="Speed"];
+  n27 [label="Speed"];
+  n28 [label="120"];
+  n29 [label="Track"];
+  n29 [label="Track"];
+  n30 [label="\"Electric Guitar\""];
+  n31 [label="COMPAS_LIST"];
+  n31 [label="COMPAS_LIST"];
+  n32 [label="COMPAS"];
+  n32 [label="COMPAS"];
+  n33 [label="NOTES"];
+  n33 [label="NOTES"];
+  n34 [label="Chord"];
+  n34 [label="Chord"];
+  n35 [label="Do"];
+  n36 [label="7th"];
+  n37 [label="b"];
+  n38 [label="NOTES"];
+  n38 [label="NOTES"];
+  n39 [label="Chord"];
+  n39 [label="Chord"];
+  n40 [label="Do"];
+  n41 [label="maj7"];
+  n42 [label="b"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "void"
   n1 -> n3 // "main" -> "LIST_ARGUMENTS"
   n1 -> n4 // "main" -> "LIST_INSTRUCTIONS"
-  n4 -> n5 // "LIST_INSTRUCTIONS" -> "Song"
-  n5 -> n6 // "Song" -> "Beat"
-  n6 -> n7 // "Beat" -> "4"
-  n6 -> n8 // "Beat" -> "4"
-  n5 -> n9 // "Song" -> "Speed"
-  n9 -> n10 // "Speed" -> "120"
-  n5 -> n11 // "Song" -> "Track"
-  n11 -> n12 // "Track" -> "\"Ocarina\""
-  n11 -> n13 // "Track" -> "COMPAS_LIST"
-  n13 -> n14 // "COMPAS_LIST" -> "REPETITION"
-  n14 -> n15 // "REPETITION" -> "100"
-  n14 -> n16 // "REPETITION" -> "COMPAS"
-  n16 -> n17 // "COMPAS" -> "NOTES"
-  n17 -> n18 // "NOTES" -> "NOTE_LIST"
-  n18 -> n19 // "NOTE_LIST" -> "La"
-  n19 -> n20 // "La" -> "6"
-  n17 -> n21 // "NOTES" -> "b"
-  n16 -> n22 // "COMPAS" -> "NOTES"
-  n22 -> n23 // "NOTES" -> "NOTE_LIST"
-  n23 -> n24 // "NOTE_LIST" -> "Sol"
-  n24 -> n25 // "Sol" -> "6"
-  n22 -> n26 // "NOTES" -> "c"
-  n16 -> n27 // "COMPAS" -> "NOTES"
-  n27 -> n28 // "NOTES" -> "NOTE_LIST"
-  n28 -> n29 // "NOTE_LIST" -> "Fa"
-  n29 -> n30 // "Fa" -> "#"
-  n29 -> n31 // "Fa" -> "6"
-  n16 -> n32 // "COMPAS" -> "NOTES"
-  n32 -> n33 // "NOTES" -> "NOTE_LIST"
-  n33 -> n34 // "NOTE_LIST" -> "Mi"
-  n34 -> n35 // "Mi" -> "6"
-  n16 -> n36 // "COMPAS" -> "NOTES"
-  n36 -> n37 // "NOTES" -> "NOTE_LIST"
-  n37 -> n38 // "NOTE_LIST" -> "Mi"
-  n38 -> n39 // "Mi" -> "6"
-  n13 -> n40 // "COMPAS_LIST" -> "COMPAS"
-  n40 -> n41 // "COMPAS" -> "NOTES"
-  n41 -> n42 // "NOTES" -> "NOTE_LIST"
-  n42 -> n43 // "NOTE_LIST" -> "Fa"
-  n43 -> n44 // "Fa" -> "#"
-  n43 -> n45 // "Fa" -> "6"
-  n41 -> n46 // "NOTES" -> "b"
-  n40 -> n47 // "COMPAS" -> "NOTES"
-  n47 -> n48 // "NOTES" -> "NOTE_LIST"
-  n48 -> n49 // "NOTE_LIST" -> "Silence"
+  n4 -> n5 // "LIST_INSTRUCTIONS" -> "Chord"
+  n5 -> n6 // "Chord" -> "="
+  n6 -> n7 // "=" -> "C"
+  n6 -> n8 // "=" -> "NOTES"
+  n8 -> n9 // "NOTES" -> "Chord"
+  n9 -> n10 // "Chord" -> "Do"
+  n9 -> n11 // "Chord" -> "7th"
+  n4 -> n12 // "LIST_INSTRUCTIONS" -> "Chord"
+  n12 -> n13 // "Chord" -> "="
+  n13 -> n14 // "=" -> "Dm7"
+  n13 -> n15 // "=" -> "NOTES"
+  n15 -> n16 // "NOTES" -> "Chord"
+  n16 -> n17 // "Chord" -> "Re"
+  n16 -> n18 // "Chord" -> "m"
+  n16 -> n19 // "Chord" -> "7th"
+  n4 -> n20 // "LIST_INSTRUCTIONS" -> "C"
+  n20 -> n21 // "C" -> "alterMode"
+  n20 -> n22 // "C" -> "\"augmented\""
+  n4 -> n23 // "LIST_INSTRUCTIONS" -> "Song"
+  n23 -> n24 // "Song" -> "Beat"
+  n24 -> n25 // "Beat" -> "4"
+  n24 -> n26 // "Beat" -> "4"
+  n23 -> n27 // "Song" -> "Speed"
+  n27 -> n28 // "Speed" -> "120"
+  n23 -> n29 // "Song" -> "Track"
+  n29 -> n30 // "Track" -> "\"Electric Guitar\""
+  n29 -> n31 // "Track" -> "COMPAS_LIST"
+  n31 -> n32 // "COMPAS_LIST" -> "COMPAS"
+  n32 -> n33 // "COMPAS" -> "NOTES"
+  n33 -> n34 // "NOTES" -> "Chord"
+  n34 -> n35 // "Chord" -> "Do"
+  n34 -> n36 // "Chord" -> "7th"
+  n33 -> n37 // "NOTES" -> "b"
+  n32 -> n38 // "COMPAS" -> "NOTES"
+  n38 -> n39 // "NOTES" -> "Chord"
+  n39 -> n40 // "Chord" -> "Do"
+  n39 -> n41 // "Chord" -> "maj7"
+  n38 -> n42 // "NOTES" -> "b"
 
 }

@@ -12,6 +12,7 @@ public class AmlChord extends AmlNote {
     public enum Interval {
         Septima,
         Maj7,
+        NoInterval,
     }
 
     private Note root;
@@ -74,7 +75,6 @@ public class AmlChord extends AmlNote {
                 break;
             default:
         }
-        return;
     }
 
     private void mapInterval() {
@@ -85,8 +85,9 @@ public class AmlChord extends AmlNote {
             case Maj7:
                 pitches.add(rootPitch+11);
                 break;
+            case NoInterval:
+                break;
         }
-        return;
     }
 
 
