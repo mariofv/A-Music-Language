@@ -49,7 +49,7 @@ public class Interpreter {
                 break;
             }
 
-            /* TODO: Mirar como buscarlas fuera */
+            /* TODO: Mirar como buscarlas fuera (variable global) */
             case MusicLexer.SONG:
                 break;
 
@@ -147,14 +147,34 @@ public class Interpreter {
         tree.getChild(0).setInstrumentValue();
         AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
 
-
         AmlTrack track = sequence.addTrack();
         AmlInstrument instrument = new AmlInstrument(instrumentEnum);
         track.setInstrument(instrument);
 
         AmlTree listOfCompas = tree.getChild(1);
         for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
-            track.addCompas(createCompas(child, track.getMetric(), track.getLastNoteDuration()));
+            switch (child.getType()) {
+                case MusicLexer.COMPAS:
+                    track.addCompas(createCompas(child, track.getMetric(), track.getLastNoteDuration()));
+                    break;
+                case MusicLexer.REPETITION:
+                    repeat(child, track);
+                    break;
+            }
+        }
+    }
+
+    public void repeat(AmlTree tree, AmlTrack track) throws Exception {
+        int iterations = 2;
+        int init = 0;
+        if (tree.getChild(0).getType() == MusicLexer.NUM) {
+            iterations = tree.getChild(0).getIntValue();
+            init = 1;
+        }
+        for (int i = 0; i < iterations; ++i) {
+            for(int j = init; j < tree.getChildCount(); ++j) {
+                track.addCompas(createCompas(tree.getChild(j), track.getMetric(), track.getLastNoteDuration()));
+            }
         }
     }
 

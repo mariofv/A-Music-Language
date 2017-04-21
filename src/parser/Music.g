@@ -202,7 +202,7 @@ compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
 compasses   :   compas (BAR! compas)*
             ;
 
-repetition  :   (NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM compasses)
+repetition  :   (NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM? compasses)
             ;
 
 compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+)
