@@ -27,6 +27,7 @@
 
 package interpreter;
 
+import exceptions.AmlSemanticException;
 import music.AmlInstrument;
 import music.AmlNote;
 import org.antlr.runtime.tree.*;
@@ -68,7 +69,7 @@ public class AmlTree extends CommonTree {
     /** Get the integer value of the node. */
     public int getIntValue() { return intValue;}
 
-    public void setInstrumentValue() throws Exception {
+    public void setInstrumentValue() throws AmlSemanticException {
         setStringValue();
         switch (strValue) {
             // Piano Family:
@@ -486,7 +487,7 @@ public class AmlTree extends CommonTree {
                 instrumentValue = AmlInstrument.Instruments.Gunshot;
                 break;
             default:
-                throw new Exception("Instrument " + strValue + " not found");
+                throw new AmlSemanticException("Instrument " + strValue + " not found");
         }
     }
 

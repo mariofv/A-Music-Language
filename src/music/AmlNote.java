@@ -153,6 +153,7 @@ public class AmlNote {
         return pitch + (octave-5)*12 + semiToneModifier;
     }
 
+    //TODO: Esta funcion se puede evitar, haciendo que los silencios no se añadan al vector pitches
     public boolean isSilence() {
         return pitches.size() ==  1 && pitches.get(0) == -1;
     }
@@ -160,7 +161,7 @@ public class AmlNote {
 
     @Override
     public String toString() {
-        return "Note " + " with figure " + figure;
+        return pitches.size() + " notes " + " with figure " + figure;
     }
 
 }

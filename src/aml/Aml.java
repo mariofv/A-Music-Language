@@ -28,6 +28,9 @@
 package aml;
 
 // Imports for ANTLR
+import exceptions.AmlSemanticException;
+import exceptions.AmlMusicException;
+import exceptions.AmlRunTimeException;
 import interpreter.AmlTree;
 import interpreter.AmlTreeAdaptor;
 import interpreter.Interpreter;
@@ -39,8 +42,6 @@ import org.apache.commons.cli.*; // Command Language Interface
 import java.io.*;
 
 import parser.*;
-
-import javax.sound.midi.MidiSystem;
 
 /**
  * The class <code>aml</code> implement the main function of the
@@ -116,10 +117,23 @@ public class Aml {
 
         if (execute) {
             Interpreter interpreter = new Interpreter();
-            interpreter.preprocessAst(t);
-            interpreter.executeFunction("main", null);
+            interpreter.preprocessAst(t, 0);
+            try {
+                interpreter.executeFunction("main", null);
+            }
+            catch (AmlSemanticException error) {
+                System.err.println("Error found during semantic analysis: ");
+                System.err.println(error.getMessage());
+            }
+            catch (AmlMusicException exception) {
+                System.err.println("Musical exception catched during execution: ");
+                System.err.println(exception.getMessage());
+            }
+            catch (AmlRunTimeException exception) {
+                System.err.println("Runtime exception catched during execution");
+                System.err.println(exception.getMessage());
+            }
         }
-
     }
 
     /**

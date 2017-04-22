@@ -38,7 +38,11 @@ public class AmlCompas {
         return notes;
     }
 
-    public boolean check() { return ticksPerCompas == actualTicks; }
+    public void check() throws AmlMusicException {
+        if (ticksPerCompas != actualTicks) {
+            throw new AmlMusicException("The duration of the compas is incorrect!\n" + toString());
+        }
+    }
 
     @Override
     public String toString() {

@@ -1,13 +1,17 @@
 package interpreter;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.sound.midi.*;
 
-import aml.Aml;
+import exceptions.AmlSemanticException;
+import exceptions.AmlException;
+import exceptions.AmlMusicException;
+import exceptions.AmlRunTimeException;
 import music.*;
 import parser.MusicLexer;
 
@@ -15,13 +19,14 @@ public class Interpreter {
 
     private HashMap<String, AmlTree> functionMap;
     private HashMap<String, AmlTree> fragmentMap;
+    private HashMap<String, AmlTree> songMap;
 
     public Interpreter() {
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
     }
 
-    public void preprocessAst(AmlTree tree) throws Exception {
+    public void preprocessAst(AmlTree tree, int depht) throws AmlSemanticException {
         switch (tree.getType()) {
             case MusicLexer.FIGURE:
                 tree.setFigureValue();
@@ -37,7 +42,7 @@ public class Interpreter {
                 String functionName = tree.getText();
                 AmlTree previousValue = functionMap.put(functionName, tree);
                 if (previousValue != null) {
-                    throw new Exception("The function " + functionName + " has already been declared.");
+                    throw new AmlSemanticException("The function " + functionName + " has already been declared.");
                 }
                 break;
             }
@@ -45,20 +50,21 @@ public class Interpreter {
                 String fragmentName = tree.getText();
                 AmlTree previousValue = functionMap.put(fragmentName, tree);
                 if (previousValue != null) {
-                    throw new Exception("The fragment " + fragmentName + " has already been declared.");
+                    throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.");
                 }
                 break;
             }
-
             /* TODO: Mirar como buscarlas fuera (variable global) */
             case MusicLexer.SONG:
-                break;
+                if (depht == 0) {
 
+                }
+                break;
         }
 
         if (tree.getChildren() == null) return;
         for (AmlTree child : (List<AmlTree>)tree.getChildren()) {
-            preprocessAst(child);
+            preprocessAst(child, depht+1);
         }
     }
 
@@ -72,23 +78,23 @@ public class Interpreter {
         //TODO: THIS
     }
 
-    public void executeFunction(String functionName, ArrayList<Data> arguments) throws Exception{
+    public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException, IOException {
         AmlTree function = functionMap.get(functionName);
         if (function == null) {
-            throw new Exception("The function " + functionName + " is not declared.");
+            throw new AmlRunTimeException("The function " + functionName + " is not declared.");
         }
         checkParams(function.getChild(1), arguments);
         setParams(function.getChild(1), arguments);
         executeListInstruction(function.getChild(2));
     }
 
-    public void executeListInstruction(AmlTree tree) throws Exception {
+    public void executeListInstruction(AmlTree tree) throws AmlException, IOException {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
         }
     }
 
-    public void executeInstruction(AmlTree tree) throws Exception {
+    public void executeInstruction(AmlTree tree) throws AmlException, IOException {
         switch(tree.getType()) {
             case MusicLexer.SONG:
                 //Crear secuencia
@@ -99,7 +105,7 @@ public class Interpreter {
         }
     }
 
-    private void createSong(AmlTree tree) throws Exception {
+    private void createSong(AmlTree tree) throws IOException, AmlException {
         int[] metric = {4,4};
         int bpm = 120;
 
@@ -144,7 +150,7 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createTrack(AmlTree tree, AmlSequence sequence) throws Exception {
+    public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
         tree.getChild(0).setInstrumentValue();
         AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
 
@@ -165,7 +171,7 @@ public class Interpreter {
         }
     }
 
-    public void repeat(AmlTree tree, AmlTrack track) throws Exception {
+    public void repeat(AmlTree tree, AmlTrack track) throws AmlMusicException {
         int iterations = 2;
         int init = 0;
         if (tree.getChild(0).getType() == MusicLexer.NUM) {
@@ -179,19 +185,17 @@ public class Interpreter {
         }
     }
 
-    public AmlCompas createCompas(AmlTree tree, int metric, int lastNoteDuration) throws Exception {
+    public AmlCompas createCompas(AmlTree tree, int metric, int lastNoteDuration) throws AmlMusicException {
         AmlCompas compas = new AmlCompas(metric, lastNoteDuration);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             AmlNote note = createNote(child);
             compas.addNote(note);
         }
-        if (!compas.check()) {
-            throw new Exception("The duration of the compas is incorrect!\n" + compas);
-        }
+        compas.check();
         return compas;
     }
 
-    public AmlNote createNote(AmlTree tree) throws Exception {
+    public AmlNote createNote(AmlTree tree) {
         AmlTree noteList = tree.getChild(0);
 
         /* Loops over the metric modifiers */
@@ -240,7 +244,6 @@ public class Interpreter {
                         }
                     }
                 }
-
                 note.addNotePitch(noteName, octave, semiToneModifier);
             }
             return note;
@@ -288,10 +291,8 @@ public class Interpreter {
                         break;
                 }
             }
-            AmlChord note = new AmlChord(rootNote, octave, semiToneModifier, quality, interval, figure, figureModifier, tie);
-            return note;
+            return new AmlChord(rootNote, octave, semiToneModifier, quality, interval, figure, figureModifier, tie);
         }
         return null;
-
     }
 }
