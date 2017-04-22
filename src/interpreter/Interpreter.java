@@ -54,10 +54,9 @@ public class Interpreter {
                 }
                 break;
             }
-            /* TODO: Mirar como buscarlas fuera (variable global) */
             case MusicLexer.SONG:
                 if (depht == 0) {
-
+                    //TODO:
                 }
                 break;
         }
