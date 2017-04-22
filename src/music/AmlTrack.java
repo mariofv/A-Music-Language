@@ -53,9 +53,6 @@ public class AmlTrack {
     }
 
     private void addOnMessage(AmlNote note) {
-        if (note.isSilence()) {
-            return;
-        }
         if (lastNote.isTied()) {
             return;
         }
@@ -65,9 +62,6 @@ public class AmlTrack {
     }
 
     private void addOffMessage(AmlNote note) {
-        if (note.isSilence()) {
-            return;
-        }
         if (note.isTied()) {
             return;
         }

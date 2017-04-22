@@ -3,7 +3,6 @@ package music;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class AmlNote {
@@ -25,7 +24,7 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-    ArrayList<Integer> pitches;
+    private ArrayList<Integer> pitches;
     private Figure figure;
     private int figureModifier;
     private int duration;
@@ -33,8 +32,8 @@ public class AmlNote {
 
     public ArrayList<ShortMessage> getOffMessages(int channel) {
         ArrayList<ShortMessage> offMessages = new ArrayList<>(pitches.size());
-        for (int pitch : pitches ) {
-            ShortMessage offMessage = null;
+        for (int pitch : pitches) {
+            ShortMessage offMessage;
             try {
                 offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
             } catch (InvalidMidiDataException e) {
@@ -48,8 +47,8 @@ public class AmlNote {
 
     public ArrayList<ShortMessage> getOnMessages(int channel) {
         ArrayList<ShortMessage> onMessages = new ArrayList<>(pitches.size());
-        for (int pitch : pitches ) {
-            ShortMessage onMessage = null;
+        for (int pitch : pitches) {
+            ShortMessage onMessage;
             try {
                 onMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
             } catch (InvalidMidiDataException e) {
@@ -62,7 +61,7 @@ public class AmlNote {
     }
 
     public void addNotePitch(Note noteName, int octave, int semiToneModifier) {
-        pitches.add(mapNote(noteName, octave, semiToneModifier));
+        if (noteName != Note.Silence) pitches.add(mapNote(noteName, octave, semiToneModifier));
     }
 
     public ArrayList<Integer> getSortedPitches() {
@@ -153,10 +152,6 @@ public class AmlNote {
         return pitch + (octave-5)*12 + semiToneModifier;
     }
 
-    //TODO: Esta funcion se puede evitar, haciendo que los silencios no se añadan al vector pitches
-    public boolean isSilence() {
-        return pitches.size() ==  1 && pitches.get(0) == -1;
-    }
     public boolean hasFigure() { return figure != Figure.NoFigure; }
 
     @Override
