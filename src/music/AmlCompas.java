@@ -13,7 +13,7 @@ public class AmlCompas {
         this.lastNoteDuration = lastNoteDuration;
         notes = new ArrayList<>();
         actualTicks = 0;
-        this.ticksPerCompas = maxValue;
+        ticksPerCompas = maxValue;
     }
 
     public void addNote(AmlNote note) throws AmlMusicException {
@@ -40,19 +40,19 @@ public class AmlCompas {
 
     public void check() throws AmlMusicException {
         if (ticksPerCompas != actualTicks) {
-            throw new AmlMusicException("The duration of the compas is incorrect!\n" + toString());
+            throw new AmlMusicException("The duration of the compas is incorrect beacuse it needs more figures.\n" + toString());
         }
     }
 
     @Override
     public String toString() {
-        StringBuilder message = new StringBuilder("Compas notes: \n");
+        StringBuilder message = new StringBuilder("Compas notes: \n| ");
 
         for (AmlNote note : notes) {
-            message.append(note.toString()).append("\n");
+            message.append(note.toString()).append(" ");
         }
 
-        return message.toString();
+        return message.append(" |").toString();
     }
 
 }

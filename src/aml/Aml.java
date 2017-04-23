@@ -128,10 +128,12 @@ public class Aml {
             catch (AmlMusicException exception) {
                 System.err.println("Musical exception catched during execution: ");
                 System.err.println(exception.getMessage());
+                exception.printStackTrace();
             }
             catch (AmlRunTimeException exception) {
                 System.err.println("Runtime exception catched during execution");
                 System.err.println(exception.getMessage());
+                exception.printStackTrace();
             }
         }
     }

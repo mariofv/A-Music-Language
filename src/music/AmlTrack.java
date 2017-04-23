@@ -2,7 +2,6 @@ package music;
 
 import exceptions.AmlMusicException;
 
-import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
@@ -10,7 +9,6 @@ import javax.sound.midi.Track;
 import java.util.Arrays;
 
 import static music.AmlNote.Figure.*;
-import static music.AmlNote.Note.*;
 
 public class AmlTrack {
 
@@ -28,8 +26,7 @@ public class AmlTrack {
         this.tone = tone;
         this.channel = channel;
         currentTick = 0;
-        lastNote = new AmlNote(NoFigure, 0, false);
-        lastNote.setDuration(AmlNote.PPQ);
+        lastNote = new AmlNote(Negra, 0, false);
     }
 
     public int getLastNoteDuration() {

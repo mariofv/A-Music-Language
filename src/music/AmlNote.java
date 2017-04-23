@@ -24,11 +24,23 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-    private ArrayList<Integer> pitches;
+    ArrayList<Integer> pitches;
+    ArrayList<AmlNoteInfo> notes;
     private Figure figure;
     private int figureModifier;
     private int duration;
     private boolean tie;
+
+    AmlNote(){}
+
+    public AmlNote(Figure figure, int figureModifier, boolean tie) {
+        this.figure = figure;
+        this.figureModifier = figureModifier;
+        this.tie = tie;
+        mapDuration();
+        pitches = new ArrayList<>();
+        notes = new ArrayList<>();
+    }
 
     public ArrayList<ShortMessage> getOffMessages(int channel) {
         ArrayList<ShortMessage> offMessages = new ArrayList<>(pitches.size());
@@ -37,8 +49,7 @@ public class AmlNote {
             try {
                 offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
             } catch (InvalidMidiDataException e) {
-                e.printStackTrace();
-                throw new Error();
+                throw new Error(e);
             }
             offMessages.add(offMessage);
         }
@@ -52,8 +63,7 @@ public class AmlNote {
             try {
                 onMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
             } catch (InvalidMidiDataException e) {
-                e.printStackTrace();
-                throw new Error();
+                throw new Error(e);
             }
             onMessages.add(onMessage);
         }
@@ -62,6 +72,7 @@ public class AmlNote {
 
     public void addNotePitch(Note noteName, int octave, int semiToneModifier) {
         if (noteName != Note.Silence) pitches.add(mapNote(noteName, octave, semiToneModifier));
+        notes.add(new AmlNoteInfo(noteName, octave, semiToneModifier));
     }
 
     public ArrayList<Integer> getSortedPitches() {
@@ -78,16 +89,6 @@ public class AmlNote {
     }
 
     public boolean isTied() { return tie; }
-
-    public AmlNote(){};
-
-    public AmlNote(Figure figure, int figureModifier, boolean tie) {
-        this.figure = figure;
-        this.figureModifier = figureModifier;
-        this.tie = tie;
-        mapDuration();
-        pitches = new ArrayList<>();
-    }
 
     private void mapDuration() {
         int value;
@@ -156,7 +157,38 @@ public class AmlNote {
 
     @Override
     public String toString() {
-        return pitches.size() + " notes " + " with figure " + figure;
+        StringBuilder string = new StringBuilder();
+        if (notes.size() > 1) string.append("(");
+        for (AmlNoteInfo note : notes) {
+            string.append(note.toString());
+        }
+        if (notes.size() > 1) string.append(")");
+        if (figure != Figure.NoFigure) {
+            string.append(".").append(mapNoteFigure(figure));
+            if (figureModifier != 0) string.append("*");
+        }
+        if (tie) string.append("~");
+        return string.toString();
     }
 
+    public static String mapNoteFigure(Figure figure) {
+        switch (figure) {
+            case Redonda:
+                return "r";
+            case Blanca:
+                return "b";
+            case Negra:
+                return "n";
+            case Corchera:
+                return "c";
+            case Semicorchera:
+                return "sc";
+            case Fusa:
+                return "f";
+            case SemiFusa:
+                return "sf";
+            case NoFigure:
+        }
+        return "";
+    }
 }
