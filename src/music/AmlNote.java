@@ -7,8 +7,39 @@ import java.util.Collections;
 
 public class AmlNote {
 
+    public class AmlNoteInfo {
+        private AmlNote.Note note;
+        private int octave;
+        private AmlNote.Accident accident;
+        private static final int defaultOctave = 5;
+
+        public AmlNoteInfo(AmlNote.Note note, int octave, AmlNote.Accident accident) {
+            this.note = note;
+            this.octave = octave;
+            this.accident = accident;
+        }
+
+        @Override
+        public String toString() {
+            String semiTone;
+            if (accident == AmlNote.Accident.Sustain) semiTone = "#";
+            else if (accident == AmlNote.Accident.Bemol) semiTone = "&";
+            else semiTone = "";
+            String octaveString;
+            if (octave == defaultOctave) octaveString = "";
+            else octaveString = "-" + octave;
+            return semiTone + note.toString() + octaveString;
+        }
+    }
+
+
+
     public enum Note {
         Do,Re,Mi,Fa,Sol,La,Si,Silence
+    }
+
+    public enum Accident {
+        Sustain, Bemol, Natural
     }
 
     public enum Figure {
@@ -70,9 +101,9 @@ public class AmlNote {
         return onMessages;
     }
 
-    public void addNotePitch(Note noteName, int octave, int semiToneModifier) {
-        if (noteName != Note.Silence) pitches.add(mapNote(noteName, octave, semiToneModifier));
-        notes.add(new AmlNoteInfo(noteName, octave, semiToneModifier));
+    public void addNotePitch(Note noteName, int octave, Accident accident) {
+        if (noteName != Note.Silence) pitches.add(mapNote(noteName, octave));
+        notes.add(new AmlNoteInfo(noteName, octave, accident));
     }
 
     public ArrayList<Integer> getSortedPitches() {
@@ -87,6 +118,8 @@ public class AmlNote {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+
 
     public boolean isTied() { return tie; }
 
@@ -122,7 +155,7 @@ public class AmlNote {
         duration = value + value*figureModifier/2;
     }
 
-    int mapNote(Note note, int octave, int semiToneModifier) {
+    int mapNote(Note note, int octave) {
         int pitch;
         switch(note) {
             case Do:
@@ -150,7 +183,7 @@ public class AmlNote {
             default:
                  return -1;
         }
-        return pitch + (octave-5)*12 + semiToneModifier;
+        return pitch + (octave-5)*12;
     }
 
     public boolean hasFigure() { return figure != Figure.NoFigure; }

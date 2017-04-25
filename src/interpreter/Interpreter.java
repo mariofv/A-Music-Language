@@ -104,9 +104,10 @@ public class Interpreter {
         }
     }
 
-    private void evaluateMusicInstruction(AmlTree tree) {
+    private void executeMusicInstruction(AmlTree tree) {
         switch (tree.getType()) {
             case MusicLexer.TONE:
+
                 break;
             case MusicLexer.SONG:
                 break;
@@ -170,7 +171,7 @@ public class Interpreter {
         for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:
-                    track.addCompas(createCompas(child, track.getMetric(), track.getLastNoteDuration()));
+                    track.addCompas(createCompas(child, track));
                     break;
                 case MusicLexer.REPETITION:
                     repeat(child, track);
@@ -188,13 +189,13 @@ public class Interpreter {
         }
         for (int i = 0; i < iterations; ++i) {
             for(int j = init; j < tree.getChildCount(); ++j) {
-                track.addCompas(createCompas(tree.getChild(j), track.getMetric(), track.getLastNoteDuration()));
+                track.addCompas(createCompas(tree.getChild(j), track));
             }
         }
     }
 
-    public AmlCompas createCompas(AmlTree tree, int metric, int lastNoteDuration) throws AmlMusicException {
-        AmlCompas compas = new AmlCompas(metric, lastNoteDuration);
+    public AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlMusicException {
+        AmlCompas compas = new AmlCompas(track);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             AmlNote note = createNote(child);
             compas.addNote(note);
@@ -235,7 +236,7 @@ public class Interpreter {
             for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
                 AmlNote.Note noteName = noteChild.getNoteValue();
                 int octave = 5;
-                int semiToneModifier = 0;
+                AmlNote.Accident accident = AmlNote.Accident.Natural;
 
                 if (noteChild.getChildren() != null) {
                     for (AmlTree pitchModifier : (List<AmlTree>) noteChild.getChildren()) {
@@ -244,15 +245,15 @@ public class Interpreter {
                                 octave = pitchModifier.getIntValue();
                                 break;
                             case MusicLexer.BEMOL:
-                                semiToneModifier = -1;
+                                accident = AmlNote.Accident.Bemol;
                                 break;
                             case MusicLexer.SUSTAIN:
-                                semiToneModifier = 1;
+                                accident = AmlNote.Accident.Sustain;
                                 break;
                         }
                     }
                 }
-                note.addNotePitch(noteName, octave, semiToneModifier);
+                note.addNotePitch(noteName, octave, accident);
             }
             return note;
         }

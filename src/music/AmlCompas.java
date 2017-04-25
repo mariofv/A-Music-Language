@@ -3,20 +3,30 @@ package music;
 import exceptions.AmlMusicException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AmlCompas {
+    private AmlTrack track;
+
     private ArrayList<AmlNote> notes;
+
+    private ArrayList<Integer> toneAccidents;
 
     private int actualTicks, ticksPerCompas, lastNoteDuration;
 
-    public AmlCompas(int maxValue, int lastNoteDuration) {
-        this.lastNoteDuration = lastNoteDuration;
+    public AmlCompas(AmlTrack track) {
+        this.track = track;
+        toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
+        lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();
         actualTicks = 0;
-        ticksPerCompas = maxValue;
+        ticksPerCompas = track.getMetric();
     }
 
     public void addNote(AmlNote note) throws AmlMusicException {
+
+
+
         if (!note.hasFigure()) note.setDuration(lastNoteDuration);
         actualTicks += note.getDuration();
         if (actualTicks > ticksPerCompas) {
