@@ -103,6 +103,16 @@ public class Interpreter {
                 break;
         }
     }
+    private boolean evaluateBooleanExpression(AmlTree tree) {
+        //TODO: THIS
+        return true;
+    }
+
+    public void executeListMusicInstruction(AmlTree tree) {
+        for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
+            executeMusicInstruction(child);
+        }
+    }
 
     private void executeMusicInstruction(AmlTree tree) {
         switch (tree.getType()) {
@@ -110,6 +120,23 @@ public class Interpreter {
 
                 break;
             case MusicLexer.SONG:
+                break;
+            case MusicLexer.IF:
+                if(evaluateBooleanExpression(tree.getChild(0))) {
+                    executeListMusicInstruction(tree.getChild(1));
+                } else {
+                    for(int i = 2; i < tree.getChildCount(); ++i) {
+                        AmlTree child = tree.getChild(i);
+                        if(child.getType() == MusicLexer.ELSEIF) {
+                            if(evaluateBooleanExpression(child.getChild(0))) {
+                                executeListMusicInstruction(child.getChild(1));
+                                break;
+                            }
+                        } else {
+                            executeListMusicInstruction(child.getChild(0));
+                        }
+                    }
+                }
                 break;
         }
     }
