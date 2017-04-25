@@ -68,9 +68,11 @@ public class AmlTrack {
 
     public void addCompas(AmlCompas compas) throws AmlMusicException {
         for(AmlNote note : compas.getNotes()) {
-            ArrayList<Integer> sortedPitches = (ArrayList<Integer>)lastNote.getPitches().clone();
-            Collections.sort(sortedPitches);
-            if (lastNote.isTied() && !Arrays.equals(sortedPitches.toArray(), sortedPitches.toArray())){
+            ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)note.getPitches().clone();
+            ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)lastNote.getPitches().clone();
+            Collections.sort(lastNoteSortedPitches);
+            Collections.sort(noteSortedPitches);
+            if (lastNote.isTied() && !Arrays.equals(noteSortedPitches.toArray(), lastNoteSortedPitches.toArray())){
                 throw new AmlMusicException(
                         "The pitch of two tied notes is different. " +
                         "The notes are:\n" + lastNote.toString() +

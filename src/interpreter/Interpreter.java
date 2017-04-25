@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.sound.midi.*;
 
@@ -115,7 +116,7 @@ public class Interpreter {
                 break;
             case MusicLexer.LETTER_X:
             case MusicLexer.ID:
-                if(tree.getText() == "Time") {
+                if(tree.getText().equals("Time")) {
                     return new Int(currentIteration);
                 } //TODO: ESTO DEBERIA SER UN SWITCH
                 break;
@@ -126,19 +127,20 @@ public class Interpreter {
     private boolean evaluateBooleanExpression(AmlTree tree) {
         switch (tree.getType()){
             case MusicLexer.EQUAL:
-                //TODO: THIS
-                break;
+                Int leftSide = (Int) evaluateExpression(tree.getChild(0));
+                Int rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() == rightSide.getValue();
         }
         return true;
     }
 
-    public void executeListMusicInstruction(AmlTree tree) {
+    public void executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlMusicException {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
-            executeMusicInstruction(child);
+            executeMusicInstruction(child, compas);
         }
     }
 
-    private void executeMusicInstruction(AmlTree tree) {
+    private void executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlMusicException {
         switch (tree.getType()) {
             case MusicLexer.TONE:
                 //TODO: THIS
@@ -147,20 +149,24 @@ public class Interpreter {
                 break;
             case MusicLexer.IF:
                 if(evaluateBooleanExpression(tree.getChild(0))) {
-                    executeListMusicInstruction(tree.getChild(1));
+                    executeListMusicInstruction(tree.getChild(1), compas);
                 } else {
                     for(int i = 2; i < tree.getChildCount(); ++i) {
                         AmlTree child = tree.getChild(i);
                         if(child.getType() == MusicLexer.ELSEIF) {
                             if(evaluateBooleanExpression(child.getChild(0))) {
-                                executeListMusicInstruction(child.getChild(1));
+                                executeListMusicInstruction(child.getChild(1), compas);
                                 break;
                             }
                         } else {
-                            executeListMusicInstruction(child.getChild(0));
+                            executeListMusicInstruction(child.getChild(0), compas);
                         }
                     }
                 }
+                break;
+            case MusicLexer.NOTES:
+                AmlNote note = createNote(tree);
+                compas.addNote(note);
                 break;
         }
     }
@@ -255,8 +261,7 @@ public class Interpreter {
     public AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlMusicException {
         AmlCompas compas = new AmlCompas(track);
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
-            AmlNote note = createNote(child);
-            compas.addNote(note);
+            executeMusicInstruction(child, compas);
         }
         compas.check();
         return compas;

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-25 17:57:41
+// $ANTLR 3.4 src/parser/Music.g 2017-04-25 19:19:09
 
 package parser;
     import interpreter.AmlTree;
@@ -484,7 +484,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: id2, params
+            // elements: params, id2
             // token labels: 
             // rule labels: retval, id2
             // token list labels: 
@@ -854,7 +854,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: listInst, list_arguments, type_void
+            // elements: list_arguments, type_void, listInst
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3733,7 +3733,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: x, var_access
+            // elements: var_access, x
             // token labels: x
             // rule labels: retval
             // token list labels: 
@@ -5074,7 +5074,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: listInst, expr
+            // elements: expr, listInst
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6345,7 +6345,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: compasses, NUM
+            // elements: NUM, compasses
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6803,7 +6803,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: notes_type, DOT, TIE, FIGURE
+            // elements: FIGURE, TIE, DOT, notes_type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6969,7 +6969,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: DOT, notes_type, FIGURE
+            // elements: FIGURE, DOT, notes_type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7458,7 +7458,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "note"
-    // src/parser/Music.g:229:1: note : ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' ! NUM )? ;
+    // src/parser/Music.g:229:1: note : ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' NUM )? ;
     public final MusicParser.note_return note() throws RecognitionException {
         MusicParser.note_return retval = new MusicParser.note_return();
         retval.start = input.LT(1);
@@ -7477,8 +7477,8 @@ public TreeAdaptor getTreeAdaptor() {
         AmlTree NUM261_tree=null;
 
         try {
-            // src/parser/Music.g:229:13: ( ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' ! NUM )? )
-            // src/parser/Music.g:229:17: ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' ! NUM )?
+            // src/parser/Music.g:229:13: ( ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' NUM )? )
+            // src/parser/Music.g:229:17: ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( '-' NUM )?
             {
             root_0 = (AmlTree)adaptor.nil();
 
@@ -7522,7 +7522,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.becomeRoot(NOTE259_tree, root_0);
 
 
-            // src/parser/Music.g:229:50: ( '-' ! NUM )?
+            // src/parser/Music.g:229:50: ( '-' NUM )?
             int alt57=2;
             int LA57_0 = input.LA(1);
 
@@ -7531,11 +7531,16 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt57) {
                 case 1 :
-                    // src/parser/Music.g:229:51: '-' ! NUM
+                    // src/parser/Music.g:229:51: '-' NUM
                     {
                     char_literal260=(Token)match(input,MINUS,FOLLOW_MINUS_in_note3071); 
+                    char_literal260_tree = 
+                    (AmlTree)adaptor.create(char_literal260)
+                    ;
+                    adaptor.addChild(root_0, char_literal260_tree);
 
-                    NUM261=(Token)match(input,NUM,FOLLOW_NUM_in_note3074); 
+
+                    NUM261=(Token)match(input,NUM,FOLLOW_NUM_in_note3073); 
                     NUM261_tree = 
                     (AmlTree)adaptor.create(NUM261)
                     ;
@@ -7602,7 +7607,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_boolterm_in_expr3103);
+            pushFollow(FOLLOW_boolterm_in_expr3102);
             boolterm262=boolterm();
 
             state._fsp--;
@@ -7624,14 +7629,14 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // src/parser/Music.g:233:23: OR ^ boolterm
             	    {
-            	    OR263=(Token)match(input,OR,FOLLOW_OR_in_expr3106); 
+            	    OR263=(Token)match(input,OR,FOLLOW_OR_in_expr3105); 
             	    OR263_tree = 
             	    (AmlTree)adaptor.create(OR263)
             	    ;
             	    root_0 = (AmlTree)adaptor.becomeRoot(OR263_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_boolterm_in_expr3109);
+            	    pushFollow(FOLLOW_boolterm_in_expr3108);
             	    boolterm264=boolterm();
 
             	    state._fsp--;
@@ -7701,7 +7706,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_boolfact_in_boolterm3127);
+            pushFollow(FOLLOW_boolfact_in_boolterm3126);
             boolfact265=boolfact();
 
             state._fsp--;
@@ -7723,14 +7728,14 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // src/parser/Music.g:236:27: AND ^ boolfact
             	    {
-            	    AND266=(Token)match(input,AND,FOLLOW_AND_in_boolterm3130); 
+            	    AND266=(Token)match(input,AND,FOLLOW_AND_in_boolterm3129); 
             	    AND266_tree = 
             	    (AmlTree)adaptor.create(AND266)
             	    ;
             	    root_0 = (AmlTree)adaptor.becomeRoot(AND266_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_boolfact_in_boolterm3133);
+            	    pushFollow(FOLLOW_boolfact_in_boolterm3132);
             	    boolfact267=boolfact();
 
             	    state._fsp--;
@@ -7810,7 +7815,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_num_expr_in_boolfact3155);
+            pushFollow(FOLLOW_num_expr_in_boolfact3154);
             num_expr268=num_expr();
 
             state._fsp--;
@@ -7873,7 +7878,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // src/parser/Music.g:239:28: EQUAL ^
                             {
-                            EQUAL269=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_boolfact3159); 
+                            EQUAL269=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_boolfact3158); 
                             EQUAL269_tree = 
                             (AmlTree)adaptor.create(EQUAL269)
                             ;
@@ -7885,7 +7890,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 2 :
                             // src/parser/Music.g:239:37: NOT_EQUAL ^
                             {
-                            NOT_EQUAL270=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolfact3164); 
+                            NOT_EQUAL270=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolfact3163); 
                             NOT_EQUAL270_tree = 
                             (AmlTree)adaptor.create(NOT_EQUAL270)
                             ;
@@ -7897,7 +7902,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 3 :
                             // src/parser/Music.g:239:50: LT ^
                             {
-                            LT271=(Token)match(input,LT,FOLLOW_LT_in_boolfact3169); 
+                            LT271=(Token)match(input,LT,FOLLOW_LT_in_boolfact3168); 
                             LT271_tree = 
                             (AmlTree)adaptor.create(LT271)
                             ;
@@ -7909,7 +7914,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 4 :
                             // src/parser/Music.g:239:56: LE ^
                             {
-                            LE272=(Token)match(input,LE,FOLLOW_LE_in_boolfact3174); 
+                            LE272=(Token)match(input,LE,FOLLOW_LE_in_boolfact3173); 
                             LE272_tree = 
                             (AmlTree)adaptor.create(LE272)
                             ;
@@ -7921,7 +7926,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 5 :
                             // src/parser/Music.g:239:62: GT ^
                             {
-                            GT273=(Token)match(input,GT,FOLLOW_GT_in_boolfact3179); 
+                            GT273=(Token)match(input,GT,FOLLOW_GT_in_boolfact3178); 
                             GT273_tree = 
                             (AmlTree)adaptor.create(GT273)
                             ;
@@ -7933,7 +7938,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 6 :
                             // src/parser/Music.g:239:68: GE ^
                             {
-                            GE274=(Token)match(input,GE,FOLLOW_GE_in_boolfact3184); 
+                            GE274=(Token)match(input,GE,FOLLOW_GE_in_boolfact3183); 
                             GE274_tree = 
                             (AmlTree)adaptor.create(GE274)
                             ;
@@ -7946,7 +7951,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_num_expr_in_boolfact3188);
+                    pushFollow(FOLLOW_num_expr_in_boolfact3187);
                     num_expr275=num_expr();
 
                     state._fsp--;
@@ -8015,7 +8020,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_term_in_num_expr3210);
+            pushFollow(FOLLOW_term_in_num_expr3209);
             term276=term();
 
             state._fsp--;
@@ -8058,7 +8063,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 1 :
             	            // src/parser/Music.g:242:25: PLUS ^
             	            {
-            	            PLUS277=(Token)match(input,PLUS,FOLLOW_PLUS_in_num_expr3215); 
+            	            PLUS277=(Token)match(input,PLUS,FOLLOW_PLUS_in_num_expr3214); 
             	            PLUS277_tree = 
             	            (AmlTree)adaptor.create(PLUS277)
             	            ;
@@ -8070,7 +8075,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 2 :
             	            // src/parser/Music.g:242:33: MINUS ^
             	            {
-            	            MINUS278=(Token)match(input,MINUS,FOLLOW_MINUS_in_num_expr3220); 
+            	            MINUS278=(Token)match(input,MINUS,FOLLOW_MINUS_in_num_expr3219); 
             	            MINUS278_tree = 
             	            (AmlTree)adaptor.create(MINUS278)
             	            ;
@@ -8083,7 +8088,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_term_in_num_expr3224);
+            	    pushFollow(FOLLOW_term_in_num_expr3223);
             	    term279=term();
 
             	    state._fsp--;
@@ -8157,7 +8162,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_factor_in_term3246);
+            pushFollow(FOLLOW_factor_in_term3245);
             factor280=factor();
 
             state._fsp--;
@@ -8209,7 +8214,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 1 :
             	            // src/parser/Music.g:245:23: DOT ^
             	            {
-            	            DOT281=(Token)match(input,DOT,FOLLOW_DOT_in_term3251); 
+            	            DOT281=(Token)match(input,DOT,FOLLOW_DOT_in_term3250); 
             	            DOT281_tree = 
             	            (AmlTree)adaptor.create(DOT281)
             	            ;
@@ -8221,7 +8226,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 2 :
             	            // src/parser/Music.g:245:30: DIV ^
             	            {
-            	            DIV282=(Token)match(input,DIV,FOLLOW_DIV_in_term3256); 
+            	            DIV282=(Token)match(input,DIV,FOLLOW_DIV_in_term3255); 
             	            DIV282_tree = 
             	            (AmlTree)adaptor.create(DIV282)
             	            ;
@@ -8233,7 +8238,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 3 :
             	            // src/parser/Music.g:245:37: MOD ^
             	            {
-            	            MOD283=(Token)match(input,MOD,FOLLOW_MOD_in_term3261); 
+            	            MOD283=(Token)match(input,MOD,FOLLOW_MOD_in_term3260); 
             	            MOD283_tree = 
             	            (AmlTree)adaptor.create(MOD283)
             	            ;
@@ -8246,7 +8251,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_factor_in_term3265);
+            	    pushFollow(FOLLOW_factor_in_term3264);
             	    factor284=factor();
 
             	    state._fsp--;
@@ -8342,7 +8347,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // src/parser/Music.g:248:14: NOT ^
                     {
-                    NOT285=(Token)match(input,NOT,FOLLOW_NOT_in_factor3282); 
+                    NOT285=(Token)match(input,NOT,FOLLOW_NOT_in_factor3281); 
                     NOT285_tree = 
                     (AmlTree)adaptor.create(NOT285)
                     ;
@@ -8354,7 +8359,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // src/parser/Music.g:248:21: PLUS ^
                     {
-                    PLUS286=(Token)match(input,PLUS,FOLLOW_PLUS_in_factor3287); 
+                    PLUS286=(Token)match(input,PLUS,FOLLOW_PLUS_in_factor3286); 
                     PLUS286_tree = 
                     (AmlTree)adaptor.create(PLUS286)
                     ;
@@ -8366,7 +8371,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // src/parser/Music.g:248:29: MINUS ^
                     {
-                    MINUS287=(Token)match(input,MINUS,FOLLOW_MINUS_in_factor3292); 
+                    MINUS287=(Token)match(input,MINUS,FOLLOW_MINUS_in_factor3291); 
                     MINUS287_tree = 
                     (AmlTree)adaptor.create(MINUS287)
                     ;
@@ -8379,7 +8384,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_atom_in_factor3297);
+            pushFollow(FOLLOW_atom_in_factor3296);
             atom288=atom();
 
             state._fsp--;
@@ -8505,7 +8510,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_var_access_in_atom3313);
+                    pushFollow(FOLLOW_var_access_in_atom3312);
                     var_access289=var_access();
 
                     state._fsp--;
@@ -8520,7 +8525,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    NUM290=(Token)match(input,NUM,FOLLOW_NUM_in_atom3321); 
+                    NUM290=(Token)match(input,NUM,FOLLOW_NUM_in_atom3320); 
                     NUM290_tree = 
                     (AmlTree)adaptor.create(NUM290)
                     ;
@@ -8535,7 +8540,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    STRING291=(Token)match(input,STRING,FOLLOW_STRING_in_atom3329); 
+                    STRING291=(Token)match(input,STRING,FOLLOW_STRING_in_atom3328); 
                     STRING291_tree = 
                     (AmlTree)adaptor.create(STRING291)
                     ;
@@ -8550,7 +8555,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_funcall_in_atom3337);
+                    pushFollow(FOLLOW_funcall_in_atom3336);
                     funcall292=funcall();
 
                     state._fsp--;
@@ -8583,7 +8588,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // src/parser/Music.g:255:8: b= TRUE
                             {
-                            b=(Token)match(input,TRUE,FOLLOW_TRUE_in_atom3348);  
+                            b=(Token)match(input,TRUE,FOLLOW_TRUE_in_atom3347);  
                             stream_TRUE.add(b);
 
 
@@ -8592,7 +8597,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 2 :
                             // src/parser/Music.g:255:17: b= FALSE
                             {
-                            b=(Token)match(input,FALSE,FOLLOW_FALSE_in_atom3354);  
+                            b=(Token)match(input,FALSE,FOLLOW_FALSE_in_atom3353);  
                             stream_FALSE.add(b);
 
 
@@ -8638,16 +8643,16 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    char_literal293=(Token)match(input,86,FOLLOW_86_in_atom3371); 
+                    char_literal293=(Token)match(input,86,FOLLOW_86_in_atom3370); 
 
-                    pushFollow(FOLLOW_expr_in_atom3374);
+                    pushFollow(FOLLOW_expr_in_atom3373);
                     expr294=expr();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, expr294.getTree());
 
-                    char_literal295=(Token)match(input,87,FOLLOW_87_in_atom3376); 
+                    char_literal295=(Token)match(input,87,FOLLOW_87_in_atom3375); 
 
                     }
                     break;
@@ -8944,42 +8949,42 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_note_in_notes3014 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NOTE_in_note3067 = new BitSet(new long[]{0x0008000000000002L});
     public static final BitSet FOLLOW_MINUS_in_note3071 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_NUM_in_note3074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolterm_in_expr3103 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_OR_in_expr3106 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_boolterm_in_expr3109 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_boolfact_in_boolterm3127 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_AND_in_boolterm3130 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_boolfact_in_boolterm3133 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_num_expr_in_boolfact3155 = new BitSet(new long[]{0x1001020C04000002L});
-    public static final BitSet FOLLOW_EQUAL_in_boolfact3159 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_NOT_EQUAL_in_boolfact3164 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_LT_in_boolfact3169 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_LE_in_boolfact3174 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_GT_in_boolfact3179 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_GE_in_boolfact3184 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_num_expr_in_boolfact3188 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_term_in_num_expr3210 = new BitSet(new long[]{0x8008000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_num_expr3215 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_MINUS_in_num_expr3220 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_term_in_num_expr3224 = new BitSet(new long[]{0x8008000000000002L});
-    public static final BitSet FOLLOW_factor_in_term3246 = new BitSet(new long[]{0x0020000000280002L});
-    public static final BitSet FOLLOW_DOT_in_term3251 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_DIV_in_term3256 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_MOD_in_term3261 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_factor_in_term3265 = new BitSet(new long[]{0x0020000000280002L});
-    public static final BitSet FOLLOW_NOT_in_factor3282 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_PLUS_in_factor3287 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_MINUS_in_factor3292 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_atom_in_factor3297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_access_in_atom3313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUM_in_atom3321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_atom3329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_funcall_in_atom3337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRUE_in_atom3348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FALSE_in_atom3354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_atom3371 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
-    public static final BitSet FOLLOW_expr_in_atom3374 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_87_in_atom3376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_note3073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolterm_in_expr3102 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_OR_in_expr3105 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_boolterm_in_expr3108 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_boolfact_in_boolterm3126 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_AND_in_boolterm3129 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_boolfact_in_boolterm3132 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_num_expr_in_boolfact3154 = new BitSet(new long[]{0x1001020C04000002L});
+    public static final BitSet FOLLOW_EQUAL_in_boolfact3158 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_NOT_EQUAL_in_boolfact3163 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_LT_in_boolfact3168 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_LE_in_boolfact3173 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_GT_in_boolfact3178 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_GE_in_boolfact3183 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_num_expr_in_boolfact3187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_term_in_num_expr3209 = new BitSet(new long[]{0x8008000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_num_expr3214 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_MINUS_in_num_expr3219 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_term_in_num_expr3223 = new BitSet(new long[]{0x8008000000000002L});
+    public static final BitSet FOLLOW_factor_in_term3245 = new BitSet(new long[]{0x0020000000280002L});
+    public static final BitSet FOLLOW_DOT_in_term3250 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_DIV_in_term3255 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_MOD_in_term3260 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_factor_in_term3264 = new BitSet(new long[]{0x0020000000280002L});
+    public static final BitSet FOLLOW_NOT_in_factor3281 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_PLUS_in_factor3286 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_MINUS_in_factor3291 = new BitSet(new long[]{0x2000041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_atom_in_factor3296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_access_in_atom3312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_atom3320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_atom3328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_atom3336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_atom3347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_atom3353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_atom3370 = new BitSet(new long[]{0xA088041010000000L,0x0000000000420400L});
+    public static final BitSet FOLLOW_expr_in_atom3373 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_atom3375 = new BitSet(new long[]{0x0000000000000002L});
 
 }

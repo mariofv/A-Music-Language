@@ -139,7 +139,6 @@ public class AmlNote {
 
 
     public ArrayList<Integer> getPitches() {
-        Collections.sort(pitches);
         return pitches;
     }
 

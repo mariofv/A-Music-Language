@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-25 17:57:41
+// $ANTLR 3.4 src/parser/Music.g 2017-04-25 19:19:09
 
     package parser;
 
@@ -1904,9 +1904,9 @@ public class MusicLexer extends Lexer {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // src/parser/Music.g:321:6: ( ( '0' .. '9' )+ )
-            // src/parser/Music.g:321:8: ( '0' .. '9' )+
+            // src/parser/Music.g:321:9: ( '0' .. '9' )+
             {
-            // src/parser/Music.g:321:8: ( '0' .. '9' )+
+            // src/parser/Music.g:321:9: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
