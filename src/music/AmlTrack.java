@@ -58,6 +58,11 @@ public class AmlTrack {
         lastNote = new AmlNote(Negra, 0, false);
     }
 
+    public void setToneAccidents(int tone) {
+        this.toneAccidents = computeTone(tone);
+
+    }
+
     public ArrayList<Integer> getToneAccidents() {
         return toneAccidents;
     }

@@ -143,7 +143,7 @@ public class Interpreter {
     private void executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlMusicException {
         switch (tree.getType()) {
             case MusicLexer.TONE:
-                //TODO: THIS
+                compas.changeTrackTone(createTone(tree));
                 break;
             case MusicLexer.SONG:
                 break;
@@ -187,11 +187,7 @@ public class Interpreter {
                     bpm = createBPM(songChild);
                     break;
                 case MusicLexer.TONE:
-                    tone = songChild.getChild(0).getIntValue();
-                    AmlTree typeOfAccident = songChild.getChild(1);
-                    if (typeOfAccident.getType() == MusicLexer.BEMOL) {
-                        tone = -tone;
-                    }
+                    tone = createTone(songChild);
                     break;
                 case MusicLexer.TRANSPORT:
                     /* TODO: THIS */
@@ -208,6 +204,19 @@ public class Interpreter {
 
         File f = new File("midifile.mid");
         MidiSystem.write(sequence.getSequence(),1,f);
+    }
+
+    private int createTone(AmlTree tree) throws AmlMusicException {
+        int tone = tree.getChild(0).getIntValue();
+        if (Math.abs(tone) >= 8) {
+            throw new AmlMusicException("Tone in song " /*TODO: Introducir nombre de song */ + " is not correct." +
+                    "\n Tone must be between -7 and 7.");
+        }
+        AmlTree typeOfAccident = tree.getChild(1);
+        if (typeOfAccident.getType() == MusicLexer.BEMOL) {
+            tone = -tone;
+        }
+        return tone;
     }
 
     private int[] createMetric(AmlTree tree) {

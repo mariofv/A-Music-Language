@@ -117,6 +117,7 @@ declaration :   type^ assig_opt (','! assig_opt)* ';'!
 type        :   INT
             |   BOOL
             |   NOTE_TYPE
+            |   DRUMS_NOTE_TYPE
             |   CHORD
             |   STRING_TYPE
             ;
@@ -192,6 +193,7 @@ song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (tra
 
 track       :   TRACK^ id_rule? STRING? compas_aux
             ;
+
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
@@ -269,10 +271,12 @@ DIMINUTION          : 'º';
 MAJ7                : 'maj7';
 SEVENTH             : '7th';
 NOTE_TYPE           : 'Note';
+DRUMS_NOTE_TYPE     : 'DrumsNote';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
+DRUMS               : 'Drums';
 SUSTAIN             : '#';
 BEMOL               : '&';
-ARMOR               : '¬';
+ARMOR               : '$';
 FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
 DOT                 : '*';
 TIE                 : '~';
