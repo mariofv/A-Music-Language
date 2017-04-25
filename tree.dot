@@ -74,7 +74,7 @@ digraph {
   n40 [label="=="];
   n40 [label="=="];
   n41 [label="Time"];
-  n42 [label="-1"];
+  n42 [label="1"];
   n43 [label="LIST_MUSIC_INST"];
   n43 [label="LIST_MUSIC_INST"];
   n44 [label="NOTES"];
@@ -195,7 +195,7 @@ digraph {
   n38 -> n39 // "COMPAS" -> "if"
   n39 -> n40 // "if" -> "=="
   n40 -> n41 // "==" -> "Time"
-  n40 -> n42 // "==" -> "-1"
+  n40 -> n42 // "==" -> "1"
   n39 -> n43 // "if" -> "LIST_MUSIC_INST"
   n43 -> n44 // "LIST_MUSIC_INST" -> "NOTES"
   n44 -> n45 // "NOTES" -> "NOTE_LIST"

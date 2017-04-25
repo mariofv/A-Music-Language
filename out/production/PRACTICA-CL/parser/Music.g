@@ -226,7 +226,7 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
             ;
 
-note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ ('-' NUM)?
+note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NUM)?
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -318,7 +318,7 @@ INT     : 'int';
 BOOL    : 'bool';
 STRING_TYPE : 'string';
 ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
-NUM 	:	 '0'..'9'+;
+NUM 	:	'-'? '0'..'9'+;
 
 // C-style comments
 COMMENT	: '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
