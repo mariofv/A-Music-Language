@@ -1,4 +1,5 @@
-package interpreter;
+package data;
 
 public class Data {
+
 }

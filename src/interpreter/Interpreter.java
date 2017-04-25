@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.sound.midi.*;
 
+import data.Data;
+import data.Int;
 import exceptions.AmlSemanticException;
 import exceptions.AmlException;
 import exceptions.AmlMusicException;
@@ -20,6 +22,7 @@ public class Interpreter {
     private HashMap<String, AmlTree> functionMap;
     private HashMap<String, AmlTree> fragmentMap;
     private HashMap<String, AmlTree> songMap;
+    private int currentIteration;
 
     public Interpreter() {
         functionMap = new HashMap<>();
@@ -96,15 +99,36 @@ public class Interpreter {
     public void executeInstruction(AmlTree tree) throws AmlException, IOException {
         switch(tree.getType()) {
             case MusicLexer.SONG:
-                //Crear secuencia
+                //TODO: Crear secuencia
                 createSong(tree);
                 break;
             default:
                 break;
         }
     }
+    private Data evaluateExpression(AmlTree tree) {
+        switch (tree.getType()) {
+            case MusicLexer.NUM:
+                return new Int(tree.getIntValue());
+            case MusicLexer.ATTR_ACCESS:
+
+                break;
+            case MusicLexer.LETTER_X:
+            case MusicLexer.ID:
+                if(tree.getText() == "Time") {
+                    return new Int(currentIteration);
+                } //TODO: ESTO DEBERIA SER UN SWITCH
+                break;
+        }
+        return null;
+    }
+
     private boolean evaluateBooleanExpression(AmlTree tree) {
-        //TODO: THIS
+        switch (tree.getType()){
+            case MusicLexer.EQUAL:
+                //TODO: THIS
+                break;
+        }
         return true;
     }
 
@@ -117,7 +141,7 @@ public class Interpreter {
     private void executeMusicInstruction(AmlTree tree) {
         switch (tree.getType()) {
             case MusicLexer.TONE:
-
+                //TODO: THIS
                 break;
             case MusicLexer.SONG:
                 break;
@@ -220,10 +244,12 @@ public class Interpreter {
             init = 1;
         }
         for (int i = 0; i < iterations; ++i) {
+            currentIteration = i+1;
             for(int j = init; j < tree.getChildCount(); ++j) {
                 track.addCompas(createCompas(tree.getChild(j), track));
             }
         }
+        currentIteration = 1;
     }
 
     public AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlMusicException {
