@@ -305,7 +305,7 @@ public class Interpreter {
                     for (AmlTree pitchModifier : (List<AmlTree>) noteChild.getChildren()) {
                         switch (pitchModifier.getType()) {
                             case MusicLexer.NUM:
-                                octave = pitchModifier.getIntValue();
+                                octave = -pitchModifier.getIntValue();
                                 break;
                             case MusicLexer.BEMOL:
                                 accident = AmlNote.Accident.Bemol;

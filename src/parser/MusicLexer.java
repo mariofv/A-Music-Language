@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-25 19:19:09
+// $ANTLR 3.4 src/parser/Music.g 2017-04-25 19:22:11
 
     package parser;
 
@@ -1903,22 +1903,41 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:321:6: ( ( '0' .. '9' )+ )
-            // src/parser/Music.g:321:9: ( '0' .. '9' )+
+            // src/parser/Music.g:321:6: ( ( '-' )? ( '0' .. '9' )+ )
+            // src/parser/Music.g:321:8: ( '-' )? ( '0' .. '9' )+
             {
-            // src/parser/Music.g:321:9: ( '0' .. '9' )+
-            int cnt4=0;
-            loop4:
-            do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+            // src/parser/Music.g:321:8: ( '-' )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
 
-                if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
-                    alt4=1;
+            if ( (LA4_0=='-') ) {
+                alt4=1;
+            }
+            switch (alt4) {
+                case 1 :
+                    // src/parser/Music.g:321:8: '-'
+                    {
+                    match('-'); 
+
+                    }
+                    break;
+
+            }
+
+
+            // src/parser/Music.g:321:13: ( '0' .. '9' )+
+            int cnt5=0;
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( ((LA5_0 >= '0' && LA5_0 <= '9')) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt5) {
             	case 1 :
             	    // src/parser/Music.g:
             	    {
@@ -1936,12 +1955,12 @@ public class MusicLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
+            	    if ( cnt5 >= 1 ) break loop5;
                         EarlyExitException eee =
-                            new EarlyExitException(4, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt4++;
+                cnt5++;
             } while (true);
 
 
@@ -1962,21 +1981,21 @@ public class MusicLexer extends Lexer {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // src/parser/Music.g:324:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA8_0=='/') ) {
-                int LA8_1 = input.LA(2);
+            if ( (LA9_0=='/') ) {
+                int LA9_1 = input.LA(2);
 
-                if ( (LA8_1=='/') ) {
-                    alt8=1;
+                if ( (LA9_1=='/') ) {
+                    alt9=1;
                 }
-                else if ( (LA8_1=='*') ) {
-                    alt8=2;
+                else if ( (LA9_1=='*') ) {
+                    alt9=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 1, input);
+                        new NoViableAltException("", 9, 1, input);
 
                     throw nvae;
 
@@ -1984,12 +2003,12 @@ public class MusicLexer extends Lexer {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt8) {
+            switch (alt9) {
                 case 1 :
                     // src/parser/Music.g:324:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
@@ -1998,17 +2017,17 @@ public class MusicLexer extends Lexer {
 
 
                     // src/parser/Music.g:324:16: (~ ( '\\n' | '\\r' ) )*
-                    loop5:
+                    loop6:
                     do {
-                        int alt5=2;
-                        int LA5_0 = input.LA(1);
+                        int alt6=2;
+                        int LA6_0 = input.LA(1);
 
-                        if ( ((LA5_0 >= '\u0000' && LA5_0 <= '\t')||(LA5_0 >= '\u000B' && LA5_0 <= '\f')||(LA5_0 >= '\u000E' && LA5_0 <= '\uFFFF')) ) {
-                            alt5=1;
+                        if ( ((LA6_0 >= '\u0000' && LA6_0 <= '\t')||(LA6_0 >= '\u000B' && LA6_0 <= '\f')||(LA6_0 >= '\u000E' && LA6_0 <= '\uFFFF')) ) {
+                            alt6=1;
                         }
 
 
-                        switch (alt5) {
+                        switch (alt6) {
                     	case 1 :
                     	    // src/parser/Music.g:
                     	    {
@@ -2026,19 +2045,19 @@ public class MusicLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop5;
+                    	    break loop6;
                         }
                     } while (true);
 
 
                     // src/parser/Music.g:324:30: ( '\\r' )?
-                    int alt6=2;
-                    int LA6_0 = input.LA(1);
+                    int alt7=2;
+                    int LA7_0 = input.LA(1);
 
-                    if ( (LA6_0=='\r') ) {
-                        alt6=1;
+                    if ( (LA7_0=='\r') ) {
+                        alt7=1;
                     }
-                    switch (alt6) {
+                    switch (alt7) {
                         case 1 :
                             // src/parser/Music.g:324:30: '\\r'
                             {
@@ -2064,29 +2083,29 @@ public class MusicLexer extends Lexer {
 
 
                     // src/parser/Music.g:325:10: ( options {greedy=false; } : . )*
-                    loop7:
+                    loop8:
                     do {
-                        int alt7=2;
-                        int LA7_0 = input.LA(1);
+                        int alt8=2;
+                        int LA8_0 = input.LA(1);
 
-                        if ( (LA7_0=='*') ) {
-                            int LA7_1 = input.LA(2);
+                        if ( (LA8_0=='*') ) {
+                            int LA8_1 = input.LA(2);
 
-                            if ( (LA7_1=='/') ) {
-                                alt7=2;
+                            if ( (LA8_1=='/') ) {
+                                alt8=2;
                             }
-                            else if ( ((LA7_1 >= '\u0000' && LA7_1 <= '.')||(LA7_1 >= '0' && LA7_1 <= '\uFFFF')) ) {
-                                alt7=1;
+                            else if ( ((LA8_1 >= '\u0000' && LA8_1 <= '.')||(LA8_1 >= '0' && LA8_1 <= '\uFFFF')) ) {
+                                alt8=1;
                             }
 
 
                         }
-                        else if ( ((LA7_0 >= '\u0000' && LA7_0 <= ')')||(LA7_0 >= '+' && LA7_0 <= '\uFFFF')) ) {
-                            alt7=1;
+                        else if ( ((LA8_0 >= '\u0000' && LA8_0 <= ')')||(LA8_0 >= '+' && LA8_0 <= '\uFFFF')) ) {
+                            alt8=1;
                         }
 
 
-                        switch (alt7) {
+                        switch (alt8) {
                     	case 1 :
                     	    // src/parser/Music.g:325:38: .
                     	    {
@@ -2096,7 +2115,7 @@ public class MusicLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop7;
+                    	    break loop8;
                         }
                     } while (true);
 
@@ -2131,20 +2150,20 @@ public class MusicLexer extends Lexer {
             match('\"'); 
 
             // src/parser/Music.g:329:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
-            loop9:
+            loop10:
             do {
-                int alt9=3;
-                int LA9_0 = input.LA(1);
+                int alt10=3;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA9_0=='\\') ) {
-                    alt9=1;
+                if ( (LA10_0=='\\') ) {
+                    alt10=1;
                 }
-                else if ( ((LA9_0 >= '\u0000' && LA9_0 <= '!')||(LA9_0 >= '#' && LA9_0 <= '[')||(LA9_0 >= ']' && LA9_0 <= '\uFFFF')) ) {
-                    alt9=2;
+                else if ( ((LA10_0 >= '\u0000' && LA10_0 <= '!')||(LA10_0 >= '#' && LA10_0 <= '[')||(LA10_0 >= ']' && LA10_0 <= '\uFFFF')) ) {
+                    alt10=2;
                 }
 
 
-                switch (alt9) {
+                switch (alt10) {
             	case 1 :
             	    // src/parser/Music.g:329:18: ESC_SEQ
             	    {
@@ -2170,7 +2189,7 @@ public class MusicLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop10;
                 }
             } while (true);
 
@@ -2249,9 +2268,9 @@ public class MusicLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // src/parser/Music.g:1:8: ( T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | NOTE | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS )
-        int alt10=71;
-        alt10 = dfa10.predict(input);
-        switch (alt10) {
+        int alt11=71;
+        alt11 = dfa11.predict(input);
+        switch (alt11) {
             case 1 :
                 // src/parser/Music.g:1:10: T__86
                 {
@@ -2826,8 +2845,8 @@ public class MusicLexer extends Lexer {
     }
 
 
-    protected DFA10 dfa10 = new DFA10(this);
-    static final String DFA10_eotS =
+    protected DFA11 dfa11 = new DFA11(this);
+    static final String DFA11_eotS =
         "\5\uffff\1\67\3\uffff\1\62\1\73\1\62\1\76\1\uffff\1\63\7\62\2\uffff"+
         "\4\114\1\62\1\114\1\126\1\uffff\2\62\1\131\1\62\1\134\1\uffff\1"+
         "\137\1\142\1\145\1\147\1\151\1\153\6\62\6\uffff\2\62\1\166\1\uffff"+
@@ -2841,9 +2860,9 @@ public class MusicLexer extends Lexer {
         "\1\uffff\1\62\2\uffff\1\62\1\uffff\1\u00c9\1\u00ca\1\62\1\uffff"+
         "\1\62\1\uffff\1\62\1\172\2\uffff\3\62\1\u00d1\1\62\1\u00d3\1\uffff"+
         "\1\62\1\uffff\1\u00d5\1\uffff";
-    static final String DFA10_eofS =
+    static final String DFA11_eofS =
         "\u00d6\uffff";
-    static final String DFA10_minS =
+    static final String DFA11_minS =
         "\1\11\4\uffff\1\174\3\uffff\1\157\1\174\1\150\1\60\1\u00ac\1\164"+
         "\2\157\1\145\1\151\1\141\1\151\1\141\2\uffff\4\60\1\143\1\60\1\75"+
         "\1\uffff\1\145\1\156\1\60\1\157\1\75\1\uffff\1\53\1\55\1\52\3\75"+
@@ -2860,7 +2879,7 @@ public class MusicLexer extends Lexer {
         "\2\uffff\1\145\1\uffff\2\60\1\156\1\uffff\1\155\1\uffff\1\162\1"+
         "\60\2\uffff\1\164\1\145\1\164\1\60\1\156\1\60\1\uffff\1\164\1\uffff"+
         "\1\60\1\uffff";
-    static final String DFA10_maxS =
+    static final String DFA11_maxS =
         "\1\u00c2\4\uffff\1\174\3\uffff\1\162\1\174\1\150\1\172\1\u00ba\1"+
         "\164\2\157\1\145\1\151\1\141\1\160\1\141\2\uffff\4\172\1\164\1\172"+
         "\1\75\1\uffff\1\145\1\156\1\172\1\157\1\75\1\uffff\6\75\1\156\1"+
@@ -2877,7 +2896,7 @@ public class MusicLexer extends Lexer {
         "\1\157\2\uffff\1\145\1\uffff\2\172\1\156\1\uffff\1\155\1\uffff\1"+
         "\162\1\172\2\uffff\1\164\1\145\1\164\1\172\1\156\1\172\1\uffff\1"+
         "\164\1\uffff\1\172\1\uffff";
-    static final String DFA10_acceptS =
+    static final String DFA11_acceptS =
         "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\6\1\7\1\10\15\uffff\1\26\1\27"+
         "\7\uffff\1\33\5\uffff\1\45\14\uffff\1\103\1\104\1\106\1\107\1\15"+
         "\1\5\3\uffff\1\12\2\uffff\1\20\1\21\1\30\1\23\12\uffff\1\31\10\uffff"+
@@ -2888,9 +2907,9 @@ public class MusicLexer extends Lexer {
         "\1\101\3\uffff\1\34\1\uffff\1\43\1\72\1\uffff\1\76\1\uffff\1\37"+
         "\1\16\1\uffff\1\35\3\uffff\1\77\1\uffff\1\73\2\uffff\1\75\1\102"+
         "\6\uffff\1\42\1\uffff\1\17\1\uffff\1\40";
-    static final String DFA10_specialS =
+    static final String DFA11_specialS =
         "\u00d6\uffff}>";
-    static final String[] DFA10_transitionS = {
+    static final String[] DFA11_transitionS = {
             "\2\65\2\uffff\1\65\22\uffff\1\65\1\45\1\64\1\26\1\uffff\1\51"+
             "\1\27\1\uffff\1\1\1\2\1\36\1\46\1\3\1\47\1\4\1\50\7\63\1\16"+
             "\2\63\1\5\1\6\1\52\1\44\1\53\2\uffff\1\62\1\40\1\13\1\20\1\62"+
@@ -2937,7 +2956,7 @@ public class MusicLexer extends Lexer {
             "\1\133",
             "",
             "\1\136\21\uffff\1\135",
-            "\1\141\17\uffff\1\140",
+            "\1\141\2\uffff\12\63\3\uffff\1\140",
             "\1\144\4\uffff\1\144\15\uffff\1\143",
             "\1\146",
             "\1\150",
@@ -3114,34 +3133,34 @@ public class MusicLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA10_eot = DFA.unpackEncodedString(DFA10_eotS);
-    static final short[] DFA10_eof = DFA.unpackEncodedString(DFA10_eofS);
-    static final char[] DFA10_min = DFA.unpackEncodedStringToUnsignedChars(DFA10_minS);
-    static final char[] DFA10_max = DFA.unpackEncodedStringToUnsignedChars(DFA10_maxS);
-    static final short[] DFA10_accept = DFA.unpackEncodedString(DFA10_acceptS);
-    static final short[] DFA10_special = DFA.unpackEncodedString(DFA10_specialS);
-    static final short[][] DFA10_transition;
+    static final short[] DFA11_eot = DFA.unpackEncodedString(DFA11_eotS);
+    static final short[] DFA11_eof = DFA.unpackEncodedString(DFA11_eofS);
+    static final char[] DFA11_min = DFA.unpackEncodedStringToUnsignedChars(DFA11_minS);
+    static final char[] DFA11_max = DFA.unpackEncodedStringToUnsignedChars(DFA11_maxS);
+    static final short[] DFA11_accept = DFA.unpackEncodedString(DFA11_acceptS);
+    static final short[] DFA11_special = DFA.unpackEncodedString(DFA11_specialS);
+    static final short[][] DFA11_transition;
 
     static {
-        int numStates = DFA10_transitionS.length;
-        DFA10_transition = new short[numStates][];
+        int numStates = DFA11_transitionS.length;
+        DFA11_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA10_transition[i] = DFA.unpackEncodedString(DFA10_transitionS[i]);
+            DFA11_transition[i] = DFA.unpackEncodedString(DFA11_transitionS[i]);
         }
     }
 
-    class DFA10 extends DFA {
+    class DFA11 extends DFA {
 
-        public DFA10(BaseRecognizer recognizer) {
+        public DFA11(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 10;
-            this.eot = DFA10_eot;
-            this.eof = DFA10_eof;
-            this.min = DFA10_min;
-            this.max = DFA10_max;
-            this.accept = DFA10_accept;
-            this.special = DFA10_special;
-            this.transition = DFA10_transition;
+            this.decisionNumber = 11;
+            this.eot = DFA11_eot;
+            this.eof = DFA11_eof;
+            this.min = DFA11_min;
+            this.max = DFA11_max;
+            this.accept = DFA11_accept;
+            this.special = DFA11_special;
+            this.transition = DFA11_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | NOTE | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS );";

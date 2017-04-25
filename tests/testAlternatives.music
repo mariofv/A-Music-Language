@@ -7,4 +7,3 @@ void main() {
         Silence.n* La.c Sol-6 #Fa-6 Mi-6 Mi-6 :|| ||
     }
 }
-// if (Times==1) { #Fa-6.b Silence } else { #Do-6.b Silence }
