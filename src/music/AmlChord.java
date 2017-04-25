@@ -45,7 +45,7 @@ public class AmlChord extends AmlNote {
     }
 
     private void constructChord() {
-        rootPitch = mapNote(root, octave, semiToneModifier);
+        rootPitch = mapNote(root, octave);
         pitches.add(rootPitch);
 
         mapQuality();

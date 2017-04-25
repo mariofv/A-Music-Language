@@ -8,27 +8,58 @@ import java.util.Collections;
 public class AmlNote {
 
     public class AmlNoteInfo {
-        private AmlNote.Note note;
+        private AmlNote.Note noteName;
         private int octave;
         private AmlNote.Accident accident;
         private static final int defaultOctave = 5;
 
         public AmlNoteInfo(AmlNote.Note note, int octave, AmlNote.Accident accident) {
-            this.note = note;
+            this.noteName = note;
             this.octave = octave;
             this.accident = accident;
         }
 
+        public Note getNoteName() {
+            return noteName;
+        }
+
+        public Accident getAccident() {
+            return accident;
+        }
+
+        public int mapNoteNameInTone() {
+            switch (noteName) {
+                case Do:
+                    return AmlTrack.DoPos;
+                case Re:
+                    return AmlTrack.RePos;
+                case Mi:
+                    return AmlTrack.MiPos;
+                case Fa:
+                    return AmlTrack.FaPos;
+                case Sol:
+                    return AmlTrack.SolPos;
+                case La:
+                    return AmlTrack.LaPos;
+                case Si:
+                    return AmlTrack.SiPos;
+                case Silence:
+                    return -1;
+            }
+            return 0;
+        }
+
         @Override
         public String toString() {
-            String semiTone;
-            if (accident == AmlNote.Accident.Sustain) semiTone = "#";
-            else if (accident == AmlNote.Accident.Bemol) semiTone = "&";
-            else semiTone = "";
+            String accidentSymbol;
+            if (accident == AmlNote.Accident.Sustain) accidentSymbol = "#";
+            else if (accident == AmlNote.Accident.Bemol) accidentSymbol = "&";
+            else if (accident == Accident.Armor) accidentSymbol = "¬";
+            else accidentSymbol = "";
             String octaveString;
             if (octave == defaultOctave) octaveString = "";
             else octaveString = "-" + octave;
-            return semiTone + note.toString() + octaveString;
+            return accidentSymbol + noteName.toString() + octaveString;
         }
     }
 
@@ -39,7 +70,7 @@ public class AmlNote {
     }
 
     public enum Accident {
-        Sustain, Bemol, Natural
+        Sustain, Bemol, Natural, Armor
     }
 
     public enum Figure {
@@ -106,10 +137,17 @@ public class AmlNote {
         notes.add(new AmlNoteInfo(noteName, octave, accident));
     }
 
-    public ArrayList<Integer> getSortedPitches() {
+
+    public ArrayList<Integer> getPitches() {
         Collections.sort(pitches);
         return pitches;
     }
+
+    public ArrayList<AmlNoteInfo> getNotes() {
+        return notes;
+    }
+
+
 
     public int getDuration() {
         return duration;
@@ -122,6 +160,8 @@ public class AmlNote {
 
 
     public boolean isTied() { return tie; }
+
+
 
     private void mapDuration() {
         int value;

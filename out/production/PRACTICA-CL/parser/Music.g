@@ -226,7 +226,7 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
             ;
 
-note        :   (BEMOL | SUSTAIN)? NOTE^ ('-'! NUM)?
+note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ ('-'! NUM)?
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -262,7 +262,6 @@ BAR                 : '|';
 DOUBLE_BAR           : '||';
 START_REPETITION    : '||:';
 END_REPETITION      : ':||';
-BEMOL               : '&';
 CHORD               : 'Chord';
 TRANSPORT           : 'Transport';
 MINOR               : 'm';
@@ -272,6 +271,8 @@ SEVENTH             : '7th';
 NOTE_TYPE           : 'Note';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 SUSTAIN             : '#';
+BEMOL               : '&';
+ARMOR               : '¬';
 FIGURE              : ('r'|'b'|'n'|'c'|'sc'|'f'|'sf');
 DOT                 : '*';
 TIE                 : '~';

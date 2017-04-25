@@ -117,6 +117,7 @@ public class Interpreter {
     private void createSong(AmlTree tree) throws IOException, AmlException {
         int[] metric = {4,4};
         int bpm = 120;
+        int tone = 0;
 
         int i = 0;
         AmlTree songChild = tree.getChild(i++);
@@ -129,7 +130,11 @@ public class Interpreter {
                     bpm = createBPM(songChild);
                     break;
                 case MusicLexer.TONE:
-                    /* TODO: THIS */
+                    tone = songChild.getChild(0).getIntValue();
+                    AmlTree typeOfAccident = songChild.getChild(1);
+                    if (typeOfAccident.getType() == MusicLexer.BEMOL) {
+                        tone = -tone;
+                    }
                     break;
                 case MusicLexer.TRANSPORT:
                     /* TODO: THIS */
@@ -138,7 +143,7 @@ public class Interpreter {
             songChild = tree.getChild(i++);
         }
 
-        AmlSequence sequence = new AmlSequence(bpm, metric, 0);
+        AmlSequence sequence = new AmlSequence(bpm, metric, tone);
 
         for(i = i-1; i < tree.getChildCount(); ++i) {
             createTrack(tree.getChild(i), sequence);
@@ -249,6 +254,9 @@ public class Interpreter {
                                 break;
                             case MusicLexer.SUSTAIN:
                                 accident = AmlNote.Accident.Sustain;
+                                break;
+                            case MusicLexer.ARMOR:
+                                accident = AmlNote.Accident.Armor;
                                 break;
                         }
                     }

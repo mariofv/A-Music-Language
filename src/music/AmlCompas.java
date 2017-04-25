@@ -16,7 +16,8 @@ public class AmlCompas {
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
-        toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
+        //Se inicializa a -2 para tener un valor que indique que no hay accidente.
+        toneAccidents = new ArrayList<>(Collections.nCopies(7,42));
         lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();
         actualTicks = 0;
@@ -24,7 +25,28 @@ public class AmlCompas {
     }
 
     public void addNote(AmlNote note) throws AmlMusicException {
+        for (int i = 0; i < note.getPitches().size(); ++i) {
+            AmlNote.AmlNoteInfo noteInfo = note.getNotes().get(i);
+            int index = noteInfo.mapNoteNameInTone();
+            switch (noteInfo.getAccident()) {
+                case Sustain:
+                    toneAccidents.set(index, 1);
+                    break;
+                case Bemol:
+                    toneAccidents.set(index, -1);
+                    break;
+                case Armor:
+                    toneAccidents.set(index, 0);
+                    break;
+            }
 
+            if (toneAccidents.get(index) != 42 ) {
+                note.getPitches().set(i, note.getPitches().get(i) + toneAccidents.get(index));
+            }
+            else {
+                note.getPitches().set(i, note.getPitches().get(i) + track.getToneAccidents().get(index));
+            }
+        }
 
 
         if (!note.hasFigure()) note.setDuration(lastNoteDuration);
