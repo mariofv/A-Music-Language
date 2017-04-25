@@ -104,6 +104,15 @@ public class Interpreter {
         }
     }
 
+    private void evaluateMusicInstruction(AmlTree tree) {
+        switch (tree.getType()) {
+            case MusicLexer.TONE:
+                break;
+            case MusicLexer.SONG:
+                break;
+        }
+    }
+
     private void createSong(AmlTree tree) throws IOException, AmlException {
         int[] metric = {4,4};
         int bpm = 120;
