@@ -11,8 +11,6 @@ public class SemanticAnalyzer {
     private HashMap<String, AmlTree> fragmentMap;
     private HashMap<String, AmlTree> songMap;
 
-    private Interpreter interpreter;
-
     public SemanticAnalyzer(Interpreter interpreter) {
         functionMap = interpreter.functionMap;
         fragmentMap = interpreter.fragmentMap;
@@ -80,7 +78,7 @@ public class SemanticAnalyzer {
             case MusicLexer.FRAGMENT: {
                 newScope = true;
                 String fragmentName = tree.getText();
-                AmlTree previousValue = functionMap.put(fragmentName, tree);
+                AmlTree previousValue = fragmentMap.put(fragmentName, tree);
                 if (previousValue != null) {
                     throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", tree.getLine());
                 }
@@ -88,7 +86,10 @@ public class SemanticAnalyzer {
             }
             case MusicLexer.SONG:
                 if (depth == 0) {
-                    //AmlTree firstChild =
+                    AmlTree firstChild = tree.getChild(0);
+                    if (firstChild.getType() != MusicLexer.ID) throw new AmlSemanticException("Global song must have a name", tree.getLine());
+                    AmlTree previoudValue = songMap.put(firstChild.getText(), tree);
+                    if (previoudValue != null) throw new AmlSemanticException("The global song " + firstChild.getText() + " has already been declared.", tree.getLine());
                 }
                 break;
             default:

@@ -16,7 +16,7 @@ public class AmlCompas {
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
-        //Se inicializa a -2 para tener un valor que indique que no hay accidente.
+        //Se inicializa a 42 para tener un valor que indique que no hay accidente.
         toneAccidents = new ArrayList<>(Collections.nCopies(7,42));
         lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();

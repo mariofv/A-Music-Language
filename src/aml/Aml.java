@@ -133,16 +133,21 @@ public class Aml {
             }
             catch (AmlSemanticException error) {
                 System.err.println("Error found during semantic analysis, line " + error.getLine() + ":");
+                System.err.println();
                 System.err.println(error.getMessage());
             }
             catch (AmlMusicException exception) {
                 System.err.println("Musical exception catched during execution, line " + exception.getLine() + ":");
+                System.err.println();
                 System.err.println(exception.getMessage());
+                System.err.println();
                 exception.printStackTrace();
             }
             catch (AmlRunTimeException exception) {
-                System.err.println("Runtime exception catched during execution., line " + exception.getLine() + ":");
+                System.err.println("Runtime exception catched during execution, line " + exception.getLine() + ":");
+                System.err.println();
                 System.err.println(exception.getMessage());
+                System.err.println();
                 exception.printStackTrace();
             }
         }
