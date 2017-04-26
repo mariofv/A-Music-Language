@@ -10,25 +10,38 @@ public class SemanticAnalyzer {
     private HashMap<String, AmlTree> functionMap;
     private HashMap<String, AmlTree> fragmentMap;
     private HashMap<String, AmlTree> songMap;
+    private LinkedList<HashMap<String, Integer>> scope;
 
     public SemanticAnalyzer(Interpreter interpreter) {
         functionMap = interpreter.functionMap;
         fragmentMap = interpreter.fragmentMap;
         songMap = interpreter.songMap;
+        scope = new LinkedList<>();
     }
 
-    public boolean analyzeDeclaration(AmlTree tree, LinkedList<HashMap<String, Integer>> scope) throws AmlSemanticException {
+    public void analyze(AmlTree tree) throws AmlSemanticException {
+        scope.addFirst(new HashMap<>());
+        analyze(tree, 0);
+        scope.removeFirst();
+    }
+
+    public void insertId(AmlTree tree) throws AmlSemanticException {
+        String id = tree.getText();
+        for (HashMap scopeLevel : scope) {
+            if (scopeLevel.containsKey(id)) {
+                throw new AmlSemanticException("Variable " + id + " already declared in line " + scopeLevel.get(id), tree.getLine());
+            }
+            scope.getFirst().put(id, tree.getLine());
+        }
+    }
+
+    public boolean analyzeDeclaration(AmlTree tree) throws AmlSemanticException {
         switch (tree.getType()) {
             case MusicLexer.INT:
-                break;
             case MusicLexer.BOOL:
-                break;
             case MusicLexer.NOTE_TYPE:
-                break;
             case MusicLexer.DRUMS_NOTE_TYPE:
-                break;
             case MusicLexer.CHORD:
-                break;
             case MusicLexer.STRING_TYPE:
                 break;
             default:
@@ -37,22 +50,18 @@ public class SemanticAnalyzer {
         for (AmlTree child : (ArrayList<AmlTree>) tree.getChildren()) {
             switch (child.getType()) {
                 case MusicLexer.ASSIG:
+                    //TODO: check types
+                    insertId(child.getChild(0));
                     break;
                 case MusicLexer.ID:
-                    String id = child.getText();
-                    for (HashMap scopeLevel : scope) {
-                        if (scopeLevel.containsKey(id)) {
-                            throw new AmlSemanticException("Variable " + id + " already declared in line " + scopeLevel.get(id), tree.getLine());
-                        }
-                    }
-                    scope.getFirst().put(id, tree.getLine());
+                    insertId(child);
                     break;
             }
         }
         return true;
     }
 
-    public void analyze(AmlTree tree, LinkedList<HashMap<String, Integer>> scope, int depth) throws AmlSemanticException {
+    public void analyze(AmlTree tree, int depth) throws AmlSemanticException {
         boolean newScope = false;
         boolean analyzeChilds = true;
         switch (tree.getType()) {
@@ -72,6 +81,12 @@ public class SemanticAnalyzer {
                 AmlTree previousValue = functionMap.put(functionName, tree);
                 if (previousValue != null) {
                     throw new AmlSemanticException("The function " + functionName + " has already been declared.", tree.getLine());
+                }
+                AmlTree arguments = tree.getChild(1);
+                if (arguments.getChildren() != null) {
+                    for (AmlTree child : (ArrayList<AmlTree>) arguments.getChildren()) {
+                        insertId(child.getChild(0));
+                    }
                 }
                 break;
             }
@@ -93,13 +108,13 @@ public class SemanticAnalyzer {
                 }
                 break;
             default:
-                analyzeChilds = !analyzeDeclaration(tree, scope);
+                analyzeChilds = !analyzeDeclaration(tree);
         }
 
         if (tree.getChildren() == null || !analyzeChilds) return;
         if (newScope) scope.addFirst(new HashMap<>());
         for (AmlTree child : (List<AmlTree>)tree.getChildren()) {
-            analyze(child, scope, depth+1);
+            analyze(child, depth+1);
         }
         if (newScope) scope.removeFirst();
     }

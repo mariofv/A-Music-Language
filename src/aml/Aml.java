@@ -124,11 +124,7 @@ public class Aml {
             Interpreter interpreter = new Interpreter();
             try {
                 SemanticAnalyzer analyzer = new SemanticAnalyzer(interpreter);
-                LinkedList<HashMap<String, Integer>> scope = new LinkedList<>();
-                scope.addFirst(new HashMap<>());
-                analyzer.analyze(t, scope,0);
-                scope.removeFirst();
-
+                analyzer.analyze(t);
                 interpreter.executeFunction("main", null);
             }
             catch (AmlSemanticException error) {
