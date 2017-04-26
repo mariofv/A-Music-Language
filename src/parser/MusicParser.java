@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-25 20:05:46
+// $ANTLR 3.4 src/parser/Music.g 2017-04-26 19:45:25
 
 package parser;
     import interpreter.AmlTree;
@@ -15,11 +15,10 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class MusicParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ARMOR", "ASSIG", "ATTR_ACCESS", "BAR", "BEAT", "BEMOL", "BOOL", "BOOLEAN", "CHORD", "COMMENT", "COMPAS", "COMPAS_LIST", "DECR", "DIMINUTION", "DIV", "DIVIDE_ASSIG", "DOT", "DOUBLE_BAR", "DRUMS", "DRUMS_NOTE_TYPE", "DRUMS_TRACK", "ELSE", "ELSEIF", "END_REPETITION", "EQUAL", "ESC_SEQ", "FALSE", "FIGURE", "FOR", "FRAGMENT", "FUNCALL", "FUNCTION", "GE", "GT", "ID", "IF", "INCR", "INSTRUMENT", "INT", "LE", "LETTER_X", "LIST_ARGUMENTS", "LIST_ASSIG", "LIST_FUNCTIONS", "LIST_INSTRUCTIONS", "LIST_MUSIC_INST", "LT", "MAJ7", "MINOR", "MINUS", "MINUS_ASSIG", "MOD", "MOD_ASSIG", "NOT", "NOTE", "NOTES", "NOTE_LIST", "NOTE_TYPE", "NOT_EQUAL", "NUM", "OR", "PLUS", "PLUS_ASSIG", "POST", "PRE", "PROD_ASSIG", "REPETITION", "RETURN", "SEVENTH", "SONG", "SPEED", "START_REPETITION", "STRING", "STRING_TYPE", "SUSTAIN", "TIE", "TONE", "TRACK", "TRANSPORT", "TRUE", "VAR_FUNCALL", "VOID", "WHILE", "WS", "'('", "')'", "','", "'.'", "':'", "';'", "'{'", "'}'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ARMOR", "ASSIG", "ATTR_ACCESS", "BAR", "BEAT", "BEMOL", "BOOL", "BOOLEAN", "CHORD", "COMMENT", "COMPAS", "COMPAS_LIST", "DECR", "DIMINUTION", "DIV", "DIVIDE_ASSIG", "DOT", "DOUBLE_BAR", "DRUMS", "DRUMS_NOTE_TYPE", "DRUMS_TRACK", "ELSE", "ELSEIF", "END_REPETITION", "EQUAL", "ESC_SEQ", "FALSE", "FIGURE", "FOR", "FRAGMENT", "FUNCALL", "FUNCTION", "GE", "GT", "ID", "ID_", "IF", "INCR", "INSTRUMENT", "INT", "LE", "LETTER_X", "LIST_ARGUMENTS", "LIST_ASSIG", "LIST_FUNCTIONS", "LIST_INSTRUCTIONS", "LIST_MUSIC_INST", "LT", "MAJ7", "MINOR", "MINUS", "MINUS_ASSIG", "MOD", "MOD_ASSIG", "NOT", "NOTE", "NOTES", "NOTE_LIST", "NOTE_TYPE", "NOT_EQUAL", "NUM", "OR", "PLUS", "PLUS_ASSIG", "POST", "PRE", "PROD_ASSIG", "REPETITION", "RETURN", "SEVENTH", "SONG", "SPEED", "START_REPETITION", "STRING", "STRING_TYPE", "SUSTAIN", "TIE", "TONE", "TRACK", "TRANSPORT", "TRUE", "VAR_FUNCALL", "VOID", "WHILE", "WS", "'('", "')'", "','", "'.'", "':'", "';'", "'{'", "'}'"
     };
 
     public static final int EOF=-1;
-    public static final int T__89=89;
     public static final int T__90=90;
     public static final int T__91=91;
     public static final int T__92=92;
@@ -27,6 +26,7 @@ public class MusicParser extends Parser {
     public static final int T__94=94;
     public static final int T__95=95;
     public static final int T__96=96;
+    public static final int T__97=97;
     public static final int AND=4;
     public static final int ARMOR=5;
     public static final int ASSIG=6;
@@ -63,55 +63,56 @@ public class MusicParser extends Parser {
     public static final int GE=37;
     public static final int GT=38;
     public static final int ID=39;
-    public static final int IF=40;
-    public static final int INCR=41;
-    public static final int INSTRUMENT=42;
-    public static final int INT=43;
-    public static final int LE=44;
-    public static final int LETTER_X=45;
-    public static final int LIST_ARGUMENTS=46;
-    public static final int LIST_ASSIG=47;
-    public static final int LIST_FUNCTIONS=48;
-    public static final int LIST_INSTRUCTIONS=49;
-    public static final int LIST_MUSIC_INST=50;
-    public static final int LT=51;
-    public static final int MAJ7=52;
-    public static final int MINOR=53;
-    public static final int MINUS=54;
-    public static final int MINUS_ASSIG=55;
-    public static final int MOD=56;
-    public static final int MOD_ASSIG=57;
-    public static final int NOT=58;
-    public static final int NOTE=59;
-    public static final int NOTES=60;
-    public static final int NOTE_LIST=61;
-    public static final int NOTE_TYPE=62;
-    public static final int NOT_EQUAL=63;
-    public static final int NUM=64;
-    public static final int OR=65;
-    public static final int PLUS=66;
-    public static final int PLUS_ASSIG=67;
-    public static final int POST=68;
-    public static final int PRE=69;
-    public static final int PROD_ASSIG=70;
-    public static final int REPETITION=71;
-    public static final int RETURN=72;
-    public static final int SEVENTH=73;
-    public static final int SONG=74;
-    public static final int SPEED=75;
-    public static final int START_REPETITION=76;
-    public static final int STRING=77;
-    public static final int STRING_TYPE=78;
-    public static final int SUSTAIN=79;
-    public static final int TIE=80;
-    public static final int TONE=81;
-    public static final int TRACK=82;
-    public static final int TRANSPORT=83;
-    public static final int TRUE=84;
-    public static final int VAR_FUNCALL=85;
-    public static final int VOID=86;
-    public static final int WHILE=87;
-    public static final int WS=88;
+    public static final int ID_=40;
+    public static final int IF=41;
+    public static final int INCR=42;
+    public static final int INSTRUMENT=43;
+    public static final int INT=44;
+    public static final int LE=45;
+    public static final int LETTER_X=46;
+    public static final int LIST_ARGUMENTS=47;
+    public static final int LIST_ASSIG=48;
+    public static final int LIST_FUNCTIONS=49;
+    public static final int LIST_INSTRUCTIONS=50;
+    public static final int LIST_MUSIC_INST=51;
+    public static final int LT=52;
+    public static final int MAJ7=53;
+    public static final int MINOR=54;
+    public static final int MINUS=55;
+    public static final int MINUS_ASSIG=56;
+    public static final int MOD=57;
+    public static final int MOD_ASSIG=58;
+    public static final int NOT=59;
+    public static final int NOTE=60;
+    public static final int NOTES=61;
+    public static final int NOTE_LIST=62;
+    public static final int NOTE_TYPE=63;
+    public static final int NOT_EQUAL=64;
+    public static final int NUM=65;
+    public static final int OR=66;
+    public static final int PLUS=67;
+    public static final int PLUS_ASSIG=68;
+    public static final int POST=69;
+    public static final int PRE=70;
+    public static final int PROD_ASSIG=71;
+    public static final int REPETITION=72;
+    public static final int RETURN=73;
+    public static final int SEVENTH=74;
+    public static final int SONG=75;
+    public static final int SPEED=76;
+    public static final int START_REPETITION=77;
+    public static final int STRING=78;
+    public static final int STRING_TYPE=79;
+    public static final int SUSTAIN=80;
+    public static final int TIE=81;
+    public static final int TONE=82;
+    public static final int TRACK=83;
+    public static final int TRANSPORT=84;
+    public static final int TRUE=85;
+    public static final int VAR_FUNCALL=86;
+    public static final int VOID=87;
+    public static final int WHILE=88;
+    public static final int WS=89;
 
     // delegates
     public Parser[] getDelegates() {
@@ -147,7 +148,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "prog"
-    // src/parser/Music.g:40:1: prog : ( global_stmt )+ EOF -> ^( LIST_FUNCTIONS ( global_stmt )+ ) ;
+    // src/parser/Music.g:41:1: prog : ( global_stmt )+ EOF -> ^( LIST_FUNCTIONS ( global_stmt )+ ) ;
     public final MusicParser.prog_return prog() throws RecognitionException {
         MusicParser.prog_return retval = new MusicParser.prog_return();
         retval.start = input.LT(1);
@@ -163,10 +164,10 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_EOF=new RewriteRuleTokenStream(adaptor,"token EOF");
         RewriteRuleSubtreeStream stream_global_stmt=new RewriteRuleSubtreeStream(adaptor,"rule global_stmt");
         try {
-            // src/parser/Music.g:40:10: ( ( global_stmt )+ EOF -> ^( LIST_FUNCTIONS ( global_stmt )+ ) )
-            // src/parser/Music.g:40:14: ( global_stmt )+ EOF
+            // src/parser/Music.g:41:10: ( ( global_stmt )+ EOF -> ^( LIST_FUNCTIONS ( global_stmt )+ ) )
+            // src/parser/Music.g:41:14: ( global_stmt )+ EOF
             {
-            // src/parser/Music.g:40:14: ( global_stmt )+
+            // src/parser/Music.g:41:14: ( global_stmt )+
             int cnt1=0;
             loop1:
             do {
@@ -180,9 +181,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt1) {
             	case 1 :
-            	    // src/parser/Music.g:40:15: global_stmt
+            	    // src/parser/Music.g:41:15: global_stmt
             	    {
-            	    pushFollow(FOLLOW_global_stmt_in_prog186);
+            	    pushFollow(FOLLOW_global_stmt_in_prog193);
             	    global_stmt1=global_stmt();
 
             	    state._fsp--;
@@ -202,7 +203,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog190);  
+            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog197);  
             stream_EOF.add(EOF2);
 
 
@@ -217,9 +218,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AmlTree)adaptor.nil();
-            // 40:33: -> ^( LIST_FUNCTIONS ( global_stmt )+ )
+            // 41:33: -> ^( LIST_FUNCTIONS ( global_stmt )+ )
             {
-                // src/parser/Music.g:40:36: ^( LIST_FUNCTIONS ( global_stmt )+ )
+                // src/parser/Music.g:41:36: ^( LIST_FUNCTIONS ( global_stmt )+ )
                 {
                 AmlTree root_1 = (AmlTree)adaptor.nil();
                 root_1 = (AmlTree)adaptor.becomeRoot(
@@ -274,7 +275,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "global_stmt"
-    // src/parser/Music.g:43:1: global_stmt : ( function | frag | song );
+    // src/parser/Music.g:44:1: global_stmt : ( function | frag | song );
     public final MusicParser.global_stmt_return global_stmt() throws RecognitionException {
         MusicParser.global_stmt_return retval = new MusicParser.global_stmt_return();
         retval.start = input.LT(1);
@@ -291,7 +292,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
         try {
-            // src/parser/Music.g:43:13: ( function | frag | song )
+            // src/parser/Music.g:44:13: ( function | frag | song )
             int alt2=3;
             switch ( input.LA(1) ) {
             case BOOL:
@@ -325,12 +326,12 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt2) {
                 case 1 :
-                    // src/parser/Music.g:43:17: function
+                    // src/parser/Music.g:44:17: function
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_function_in_global_stmt222);
+                    pushFollow(FOLLOW_function_in_global_stmt229);
                     function3=function();
 
                     state._fsp--;
@@ -340,12 +341,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // src/parser/Music.g:44:17: frag
+                    // src/parser/Music.g:45:17: frag
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_frag_in_global_stmt240);
+                    pushFollow(FOLLOW_frag_in_global_stmt247);
                     frag4=frag();
 
                     state._fsp--;
@@ -355,12 +356,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // src/parser/Music.g:45:17: song
+                    // src/parser/Music.g:46:17: song
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_song_in_global_stmt258);
+                    pushFollow(FOLLOW_song_in_global_stmt265);
                     song5=song();
 
                     state._fsp--;
@@ -400,7 +401,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "var_funcall"
-    // src/parser/Music.g:48:1: var_funcall : id= id_rule '.' id2= id_rule '(' ( params )? ')' ';' -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? ) ;
+    // src/parser/Music.g:49:1: var_funcall : id= id_rule '.' id2= id_rule '(' ( params )? ')' ';' -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? ) ;
     public final MusicParser.var_funcall_return var_funcall() throws RecognitionException {
         MusicParser.var_funcall_return retval = new MusicParser.var_funcall_return();
         retval.start = input.LT(1);
@@ -423,50 +424,50 @@ public TreeAdaptor getTreeAdaptor() {
         AmlTree char_literal7_tree=null;
         AmlTree char_literal9_tree=null;
         AmlTree char_literal10_tree=null;
-        RewriteRuleTokenStream stream_94=new RewriteRuleTokenStream(adaptor,"token 94");
-        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
+        RewriteRuleTokenStream stream_93=new RewriteRuleTokenStream(adaptor,"token 93");
+        RewriteRuleTokenStream stream_95=new RewriteRuleTokenStream(adaptor,"token 95");
         RewriteRuleSubtreeStream stream_id_rule=new RewriteRuleSubtreeStream(adaptor,"rule id_rule");
         RewriteRuleSubtreeStream stream_params=new RewriteRuleSubtreeStream(adaptor,"rule params");
         try {
-            // src/parser/Music.g:48:13: (id= id_rule '.' id2= id_rule '(' ( params )? ')' ';' -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? ) )
-            // src/parser/Music.g:48:17: id= id_rule '.' id2= id_rule '(' ( params )? ')' ';'
+            // src/parser/Music.g:49:13: (id= id_rule '.' id2= id_rule '(' ( params )? ')' ';' -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? ) )
+            // src/parser/Music.g:49:17: id= id_rule '.' id2= id_rule '(' ( params )? ')' ';'
             {
-            pushFollow(FOLLOW_id_rule_in_var_funcall283);
+            pushFollow(FOLLOW_id_rule_in_var_funcall290);
             id=id_rule();
 
             state._fsp--;
 
             stream_id_rule.add(id.getTree());
 
-            char_literal6=(Token)match(input,92,FOLLOW_92_in_var_funcall285);  
-            stream_92.add(char_literal6);
+            char_literal6=(Token)match(input,93,FOLLOW_93_in_var_funcall292);  
+            stream_93.add(char_literal6);
 
 
-            pushFollow(FOLLOW_id_rule_in_var_funcall289);
+            pushFollow(FOLLOW_id_rule_in_var_funcall296);
             id2=id_rule();
 
             state._fsp--;
 
             stream_id_rule.add(id2.getTree());
 
-            char_literal7=(Token)match(input,89,FOLLOW_89_in_var_funcall291);  
-            stream_89.add(char_literal7);
+            char_literal7=(Token)match(input,90,FOLLOW_90_in_var_funcall298);  
+            stream_90.add(char_literal7);
 
 
-            // src/parser/Music.g:48:48: ( params )?
+            // src/parser/Music.g:49:48: ( params )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==ARMOR||LA3_0==BEMOL||LA3_0==CHORD||LA3_0==DRUMS||LA3_0==FALSE||LA3_0==ID||LA3_0==LETTER_X||LA3_0==MINUS||(LA3_0 >= NOT && LA3_0 <= NOTE)||LA3_0==NUM||LA3_0==PLUS||LA3_0==STRING||LA3_0==SUSTAIN||LA3_0==TRUE||LA3_0==89) ) {
+            if ( (LA3_0==ARMOR||LA3_0==BEMOL||LA3_0==CHORD||LA3_0==DRUMS||LA3_0==FALSE||LA3_0==ID_||LA3_0==LETTER_X||LA3_0==MINUS||(LA3_0 >= NOT && LA3_0 <= NOTE)||LA3_0==NUM||LA3_0==PLUS||LA3_0==STRING||LA3_0==SUSTAIN||LA3_0==TRUE||LA3_0==90) ) {
                 alt3=1;
             }
             switch (alt3) {
                 case 1 :
-                    // src/parser/Music.g:48:48: params
+                    // src/parser/Music.g:49:48: params
                     {
-                    pushFollow(FOLLOW_params_in_var_funcall293);
+                    pushFollow(FOLLOW_params_in_var_funcall300);
                     params8=params();
 
                     state._fsp--;
@@ -479,29 +480,29 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal9=(Token)match(input,90,FOLLOW_90_in_var_funcall296);  
-            stream_90.add(char_literal9);
+            char_literal9=(Token)match(input,91,FOLLOW_91_in_var_funcall303);  
+            stream_91.add(char_literal9);
 
 
-            char_literal10=(Token)match(input,94,FOLLOW_94_in_var_funcall298);  
-            stream_94.add(char_literal10);
+            char_literal10=(Token)match(input,95,FOLLOW_95_in_var_funcall305);  
+            stream_95.add(char_literal10);
 
 
             // AST REWRITE
-            // elements: id2, params
+            // elements: params, id2
             // token labels: 
-            // rule labels: retval, id2
+            // rule labels: id2, retval
             // token list labels: 
             // rule list labels: 
             // wildcard labels: 
             retval.tree = root_0;
-            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
             RewriteRuleSubtreeStream stream_id2=new RewriteRuleSubtreeStream(adaptor,"rule id2",id2!=null?id2.tree:null);
+            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (AmlTree)adaptor.nil();
-            // 48:65: -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? )
+            // 49:65: -> ^( VAR_FUNCALL[$id.text] $id2 ( params )? )
             {
-                // src/parser/Music.g:48:69: ^( VAR_FUNCALL[$id.text] $id2 ( params )? )
+                // src/parser/Music.g:49:69: ^( VAR_FUNCALL[$id.text] $id2 ( params )? )
                 {
                 AmlTree root_1 = (AmlTree)adaptor.nil();
                 root_1 = (AmlTree)adaptor.becomeRoot(
@@ -510,7 +511,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 adaptor.addChild(root_1, stream_id2.nextTree());
 
-                // src/parser/Music.g:48:98: ( params )?
+                // src/parser/Music.g:49:98: ( params )?
                 if ( stream_params.hasNext() ) {
                     adaptor.addChild(root_1, stream_params.nextTree());
 
@@ -556,7 +557,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "var_access"
-    // src/parser/Music.g:51:1: var_access : (id1= id_rule ( '.' id2= id_rule ) -> ^( ATTR_ACCESS[$id1.text] $id2) | id_rule );
+    // src/parser/Music.g:52:1: var_access : (id1= id_rule ( '.' id2= id_rule ) -> ^( ATTR_ACCESS[$id1.text] $id2) | id_rule );
     public final MusicParser.var_access_return var_access() throws RecognitionException {
         MusicParser.var_access_return retval = new MusicParser.var_access_return();
         retval.start = input.LT(1);
@@ -573,25 +574,42 @@ public TreeAdaptor getTreeAdaptor() {
 
 
         AmlTree char_literal11_tree=null;
-        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
+        RewriteRuleTokenStream stream_93=new RewriteRuleTokenStream(adaptor,"token 93");
         RewriteRuleSubtreeStream stream_id_rule=new RewriteRuleSubtreeStream(adaptor,"rule id_rule");
         try {
-            // src/parser/Music.g:51:13: (id1= id_rule ( '.' id2= id_rule ) -> ^( ATTR_ACCESS[$id1.text] $id2) | id_rule )
+            // src/parser/Music.g:52:13: (id1= id_rule ( '.' id2= id_rule ) -> ^( ATTR_ACCESS[$id1.text] $id2) | id_rule )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==ID||LA4_0==LETTER_X) ) {
+            if ( (LA4_0==ID_) ) {
                 int LA4_1 = input.LA(2);
 
-                if ( (LA4_1==92) ) {
+                if ( (LA4_1==93) ) {
                     alt4=1;
                 }
-                else if ( (LA4_1==AND||LA4_1==ASSIG||LA4_1==DECR||(LA4_1 >= DIV && LA4_1 <= DOT)||LA4_1==EQUAL||(LA4_1 >= GE && LA4_1 <= GT)||LA4_1==INCR||LA4_1==LE||LA4_1==LT||(LA4_1 >= MINUS && LA4_1 <= MOD_ASSIG)||LA4_1==NOT_EQUAL||(LA4_1 >= OR && LA4_1 <= PLUS_ASSIG)||LA4_1==PROD_ASSIG||(LA4_1 >= 90 && LA4_1 <= 91)||LA4_1==94) ) {
+                else if ( (LA4_1==AND||LA4_1==ASSIG||LA4_1==DECR||(LA4_1 >= DIV && LA4_1 <= DOT)||LA4_1==EQUAL||(LA4_1 >= GE && LA4_1 <= GT)||LA4_1==INCR||LA4_1==LE||LA4_1==LT||(LA4_1 >= MINUS && LA4_1 <= MOD_ASSIG)||LA4_1==NOT_EQUAL||(LA4_1 >= OR && LA4_1 <= PLUS_ASSIG)||LA4_1==PROD_ASSIG||(LA4_1 >= 91 && LA4_1 <= 92)||LA4_1==95) ) {
                     alt4=2;
                 }
                 else {
                     NoViableAltException nvae =
                         new NoViableAltException("", 4, 1, input);
+
+                    throw nvae;
+
+                }
+            }
+            else if ( (LA4_0==LETTER_X) ) {
+                int LA4_2 = input.LA(2);
+
+                if ( (LA4_2==93) ) {
+                    alt4=1;
+                }
+                else if ( (LA4_2==AND||LA4_2==ASSIG||LA4_2==DECR||(LA4_2 >= DIV && LA4_2 <= DOT)||LA4_2==EQUAL||(LA4_2 >= GE && LA4_2 <= GT)||LA4_2==INCR||LA4_2==LE||LA4_2==LT||(LA4_2 >= MINUS && LA4_2 <= MOD_ASSIG)||LA4_2==NOT_EQUAL||(LA4_2 >= OR && LA4_2 <= PLUS_ASSIG)||LA4_2==PROD_ASSIG||(LA4_2 >= 91 && LA4_2 <= 92)||LA4_2==95) ) {
+                    alt4=2;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 4, 2, input);
 
                     throw nvae;
 
@@ -606,23 +624,23 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt4) {
                 case 1 :
-                    // src/parser/Music.g:51:17: id1= id_rule ( '.' id2= id_rule )
+                    // src/parser/Music.g:52:17: id1= id_rule ( '.' id2= id_rule )
                     {
-                    pushFollow(FOLLOW_id_rule_in_var_access339);
+                    pushFollow(FOLLOW_id_rule_in_var_access346);
                     id1=id_rule();
 
                     state._fsp--;
 
                     stream_id_rule.add(id1.getTree());
 
-                    // src/parser/Music.g:51:29: ( '.' id2= id_rule )
-                    // src/parser/Music.g:51:30: '.' id2= id_rule
+                    // src/parser/Music.g:52:29: ( '.' id2= id_rule )
+                    // src/parser/Music.g:52:30: '.' id2= id_rule
                     {
-                    char_literal11=(Token)match(input,92,FOLLOW_92_in_var_access342);  
-                    stream_92.add(char_literal11);
+                    char_literal11=(Token)match(input,93,FOLLOW_93_in_var_access349);  
+                    stream_93.add(char_literal11);
 
 
-                    pushFollow(FOLLOW_id_rule_in_var_access346);
+                    pushFollow(FOLLOW_id_rule_in_var_access353);
                     id2=id_rule();
 
                     state._fsp--;
@@ -635,18 +653,18 @@ public TreeAdaptor getTreeAdaptor() {
                     // AST REWRITE
                     // elements: id2
                     // token labels: 
-                    // rule labels: retval, id2
+                    // rule labels: id2, retval
                     // token list labels: 
                     // rule list labels: 
                     // wildcard labels: 
                     retval.tree = root_0;
-                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
                     RewriteRuleSubtreeStream stream_id2=new RewriteRuleSubtreeStream(adaptor,"rule id2",id2!=null?id2.tree:null);
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (AmlTree)adaptor.nil();
-                    // 51:47: -> ^( ATTR_ACCESS[$id1.text] $id2)
+                    // 52:47: -> ^( ATTR_ACCESS[$id1.text] $id2)
                     {
-                        // src/parser/Music.g:51:50: ^( ATTR_ACCESS[$id1.text] $id2)
+                        // src/parser/Music.g:52:50: ^( ATTR_ACCESS[$id1.text] $id2)
                         {
                         AmlTree root_1 = (AmlTree)adaptor.nil();
                         root_1 = (AmlTree)adaptor.becomeRoot(
@@ -666,12 +684,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // src/parser/Music.g:52:17: id_rule
+                    // src/parser/Music.g:53:17: id_rule
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_id_rule_in_var_access375);
+                    pushFollow(FOLLOW_id_rule_in_var_access382);
                     id_rule12=id_rule();
 
                     state._fsp--;
@@ -711,7 +729,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "id_rule"
-    // src/parser/Music.g:55:1: id_rule : ( ID | LETTER_X );
+    // src/parser/Music.g:56:1: id_rule : (id= ID_ |id= LETTER_X ) -> ^( ID[$id] ) ;
     public final MusicParser.id_rule_return id_rule() throws RecognitionException {
         MusicParser.id_rule_return retval = new MusicParser.id_rule_return();
         retval.start = input.LT(1);
@@ -719,31 +737,83 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token set13=null;
+        Token id=null;
 
-        AmlTree set13_tree=null;
+        AmlTree id_tree=null;
+        RewriteRuleTokenStream stream_LETTER_X=new RewriteRuleTokenStream(adaptor,"token LETTER_X");
+        RewriteRuleTokenStream stream_ID_=new RewriteRuleTokenStream(adaptor,"token ID_");
 
         try {
-            // src/parser/Music.g:55:13: ( ID | LETTER_X )
-            // src/parser/Music.g:
+            // src/parser/Music.g:56:13: ( (id= ID_ |id= LETTER_X ) -> ^( ID[$id] ) )
+            // src/parser/Music.g:56:17: (id= ID_ |id= LETTER_X )
             {
-            root_0 = (AmlTree)adaptor.nil();
+            // src/parser/Music.g:56:17: (id= ID_ |id= LETTER_X )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
 
-
-            set13=(Token)input.LT(1);
-
-            if ( input.LA(1)==ID||input.LA(1)==LETTER_X ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (AmlTree)adaptor.create(set13)
-                );
-                state.errorRecovery=false;
+            if ( (LA5_0==ID_) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==LETTER_X) ) {
+                alt5=2;
             }
             else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt5) {
+                case 1 :
+                    // src/parser/Music.g:56:18: id= ID_
+                    {
+                    id=(Token)match(input,ID_,FOLLOW_ID__in_id_rule412);  
+                    stream_ID_.add(id);
+
+
+                    }
+                    break;
+                case 2 :
+                    // src/parser/Music.g:56:29: id= LETTER_X
+                    {
+                    id=(Token)match(input,LETTER_X,FOLLOW_LETTER_X_in_id_rule420);  
+                    stream_LETTER_X.add(id);
+
+
+                    }
+                    break;
+
             }
 
+
+            // AST REWRITE
+            // elements: 
+            // token labels: 
+            // rule labels: retval
+            // token list labels: 
+            // rule list labels: 
+            // wildcard labels: 
+            retval.tree = root_0;
+            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+            root_0 = (AmlTree)adaptor.nil();
+            // 56:42: -> ^( ID[$id] )
+            {
+                // src/parser/Music.g:56:45: ^( ID[$id] )
+                {
+                AmlTree root_1 = (AmlTree)adaptor.nil();
+                root_1 = (AmlTree)adaptor.becomeRoot(
+                (AmlTree)adaptor.create(ID, id)
+                , root_1);
+
+                adaptor.addChild(root_0, root_1);
+                }
+
+            }
+
+
+            retval.tree = root_0;
 
             }
 
@@ -784,81 +854,81 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal15=null;
+        Token char_literal14=null;
+        Token char_literal16=null;
         Token char_literal17=null;
-        Token char_literal18=null;
-        Token char_literal20=null;
+        Token char_literal19=null;
         MusicParser.id_rule_return id =null;
 
-        MusicParser.type_void_return type_void14 =null;
+        MusicParser.type_void_return type_void13 =null;
 
-        MusicParser.list_arguments_return list_arguments16 =null;
+        MusicParser.list_arguments_return list_arguments15 =null;
 
-        MusicParser.listInst_return listInst19 =null;
+        MusicParser.listInst_return listInst18 =null;
 
 
-        AmlTree char_literal15_tree=null;
+        AmlTree char_literal14_tree=null;
+        AmlTree char_literal16_tree=null;
         AmlTree char_literal17_tree=null;
-        AmlTree char_literal18_tree=null;
-        AmlTree char_literal20_tree=null;
-        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
-        RewriteRuleTokenStream stream_95=new RewriteRuleTokenStream(adaptor,"token 95");
+        AmlTree char_literal19_tree=null;
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
-        RewriteRuleSubtreeStream stream_listInst=new RewriteRuleSubtreeStream(adaptor,"rule listInst");
-        RewriteRuleSubtreeStream stream_list_arguments=new RewriteRuleSubtreeStream(adaptor,"rule list_arguments");
-        RewriteRuleSubtreeStream stream_type_void=new RewriteRuleSubtreeStream(adaptor,"rule type_void");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
+        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
+        RewriteRuleTokenStream stream_97=new RewriteRuleTokenStream(adaptor,"token 97");
         RewriteRuleSubtreeStream stream_id_rule=new RewriteRuleSubtreeStream(adaptor,"rule id_rule");
+        RewriteRuleSubtreeStream stream_listInst=new RewriteRuleSubtreeStream(adaptor,"rule listInst");
+        RewriteRuleSubtreeStream stream_type_void=new RewriteRuleSubtreeStream(adaptor,"rule type_void");
+        RewriteRuleSubtreeStream stream_list_arguments=new RewriteRuleSubtreeStream(adaptor,"rule list_arguments");
         try {
             // src/parser/Music.g:59:13: ( type_void id= id_rule '(' list_arguments ')' '{' listInst '}' -> ^( FUNCTION[$id.text] type_void list_arguments listInst ) )
             // src/parser/Music.g:59:16: type_void id= id_rule '(' list_arguments ')' '{' listInst '}'
             {
-            pushFollow(FOLLOW_type_void_in_function445);
-            type_void14=type_void();
+            pushFollow(FOLLOW_type_void_in_function453);
+            type_void13=type_void();
 
             state._fsp--;
 
-            stream_type_void.add(type_void14.getTree());
+            stream_type_void.add(type_void13.getTree());
 
-            pushFollow(FOLLOW_id_rule_in_function449);
+            pushFollow(FOLLOW_id_rule_in_function457);
             id=id_rule();
 
             state._fsp--;
 
             stream_id_rule.add(id.getTree());
 
-            char_literal15=(Token)match(input,89,FOLLOW_89_in_function451);  
-            stream_89.add(char_literal15);
+            char_literal14=(Token)match(input,90,FOLLOW_90_in_function459);  
+            stream_90.add(char_literal14);
 
 
-            pushFollow(FOLLOW_list_arguments_in_function453);
-            list_arguments16=list_arguments();
-
-            state._fsp--;
-
-            stream_list_arguments.add(list_arguments16.getTree());
-
-            char_literal17=(Token)match(input,90,FOLLOW_90_in_function455);  
-            stream_90.add(char_literal17);
-
-
-            char_literal18=(Token)match(input,95,FOLLOW_95_in_function457);  
-            stream_95.add(char_literal18);
-
-
-            pushFollow(FOLLOW_listInst_in_function459);
-            listInst19=listInst();
+            pushFollow(FOLLOW_list_arguments_in_function461);
+            list_arguments15=list_arguments();
 
             state._fsp--;
 
-            stream_listInst.add(listInst19.getTree());
+            stream_list_arguments.add(list_arguments15.getTree());
 
-            char_literal20=(Token)match(input,96,FOLLOW_96_in_function461);  
-            stream_96.add(char_literal20);
+            char_literal16=(Token)match(input,91,FOLLOW_91_in_function463);  
+            stream_91.add(char_literal16);
+
+
+            char_literal17=(Token)match(input,96,FOLLOW_96_in_function465);  
+            stream_96.add(char_literal17);
+
+
+            pushFollow(FOLLOW_listInst_in_function467);
+            listInst18=listInst();
+
+            state._fsp--;
+
+            stream_listInst.add(listInst18.getTree());
+
+            char_literal19=(Token)match(input,97,FOLLOW_97_in_function469);  
+            stream_97.add(char_literal19);
 
 
             // AST REWRITE
-            // elements: listInst, list_arguments, type_void
+            // elements: type_void, list_arguments, listInst
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -930,51 +1000,51 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal21=null;
-        Token char_literal23=null;
+        Token char_literal20=null;
+        Token char_literal22=null;
         MusicParser.id_rule_return id =null;
 
-        MusicParser.params_return params22 =null;
+        MusicParser.params_return params21 =null;
 
 
-        AmlTree char_literal21_tree=null;
-        AmlTree char_literal23_tree=null;
+        AmlTree char_literal20_tree=null;
+        AmlTree char_literal22_tree=null;
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
         RewriteRuleSubtreeStream stream_id_rule=new RewriteRuleSubtreeStream(adaptor,"rule id_rule");
         RewriteRuleSubtreeStream stream_params=new RewriteRuleSubtreeStream(adaptor,"rule params");
         try {
             // src/parser/Music.g:62:13: (id= id_rule '(' ( params )? ')' -> ^( FUNCALL[$id.text] ( params )? ) )
             // src/parser/Music.g:62:17: id= id_rule '(' ( params )? ')'
             {
-            pushFollow(FOLLOW_id_rule_in_funcall508);
+            pushFollow(FOLLOW_id_rule_in_funcall516);
             id=id_rule();
 
             state._fsp--;
 
             stream_id_rule.add(id.getTree());
 
-            char_literal21=(Token)match(input,89,FOLLOW_89_in_funcall510);  
-            stream_89.add(char_literal21);
+            char_literal20=(Token)match(input,90,FOLLOW_90_in_funcall518);  
+            stream_90.add(char_literal20);
 
 
             // src/parser/Music.g:62:32: ( params )?
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA5_0==ARMOR||LA5_0==BEMOL||LA5_0==CHORD||LA5_0==DRUMS||LA5_0==FALSE||LA5_0==ID||LA5_0==LETTER_X||LA5_0==MINUS||(LA5_0 >= NOT && LA5_0 <= NOTE)||LA5_0==NUM||LA5_0==PLUS||LA5_0==STRING||LA5_0==SUSTAIN||LA5_0==TRUE||LA5_0==89) ) {
-                alt5=1;
+            if ( (LA6_0==ARMOR||LA6_0==BEMOL||LA6_0==CHORD||LA6_0==DRUMS||LA6_0==FALSE||LA6_0==ID_||LA6_0==LETTER_X||LA6_0==MINUS||(LA6_0 >= NOT && LA6_0 <= NOTE)||LA6_0==NUM||LA6_0==PLUS||LA6_0==STRING||LA6_0==SUSTAIN||LA6_0==TRUE||LA6_0==90) ) {
+                alt6=1;
             }
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
                     // src/parser/Music.g:62:32: params
                     {
-                    pushFollow(FOLLOW_params_in_funcall512);
-                    params22=params();
+                    pushFollow(FOLLOW_params_in_funcall520);
+                    params21=params();
 
                     state._fsp--;
 
-                    stream_params.add(params22.getTree());
+                    stream_params.add(params21.getTree());
 
                     }
                     break;
@@ -982,8 +1052,8 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal23=(Token)match(input,90,FOLLOW_90_in_funcall515);  
-            stream_90.add(char_literal23);
+            char_literal22=(Token)match(input,91,FOLLOW_91_in_funcall523);  
+            stream_91.add(char_literal22);
 
 
             // AST REWRITE
@@ -1060,23 +1130,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token FRAGMENT24=null;
-        Token char_literal26=null;
+        Token FRAGMENT23=null;
+        Token char_literal25=null;
+        Token char_literal27=null;
         Token char_literal28=null;
-        Token char_literal29=null;
-        Token char_literal31=null;
-        MusicParser.id_rule_return id_rule25 =null;
+        Token char_literal30=null;
+        MusicParser.id_rule_return id_rule24 =null;
 
-        MusicParser.list_arguments_return list_arguments27 =null;
+        MusicParser.list_arguments_return list_arguments26 =null;
 
-        MusicParser.list_music_inst_return list_music_inst30 =null;
+        MusicParser.list_music_inst_return list_music_inst29 =null;
 
 
-        AmlTree FRAGMENT24_tree=null;
-        AmlTree char_literal26_tree=null;
+        AmlTree FRAGMENT23_tree=null;
+        AmlTree char_literal25_tree=null;
+        AmlTree char_literal27_tree=null;
         AmlTree char_literal28_tree=null;
-        AmlTree char_literal29_tree=null;
-        AmlTree char_literal31_tree=null;
+        AmlTree char_literal30_tree=null;
 
         try {
             // src/parser/Music.g:65:9: ( FRAGMENT ^ id_rule '(' ! list_arguments ')' ! '{' ! list_music_inst '}' !)
@@ -1085,41 +1155,41 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            FRAGMENT24=(Token)match(input,FRAGMENT,FOLLOW_FRAGMENT_in_frag549); 
-            FRAGMENT24_tree = 
-            (AmlTree)adaptor.create(FRAGMENT24)
+            FRAGMENT23=(Token)match(input,FRAGMENT,FOLLOW_FRAGMENT_in_frag557); 
+            FRAGMENT23_tree = 
+            (AmlTree)adaptor.create(FRAGMENT23)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(FRAGMENT24_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(FRAGMENT23_tree, root_0);
 
 
-            pushFollow(FOLLOW_id_rule_in_frag552);
-            id_rule25=id_rule();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, id_rule25.getTree());
-
-            char_literal26=(Token)match(input,89,FOLLOW_89_in_frag554); 
-
-            pushFollow(FOLLOW_list_arguments_in_frag557);
-            list_arguments27=list_arguments();
+            pushFollow(FOLLOW_id_rule_in_frag560);
+            id_rule24=id_rule();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_arguments27.getTree());
+            adaptor.addChild(root_0, id_rule24.getTree());
 
-            char_literal28=(Token)match(input,90,FOLLOW_90_in_frag559); 
+            char_literal25=(Token)match(input,90,FOLLOW_90_in_frag562); 
 
-            char_literal29=(Token)match(input,95,FOLLOW_95_in_frag562); 
-
-            pushFollow(FOLLOW_list_music_inst_in_frag565);
-            list_music_inst30=list_music_inst();
+            pushFollow(FOLLOW_list_arguments_in_frag565);
+            list_arguments26=list_arguments();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_music_inst30.getTree());
+            adaptor.addChild(root_0, list_arguments26.getTree());
 
-            char_literal31=(Token)match(input,96,FOLLOW_96_in_frag567); 
+            char_literal27=(Token)match(input,91,FOLLOW_91_in_frag567); 
+
+            char_literal28=(Token)match(input,96,FOLLOW_96_in_frag570); 
+
+            pushFollow(FOLLOW_list_music_inst_in_frag573);
+            list_music_inst29=list_music_inst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, list_music_inst29.getTree());
+
+            char_literal30=(Token)match(input,97,FOLLOW_97_in_frag575); 
 
             }
 
@@ -1160,68 +1230,68 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal33=null;
-        MusicParser.argument_return argument32 =null;
+        Token char_literal32=null;
+        MusicParser.argument_return argument31 =null;
 
-        MusicParser.argument_return argument34 =null;
+        MusicParser.argument_return argument33 =null;
 
 
-        AmlTree char_literal33_tree=null;
-        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
+        AmlTree char_literal32_tree=null;
+        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
         RewriteRuleSubtreeStream stream_argument=new RewriteRuleSubtreeStream(adaptor,"rule argument");
         try {
             // src/parser/Music.g:68:17: ( ( argument ( ',' argument )* )? -> ^( LIST_ARGUMENTS ( argument )* ) )
             // src/parser/Music.g:68:19: ( argument ( ',' argument )* )?
             {
             // src/parser/Music.g:68:19: ( argument ( ',' argument )* )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA7_0==BOOL||LA7_0==CHORD||LA7_0==DRUMS_NOTE_TYPE||LA7_0==INT||LA7_0==NOTE_TYPE||LA7_0==STRING_TYPE) ) {
-                alt7=1;
+            if ( (LA8_0==BOOL||LA8_0==CHORD||LA8_0==DRUMS_NOTE_TYPE||LA8_0==INT||LA8_0==NOTE_TYPE||LA8_0==STRING_TYPE) ) {
+                alt8=1;
             }
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
                     // src/parser/Music.g:68:20: argument ( ',' argument )*
                     {
-                    pushFollow(FOLLOW_argument_in_list_arguments587);
-                    argument32=argument();
+                    pushFollow(FOLLOW_argument_in_list_arguments595);
+                    argument31=argument();
 
                     state._fsp--;
 
-                    stream_argument.add(argument32.getTree());
+                    stream_argument.add(argument31.getTree());
 
                     // src/parser/Music.g:68:29: ( ',' argument )*
-                    loop6:
+                    loop7:
                     do {
-                        int alt6=2;
-                        int LA6_0 = input.LA(1);
+                        int alt7=2;
+                        int LA7_0 = input.LA(1);
 
-                        if ( (LA6_0==91) ) {
-                            alt6=1;
+                        if ( (LA7_0==92) ) {
+                            alt7=1;
                         }
 
 
-                        switch (alt6) {
+                        switch (alt7) {
                     	case 1 :
                     	    // src/parser/Music.g:68:30: ',' argument
                     	    {
-                    	    char_literal33=(Token)match(input,91,FOLLOW_91_in_list_arguments590);  
-                    	    stream_91.add(char_literal33);
+                    	    char_literal32=(Token)match(input,92,FOLLOW_92_in_list_arguments598);  
+                    	    stream_92.add(char_literal32);
 
 
-                    	    pushFollow(FOLLOW_argument_in_list_arguments592);
-                    	    argument34=argument();
+                    	    pushFollow(FOLLOW_argument_in_list_arguments600);
+                    	    argument33=argument();
 
                     	    state._fsp--;
 
-                    	    stream_argument.add(argument34.getTree());
+                    	    stream_argument.add(argument33.getTree());
 
                     	    }
                     	    break;
 
                     	default :
-                    	    break loop6;
+                    	    break loop7;
                         }
                     } while (true);
 
@@ -1306,9 +1376,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.type_return type35 =null;
+        MusicParser.type_return type34 =null;
 
-        MusicParser.id_rule_return id_rule36 =null;
+        MusicParser.id_rule_return id_rule35 =null;
 
 
 
@@ -1319,19 +1389,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_type_in_argument633);
-            type35=type();
+            pushFollow(FOLLOW_type_in_argument641);
+            type34=type();
 
             state._fsp--;
 
-            root_0 = (AmlTree)adaptor.becomeRoot(type35.getTree(), root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(type34.getTree(), root_0);
 
-            pushFollow(FOLLOW_id_rule_in_argument636);
-            id_rule36=id_rule();
+            pushFollow(FOLLOW_id_rule_in_argument644);
+            id_rule35=id_rule();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, id_rule36.getTree());
+            adaptor.addChild(root_0, id_rule35.getTree());
 
             }
 
@@ -1372,17 +1442,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal39=null;
-        MusicParser.expr_return expr37 =null;
+        Token char_literal38=null;
+        MusicParser.expr_return expr36 =null;
 
-        MusicParser.notes_variable_return notes_variable38 =null;
+        MusicParser.notes_variable_return notes_variable37 =null;
 
-        MusicParser.expr_return expr40 =null;
+        MusicParser.expr_return expr39 =null;
 
-        MusicParser.notes_variable_return notes_variable41 =null;
+        MusicParser.notes_variable_return notes_variable40 =null;
 
 
-        AmlTree char_literal39_tree=null;
+        AmlTree char_literal38_tree=null;
 
         try {
             // src/parser/Music.g:74:13: ( ( expr | notes_variable ) ( ',' ! ( expr | notes_variable ) )* )
@@ -1392,10 +1462,10 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:74:17: ( expr | notes_variable )
-            int alt8=2;
+            int alt9=2;
             switch ( input.LA(1) ) {
             case FALSE:
-            case ID:
+            case ID_:
             case LETTER_X:
             case MINUS:
             case NOT:
@@ -1404,22 +1474,22 @@ public TreeAdaptor getTreeAdaptor() {
             case STRING:
             case TRUE:
                 {
-                alt8=1;
+                alt9=1;
                 }
                 break;
-            case 89:
+            case 90:
                 {
-                int LA8_2 = input.LA(2);
+                int LA9_2 = input.LA(2);
 
-                if ( (LA8_2==FALSE||LA8_2==ID||LA8_2==LETTER_X||LA8_2==MINUS||LA8_2==NOT||LA8_2==NUM||LA8_2==PLUS||LA8_2==STRING||LA8_2==TRUE||LA8_2==89) ) {
-                    alt8=1;
+                if ( (LA9_2==FALSE||LA9_2==ID_||LA9_2==LETTER_X||LA9_2==MINUS||LA9_2==NOT||LA9_2==NUM||LA9_2==PLUS||LA9_2==STRING||LA9_2==TRUE||LA9_2==90) ) {
+                    alt9=1;
                 }
-                else if ( (LA8_2==ARMOR||LA8_2==BEMOL||LA8_2==NOTE||LA8_2==SUSTAIN) ) {
-                    alt8=2;
+                else if ( (LA9_2==ARMOR||LA9_2==BEMOL||LA9_2==NOTE||LA9_2==SUSTAIN) ) {
+                    alt9=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 8, 2, input);
+                        new NoViableAltException("", 9, 2, input);
 
                     throw nvae;
 
@@ -1433,39 +1503,39 @@ public TreeAdaptor getTreeAdaptor() {
             case NOTE:
             case SUSTAIN:
                 {
-                alt8=2;
+                alt9=2;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt8) {
+            switch (alt9) {
                 case 1 :
                     // src/parser/Music.g:74:18: expr
                     {
-                    pushFollow(FOLLOW_expr_in_params663);
-                    expr37=expr();
+                    pushFollow(FOLLOW_expr_in_params671);
+                    expr36=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr37.getTree());
+                    adaptor.addChild(root_0, expr36.getTree());
 
                     }
                     break;
                 case 2 :
                     // src/parser/Music.g:74:25: notes_variable
                     {
-                    pushFollow(FOLLOW_notes_variable_in_params667);
-                    notes_variable38=notes_variable();
+                    pushFollow(FOLLOW_notes_variable_in_params675);
+                    notes_variable37=notes_variable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, notes_variable38.getTree());
+                    adaptor.addChild(root_0, notes_variable37.getTree());
 
                     }
                     break;
@@ -1474,27 +1544,27 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:74:41: ( ',' ! ( expr | notes_variable ) )*
-            loop10:
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA10_0==91) ) {
-                    alt10=1;
+                if ( (LA11_0==92) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
             	    // src/parser/Music.g:74:42: ',' ! ( expr | notes_variable )
             	    {
-            	    char_literal39=(Token)match(input,91,FOLLOW_91_in_params671); 
+            	    char_literal38=(Token)match(input,92,FOLLOW_92_in_params679); 
 
             	    // src/parser/Music.g:74:47: ( expr | notes_variable )
-            	    int alt9=2;
+            	    int alt10=2;
             	    switch ( input.LA(1) ) {
             	    case FALSE:
-            	    case ID:
+            	    case ID_:
             	    case LETTER_X:
             	    case MINUS:
             	    case NOT:
@@ -1503,22 +1573,22 @@ public TreeAdaptor getTreeAdaptor() {
             	    case STRING:
             	    case TRUE:
             	        {
-            	        alt9=1;
+            	        alt10=1;
             	        }
             	        break;
-            	    case 89:
+            	    case 90:
             	        {
-            	        int LA9_2 = input.LA(2);
+            	        int LA10_2 = input.LA(2);
 
-            	        if ( (LA9_2==FALSE||LA9_2==ID||LA9_2==LETTER_X||LA9_2==MINUS||LA9_2==NOT||LA9_2==NUM||LA9_2==PLUS||LA9_2==STRING||LA9_2==TRUE||LA9_2==89) ) {
-            	            alt9=1;
+            	        if ( (LA10_2==FALSE||LA10_2==ID_||LA10_2==LETTER_X||LA10_2==MINUS||LA10_2==NOT||LA10_2==NUM||LA10_2==PLUS||LA10_2==STRING||LA10_2==TRUE||LA10_2==90) ) {
+            	            alt10=1;
             	        }
-            	        else if ( (LA9_2==ARMOR||LA9_2==BEMOL||LA9_2==NOTE||LA9_2==SUSTAIN) ) {
-            	            alt9=2;
+            	        else if ( (LA10_2==ARMOR||LA10_2==BEMOL||LA10_2==NOTE||LA10_2==SUSTAIN) ) {
+            	            alt10=2;
             	        }
             	        else {
             	            NoViableAltException nvae =
-            	                new NoViableAltException("", 9, 2, input);
+            	                new NoViableAltException("", 10, 2, input);
 
             	            throw nvae;
 
@@ -1532,39 +1602,39 @@ public TreeAdaptor getTreeAdaptor() {
             	    case NOTE:
             	    case SUSTAIN:
             	        {
-            	        alt9=2;
+            	        alt10=2;
             	        }
             	        break;
             	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 9, 0, input);
+            	            new NoViableAltException("", 10, 0, input);
 
             	        throw nvae;
 
             	    }
 
-            	    switch (alt9) {
+            	    switch (alt10) {
             	        case 1 :
             	            // src/parser/Music.g:74:48: expr
             	            {
-            	            pushFollow(FOLLOW_expr_in_params675);
-            	            expr40=expr();
+            	            pushFollow(FOLLOW_expr_in_params683);
+            	            expr39=expr();
 
             	            state._fsp--;
 
-            	            adaptor.addChild(root_0, expr40.getTree());
+            	            adaptor.addChild(root_0, expr39.getTree());
 
             	            }
             	            break;
             	        case 2 :
             	            // src/parser/Music.g:74:55: notes_variable
             	            {
-            	            pushFollow(FOLLOW_notes_variable_in_params679);
-            	            notes_variable41=notes_variable();
+            	            pushFollow(FOLLOW_notes_variable_in_params687);
+            	            notes_variable40=notes_variable();
 
             	            state._fsp--;
 
-            	            adaptor.addChild(root_0, notes_variable41.getTree());
+            	            adaptor.addChild(root_0, notes_variable40.getTree());
 
             	            }
             	            break;
@@ -1576,7 +1646,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -1620,7 +1690,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.inst_return inst42 =null;
+        MusicParser.inst_return inst41 =null;
 
 
         RewriteRuleSubtreeStream stream_inst=new RewriteRuleSubtreeStream(adaptor,"rule inst");
@@ -1629,38 +1699,38 @@ public TreeAdaptor getTreeAdaptor() {
             // src/parser/Music.g:77:16: ( inst )+
             {
             // src/parser/Music.g:77:16: ( inst )+
-            int cnt11=0;
-            loop11:
+            int cnt12=0;
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0==BEAT||LA11_0==BOOL||LA11_0==CHORD||LA11_0==DECR||LA11_0==DOUBLE_BAR||LA11_0==DRUMS_NOTE_TYPE||LA11_0==FOR||(LA11_0 >= ID && LA11_0 <= INT)||LA11_0==LETTER_X||LA11_0==NOTE_TYPE||LA11_0==NUM||LA11_0==RETURN||(LA11_0 >= SONG && LA11_0 <= START_REPETITION)||LA11_0==STRING_TYPE||LA11_0==TONE||LA11_0==WHILE) ) {
-                    alt11=1;
+                if ( (LA12_0==BEAT||LA12_0==BOOL||LA12_0==CHORD||LA12_0==DECR||LA12_0==DOUBLE_BAR||LA12_0==DRUMS_NOTE_TYPE||LA12_0==FOR||(LA12_0 >= ID_ && LA12_0 <= INT)||LA12_0==LETTER_X||LA12_0==NOTE_TYPE||LA12_0==NUM||LA12_0==RETURN||(LA12_0 >= SONG && LA12_0 <= START_REPETITION)||LA12_0==STRING_TYPE||LA12_0==TONE||LA12_0==WHILE) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
             	    // src/parser/Music.g:77:16: inst
             	    {
-            	    pushFollow(FOLLOW_inst_in_listInst707);
-            	    inst42=inst();
+            	    pushFollow(FOLLOW_inst_in_listInst715);
+            	    inst41=inst();
 
             	    state._fsp--;
 
-            	    stream_inst.add(inst42.getTree());
+            	    stream_inst.add(inst41.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt11 >= 1 ) break loop11;
+            	    if ( cnt12 >= 1 ) break loop12;
                         EarlyExitException eee =
-                            new EarlyExitException(11, input);
+                            new EarlyExitException(12, input);
                         throw eee;
                 }
-                cnt11++;
+                cnt12++;
             } while (true);
 
 
@@ -1740,7 +1810,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.music_inst_return music_inst43 =null;
+        MusicParser.music_inst_return music_inst42 =null;
 
 
         RewriteRuleSubtreeStream stream_music_inst=new RewriteRuleSubtreeStream(adaptor,"rule music_inst");
@@ -1749,38 +1819,38 @@ public TreeAdaptor getTreeAdaptor() {
             // src/parser/Music.g:80:21: ( music_inst )+
             {
             // src/parser/Music.g:80:21: ( music_inst )+
-            int cnt12=0;
-            loop12:
+            int cnt13=0;
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0==ARMOR||(LA12_0 >= BEAT && LA12_0 <= BOOL)||LA12_0==CHORD||LA12_0==DECR||(LA12_0 >= DRUMS && LA12_0 <= DRUMS_NOTE_TYPE)||LA12_0==FOR||(LA12_0 >= ID && LA12_0 <= INT)||LA12_0==LETTER_X||LA12_0==NOTE||LA12_0==NOTE_TYPE||(LA12_0 >= SONG && LA12_0 <= SPEED)||(LA12_0 >= STRING_TYPE && LA12_0 <= SUSTAIN)||LA12_0==TONE||LA12_0==WHILE||LA12_0==89) ) {
-                    alt12=1;
+                if ( (LA13_0==ARMOR||(LA13_0 >= BEAT && LA13_0 <= BOOL)||LA13_0==CHORD||LA13_0==DECR||(LA13_0 >= DRUMS && LA13_0 <= DRUMS_NOTE_TYPE)||LA13_0==FOR||(LA13_0 >= ID_ && LA13_0 <= INT)||LA13_0==LETTER_X||LA13_0==NOTE||LA13_0==NOTE_TYPE||(LA13_0 >= SONG && LA13_0 <= SPEED)||(LA13_0 >= STRING_TYPE && LA13_0 <= SUSTAIN)||LA13_0==TONE||LA13_0==WHILE||LA13_0==90) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
             	    // src/parser/Music.g:80:21: music_inst
             	    {
-            	    pushFollow(FOLLOW_music_inst_in_list_music_inst741);
-            	    music_inst43=music_inst();
+            	    pushFollow(FOLLOW_music_inst_in_list_music_inst749);
+            	    music_inst42=music_inst();
 
             	    state._fsp--;
 
-            	    stream_music_inst.add(music_inst43.getTree());
+            	    stream_music_inst.add(music_inst42.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt12 >= 1 ) break loop12;
+            	    if ( cnt13 >= 1 ) break loop13;
                         EarlyExitException eee =
-                            new EarlyExitException(12, input);
+                            new EarlyExitException(13, input);
                         throw eee;
                 }
-                cnt12++;
+                cnt13++;
             } while (true);
 
 
@@ -1860,55 +1930,55 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token string_literal45=null;
-        Token char_literal48=null;
-        Token char_literal51=null;
-        Token char_literal53=null;
-        Token char_literal55=null;
-        Token char_literal57=null;
-        Token char_literal61=null;
-        MusicParser.declaration_return declaration44 =null;
+        Token string_literal44=null;
+        Token char_literal47=null;
+        Token char_literal50=null;
+        Token char_literal52=null;
+        Token char_literal54=null;
+        Token char_literal56=null;
+        Token char_literal60=null;
+        MusicParser.declaration_return declaration43 =null;
 
-        MusicParser.expr_return expr46 =null;
+        MusicParser.expr_return expr45 =null;
 
-        MusicParser.notes_group_return notes_group47 =null;
+        MusicParser.notes_group_return notes_group46 =null;
 
-        MusicParser.var_funcall_return var_funcall49 =null;
+        MusicParser.var_funcall_return var_funcall48 =null;
 
-        MusicParser.tone_return tone50 =null;
+        MusicParser.tone_return tone49 =null;
 
-        MusicParser.beat_return beat52 =null;
+        MusicParser.beat_return beat51 =null;
 
-        MusicParser.speed_return speed54 =null;
+        MusicParser.speed_return speed53 =null;
 
-        MusicParser.instrument_return instrument56 =null;
+        MusicParser.instrument_return instrument55 =null;
 
-        MusicParser.assignation_return assignation58 =null;
+        MusicParser.assignation_return assignation57 =null;
 
-        MusicParser.while_stmt_return while_stmt59 =null;
+        MusicParser.while_stmt_return while_stmt58 =null;
 
-        MusicParser.funcall_return funcall60 =null;
+        MusicParser.funcall_return funcall59 =null;
 
-        MusicParser.for_stmt_return for_stmt62 =null;
+        MusicParser.for_stmt_return for_stmt61 =null;
 
-        MusicParser.if_stmt_return if_stmt63 =null;
+        MusicParser.if_stmt_return if_stmt62 =null;
 
-        MusicParser.song_return song64 =null;
+        MusicParser.song_return song63 =null;
 
-        MusicParser.compas_list_return compas_list65 =null;
+        MusicParser.compas_list_return compas_list64 =null;
 
 
-        AmlTree string_literal45_tree=null;
-        AmlTree char_literal48_tree=null;
-        AmlTree char_literal51_tree=null;
-        AmlTree char_literal53_tree=null;
-        AmlTree char_literal55_tree=null;
-        AmlTree char_literal57_tree=null;
-        AmlTree char_literal61_tree=null;
+        AmlTree string_literal44_tree=null;
+        AmlTree char_literal47_tree=null;
+        AmlTree char_literal50_tree=null;
+        AmlTree char_literal52_tree=null;
+        AmlTree char_literal54_tree=null;
+        AmlTree char_literal56_tree=null;
+        AmlTree char_literal60_tree=null;
 
         try {
             // src/parser/Music.g:83:13: ( declaration | 'return' ^ ( expr | notes_group ) ';' !| var_funcall | tone ';' !| beat ';' !| speed ';' !| instrument ';' !| assignation | while_stmt | funcall ';' !| for_stmt | if_stmt | song | compas_list )
-            int alt14=14;
+            int alt15=14;
             switch ( input.LA(1) ) {
             case BOOL:
             case CHORD:
@@ -1917,34 +1987,50 @@ public TreeAdaptor getTreeAdaptor() {
             case NOTE_TYPE:
             case STRING_TYPE:
                 {
-                alt14=1;
+                alt15=1;
                 }
                 break;
             case RETURN:
                 {
-                alt14=2;
+                alt15=2;
                 }
                 break;
-            case ID:
-            case LETTER_X:
+            case ID_:
                 {
                 switch ( input.LA(2) ) {
-                case 92:
+                case 93:
                     {
-                    int LA14_14 = input.LA(3);
+                    int LA15_15 = input.LA(3);
 
-                    if ( (LA14_14==ID||LA14_14==LETTER_X) ) {
-                        int LA14_16 = input.LA(4);
+                    if ( (LA15_15==ID_) ) {
+                        int LA15_17 = input.LA(4);
 
-                        if ( (LA14_16==89) ) {
-                            alt14=3;
+                        if ( (LA15_17==90) ) {
+                            alt15=3;
                         }
-                        else if ( (LA14_16==ASSIG||LA14_16==DECR||LA14_16==DIVIDE_ASSIG||LA14_16==INCR||LA14_16==MINUS_ASSIG||LA14_16==MOD_ASSIG||LA14_16==PLUS_ASSIG||LA14_16==PROD_ASSIG) ) {
-                            alt14=8;
+                        else if ( (LA15_17==ASSIG||LA15_17==DECR||LA15_17==DIVIDE_ASSIG||LA15_17==INCR||LA15_17==MINUS_ASSIG||LA15_17==MOD_ASSIG||LA15_17==PLUS_ASSIG||LA15_17==PROD_ASSIG) ) {
+                            alt15=8;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 14, 16, input);
+                                new NoViableAltException("", 15, 17, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA15_15==LETTER_X) ) {
+                        int LA15_18 = input.LA(4);
+
+                        if ( (LA15_18==90) ) {
+                            alt15=3;
+                        }
+                        else if ( (LA15_18==ASSIG||LA15_18==DECR||LA15_18==DIVIDE_ASSIG||LA15_18==INCR||LA15_18==MINUS_ASSIG||LA15_18==MOD_ASSIG||LA15_18==PLUS_ASSIG||LA15_18==PROD_ASSIG) ) {
+                            alt15=8;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 15, 18, input);
 
                             throw nvae;
 
@@ -1952,7 +2038,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 14, 14, input);
+                            new NoViableAltException("", 15, 15, input);
 
                         throw nvae;
 
@@ -1968,17 +2054,94 @@ public TreeAdaptor getTreeAdaptor() {
                 case PLUS_ASSIG:
                 case PROD_ASSIG:
                     {
-                    alt14=8;
+                    alt15=8;
                     }
                     break;
-                case 89:
+                case 90:
                     {
-                    alt14=10;
+                    alt15=10;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 14, 3, input);
+                        new NoViableAltException("", 15, 3, input);
+
+                    throw nvae;
+
+                }
+
+                }
+                break;
+            case LETTER_X:
+                {
+                switch ( input.LA(2) ) {
+                case 93:
+                    {
+                    int LA15_15 = input.LA(3);
+
+                    if ( (LA15_15==ID_) ) {
+                        int LA15_17 = input.LA(4);
+
+                        if ( (LA15_17==90) ) {
+                            alt15=3;
+                        }
+                        else if ( (LA15_17==ASSIG||LA15_17==DECR||LA15_17==DIVIDE_ASSIG||LA15_17==INCR||LA15_17==MINUS_ASSIG||LA15_17==MOD_ASSIG||LA15_17==PLUS_ASSIG||LA15_17==PROD_ASSIG) ) {
+                            alt15=8;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 15, 17, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA15_15==LETTER_X) ) {
+                        int LA15_18 = input.LA(4);
+
+                        if ( (LA15_18==90) ) {
+                            alt15=3;
+                        }
+                        else if ( (LA15_18==ASSIG||LA15_18==DECR||LA15_18==DIVIDE_ASSIG||LA15_18==INCR||LA15_18==MINUS_ASSIG||LA15_18==MOD_ASSIG||LA15_18==PLUS_ASSIG||LA15_18==PROD_ASSIG) ) {
+                            alt15=8;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 15, 18, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 15, 15, input);
+
+                        throw nvae;
+
+                    }
+                    }
+                    break;
+                case ASSIG:
+                case DECR:
+                case DIVIDE_ASSIG:
+                case INCR:
+                case MINUS_ASSIG:
+                case MOD_ASSIG:
+                case PLUS_ASSIG:
+                case PROD_ASSIG:
+                    {
+                    alt15=8;
+                    }
+                    break;
+                case 90:
+                    {
+                    alt15=10;
+                    }
+                    break;
+                default:
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 15, 4, input);
 
                     throw nvae;
 
@@ -1988,78 +2151,78 @@ public TreeAdaptor getTreeAdaptor() {
                 break;
             case TONE:
                 {
-                alt14=4;
+                alt15=4;
                 }
                 break;
             case BEAT:
                 {
-                alt14=5;
+                alt15=5;
                 }
                 break;
             case SPEED:
                 {
-                alt14=6;
+                alt15=6;
                 }
                 break;
             case INSTRUMENT:
                 {
-                alt14=7;
+                alt15=7;
                 }
                 break;
             case DECR:
             case INCR:
                 {
-                alt14=8;
+                alt15=8;
                 }
                 break;
             case WHILE:
                 {
-                alt14=9;
+                alt15=9;
                 }
                 break;
             case FOR:
                 {
-                alt14=11;
+                alt15=11;
                 }
                 break;
             case IF:
                 {
-                alt14=12;
+                alt15=12;
                 }
                 break;
             case SONG:
                 {
-                alt14=13;
+                alt15=13;
                 }
                 break;
             case DOUBLE_BAR:
             case NUM:
             case START_REPETITION:
                 {
-                alt14=14;
+                alt15=14;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
                     // src/parser/Music.g:83:17: declaration
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_declaration_in_inst785);
-                    declaration44=declaration();
+                    pushFollow(FOLLOW_declaration_in_inst793);
+                    declaration43=declaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaration44.getTree());
+                    adaptor.addChild(root_0, declaration43.getTree());
 
                     }
                     break;
@@ -2069,18 +2232,18 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    string_literal45=(Token)match(input,RETURN,FOLLOW_RETURN_in_inst803); 
-                    string_literal45_tree = 
-                    (AmlTree)adaptor.create(string_literal45)
+                    string_literal44=(Token)match(input,RETURN,FOLLOW_RETURN_in_inst811); 
+                    string_literal44_tree = 
+                    (AmlTree)adaptor.create(string_literal44)
                     ;
-                    root_0 = (AmlTree)adaptor.becomeRoot(string_literal45_tree, root_0);
+                    root_0 = (AmlTree)adaptor.becomeRoot(string_literal44_tree, root_0);
 
 
                     // src/parser/Music.g:84:27: ( expr | notes_group )
-                    int alt13=2;
+                    int alt14=2;
                     switch ( input.LA(1) ) {
                     case FALSE:
-                    case ID:
+                    case ID_:
                     case LETTER_X:
                     case MINUS:
                     case NOT:
@@ -2089,22 +2252,22 @@ public TreeAdaptor getTreeAdaptor() {
                     case STRING:
                     case TRUE:
                         {
-                        alt13=1;
+                        alt14=1;
                         }
                         break;
-                    case 89:
+                    case 90:
                         {
-                        int LA13_2 = input.LA(2);
+                        int LA14_2 = input.LA(2);
 
-                        if ( (LA13_2==FALSE||LA13_2==ID||LA13_2==LETTER_X||LA13_2==MINUS||LA13_2==NOT||LA13_2==NUM||LA13_2==PLUS||LA13_2==STRING||LA13_2==TRUE||LA13_2==89) ) {
-                            alt13=1;
+                        if ( (LA14_2==FALSE||LA14_2==ID_||LA14_2==LETTER_X||LA14_2==MINUS||LA14_2==NOT||LA14_2==NUM||LA14_2==PLUS||LA14_2==STRING||LA14_2==TRUE||LA14_2==90) ) {
+                            alt14=1;
                         }
-                        else if ( (LA13_2==ARMOR||LA13_2==BEMOL||LA13_2==NOTE||LA13_2==SUSTAIN) ) {
-                            alt13=2;
+                        else if ( (LA14_2==ARMOR||LA14_2==BEMOL||LA14_2==NOTE||LA14_2==SUSTAIN) ) {
+                            alt14=2;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 13, 2, input);
+                                new NoViableAltException("", 14, 2, input);
 
                             throw nvae;
 
@@ -2118,39 +2281,39 @@ public TreeAdaptor getTreeAdaptor() {
                     case NOTE:
                     case SUSTAIN:
                         {
-                        alt13=2;
+                        alt14=2;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 13, 0, input);
+                            new NoViableAltException("", 14, 0, input);
 
                         throw nvae;
 
                     }
 
-                    switch (alt13) {
+                    switch (alt14) {
                         case 1 :
                             // src/parser/Music.g:84:28: expr
                             {
-                            pushFollow(FOLLOW_expr_in_inst807);
-                            expr46=expr();
+                            pushFollow(FOLLOW_expr_in_inst815);
+                            expr45=expr();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, expr46.getTree());
+                            adaptor.addChild(root_0, expr45.getTree());
 
                             }
                             break;
                         case 2 :
                             // src/parser/Music.g:84:35: notes_group
                             {
-                            pushFollow(FOLLOW_notes_group_in_inst811);
-                            notes_group47=notes_group();
+                            pushFollow(FOLLOW_notes_group_in_inst819);
+                            notes_group46=notes_group();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, notes_group47.getTree());
+                            adaptor.addChild(root_0, notes_group46.getTree());
 
                             }
                             break;
@@ -2158,7 +2321,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    char_literal48=(Token)match(input,94,FOLLOW_94_in_inst814); 
+                    char_literal47=(Token)match(input,95,FOLLOW_95_in_inst822); 
 
                     }
                     break;
@@ -2168,12 +2331,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_var_funcall_in_inst833);
-                    var_funcall49=var_funcall();
+                    pushFollow(FOLLOW_var_funcall_in_inst841);
+                    var_funcall48=var_funcall();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, var_funcall49.getTree());
+                    adaptor.addChild(root_0, var_funcall48.getTree());
 
                     }
                     break;
@@ -2183,14 +2346,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_tone_in_inst851);
-                    tone50=tone();
+                    pushFollow(FOLLOW_tone_in_inst859);
+                    tone49=tone();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tone50.getTree());
+                    adaptor.addChild(root_0, tone49.getTree());
 
-                    char_literal51=(Token)match(input,94,FOLLOW_94_in_inst853); 
+                    char_literal50=(Token)match(input,95,FOLLOW_95_in_inst861); 
 
                     }
                     break;
@@ -2200,14 +2363,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_beat_in_inst872);
-                    beat52=beat();
+                    pushFollow(FOLLOW_beat_in_inst880);
+                    beat51=beat();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, beat52.getTree());
+                    adaptor.addChild(root_0, beat51.getTree());
 
-                    char_literal53=(Token)match(input,94,FOLLOW_94_in_inst874); 
+                    char_literal52=(Token)match(input,95,FOLLOW_95_in_inst882); 
 
                     }
                     break;
@@ -2217,14 +2380,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_speed_in_inst893);
-                    speed54=speed();
+                    pushFollow(FOLLOW_speed_in_inst901);
+                    speed53=speed();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, speed54.getTree());
+                    adaptor.addChild(root_0, speed53.getTree());
 
-                    char_literal55=(Token)match(input,94,FOLLOW_94_in_inst895); 
+                    char_literal54=(Token)match(input,95,FOLLOW_95_in_inst903); 
 
                     }
                     break;
@@ -2234,14 +2397,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_instrument_in_inst914);
-                    instrument56=instrument();
+                    pushFollow(FOLLOW_instrument_in_inst922);
+                    instrument55=instrument();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, instrument56.getTree());
+                    adaptor.addChild(root_0, instrument55.getTree());
 
-                    char_literal57=(Token)match(input,94,FOLLOW_94_in_inst916); 
+                    char_literal56=(Token)match(input,95,FOLLOW_95_in_inst924); 
 
                     }
                     break;
@@ -2251,12 +2414,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_assignation_in_inst935);
-                    assignation58=assignation();
+                    pushFollow(FOLLOW_assignation_in_inst943);
+                    assignation57=assignation();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, assignation58.getTree());
+                    adaptor.addChild(root_0, assignation57.getTree());
 
                     }
                     break;
@@ -2266,12 +2429,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_while_stmt_in_inst953);
-                    while_stmt59=while_stmt();
+                    pushFollow(FOLLOW_while_stmt_in_inst961);
+                    while_stmt58=while_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, while_stmt59.getTree());
+                    adaptor.addChild(root_0, while_stmt58.getTree());
 
                     }
                     break;
@@ -2281,14 +2444,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_funcall_in_inst971);
-                    funcall60=funcall();
+                    pushFollow(FOLLOW_funcall_in_inst979);
+                    funcall59=funcall();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, funcall60.getTree());
+                    adaptor.addChild(root_0, funcall59.getTree());
 
-                    char_literal61=(Token)match(input,94,FOLLOW_94_in_inst973); 
+                    char_literal60=(Token)match(input,95,FOLLOW_95_in_inst981); 
 
                     }
                     break;
@@ -2298,12 +2461,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_for_stmt_in_inst992);
-                    for_stmt62=for_stmt();
+                    pushFollow(FOLLOW_for_stmt_in_inst1000);
+                    for_stmt61=for_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, for_stmt62.getTree());
+                    adaptor.addChild(root_0, for_stmt61.getTree());
 
                     }
                     break;
@@ -2313,12 +2476,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_if_stmt_in_inst1010);
-                    if_stmt63=if_stmt();
+                    pushFollow(FOLLOW_if_stmt_in_inst1018);
+                    if_stmt62=if_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, if_stmt63.getTree());
+                    adaptor.addChild(root_0, if_stmt62.getTree());
 
                     }
                     break;
@@ -2328,12 +2491,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_song_in_inst1028);
-                    song64=song();
+                    pushFollow(FOLLOW_song_in_inst1036);
+                    song63=song();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, song64.getTree());
+                    adaptor.addChild(root_0, song63.getTree());
 
                     }
                     break;
@@ -2343,12 +2506,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_compas_list_in_inst1046);
-                    compas_list65=compas_list();
+                    pushFollow(FOLLOW_compas_list_in_inst1054);
+                    compas_list64=compas_list();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, compas_list65.getTree());
+                    adaptor.addChild(root_0, compas_list64.getTree());
 
                     }
                     break;
@@ -2391,63 +2554,63 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal68=null;
-        Token char_literal70=null;
-        Token char_literal72=null;
-        Token char_literal74=null;
-        Token char_literal79=null;
-        Token char_literal84=null;
-        MusicParser.declaration_return declaration66 =null;
+        Token char_literal67=null;
+        Token char_literal69=null;
+        Token char_literal71=null;
+        Token char_literal73=null;
+        Token char_literal78=null;
+        Token char_literal83=null;
+        MusicParser.declaration_return declaration65 =null;
 
-        MusicParser.tone_return tone67 =null;
+        MusicParser.tone_return tone66 =null;
 
-        MusicParser.beat_return beat69 =null;
+        MusicParser.beat_return beat68 =null;
 
-        MusicParser.speed_return speed71 =null;
+        MusicParser.speed_return speed70 =null;
 
-        MusicParser.instrument_return instrument73 =null;
+        MusicParser.instrument_return instrument72 =null;
 
-        MusicParser.var_funcall_return var_funcall75 =null;
+        MusicParser.var_funcall_return var_funcall74 =null;
 
-        MusicParser.assignation_return assignation76 =null;
+        MusicParser.assignation_return assignation75 =null;
 
-        MusicParser.while_music_stmt_return while_music_stmt77 =null;
+        MusicParser.while_music_stmt_return while_music_stmt76 =null;
 
-        MusicParser.funcall_return funcall78 =null;
+        MusicParser.funcall_return funcall77 =null;
 
-        MusicParser.for_music_stmt_return for_music_stmt80 =null;
+        MusicParser.for_music_stmt_return for_music_stmt79 =null;
 
-        MusicParser.if_music_stmt_return if_music_stmt81 =null;
+        MusicParser.if_music_stmt_return if_music_stmt80 =null;
 
-        MusicParser.song_return song82 =null;
+        MusicParser.song_return song81 =null;
 
-        MusicParser.notes_group_return notes_group83 =null;
+        MusicParser.notes_group_return notes_group82 =null;
 
 
-        AmlTree char_literal68_tree=null;
-        AmlTree char_literal70_tree=null;
-        AmlTree char_literal72_tree=null;
-        AmlTree char_literal74_tree=null;
-        AmlTree char_literal79_tree=null;
-        AmlTree char_literal84_tree=null;
+        AmlTree char_literal67_tree=null;
+        AmlTree char_literal69_tree=null;
+        AmlTree char_literal71_tree=null;
+        AmlTree char_literal73_tree=null;
+        AmlTree char_literal78_tree=null;
+        AmlTree char_literal83_tree=null;
 
         try {
             // src/parser/Music.g:99:13: ( declaration | tone ';' !| beat ';' !| speed ';' !| instrument ';' !| var_funcall | assignation | while_music_stmt | funcall ';' !| for_music_stmt | if_music_stmt | song | ( options {greedy=true; } : notes_group )+ ( ';' !)? )
-            int alt17=13;
+            int alt18=13;
             switch ( input.LA(1) ) {
             case CHORD:
                 {
-                int LA17_1 = input.LA(2);
+                int LA18_1 = input.LA(2);
 
-                if ( (LA17_1==89) ) {
-                    alt17=13;
+                if ( (LA18_1==90) ) {
+                    alt18=13;
                 }
-                else if ( (LA17_1==ID||LA17_1==LETTER_X) ) {
-                    alt17=1;
+                else if ( (LA18_1==ID_||LA18_1==LETTER_X) ) {
+                    alt18=1;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 17, 1, input);
+                        new NoViableAltException("", 18, 1, input);
 
                     throw nvae;
 
@@ -2456,44 +2619,60 @@ public TreeAdaptor getTreeAdaptor() {
                 break;
             case TONE:
                 {
-                alt17=2;
+                alt18=2;
                 }
                 break;
             case BEAT:
                 {
-                alt17=3;
+                alt18=3;
                 }
                 break;
             case SPEED:
                 {
-                alt17=4;
+                alt18=4;
                 }
                 break;
             case INSTRUMENT:
                 {
-                alt17=5;
+                alt18=5;
                 }
                 break;
-            case ID:
-            case LETTER_X:
+            case ID_:
                 {
                 switch ( input.LA(2) ) {
-                case 92:
+                case 93:
                     {
-                    int LA17_14 = input.LA(3);
+                    int LA18_15 = input.LA(3);
 
-                    if ( (LA17_14==ID||LA17_14==LETTER_X) ) {
-                        int LA17_16 = input.LA(4);
+                    if ( (LA18_15==ID_) ) {
+                        int LA18_17 = input.LA(4);
 
-                        if ( (LA17_16==89) ) {
-                            alt17=6;
+                        if ( (LA18_17==90) ) {
+                            alt18=6;
                         }
-                        else if ( (LA17_16==ASSIG||LA17_16==DECR||LA17_16==DIVIDE_ASSIG||LA17_16==INCR||LA17_16==MINUS_ASSIG||LA17_16==MOD_ASSIG||LA17_16==PLUS_ASSIG||LA17_16==PROD_ASSIG) ) {
-                            alt17=7;
+                        else if ( (LA18_17==ASSIG||LA18_17==DECR||LA18_17==DIVIDE_ASSIG||LA18_17==INCR||LA18_17==MINUS_ASSIG||LA18_17==MOD_ASSIG||LA18_17==PLUS_ASSIG||LA18_17==PROD_ASSIG) ) {
+                            alt18=7;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 17, 16, input);
+                                new NoViableAltException("", 18, 17, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA18_15==LETTER_X) ) {
+                        int LA18_18 = input.LA(4);
+
+                        if ( (LA18_18==90) ) {
+                            alt18=6;
+                        }
+                        else if ( (LA18_18==ASSIG||LA18_18==DECR||LA18_18==DIVIDE_ASSIG||LA18_18==INCR||LA18_18==MINUS_ASSIG||LA18_18==MOD_ASSIG||LA18_18==PLUS_ASSIG||LA18_18==PROD_ASSIG) ) {
+                            alt18=7;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 18, 18, input);
 
                             throw nvae;
 
@@ -2501,7 +2680,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 17, 14, input);
+                            new NoViableAltException("", 18, 15, input);
 
                         throw nvae;
 
@@ -2517,17 +2696,94 @@ public TreeAdaptor getTreeAdaptor() {
                 case PLUS_ASSIG:
                 case PROD_ASSIG:
                     {
-                    alt17=7;
+                    alt18=7;
                     }
                     break;
-                case 89:
+                case 90:
                     {
-                    alt17=9;
+                    alt18=9;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 17, 6, input);
+                        new NoViableAltException("", 18, 6, input);
+
+                    throw nvae;
+
+                }
+
+                }
+                break;
+            case LETTER_X:
+                {
+                switch ( input.LA(2) ) {
+                case 93:
+                    {
+                    int LA18_15 = input.LA(3);
+
+                    if ( (LA18_15==ID_) ) {
+                        int LA18_17 = input.LA(4);
+
+                        if ( (LA18_17==90) ) {
+                            alt18=6;
+                        }
+                        else if ( (LA18_17==ASSIG||LA18_17==DECR||LA18_17==DIVIDE_ASSIG||LA18_17==INCR||LA18_17==MINUS_ASSIG||LA18_17==MOD_ASSIG||LA18_17==PLUS_ASSIG||LA18_17==PROD_ASSIG) ) {
+                            alt18=7;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 18, 17, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA18_15==LETTER_X) ) {
+                        int LA18_18 = input.LA(4);
+
+                        if ( (LA18_18==90) ) {
+                            alt18=6;
+                        }
+                        else if ( (LA18_18==ASSIG||LA18_18==DECR||LA18_18==DIVIDE_ASSIG||LA18_18==INCR||LA18_18==MINUS_ASSIG||LA18_18==MOD_ASSIG||LA18_18==PLUS_ASSIG||LA18_18==PROD_ASSIG) ) {
+                            alt18=7;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 18, 18, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 18, 15, input);
+
+                        throw nvae;
+
+                    }
+                    }
+                    break;
+                case ASSIG:
+                case DECR:
+                case DIVIDE_ASSIG:
+                case INCR:
+                case MINUS_ASSIG:
+                case MOD_ASSIG:
+                case PLUS_ASSIG:
+                case PROD_ASSIG:
+                    {
+                    alt18=7;
+                    }
+                    break;
+                case 90:
+                    {
+                    alt18=9;
+                    }
+                    break;
+                default:
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 18, 7, input);
 
                     throw nvae;
 
@@ -2538,27 +2794,27 @@ public TreeAdaptor getTreeAdaptor() {
             case DECR:
             case INCR:
                 {
-                alt17=7;
+                alt18=7;
                 }
                 break;
             case WHILE:
                 {
-                alt17=8;
+                alt18=8;
                 }
                 break;
             case FOR:
                 {
-                alt17=10;
+                alt18=10;
                 }
                 break;
             case IF:
                 {
-                alt17=11;
+                alt18=11;
                 }
                 break;
             case SONG:
                 {
-                alt17=12;
+                alt18=12;
                 }
                 break;
             case BOOL:
@@ -2567,7 +2823,7 @@ public TreeAdaptor getTreeAdaptor() {
             case NOTE_TYPE:
             case STRING_TYPE:
                 {
-                alt17=1;
+                alt18=1;
                 }
                 break;
             case ARMOR:
@@ -2575,32 +2831,32 @@ public TreeAdaptor getTreeAdaptor() {
             case DRUMS:
             case NOTE:
             case SUSTAIN:
-            case 89:
+            case 90:
                 {
-                alt17=13;
+                alt18=13;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
                     // src/parser/Music.g:99:17: declaration
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_declaration_in_music_inst1070);
-                    declaration66=declaration();
+                    pushFollow(FOLLOW_declaration_in_music_inst1078);
+                    declaration65=declaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaration66.getTree());
+                    adaptor.addChild(root_0, declaration65.getTree());
 
                     }
                     break;
@@ -2610,14 +2866,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_tone_in_music_inst1088);
-                    tone67=tone();
+                    pushFollow(FOLLOW_tone_in_music_inst1096);
+                    tone66=tone();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tone67.getTree());
+                    adaptor.addChild(root_0, tone66.getTree());
 
-                    char_literal68=(Token)match(input,94,FOLLOW_94_in_music_inst1090); 
+                    char_literal67=(Token)match(input,95,FOLLOW_95_in_music_inst1098); 
 
                     }
                     break;
@@ -2627,14 +2883,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_beat_in_music_inst1109);
-                    beat69=beat();
+                    pushFollow(FOLLOW_beat_in_music_inst1117);
+                    beat68=beat();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, beat69.getTree());
+                    adaptor.addChild(root_0, beat68.getTree());
 
-                    char_literal70=(Token)match(input,94,FOLLOW_94_in_music_inst1111); 
+                    char_literal69=(Token)match(input,95,FOLLOW_95_in_music_inst1119); 
 
                     }
                     break;
@@ -2644,14 +2900,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_speed_in_music_inst1130);
-                    speed71=speed();
+                    pushFollow(FOLLOW_speed_in_music_inst1138);
+                    speed70=speed();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, speed71.getTree());
+                    adaptor.addChild(root_0, speed70.getTree());
 
-                    char_literal72=(Token)match(input,94,FOLLOW_94_in_music_inst1132); 
+                    char_literal71=(Token)match(input,95,FOLLOW_95_in_music_inst1140); 
 
                     }
                     break;
@@ -2661,14 +2917,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_instrument_in_music_inst1151);
-                    instrument73=instrument();
+                    pushFollow(FOLLOW_instrument_in_music_inst1159);
+                    instrument72=instrument();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, instrument73.getTree());
+                    adaptor.addChild(root_0, instrument72.getTree());
 
-                    char_literal74=(Token)match(input,94,FOLLOW_94_in_music_inst1153); 
+                    char_literal73=(Token)match(input,95,FOLLOW_95_in_music_inst1161); 
 
                     }
                     break;
@@ -2678,12 +2934,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_var_funcall_in_music_inst1172);
-                    var_funcall75=var_funcall();
+                    pushFollow(FOLLOW_var_funcall_in_music_inst1180);
+                    var_funcall74=var_funcall();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, var_funcall75.getTree());
+                    adaptor.addChild(root_0, var_funcall74.getTree());
 
                     }
                     break;
@@ -2693,12 +2949,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_assignation_in_music_inst1190);
-                    assignation76=assignation();
+                    pushFollow(FOLLOW_assignation_in_music_inst1198);
+                    assignation75=assignation();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, assignation76.getTree());
+                    adaptor.addChild(root_0, assignation75.getTree());
 
                     }
                     break;
@@ -2708,12 +2964,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_while_music_stmt_in_music_inst1208);
-                    while_music_stmt77=while_music_stmt();
+                    pushFollow(FOLLOW_while_music_stmt_in_music_inst1216);
+                    while_music_stmt76=while_music_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, while_music_stmt77.getTree());
+                    adaptor.addChild(root_0, while_music_stmt76.getTree());
 
                     }
                     break;
@@ -2723,14 +2979,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_funcall_in_music_inst1226);
-                    funcall78=funcall();
+                    pushFollow(FOLLOW_funcall_in_music_inst1234);
+                    funcall77=funcall();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, funcall78.getTree());
+                    adaptor.addChild(root_0, funcall77.getTree());
 
-                    char_literal79=(Token)match(input,94,FOLLOW_94_in_music_inst1228); 
+                    char_literal78=(Token)match(input,95,FOLLOW_95_in_music_inst1236); 
 
                     }
                     break;
@@ -2740,12 +2996,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_for_music_stmt_in_music_inst1247);
-                    for_music_stmt80=for_music_stmt();
+                    pushFollow(FOLLOW_for_music_stmt_in_music_inst1255);
+                    for_music_stmt79=for_music_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, for_music_stmt80.getTree());
+                    adaptor.addChild(root_0, for_music_stmt79.getTree());
 
                     }
                     break;
@@ -2755,12 +3011,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_if_music_stmt_in_music_inst1265);
-                    if_music_stmt81=if_music_stmt();
+                    pushFollow(FOLLOW_if_music_stmt_in_music_inst1273);
+                    if_music_stmt80=if_music_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, if_music_stmt81.getTree());
+                    adaptor.addChild(root_0, if_music_stmt80.getTree());
 
                     }
                     break;
@@ -2770,12 +3026,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_song_in_music_inst1283);
-                    song82=song();
+                    pushFollow(FOLLOW_song_in_music_inst1291);
+                    song81=song();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, song82.getTree());
+                    adaptor.addChild(root_0, song81.getTree());
 
                     }
                     break;
@@ -2786,77 +3042,77 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // src/parser/Music.g:111:16: ( options {greedy=true; } : notes_group )+
-                    int cnt15=0;
-                    loop15:
+                    int cnt16=0;
+                    loop16:
                     do {
-                        int alt15=2;
+                        int alt16=2;
                         switch ( input.LA(1) ) {
                         case CHORD:
                             {
-                            alt15=1;
+                            alt16=1;
                             }
                             break;
-                        case 89:
+                        case 90:
                             {
-                            alt15=1;
+                            alt16=1;
                             }
                             break;
                         case ARMOR:
                         case BEMOL:
                         case SUSTAIN:
                             {
-                            alt15=1;
+                            alt16=1;
                             }
                             break;
                         case NOTE:
                             {
-                            alt15=1;
+                            alt16=1;
                             }
                             break;
                         case DRUMS:
                             {
-                            alt15=1;
+                            alt16=1;
                             }
                             break;
 
                         }
 
-                        switch (alt15) {
+                        switch (alt16) {
                     	case 1 :
                     	    // src/parser/Music.g:111:42: notes_group
                     	    {
-                    	    pushFollow(FOLLOW_notes_group_in_music_inst1310);
-                    	    notes_group83=notes_group();
+                    	    pushFollow(FOLLOW_notes_group_in_music_inst1318);
+                    	    notes_group82=notes_group();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, notes_group83.getTree());
+                    	    adaptor.addChild(root_0, notes_group82.getTree());
 
                     	    }
                     	    break;
 
                     	default :
-                    	    if ( cnt15 >= 1 ) break loop15;
+                    	    if ( cnt16 >= 1 ) break loop16;
                                 EarlyExitException eee =
-                                    new EarlyExitException(15, input);
+                                    new EarlyExitException(16, input);
                                 throw eee;
                         }
-                        cnt15++;
+                        cnt16++;
                     } while (true);
 
 
                     // src/parser/Music.g:111:59: ( ';' !)?
-                    int alt16=2;
-                    int LA16_0 = input.LA(1);
+                    int alt17=2;
+                    int LA17_0 = input.LA(1);
 
-                    if ( (LA16_0==94) ) {
-                        alt16=1;
+                    if ( (LA17_0==95) ) {
+                        alt17=1;
                     }
-                    switch (alt16) {
+                    switch (alt17) {
                         case 1 :
                             // src/parser/Music.g:111:59: ';' !
                             {
-                            char_literal84=(Token)match(input,94,FOLLOW_94_in_music_inst1314); 
+                            char_literal83=(Token)match(input,95,FOLLOW_95_in_music_inst1322); 
 
                             }
                             break;
@@ -2905,17 +3161,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal87=null;
-        Token char_literal89=null;
-        MusicParser.type_return type85 =null;
+        Token char_literal86=null;
+        Token char_literal88=null;
+        MusicParser.type_return type84 =null;
 
-        MusicParser.assig_opt_return assig_opt86 =null;
+        MusicParser.assig_opt_return assig_opt85 =null;
 
-        MusicParser.assig_opt_return assig_opt88 =null;
+        MusicParser.assig_opt_return assig_opt87 =null;
 
 
-        AmlTree char_literal87_tree=null;
-        AmlTree char_literal89_tree=null;
+        AmlTree char_literal86_tree=null;
+        AmlTree char_literal88_tree=null;
 
         try {
             // src/parser/Music.g:114:13: ( type ^ assig_opt ( ',' ! assig_opt )* ';' !)
@@ -2924,54 +3180,54 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_type_in_declaration1339);
-            type85=type();
+            pushFollow(FOLLOW_type_in_declaration1347);
+            type84=type();
 
             state._fsp--;
 
-            root_0 = (AmlTree)adaptor.becomeRoot(type85.getTree(), root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(type84.getTree(), root_0);
 
-            pushFollow(FOLLOW_assig_opt_in_declaration1342);
-            assig_opt86=assig_opt();
+            pushFollow(FOLLOW_assig_opt_in_declaration1350);
+            assig_opt85=assig_opt();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, assig_opt86.getTree());
+            adaptor.addChild(root_0, assig_opt85.getTree());
 
             // src/parser/Music.g:114:33: ( ',' ! assig_opt )*
-            loop18:
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA18_0==91) ) {
-                    alt18=1;
+                if ( (LA19_0==92) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
             	    // src/parser/Music.g:114:34: ',' ! assig_opt
             	    {
-            	    char_literal87=(Token)match(input,91,FOLLOW_91_in_declaration1345); 
+            	    char_literal86=(Token)match(input,92,FOLLOW_92_in_declaration1353); 
 
-            	    pushFollow(FOLLOW_assig_opt_in_declaration1348);
-            	    assig_opt88=assig_opt();
+            	    pushFollow(FOLLOW_assig_opt_in_declaration1356);
+            	    assig_opt87=assig_opt();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, assig_opt88.getTree());
+            	    adaptor.addChild(root_0, assig_opt87.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
 
-            char_literal89=(Token)match(input,94,FOLLOW_94_in_declaration1352); 
+            char_literal88=(Token)match(input,95,FOLLOW_95_in_declaration1360); 
 
             }
 
@@ -3012,9 +3268,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token set90=null;
+        Token set89=null;
 
-        AmlTree set90_tree=null;
+        AmlTree set89_tree=null;
 
         try {
             // src/parser/Music.g:117:13: ( INT | BOOL | NOTE_TYPE | DRUMS_NOTE_TYPE | CHORD | STRING_TYPE )
@@ -3023,12 +3279,12 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            set90=(Token)input.LT(1);
+            set89=(Token)input.LT(1);
 
             if ( input.LA(1)==BOOL||input.LA(1)==CHORD||input.LA(1)==DRUMS_NOTE_TYPE||input.LA(1)==INT||input.LA(1)==NOTE_TYPE||input.LA(1)==STRING_TYPE ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (AmlTree)adaptor.create(set90)
+                (AmlTree)adaptor.create(set89)
                 );
                 state.errorRecovery=false;
             }
@@ -3077,43 +3333,43 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token VOID92=null;
-        MusicParser.type_return type91 =null;
+        Token VOID91=null;
+        MusicParser.type_return type90 =null;
 
 
-        AmlTree VOID92_tree=null;
+        AmlTree VOID91_tree=null;
 
         try {
             // src/parser/Music.g:125:13: ( type | VOID )
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==BOOL||LA19_0==CHORD||LA19_0==DRUMS_NOTE_TYPE||LA19_0==INT||LA19_0==NOTE_TYPE||LA19_0==STRING_TYPE) ) {
-                alt19=1;
+            if ( (LA20_0==BOOL||LA20_0==CHORD||LA20_0==DRUMS_NOTE_TYPE||LA20_0==INT||LA20_0==NOTE_TYPE||LA20_0==STRING_TYPE) ) {
+                alt20=1;
             }
-            else if ( (LA19_0==VOID) ) {
-                alt19=2;
+            else if ( (LA20_0==VOID) ) {
+                alt20=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
                     // src/parser/Music.g:125:17: type
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_type_in_type_void1498);
-                    type91=type();
+                    pushFollow(FOLLOW_type_in_type_void1506);
+                    type90=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, type91.getTree());
+                    adaptor.addChild(root_0, type90.getTree());
 
                     }
                     break;
@@ -3123,11 +3379,11 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    VOID92=(Token)match(input,VOID,FOLLOW_VOID_in_type_void1516); 
-                    VOID92_tree = 
-                    (AmlTree)adaptor.create(VOID92)
+                    VOID91=(Token)match(input,VOID,FOLLOW_VOID_in_type_void1524); 
+                    VOID91_tree = 
+                    (AmlTree)adaptor.create(VOID91)
                     ;
-                    adaptor.addChild(root_0, VOID92_tree);
+                    adaptor.addChild(root_0, VOID91_tree);
 
 
                     }
@@ -3171,15 +3427,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token ASSIG94=null;
-        MusicParser.id_rule_return id_rule93 =null;
+        Token ASSIG93=null;
+        MusicParser.id_rule_return id_rule92 =null;
 
-        MusicParser.expr_return expr95 =null;
+        MusicParser.expr_return expr94 =null;
 
-        MusicParser.notes_variable_return notes_variable96 =null;
+        MusicParser.notes_variable_return notes_variable95 =null;
 
 
-        AmlTree ASSIG94_tree=null;
+        AmlTree ASSIG93_tree=null;
 
         try {
             // src/parser/Music.g:129:13: ( id_rule ( ASSIG ^ ( expr | notes_variable ) )? )
@@ -3188,36 +3444,36 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_id_rule_in_assig_opt1541);
-            id_rule93=id_rule();
+            pushFollow(FOLLOW_id_rule_in_assig_opt1549);
+            id_rule92=id_rule();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, id_rule93.getTree());
+            adaptor.addChild(root_0, id_rule92.getTree());
 
             // src/parser/Music.g:129:25: ( ASSIG ^ ( expr | notes_variable ) )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==ASSIG) ) {
-                alt21=1;
+            if ( (LA22_0==ASSIG) ) {
+                alt22=1;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
                     // src/parser/Music.g:129:26: ASSIG ^ ( expr | notes_variable )
                     {
-                    ASSIG94=(Token)match(input,ASSIG,FOLLOW_ASSIG_in_assig_opt1544); 
-                    ASSIG94_tree = 
-                    (AmlTree)adaptor.create(ASSIG94)
+                    ASSIG93=(Token)match(input,ASSIG,FOLLOW_ASSIG_in_assig_opt1552); 
+                    ASSIG93_tree = 
+                    (AmlTree)adaptor.create(ASSIG93)
                     ;
-                    root_0 = (AmlTree)adaptor.becomeRoot(ASSIG94_tree, root_0);
+                    root_0 = (AmlTree)adaptor.becomeRoot(ASSIG93_tree, root_0);
 
 
                     // src/parser/Music.g:129:33: ( expr | notes_variable )
-                    int alt20=2;
+                    int alt21=2;
                     switch ( input.LA(1) ) {
                     case FALSE:
-                    case ID:
+                    case ID_:
                     case LETTER_X:
                     case MINUS:
                     case NOT:
@@ -3226,22 +3482,22 @@ public TreeAdaptor getTreeAdaptor() {
                     case STRING:
                     case TRUE:
                         {
-                        alt20=1;
+                        alt21=1;
                         }
                         break;
-                    case 89:
+                    case 90:
                         {
-                        int LA20_2 = input.LA(2);
+                        int LA21_2 = input.LA(2);
 
-                        if ( (LA20_2==FALSE||LA20_2==ID||LA20_2==LETTER_X||LA20_2==MINUS||LA20_2==NOT||LA20_2==NUM||LA20_2==PLUS||LA20_2==STRING||LA20_2==TRUE||LA20_2==89) ) {
-                            alt20=1;
+                        if ( (LA21_2==FALSE||LA21_2==ID_||LA21_2==LETTER_X||LA21_2==MINUS||LA21_2==NOT||LA21_2==NUM||LA21_2==PLUS||LA21_2==STRING||LA21_2==TRUE||LA21_2==90) ) {
+                            alt21=1;
                         }
-                        else if ( (LA20_2==ARMOR||LA20_2==BEMOL||LA20_2==NOTE||LA20_2==SUSTAIN) ) {
-                            alt20=2;
+                        else if ( (LA21_2==ARMOR||LA21_2==BEMOL||LA21_2==NOTE||LA21_2==SUSTAIN) ) {
+                            alt21=2;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 20, 2, input);
+                                new NoViableAltException("", 21, 2, input);
 
                             throw nvae;
 
@@ -3255,39 +3511,39 @@ public TreeAdaptor getTreeAdaptor() {
                     case NOTE:
                     case SUSTAIN:
                         {
-                        alt20=2;
+                        alt21=2;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 20, 0, input);
+                            new NoViableAltException("", 21, 0, input);
 
                         throw nvae;
 
                     }
 
-                    switch (alt20) {
+                    switch (alt21) {
                         case 1 :
                             // src/parser/Music.g:129:34: expr
                             {
-                            pushFollow(FOLLOW_expr_in_assig_opt1548);
-                            expr95=expr();
+                            pushFollow(FOLLOW_expr_in_assig_opt1556);
+                            expr94=expr();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, expr95.getTree());
+                            adaptor.addChild(root_0, expr94.getTree());
 
                             }
                             break;
                         case 2 :
                             // src/parser/Music.g:129:41: notes_variable
                             {
-                            pushFollow(FOLLOW_notes_variable_in_assig_opt1552);
-                            notes_variable96=notes_variable();
+                            pushFollow(FOLLOW_notes_variable_in_assig_opt1560);
+                            notes_variable95=notes_variable();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, notes_variable96.getTree());
+                            adaptor.addChild(root_0, notes_variable95.getTree());
 
                             }
                             break;
@@ -3340,11 +3596,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal98=null;
-        MusicParser.assig_return assig97 =null;
+        Token char_literal97=null;
+        MusicParser.assig_return assig96 =null;
 
 
-        AmlTree char_literal98_tree=null;
+        AmlTree char_literal97_tree=null;
 
         try {
             // src/parser/Music.g:132:13: ( assig ';' !)
@@ -3353,14 +3609,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_assig_in_assignation1578);
-            assig97=assig();
+            pushFollow(FOLLOW_assig_in_assignation1586);
+            assig96=assig();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, assig97.getTree());
+            adaptor.addChild(root_0, assig96.getTree());
 
-            char_literal98=(Token)match(input,94,FOLLOW_94_in_assignation1580); 
+            char_literal97=(Token)match(input,95,FOLLOW_95_in_assignation1588); 
 
             }
 
@@ -3401,45 +3657,62 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token set100=null;
-        Token FIGURE103=null;
-        MusicParser.var_access_return var_access99 =null;
+        Token set99=null;
+        Token FIGURE102=null;
+        MusicParser.var_access_return var_access98 =null;
 
-        MusicParser.expr_return expr101 =null;
+        MusicParser.expr_return expr100 =null;
 
-        MusicParser.notes_variable_return notes_variable102 =null;
+        MusicParser.notes_variable_return notes_variable101 =null;
 
-        MusicParser.post_return post104 =null;
+        MusicParser.post_return post103 =null;
 
-        MusicParser.pre_return pre105 =null;
+        MusicParser.pre_return pre104 =null;
 
 
-        AmlTree set100_tree=null;
-        AmlTree FIGURE103_tree=null;
+        AmlTree set99_tree=null;
+        AmlTree FIGURE102_tree=null;
 
         try {
             // src/parser/Music.g:135:13: ( var_access ( ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG ) ^ ( expr | notes_variable | FIGURE ) | post | pre )
-            int alt23=3;
-            int LA23_0 = input.LA(1);
-
-            if ( (LA23_0==ID||LA23_0==LETTER_X) ) {
+            int alt24=3;
+            switch ( input.LA(1) ) {
+            case ID_:
+                {
                 switch ( input.LA(2) ) {
-                case 92:
+                case 93:
                     {
-                    int LA23_3 = input.LA(3);
+                    int LA24_4 = input.LA(3);
 
-                    if ( (LA23_3==ID||LA23_3==LETTER_X) ) {
-                        int LA23_6 = input.LA(4);
+                    if ( (LA24_4==ID_) ) {
+                        int LA24_7 = input.LA(4);
 
-                        if ( (LA23_6==ASSIG||LA23_6==DIVIDE_ASSIG||LA23_6==MINUS_ASSIG||LA23_6==MOD_ASSIG||LA23_6==PLUS_ASSIG||LA23_6==PROD_ASSIG) ) {
-                            alt23=1;
+                        if ( (LA24_7==ASSIG||LA24_7==DIVIDE_ASSIG||LA24_7==MINUS_ASSIG||LA24_7==MOD_ASSIG||LA24_7==PLUS_ASSIG||LA24_7==PROD_ASSIG) ) {
+                            alt24=1;
                         }
-                        else if ( (LA23_6==DECR||LA23_6==INCR) ) {
-                            alt23=2;
+                        else if ( (LA24_7==DECR||LA24_7==INCR) ) {
+                            alt24=2;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 23, 6, input);
+                                new NoViableAltException("", 24, 7, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA24_4==LETTER_X) ) {
+                        int LA24_8 = input.LA(4);
+
+                        if ( (LA24_8==ASSIG||LA24_8==DIVIDE_ASSIG||LA24_8==MINUS_ASSIG||LA24_8==MOD_ASSIG||LA24_8==PLUS_ASSIG||LA24_8==PROD_ASSIG) ) {
+                            alt24=1;
+                        }
+                        else if ( (LA24_8==DECR||LA24_8==INCR) ) {
+                            alt24=2;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 24, 8, input);
 
                             throw nvae;
 
@@ -3447,7 +3720,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 23, 3, input);
+                            new NoViableAltException("", 24, 4, input);
 
                         throw nvae;
 
@@ -3461,56 +3734,137 @@ public TreeAdaptor getTreeAdaptor() {
                 case PLUS_ASSIG:
                 case PROD_ASSIG:
                     {
-                    alt23=1;
+                    alt24=1;
                     }
                     break;
                 case DECR:
                 case INCR:
                     {
-                    alt23=2;
+                    alt24=2;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 23, 1, input);
+                        new NoViableAltException("", 24, 1, input);
 
                     throw nvae;
 
                 }
 
-            }
-            else if ( (LA23_0==DECR||LA23_0==INCR) ) {
-                alt23=3;
-            }
-            else {
+                }
+                break;
+            case LETTER_X:
+                {
+                switch ( input.LA(2) ) {
+                case 93:
+                    {
+                    int LA24_4 = input.LA(3);
+
+                    if ( (LA24_4==ID_) ) {
+                        int LA24_7 = input.LA(4);
+
+                        if ( (LA24_7==ASSIG||LA24_7==DIVIDE_ASSIG||LA24_7==MINUS_ASSIG||LA24_7==MOD_ASSIG||LA24_7==PLUS_ASSIG||LA24_7==PROD_ASSIG) ) {
+                            alt24=1;
+                        }
+                        else if ( (LA24_7==DECR||LA24_7==INCR) ) {
+                            alt24=2;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 24, 7, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else if ( (LA24_4==LETTER_X) ) {
+                        int LA24_8 = input.LA(4);
+
+                        if ( (LA24_8==ASSIG||LA24_8==DIVIDE_ASSIG||LA24_8==MINUS_ASSIG||LA24_8==MOD_ASSIG||LA24_8==PLUS_ASSIG||LA24_8==PROD_ASSIG) ) {
+                            alt24=1;
+                        }
+                        else if ( (LA24_8==DECR||LA24_8==INCR) ) {
+                            alt24=2;
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 24, 8, input);
+
+                            throw nvae;
+
+                        }
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 24, 4, input);
+
+                        throw nvae;
+
+                    }
+                    }
+                    break;
+                case ASSIG:
+                case DIVIDE_ASSIG:
+                case MINUS_ASSIG:
+                case MOD_ASSIG:
+                case PLUS_ASSIG:
+                case PROD_ASSIG:
+                    {
+                    alt24=1;
+                    }
+                    break;
+                case DECR:
+                case INCR:
+                    {
+                    alt24=2;
+                    }
+                    break;
+                default:
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 24, 2, input);
+
+                    throw nvae;
+
+                }
+
+                }
+                break;
+            case DECR:
+            case INCR:
+                {
+                alt24=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt23) {
+
+            switch (alt24) {
                 case 1 :
                     // src/parser/Music.g:135:17: var_access ( ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG ) ^ ( expr | notes_variable | FIGURE )
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_var_access_in_assig1610);
-                    var_access99=var_access();
+                    pushFollow(FOLLOW_var_access_in_assig1618);
+                    var_access98=var_access();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, var_access99.getTree());
+                    adaptor.addChild(root_0, var_access98.getTree());
 
-                    set100=(Token)input.LT(1);
+                    set99=(Token)input.LT(1);
 
-                    set100=(Token)input.LT(1);
+                    set99=(Token)input.LT(1);
 
                     if ( input.LA(1)==ASSIG||input.LA(1)==DIVIDE_ASSIG||input.LA(1)==MINUS_ASSIG||input.LA(1)==MOD_ASSIG||input.LA(1)==PLUS_ASSIG||input.LA(1)==PROD_ASSIG ) {
                         input.consume();
                         root_0 = (AmlTree)adaptor.becomeRoot(
-                        (AmlTree)adaptor.create(set100)
+                        (AmlTree)adaptor.create(set99)
                         , root_0);
                         state.errorRecovery=false;
                     }
@@ -3521,10 +3875,10 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // src/parser/Music.g:135:94: ( expr | notes_variable | FIGURE )
-                    int alt22=3;
+                    int alt23=3;
                     switch ( input.LA(1) ) {
                     case FALSE:
-                    case ID:
+                    case ID_:
                     case LETTER_X:
                     case MINUS:
                     case NOT:
@@ -3533,22 +3887,22 @@ public TreeAdaptor getTreeAdaptor() {
                     case STRING:
                     case TRUE:
                         {
-                        alt22=1;
+                        alt23=1;
                         }
                         break;
-                    case 89:
+                    case 90:
                         {
-                        int LA22_2 = input.LA(2);
+                        int LA23_2 = input.LA(2);
 
-                        if ( (LA22_2==FALSE||LA22_2==ID||LA22_2==LETTER_X||LA22_2==MINUS||LA22_2==NOT||LA22_2==NUM||LA22_2==PLUS||LA22_2==STRING||LA22_2==TRUE||LA22_2==89) ) {
-                            alt22=1;
+                        if ( (LA23_2==FALSE||LA23_2==ID_||LA23_2==LETTER_X||LA23_2==MINUS||LA23_2==NOT||LA23_2==NUM||LA23_2==PLUS||LA23_2==STRING||LA23_2==TRUE||LA23_2==90) ) {
+                            alt23=1;
                         }
-                        else if ( (LA22_2==ARMOR||LA22_2==BEMOL||LA22_2==NOTE||LA22_2==SUSTAIN) ) {
-                            alt22=2;
+                        else if ( (LA23_2==ARMOR||LA23_2==BEMOL||LA23_2==NOTE||LA23_2==SUSTAIN) ) {
+                            alt23=2;
                         }
                         else {
                             NoViableAltException nvae =
-                                new NoViableAltException("", 22, 2, input);
+                                new NoViableAltException("", 23, 2, input);
 
                             throw nvae;
 
@@ -3562,55 +3916,55 @@ public TreeAdaptor getTreeAdaptor() {
                     case NOTE:
                     case SUSTAIN:
                         {
-                        alt22=2;
+                        alt23=2;
                         }
                         break;
                     case FIGURE:
                         {
-                        alt22=3;
+                        alt23=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 22, 0, input);
+                            new NoViableAltException("", 23, 0, input);
 
                         throw nvae;
 
                     }
 
-                    switch (alt22) {
+                    switch (alt23) {
                         case 1 :
                             // src/parser/Music.g:135:95: expr
                             {
-                            pushFollow(FOLLOW_expr_in_assig1628);
-                            expr101=expr();
+                            pushFollow(FOLLOW_expr_in_assig1636);
+                            expr100=expr();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, expr101.getTree());
+                            adaptor.addChild(root_0, expr100.getTree());
 
                             }
                             break;
                         case 2 :
                             // src/parser/Music.g:135:102: notes_variable
                             {
-                            pushFollow(FOLLOW_notes_variable_in_assig1632);
-                            notes_variable102=notes_variable();
+                            pushFollow(FOLLOW_notes_variable_in_assig1640);
+                            notes_variable101=notes_variable();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, notes_variable102.getTree());
+                            adaptor.addChild(root_0, notes_variable101.getTree());
 
                             }
                             break;
                         case 3 :
                             // src/parser/Music.g:135:119: FIGURE
                             {
-                            FIGURE103=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_assig1636); 
-                            FIGURE103_tree = 
-                            (AmlTree)adaptor.create(FIGURE103)
+                            FIGURE102=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_assig1644); 
+                            FIGURE102_tree = 
+                            (AmlTree)adaptor.create(FIGURE102)
                             ;
-                            adaptor.addChild(root_0, FIGURE103_tree);
+                            adaptor.addChild(root_0, FIGURE102_tree);
 
 
                             }
@@ -3627,12 +3981,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_post_in_assig1655);
-                    post104=post();
+                    pushFollow(FOLLOW_post_in_assig1663);
+                    post103=post();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, post104.getTree());
+                    adaptor.addChild(root_0, post103.getTree());
 
                     }
                     break;
@@ -3642,12 +3996,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_pre_in_assig1673);
-                    pre105=pre();
+                    pushFollow(FOLLOW_pre_in_assig1681);
+                    pre104=pre();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, pre105.getTree());
+                    adaptor.addChild(root_0, pre104.getTree());
 
                     }
                     break;
@@ -3691,46 +4045,46 @@ public TreeAdaptor getTreeAdaptor() {
         AmlTree root_0 = null;
 
         Token x=null;
-        MusicParser.var_access_return var_access106 =null;
+        MusicParser.var_access_return var_access105 =null;
 
 
         AmlTree x_tree=null;
-        RewriteRuleTokenStream stream_DECR=new RewriteRuleTokenStream(adaptor,"token DECR");
         RewriteRuleTokenStream stream_INCR=new RewriteRuleTokenStream(adaptor,"token INCR");
+        RewriteRuleTokenStream stream_DECR=new RewriteRuleTokenStream(adaptor,"token DECR");
         RewriteRuleSubtreeStream stream_var_access=new RewriteRuleSubtreeStream(adaptor,"rule var_access");
         try {
             // src/parser/Music.g:140:13: ( var_access (x= INCR |x= DECR ) -> ^( POST var_access $x) )
             // src/parser/Music.g:140:17: var_access (x= INCR |x= DECR )
             {
-            pushFollow(FOLLOW_var_access_in_post1703);
-            var_access106=var_access();
+            pushFollow(FOLLOW_var_access_in_post1711);
+            var_access105=var_access();
 
             state._fsp--;
 
-            stream_var_access.add(var_access106.getTree());
+            stream_var_access.add(var_access105.getTree());
 
             // src/parser/Music.g:140:28: (x= INCR |x= DECR )
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==INCR) ) {
-                alt24=1;
+            if ( (LA25_0==INCR) ) {
+                alt25=1;
             }
-            else if ( (LA24_0==DECR) ) {
-                alt24=2;
+            else if ( (LA25_0==DECR) ) {
+                alt25=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
                     // src/parser/Music.g:140:29: x= INCR
                     {
-                    x=(Token)match(input,INCR,FOLLOW_INCR_in_post1708);  
+                    x=(Token)match(input,INCR,FOLLOW_INCR_in_post1716);  
                     stream_INCR.add(x);
 
 
@@ -3739,7 +4093,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // src/parser/Music.g:140:38: x= DECR
                     {
-                    x=(Token)match(input,DECR,FOLLOW_DECR_in_post1714);  
+                    x=(Token)match(input,DECR,FOLLOW_DECR_in_post1722);  
                     stream_DECR.add(x);
 
 
@@ -3822,39 +4176,39 @@ public TreeAdaptor getTreeAdaptor() {
         AmlTree root_0 = null;
 
         Token x=null;
-        MusicParser.var_access_return var_access107 =null;
+        MusicParser.var_access_return var_access106 =null;
 
 
         AmlTree x_tree=null;
-        RewriteRuleTokenStream stream_DECR=new RewriteRuleTokenStream(adaptor,"token DECR");
         RewriteRuleTokenStream stream_INCR=new RewriteRuleTokenStream(adaptor,"token INCR");
+        RewriteRuleTokenStream stream_DECR=new RewriteRuleTokenStream(adaptor,"token DECR");
         RewriteRuleSubtreeStream stream_var_access=new RewriteRuleSubtreeStream(adaptor,"rule var_access");
         try {
             // src/parser/Music.g:143:13: ( (x= INCR |x= DECR ) var_access -> ^( PRE var_access $x) )
             // src/parser/Music.g:143:17: (x= INCR |x= DECR ) var_access
             {
             // src/parser/Music.g:143:17: (x= INCR |x= DECR )
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==INCR) ) {
-                alt25=1;
+            if ( (LA26_0==INCR) ) {
+                alt26=1;
             }
-            else if ( (LA25_0==DECR) ) {
-                alt25=2;
+            else if ( (LA26_0==DECR) ) {
+                alt26=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     // src/parser/Music.g:143:18: x= INCR
                     {
-                    x=(Token)match(input,INCR,FOLLOW_INCR_in_pre1761);  
+                    x=(Token)match(input,INCR,FOLLOW_INCR_in_pre1769);  
                     stream_INCR.add(x);
 
 
@@ -3863,7 +4217,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // src/parser/Music.g:143:27: x= DECR
                     {
-                    x=(Token)match(input,DECR,FOLLOW_DECR_in_pre1767);  
+                    x=(Token)match(input,DECR,FOLLOW_DECR_in_pre1775);  
                     stream_DECR.add(x);
 
 
@@ -3873,12 +4227,12 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_var_access_in_pre1770);
-            var_access107=var_access();
+            pushFollow(FOLLOW_var_access_in_pre1778);
+            var_access106=var_access();
 
             state._fsp--;
 
-            stream_var_access.add(var_access107.getTree());
+            stream_var_access.add(var_access106.getTree());
 
             // AST REWRITE
             // elements: x, var_access
@@ -3952,15 +4306,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token BEAT108=null;
-        Token NUM109=null;
-        Token char_literal110=null;
-        Token NUM111=null;
+        Token BEAT107=null;
+        Token NUM108=null;
+        Token char_literal109=null;
+        Token NUM110=null;
 
-        AmlTree BEAT108_tree=null;
-        AmlTree NUM109_tree=null;
-        AmlTree char_literal110_tree=null;
-        AmlTree NUM111_tree=null;
+        AmlTree BEAT107_tree=null;
+        AmlTree NUM108_tree=null;
+        AmlTree char_literal109_tree=null;
+        AmlTree NUM110_tree=null;
 
         try {
             // src/parser/Music.g:146:13: ( BEAT ^ NUM ':' ! NUM )
@@ -3969,27 +4323,27 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            BEAT108=(Token)match(input,BEAT,FOLLOW_BEAT_in_beat1813); 
-            BEAT108_tree = 
-            (AmlTree)adaptor.create(BEAT108)
+            BEAT107=(Token)match(input,BEAT,FOLLOW_BEAT_in_beat1821); 
+            BEAT107_tree = 
+            (AmlTree)adaptor.create(BEAT107)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(BEAT108_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(BEAT107_tree, root_0);
 
 
-            NUM109=(Token)match(input,NUM,FOLLOW_NUM_in_beat1816); 
-            NUM109_tree = 
-            (AmlTree)adaptor.create(NUM109)
+            NUM108=(Token)match(input,NUM,FOLLOW_NUM_in_beat1824); 
+            NUM108_tree = 
+            (AmlTree)adaptor.create(NUM108)
             ;
-            adaptor.addChild(root_0, NUM109_tree);
+            adaptor.addChild(root_0, NUM108_tree);
 
 
-            char_literal110=(Token)match(input,93,FOLLOW_93_in_beat1818); 
+            char_literal109=(Token)match(input,94,FOLLOW_94_in_beat1826); 
 
-            NUM111=(Token)match(input,NUM,FOLLOW_NUM_in_beat1821); 
-            NUM111_tree = 
-            (AmlTree)adaptor.create(NUM111)
+            NUM110=(Token)match(input,NUM,FOLLOW_NUM_in_beat1829); 
+            NUM110_tree = 
+            (AmlTree)adaptor.create(NUM110)
             ;
-            adaptor.addChild(root_0, NUM111_tree);
+            adaptor.addChild(root_0, NUM110_tree);
 
 
             }
@@ -4031,11 +4385,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token SPEED112=null;
-        Token NUM113=null;
+        Token SPEED111=null;
+        Token NUM112=null;
 
-        AmlTree SPEED112_tree=null;
-        AmlTree NUM113_tree=null;
+        AmlTree SPEED111_tree=null;
+        AmlTree NUM112_tree=null;
 
         try {
             // src/parser/Music.g:149:13: ( SPEED ^ NUM )
@@ -4044,18 +4398,18 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            SPEED112=(Token)match(input,SPEED,FOLLOW_SPEED_in_speed1850); 
-            SPEED112_tree = 
-            (AmlTree)adaptor.create(SPEED112)
+            SPEED111=(Token)match(input,SPEED,FOLLOW_SPEED_in_speed1858); 
+            SPEED111_tree = 
+            (AmlTree)adaptor.create(SPEED111)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(SPEED112_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(SPEED111_tree, root_0);
 
 
-            NUM113=(Token)match(input,NUM,FOLLOW_NUM_in_speed1853); 
-            NUM113_tree = 
-            (AmlTree)adaptor.create(NUM113)
+            NUM112=(Token)match(input,NUM,FOLLOW_NUM_in_speed1861); 
+            NUM112_tree = 
+            (AmlTree)adaptor.create(NUM112)
             ;
-            adaptor.addChild(root_0, NUM113_tree);
+            adaptor.addChild(root_0, NUM112_tree);
 
 
             }
@@ -4097,11 +4451,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token TRANSPORT114=null;
-        MusicParser.expr_return expr115 =null;
+        Token TRANSPORT113=null;
+        MusicParser.expr_return expr114 =null;
 
 
-        AmlTree TRANSPORT114_tree=null;
+        AmlTree TRANSPORT113_tree=null;
 
         try {
             // src/parser/Music.g:152:13: ( TRANSPORT ^ expr )
@@ -4110,19 +4464,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            TRANSPORT114=(Token)match(input,TRANSPORT,FOLLOW_TRANSPORT_in_transport1878); 
-            TRANSPORT114_tree = 
-            (AmlTree)adaptor.create(TRANSPORT114)
+            TRANSPORT113=(Token)match(input,TRANSPORT,FOLLOW_TRANSPORT_in_transport1886); 
+            TRANSPORT113_tree = 
+            (AmlTree)adaptor.create(TRANSPORT113)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(TRANSPORT114_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(TRANSPORT113_tree, root_0);
 
 
-            pushFollow(FOLLOW_expr_in_transport1881);
-            expr115=expr();
+            pushFollow(FOLLOW_expr_in_transport1889);
+            expr114=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expr115.getTree());
+            adaptor.addChild(root_0, expr114.getTree());
 
             }
 
@@ -4163,13 +4517,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token INSTRUMENT116=null;
-        Token STRING117=null;
-        Token char_literal118=null;
+        Token INSTRUMENT115=null;
+        Token STRING116=null;
+        Token char_literal117=null;
 
-        AmlTree INSTRUMENT116_tree=null;
-        AmlTree STRING117_tree=null;
-        AmlTree char_literal118_tree=null;
+        AmlTree INSTRUMENT115_tree=null;
+        AmlTree STRING116_tree=null;
+        AmlTree char_literal117_tree=null;
 
         try {
             // src/parser/Music.g:155:13: ( INSTRUMENT ^ STRING ';' )
@@ -4178,25 +4532,25 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            INSTRUMENT116=(Token)match(input,INSTRUMENT,FOLLOW_INSTRUMENT_in_instrument1905); 
-            INSTRUMENT116_tree = 
-            (AmlTree)adaptor.create(INSTRUMENT116)
+            INSTRUMENT115=(Token)match(input,INSTRUMENT,FOLLOW_INSTRUMENT_in_instrument1913); 
+            INSTRUMENT115_tree = 
+            (AmlTree)adaptor.create(INSTRUMENT115)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(INSTRUMENT116_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(INSTRUMENT115_tree, root_0);
 
 
-            STRING117=(Token)match(input,STRING,FOLLOW_STRING_in_instrument1908); 
-            STRING117_tree = 
-            (AmlTree)adaptor.create(STRING117)
+            STRING116=(Token)match(input,STRING,FOLLOW_STRING_in_instrument1916); 
+            STRING116_tree = 
+            (AmlTree)adaptor.create(STRING116)
             ;
-            adaptor.addChild(root_0, STRING117_tree);
+            adaptor.addChild(root_0, STRING116_tree);
 
 
-            char_literal118=(Token)match(input,94,FOLLOW_94_in_instrument1910); 
-            char_literal118_tree = 
-            (AmlTree)adaptor.create(char_literal118)
+            char_literal117=(Token)match(input,95,FOLLOW_95_in_instrument1918); 
+            char_literal117_tree = 
+            (AmlTree)adaptor.create(char_literal117)
             ;
-            adaptor.addChild(root_0, char_literal118_tree);
+            adaptor.addChild(root_0, char_literal117_tree);
 
 
             }
@@ -4238,21 +4592,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token WHILE119=null;
-        Token char_literal120=null;
+        Token WHILE118=null;
+        Token char_literal119=null;
+        Token char_literal121=null;
         Token char_literal122=null;
-        Token char_literal123=null;
-        Token char_literal125=null;
-        MusicParser.expr_return expr121 =null;
+        Token char_literal124=null;
+        MusicParser.expr_return expr120 =null;
 
-        MusicParser.listInst_return listInst124 =null;
+        MusicParser.listInst_return listInst123 =null;
 
 
-        AmlTree WHILE119_tree=null;
-        AmlTree char_literal120_tree=null;
+        AmlTree WHILE118_tree=null;
+        AmlTree char_literal119_tree=null;
+        AmlTree char_literal121_tree=null;
         AmlTree char_literal122_tree=null;
-        AmlTree char_literal123_tree=null;
-        AmlTree char_literal125_tree=null;
+        AmlTree char_literal124_tree=null;
 
         try {
             // src/parser/Music.g:158:13: ( WHILE ^ '(' ! expr ')' ! '{' ! listInst '}' !)
@@ -4261,34 +4615,34 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            WHILE119=(Token)match(input,WHILE,FOLLOW_WHILE_in_while_stmt1934); 
-            WHILE119_tree = 
-            (AmlTree)adaptor.create(WHILE119)
+            WHILE118=(Token)match(input,WHILE,FOLLOW_WHILE_in_while_stmt1942); 
+            WHILE118_tree = 
+            (AmlTree)adaptor.create(WHILE118)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(WHILE119_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(WHILE118_tree, root_0);
 
 
-            char_literal120=(Token)match(input,89,FOLLOW_89_in_while_stmt1937); 
+            char_literal119=(Token)match(input,90,FOLLOW_90_in_while_stmt1945); 
 
-            pushFollow(FOLLOW_expr_in_while_stmt1940);
-            expr121=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr121.getTree());
-
-            char_literal122=(Token)match(input,90,FOLLOW_90_in_while_stmt1942); 
-
-            char_literal123=(Token)match(input,95,FOLLOW_95_in_while_stmt1945); 
-
-            pushFollow(FOLLOW_listInst_in_while_stmt1948);
-            listInst124=listInst();
+            pushFollow(FOLLOW_expr_in_while_stmt1948);
+            expr120=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listInst124.getTree());
+            adaptor.addChild(root_0, expr120.getTree());
 
-            char_literal125=(Token)match(input,96,FOLLOW_96_in_while_stmt1950); 
+            char_literal121=(Token)match(input,91,FOLLOW_91_in_while_stmt1950); 
+
+            char_literal122=(Token)match(input,96,FOLLOW_96_in_while_stmt1953); 
+
+            pushFollow(FOLLOW_listInst_in_while_stmt1956);
+            listInst123=listInst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, listInst123.getTree());
+
+            char_literal124=(Token)match(input,97,FOLLOW_97_in_while_stmt1958); 
 
             }
 
@@ -4329,21 +4683,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token WHILE126=null;
-        Token char_literal127=null;
+        Token WHILE125=null;
+        Token char_literal126=null;
+        Token char_literal128=null;
         Token char_literal129=null;
-        Token char_literal130=null;
-        Token char_literal132=null;
-        MusicParser.expr_return expr128 =null;
+        Token char_literal131=null;
+        MusicParser.expr_return expr127 =null;
 
-        MusicParser.list_music_inst_return list_music_inst131 =null;
+        MusicParser.list_music_inst_return list_music_inst130 =null;
 
 
-        AmlTree WHILE126_tree=null;
-        AmlTree char_literal127_tree=null;
+        AmlTree WHILE125_tree=null;
+        AmlTree char_literal126_tree=null;
+        AmlTree char_literal128_tree=null;
         AmlTree char_literal129_tree=null;
-        AmlTree char_literal130_tree=null;
-        AmlTree char_literal132_tree=null;
+        AmlTree char_literal131_tree=null;
 
         try {
             // src/parser/Music.g:161:21: ( WHILE ^ '(' ! expr ')' ! '{' ! list_music_inst '}' !)
@@ -4352,34 +4706,34 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            WHILE126=(Token)match(input,WHILE,FOLLOW_WHILE_in_while_music_stmt1977); 
-            WHILE126_tree = 
-            (AmlTree)adaptor.create(WHILE126)
+            WHILE125=(Token)match(input,WHILE,FOLLOW_WHILE_in_while_music_stmt1985); 
+            WHILE125_tree = 
+            (AmlTree)adaptor.create(WHILE125)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(WHILE126_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(WHILE125_tree, root_0);
 
 
-            char_literal127=(Token)match(input,89,FOLLOW_89_in_while_music_stmt1980); 
+            char_literal126=(Token)match(input,90,FOLLOW_90_in_while_music_stmt1988); 
 
-            pushFollow(FOLLOW_expr_in_while_music_stmt1983);
-            expr128=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr128.getTree());
-
-            char_literal129=(Token)match(input,90,FOLLOW_90_in_while_music_stmt1985); 
-
-            char_literal130=(Token)match(input,95,FOLLOW_95_in_while_music_stmt1988); 
-
-            pushFollow(FOLLOW_list_music_inst_in_while_music_stmt1991);
-            list_music_inst131=list_music_inst();
+            pushFollow(FOLLOW_expr_in_while_music_stmt1991);
+            expr127=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_music_inst131.getTree());
+            adaptor.addChild(root_0, expr127.getTree());
 
-            char_literal132=(Token)match(input,96,FOLLOW_96_in_while_music_stmt1993); 
+            char_literal128=(Token)match(input,91,FOLLOW_91_in_while_music_stmt1993); 
+
+            char_literal129=(Token)match(input,96,FOLLOW_96_in_while_music_stmt1996); 
+
+            pushFollow(FOLLOW_list_music_inst_in_while_music_stmt1999);
+            list_music_inst130=list_music_inst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, list_music_inst130.getTree());
+
+            char_literal131=(Token)match(input,97,FOLLOW_97_in_while_music_stmt2001); 
 
             }
 
@@ -4420,31 +4774,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token FOR133=null;
-        Token char_literal134=null;
-        Token char_literal137=null;
-        Token char_literal139=null;
+        Token FOR132=null;
+        Token char_literal133=null;
+        Token char_literal136=null;
+        Token char_literal138=null;
+        Token char_literal140=null;
         Token char_literal141=null;
-        Token char_literal142=null;
-        Token char_literal144=null;
-        MusicParser.declaration_return declaration135 =null;
+        Token char_literal143=null;
+        MusicParser.declaration_return declaration134 =null;
 
-        MusicParser.list_assig_return list_assig136 =null;
+        MusicParser.list_assig_return list_assig135 =null;
 
-        MusicParser.expr_return expr138 =null;
+        MusicParser.expr_return expr137 =null;
 
-        MusicParser.list_assig_return list_assig140 =null;
+        MusicParser.list_assig_return list_assig139 =null;
 
-        MusicParser.listInst_return listInst143 =null;
+        MusicParser.listInst_return listInst142 =null;
 
 
-        AmlTree FOR133_tree=null;
-        AmlTree char_literal134_tree=null;
-        AmlTree char_literal137_tree=null;
-        AmlTree char_literal139_tree=null;
+        AmlTree FOR132_tree=null;
+        AmlTree char_literal133_tree=null;
+        AmlTree char_literal136_tree=null;
+        AmlTree char_literal138_tree=null;
+        AmlTree char_literal140_tree=null;
         AmlTree char_literal141_tree=null;
-        AmlTree char_literal142_tree=null;
-        AmlTree char_literal144_tree=null;
+        AmlTree char_literal143_tree=null;
 
         try {
             // src/parser/Music.g:164:13: ( FOR ^ '(' ! ( declaration | list_assig ';' !) expr ';' ! list_assig ')' ! '{' ! listInst '}' !)
@@ -4453,56 +4807,56 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            FOR133=(Token)match(input,FOR,FOLLOW_FOR_in_for_stmt2028); 
-            FOR133_tree = 
-            (AmlTree)adaptor.create(FOR133)
+            FOR132=(Token)match(input,FOR,FOLLOW_FOR_in_for_stmt2036); 
+            FOR132_tree = 
+            (AmlTree)adaptor.create(FOR132)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(FOR133_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(FOR132_tree, root_0);
 
 
-            char_literal134=(Token)match(input,89,FOLLOW_89_in_for_stmt2031); 
+            char_literal133=(Token)match(input,90,FOLLOW_90_in_for_stmt2039); 
 
             // src/parser/Music.g:164:27: ( declaration | list_assig ';' !)
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==BOOL||LA26_0==CHORD||LA26_0==DRUMS_NOTE_TYPE||LA26_0==INT||LA26_0==NOTE_TYPE||LA26_0==STRING_TYPE) ) {
-                alt26=1;
+            if ( (LA27_0==BOOL||LA27_0==CHORD||LA27_0==DRUMS_NOTE_TYPE||LA27_0==INT||LA27_0==NOTE_TYPE||LA27_0==STRING_TYPE) ) {
+                alt27=1;
             }
-            else if ( (LA26_0==DECR||LA26_0==ID||LA26_0==INCR||LA26_0==LETTER_X) ) {
-                alt26=2;
+            else if ( (LA27_0==DECR||LA27_0==ID_||LA27_0==INCR||LA27_0==LETTER_X) ) {
+                alt27=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 26, 0, input);
+                    new NoViableAltException("", 27, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
                     // src/parser/Music.g:164:28: declaration
                     {
-                    pushFollow(FOLLOW_declaration_in_for_stmt2035);
-                    declaration135=declaration();
+                    pushFollow(FOLLOW_declaration_in_for_stmt2043);
+                    declaration134=declaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaration135.getTree());
+                    adaptor.addChild(root_0, declaration134.getTree());
 
                     }
                     break;
                 case 2 :
                     // src/parser/Music.g:164:42: list_assig ';' !
                     {
-                    pushFollow(FOLLOW_list_assig_in_for_stmt2039);
-                    list_assig136=list_assig();
+                    pushFollow(FOLLOW_list_assig_in_for_stmt2047);
+                    list_assig135=list_assig();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, list_assig136.getTree());
+                    adaptor.addChild(root_0, list_assig135.getTree());
 
-                    char_literal137=(Token)match(input,94,FOLLOW_94_in_for_stmt2041); 
+                    char_literal136=(Token)match(input,95,FOLLOW_95_in_for_stmt2049); 
 
                     }
                     break;
@@ -4510,34 +4864,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_expr_in_for_stmt2045);
-            expr138=expr();
+            pushFollow(FOLLOW_expr_in_for_stmt2053);
+            expr137=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expr138.getTree());
+            adaptor.addChild(root_0, expr137.getTree());
 
-            char_literal139=(Token)match(input,94,FOLLOW_94_in_for_stmt2047); 
+            char_literal138=(Token)match(input,95,FOLLOW_95_in_for_stmt2055); 
 
-            pushFollow(FOLLOW_list_assig_in_for_stmt2050);
-            list_assig140=list_assig();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, list_assig140.getTree());
-
-            char_literal141=(Token)match(input,90,FOLLOW_90_in_for_stmt2052); 
-
-            char_literal142=(Token)match(input,95,FOLLOW_95_in_for_stmt2055); 
-
-            pushFollow(FOLLOW_listInst_in_for_stmt2058);
-            listInst143=listInst();
+            pushFollow(FOLLOW_list_assig_in_for_stmt2058);
+            list_assig139=list_assig();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listInst143.getTree());
+            adaptor.addChild(root_0, list_assig139.getTree());
 
-            char_literal144=(Token)match(input,96,FOLLOW_96_in_for_stmt2060); 
+            char_literal140=(Token)match(input,91,FOLLOW_91_in_for_stmt2060); 
+
+            char_literal141=(Token)match(input,96,FOLLOW_96_in_for_stmt2063); 
+
+            pushFollow(FOLLOW_listInst_in_for_stmt2066);
+            listInst142=listInst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, listInst142.getTree());
+
+            char_literal143=(Token)match(input,97,FOLLOW_97_in_for_stmt2068); 
 
             }
 
@@ -4578,31 +4932,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token FOR145=null;
-        Token char_literal146=null;
-        Token char_literal149=null;
-        Token char_literal151=null;
+        Token FOR144=null;
+        Token char_literal145=null;
+        Token char_literal148=null;
+        Token char_literal150=null;
+        Token char_literal152=null;
         Token char_literal153=null;
-        Token char_literal154=null;
-        Token char_literal156=null;
-        MusicParser.declaration_return declaration147 =null;
+        Token char_literal155=null;
+        MusicParser.declaration_return declaration146 =null;
 
-        MusicParser.list_assig_return list_assig148 =null;
+        MusicParser.list_assig_return list_assig147 =null;
 
-        MusicParser.expr_return expr150 =null;
+        MusicParser.expr_return expr149 =null;
 
-        MusicParser.list_assig_return list_assig152 =null;
+        MusicParser.list_assig_return list_assig151 =null;
 
-        MusicParser.list_music_inst_return list_music_inst155 =null;
+        MusicParser.list_music_inst_return list_music_inst154 =null;
 
 
-        AmlTree FOR145_tree=null;
-        AmlTree char_literal146_tree=null;
-        AmlTree char_literal149_tree=null;
-        AmlTree char_literal151_tree=null;
+        AmlTree FOR144_tree=null;
+        AmlTree char_literal145_tree=null;
+        AmlTree char_literal148_tree=null;
+        AmlTree char_literal150_tree=null;
+        AmlTree char_literal152_tree=null;
         AmlTree char_literal153_tree=null;
-        AmlTree char_literal154_tree=null;
-        AmlTree char_literal156_tree=null;
+        AmlTree char_literal155_tree=null;
 
         try {
             // src/parser/Music.g:167:17: ( FOR ^ '(' ! ( declaration | list_assig ';' !) expr ';' ! list_assig ')' ! '{' ! list_music_inst '}' !)
@@ -4611,56 +4965,56 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            FOR145=(Token)match(input,FOR,FOLLOW_FOR_in_for_music_stmt2085); 
-            FOR145_tree = 
-            (AmlTree)adaptor.create(FOR145)
+            FOR144=(Token)match(input,FOR,FOLLOW_FOR_in_for_music_stmt2093); 
+            FOR144_tree = 
+            (AmlTree)adaptor.create(FOR144)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(FOR145_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(FOR144_tree, root_0);
 
 
-            char_literal146=(Token)match(input,89,FOLLOW_89_in_for_music_stmt2088); 
+            char_literal145=(Token)match(input,90,FOLLOW_90_in_for_music_stmt2096); 
 
             // src/parser/Music.g:167:31: ( declaration | list_assig ';' !)
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA27_0==BOOL||LA27_0==CHORD||LA27_0==DRUMS_NOTE_TYPE||LA27_0==INT||LA27_0==NOTE_TYPE||LA27_0==STRING_TYPE) ) {
-                alt27=1;
+            if ( (LA28_0==BOOL||LA28_0==CHORD||LA28_0==DRUMS_NOTE_TYPE||LA28_0==INT||LA28_0==NOTE_TYPE||LA28_0==STRING_TYPE) ) {
+                alt28=1;
             }
-            else if ( (LA27_0==DECR||LA27_0==ID||LA27_0==INCR||LA27_0==LETTER_X) ) {
-                alt27=2;
+            else if ( (LA28_0==DECR||LA28_0==ID_||LA28_0==INCR||LA28_0==LETTER_X) ) {
+                alt28=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 27, 0, input);
+                    new NoViableAltException("", 28, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt27) {
+            switch (alt28) {
                 case 1 :
                     // src/parser/Music.g:167:32: declaration
                     {
-                    pushFollow(FOLLOW_declaration_in_for_music_stmt2092);
-                    declaration147=declaration();
+                    pushFollow(FOLLOW_declaration_in_for_music_stmt2100);
+                    declaration146=declaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaration147.getTree());
+                    adaptor.addChild(root_0, declaration146.getTree());
 
                     }
                     break;
                 case 2 :
                     // src/parser/Music.g:167:46: list_assig ';' !
                     {
-                    pushFollow(FOLLOW_list_assig_in_for_music_stmt2096);
-                    list_assig148=list_assig();
+                    pushFollow(FOLLOW_list_assig_in_for_music_stmt2104);
+                    list_assig147=list_assig();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, list_assig148.getTree());
+                    adaptor.addChild(root_0, list_assig147.getTree());
 
-                    char_literal149=(Token)match(input,94,FOLLOW_94_in_for_music_stmt2098); 
+                    char_literal148=(Token)match(input,95,FOLLOW_95_in_for_music_stmt2106); 
 
                     }
                     break;
@@ -4668,34 +5022,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_expr_in_for_music_stmt2102);
-            expr150=expr();
+            pushFollow(FOLLOW_expr_in_for_music_stmt2110);
+            expr149=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expr150.getTree());
+            adaptor.addChild(root_0, expr149.getTree());
 
-            char_literal151=(Token)match(input,94,FOLLOW_94_in_for_music_stmt2104); 
+            char_literal150=(Token)match(input,95,FOLLOW_95_in_for_music_stmt2112); 
 
-            pushFollow(FOLLOW_list_assig_in_for_music_stmt2107);
-            list_assig152=list_assig();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, list_assig152.getTree());
-
-            char_literal153=(Token)match(input,90,FOLLOW_90_in_for_music_stmt2109); 
-
-            char_literal154=(Token)match(input,95,FOLLOW_95_in_for_music_stmt2112); 
-
-            pushFollow(FOLLOW_list_music_inst_in_for_music_stmt2115);
-            list_music_inst155=list_music_inst();
+            pushFollow(FOLLOW_list_assig_in_for_music_stmt2115);
+            list_assig151=list_assig();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_music_inst155.getTree());
+            adaptor.addChild(root_0, list_assig151.getTree());
 
-            char_literal156=(Token)match(input,96,FOLLOW_96_in_for_music_stmt2117); 
+            char_literal152=(Token)match(input,91,FOLLOW_91_in_for_music_stmt2117); 
+
+            char_literal153=(Token)match(input,96,FOLLOW_96_in_for_music_stmt2120); 
+
+            pushFollow(FOLLOW_list_music_inst_in_for_music_stmt2123);
+            list_music_inst154=list_music_inst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, list_music_inst154.getTree());
+
+            char_literal155=(Token)match(input,97,FOLLOW_97_in_for_music_stmt2125); 
 
             }
 
@@ -4736,57 +5090,57 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal158=null;
-        MusicParser.assig_return assig157 =null;
+        Token char_literal157=null;
+        MusicParser.assig_return assig156 =null;
 
-        MusicParser.assig_return assig159 =null;
+        MusicParser.assig_return assig158 =null;
 
 
-        AmlTree char_literal158_tree=null;
-        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
+        AmlTree char_literal157_tree=null;
+        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
         RewriteRuleSubtreeStream stream_assig=new RewriteRuleSubtreeStream(adaptor,"rule assig");
         try {
             // src/parser/Music.g:170:13: ( assig ( ',' assig )* -> ^( LIST_ASSIG ( assig )+ ) )
             // src/parser/Music.g:170:17: assig ( ',' assig )*
             {
-            pushFollow(FOLLOW_assig_in_list_assig2146);
-            assig157=assig();
+            pushFollow(FOLLOW_assig_in_list_assig2154);
+            assig156=assig();
 
             state._fsp--;
 
-            stream_assig.add(assig157.getTree());
+            stream_assig.add(assig156.getTree());
 
             // src/parser/Music.g:170:23: ( ',' assig )*
-            loop28:
+            loop29:
             do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
+                int alt29=2;
+                int LA29_0 = input.LA(1);
 
-                if ( (LA28_0==91) ) {
-                    alt28=1;
+                if ( (LA29_0==92) ) {
+                    alt29=1;
                 }
 
 
-                switch (alt28) {
+                switch (alt29) {
             	case 1 :
             	    // src/parser/Music.g:170:24: ',' assig
             	    {
-            	    char_literal158=(Token)match(input,91,FOLLOW_91_in_list_assig2149);  
-            	    stream_91.add(char_literal158);
+            	    char_literal157=(Token)match(input,92,FOLLOW_92_in_list_assig2157);  
+            	    stream_92.add(char_literal157);
 
 
-            	    pushFollow(FOLLOW_assig_in_list_assig2151);
-            	    assig159=assig();
+            	    pushFollow(FOLLOW_assig_in_list_assig2159);
+            	    assig158=assig();
 
             	    state._fsp--;
 
-            	    stream_assig.add(assig159.getTree());
+            	    stream_assig.add(assig158.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop28;
+            	    break loop29;
                 }
             } while (true);
 
@@ -4867,25 +5221,25 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token IF160=null;
-        Token char_literal161=null;
+        Token IF159=null;
+        Token char_literal160=null;
+        Token char_literal162=null;
         Token char_literal163=null;
-        Token char_literal164=null;
-        Token char_literal166=null;
-        MusicParser.expr_return expr162 =null;
+        Token char_literal165=null;
+        MusicParser.expr_return expr161 =null;
 
-        MusicParser.listInst_return listInst165 =null;
+        MusicParser.listInst_return listInst164 =null;
 
-        MusicParser.elseif_stmt_return elseif_stmt167 =null;
+        MusicParser.elseif_stmt_return elseif_stmt166 =null;
 
-        MusicParser.else_stmt_return else_stmt168 =null;
+        MusicParser.else_stmt_return else_stmt167 =null;
 
 
-        AmlTree IF160_tree=null;
-        AmlTree char_literal161_tree=null;
+        AmlTree IF159_tree=null;
+        AmlTree char_literal160_tree=null;
+        AmlTree char_literal162_tree=null;
         AmlTree char_literal163_tree=null;
-        AmlTree char_literal164_tree=null;
-        AmlTree char_literal166_tree=null;
+        AmlTree char_literal165_tree=null;
 
         try {
             // src/parser/Music.g:173:13: ( IF ^ '(' ! expr ')' ! '{' ! listInst '}' ! ( elseif_stmt )* ( else_stmt )? )
@@ -4894,89 +5248,89 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            IF160=(Token)match(input,IF,FOLLOW_IF_in_if_stmt2189); 
-            IF160_tree = 
-            (AmlTree)adaptor.create(IF160)
+            IF159=(Token)match(input,IF,FOLLOW_IF_in_if_stmt2197); 
+            IF159_tree = 
+            (AmlTree)adaptor.create(IF159)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(IF160_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(IF159_tree, root_0);
 
 
-            char_literal161=(Token)match(input,89,FOLLOW_89_in_if_stmt2192); 
+            char_literal160=(Token)match(input,90,FOLLOW_90_in_if_stmt2200); 
 
-            pushFollow(FOLLOW_expr_in_if_stmt2195);
-            expr162=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr162.getTree());
-
-            char_literal163=(Token)match(input,90,FOLLOW_90_in_if_stmt2197); 
-
-            char_literal164=(Token)match(input,95,FOLLOW_95_in_if_stmt2200); 
-
-            pushFollow(FOLLOW_listInst_in_if_stmt2203);
-            listInst165=listInst();
+            pushFollow(FOLLOW_expr_in_if_stmt2203);
+            expr161=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listInst165.getTree());
+            adaptor.addChild(root_0, expr161.getTree());
 
-            char_literal166=(Token)match(input,96,FOLLOW_96_in_if_stmt2205); 
+            char_literal162=(Token)match(input,91,FOLLOW_91_in_if_stmt2205); 
+
+            char_literal163=(Token)match(input,96,FOLLOW_96_in_if_stmt2208); 
+
+            pushFollow(FOLLOW_listInst_in_if_stmt2211);
+            listInst164=listInst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, listInst164.getTree());
+
+            char_literal165=(Token)match(input,97,FOLLOW_97_in_if_stmt2213); 
 
             // src/parser/Music.g:173:55: ( elseif_stmt )*
-            loop29:
+            loop30:
             do {
-                int alt29=2;
-                int LA29_0 = input.LA(1);
+                int alt30=2;
+                int LA30_0 = input.LA(1);
 
-                if ( (LA29_0==ELSE) ) {
-                    int LA29_1 = input.LA(2);
+                if ( (LA30_0==ELSE) ) {
+                    int LA30_1 = input.LA(2);
 
-                    if ( (LA29_1==IF) ) {
-                        alt29=1;
+                    if ( (LA30_1==IF) ) {
+                        alt30=1;
                     }
 
 
                 }
 
 
-                switch (alt29) {
+                switch (alt30) {
             	case 1 :
             	    // src/parser/Music.g:173:55: elseif_stmt
             	    {
-            	    pushFollow(FOLLOW_elseif_stmt_in_if_stmt2208);
-            	    elseif_stmt167=elseif_stmt();
+            	    pushFollow(FOLLOW_elseif_stmt_in_if_stmt2216);
+            	    elseif_stmt166=elseif_stmt();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, elseif_stmt167.getTree());
+            	    adaptor.addChild(root_0, elseif_stmt166.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop29;
+            	    break loop30;
                 }
             } while (true);
 
 
             // src/parser/Music.g:173:68: ( else_stmt )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA30_0==ELSE) ) {
-                alt30=1;
+            if ( (LA31_0==ELSE) ) {
+                alt31=1;
             }
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
                     // src/parser/Music.g:173:68: else_stmt
                     {
-                    pushFollow(FOLLOW_else_stmt_in_if_stmt2211);
-                    else_stmt168=else_stmt();
+                    pushFollow(FOLLOW_else_stmt_in_if_stmt2219);
+                    else_stmt167=else_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, else_stmt168.getTree());
+                    adaptor.addChild(root_0, else_stmt167.getTree());
 
                     }
                     break;
@@ -5023,75 +5377,75 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token ELSE169=null;
-        Token IF170=null;
-        Token char_literal171=null;
+        Token ELSE168=null;
+        Token IF169=null;
+        Token char_literal170=null;
+        Token char_literal172=null;
         Token char_literal173=null;
-        Token char_literal174=null;
-        Token char_literal176=null;
-        MusicParser.expr_return expr172 =null;
+        Token char_literal175=null;
+        MusicParser.expr_return expr171 =null;
 
-        MusicParser.listInst_return listInst175 =null;
+        MusicParser.listInst_return listInst174 =null;
 
 
-        AmlTree ELSE169_tree=null;
-        AmlTree IF170_tree=null;
-        AmlTree char_literal171_tree=null;
+        AmlTree ELSE168_tree=null;
+        AmlTree IF169_tree=null;
+        AmlTree char_literal170_tree=null;
+        AmlTree char_literal172_tree=null;
         AmlTree char_literal173_tree=null;
-        AmlTree char_literal174_tree=null;
-        AmlTree char_literal176_tree=null;
-        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
-        RewriteRuleTokenStream stream_95=new RewriteRuleTokenStream(adaptor,"token 95");
+        AmlTree char_literal175_tree=null;
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
         RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
+        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
         RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
+        RewriteRuleTokenStream stream_97=new RewriteRuleTokenStream(adaptor,"token 97");
         RewriteRuleSubtreeStream stream_listInst=new RewriteRuleSubtreeStream(adaptor,"rule listInst");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
             // src/parser/Music.g:176:13: ( ELSE IF '(' expr ')' '{' listInst '}' -> ^( ELSEIF expr listInst ) )
             // src/parser/Music.g:176:17: ELSE IF '(' expr ')' '{' listInst '}'
             {
-            ELSE169=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseif_stmt2235);  
-            stream_ELSE.add(ELSE169);
+            ELSE168=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseif_stmt2243);  
+            stream_ELSE.add(ELSE168);
 
 
-            IF170=(Token)match(input,IF,FOLLOW_IF_in_elseif_stmt2237);  
-            stream_IF.add(IF170);
+            IF169=(Token)match(input,IF,FOLLOW_IF_in_elseif_stmt2245);  
+            stream_IF.add(IF169);
 
 
-            char_literal171=(Token)match(input,89,FOLLOW_89_in_elseif_stmt2239);  
-            stream_89.add(char_literal171);
+            char_literal170=(Token)match(input,90,FOLLOW_90_in_elseif_stmt2247);  
+            stream_90.add(char_literal170);
 
 
-            pushFollow(FOLLOW_expr_in_elseif_stmt2241);
-            expr172=expr();
-
-            state._fsp--;
-
-            stream_expr.add(expr172.getTree());
-
-            char_literal173=(Token)match(input,90,FOLLOW_90_in_elseif_stmt2243);  
-            stream_90.add(char_literal173);
-
-
-            char_literal174=(Token)match(input,95,FOLLOW_95_in_elseif_stmt2245);  
-            stream_95.add(char_literal174);
-
-
-            pushFollow(FOLLOW_listInst_in_elseif_stmt2247);
-            listInst175=listInst();
+            pushFollow(FOLLOW_expr_in_elseif_stmt2249);
+            expr171=expr();
 
             state._fsp--;
 
-            stream_listInst.add(listInst175.getTree());
+            stream_expr.add(expr171.getTree());
 
-            char_literal176=(Token)match(input,96,FOLLOW_96_in_elseif_stmt2249);  
-            stream_96.add(char_literal176);
+            char_literal172=(Token)match(input,91,FOLLOW_91_in_elseif_stmt2251);  
+            stream_91.add(char_literal172);
+
+
+            char_literal173=(Token)match(input,96,FOLLOW_96_in_elseif_stmt2253);  
+            stream_96.add(char_literal173);
+
+
+            pushFollow(FOLLOW_listInst_in_elseif_stmt2255);
+            listInst174=listInst();
+
+            state._fsp--;
+
+            stream_listInst.add(listInst174.getTree());
+
+            char_literal175=(Token)match(input,97,FOLLOW_97_in_elseif_stmt2257);  
+            stream_97.add(char_literal175);
 
 
             // AST REWRITE
-            // elements: expr, listInst
+            // elements: listInst, expr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5161,15 +5515,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token ELSE177=null;
-        Token char_literal178=null;
-        Token char_literal180=null;
-        MusicParser.listInst_return listInst179 =null;
+        Token ELSE176=null;
+        Token char_literal177=null;
+        Token char_literal179=null;
+        MusicParser.listInst_return listInst178 =null;
 
 
-        AmlTree ELSE177_tree=null;
-        AmlTree char_literal178_tree=null;
-        AmlTree char_literal180_tree=null;
+        AmlTree ELSE176_tree=null;
+        AmlTree char_literal177_tree=null;
+        AmlTree char_literal179_tree=null;
 
         try {
             // src/parser/Music.g:179:13: ( ELSE ^ '{' ! listInst '}' !)
@@ -5178,23 +5532,23 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            ELSE177=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_stmt2284); 
-            ELSE177_tree = 
-            (AmlTree)adaptor.create(ELSE177)
+            ELSE176=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_stmt2292); 
+            ELSE176_tree = 
+            (AmlTree)adaptor.create(ELSE176)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(ELSE177_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(ELSE176_tree, root_0);
 
 
-            char_literal178=(Token)match(input,95,FOLLOW_95_in_else_stmt2287); 
+            char_literal177=(Token)match(input,96,FOLLOW_96_in_else_stmt2295); 
 
-            pushFollow(FOLLOW_listInst_in_else_stmt2290);
-            listInst179=listInst();
+            pushFollow(FOLLOW_listInst_in_else_stmt2298);
+            listInst178=listInst();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listInst179.getTree());
+            adaptor.addChild(root_0, listInst178.getTree());
 
-            char_literal180=(Token)match(input,96,FOLLOW_96_in_else_stmt2292); 
+            char_literal179=(Token)match(input,97,FOLLOW_97_in_else_stmt2300); 
 
             }
 
@@ -5235,25 +5589,25 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token IF181=null;
-        Token char_literal182=null;
+        Token IF180=null;
+        Token char_literal181=null;
+        Token char_literal183=null;
         Token char_literal184=null;
-        Token char_literal185=null;
-        Token char_literal187=null;
-        MusicParser.expr_return expr183 =null;
+        Token char_literal186=null;
+        MusicParser.expr_return expr182 =null;
 
-        MusicParser.list_music_inst_return list_music_inst186 =null;
+        MusicParser.list_music_inst_return list_music_inst185 =null;
 
-        MusicParser.elseif_music_stmt_return elseif_music_stmt188 =null;
+        MusicParser.elseif_music_stmt_return elseif_music_stmt187 =null;
 
-        MusicParser.else_music_stmt_return else_music_stmt189 =null;
+        MusicParser.else_music_stmt_return else_music_stmt188 =null;
 
 
-        AmlTree IF181_tree=null;
-        AmlTree char_literal182_tree=null;
+        AmlTree IF180_tree=null;
+        AmlTree char_literal181_tree=null;
+        AmlTree char_literal183_tree=null;
         AmlTree char_literal184_tree=null;
-        AmlTree char_literal185_tree=null;
-        AmlTree char_literal187_tree=null;
+        AmlTree char_literal186_tree=null;
 
         try {
             // src/parser/Music.g:182:17: ( IF ^ '(' ! expr ')' ! '{' ! list_music_inst '}' ! ( elseif_music_stmt )* ( else_music_stmt )? )
@@ -5262,89 +5616,89 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            IF181=(Token)match(input,IF,FOLLOW_IF_in_if_music_stmt2318); 
-            IF181_tree = 
-            (AmlTree)adaptor.create(IF181)
+            IF180=(Token)match(input,IF,FOLLOW_IF_in_if_music_stmt2326); 
+            IF180_tree = 
+            (AmlTree)adaptor.create(IF180)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(IF181_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(IF180_tree, root_0);
 
 
-            char_literal182=(Token)match(input,89,FOLLOW_89_in_if_music_stmt2321); 
+            char_literal181=(Token)match(input,90,FOLLOW_90_in_if_music_stmt2329); 
 
-            pushFollow(FOLLOW_expr_in_if_music_stmt2324);
-            expr183=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr183.getTree());
-
-            char_literal184=(Token)match(input,90,FOLLOW_90_in_if_music_stmt2326); 
-
-            char_literal185=(Token)match(input,95,FOLLOW_95_in_if_music_stmt2329); 
-
-            pushFollow(FOLLOW_list_music_inst_in_if_music_stmt2332);
-            list_music_inst186=list_music_inst();
+            pushFollow(FOLLOW_expr_in_if_music_stmt2332);
+            expr182=expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_music_inst186.getTree());
+            adaptor.addChild(root_0, expr182.getTree());
 
-            char_literal187=(Token)match(input,96,FOLLOW_96_in_if_music_stmt2334); 
+            char_literal183=(Token)match(input,91,FOLLOW_91_in_if_music_stmt2334); 
+
+            char_literal184=(Token)match(input,96,FOLLOW_96_in_if_music_stmt2337); 
+
+            pushFollow(FOLLOW_list_music_inst_in_if_music_stmt2340);
+            list_music_inst185=list_music_inst();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, list_music_inst185.getTree());
+
+            char_literal186=(Token)match(input,97,FOLLOW_97_in_if_music_stmt2342); 
 
             // src/parser/Music.g:182:66: ( elseif_music_stmt )*
-            loop31:
+            loop32:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( (LA31_0==ELSE) ) {
-                    int LA31_1 = input.LA(2);
+                if ( (LA32_0==ELSE) ) {
+                    int LA32_1 = input.LA(2);
 
-                    if ( (LA31_1==IF) ) {
-                        alt31=1;
+                    if ( (LA32_1==IF) ) {
+                        alt32=1;
                     }
 
 
                 }
 
 
-                switch (alt31) {
+                switch (alt32) {
             	case 1 :
             	    // src/parser/Music.g:182:66: elseif_music_stmt
             	    {
-            	    pushFollow(FOLLOW_elseif_music_stmt_in_if_music_stmt2337);
-            	    elseif_music_stmt188=elseif_music_stmt();
+            	    pushFollow(FOLLOW_elseif_music_stmt_in_if_music_stmt2345);
+            	    elseif_music_stmt187=elseif_music_stmt();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, elseif_music_stmt188.getTree());
+            	    adaptor.addChild(root_0, elseif_music_stmt187.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop32;
                 }
             } while (true);
 
 
             // src/parser/Music.g:182:85: ( else_music_stmt )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0==ELSE) ) {
-                alt32=1;
+            if ( (LA33_0==ELSE) ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
                     // src/parser/Music.g:182:85: else_music_stmt
                     {
-                    pushFollow(FOLLOW_else_music_stmt_in_if_music_stmt2340);
-                    else_music_stmt189=else_music_stmt();
+                    pushFollow(FOLLOW_else_music_stmt_in_if_music_stmt2348);
+                    else_music_stmt188=else_music_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, else_music_stmt189.getTree());
+                    adaptor.addChild(root_0, else_music_stmt188.getTree());
 
                     }
                     break;
@@ -5391,75 +5745,75 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token ELSE190=null;
-        Token IF191=null;
-        Token char_literal192=null;
+        Token ELSE189=null;
+        Token IF190=null;
+        Token char_literal191=null;
+        Token char_literal193=null;
         Token char_literal194=null;
-        Token char_literal195=null;
-        Token char_literal197=null;
-        MusicParser.expr_return expr193 =null;
+        Token char_literal196=null;
+        MusicParser.expr_return expr192 =null;
 
-        MusicParser.list_music_inst_return list_music_inst196 =null;
+        MusicParser.list_music_inst_return list_music_inst195 =null;
 
 
-        AmlTree ELSE190_tree=null;
-        AmlTree IF191_tree=null;
-        AmlTree char_literal192_tree=null;
+        AmlTree ELSE189_tree=null;
+        AmlTree IF190_tree=null;
+        AmlTree char_literal191_tree=null;
+        AmlTree char_literal193_tree=null;
         AmlTree char_literal194_tree=null;
-        AmlTree char_literal195_tree=null;
-        AmlTree char_literal197_tree=null;
-        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
-        RewriteRuleTokenStream stream_95=new RewriteRuleTokenStream(adaptor,"token 95");
+        AmlTree char_literal196_tree=null;
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
         RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
+        RewriteRuleTokenStream stream_96=new RewriteRuleTokenStream(adaptor,"token 96");
         RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
-        RewriteRuleSubtreeStream stream_list_music_inst=new RewriteRuleSubtreeStream(adaptor,"rule list_music_inst");
+        RewriteRuleTokenStream stream_97=new RewriteRuleTokenStream(adaptor,"token 97");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+        RewriteRuleSubtreeStream stream_list_music_inst=new RewriteRuleSubtreeStream(adaptor,"rule list_music_inst");
         try {
             // src/parser/Music.g:185:21: ( ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^( ELSEIF expr list_music_inst ) )
             // src/parser/Music.g:185:25: ELSE IF '(' expr ')' '{' list_music_inst '}'
             {
-            ELSE190=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseif_music_stmt2370);  
-            stream_ELSE.add(ELSE190);
+            ELSE189=(Token)match(input,ELSE,FOLLOW_ELSE_in_elseif_music_stmt2378);  
+            stream_ELSE.add(ELSE189);
 
 
-            IF191=(Token)match(input,IF,FOLLOW_IF_in_elseif_music_stmt2372);  
-            stream_IF.add(IF191);
+            IF190=(Token)match(input,IF,FOLLOW_IF_in_elseif_music_stmt2380);  
+            stream_IF.add(IF190);
 
 
-            char_literal192=(Token)match(input,89,FOLLOW_89_in_elseif_music_stmt2374);  
-            stream_89.add(char_literal192);
+            char_literal191=(Token)match(input,90,FOLLOW_90_in_elseif_music_stmt2382);  
+            stream_90.add(char_literal191);
 
 
-            pushFollow(FOLLOW_expr_in_elseif_music_stmt2376);
-            expr193=expr();
-
-            state._fsp--;
-
-            stream_expr.add(expr193.getTree());
-
-            char_literal194=(Token)match(input,90,FOLLOW_90_in_elseif_music_stmt2378);  
-            stream_90.add(char_literal194);
-
-
-            char_literal195=(Token)match(input,95,FOLLOW_95_in_elseif_music_stmt2380);  
-            stream_95.add(char_literal195);
-
-
-            pushFollow(FOLLOW_list_music_inst_in_elseif_music_stmt2382);
-            list_music_inst196=list_music_inst();
+            pushFollow(FOLLOW_expr_in_elseif_music_stmt2384);
+            expr192=expr();
 
             state._fsp--;
 
-            stream_list_music_inst.add(list_music_inst196.getTree());
+            stream_expr.add(expr192.getTree());
 
-            char_literal197=(Token)match(input,96,FOLLOW_96_in_elseif_music_stmt2384);  
-            stream_96.add(char_literal197);
+            char_literal193=(Token)match(input,91,FOLLOW_91_in_elseif_music_stmt2386);  
+            stream_91.add(char_literal193);
+
+
+            char_literal194=(Token)match(input,96,FOLLOW_96_in_elseif_music_stmt2388);  
+            stream_96.add(char_literal194);
+
+
+            pushFollow(FOLLOW_list_music_inst_in_elseif_music_stmt2390);
+            list_music_inst195=list_music_inst();
+
+            state._fsp--;
+
+            stream_list_music_inst.add(list_music_inst195.getTree());
+
+            char_literal196=(Token)match(input,97,FOLLOW_97_in_elseif_music_stmt2392);  
+            stream_97.add(char_literal196);
 
 
             // AST REWRITE
-            // elements: list_music_inst, expr
+            // elements: expr, list_music_inst
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5529,15 +5883,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token ELSE198=null;
-        Token char_literal199=null;
-        Token char_literal201=null;
-        MusicParser.list_music_inst_return list_music_inst200 =null;
+        Token ELSE197=null;
+        Token char_literal198=null;
+        Token char_literal200=null;
+        MusicParser.list_music_inst_return list_music_inst199 =null;
 
 
-        AmlTree ELSE198_tree=null;
-        AmlTree char_literal199_tree=null;
-        AmlTree char_literal201_tree=null;
+        AmlTree ELSE197_tree=null;
+        AmlTree char_literal198_tree=null;
+        AmlTree char_literal200_tree=null;
 
         try {
             // src/parser/Music.g:188:17: ( ELSE ^ '{' ! list_music_inst '}' !)
@@ -5546,23 +5900,23 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            ELSE198=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_music_stmt2425); 
-            ELSE198_tree = 
-            (AmlTree)adaptor.create(ELSE198)
+            ELSE197=(Token)match(input,ELSE,FOLLOW_ELSE_in_else_music_stmt2433); 
+            ELSE197_tree = 
+            (AmlTree)adaptor.create(ELSE197)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(ELSE198_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(ELSE197_tree, root_0);
 
 
-            char_literal199=(Token)match(input,95,FOLLOW_95_in_else_music_stmt2428); 
+            char_literal198=(Token)match(input,96,FOLLOW_96_in_else_music_stmt2436); 
 
-            pushFollow(FOLLOW_list_music_inst_in_else_music_stmt2431);
-            list_music_inst200=list_music_inst();
+            pushFollow(FOLLOW_list_music_inst_in_else_music_stmt2439);
+            list_music_inst199=list_music_inst();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, list_music_inst200.getTree());
+            adaptor.addChild(root_0, list_music_inst199.getTree());
 
-            char_literal201=(Token)match(input,96,FOLLOW_96_in_else_music_stmt2433); 
+            char_literal200=(Token)match(input,97,FOLLOW_97_in_else_music_stmt2441); 
 
             }
 
@@ -5603,35 +5957,35 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token SONG202=null;
-        Token char_literal204=null;
-        Token char_literal206=null;
-        Token char_literal208=null;
-        Token char_literal210=null;
-        Token char_literal212=null;
-        Token char_literal215=null;
-        MusicParser.id_rule_return id_rule203 =null;
+        Token SONG201=null;
+        Token char_literal203=null;
+        Token char_literal205=null;
+        Token char_literal207=null;
+        Token char_literal209=null;
+        Token char_literal211=null;
+        Token char_literal214=null;
+        MusicParser.id_rule_return id_rule202 =null;
 
-        MusicParser.beat_return beat205 =null;
+        MusicParser.beat_return beat204 =null;
 
-        MusicParser.speed_return speed207 =null;
+        MusicParser.speed_return speed206 =null;
 
-        MusicParser.tone_return tone209 =null;
+        MusicParser.tone_return tone208 =null;
 
-        MusicParser.transport_return transport211 =null;
+        MusicParser.transport_return transport210 =null;
 
-        MusicParser.track_return track213 =null;
+        MusicParser.track_return track212 =null;
 
-        MusicParser.drums_track_return drums_track214 =null;
+        MusicParser.drums_track_return drums_track213 =null;
 
 
-        AmlTree SONG202_tree=null;
-        AmlTree char_literal204_tree=null;
-        AmlTree char_literal206_tree=null;
-        AmlTree char_literal208_tree=null;
-        AmlTree char_literal210_tree=null;
-        AmlTree char_literal212_tree=null;
-        AmlTree char_literal215_tree=null;
+        AmlTree SONG201_tree=null;
+        AmlTree char_literal203_tree=null;
+        AmlTree char_literal205_tree=null;
+        AmlTree char_literal207_tree=null;
+        AmlTree char_literal209_tree=null;
+        AmlTree char_literal211_tree=null;
+        AmlTree char_literal214_tree=null;
 
         try {
             // src/parser/Music.g:191:13: ( SONG ^ ( id_rule )? '{' ! ( beat ';' !)? ( speed ';' !)? ( tone ';' !)? ( transport ';' !)? ( track )+ ( drums_track )? '}' !)
@@ -5640,30 +5994,30 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            SONG202=(Token)match(input,SONG,FOLLOW_SONG_in_song2468); 
-            SONG202_tree = 
-            (AmlTree)adaptor.create(SONG202)
+            SONG201=(Token)match(input,SONG,FOLLOW_SONG_in_song2476); 
+            SONG201_tree = 
+            (AmlTree)adaptor.create(SONG201)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(SONG202_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(SONG201_tree, root_0);
 
 
             // src/parser/Music.g:191:23: ( id_rule )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA33_0==ID||LA33_0==LETTER_X) ) {
-                alt33=1;
+            if ( (LA34_0==ID_||LA34_0==LETTER_X) ) {
+                alt34=1;
             }
-            switch (alt33) {
+            switch (alt34) {
                 case 1 :
                     // src/parser/Music.g:191:23: id_rule
                     {
-                    pushFollow(FOLLOW_id_rule_in_song2471);
-                    id_rule203=id_rule();
+                    pushFollow(FOLLOW_id_rule_in_song2479);
+                    id_rule202=id_rule();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, id_rule203.getTree());
+                    adaptor.addChild(root_0, id_rule202.getTree());
 
                     }
                     break;
@@ -5671,27 +6025,27 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal204=(Token)match(input,95,FOLLOW_95_in_song2474); 
+            char_literal203=(Token)match(input,96,FOLLOW_96_in_song2482); 
 
             // src/parser/Music.g:191:37: ( beat ';' !)?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA34_0==BEAT) ) {
-                alt34=1;
+            if ( (LA35_0==BEAT) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
                     // src/parser/Music.g:191:38: beat ';' !
                     {
-                    pushFollow(FOLLOW_beat_in_song2478);
-                    beat205=beat();
+                    pushFollow(FOLLOW_beat_in_song2486);
+                    beat204=beat();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, beat205.getTree());
+                    adaptor.addChild(root_0, beat204.getTree());
 
-                    char_literal206=(Token)match(input,94,FOLLOW_94_in_song2480); 
+                    char_literal205=(Token)match(input,95,FOLLOW_95_in_song2488); 
 
                     }
                     break;
@@ -5700,24 +6054,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:191:50: ( speed ';' !)?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA35_0==SPEED) ) {
-                alt35=1;
+            if ( (LA36_0==SPEED) ) {
+                alt36=1;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
                     // src/parser/Music.g:191:51: speed ';' !
                     {
-                    pushFollow(FOLLOW_speed_in_song2486);
-                    speed207=speed();
+                    pushFollow(FOLLOW_speed_in_song2494);
+                    speed206=speed();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, speed207.getTree());
+                    adaptor.addChild(root_0, speed206.getTree());
 
-                    char_literal208=(Token)match(input,94,FOLLOW_94_in_song2488); 
+                    char_literal207=(Token)match(input,95,FOLLOW_95_in_song2496); 
 
                     }
                     break;
@@ -5726,24 +6080,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:191:64: ( tone ';' !)?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA36_0==TONE) ) {
-                alt36=1;
+            if ( (LA37_0==TONE) ) {
+                alt37=1;
             }
-            switch (alt36) {
+            switch (alt37) {
                 case 1 :
                     // src/parser/Music.g:191:65: tone ';' !
                     {
-                    pushFollow(FOLLOW_tone_in_song2494);
-                    tone209=tone();
+                    pushFollow(FOLLOW_tone_in_song2502);
+                    tone208=tone();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tone209.getTree());
+                    adaptor.addChild(root_0, tone208.getTree());
 
-                    char_literal210=(Token)match(input,94,FOLLOW_94_in_song2496); 
+                    char_literal209=(Token)match(input,95,FOLLOW_95_in_song2504); 
 
                     }
                     break;
@@ -5752,24 +6106,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:191:77: ( transport ';' !)?
-            int alt37=2;
-            int LA37_0 = input.LA(1);
+            int alt38=2;
+            int LA38_0 = input.LA(1);
 
-            if ( (LA37_0==TRANSPORT) ) {
-                alt37=1;
+            if ( (LA38_0==TRANSPORT) ) {
+                alt38=1;
             }
-            switch (alt37) {
+            switch (alt38) {
                 case 1 :
                     // src/parser/Music.g:191:78: transport ';' !
                     {
-                    pushFollow(FOLLOW_transport_in_song2502);
-                    transport211=transport();
+                    pushFollow(FOLLOW_transport_in_song2510);
+                    transport210=transport();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, transport211.getTree());
+                    adaptor.addChild(root_0, transport210.getTree());
 
-                    char_literal212=(Token)match(input,94,FOLLOW_94_in_song2504); 
+                    char_literal211=(Token)match(input,95,FOLLOW_95_in_song2512); 
 
                     }
                     break;
@@ -5778,58 +6132,58 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:191:96: ( track )+
-            int cnt38=0;
-            loop38:
+            int cnt39=0;
+            loop39:
             do {
-                int alt38=2;
-                int LA38_0 = input.LA(1);
+                int alt39=2;
+                int LA39_0 = input.LA(1);
 
-                if ( (LA38_0==TRACK) ) {
-                    alt38=1;
+                if ( (LA39_0==TRACK) ) {
+                    alt39=1;
                 }
 
 
-                switch (alt38) {
+                switch (alt39) {
             	case 1 :
             	    // src/parser/Music.g:191:97: track
             	    {
-            	    pushFollow(FOLLOW_track_in_song2511);
-            	    track213=track();
+            	    pushFollow(FOLLOW_track_in_song2519);
+            	    track212=track();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, track213.getTree());
+            	    adaptor.addChild(root_0, track212.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt38 >= 1 ) break loop38;
+            	    if ( cnt39 >= 1 ) break loop39;
                         EarlyExitException eee =
-                            new EarlyExitException(38, input);
+                            new EarlyExitException(39, input);
                         throw eee;
                 }
-                cnt38++;
+                cnt39++;
             } while (true);
 
 
             // src/parser/Music.g:191:105: ( drums_track )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( (LA39_0==DRUMS) ) {
-                alt39=1;
+            if ( (LA40_0==DRUMS) ) {
+                alt40=1;
             }
-            switch (alt39) {
+            switch (alt40) {
                 case 1 :
                     // src/parser/Music.g:191:105: drums_track
                     {
-                    pushFollow(FOLLOW_drums_track_in_song2515);
-                    drums_track214=drums_track();
+                    pushFollow(FOLLOW_drums_track_in_song2523);
+                    drums_track213=drums_track();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, drums_track214.getTree());
+                    adaptor.addChild(root_0, drums_track213.getTree());
 
                     }
                     break;
@@ -5837,7 +6191,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            char_literal215=(Token)match(input,96,FOLLOW_96_in_song2518); 
+            char_literal214=(Token)match(input,97,FOLLOW_97_in_song2526); 
 
             }
 
@@ -5878,15 +6232,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token TRACK216=null;
-        Token STRING218=null;
-        MusicParser.id_rule_return id_rule217 =null;
+        Token TRACK215=null;
+        Token STRING217=null;
+        MusicParser.id_rule_return id_rule216 =null;
 
-        MusicParser.compas_aux_return compas_aux219 =null;
+        MusicParser.compas_aux_return compas_aux218 =null;
 
 
-        AmlTree TRACK216_tree=null;
-        AmlTree STRING218_tree=null;
+        AmlTree TRACK215_tree=null;
+        AmlTree STRING217_tree=null;
 
         try {
             // src/parser/Music.g:194:13: ( TRACK ^ ( id_rule )? ( STRING )? compas_aux )
@@ -5895,30 +6249,30 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            TRACK216=(Token)match(input,TRACK,FOLLOW_TRACK_in_track2548); 
-            TRACK216_tree = 
-            (AmlTree)adaptor.create(TRACK216)
+            TRACK215=(Token)match(input,TRACK,FOLLOW_TRACK_in_track2556); 
+            TRACK215_tree = 
+            (AmlTree)adaptor.create(TRACK215)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(TRACK216_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(TRACK215_tree, root_0);
 
 
             // src/parser/Music.g:194:24: ( id_rule )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            int alt41=2;
+            int LA41_0 = input.LA(1);
 
-            if ( (LA40_0==ID||LA40_0==LETTER_X) ) {
-                alt40=1;
+            if ( (LA41_0==ID_||LA41_0==LETTER_X) ) {
+                alt41=1;
             }
-            switch (alt40) {
+            switch (alt41) {
                 case 1 :
                     // src/parser/Music.g:194:24: id_rule
                     {
-                    pushFollow(FOLLOW_id_rule_in_track2551);
-                    id_rule217=id_rule();
+                    pushFollow(FOLLOW_id_rule_in_track2559);
+                    id_rule216=id_rule();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, id_rule217.getTree());
+                    adaptor.addChild(root_0, id_rule216.getTree());
 
                     }
                     break;
@@ -5927,21 +6281,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:194:33: ( STRING )?
-            int alt41=2;
-            int LA41_0 = input.LA(1);
+            int alt42=2;
+            int LA42_0 = input.LA(1);
 
-            if ( (LA41_0==STRING) ) {
-                alt41=1;
+            if ( (LA42_0==STRING) ) {
+                alt42=1;
             }
-            switch (alt41) {
+            switch (alt42) {
                 case 1 :
                     // src/parser/Music.g:194:33: STRING
                     {
-                    STRING218=(Token)match(input,STRING,FOLLOW_STRING_in_track2554); 
-                    STRING218_tree = 
-                    (AmlTree)adaptor.create(STRING218)
+                    STRING217=(Token)match(input,STRING,FOLLOW_STRING_in_track2562); 
+                    STRING217_tree = 
+                    (AmlTree)adaptor.create(STRING217)
                     ;
-                    adaptor.addChild(root_0, STRING218_tree);
+                    adaptor.addChild(root_0, STRING217_tree);
 
 
                     }
@@ -5950,12 +6304,12 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_compas_aux_in_track2557);
-            compas_aux219=compas_aux();
+            pushFollow(FOLLOW_compas_aux_in_track2565);
+            compas_aux218=compas_aux();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, compas_aux219.getTree());
+            adaptor.addChild(root_0, compas_aux218.getTree());
 
             }
 
@@ -5996,13 +6350,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token DRUMS220=null;
-        Token TRACK221=null;
-        MusicParser.compas_aux_return compas_aux222 =null;
+        Token DRUMS219=null;
+        Token TRACK220=null;
+        MusicParser.compas_aux_return compas_aux221 =null;
 
 
-        AmlTree DRUMS220_tree=null;
-        AmlTree TRACK221_tree=null;
+        AmlTree DRUMS219_tree=null;
+        AmlTree TRACK220_tree=null;
 
         try {
             // src/parser/Music.g:197:13: ( DRUMS ^ TRACK compas_aux )
@@ -6011,26 +6365,26 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            DRUMS220=(Token)match(input,DRUMS,FOLLOW_DRUMS_in_drums_track2592); 
-            DRUMS220_tree = 
-            (AmlTree)adaptor.create(DRUMS220)
+            DRUMS219=(Token)match(input,DRUMS,FOLLOW_DRUMS_in_drums_track2588); 
+            DRUMS219_tree = 
+            (AmlTree)adaptor.create(DRUMS219)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(DRUMS220_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(DRUMS219_tree, root_0);
 
 
-            TRACK221=(Token)match(input,TRACK,FOLLOW_TRACK_in_drums_track2595); 
-            TRACK221_tree = 
-            (AmlTree)adaptor.create(TRACK221)
+            TRACK220=(Token)match(input,TRACK,FOLLOW_TRACK_in_drums_track2591); 
+            TRACK220_tree = 
+            (AmlTree)adaptor.create(TRACK220)
             ;
-            adaptor.addChild(root_0, TRACK221_tree);
+            adaptor.addChild(root_0, TRACK220_tree);
 
 
-            pushFollow(FOLLOW_compas_aux_in_drums_track2597);
-            compas_aux222=compas_aux();
+            pushFollow(FOLLOW_compas_aux_in_drums_track2593);
+            compas_aux221=compas_aux();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, compas_aux222.getTree());
+            adaptor.addChild(root_0, compas_aux221.getTree());
 
             }
 
@@ -6071,7 +6425,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.compas_list_return compas_list223 =null;
+        MusicParser.compas_list_return compas_list222 =null;
 
 
         RewriteRuleSubtreeStream stream_compas_list=new RewriteRuleSubtreeStream(adaptor,"rule compas_list");
@@ -6079,12 +6433,12 @@ public TreeAdaptor getTreeAdaptor() {
             // src/parser/Music.g:200:13: ( compas_list -> ^( COMPAS_LIST compas_list ) )
             // src/parser/Music.g:200:17: compas_list
             {
-            pushFollow(FOLLOW_compas_list_in_compas_aux2621);
-            compas_list223=compas_list();
+            pushFollow(FOLLOW_compas_list_in_compas_aux2617);
+            compas_list222=compas_list();
 
             state._fsp--;
 
-            stream_compas_list.add(compas_list223.getTree());
+            stream_compas_list.add(compas_list222.getTree());
 
             // AST REWRITE
             // elements: compas_list
@@ -6155,17 +6509,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token DOUBLE_BAR224=null;
-        Token DOUBLE_BAR228=null;
-        MusicParser.repetition_return repetition225 =null;
+        Token DOUBLE_BAR223=null;
+        Token DOUBLE_BAR227=null;
+        MusicParser.repetition_return repetition224 =null;
 
-        MusicParser.compasses_return compasses226 =null;
+        MusicParser.compasses_return compasses225 =null;
 
-        MusicParser.repetition_return repetition227 =null;
+        MusicParser.repetition_return repetition226 =null;
 
 
-        AmlTree DOUBLE_BAR224_tree=null;
-        AmlTree DOUBLE_BAR228_tree=null;
+        AmlTree DOUBLE_BAR223_tree=null;
+        AmlTree DOUBLE_BAR227_tree=null;
 
         try {
             // src/parser/Music.g:203:13: ( ( DOUBLE_BAR !| repetition ) ( compasses | repetition )* ( DOUBLE_BAR !) )
@@ -6175,39 +6529,39 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:203:15: ( DOUBLE_BAR !| repetition )
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            int alt43=2;
+            int LA43_0 = input.LA(1);
 
-            if ( (LA42_0==DOUBLE_BAR) ) {
-                alt42=1;
+            if ( (LA43_0==DOUBLE_BAR) ) {
+                alt43=1;
             }
-            else if ( (LA42_0==NUM||LA42_0==START_REPETITION) ) {
-                alt42=2;
+            else if ( (LA43_0==NUM||LA43_0==START_REPETITION) ) {
+                alt43=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 42, 0, input);
+                    new NoViableAltException("", 43, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt42) {
+            switch (alt43) {
                 case 1 :
                     // src/parser/Music.g:203:16: DOUBLE_BAR !
                     {
-                    DOUBLE_BAR224=(Token)match(input,DOUBLE_BAR,FOLLOW_DOUBLE_BAR_in_compas_list2651); 
+                    DOUBLE_BAR223=(Token)match(input,DOUBLE_BAR,FOLLOW_DOUBLE_BAR_in_compas_list2647); 
 
                     }
                     break;
                 case 2 :
                     // src/parser/Music.g:203:30: repetition
                     {
-                    pushFollow(FOLLOW_repetition_in_compas_list2656);
-                    repetition225=repetition();
+                    pushFollow(FOLLOW_repetition_in_compas_list2652);
+                    repetition224=repetition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, repetition225.getTree());
+                    adaptor.addChild(root_0, repetition224.getTree());
 
                     }
                     break;
@@ -6216,47 +6570,47 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:203:42: ( compasses | repetition )*
-            loop43:
+            loop44:
             do {
-                int alt43=3;
-                int LA43_0 = input.LA(1);
+                int alt44=3;
+                int LA44_0 = input.LA(1);
 
-                if ( (LA43_0==ARMOR||(LA43_0 >= BEAT && LA43_0 <= BOOL)||LA43_0==CHORD||LA43_0==DECR||(LA43_0 >= DRUMS && LA43_0 <= DRUMS_NOTE_TYPE)||LA43_0==FOR||(LA43_0 >= ID && LA43_0 <= INT)||LA43_0==LETTER_X||LA43_0==NOTE||LA43_0==NOTE_TYPE||(LA43_0 >= SONG && LA43_0 <= SPEED)||(LA43_0 >= STRING_TYPE && LA43_0 <= SUSTAIN)||LA43_0==TONE||LA43_0==WHILE||LA43_0==89) ) {
-                    alt43=1;
+                if ( (LA44_0==ARMOR||(LA44_0 >= BEAT && LA44_0 <= BOOL)||LA44_0==CHORD||LA44_0==DECR||(LA44_0 >= DRUMS && LA44_0 <= DRUMS_NOTE_TYPE)||LA44_0==FOR||(LA44_0 >= ID_ && LA44_0 <= INT)||LA44_0==LETTER_X||LA44_0==NOTE||LA44_0==NOTE_TYPE||(LA44_0 >= SONG && LA44_0 <= SPEED)||(LA44_0 >= STRING_TYPE && LA44_0 <= SUSTAIN)||LA44_0==TONE||LA44_0==WHILE||LA44_0==90) ) {
+                    alt44=1;
                 }
-                else if ( (LA43_0==NUM||LA43_0==START_REPETITION) ) {
-                    alt43=2;
+                else if ( (LA44_0==NUM||LA44_0==START_REPETITION) ) {
+                    alt44=2;
                 }
 
 
-                switch (alt43) {
+                switch (alt44) {
             	case 1 :
             	    // src/parser/Music.g:203:43: compasses
             	    {
-            	    pushFollow(FOLLOW_compasses_in_compas_list2660);
-            	    compasses226=compasses();
+            	    pushFollow(FOLLOW_compasses_in_compas_list2656);
+            	    compasses225=compasses();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, compasses226.getTree());
+            	    adaptor.addChild(root_0, compasses225.getTree());
 
             	    }
             	    break;
             	case 2 :
             	    // src/parser/Music.g:203:55: repetition
             	    {
-            	    pushFollow(FOLLOW_repetition_in_compas_list2664);
-            	    repetition227=repetition();
+            	    pushFollow(FOLLOW_repetition_in_compas_list2660);
+            	    repetition226=repetition();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, repetition227.getTree());
+            	    adaptor.addChild(root_0, repetition226.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop43;
+            	    break loop44;
                 }
             } while (true);
 
@@ -6264,7 +6618,7 @@ public TreeAdaptor getTreeAdaptor() {
             // src/parser/Music.g:203:68: ( DOUBLE_BAR !)
             // src/parser/Music.g:203:69: DOUBLE_BAR !
             {
-            DOUBLE_BAR228=(Token)match(input,DOUBLE_BAR,FOLLOW_DOUBLE_BAR_in_compas_list2669); 
+            DOUBLE_BAR227=(Token)match(input,DOUBLE_BAR,FOLLOW_DOUBLE_BAR_in_compas_list2665); 
 
             }
 
@@ -6308,13 +6662,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token BAR230=null;
-        MusicParser.compas_return compas229 =null;
+        Token BAR229=null;
+        MusicParser.compas_return compas228 =null;
 
-        MusicParser.compas_return compas231 =null;
+        MusicParser.compas_return compas230 =null;
 
 
-        AmlTree BAR230_tree=null;
+        AmlTree BAR229_tree=null;
 
         try {
             // src/parser/Music.g:206:13: ( compas ( BAR ! compas )* )
@@ -6323,42 +6677,42 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_compas_in_compasses2696);
-            compas229=compas();
+            pushFollow(FOLLOW_compas_in_compasses2692);
+            compas228=compas();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, compas229.getTree());
+            adaptor.addChild(root_0, compas228.getTree());
 
             // src/parser/Music.g:206:24: ( BAR ! compas )*
-            loop44:
+            loop45:
             do {
-                int alt44=2;
-                int LA44_0 = input.LA(1);
+                int alt45=2;
+                int LA45_0 = input.LA(1);
 
-                if ( (LA44_0==BAR) ) {
-                    alt44=1;
+                if ( (LA45_0==BAR) ) {
+                    alt45=1;
                 }
 
 
-                switch (alt44) {
+                switch (alt45) {
             	case 1 :
             	    // src/parser/Music.g:206:25: BAR ! compas
             	    {
-            	    BAR230=(Token)match(input,BAR,FOLLOW_BAR_in_compasses2699); 
+            	    BAR229=(Token)match(input,BAR,FOLLOW_BAR_in_compasses2695); 
 
-            	    pushFollow(FOLLOW_compas_in_compasses2702);
-            	    compas231=compas();
+            	    pushFollow(FOLLOW_compas_in_compasses2698);
+            	    compas230=compas();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, compas231.getTree());
+            	    adaptor.addChild(root_0, compas230.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop44;
+            	    break loop45;
                 }
             } while (true);
 
@@ -6402,43 +6756,43 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token NUM232=null;
-        Token LETTER_X233=null;
-        Token START_REPETITION234=null;
-        Token END_REPETITION236=null;
-        MusicParser.compasses_return compasses235 =null;
+        Token NUM231=null;
+        Token LETTER_X232=null;
+        Token START_REPETITION233=null;
+        Token END_REPETITION235=null;
+        MusicParser.compasses_return compasses234 =null;
 
 
-        AmlTree NUM232_tree=null;
-        AmlTree LETTER_X233_tree=null;
-        AmlTree START_REPETITION234_tree=null;
-        AmlTree END_REPETITION236_tree=null;
+        AmlTree NUM231_tree=null;
+        AmlTree LETTER_X232_tree=null;
+        AmlTree START_REPETITION233_tree=null;
+        AmlTree END_REPETITION235_tree=null;
         RewriteRuleTokenStream stream_LETTER_X=new RewriteRuleTokenStream(adaptor,"token LETTER_X");
+        RewriteRuleTokenStream stream_NUM=new RewriteRuleTokenStream(adaptor,"token NUM");
         RewriteRuleTokenStream stream_END_REPETITION=new RewriteRuleTokenStream(adaptor,"token END_REPETITION");
         RewriteRuleTokenStream stream_START_REPETITION=new RewriteRuleTokenStream(adaptor,"token START_REPETITION");
-        RewriteRuleTokenStream stream_NUM=new RewriteRuleTokenStream(adaptor,"token NUM");
         RewriteRuleSubtreeStream stream_compasses=new RewriteRuleSubtreeStream(adaptor,"rule compasses");
         try {
             // src/parser/Music.g:209:13: ( ( NUM LETTER_X )? START_REPETITION compasses END_REPETITION -> ^( REPETITION ( NUM )? compasses ) )
             // src/parser/Music.g:209:17: ( NUM LETTER_X )? START_REPETITION compasses END_REPETITION
             {
             // src/parser/Music.g:209:17: ( NUM LETTER_X )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==NUM) ) {
-                alt45=1;
+            if ( (LA46_0==NUM) ) {
+                alt46=1;
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
                     // src/parser/Music.g:209:18: NUM LETTER_X
                     {
-                    NUM232=(Token)match(input,NUM,FOLLOW_NUM_in_repetition2729);  
-                    stream_NUM.add(NUM232);
+                    NUM231=(Token)match(input,NUM,FOLLOW_NUM_in_repetition2725);  
+                    stream_NUM.add(NUM231);
 
 
-                    LETTER_X233=(Token)match(input,LETTER_X,FOLLOW_LETTER_X_in_repetition2731);  
-                    stream_LETTER_X.add(LETTER_X233);
+                    LETTER_X232=(Token)match(input,LETTER_X,FOLLOW_LETTER_X_in_repetition2727);  
+                    stream_LETTER_X.add(LETTER_X232);
 
 
                     }
@@ -6447,23 +6801,23 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            START_REPETITION234=(Token)match(input,START_REPETITION,FOLLOW_START_REPETITION_in_repetition2735);  
-            stream_START_REPETITION.add(START_REPETITION234);
+            START_REPETITION233=(Token)match(input,START_REPETITION,FOLLOW_START_REPETITION_in_repetition2731);  
+            stream_START_REPETITION.add(START_REPETITION233);
 
 
-            pushFollow(FOLLOW_compasses_in_repetition2737);
-            compasses235=compasses();
+            pushFollow(FOLLOW_compasses_in_repetition2733);
+            compasses234=compasses();
 
             state._fsp--;
 
-            stream_compasses.add(compasses235.getTree());
+            stream_compasses.add(compasses234.getTree());
 
-            END_REPETITION236=(Token)match(input,END_REPETITION,FOLLOW_END_REPETITION_in_repetition2739);  
-            stream_END_REPETITION.add(END_REPETITION236);
+            END_REPETITION235=(Token)match(input,END_REPETITION,FOLLOW_END_REPETITION_in_repetition2735);  
+            stream_END_REPETITION.add(END_REPETITION235);
 
 
             // AST REWRITE
-            // elements: compasses, NUM
+            // elements: NUM, compasses
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6540,7 +6894,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.music_inst_return music_inst237 =null;
+        MusicParser.music_inst_return music_inst236 =null;
 
 
         RewriteRuleSubtreeStream stream_music_inst=new RewriteRuleSubtreeStream(adaptor,"rule music_inst");
@@ -6549,70 +6903,74 @@ public TreeAdaptor getTreeAdaptor() {
             // src/parser/Music.g:212:16: ( options {greedy=true; } : music_inst )+
             {
             // src/parser/Music.g:212:16: ( options {greedy=true; } : music_inst )+
-            int cnt46=0;
-            loop46:
+            int cnt47=0;
+            loop47:
             do {
-                int alt46=2;
+                int alt47=2;
                 switch ( input.LA(1) ) {
                 case CHORD:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case TONE:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case BEAT:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case SPEED:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case INSTRUMENT:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
-                case ID:
+                case ID_:
+                    {
+                    alt47=1;
+                    }
+                    break;
                 case LETTER_X:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case INCR:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case DECR:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case WHILE:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case FOR:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case IF:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case SONG:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case BOOL:
@@ -6621,55 +6979,55 @@ public TreeAdaptor getTreeAdaptor() {
                 case NOTE_TYPE:
                 case STRING_TYPE:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
-                case 89:
+                case 90:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case ARMOR:
                 case BEMOL:
                 case SUSTAIN:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case NOTE:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
                 case DRUMS:
                     {
-                    alt46=1;
+                    alt47=1;
                     }
                     break;
 
                 }
 
-                switch (alt46) {
+                switch (alt47) {
             	case 1 :
             	    // src/parser/Music.g:212:42: music_inst
             	    {
-            	    pushFollow(FOLLOW_music_inst_in_compas2790);
-            	    music_inst237=music_inst();
+            	    pushFollow(FOLLOW_music_inst_in_compas2786);
+            	    music_inst236=music_inst();
 
             	    state._fsp--;
 
-            	    stream_music_inst.add(music_inst237.getTree());
+            	    stream_music_inst.add(music_inst236.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt46 >= 1 ) break loop46;
+            	    if ( cnt47 >= 1 ) break loop47;
                         EarlyExitException eee =
-                            new EarlyExitException(46, input);
+                            new EarlyExitException(47, input);
                         throw eee;
                 }
-                cnt46++;
+                cnt47++;
             } while (true);
 
 
@@ -6749,13 +7107,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token TONE238=null;
-        Token NUM239=null;
-        Token set240=null;
+        Token TONE237=null;
+        Token NUM238=null;
+        Token set239=null;
 
-        AmlTree TONE238_tree=null;
-        AmlTree NUM239_tree=null;
-        AmlTree set240_tree=null;
+        AmlTree TONE237_tree=null;
+        AmlTree NUM238_tree=null;
+        AmlTree set239_tree=null;
 
         try {
             // src/parser/Music.g:215:13: ( TONE ^ NUM ( SUSTAIN | BEMOL ) )
@@ -6764,26 +7122,26 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            TONE238=(Token)match(input,TONE,FOLLOW_TONE_in_tone2834); 
-            TONE238_tree = 
-            (AmlTree)adaptor.create(TONE238)
+            TONE237=(Token)match(input,TONE,FOLLOW_TONE_in_tone2830); 
+            TONE237_tree = 
+            (AmlTree)adaptor.create(TONE237)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(TONE238_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(TONE237_tree, root_0);
 
 
-            NUM239=(Token)match(input,NUM,FOLLOW_NUM_in_tone2837); 
-            NUM239_tree = 
-            (AmlTree)adaptor.create(NUM239)
+            NUM238=(Token)match(input,NUM,FOLLOW_NUM_in_tone2833); 
+            NUM238_tree = 
+            (AmlTree)adaptor.create(NUM238)
             ;
-            adaptor.addChild(root_0, NUM239_tree);
+            adaptor.addChild(root_0, NUM238_tree);
 
 
-            set240=(Token)input.LT(1);
+            set239=(Token)input.LT(1);
 
             if ( input.LA(1)==BEMOL||input.LA(1)==SUSTAIN ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (AmlTree)adaptor.create(set240)
+                (AmlTree)adaptor.create(set239)
                 );
                 state.errorRecovery=false;
             }
@@ -6832,65 +7190,65 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal242=null;
-        Token FIGURE243=null;
-        Token DOT244=null;
-        Token TIE245=null;
-        MusicParser.notes_type_return notes_type241 =null;
+        Token char_literal241=null;
+        Token FIGURE242=null;
+        Token DOT243=null;
+        Token TIE244=null;
+        MusicParser.notes_type_return notes_type240 =null;
 
 
-        AmlTree char_literal242_tree=null;
-        AmlTree FIGURE243_tree=null;
-        AmlTree DOT244_tree=null;
-        AmlTree TIE245_tree=null;
-        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
-        RewriteRuleTokenStream stream_FIGURE=new RewriteRuleTokenStream(adaptor,"token FIGURE");
-        RewriteRuleTokenStream stream_DOT=new RewriteRuleTokenStream(adaptor,"token DOT");
+        AmlTree char_literal241_tree=null;
+        AmlTree FIGURE242_tree=null;
+        AmlTree DOT243_tree=null;
+        AmlTree TIE244_tree=null;
         RewriteRuleTokenStream stream_TIE=new RewriteRuleTokenStream(adaptor,"token TIE");
+        RewriteRuleTokenStream stream_DOT=new RewriteRuleTokenStream(adaptor,"token DOT");
+        RewriteRuleTokenStream stream_93=new RewriteRuleTokenStream(adaptor,"token 93");
+        RewriteRuleTokenStream stream_FIGURE=new RewriteRuleTokenStream(adaptor,"token FIGURE");
         RewriteRuleSubtreeStream stream_notes_type=new RewriteRuleSubtreeStream(adaptor,"rule notes_type");
         try {
             // src/parser/Music.g:218:13: ( notes_type ( '.' FIGURE ( DOT )? )? ( TIE )? -> ^( NOTES notes_type ( FIGURE )? ( DOT )? ( TIE )? ) )
             // src/parser/Music.g:218:17: notes_type ( '.' FIGURE ( DOT )? )? ( TIE )?
             {
-            pushFollow(FOLLOW_notes_type_in_notes_group2868);
-            notes_type241=notes_type();
+            pushFollow(FOLLOW_notes_type_in_notes_group2864);
+            notes_type240=notes_type();
 
             state._fsp--;
 
-            stream_notes_type.add(notes_type241.getTree());
+            stream_notes_type.add(notes_type240.getTree());
 
             // src/parser/Music.g:218:28: ( '.' FIGURE ( DOT )? )?
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA48_0==92) ) {
-                alt48=1;
+            if ( (LA49_0==93) ) {
+                alt49=1;
             }
-            switch (alt48) {
+            switch (alt49) {
                 case 1 :
                     // src/parser/Music.g:218:29: '.' FIGURE ( DOT )?
                     {
-                    char_literal242=(Token)match(input,92,FOLLOW_92_in_notes_group2871);  
-                    stream_92.add(char_literal242);
+                    char_literal241=(Token)match(input,93,FOLLOW_93_in_notes_group2867);  
+                    stream_93.add(char_literal241);
 
 
-                    FIGURE243=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_notes_group2873);  
-                    stream_FIGURE.add(FIGURE243);
+                    FIGURE242=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_notes_group2869);  
+                    stream_FIGURE.add(FIGURE242);
 
 
                     // src/parser/Music.g:218:40: ( DOT )?
-                    int alt47=2;
-                    int LA47_0 = input.LA(1);
+                    int alt48=2;
+                    int LA48_0 = input.LA(1);
 
-                    if ( (LA47_0==DOT) ) {
-                        alt47=1;
+                    if ( (LA48_0==DOT) ) {
+                        alt48=1;
                     }
-                    switch (alt47) {
+                    switch (alt48) {
                         case 1 :
                             // src/parser/Music.g:218:40: DOT
                             {
-                            DOT244=(Token)match(input,DOT,FOLLOW_DOT_in_notes_group2875);  
-                            stream_DOT.add(DOT244);
+                            DOT243=(Token)match(input,DOT,FOLLOW_DOT_in_notes_group2871);  
+                            stream_DOT.add(DOT243);
 
 
                             }
@@ -6906,18 +7264,18 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:218:47: ( TIE )?
-            int alt49=2;
-            int LA49_0 = input.LA(1);
+            int alt50=2;
+            int LA50_0 = input.LA(1);
 
-            if ( (LA49_0==TIE) ) {
-                alt49=1;
+            if ( (LA50_0==TIE) ) {
+                alt50=1;
             }
-            switch (alt49) {
+            switch (alt50) {
                 case 1 :
                     // src/parser/Music.g:218:47: TIE
                     {
-                    TIE245=(Token)match(input,TIE,FOLLOW_TIE_in_notes_group2880);  
-                    stream_TIE.add(TIE245);
+                    TIE244=(Token)match(input,TIE,FOLLOW_TIE_in_notes_group2876);  
+                    stream_TIE.add(TIE244);
 
 
                     }
@@ -6927,7 +7285,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: notes_type, DOT, TIE, FIGURE
+            // elements: FIGURE, notes_type, DOT, TIE
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7022,62 +7380,62 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal247=null;
-        Token FIGURE248=null;
-        Token DOT249=null;
-        MusicParser.notes_type_return notes_type246 =null;
+        Token char_literal246=null;
+        Token FIGURE247=null;
+        Token DOT248=null;
+        MusicParser.notes_type_return notes_type245 =null;
 
 
-        AmlTree char_literal247_tree=null;
-        AmlTree FIGURE248_tree=null;
-        AmlTree DOT249_tree=null;
-        RewriteRuleTokenStream stream_92=new RewriteRuleTokenStream(adaptor,"token 92");
-        RewriteRuleTokenStream stream_FIGURE=new RewriteRuleTokenStream(adaptor,"token FIGURE");
+        AmlTree char_literal246_tree=null;
+        AmlTree FIGURE247_tree=null;
+        AmlTree DOT248_tree=null;
         RewriteRuleTokenStream stream_DOT=new RewriteRuleTokenStream(adaptor,"token DOT");
+        RewriteRuleTokenStream stream_93=new RewriteRuleTokenStream(adaptor,"token 93");
+        RewriteRuleTokenStream stream_FIGURE=new RewriteRuleTokenStream(adaptor,"token FIGURE");
         RewriteRuleSubtreeStream stream_notes_type=new RewriteRuleSubtreeStream(adaptor,"rule notes_type");
         try {
             // src/parser/Music.g:221:17: ( notes_type ( '.' FIGURE ( DOT )? )? -> ^( NOTES notes_type ( FIGURE )? ( DOT )? ) )
             // src/parser/Music.g:221:21: notes_type ( '.' FIGURE ( DOT )? )?
             {
-            pushFollow(FOLLOW_notes_type_in_notes_variable2922);
-            notes_type246=notes_type();
+            pushFollow(FOLLOW_notes_type_in_notes_variable2918);
+            notes_type245=notes_type();
 
             state._fsp--;
 
-            stream_notes_type.add(notes_type246.getTree());
+            stream_notes_type.add(notes_type245.getTree());
 
             // src/parser/Music.g:221:32: ( '.' FIGURE ( DOT )? )?
-            int alt51=2;
-            int LA51_0 = input.LA(1);
+            int alt52=2;
+            int LA52_0 = input.LA(1);
 
-            if ( (LA51_0==92) ) {
-                alt51=1;
+            if ( (LA52_0==93) ) {
+                alt52=1;
             }
-            switch (alt51) {
+            switch (alt52) {
                 case 1 :
                     // src/parser/Music.g:221:33: '.' FIGURE ( DOT )?
                     {
-                    char_literal247=(Token)match(input,92,FOLLOW_92_in_notes_variable2925);  
-                    stream_92.add(char_literal247);
+                    char_literal246=(Token)match(input,93,FOLLOW_93_in_notes_variable2921);  
+                    stream_93.add(char_literal246);
 
 
-                    FIGURE248=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_notes_variable2927);  
-                    stream_FIGURE.add(FIGURE248);
+                    FIGURE247=(Token)match(input,FIGURE,FOLLOW_FIGURE_in_notes_variable2923);  
+                    stream_FIGURE.add(FIGURE247);
 
 
                     // src/parser/Music.g:221:44: ( DOT )?
-                    int alt50=2;
-                    int LA50_0 = input.LA(1);
+                    int alt51=2;
+                    int LA51_0 = input.LA(1);
 
-                    if ( (LA50_0==DOT) ) {
-                        alt50=1;
+                    if ( (LA51_0==DOT) ) {
+                        alt51=1;
                     }
-                    switch (alt50) {
+                    switch (alt51) {
                         case 1 :
                             // src/parser/Music.g:221:44: DOT
                             {
-                            DOT249=(Token)match(input,DOT,FOLLOW_DOT_in_notes_variable2929);  
-                            stream_DOT.add(DOT249);
+                            DOT248=(Token)match(input,DOT,FOLLOW_DOT_in_notes_variable2925);  
+                            stream_DOT.add(DOT248);
 
 
                             }
@@ -7093,7 +7451,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: DOT, notes_type, FIGURE
+            // elements: notes_type, DOT, FIGURE
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7179,58 +7537,58 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        MusicParser.chord_return chord250 =null;
+        MusicParser.chord_return chord249 =null;
 
-        MusicParser.notes_return notes251 =null;
+        MusicParser.notes_return notes250 =null;
 
-        MusicParser.drums_return drums252 =null;
+        MusicParser.drums_return drums251 =null;
 
 
 
         try {
             // src/parser/Music.g:224:13: ( chord | notes | drums )
-            int alt52=3;
+            int alt53=3;
             switch ( input.LA(1) ) {
             case CHORD:
                 {
-                alt52=1;
+                alt53=1;
                 }
                 break;
             case ARMOR:
             case BEMOL:
             case NOTE:
             case SUSTAIN:
-            case 89:
+            case 90:
                 {
-                alt52=2;
+                alt53=2;
                 }
                 break;
             case DRUMS:
                 {
-                alt52=3;
+                alt53=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 52, 0, input);
+                    new NoViableAltException("", 53, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt52) {
+            switch (alt53) {
                 case 1 :
                     // src/parser/Music.g:224:15: chord
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_chord_in_notes_type2972);
-                    chord250=chord();
+                    pushFollow(FOLLOW_chord_in_notes_type2968);
+                    chord249=chord();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, chord250.getTree());
+                    adaptor.addChild(root_0, chord249.getTree());
 
                     }
                     break;
@@ -7240,12 +7598,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_notes_in_notes_type2976);
-                    notes251=notes();
+                    pushFollow(FOLLOW_notes_in_notes_type2972);
+                    notes250=notes();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, notes251.getTree());
+                    adaptor.addChild(root_0, notes250.getTree());
 
                     }
                     break;
@@ -7255,12 +7613,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_drums_in_notes_type2980);
-                    drums252=drums();
+                    pushFollow(FOLLOW_drums_in_notes_type2976);
+                    drums251=drums();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, drums252.getTree());
+                    adaptor.addChild(root_0, drums251.getTree());
 
                     }
                     break;
@@ -7303,19 +7661,19 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token CHORD253=null;
-        Token char_literal254=null;
+        Token CHORD252=null;
+        Token char_literal253=null;
+        Token set255=null;
         Token set256=null;
-        Token set257=null;
-        Token char_literal258=null;
-        MusicParser.note_return note255 =null;
+        Token char_literal257=null;
+        MusicParser.note_return note254 =null;
 
 
-        AmlTree CHORD253_tree=null;
-        AmlTree char_literal254_tree=null;
+        AmlTree CHORD252_tree=null;
+        AmlTree char_literal253_tree=null;
+        AmlTree set255_tree=null;
         AmlTree set256_tree=null;
-        AmlTree set257_tree=null;
-        AmlTree char_literal258_tree=null;
+        AmlTree char_literal257_tree=null;
 
         try {
             // src/parser/Music.g:227:13: ( CHORD ^ '(' ! note ( MINOR | PLUS | DIMINUTION )? ( SEVENTH | MAJ7 )? ')' !)
@@ -7324,36 +7682,68 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            CHORD253=(Token)match(input,CHORD,FOLLOW_CHORD_in_chord3009); 
-            CHORD253_tree = 
-            (AmlTree)adaptor.create(CHORD253)
+            CHORD252=(Token)match(input,CHORD,FOLLOW_CHORD_in_chord3005); 
+            CHORD252_tree = 
+            (AmlTree)adaptor.create(CHORD252)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(CHORD253_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(CHORD252_tree, root_0);
 
 
-            char_literal254=(Token)match(input,89,FOLLOW_89_in_chord3012); 
+            char_literal253=(Token)match(input,90,FOLLOW_90_in_chord3008); 
 
-            pushFollow(FOLLOW_note_in_chord3015);
-            note255=note();
+            pushFollow(FOLLOW_note_in_chord3011);
+            note254=note();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, note255.getTree());
+            adaptor.addChild(root_0, note254.getTree());
 
             // src/parser/Music.g:227:34: ( MINOR | PLUS | DIMINUTION )?
-            int alt53=2;
-            int LA53_0 = input.LA(1);
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA53_0==DIMINUTION||LA53_0==MINOR||LA53_0==PLUS) ) {
-                alt53=1;
+            if ( (LA54_0==DIMINUTION||LA54_0==MINOR||LA54_0==PLUS) ) {
+                alt54=1;
             }
-            switch (alt53) {
+            switch (alt54) {
+                case 1 :
+                    // src/parser/Music.g:
+                    {
+                    set255=(Token)input.LT(1);
+
+                    if ( input.LA(1)==DIMINUTION||input.LA(1)==MINOR||input.LA(1)==PLUS ) {
+                        input.consume();
+                        adaptor.addChild(root_0, 
+                        (AmlTree)adaptor.create(set255)
+                        );
+                        state.errorRecovery=false;
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        throw mse;
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            // src/parser/Music.g:227:59: ( SEVENTH | MAJ7 )?
+            int alt55=2;
+            int LA55_0 = input.LA(1);
+
+            if ( (LA55_0==MAJ7||LA55_0==SEVENTH) ) {
+                alt55=1;
+            }
+            switch (alt55) {
                 case 1 :
                     // src/parser/Music.g:
                     {
                     set256=(Token)input.LT(1);
 
-                    if ( input.LA(1)==DIMINUTION||input.LA(1)==MINOR||input.LA(1)==PLUS ) {
+                    if ( input.LA(1)==MAJ7||input.LA(1)==SEVENTH ) {
                         input.consume();
                         adaptor.addChild(root_0, 
                         (AmlTree)adaptor.create(set256)
@@ -7372,39 +7762,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            // src/parser/Music.g:227:59: ( SEVENTH | MAJ7 )?
-            int alt54=2;
-            int LA54_0 = input.LA(1);
-
-            if ( (LA54_0==MAJ7||LA54_0==SEVENTH) ) {
-                alt54=1;
-            }
-            switch (alt54) {
-                case 1 :
-                    // src/parser/Music.g:
-                    {
-                    set257=(Token)input.LT(1);
-
-                    if ( input.LA(1)==MAJ7||input.LA(1)==SEVENTH ) {
-                        input.consume();
-                        adaptor.addChild(root_0, 
-                        (AmlTree)adaptor.create(set257)
-                        );
-                        state.errorRecovery=false;
-                    }
-                    else {
-                        MismatchedSetException mse = new MismatchedSetException(null,input);
-                        throw mse;
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            char_literal258=(Token)match(input,90,FOLLOW_90_in_chord3035); 
+            char_literal257=(Token)match(input,91,FOLLOW_91_in_chord3031); 
 
             }
 
@@ -7445,85 +7803,85 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token char_literal259=null;
-        Token char_literal261=null;
-        MusicParser.note_return note260 =null;
+        Token char_literal258=null;
+        Token char_literal260=null;
+        MusicParser.note_return note259 =null;
 
-        MusicParser.note_return note262 =null;
+        MusicParser.note_return note261 =null;
 
 
-        AmlTree char_literal259_tree=null;
-        AmlTree char_literal261_tree=null;
+        AmlTree char_literal258_tree=null;
+        AmlTree char_literal260_tree=null;
         RewriteRuleTokenStream stream_90=new RewriteRuleTokenStream(adaptor,"token 90");
-        RewriteRuleTokenStream stream_89=new RewriteRuleTokenStream(adaptor,"token 89");
+        RewriteRuleTokenStream stream_91=new RewriteRuleTokenStream(adaptor,"token 91");
         RewriteRuleSubtreeStream stream_note=new RewriteRuleSubtreeStream(adaptor,"rule note");
         try {
             // src/parser/Music.g:230:13: ( ( '(' ( note )+ ')' | note ) -> ^( NOTE_LIST ( note )+ ) )
             // src/parser/Music.g:230:17: ( '(' ( note )+ ')' | note )
             {
             // src/parser/Music.g:230:17: ( '(' ( note )+ ')' | note )
-            int alt56=2;
-            int LA56_0 = input.LA(1);
+            int alt57=2;
+            int LA57_0 = input.LA(1);
 
-            if ( (LA56_0==89) ) {
-                alt56=1;
+            if ( (LA57_0==90) ) {
+                alt57=1;
             }
-            else if ( (LA56_0==ARMOR||LA56_0==BEMOL||LA56_0==NOTE||LA56_0==SUSTAIN) ) {
-                alt56=2;
+            else if ( (LA57_0==ARMOR||LA57_0==BEMOL||LA57_0==NOTE||LA57_0==SUSTAIN) ) {
+                alt57=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 56, 0, input);
+                    new NoViableAltException("", 57, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt56) {
+            switch (alt57) {
                 case 1 :
                     // src/parser/Music.g:230:19: '(' ( note )+ ')'
                     {
-                    char_literal259=(Token)match(input,89,FOLLOW_89_in_notes3067);  
-                    stream_89.add(char_literal259);
+                    char_literal258=(Token)match(input,90,FOLLOW_90_in_notes3063);  
+                    stream_90.add(char_literal258);
 
 
                     // src/parser/Music.g:230:23: ( note )+
-                    int cnt55=0;
-                    loop55:
+                    int cnt56=0;
+                    loop56:
                     do {
-                        int alt55=2;
-                        int LA55_0 = input.LA(1);
+                        int alt56=2;
+                        int LA56_0 = input.LA(1);
 
-                        if ( (LA55_0==ARMOR||LA55_0==BEMOL||LA55_0==NOTE||LA55_0==SUSTAIN) ) {
-                            alt55=1;
+                        if ( (LA56_0==ARMOR||LA56_0==BEMOL||LA56_0==NOTE||LA56_0==SUSTAIN) ) {
+                            alt56=1;
                         }
 
 
-                        switch (alt55) {
+                        switch (alt56) {
                     	case 1 :
                     	    // src/parser/Music.g:230:24: note
                     	    {
-                    	    pushFollow(FOLLOW_note_in_notes3070);
-                    	    note260=note();
+                    	    pushFollow(FOLLOW_note_in_notes3066);
+                    	    note259=note();
 
                     	    state._fsp--;
 
-                    	    stream_note.add(note260.getTree());
+                    	    stream_note.add(note259.getTree());
 
                     	    }
                     	    break;
 
                     	default :
-                    	    if ( cnt55 >= 1 ) break loop55;
+                    	    if ( cnt56 >= 1 ) break loop56;
                                 EarlyExitException eee =
-                                    new EarlyExitException(55, input);
+                                    new EarlyExitException(56, input);
                                 throw eee;
                         }
-                        cnt55++;
+                        cnt56++;
                     } while (true);
 
 
-                    char_literal261=(Token)match(input,90,FOLLOW_90_in_notes3074);  
-                    stream_90.add(char_literal261);
+                    char_literal260=(Token)match(input,91,FOLLOW_91_in_notes3070);  
+                    stream_91.add(char_literal260);
 
 
                     }
@@ -7531,12 +7889,12 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // src/parser/Music.g:230:38: note
                     {
-                    pushFollow(FOLLOW_note_in_notes3079);
-                    note262=note();
+                    pushFollow(FOLLOW_note_in_notes3075);
+                    note261=note();
 
                     state._fsp--;
 
-                    stream_note.add(note262.getTree());
+                    stream_note.add(note261.getTree());
 
                     }
                     break;
@@ -7620,15 +7978,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token DRUMS263=null;
-        Token char_literal264=null;
-        Token char_literal266=null;
-        MusicParser.num_expr_return num_expr265 =null;
+        Token DRUMS262=null;
+        Token char_literal263=null;
+        Token char_literal265=null;
+        MusicParser.num_expr_return num_expr264 =null;
 
 
-        AmlTree DRUMS263_tree=null;
-        AmlTree char_literal264_tree=null;
-        AmlTree char_literal266_tree=null;
+        AmlTree DRUMS262_tree=null;
+        AmlTree char_literal263_tree=null;
+        AmlTree char_literal265_tree=null;
 
         try {
             // src/parser/Music.g:233:13: ( DRUMS ^ '(' ! num_expr ')' !)
@@ -7637,23 +7995,23 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            DRUMS263=(Token)match(input,DRUMS,FOLLOW_DRUMS_in_drums3118); 
-            DRUMS263_tree = 
-            (AmlTree)adaptor.create(DRUMS263)
+            DRUMS262=(Token)match(input,DRUMS,FOLLOW_DRUMS_in_drums3114); 
+            DRUMS262_tree = 
+            (AmlTree)adaptor.create(DRUMS262)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(DRUMS263_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(DRUMS262_tree, root_0);
 
 
-            char_literal264=(Token)match(input,89,FOLLOW_89_in_drums3121); 
+            char_literal263=(Token)match(input,90,FOLLOW_90_in_drums3117); 
 
-            pushFollow(FOLLOW_num_expr_in_drums3124);
-            num_expr265=num_expr();
+            pushFollow(FOLLOW_num_expr_in_drums3120);
+            num_expr264=num_expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, num_expr265.getTree());
+            adaptor.addChild(root_0, num_expr264.getTree());
 
-            char_literal266=(Token)match(input,90,FOLLOW_90_in_drums3126); 
+            char_literal265=(Token)match(input,91,FOLLOW_91_in_drums3122); 
 
             }
 
@@ -7694,13 +8052,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token set267=null;
-        Token NOTE268=null;
-        Token NUM269=null;
+        Token set266=null;
+        Token NOTE267=null;
+        Token NUM268=null;
 
-        AmlTree set267_tree=null;
-        AmlTree NOTE268_tree=null;
-        AmlTree NUM269_tree=null;
+        AmlTree set266_tree=null;
+        AmlTree NOTE267_tree=null;
+        AmlTree NUM268_tree=null;
 
         try {
             // src/parser/Music.g:236:13: ( ( BEMOL | SUSTAIN | ARMOR )? NOTE ^ ( NUM )? )
@@ -7710,22 +8068,22 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:236:17: ( BEMOL | SUSTAIN | ARMOR )?
-            int alt57=2;
-            int LA57_0 = input.LA(1);
+            int alt58=2;
+            int LA58_0 = input.LA(1);
 
-            if ( (LA57_0==ARMOR||LA57_0==BEMOL||LA57_0==SUSTAIN) ) {
-                alt57=1;
+            if ( (LA58_0==ARMOR||LA58_0==BEMOL||LA58_0==SUSTAIN) ) {
+                alt58=1;
             }
-            switch (alt57) {
+            switch (alt58) {
                 case 1 :
                     // src/parser/Music.g:
                     {
-                    set267=(Token)input.LT(1);
+                    set266=(Token)input.LT(1);
 
                     if ( input.LA(1)==ARMOR||input.LA(1)==BEMOL||input.LA(1)==SUSTAIN ) {
                         input.consume();
                         adaptor.addChild(root_0, 
-                        (AmlTree)adaptor.create(set267)
+                        (AmlTree)adaptor.create(set266)
                         );
                         state.errorRecovery=false;
                     }
@@ -7741,40 +8099,40 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            NOTE268=(Token)match(input,NOTE,FOLLOW_NOTE_in_note3170); 
-            NOTE268_tree = 
-            (AmlTree)adaptor.create(NOTE268)
+            NOTE267=(Token)match(input,NOTE,FOLLOW_NOTE_in_note3166); 
+            NOTE267_tree = 
+            (AmlTree)adaptor.create(NOTE267)
             ;
-            root_0 = (AmlTree)adaptor.becomeRoot(NOTE268_tree, root_0);
+            root_0 = (AmlTree)adaptor.becomeRoot(NOTE267_tree, root_0);
 
 
             // src/parser/Music.g:236:50: ( NUM )?
-            int alt58=2;
-            int LA58_0 = input.LA(1);
+            int alt59=2;
+            int LA59_0 = input.LA(1);
 
-            if ( (LA58_0==NUM) ) {
-                int LA58_1 = input.LA(2);
+            if ( (LA59_0==NUM) ) {
+                int LA59_1 = input.LA(2);
 
-                if ( (LA58_1==LETTER_X) ) {
-                    int LA58_3 = input.LA(3);
+                if ( (LA59_1==LETTER_X) ) {
+                    int LA59_3 = input.LA(3);
 
-                    if ( (LA58_3==ASSIG||LA58_3==DECR||LA58_3==DIVIDE_ASSIG||LA58_3==INCR||LA58_3==MINUS_ASSIG||LA58_3==MOD_ASSIG||LA58_3==PLUS_ASSIG||LA58_3==PROD_ASSIG||LA58_3==89||LA58_3==92) ) {
-                        alt58=1;
+                    if ( (LA59_3==ASSIG||LA59_3==DECR||LA59_3==DIVIDE_ASSIG||LA59_3==INCR||LA59_3==MINUS_ASSIG||LA59_3==MOD_ASSIG||LA59_3==PLUS_ASSIG||LA59_3==PROD_ASSIG||LA59_3==90||LA59_3==93) ) {
+                        alt59=1;
                     }
                 }
-                else if ( (LA58_1==ARMOR||(LA58_1 >= BAR && LA58_1 <= BOOL)||LA58_1==CHORD||(LA58_1 >= DECR && LA58_1 <= DIMINUTION)||(LA58_1 >= DOUBLE_BAR && LA58_1 <= DRUMS_NOTE_TYPE)||LA58_1==END_REPETITION||LA58_1==FOR||(LA58_1 >= ID && LA58_1 <= INT)||(LA58_1 >= MAJ7 && LA58_1 <= MINOR)||LA58_1==NOTE||LA58_1==NOTE_TYPE||LA58_1==NUM||LA58_1==PLUS||(LA58_1 >= SEVENTH && LA58_1 <= START_REPETITION)||(LA58_1 >= STRING_TYPE && LA58_1 <= TONE)||LA58_1==WHILE||(LA58_1 >= 89 && LA58_1 <= 92)||LA58_1==94||LA58_1==96) ) {
-                    alt58=1;
+                else if ( (LA59_1==ARMOR||(LA59_1 >= BAR && LA59_1 <= BOOL)||LA59_1==CHORD||(LA59_1 >= DECR && LA59_1 <= DIMINUTION)||(LA59_1 >= DOUBLE_BAR && LA59_1 <= DRUMS_NOTE_TYPE)||LA59_1==END_REPETITION||LA59_1==FOR||(LA59_1 >= ID_ && LA59_1 <= INT)||(LA59_1 >= MAJ7 && LA59_1 <= MINOR)||LA59_1==NOTE||LA59_1==NOTE_TYPE||LA59_1==NUM||LA59_1==PLUS||(LA59_1 >= SEVENTH && LA59_1 <= START_REPETITION)||(LA59_1 >= STRING_TYPE && LA59_1 <= TONE)||LA59_1==WHILE||(LA59_1 >= 90 && LA59_1 <= 93)||LA59_1==95||LA59_1==97) ) {
+                    alt59=1;
                 }
             }
-            switch (alt58) {
+            switch (alt59) {
                 case 1 :
                     // src/parser/Music.g:236:51: NUM
                     {
-                    NUM269=(Token)match(input,NUM,FOLLOW_NUM_in_note3174); 
-                    NUM269_tree = 
-                    (AmlTree)adaptor.create(NUM269)
+                    NUM268=(Token)match(input,NUM,FOLLOW_NUM_in_note3170); 
+                    NUM268_tree = 
+                    (AmlTree)adaptor.create(NUM268)
                     ;
-                    adaptor.addChild(root_0, NUM269_tree);
+                    adaptor.addChild(root_0, NUM268_tree);
 
 
                     }
@@ -7822,13 +8180,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token OR271=null;
-        MusicParser.boolterm_return boolterm270 =null;
+        Token OR270=null;
+        MusicParser.boolterm_return boolterm269 =null;
 
-        MusicParser.boolterm_return boolterm272 =null;
+        MusicParser.boolterm_return boolterm271 =null;
 
 
-        AmlTree OR271_tree=null;
+        AmlTree OR270_tree=null;
 
         try {
             // src/parser/Music.g:240:9: ( boolterm ( OR ^ boolterm )* )
@@ -7837,47 +8195,47 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_boolterm_in_expr3203);
-            boolterm270=boolterm();
+            pushFollow(FOLLOW_boolterm_in_expr3199);
+            boolterm269=boolterm();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, boolterm270.getTree());
+            adaptor.addChild(root_0, boolterm269.getTree());
 
             // src/parser/Music.g:240:22: ( OR ^ boolterm )*
-            loop59:
+            loop60:
             do {
-                int alt59=2;
-                int LA59_0 = input.LA(1);
+                int alt60=2;
+                int LA60_0 = input.LA(1);
 
-                if ( (LA59_0==OR) ) {
-                    alt59=1;
+                if ( (LA60_0==OR) ) {
+                    alt60=1;
                 }
 
 
-                switch (alt59) {
+                switch (alt60) {
             	case 1 :
             	    // src/parser/Music.g:240:23: OR ^ boolterm
             	    {
-            	    OR271=(Token)match(input,OR,FOLLOW_OR_in_expr3206); 
-            	    OR271_tree = 
-            	    (AmlTree)adaptor.create(OR271)
+            	    OR270=(Token)match(input,OR,FOLLOW_OR_in_expr3202); 
+            	    OR270_tree = 
+            	    (AmlTree)adaptor.create(OR270)
             	    ;
-            	    root_0 = (AmlTree)adaptor.becomeRoot(OR271_tree, root_0);
+            	    root_0 = (AmlTree)adaptor.becomeRoot(OR270_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_boolterm_in_expr3209);
-            	    boolterm272=boolterm();
+            	    pushFollow(FOLLOW_boolterm_in_expr3205);
+            	    boolterm271=boolterm();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, boolterm272.getTree());
+            	    adaptor.addChild(root_0, boolterm271.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop59;
+            	    break loop60;
                 }
             } while (true);
 
@@ -7921,13 +8279,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token AND274=null;
-        MusicParser.boolfact_return boolfact273 =null;
+        Token AND273=null;
+        MusicParser.boolfact_return boolfact272 =null;
 
-        MusicParser.boolfact_return boolfact275 =null;
+        MusicParser.boolfact_return boolfact274 =null;
 
 
-        AmlTree AND274_tree=null;
+        AmlTree AND273_tree=null;
 
         try {
             // src/parser/Music.g:243:13: ( boolfact ( AND ^ boolfact )* )
@@ -7936,47 +8294,47 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_boolfact_in_boolterm3227);
-            boolfact273=boolfact();
+            pushFollow(FOLLOW_boolfact_in_boolterm3223);
+            boolfact272=boolfact();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, boolfact273.getTree());
+            adaptor.addChild(root_0, boolfact272.getTree());
 
             // src/parser/Music.g:243:26: ( AND ^ boolfact )*
-            loop60:
+            loop61:
             do {
-                int alt60=2;
-                int LA60_0 = input.LA(1);
+                int alt61=2;
+                int LA61_0 = input.LA(1);
 
-                if ( (LA60_0==AND) ) {
-                    alt60=1;
+                if ( (LA61_0==AND) ) {
+                    alt61=1;
                 }
 
 
-                switch (alt60) {
+                switch (alt61) {
             	case 1 :
             	    // src/parser/Music.g:243:27: AND ^ boolfact
             	    {
-            	    AND274=(Token)match(input,AND,FOLLOW_AND_in_boolterm3230); 
-            	    AND274_tree = 
-            	    (AmlTree)adaptor.create(AND274)
+            	    AND273=(Token)match(input,AND,FOLLOW_AND_in_boolterm3226); 
+            	    AND273_tree = 
+            	    (AmlTree)adaptor.create(AND273)
             	    ;
-            	    root_0 = (AmlTree)adaptor.becomeRoot(AND274_tree, root_0);
+            	    root_0 = (AmlTree)adaptor.becomeRoot(AND273_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_boolfact_in_boolterm3233);
-            	    boolfact275=boolfact();
+            	    pushFollow(FOLLOW_boolfact_in_boolterm3229);
+            	    boolfact274=boolfact();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, boolfact275.getTree());
+            	    adaptor.addChild(root_0, boolfact274.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop60;
+            	    break loop61;
                 }
             } while (true);
 
@@ -8020,23 +8378,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token EQUAL277=null;
-        Token NOT_EQUAL278=null;
-        Token LT279=null;
-        Token LE280=null;
-        Token GT281=null;
-        Token GE282=null;
-        MusicParser.num_expr_return num_expr276 =null;
+        Token EQUAL276=null;
+        Token NOT_EQUAL277=null;
+        Token LT278=null;
+        Token LE279=null;
+        Token GT280=null;
+        Token GE281=null;
+        MusicParser.num_expr_return num_expr275 =null;
 
-        MusicParser.num_expr_return num_expr283 =null;
+        MusicParser.num_expr_return num_expr282 =null;
 
 
-        AmlTree EQUAL277_tree=null;
-        AmlTree NOT_EQUAL278_tree=null;
-        AmlTree LT279_tree=null;
-        AmlTree LE280_tree=null;
-        AmlTree GT281_tree=null;
-        AmlTree GE282_tree=null;
+        AmlTree EQUAL276_tree=null;
+        AmlTree NOT_EQUAL277_tree=null;
+        AmlTree LT278_tree=null;
+        AmlTree LE279_tree=null;
+        AmlTree GT280_tree=null;
+        AmlTree GE281_tree=null;
 
         try {
             // src/parser/Music.g:246:13: ( num_expr ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )? )
@@ -8045,74 +8403,74 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_num_expr_in_boolfact3255);
-            num_expr276=num_expr();
+            pushFollow(FOLLOW_num_expr_in_boolfact3251);
+            num_expr275=num_expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, num_expr276.getTree());
+            adaptor.addChild(root_0, num_expr275.getTree());
 
             // src/parser/Music.g:246:26: ( ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr )?
-            int alt62=2;
-            int LA62_0 = input.LA(1);
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA62_0==EQUAL||(LA62_0 >= GE && LA62_0 <= GT)||LA62_0==LE||LA62_0==LT||LA62_0==NOT_EQUAL) ) {
-                alt62=1;
+            if ( (LA63_0==EQUAL||(LA63_0 >= GE && LA63_0 <= GT)||LA63_0==LE||LA63_0==LT||LA63_0==NOT_EQUAL) ) {
+                alt63=1;
             }
-            switch (alt62) {
+            switch (alt63) {
                 case 1 :
                     // src/parser/Music.g:246:27: ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^) num_expr
                     {
                     // src/parser/Music.g:246:27: ( EQUAL ^| NOT_EQUAL ^| LT ^| LE ^| GT ^| GE ^)
-                    int alt61=6;
+                    int alt62=6;
                     switch ( input.LA(1) ) {
                     case EQUAL:
                         {
-                        alt61=1;
+                        alt62=1;
                         }
                         break;
                     case NOT_EQUAL:
                         {
-                        alt61=2;
+                        alt62=2;
                         }
                         break;
                     case LT:
                         {
-                        alt61=3;
+                        alt62=3;
                         }
                         break;
                     case LE:
                         {
-                        alt61=4;
+                        alt62=4;
                         }
                         break;
                     case GT:
                         {
-                        alt61=5;
+                        alt62=5;
                         }
                         break;
                     case GE:
                         {
-                        alt61=6;
+                        alt62=6;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 61, 0, input);
+                            new NoViableAltException("", 62, 0, input);
 
                         throw nvae;
 
                     }
 
-                    switch (alt61) {
+                    switch (alt62) {
                         case 1 :
                             // src/parser/Music.g:246:28: EQUAL ^
                             {
-                            EQUAL277=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_boolfact3259); 
-                            EQUAL277_tree = 
-                            (AmlTree)adaptor.create(EQUAL277)
+                            EQUAL276=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_boolfact3255); 
+                            EQUAL276_tree = 
+                            (AmlTree)adaptor.create(EQUAL276)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(EQUAL277_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(EQUAL276_tree, root_0);
 
 
                             }
@@ -8120,11 +8478,11 @@ public TreeAdaptor getTreeAdaptor() {
                         case 2 :
                             // src/parser/Music.g:246:37: NOT_EQUAL ^
                             {
-                            NOT_EQUAL278=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolfact3264); 
-                            NOT_EQUAL278_tree = 
-                            (AmlTree)adaptor.create(NOT_EQUAL278)
+                            NOT_EQUAL277=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolfact3260); 
+                            NOT_EQUAL277_tree = 
+                            (AmlTree)adaptor.create(NOT_EQUAL277)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(NOT_EQUAL278_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(NOT_EQUAL277_tree, root_0);
 
 
                             }
@@ -8132,11 +8490,11 @@ public TreeAdaptor getTreeAdaptor() {
                         case 3 :
                             // src/parser/Music.g:246:50: LT ^
                             {
-                            LT279=(Token)match(input,LT,FOLLOW_LT_in_boolfact3269); 
-                            LT279_tree = 
-                            (AmlTree)adaptor.create(LT279)
+                            LT278=(Token)match(input,LT,FOLLOW_LT_in_boolfact3265); 
+                            LT278_tree = 
+                            (AmlTree)adaptor.create(LT278)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(LT279_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(LT278_tree, root_0);
 
 
                             }
@@ -8144,11 +8502,11 @@ public TreeAdaptor getTreeAdaptor() {
                         case 4 :
                             // src/parser/Music.g:246:56: LE ^
                             {
-                            LE280=(Token)match(input,LE,FOLLOW_LE_in_boolfact3274); 
-                            LE280_tree = 
-                            (AmlTree)adaptor.create(LE280)
+                            LE279=(Token)match(input,LE,FOLLOW_LE_in_boolfact3270); 
+                            LE279_tree = 
+                            (AmlTree)adaptor.create(LE279)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(LE280_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(LE279_tree, root_0);
 
 
                             }
@@ -8156,11 +8514,11 @@ public TreeAdaptor getTreeAdaptor() {
                         case 5 :
                             // src/parser/Music.g:246:62: GT ^
                             {
-                            GT281=(Token)match(input,GT,FOLLOW_GT_in_boolfact3279); 
-                            GT281_tree = 
-                            (AmlTree)adaptor.create(GT281)
+                            GT280=(Token)match(input,GT,FOLLOW_GT_in_boolfact3275); 
+                            GT280_tree = 
+                            (AmlTree)adaptor.create(GT280)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(GT281_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(GT280_tree, root_0);
 
 
                             }
@@ -8168,11 +8526,11 @@ public TreeAdaptor getTreeAdaptor() {
                         case 6 :
                             // src/parser/Music.g:246:68: GE ^
                             {
-                            GE282=(Token)match(input,GE,FOLLOW_GE_in_boolfact3284); 
-                            GE282_tree = 
-                            (AmlTree)adaptor.create(GE282)
+                            GE281=(Token)match(input,GE,FOLLOW_GE_in_boolfact3280); 
+                            GE281_tree = 
+                            (AmlTree)adaptor.create(GE281)
                             ;
-                            root_0 = (AmlTree)adaptor.becomeRoot(GE282_tree, root_0);
+                            root_0 = (AmlTree)adaptor.becomeRoot(GE281_tree, root_0);
 
 
                             }
@@ -8181,12 +8539,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_num_expr_in_boolfact3288);
-                    num_expr283=num_expr();
+                    pushFollow(FOLLOW_num_expr_in_boolfact3284);
+                    num_expr282=num_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, num_expr283.getTree());
+                    adaptor.addChild(root_0, num_expr282.getTree());
 
                     }
                     break;
@@ -8233,15 +8591,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token PLUS285=null;
-        Token MINUS286=null;
-        MusicParser.term_return term284 =null;
+        Token PLUS284=null;
+        Token MINUS285=null;
+        MusicParser.term_return term283 =null;
 
-        MusicParser.term_return term287 =null;
+        MusicParser.term_return term286 =null;
 
 
-        AmlTree PLUS285_tree=null;
-        AmlTree MINUS286_tree=null;
+        AmlTree PLUS284_tree=null;
+        AmlTree MINUS285_tree=null;
 
         try {
             // src/parser/Music.g:249:13: ( term ( ( PLUS ^| MINUS ^) term )* )
@@ -8250,54 +8608,54 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_term_in_num_expr3310);
-            term284=term();
+            pushFollow(FOLLOW_term_in_num_expr3306);
+            term283=term();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, term284.getTree());
+            adaptor.addChild(root_0, term283.getTree());
 
             // src/parser/Music.g:249:22: ( ( PLUS ^| MINUS ^) term )*
-            loop64:
+            loop65:
             do {
-                int alt64=2;
-                int LA64_0 = input.LA(1);
+                int alt65=2;
+                int LA65_0 = input.LA(1);
 
-                if ( (LA64_0==MINUS||LA64_0==PLUS) ) {
-                    alt64=1;
+                if ( (LA65_0==MINUS||LA65_0==PLUS) ) {
+                    alt65=1;
                 }
 
 
-                switch (alt64) {
+                switch (alt65) {
             	case 1 :
             	    // src/parser/Music.g:249:24: ( PLUS ^| MINUS ^) term
             	    {
             	    // src/parser/Music.g:249:24: ( PLUS ^| MINUS ^)
-            	    int alt63=2;
-            	    int LA63_0 = input.LA(1);
+            	    int alt64=2;
+            	    int LA64_0 = input.LA(1);
 
-            	    if ( (LA63_0==PLUS) ) {
-            	        alt63=1;
+            	    if ( (LA64_0==PLUS) ) {
+            	        alt64=1;
             	    }
-            	    else if ( (LA63_0==MINUS) ) {
-            	        alt63=2;
+            	    else if ( (LA64_0==MINUS) ) {
+            	        alt64=2;
             	    }
             	    else {
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 63, 0, input);
+            	            new NoViableAltException("", 64, 0, input);
 
             	        throw nvae;
 
             	    }
-            	    switch (alt63) {
+            	    switch (alt64) {
             	        case 1 :
             	            // src/parser/Music.g:249:25: PLUS ^
             	            {
-            	            PLUS285=(Token)match(input,PLUS,FOLLOW_PLUS_in_num_expr3315); 
-            	            PLUS285_tree = 
-            	            (AmlTree)adaptor.create(PLUS285)
+            	            PLUS284=(Token)match(input,PLUS,FOLLOW_PLUS_in_num_expr3311); 
+            	            PLUS284_tree = 
+            	            (AmlTree)adaptor.create(PLUS284)
             	            ;
-            	            root_0 = (AmlTree)adaptor.becomeRoot(PLUS285_tree, root_0);
+            	            root_0 = (AmlTree)adaptor.becomeRoot(PLUS284_tree, root_0);
 
 
             	            }
@@ -8305,11 +8663,11 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 2 :
             	            // src/parser/Music.g:249:33: MINUS ^
             	            {
-            	            MINUS286=(Token)match(input,MINUS,FOLLOW_MINUS_in_num_expr3320); 
-            	            MINUS286_tree = 
-            	            (AmlTree)adaptor.create(MINUS286)
+            	            MINUS285=(Token)match(input,MINUS,FOLLOW_MINUS_in_num_expr3316); 
+            	            MINUS285_tree = 
+            	            (AmlTree)adaptor.create(MINUS285)
             	            ;
-            	            root_0 = (AmlTree)adaptor.becomeRoot(MINUS286_tree, root_0);
+            	            root_0 = (AmlTree)adaptor.becomeRoot(MINUS285_tree, root_0);
 
 
             	            }
@@ -8318,18 +8676,18 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_term_in_num_expr3324);
-            	    term287=term();
+            	    pushFollow(FOLLOW_term_in_num_expr3320);
+            	    term286=term();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, term287.getTree());
+            	    adaptor.addChild(root_0, term286.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop64;
+            	    break loop65;
                 }
             } while (true);
 
@@ -8373,17 +8731,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token DOT289=null;
-        Token DIV290=null;
-        Token MOD291=null;
-        MusicParser.factor_return factor288 =null;
+        Token DOT288=null;
+        Token DIV289=null;
+        Token MOD290=null;
+        MusicParser.factor_return factor287 =null;
 
-        MusicParser.factor_return factor292 =null;
+        MusicParser.factor_return factor291 =null;
 
 
-        AmlTree DOT289_tree=null;
-        AmlTree DIV290_tree=null;
-        AmlTree MOD291_tree=null;
+        AmlTree DOT288_tree=null;
+        AmlTree DIV289_tree=null;
+        AmlTree MOD290_tree=null;
 
         try {
             // src/parser/Music.g:252:9: ( factor ( ( DOT ^| DIV ^| MOD ^) factor )* )
@@ -8392,63 +8750,63 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (AmlTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_factor_in_term3346);
-            factor288=factor();
+            pushFollow(FOLLOW_factor_in_term3342);
+            factor287=factor();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, factor288.getTree());
+            adaptor.addChild(root_0, factor287.getTree());
 
             // src/parser/Music.g:252:20: ( ( DOT ^| DIV ^| MOD ^) factor )*
-            loop66:
+            loop67:
             do {
-                int alt66=2;
-                int LA66_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( (LA66_0==DIV||LA66_0==DOT||LA66_0==MOD) ) {
-                    alt66=1;
+                if ( (LA67_0==DIV||LA67_0==DOT||LA67_0==MOD) ) {
+                    alt67=1;
                 }
 
 
-                switch (alt66) {
+                switch (alt67) {
             	case 1 :
             	    // src/parser/Music.g:252:22: ( DOT ^| DIV ^| MOD ^) factor
             	    {
             	    // src/parser/Music.g:252:22: ( DOT ^| DIV ^| MOD ^)
-            	    int alt65=3;
+            	    int alt66=3;
             	    switch ( input.LA(1) ) {
             	    case DOT:
             	        {
-            	        alt65=1;
+            	        alt66=1;
             	        }
             	        break;
             	    case DIV:
             	        {
-            	        alt65=2;
+            	        alt66=2;
             	        }
             	        break;
             	    case MOD:
             	        {
-            	        alt65=3;
+            	        alt66=3;
             	        }
             	        break;
             	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 65, 0, input);
+            	            new NoViableAltException("", 66, 0, input);
 
             	        throw nvae;
 
             	    }
 
-            	    switch (alt65) {
+            	    switch (alt66) {
             	        case 1 :
             	            // src/parser/Music.g:252:23: DOT ^
             	            {
-            	            DOT289=(Token)match(input,DOT,FOLLOW_DOT_in_term3351); 
-            	            DOT289_tree = 
-            	            (AmlTree)adaptor.create(DOT289)
+            	            DOT288=(Token)match(input,DOT,FOLLOW_DOT_in_term3347); 
+            	            DOT288_tree = 
+            	            (AmlTree)adaptor.create(DOT288)
             	            ;
-            	            root_0 = (AmlTree)adaptor.becomeRoot(DOT289_tree, root_0);
+            	            root_0 = (AmlTree)adaptor.becomeRoot(DOT288_tree, root_0);
 
 
             	            }
@@ -8456,11 +8814,11 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 2 :
             	            // src/parser/Music.g:252:30: DIV ^
             	            {
-            	            DIV290=(Token)match(input,DIV,FOLLOW_DIV_in_term3356); 
-            	            DIV290_tree = 
-            	            (AmlTree)adaptor.create(DIV290)
+            	            DIV289=(Token)match(input,DIV,FOLLOW_DIV_in_term3352); 
+            	            DIV289_tree = 
+            	            (AmlTree)adaptor.create(DIV289)
             	            ;
-            	            root_0 = (AmlTree)adaptor.becomeRoot(DIV290_tree, root_0);
+            	            root_0 = (AmlTree)adaptor.becomeRoot(DIV289_tree, root_0);
 
 
             	            }
@@ -8468,11 +8826,11 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 3 :
             	            // src/parser/Music.g:252:37: MOD ^
             	            {
-            	            MOD291=(Token)match(input,MOD,FOLLOW_MOD_in_term3361); 
-            	            MOD291_tree = 
-            	            (AmlTree)adaptor.create(MOD291)
+            	            MOD290=(Token)match(input,MOD,FOLLOW_MOD_in_term3357); 
+            	            MOD290_tree = 
+            	            (AmlTree)adaptor.create(MOD290)
             	            ;
-            	            root_0 = (AmlTree)adaptor.becomeRoot(MOD291_tree, root_0);
+            	            root_0 = (AmlTree)adaptor.becomeRoot(MOD290_tree, root_0);
 
 
             	            }
@@ -8481,18 +8839,18 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_factor_in_term3365);
-            	    factor292=factor();
+            	    pushFollow(FOLLOW_factor_in_term3361);
+            	    factor291=factor();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, factor292.getTree());
+            	    adaptor.addChild(root_0, factor291.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop66;
+            	    break loop67;
                 }
             } while (true);
 
@@ -8536,15 +8894,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         AmlTree root_0 = null;
 
-        Token NOT293=null;
-        Token PLUS294=null;
-        Token MINUS295=null;
-        MusicParser.atom_return atom296 =null;
+        Token NOT292=null;
+        Token PLUS293=null;
+        Token MINUS294=null;
+        MusicParser.atom_return atom295 =null;
 
 
-        AmlTree NOT293_tree=null;
-        AmlTree PLUS294_tree=null;
-        AmlTree MINUS295_tree=null;
+        AmlTree NOT292_tree=null;
+        AmlTree PLUS293_tree=null;
+        AmlTree MINUS294_tree=null;
 
         try {
             // src/parser/Music.g:255:9: ( ( NOT ^| PLUS ^| MINUS ^)? atom )
@@ -8554,34 +8912,34 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // src/parser/Music.g:255:13: ( NOT ^| PLUS ^| MINUS ^)?
-            int alt67=4;
+            int alt68=4;
             switch ( input.LA(1) ) {
                 case NOT:
                     {
-                    alt67=1;
+                    alt68=1;
                     }
                     break;
                 case PLUS:
                     {
-                    alt67=2;
+                    alt68=2;
                     }
                     break;
                 case MINUS:
                     {
-                    alt67=3;
+                    alt68=3;
                     }
                     break;
             }
 
-            switch (alt67) {
+            switch (alt68) {
                 case 1 :
                     // src/parser/Music.g:255:14: NOT ^
                     {
-                    NOT293=(Token)match(input,NOT,FOLLOW_NOT_in_factor3382); 
-                    NOT293_tree = 
-                    (AmlTree)adaptor.create(NOT293)
+                    NOT292=(Token)match(input,NOT,FOLLOW_NOT_in_factor3378); 
+                    NOT292_tree = 
+                    (AmlTree)adaptor.create(NOT292)
                     ;
-                    root_0 = (AmlTree)adaptor.becomeRoot(NOT293_tree, root_0);
+                    root_0 = (AmlTree)adaptor.becomeRoot(NOT292_tree, root_0);
 
 
                     }
@@ -8589,11 +8947,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // src/parser/Music.g:255:21: PLUS ^
                     {
-                    PLUS294=(Token)match(input,PLUS,FOLLOW_PLUS_in_factor3387); 
-                    PLUS294_tree = 
-                    (AmlTree)adaptor.create(PLUS294)
+                    PLUS293=(Token)match(input,PLUS,FOLLOW_PLUS_in_factor3383); 
+                    PLUS293_tree = 
+                    (AmlTree)adaptor.create(PLUS293)
                     ;
-                    root_0 = (AmlTree)adaptor.becomeRoot(PLUS294_tree, root_0);
+                    root_0 = (AmlTree)adaptor.becomeRoot(PLUS293_tree, root_0);
 
 
                     }
@@ -8601,11 +8959,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // src/parser/Music.g:255:29: MINUS ^
                     {
-                    MINUS295=(Token)match(input,MINUS,FOLLOW_MINUS_in_factor3392); 
-                    MINUS295_tree = 
-                    (AmlTree)adaptor.create(MINUS295)
+                    MINUS294=(Token)match(input,MINUS,FOLLOW_MINUS_in_factor3388); 
+                    MINUS294_tree = 
+                    (AmlTree)adaptor.create(MINUS294)
                     ;
-                    root_0 = (AmlTree)adaptor.becomeRoot(MINUS295_tree, root_0);
+                    root_0 = (AmlTree)adaptor.becomeRoot(MINUS294_tree, root_0);
 
 
                     }
@@ -8614,12 +8972,12 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_atom_in_factor3397);
-            atom296=atom();
+            pushFollow(FOLLOW_atom_in_factor3393);
+            atom295=atom();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, atom296.getTree());
+            adaptor.addChild(root_0, atom295.getTree());
 
             }
 
@@ -8661,43 +9019,61 @@ public TreeAdaptor getTreeAdaptor() {
         AmlTree root_0 = null;
 
         Token b=null;
-        Token NUM298=null;
-        Token STRING299=null;
-        Token char_literal301=null;
-        Token char_literal303=null;
-        MusicParser.var_access_return var_access297 =null;
+        Token NUM297=null;
+        Token STRING298=null;
+        Token char_literal300=null;
+        Token char_literal302=null;
+        MusicParser.var_access_return var_access296 =null;
 
-        MusicParser.funcall_return funcall300 =null;
+        MusicParser.funcall_return funcall299 =null;
 
-        MusicParser.expr_return expr302 =null;
+        MusicParser.expr_return expr301 =null;
 
 
         AmlTree b_tree=null;
-        AmlTree NUM298_tree=null;
-        AmlTree STRING299_tree=null;
-        AmlTree char_literal301_tree=null;
-        AmlTree char_literal303_tree=null;
-        RewriteRuleTokenStream stream_FALSE=new RewriteRuleTokenStream(adaptor,"token FALSE");
+        AmlTree NUM297_tree=null;
+        AmlTree STRING298_tree=null;
+        AmlTree char_literal300_tree=null;
+        AmlTree char_literal302_tree=null;
         RewriteRuleTokenStream stream_TRUE=new RewriteRuleTokenStream(adaptor,"token TRUE");
+        RewriteRuleTokenStream stream_FALSE=new RewriteRuleTokenStream(adaptor,"token FALSE");
 
         try {
             // src/parser/Music.g:258:9: ( var_access | NUM | STRING | funcall | (b= TRUE |b= FALSE ) -> ^( BOOLEAN[$b,$b.text] ) | '(' ! expr ')' !)
-            int alt69=6;
+            int alt70=6;
             switch ( input.LA(1) ) {
-            case ID:
-            case LETTER_X:
+            case ID_:
                 {
-                int LA69_1 = input.LA(2);
+                int LA70_1 = input.LA(2);
 
-                if ( (LA69_1==AND||LA69_1==DIV||LA69_1==DOT||LA69_1==EQUAL||(LA69_1 >= GE && LA69_1 <= GT)||LA69_1==LE||LA69_1==LT||LA69_1==MINUS||LA69_1==MOD||LA69_1==NOT_EQUAL||(LA69_1 >= OR && LA69_1 <= PLUS)||(LA69_1 >= 90 && LA69_1 <= 92)||LA69_1==94) ) {
-                    alt69=1;
+                if ( (LA70_1==AND||LA70_1==DIV||LA70_1==DOT||LA70_1==EQUAL||(LA70_1 >= GE && LA70_1 <= GT)||LA70_1==LE||LA70_1==LT||LA70_1==MINUS||LA70_1==MOD||LA70_1==NOT_EQUAL||(LA70_1 >= OR && LA70_1 <= PLUS)||(LA70_1 >= 91 && LA70_1 <= 93)||LA70_1==95) ) {
+                    alt70=1;
                 }
-                else if ( (LA69_1==89) ) {
-                    alt69=4;
+                else if ( (LA70_1==90) ) {
+                    alt70=4;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 69, 1, input);
+                        new NoViableAltException("", 70, 1, input);
+
+                    throw nvae;
+
+                }
+                }
+                break;
+            case LETTER_X:
+                {
+                int LA70_2 = input.LA(2);
+
+                if ( (LA70_2==AND||LA70_2==DIV||LA70_2==DOT||LA70_2==EQUAL||(LA70_2 >= GE && LA70_2 <= GT)||LA70_2==LE||LA70_2==LT||LA70_2==MINUS||LA70_2==MOD||LA70_2==NOT_EQUAL||(LA70_2 >= OR && LA70_2 <= PLUS)||(LA70_2 >= 91 && LA70_2 <= 93)||LA70_2==95) ) {
+                    alt70=1;
+                }
+                else if ( (LA70_2==90) ) {
+                    alt70=4;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 70, 2, input);
 
                     throw nvae;
 
@@ -8706,46 +9082,46 @@ public TreeAdaptor getTreeAdaptor() {
                 break;
             case NUM:
                 {
-                alt69=2;
+                alt70=2;
                 }
                 break;
             case STRING:
                 {
-                alt69=3;
+                alt70=3;
                 }
                 break;
             case FALSE:
             case TRUE:
                 {
-                alt69=5;
+                alt70=5;
                 }
                 break;
-            case 89:
+            case 90:
                 {
-                alt69=6;
+                alt70=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 69, 0, input);
+                    new NoViableAltException("", 70, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt69) {
+            switch (alt70) {
                 case 1 :
                     // src/parser/Music.g:258:13: var_access
                     {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_var_access_in_atom3413);
-                    var_access297=var_access();
+                    pushFollow(FOLLOW_var_access_in_atom3409);
+                    var_access296=var_access();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, var_access297.getTree());
+                    adaptor.addChild(root_0, var_access296.getTree());
 
                     }
                     break;
@@ -8755,11 +9131,11 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    NUM298=(Token)match(input,NUM,FOLLOW_NUM_in_atom3421); 
-                    NUM298_tree = 
-                    (AmlTree)adaptor.create(NUM298)
+                    NUM297=(Token)match(input,NUM,FOLLOW_NUM_in_atom3417); 
+                    NUM297_tree = 
+                    (AmlTree)adaptor.create(NUM297)
                     ;
-                    adaptor.addChild(root_0, NUM298_tree);
+                    adaptor.addChild(root_0, NUM297_tree);
 
 
                     }
@@ -8770,11 +9146,11 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    STRING299=(Token)match(input,STRING,FOLLOW_STRING_in_atom3429); 
-                    STRING299_tree = 
-                    (AmlTree)adaptor.create(STRING299)
+                    STRING298=(Token)match(input,STRING,FOLLOW_STRING_in_atom3425); 
+                    STRING298_tree = 
+                    (AmlTree)adaptor.create(STRING298)
                     ;
-                    adaptor.addChild(root_0, STRING299_tree);
+                    adaptor.addChild(root_0, STRING298_tree);
 
 
                     }
@@ -8785,12 +9161,12 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_funcall_in_atom3437);
-                    funcall300=funcall();
+                    pushFollow(FOLLOW_funcall_in_atom3433);
+                    funcall299=funcall();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, funcall300.getTree());
+                    adaptor.addChild(root_0, funcall299.getTree());
 
                     }
                     break;
@@ -8798,27 +9174,27 @@ public TreeAdaptor getTreeAdaptor() {
                     // src/parser/Music.g:262:7: (b= TRUE |b= FALSE )
                     {
                     // src/parser/Music.g:262:7: (b= TRUE |b= FALSE )
-                    int alt68=2;
-                    int LA68_0 = input.LA(1);
+                    int alt69=2;
+                    int LA69_0 = input.LA(1);
 
-                    if ( (LA68_0==TRUE) ) {
-                        alt68=1;
+                    if ( (LA69_0==TRUE) ) {
+                        alt69=1;
                     }
-                    else if ( (LA68_0==FALSE) ) {
-                        alt68=2;
+                    else if ( (LA69_0==FALSE) ) {
+                        alt69=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 68, 0, input);
+                            new NoViableAltException("", 69, 0, input);
 
                         throw nvae;
 
                     }
-                    switch (alt68) {
+                    switch (alt69) {
                         case 1 :
                             // src/parser/Music.g:262:8: b= TRUE
                             {
-                            b=(Token)match(input,TRUE,FOLLOW_TRUE_in_atom3448);  
+                            b=(Token)match(input,TRUE,FOLLOW_TRUE_in_atom3444);  
                             stream_TRUE.add(b);
 
 
@@ -8827,7 +9203,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 2 :
                             // src/parser/Music.g:262:17: b= FALSE
                             {
-                            b=(Token)match(input,FALSE,FOLLOW_FALSE_in_atom3454);  
+                            b=(Token)match(input,FALSE,FOLLOW_FALSE_in_atom3450);  
                             stream_FALSE.add(b);
 
 
@@ -8873,16 +9249,16 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (AmlTree)adaptor.nil();
 
 
-                    char_literal301=(Token)match(input,89,FOLLOW_89_in_atom3471); 
+                    char_literal300=(Token)match(input,90,FOLLOW_90_in_atom3467); 
 
-                    pushFollow(FOLLOW_expr_in_atom3474);
-                    expr302=expr();
+                    pushFollow(FOLLOW_expr_in_atom3470);
+                    expr301=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr302.getTree());
+                    adaptor.addChild(root_0, expr301.getTree());
 
-                    char_literal303=(Token)match(input,90,FOLLOW_90_in_atom3476); 
+                    char_literal302=(Token)match(input,91,FOLLOW_91_in_atom3472); 
 
                     }
                     break;
@@ -8914,315 +9290,317 @@ public TreeAdaptor getTreeAdaptor() {
 
  
 
-    public static final BitSet FOLLOW_global_stmt_in_prog186 = new BitSet(new long[]{0x4000080401002800L,0x0000000000404400L});
-    public static final BitSet FOLLOW_EOF_in_prog190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_function_in_global_stmt222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_frag_in_global_stmt240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_song_in_global_stmt258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_rule_in_var_funcall283 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_92_in_var_funcall285 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_id_rule_in_var_funcall289 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_var_funcall291 = new BitSet(new long[]{0x0C40208080802420L,0x000000000610A005L});
-    public static final BitSet FOLLOW_params_in_var_funcall293 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_var_funcall296 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_var_funcall298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_rule_in_var_access339 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_92_in_var_access342 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_id_rule_in_var_access346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_rule_in_var_access375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_void_in_function445 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_id_rule_in_function449 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_function451 = new BitSet(new long[]{0x4000080001002800L,0x0000000004004000L});
-    public static final BitSet FOLLOW_list_arguments_in_function453 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_function455 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_function457 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_function459 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_function461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_rule_in_funcall508 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_funcall510 = new BitSet(new long[]{0x0C40208080802420L,0x000000000610A005L});
-    public static final BitSet FOLLOW_params_in_funcall512 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_funcall515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FRAGMENT_in_frag549 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_id_rule_in_frag552 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_frag554 = new BitSet(new long[]{0x4000080001002800L,0x0000000004004000L});
-    public static final BitSet FOLLOW_list_arguments_in_frag557 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_frag559 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_frag562 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_frag565 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_frag567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_argument_in_list_arguments587 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_91_in_list_arguments590 = new BitSet(new long[]{0x4000080001002800L,0x0000000000004000L});
-    public static final BitSet FOLLOW_argument_in_list_arguments592 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_type_in_argument633 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_id_rule_in_argument636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_params663 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_notes_variable_in_params667 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_91_in_params671 = new BitSet(new long[]{0x0C40208080802420L,0x000000000210A005L});
-    public static final BitSet FOLLOW_expr_in_params675 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_notes_variable_in_params679 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_inst_in_listInst707 = new BitSet(new long[]{0x40002F8201422A02L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_music_inst_in_list_music_inst741 = new BitSet(new long[]{0x48002F8201822E22L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_declaration_in_inst785 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RETURN_in_inst803 = new BitSet(new long[]{0x0C40208080802420L,0x000000000210A005L});
-    public static final BitSet FOLLOW_expr_in_inst807 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_notes_group_in_inst811 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_funcall_in_inst833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tone_in_inst851 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_beat_in_inst872 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst874 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_speed_in_inst893 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instrument_in_inst914 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignation_in_inst935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_while_stmt_in_inst953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_funcall_in_inst971 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_inst973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_for_stmt_in_inst992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_if_stmt_in_inst1010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_song_in_inst1028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_compas_list_in_inst1046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaration_in_music_inst1070 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tone_in_music_inst1088 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_music_inst1090 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_beat_in_music_inst1109 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_music_inst1111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_speed_in_music_inst1130 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_music_inst1132 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instrument_in_music_inst1151 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_music_inst1153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_funcall_in_music_inst1172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignation_in_music_inst1190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_while_music_stmt_in_music_inst1208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_funcall_in_music_inst1226 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_music_inst1228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_for_music_stmt_in_music_inst1247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_if_music_stmt_in_music_inst1265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_song_in_music_inst1283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_group_in_music_inst1310 = new BitSet(new long[]{0x0800000000802422L,0x0000000042008000L});
-    public static final BitSet FOLLOW_94_in_music_inst1314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_declaration1339 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_assig_opt_in_declaration1342 = new BitSet(new long[]{0x0000000000000000L,0x0000000048000000L});
-    public static final BitSet FOLLOW_91_in_declaration1345 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_assig_opt_in_declaration1348 = new BitSet(new long[]{0x0000000000000000L,0x0000000048000000L});
-    public static final BitSet FOLLOW_94_in_declaration1352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_type_void1498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_type_void1516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_rule_in_assig_opt1541 = new BitSet(new long[]{0x0000000000000042L});
-    public static final BitSet FOLLOW_ASSIG_in_assig_opt1544 = new BitSet(new long[]{0x0C40208080802420L,0x000000000210A005L});
-    public static final BitSet FOLLOW_expr_in_assig_opt1548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_variable_in_assig_opt1552 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assig_in_assignation1578 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_assignation1580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_access_in_assig1610 = new BitSet(new long[]{0x0280000000100040L,0x0000000000000048L});
-    public static final BitSet FOLLOW_set_in_assig1612 = new BitSet(new long[]{0x0C40208180802420L,0x000000000210A005L});
-    public static final BitSet FOLLOW_expr_in_assig1628 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_variable_in_assig1632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FIGURE_in_assig1636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_post_in_assig1655 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pre_in_assig1673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_access_in_post1703 = new BitSet(new long[]{0x0000020000020000L});
-    public static final BitSet FOLLOW_INCR_in_post1708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DECR_in_post1714 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INCR_in_pre1761 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_DECR_in_pre1767 = new BitSet(new long[]{0x0000208000000000L});
-    public static final BitSet FOLLOW_var_access_in_pre1770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BEAT_in_beat1813 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_NUM_in_beat1816 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
-    public static final BitSet FOLLOW_93_in_beat1818 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_NUM_in_beat1821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SPEED_in_speed1850 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_NUM_in_speed1853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRANSPORT_in_transport1878 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_transport1881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INSTRUMENT_in_instrument1905 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_STRING_in_instrument1908 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_instrument1910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_while_stmt1934 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_while_stmt1937 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_while_stmt1940 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_while_stmt1942 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_while_stmt1945 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_while_stmt1948 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_while_stmt1950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_while_music_stmt1977 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_while_music_stmt1980 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_while_music_stmt1983 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_while_music_stmt1985 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_while_music_stmt1988 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_while_music_stmt1991 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_while_music_stmt1993 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_for_stmt2028 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_for_stmt2031 = new BitSet(new long[]{0x40002A8001022800L,0x0000000000004000L});
-    public static final BitSet FOLLOW_declaration_in_for_stmt2035 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_list_assig_in_for_stmt2039 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_for_stmt2041 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_for_stmt2045 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_for_stmt2047 = new BitSet(new long[]{0x0000228000020000L});
-    public static final BitSet FOLLOW_list_assig_in_for_stmt2050 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_for_stmt2052 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_for_stmt2055 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_for_stmt2058 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_for_stmt2060 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_for_music_stmt2085 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_for_music_stmt2088 = new BitSet(new long[]{0x40002A8001022800L,0x0000000000004000L});
-    public static final BitSet FOLLOW_declaration_in_for_music_stmt2092 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_list_assig_in_for_music_stmt2096 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_for_music_stmt2098 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_for_music_stmt2102 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_for_music_stmt2104 = new BitSet(new long[]{0x0000228000020000L});
-    public static final BitSet FOLLOW_list_assig_in_for_music_stmt2107 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_for_music_stmt2109 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_for_music_stmt2112 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_for_music_stmt2115 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_for_music_stmt2117 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assig_in_list_assig2146 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_91_in_list_assig2149 = new BitSet(new long[]{0x0000228000020000L});
-    public static final BitSet FOLLOW_assig_in_list_assig2151 = new BitSet(new long[]{0x0000000000000002L,0x0000000008000000L});
-    public static final BitSet FOLLOW_IF_in_if_stmt2189 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_if_stmt2192 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_if_stmt2195 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_if_stmt2197 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_if_stmt2200 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_if_stmt2203 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_if_stmt2205 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_elseif_stmt_in_if_stmt2208 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_else_stmt_in_if_stmt2211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_elseif_stmt2235 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_IF_in_elseif_stmt2237 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_elseif_stmt2239 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_elseif_stmt2241 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_elseif_stmt2243 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_elseif_stmt2245 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_elseif_stmt2247 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_elseif_stmt2249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_else_stmt2284 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_else_stmt2287 = new BitSet(new long[]{0x40002F8201422A00L,0x0000000000825D01L});
-    public static final BitSet FOLLOW_listInst_in_else_stmt2290 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_else_stmt2292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_if_music_stmt2318 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_if_music_stmt2321 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_if_music_stmt2324 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_if_music_stmt2326 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_if_music_stmt2329 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_if_music_stmt2332 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_if_music_stmt2334 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_elseif_music_stmt_in_if_music_stmt2337 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_else_music_stmt_in_if_music_stmt2340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_elseif_music_stmt2370 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_IF_in_elseif_music_stmt2372 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_elseif_music_stmt2374 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_elseif_music_stmt2376 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_elseif_music_stmt2378 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_elseif_music_stmt2380 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_elseif_music_stmt2382 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_elseif_music_stmt2384 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_else_music_stmt2425 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_else_music_stmt2428 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_list_music_inst_in_else_music_stmt2431 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_else_music_stmt2433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SONG_in_song2468 = new BitSet(new long[]{0x0000208000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_id_rule_in_song2471 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_95_in_song2474 = new BitSet(new long[]{0x0000000000000200L,0x00000000000E0800L});
-    public static final BitSet FOLLOW_beat_in_song2478 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_song2480 = new BitSet(new long[]{0x0000000000000000L,0x00000000000E0800L});
-    public static final BitSet FOLLOW_speed_in_song2486 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_song2488 = new BitSet(new long[]{0x0000000000000000L,0x00000000000E0000L});
-    public static final BitSet FOLLOW_tone_in_song2494 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_song2496 = new BitSet(new long[]{0x0000000000000000L,0x00000000000C0000L});
-    public static final BitSet FOLLOW_transport_in_song2502 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_94_in_song2504 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_track_in_song2511 = new BitSet(new long[]{0x0000000000800000L,0x0000000100040000L});
-    public static final BitSet FOLLOW_drums_track_in_song2515 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_96_in_song2518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRACK_in_track2548 = new BitSet(new long[]{0x0000208000400000L,0x0000000000003001L});
-    public static final BitSet FOLLOW_id_rule_in_track2551 = new BitSet(new long[]{0x0000000000400000L,0x0000000000003001L});
-    public static final BitSet FOLLOW_STRING_in_track2554 = new BitSet(new long[]{0x0000000000400000L,0x0000000000001001L});
-    public static final BitSet FOLLOW_compas_aux_in_track2557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DRUMS_in_drums_track2592 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_TRACK_in_drums_track2595 = new BitSet(new long[]{0x0000000000400000L,0x0000000000001001L});
-    public static final BitSet FOLLOW_compas_aux_in_drums_track2597 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_compas_list_in_compas_aux2621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLE_BAR_in_compas_list2651 = new BitSet(new long[]{0x48002F8201C22E20L,0x000000000282DC01L});
-    public static final BitSet FOLLOW_repetition_in_compas_list2656 = new BitSet(new long[]{0x48002F8201C22E20L,0x000000000282DC01L});
-    public static final BitSet FOLLOW_compasses_in_compas_list2660 = new BitSet(new long[]{0x48002F8201C22E20L,0x000000000282DC01L});
-    public static final BitSet FOLLOW_repetition_in_compas_list2664 = new BitSet(new long[]{0x48002F8201C22E20L,0x000000000282DC01L});
-    public static final BitSet FOLLOW_DOUBLE_BAR_in_compas_list2669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_compas_in_compasses2696 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_BAR_in_compasses2699 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_compas_in_compasses2702 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_NUM_in_repetition2729 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_LETTER_X_in_repetition2731 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_START_REPETITION_in_repetition2735 = new BitSet(new long[]{0x48002F8201822E20L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_compasses_in_repetition2737 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_END_REPETITION_in_repetition2739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_music_inst_in_compas2790 = new BitSet(new long[]{0x48002F8201822E22L,0x000000000282CC00L});
-    public static final BitSet FOLLOW_TONE_in_tone2834 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_NUM_in_tone2837 = new BitSet(new long[]{0x0000000000000400L,0x0000000000008000L});
-    public static final BitSet FOLLOW_set_in_tone2839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_type_in_notes_group2868 = new BitSet(new long[]{0x0000000000000002L,0x0000000010010000L});
-    public static final BitSet FOLLOW_92_in_notes_group2871 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_FIGURE_in_notes_group2873 = new BitSet(new long[]{0x0000000000200002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_DOT_in_notes_group2875 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_TIE_in_notes_group2880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_type_in_notes_variable2922 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
-    public static final BitSet FOLLOW_92_in_notes_variable2925 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_FIGURE_in_notes_variable2927 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_DOT_in_notes_variable2929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_chord_in_notes_type2972 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_notes_in_notes_type2976 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_drums_in_notes_type2980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHORD_in_chord3009 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_chord3012 = new BitSet(new long[]{0x0800000000000420L,0x0000000000008000L});
-    public static final BitSet FOLLOW_note_in_chord3015 = new BitSet(new long[]{0x0030000000040000L,0x0000000004000204L});
-    public static final BitSet FOLLOW_90_in_chord3035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_89_in_notes3067 = new BitSet(new long[]{0x0800000000000420L,0x0000000000008000L});
-    public static final BitSet FOLLOW_note_in_notes3070 = new BitSet(new long[]{0x0800000000000420L,0x0000000004008000L});
-    public static final BitSet FOLLOW_90_in_notes3074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_note_in_notes3079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DRUMS_in_drums3118 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_drums3121 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_num_expr_in_drums3124 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_drums3126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOTE_in_note3170 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_NUM_in_note3174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolterm_in_expr3203 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_OR_in_expr3206 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_boolterm_in_expr3209 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_boolfact_in_boolterm3227 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_AND_in_boolterm3230 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_boolfact_in_boolterm3233 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_num_expr_in_boolfact3255 = new BitSet(new long[]{0x8008106020000002L});
-    public static final BitSet FOLLOW_EQUAL_in_boolfact3259 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_NOT_EQUAL_in_boolfact3264 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_LT_in_boolfact3269 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_LE_in_boolfact3274 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_GT_in_boolfact3279 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_GE_in_boolfact3284 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_num_expr_in_boolfact3288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_term_in_num_expr3310 = new BitSet(new long[]{0x0040000000000002L,0x0000000000000004L});
-    public static final BitSet FOLLOW_PLUS_in_num_expr3315 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_MINUS_in_num_expr3320 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_term_in_num_expr3324 = new BitSet(new long[]{0x0040000000000002L,0x0000000000000004L});
-    public static final BitSet FOLLOW_factor_in_term3346 = new BitSet(new long[]{0x0100000000280002L});
-    public static final BitSet FOLLOW_DOT_in_term3351 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_DIV_in_term3356 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_MOD_in_term3361 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_factor_in_term3365 = new BitSet(new long[]{0x0100000000280002L});
-    public static final BitSet FOLLOW_NOT_in_factor3382 = new BitSet(new long[]{0x0000208080000000L,0x0000000002102001L});
-    public static final BitSet FOLLOW_PLUS_in_factor3387 = new BitSet(new long[]{0x0000208080000000L,0x0000000002102001L});
-    public static final BitSet FOLLOW_MINUS_in_factor3392 = new BitSet(new long[]{0x0000208080000000L,0x0000000002102001L});
-    public static final BitSet FOLLOW_atom_in_factor3397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_var_access_in_atom3413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUM_in_atom3421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_atom3429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_funcall_in_atom3437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRUE_in_atom3448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FALSE_in_atom3454 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_89_in_atom3471 = new BitSet(new long[]{0x0440208080000000L,0x0000000002102005L});
-    public static final BitSet FOLLOW_expr_in_atom3474 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_atom3476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_global_stmt_in_prog193 = new BitSet(new long[]{0x8000100401002800L,0x0000000000808800L});
+    public static final BitSet FOLLOW_EOF_in_prog197 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_function_in_global_stmt229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_frag_in_global_stmt247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_song_in_global_stmt265 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_rule_in_var_funcall290 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
+    public static final BitSet FOLLOW_93_in_var_funcall292 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_id_rule_in_var_funcall296 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_var_funcall298 = new BitSet(new long[]{0x1880410080802420L,0x000000000C21400AL});
+    public static final BitSet FOLLOW_params_in_var_funcall300 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_var_funcall303 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_var_funcall305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_rule_in_var_access346 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
+    public static final BitSet FOLLOW_93_in_var_access349 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_id_rule_in_var_access353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_rule_in_var_access382 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID__in_id_rule412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LETTER_X_in_id_rule420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_void_in_function453 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_id_rule_in_function457 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_function459 = new BitSet(new long[]{0x8000100001002800L,0x0000000008008000L});
+    public static final BitSet FOLLOW_list_arguments_in_function461 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_function463 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_function465 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_function467 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_function469 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_rule_in_funcall516 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_funcall518 = new BitSet(new long[]{0x1880410080802420L,0x000000000C21400AL});
+    public static final BitSet FOLLOW_params_in_funcall520 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_funcall523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FRAGMENT_in_frag557 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_id_rule_in_frag560 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_frag562 = new BitSet(new long[]{0x8000100001002800L,0x0000000008008000L});
+    public static final BitSet FOLLOW_list_arguments_in_frag565 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_frag567 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_frag570 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_frag573 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_frag575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_argument_in_list_arguments595 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_92_in_list_arguments598 = new BitSet(new long[]{0x8000100001002800L,0x0000000000008000L});
+    public static final BitSet FOLLOW_argument_in_list_arguments600 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_type_in_argument641 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_id_rule_in_argument644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_params671 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_notes_variable_in_params675 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_92_in_params679 = new BitSet(new long[]{0x1880410080802420L,0x000000000421400AL});
+    public static final BitSet FOLLOW_expr_in_params683 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_notes_variable_in_params687 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_inst_in_listInst715 = new BitSet(new long[]{0x80005F0201422A02L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_music_inst_in_list_music_inst749 = new BitSet(new long[]{0x90005F0201822E22L,0x0000000005059800L});
+    public static final BitSet FOLLOW_declaration_in_inst793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETURN_in_inst811 = new BitSet(new long[]{0x1880410080802420L,0x000000000421400AL});
+    public static final BitSet FOLLOW_expr_in_inst815 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_notes_group_in_inst819 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_funcall_in_inst841 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tone_in_inst859 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_beat_in_inst880 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_speed_in_inst901 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instrument_in_inst922 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignation_in_inst943 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_while_stmt_in_inst961 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_inst979 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_inst981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_for_stmt_in_inst1000 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_if_stmt_in_inst1018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_song_in_inst1036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_compas_list_in_inst1054 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declaration_in_music_inst1078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tone_in_music_inst1096 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_music_inst1098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_beat_in_music_inst1117 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_music_inst1119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_speed_in_music_inst1138 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_music_inst1140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instrument_in_music_inst1159 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_music_inst1161 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_funcall_in_music_inst1180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignation_in_music_inst1198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_while_music_stmt_in_music_inst1216 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_music_inst1234 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_music_inst1236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_for_music_stmt_in_music_inst1255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_if_music_stmt_in_music_inst1273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_song_in_music_inst1291 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_group_in_music_inst1318 = new BitSet(new long[]{0x1000000000802422L,0x0000000084010000L});
+    public static final BitSet FOLLOW_95_in_music_inst1322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_declaration1347 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_assig_opt_in_declaration1350 = new BitSet(new long[]{0x0000000000000000L,0x0000000090000000L});
+    public static final BitSet FOLLOW_92_in_declaration1353 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_assig_opt_in_declaration1356 = new BitSet(new long[]{0x0000000000000000L,0x0000000090000000L});
+    public static final BitSet FOLLOW_95_in_declaration1360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_type_void1506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_type_void1524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_rule_in_assig_opt1549 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_ASSIG_in_assig_opt1552 = new BitSet(new long[]{0x1880410080802420L,0x000000000421400AL});
+    public static final BitSet FOLLOW_expr_in_assig_opt1556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_variable_in_assig_opt1560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assig_in_assignation1586 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_assignation1588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_access_in_assig1618 = new BitSet(new long[]{0x0500000000100040L,0x0000000000000090L});
+    public static final BitSet FOLLOW_set_in_assig1620 = new BitSet(new long[]{0x1880410180802420L,0x000000000421400AL});
+    public static final BitSet FOLLOW_expr_in_assig1636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_variable_in_assig1640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FIGURE_in_assig1644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_post_in_assig1663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pre_in_assig1681 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_access_in_post1711 = new BitSet(new long[]{0x0000040000020000L});
+    public static final BitSet FOLLOW_INCR_in_post1716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DECR_in_post1722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INCR_in_pre1769 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_DECR_in_pre1775 = new BitSet(new long[]{0x0000410000000000L});
+    public static final BitSet FOLLOW_var_access_in_pre1778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BEAT_in_beat1821 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_beat1824 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
+    public static final BitSet FOLLOW_94_in_beat1826 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_beat1829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SPEED_in_speed1858 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_speed1861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRANSPORT_in_transport1886 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_transport1889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INSTRUMENT_in_instrument1913 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_STRING_in_instrument1916 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_instrument1918 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_while_stmt1942 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_while_stmt1945 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_while_stmt1948 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_while_stmt1950 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_while_stmt1953 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_while_stmt1956 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_while_stmt1958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_while_music_stmt1985 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_while_music_stmt1988 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_while_music_stmt1991 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_while_music_stmt1993 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_while_music_stmt1996 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_while_music_stmt1999 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_while_music_stmt2001 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_for_stmt2036 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_for_stmt2039 = new BitSet(new long[]{0x8000550001022800L,0x0000000000008000L});
+    public static final BitSet FOLLOW_declaration_in_for_stmt2043 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_list_assig_in_for_stmt2047 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_for_stmt2049 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_for_stmt2053 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_for_stmt2055 = new BitSet(new long[]{0x0000450000020000L});
+    public static final BitSet FOLLOW_list_assig_in_for_stmt2058 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_for_stmt2060 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_for_stmt2063 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_for_stmt2066 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_for_stmt2068 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_for_music_stmt2093 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_for_music_stmt2096 = new BitSet(new long[]{0x8000550001022800L,0x0000000000008000L});
+    public static final BitSet FOLLOW_declaration_in_for_music_stmt2100 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_list_assig_in_for_music_stmt2104 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_for_music_stmt2106 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_for_music_stmt2110 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_for_music_stmt2112 = new BitSet(new long[]{0x0000450000020000L});
+    public static final BitSet FOLLOW_list_assig_in_for_music_stmt2115 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_for_music_stmt2117 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_for_music_stmt2120 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_for_music_stmt2123 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_for_music_stmt2125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assig_in_list_assig2154 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_92_in_list_assig2157 = new BitSet(new long[]{0x0000450000020000L});
+    public static final BitSet FOLLOW_assig_in_list_assig2159 = new BitSet(new long[]{0x0000000000000002L,0x0000000010000000L});
+    public static final BitSet FOLLOW_IF_in_if_stmt2197 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_if_stmt2200 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_if_stmt2203 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_if_stmt2205 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_if_stmt2208 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_if_stmt2211 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_if_stmt2213 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_elseif_stmt_in_if_stmt2216 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_else_stmt_in_if_stmt2219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_elseif_stmt2243 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_IF_in_elseif_stmt2245 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_elseif_stmt2247 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_elseif_stmt2249 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_elseif_stmt2251 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_elseif_stmt2253 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_elseif_stmt2255 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_elseif_stmt2257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_else_stmt2292 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_else_stmt2295 = new BitSet(new long[]{0x80005F0201422A00L,0x000000000104BA02L});
+    public static final BitSet FOLLOW_listInst_in_else_stmt2298 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_else_stmt2300 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_if_music_stmt2326 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_if_music_stmt2329 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_if_music_stmt2332 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_if_music_stmt2334 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_if_music_stmt2337 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_if_music_stmt2340 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_if_music_stmt2342 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_elseif_music_stmt_in_if_music_stmt2345 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_else_music_stmt_in_if_music_stmt2348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_elseif_music_stmt2378 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_IF_in_elseif_music_stmt2380 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_elseif_music_stmt2382 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_elseif_music_stmt2384 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_elseif_music_stmt2386 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_elseif_music_stmt2388 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_elseif_music_stmt2390 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_elseif_music_stmt2392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_else_music_stmt2433 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_else_music_stmt2436 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_list_music_inst_in_else_music_stmt2439 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_else_music_stmt2441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SONG_in_song2476 = new BitSet(new long[]{0x0000410000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_id_rule_in_song2479 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_96_in_song2482 = new BitSet(new long[]{0x0000000000000200L,0x00000000001C1000L});
+    public static final BitSet FOLLOW_beat_in_song2486 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_song2488 = new BitSet(new long[]{0x0000000000000000L,0x00000000001C1000L});
+    public static final BitSet FOLLOW_speed_in_song2494 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_song2496 = new BitSet(new long[]{0x0000000000000000L,0x00000000001C0000L});
+    public static final BitSet FOLLOW_tone_in_song2502 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_song2504 = new BitSet(new long[]{0x0000000000000000L,0x0000000000180000L});
+    public static final BitSet FOLLOW_transport_in_song2510 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_95_in_song2512 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_track_in_song2519 = new BitSet(new long[]{0x0000000000800000L,0x0000000200080000L});
+    public static final BitSet FOLLOW_drums_track_in_song2523 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_97_in_song2526 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRACK_in_track2556 = new BitSet(new long[]{0x0000410000400000L,0x0000000000006002L});
+    public static final BitSet FOLLOW_id_rule_in_track2559 = new BitSet(new long[]{0x0000000000400000L,0x0000000000006002L});
+    public static final BitSet FOLLOW_STRING_in_track2562 = new BitSet(new long[]{0x0000000000400000L,0x0000000000002002L});
+    public static final BitSet FOLLOW_compas_aux_in_track2565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DRUMS_in_drums_track2588 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_TRACK_in_drums_track2591 = new BitSet(new long[]{0x0000000000400000L,0x0000000000002002L});
+    public static final BitSet FOLLOW_compas_aux_in_drums_track2593 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_compas_list_in_compas_aux2617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_BAR_in_compas_list2647 = new BitSet(new long[]{0x90005F0201C22E20L,0x000000000505B802L});
+    public static final BitSet FOLLOW_repetition_in_compas_list2652 = new BitSet(new long[]{0x90005F0201C22E20L,0x000000000505B802L});
+    public static final BitSet FOLLOW_compasses_in_compas_list2656 = new BitSet(new long[]{0x90005F0201C22E20L,0x000000000505B802L});
+    public static final BitSet FOLLOW_repetition_in_compas_list2660 = new BitSet(new long[]{0x90005F0201C22E20L,0x000000000505B802L});
+    public static final BitSet FOLLOW_DOUBLE_BAR_in_compas_list2665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_compas_in_compasses2692 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_BAR_in_compasses2695 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_compas_in_compasses2698 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_NUM_in_repetition2725 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_LETTER_X_in_repetition2727 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_START_REPETITION_in_repetition2731 = new BitSet(new long[]{0x90005F0201822E20L,0x0000000005059800L});
+    public static final BitSet FOLLOW_compasses_in_repetition2733 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_END_REPETITION_in_repetition2735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_music_inst_in_compas2786 = new BitSet(new long[]{0x90005F0201822E22L,0x0000000005059800L});
+    public static final BitSet FOLLOW_TONE_in_tone2830 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_tone2833 = new BitSet(new long[]{0x0000000000000400L,0x0000000000010000L});
+    public static final BitSet FOLLOW_set_in_tone2835 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_type_in_notes_group2864 = new BitSet(new long[]{0x0000000000000002L,0x0000000020020000L});
+    public static final BitSet FOLLOW_93_in_notes_group2867 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_FIGURE_in_notes_group2869 = new BitSet(new long[]{0x0000000000200002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_DOT_in_notes_group2871 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_TIE_in_notes_group2876 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_type_in_notes_variable2918 = new BitSet(new long[]{0x0000000000000002L,0x0000000020000000L});
+    public static final BitSet FOLLOW_93_in_notes_variable2921 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_FIGURE_in_notes_variable2923 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_DOT_in_notes_variable2925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_chord_in_notes_type2968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_notes_in_notes_type2972 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_drums_in_notes_type2976 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHORD_in_chord3005 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_chord3008 = new BitSet(new long[]{0x1000000000000420L,0x0000000000010000L});
+    public static final BitSet FOLLOW_note_in_chord3011 = new BitSet(new long[]{0x0060000000040000L,0x0000000008000408L});
+    public static final BitSet FOLLOW_91_in_chord3031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_90_in_notes3063 = new BitSet(new long[]{0x1000000000000420L,0x0000000000010000L});
+    public static final BitSet FOLLOW_note_in_notes3066 = new BitSet(new long[]{0x1000000000000420L,0x0000000008010000L});
+    public static final BitSet FOLLOW_91_in_notes3070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_note_in_notes3075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DRUMS_in_drums3114 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_90_in_drums3117 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_num_expr_in_drums3120 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_drums3122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOTE_in_note3166 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_note3170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolterm_in_expr3199 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
+    public static final BitSet FOLLOW_OR_in_expr3202 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_boolterm_in_expr3205 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
+    public static final BitSet FOLLOW_boolfact_in_boolterm3223 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_AND_in_boolterm3226 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_boolfact_in_boolterm3229 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_num_expr_in_boolfact3251 = new BitSet(new long[]{0x0010206020000002L,0x0000000000000001L});
+    public static final BitSet FOLLOW_EQUAL_in_boolfact3255 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_NOT_EQUAL_in_boolfact3260 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_LT_in_boolfact3265 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_LE_in_boolfact3270 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_GT_in_boolfact3275 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_GE_in_boolfact3280 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_num_expr_in_boolfact3284 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_term_in_num_expr3306 = new BitSet(new long[]{0x0080000000000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_PLUS_in_num_expr3311 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_MINUS_in_num_expr3316 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_term_in_num_expr3320 = new BitSet(new long[]{0x0080000000000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_factor_in_term3342 = new BitSet(new long[]{0x0200000000280002L});
+    public static final BitSet FOLLOW_DOT_in_term3347 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_DIV_in_term3352 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_MOD_in_term3357 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_factor_in_term3361 = new BitSet(new long[]{0x0200000000280002L});
+    public static final BitSet FOLLOW_NOT_in_factor3378 = new BitSet(new long[]{0x0000410080000000L,0x0000000004204002L});
+    public static final BitSet FOLLOW_PLUS_in_factor3383 = new BitSet(new long[]{0x0000410080000000L,0x0000000004204002L});
+    public static final BitSet FOLLOW_MINUS_in_factor3388 = new BitSet(new long[]{0x0000410080000000L,0x0000000004204002L});
+    public static final BitSet FOLLOW_atom_in_factor3393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_var_access_in_atom3409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_atom3417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_atom3425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_funcall_in_atom3433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_atom3444 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_atom3450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_90_in_atom3467 = new BitSet(new long[]{0x0880410080000000L,0x000000000420400AL});
+    public static final BitSet FOLLOW_expr_in_atom3470 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_91_in_atom3472 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -487,7 +487,7 @@ public class AmlTree extends CommonTree {
                 instrumentValue = AmlInstrument.Instruments.Gunshot;
                 break;
             default:
-                throw new AmlSemanticException("Instrument " + strValue + " not found");
+                throw new AmlSemanticException("Instrument " + strValue + " not found", getLine());
         }
     }
 

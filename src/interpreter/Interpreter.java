@@ -20,55 +20,14 @@ import parser.MusicLexer;
 
 public class Interpreter {
 
-    private HashMap<String, AmlTree> functionMap;
-    private HashMap<String, AmlTree> fragmentMap;
-    private HashMap<String, AmlTree> songMap;
+    HashMap<String, AmlTree> functionMap;
+    HashMap<String, AmlTree> fragmentMap;
+    HashMap<String, AmlTree> songMap;
     private int currentIteration;
 
     public Interpreter() {
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
-    }
-
-    public void preprocessAst(AmlTree tree, int depht) throws AmlSemanticException {
-        switch (tree.getType()) {
-            case MusicLexer.FIGURE:
-                tree.setFigureValue();
-                break;
-            case MusicLexer.NOTE:
-                tree.setNoteValue();
-                break;
-            case MusicLexer.NUM:
-                tree.setIntValue();
-                break;
-            case MusicLexer.FUNCTION:
-            {
-                String functionName = tree.getText();
-                AmlTree previousValue = functionMap.put(functionName, tree);
-                if (previousValue != null) {
-                    throw new AmlSemanticException("The function " + functionName + " has already been declared.");
-                }
-                break;
-            }
-            case MusicLexer.FRAGMENT: {
-                String fragmentName = tree.getText();
-                AmlTree previousValue = functionMap.put(fragmentName, tree);
-                if (previousValue != null) {
-                    throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.");
-                }
-                break;
-            }
-            case MusicLexer.SONG:
-                if (depht == 0) {
-                    //TODO:
-                }
-                break;
-        }
-
-        if (tree.getChildren() == null) return;
-        for (AmlTree child : (List<AmlTree>)tree.getChildren()) {
-            preprocessAst(child, depht+1);
-        }
     }
 
     public void checkParams(AmlTree params, ArrayList<Data> arguments) {
@@ -114,7 +73,6 @@ public class Interpreter {
             case MusicLexer.ATTR_ACCESS:
 
                 break;
-            case MusicLexer.LETTER_X:
             case MusicLexer.ID:
                 if(tree.getText().equals("Time")) {
                     return new Int(currentIteration);
@@ -166,7 +124,13 @@ public class Interpreter {
                 break;
             case MusicLexer.NOTES:
                 AmlNote note = createNote(tree);
-                compas.addNote(note);
+                try {
+                    compas.addNote(note);
+                }
+                catch (AmlMusicException exception) {
+                    exception.setLine(tree.getLine());
+                    throw exception;
+                }
                 break;
         }
     }
@@ -210,7 +174,7 @@ public class Interpreter {
         int tone = tree.getChild(0).getIntValue();
         if (Math.abs(tone) >= 8) {
             throw new AmlMusicException("Tone in song " /*TODO: Introducir nombre de song */ + " is not correct." +
-                    "\n Tone must be between -7 and 7.");
+                    "\n Tone must be between -7 and 7.", tree.getLine());
         }
         AmlTree typeOfAccident = tree.getChild(1);
         if (typeOfAccident.getType() == MusicLexer.BEMOL) {
@@ -272,7 +236,13 @@ public class Interpreter {
         for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
             executeMusicInstruction(child, compas);
         }
-        compas.check();
+        try {
+            compas.check();
+        }
+        catch (AmlMusicException exception) {
+            exception.setLine(tree.getLine());
+            throw exception;
+        }
         return compas;
     }
 

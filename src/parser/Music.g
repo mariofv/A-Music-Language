@@ -26,6 +26,7 @@ tokens {
     NOTE_LIST;
     NOTES;
     REPETITION;
+    ID;
 }
 
 @header {
@@ -52,8 +53,7 @@ var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
             |   id_rule
             ;
 
-id_rule     :   ID
-            |   LETTER_X
+id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
             ;
 
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
@@ -327,7 +327,7 @@ FALSE   : 'false';
 INT     : 'int';
 BOOL    : 'bool';
 STRING_TYPE : 'string';
-ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
+ID_  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 NUM 	:	'-'? '0'..'9'+;
 
 // C-style comments

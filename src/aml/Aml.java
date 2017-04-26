@@ -34,14 +34,19 @@ import exceptions.AmlRunTimeException;
 import interpreter.AmlTree;
 import interpreter.AmlTreeAdaptor;
 import interpreter.Interpreter;
+import interpreter.SemanticAnalyzer;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 
 // Imports from Java
 import org.apache.commons.cli.*; // Command Language Interface
 import java.io.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 import parser.*;
+import sun.awt.image.ImageWatched;
 
 /**
  * The class <code>aml</code> implement the main function of the
@@ -117,21 +122,26 @@ public class Aml {
 
         if (execute) {
             Interpreter interpreter = new Interpreter();
-            interpreter.preprocessAst(t, 0);
             try {
+                SemanticAnalyzer analyzer = new SemanticAnalyzer(interpreter);
+                LinkedList<HashMap<String, Integer>> scope = new LinkedList<>();
+                scope.addFirst(new HashMap<>());
+                analyzer.analyze(t, scope,0);
+                scope.removeFirst();
+
                 interpreter.executeFunction("main", null);
             }
             catch (AmlSemanticException error) {
-                System.err.println("Error found during semantic analysis: ");
+                System.err.println("Error found during semantic analysis, line " + error.getLine() + ":");
                 System.err.println(error.getMessage());
             }
             catch (AmlMusicException exception) {
-                System.err.println("Musical exception catched during execution: ");
+                System.err.println("Musical exception catched during execution, line " + exception.getLine() + ":");
                 System.err.println(exception.getMessage());
                 exception.printStackTrace();
             }
             catch (AmlRunTimeException exception) {
-                System.err.println("Runtime exception catched during execution");
+                System.err.println("Runtime exception catched during execution., line " + exception.getLine() + ":");
                 System.err.println(exception.getMessage());
                 exception.printStackTrace();
             }

@@ -26,6 +26,7 @@ tokens {
     NOTE_LIST;
     NOTES;
     REPETITION;
+    ID;
 }
 
 @header {
@@ -52,8 +53,7 @@ var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
             |   id_rule
             ;
 
-id_rule     :   ID
-            |   LETTER_X
+id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
             ;
 
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
@@ -188,12 +188,14 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ '}'!
+song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
             ;
 
 track       :   TRACK^ id_rule? STRING? compas_aux
             ;
 
+drums_track :   DRUMS^ TRACK compas_aux
+            ;
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
@@ -219,13 +221,16 @@ notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTES notes_type FIGURE?
 notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
                 ;
 
-notes_type  :	chord | notes
+notes_type  :	chord | notes | drums
             ;
 
 chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
+            ;
+
+drums       :   DRUMS^ '('! num_expr ')'!
             ;
 
 note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NUM)?
@@ -284,6 +289,7 @@ BEAT                : 'Beat';
 SPEED               : 'Speed';
 SONG                : 'Song';
 TRACK               : 'Track';
+DRUMS_TRACK         : 'Drums_Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
@@ -321,7 +327,7 @@ FALSE   : 'false';
 INT     : 'int';
 BOOL    : 'bool';
 STRING_TYPE : 'string';
-ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
+ID_  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 NUM 	:	'-'? '0'..'9'+;
 
 // C-style comments
