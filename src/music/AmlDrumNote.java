@@ -15,7 +15,7 @@ public class AmlDrumNote extends AmlNote {
     }
 
     public void addDrumNotePitch(int pitch) {
-        pitches.add(pitch);
+        if (pitch >= 1) pitches.add(pitch);
     }
 
     @Override

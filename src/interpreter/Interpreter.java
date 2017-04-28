@@ -83,11 +83,32 @@ public class Interpreter {
     }
 
     private boolean evaluateBooleanExpression(AmlTree tree) {
+        Int leftSide, rightSide;
         switch (tree.getType()){
             case MusicLexer.EQUAL:
-                Int leftSide = (Int) evaluateExpression(tree.getChild(0));
-                Int rightSide = (Int) evaluateExpression(tree.getChild(1));
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
                 return leftSide.getValue() == rightSide.getValue();
+            case MusicLexer.NOT_EQUAL:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() != rightSide.getValue();
+            case MusicLexer.GE:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() >= rightSide.getValue();
+            case MusicLexer.GT:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() > rightSide.getValue();
+            case MusicLexer.LE:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() <= rightSide.getValue();
+            case MusicLexer.LT:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return leftSide.getValue() < rightSide.getValue();
         }
         return true;
     }

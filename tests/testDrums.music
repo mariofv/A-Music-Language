@@ -4,6 +4,6 @@ void main() {
         Speed 120;
         Tone 2#;
         Track "Ocarina" || Fa.n Fa.n Fa.n Fa.n| Tone 1&;| Fa.n Fa.n Fa.n $Fa.n ||
-        Drums || DrumsNote(49).n DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n| Tone 1&;| DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n ||
+        Drums 9x||: DrumsNote(-1).r :||  6x||: DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c :|| DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(69).c DrumsNote(-1).b||
     }
 }
