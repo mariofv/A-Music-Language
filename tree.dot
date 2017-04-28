@@ -91,6 +91,69 @@ digraph {
   n53 [label="Fa"];
   n54 [label="$"];
   n55 [label="n"];
+  n56 [label="Drums"];
+  n56 [label="Drums"];
+  n57 [label="COMPAS_LIST"];
+  n57 [label="COMPAS_LIST"];
+  n58 [label="COMPAS"];
+  n58 [label="COMPAS"];
+  n59 [label="DRUMSNOTES"];
+  n59 [label="DRUMSNOTES"];
+  n60 [label="DRUMSNOTE_LIST"];
+  n60 [label="DRUMSNOTE_LIST"];
+  n61 [label="49"];
+  n62 [label="n"];
+  n63 [label="~"];
+  n64 [label="DRUMSNOTES"];
+  n64 [label="DRUMSNOTES"];
+  n65 [label="DRUMSNOTE_LIST"];
+  n65 [label="DRUMSNOTE_LIST"];
+  n66 [label="42"];
+  n67 [label="n"];
+  n68 [label="DRUMSNOTES"];
+  n68 [label="DRUMSNOTES"];
+  n69 [label="DRUMSNOTE_LIST"];
+  n69 [label="DRUMSNOTE_LIST"];
+  n70 [label="42"];
+  n71 [label="n"];
+  n72 [label="DRUMSNOTES"];
+  n72 [label="DRUMSNOTES"];
+  n73 [label="DRUMSNOTE_LIST"];
+  n73 [label="DRUMSNOTE_LIST"];
+  n74 [label="42"];
+  n75 [label="n"];
+  n76 [label="COMPAS"];
+  n76 [label="COMPAS"];
+  n77 [label="Tone"];
+  n77 [label="Tone"];
+  n78 [label="1"];
+  n79 [label="&"];
+  n80 [label="COMPAS"];
+  n80 [label="COMPAS"];
+  n81 [label="DRUMSNOTES"];
+  n81 [label="DRUMSNOTES"];
+  n82 [label="DRUMSNOTE_LIST"];
+  n82 [label="DRUMSNOTE_LIST"];
+  n83 [label="42"];
+  n84 [label="n"];
+  n85 [label="DRUMSNOTES"];
+  n85 [label="DRUMSNOTES"];
+  n86 [label="DRUMSNOTE_LIST"];
+  n86 [label="DRUMSNOTE_LIST"];
+  n87 [label="42"];
+  n88 [label="n"];
+  n89 [label="DRUMSNOTES"];
+  n89 [label="DRUMSNOTES"];
+  n90 [label="DRUMSNOTE_LIST"];
+  n90 [label="DRUMSNOTE_LIST"];
+  n91 [label="42"];
+  n92 [label="n"];
+  n93 [label="DRUMSNOTES"];
+  n93 [label="DRUMSNOTES"];
+  n94 [label="DRUMSNOTE_LIST"];
+  n94 [label="DRUMSNOTE_LIST"];
+  n95 [label="42"];
+  n96 [label="n"];
 
   n0 -> n1 // "LIST_FUNCTIONS" -> "main"
   n1 -> n2 // "main" -> "void"
@@ -147,5 +210,46 @@ digraph {
   n52 -> n53 // "NOTE_LIST" -> "Fa"
   n53 -> n54 // "Fa" -> "$"
   n51 -> n55 // "NOTES" -> "n"
+  n5 -> n56 // "Song" -> "Drums"
+  n56 -> n57 // "Drums" -> "COMPAS_LIST"
+  n57 -> n58 // "COMPAS_LIST" -> "COMPAS"
+  n58 -> n59 // "COMPAS" -> "DRUMSNOTES"
+  n59 -> n60 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n60 -> n61 // "DRUMSNOTE_LIST" -> "49"
+  n59 -> n62 // "DRUMSNOTES" -> "n"
+  n59 -> n63 // "DRUMSNOTES" -> "~"
+  n58 -> n64 // "COMPAS" -> "DRUMSNOTES"
+  n64 -> n65 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n65 -> n66 // "DRUMSNOTE_LIST" -> "42"
+  n64 -> n67 // "DRUMSNOTES" -> "n"
+  n58 -> n68 // "COMPAS" -> "DRUMSNOTES"
+  n68 -> n69 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n69 -> n70 // "DRUMSNOTE_LIST" -> "42"
+  n68 -> n71 // "DRUMSNOTES" -> "n"
+  n58 -> n72 // "COMPAS" -> "DRUMSNOTES"
+  n72 -> n73 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n73 -> n74 // "DRUMSNOTE_LIST" -> "42"
+  n72 -> n75 // "DRUMSNOTES" -> "n"
+  n57 -> n76 // "COMPAS_LIST" -> "COMPAS"
+  n76 -> n77 // "COMPAS" -> "Tone"
+  n77 -> n78 // "Tone" -> "1"
+  n77 -> n79 // "Tone" -> "&"
+  n57 -> n80 // "COMPAS_LIST" -> "COMPAS"
+  n80 -> n81 // "COMPAS" -> "DRUMSNOTES"
+  n81 -> n82 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n82 -> n83 // "DRUMSNOTE_LIST" -> "42"
+  n81 -> n84 // "DRUMSNOTES" -> "n"
+  n80 -> n85 // "COMPAS" -> "DRUMSNOTES"
+  n85 -> n86 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n86 -> n87 // "DRUMSNOTE_LIST" -> "42"
+  n85 -> n88 // "DRUMSNOTES" -> "n"
+  n80 -> n89 // "COMPAS" -> "DRUMSNOTES"
+  n89 -> n90 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n90 -> n91 // "DRUMSNOTE_LIST" -> "42"
+  n89 -> n92 // "DRUMSNOTES" -> "n"
+  n80 -> n93 // "COMPAS" -> "DRUMSNOTES"
+  n93 -> n94 // "DRUMSNOTES" -> "DRUMSNOTE_LIST"
+  n94 -> n95 // "DRUMSNOTE_LIST" -> "42"
+  n93 -> n96 // "DRUMSNOTES" -> "n"
 
 }

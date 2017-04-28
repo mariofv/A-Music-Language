@@ -45,8 +45,13 @@ public class AmlSequence {
         first = false;
         }
         ++actualChannel;
-
+        if (actualChannel == 9) ++actualChannel;
         return new AmlTrack(track, actualChannel, metric[0]*AmlNote.PPQ*4/metric[1], tone);
+    }
+
+    public AmlDrumsTrack addDrumsTrack() throws InvalidMidiDataException{
+        Track track = sequence.createTrack();
+        return new AmlDrumsTrack(track, metric[0]*AmlNote.PPQ*4/metric[1]);
     }
 
     public Sequence getSequence() {

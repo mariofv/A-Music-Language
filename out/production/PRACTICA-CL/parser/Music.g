@@ -23,7 +23,9 @@ tokens {
     LIST_ARGUMENTS;
     COMPAS_LIST;
     COMPAS;
+    DRUMSNOTE_LIST;
     NOTE_LIST;
+    DRUMSNOTES;
     NOTES;
     REPETITION;
 }
@@ -71,7 +73,7 @@ list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
 argument  :   type^ id_rule
           ;
 
-params      :   (expr | notes_variable) (','! (expr | notes_variable))*
+params      :   (expr | notes_variable | drumsnotes_variable) (','! (expr | notes_variable | drumsnotes_variable))*
             ;
 
 listInst    :  inst+  -> ^(LIST_INSTRUCTIONS inst+)
@@ -81,7 +83,7 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
                 ;
 
 inst        :   declaration
-            |   'return'^ (expr | notes_group) ';'!
+            |   'return'^ (expr | notes_group | drumsnotes_group) ';'!
             |   var_funcall
             |   tone ';'!
             |   beat ';'!
@@ -109,6 +111,7 @@ music_inst  :   declaration
             |   if_music_stmt
             |   song
             | 	(options {greedy=true;} : notes_group)+ ';'!?
+            | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
             ;
 
 declaration :   type^ assig_opt (','! assig_opt)* ';'!
@@ -126,13 +129,13 @@ type_void   :   type
             |   VOID
             ;
 
-assig_opt   :   id_rule (ASSIG^ (expr | notes_variable))?
+assig_opt   :   id_rule (ASSIG^ (expr | notes_variable | drumsnotes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | FIGURE)
+assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | drumsnotes_variable | FIGURE)
             |   post
             |   pre
             ;
@@ -188,12 +191,14 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ '}'!
+song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
             ;
 
 track       :   TRACK^ id_rule? STRING? compas_aux
             ;
 
+drums_track :   DRUMS^ compas_aux
+            ;
 
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
@@ -213,8 +218,14 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ NUM (SUSTAIN | BEMOL)
             ;
 
+drumsnotes_group : drumsnotes ('.' FIGURE DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT? TIE?)
+            ;
+
 notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
             ;
+
+drumsnotes_variable  :   drumsnotes ('.' FIGURE DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
+                ;
 
 notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
                 ;
@@ -226,6 +237,12 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
+            ;
+
+drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUMSNOTE_LIST drums+)
+            ;
+
+drums       :   DRUMS_NOTE_TYPE! '('! num_expr^ ')'!
             ;
 
 note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NUM)?
@@ -284,6 +301,7 @@ BEAT                : 'Beat';
 SPEED               : 'Speed';
 SONG                : 'Song';
 TRACK               : 'Track';
+DRUMS_TRACK         : 'Drums_Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens

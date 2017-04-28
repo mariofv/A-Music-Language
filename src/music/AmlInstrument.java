@@ -186,6 +186,15 @@ public class AmlInstrument {
         */
     }
 
+    public static ShortMessage getDrums() {
+        try {
+            return new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0);
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+            throw new Error();
+        }
+    }
+
     public ShortMessage getMessage(int channel) {
         try {
             return new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, program, 0);

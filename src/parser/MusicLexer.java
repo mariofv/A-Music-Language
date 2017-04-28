@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/parser/Music.g 2017-04-25 20:05:47
+// $ANTLR 3.4 src/parser/Music.g 2017-04-28 17:45:21
 
     package parser;
 
@@ -11,14 +11,14 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class MusicLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__89=89;
-    public static final int T__90=90;
     public static final int T__91=91;
     public static final int T__92=92;
     public static final int T__93=93;
     public static final int T__94=94;
     public static final int T__95=95;
     public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
     public static final int AND=4;
     public static final int ARMOR=5;
     public static final int ASSIG=6;
@@ -39,71 +39,73 @@ public class MusicLexer extends Lexer {
     public static final int DOT=21;
     public static final int DOUBLE_BAR=22;
     public static final int DRUMS=23;
-    public static final int DRUMS_NOTE_TYPE=24;
-    public static final int DRUMS_TRACK=25;
-    public static final int ELSE=26;
-    public static final int ELSEIF=27;
-    public static final int END_REPETITION=28;
-    public static final int EQUAL=29;
-    public static final int ESC_SEQ=30;
-    public static final int FALSE=31;
-    public static final int FIGURE=32;
-    public static final int FOR=33;
-    public static final int FRAGMENT=34;
-    public static final int FUNCALL=35;
-    public static final int FUNCTION=36;
-    public static final int GE=37;
-    public static final int GT=38;
-    public static final int ID=39;
-    public static final int IF=40;
-    public static final int INCR=41;
-    public static final int INSTRUMENT=42;
-    public static final int INT=43;
-    public static final int LE=44;
-    public static final int LETTER_X=45;
-    public static final int LIST_ARGUMENTS=46;
-    public static final int LIST_ASSIG=47;
-    public static final int LIST_FUNCTIONS=48;
-    public static final int LIST_INSTRUCTIONS=49;
-    public static final int LIST_MUSIC_INST=50;
-    public static final int LT=51;
-    public static final int MAJ7=52;
-    public static final int MINOR=53;
-    public static final int MINUS=54;
-    public static final int MINUS_ASSIG=55;
-    public static final int MOD=56;
-    public static final int MOD_ASSIG=57;
-    public static final int NOT=58;
-    public static final int NOTE=59;
-    public static final int NOTES=60;
-    public static final int NOTE_LIST=61;
-    public static final int NOTE_TYPE=62;
-    public static final int NOT_EQUAL=63;
-    public static final int NUM=64;
-    public static final int OR=65;
-    public static final int PLUS=66;
-    public static final int PLUS_ASSIG=67;
-    public static final int POST=68;
-    public static final int PRE=69;
-    public static final int PROD_ASSIG=70;
-    public static final int REPETITION=71;
-    public static final int RETURN=72;
-    public static final int SEVENTH=73;
-    public static final int SONG=74;
-    public static final int SPEED=75;
-    public static final int START_REPETITION=76;
-    public static final int STRING=77;
-    public static final int STRING_TYPE=78;
-    public static final int SUSTAIN=79;
-    public static final int TIE=80;
-    public static final int TONE=81;
-    public static final int TRACK=82;
-    public static final int TRANSPORT=83;
-    public static final int TRUE=84;
-    public static final int VAR_FUNCALL=85;
-    public static final int VOID=86;
-    public static final int WHILE=87;
-    public static final int WS=88;
+    public static final int DRUMSNOTES=24;
+    public static final int DRUMSNOTE_LIST=25;
+    public static final int DRUMS_NOTE_TYPE=26;
+    public static final int DRUMS_TRACK=27;
+    public static final int ELSE=28;
+    public static final int ELSEIF=29;
+    public static final int END_REPETITION=30;
+    public static final int EQUAL=31;
+    public static final int ESC_SEQ=32;
+    public static final int FALSE=33;
+    public static final int FIGURE=34;
+    public static final int FOR=35;
+    public static final int FRAGMENT=36;
+    public static final int FUNCALL=37;
+    public static final int FUNCTION=38;
+    public static final int GE=39;
+    public static final int GT=40;
+    public static final int ID=41;
+    public static final int IF=42;
+    public static final int INCR=43;
+    public static final int INSTRUMENT=44;
+    public static final int INT=45;
+    public static final int LE=46;
+    public static final int LETTER_X=47;
+    public static final int LIST_ARGUMENTS=48;
+    public static final int LIST_ASSIG=49;
+    public static final int LIST_FUNCTIONS=50;
+    public static final int LIST_INSTRUCTIONS=51;
+    public static final int LIST_MUSIC_INST=52;
+    public static final int LT=53;
+    public static final int MAJ7=54;
+    public static final int MINOR=55;
+    public static final int MINUS=56;
+    public static final int MINUS_ASSIG=57;
+    public static final int MOD=58;
+    public static final int MOD_ASSIG=59;
+    public static final int NOT=60;
+    public static final int NOTE=61;
+    public static final int NOTES=62;
+    public static final int NOTE_LIST=63;
+    public static final int NOTE_TYPE=64;
+    public static final int NOT_EQUAL=65;
+    public static final int NUM=66;
+    public static final int OR=67;
+    public static final int PLUS=68;
+    public static final int PLUS_ASSIG=69;
+    public static final int POST=70;
+    public static final int PRE=71;
+    public static final int PROD_ASSIG=72;
+    public static final int REPETITION=73;
+    public static final int RETURN=74;
+    public static final int SEVENTH=75;
+    public static final int SONG=76;
+    public static final int SPEED=77;
+    public static final int START_REPETITION=78;
+    public static final int STRING=79;
+    public static final int STRING_TYPE=80;
+    public static final int SUSTAIN=81;
+    public static final int TIE=82;
+    public static final int TONE=83;
+    public static final int TRACK=84;
+    public static final int TRANSPORT=85;
+    public static final int TRUE=86;
+    public static final int VAR_FUNCALL=87;
+    public static final int VOID=88;
+    public static final int WHILE=89;
+    public static final int WS=90;
 
     // delegates
     // delegators
@@ -120,57 +122,15 @@ public class MusicLexer extends Lexer {
     }
     public String getGrammarFileName() { return "src/parser/Music.g"; }
 
-    // $ANTLR start "T__89"
-    public final void mT__89() throws RecognitionException {
-        try {
-            int _type = T__89;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:6:7: ( '(' )
-            // src/parser/Music.g:6:9: '('
-            {
-            match('('); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__89"
-
-    // $ANTLR start "T__90"
-    public final void mT__90() throws RecognitionException {
-        try {
-            int _type = T__90;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:7:7: ( ')' )
-            // src/parser/Music.g:7:9: ')'
-            {
-            match(')'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__90"
-
     // $ANTLR start "T__91"
     public final void mT__91() throws RecognitionException {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:8:7: ( ',' )
-            // src/parser/Music.g:8:9: ','
+            // src/parser/Music.g:6:7: ( '(' )
+            // src/parser/Music.g:6:9: '('
             {
-            match(','); 
+            match('('); 
 
             }
 
@@ -188,10 +148,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:9:7: ( '.' )
-            // src/parser/Music.g:9:9: '.'
+            // src/parser/Music.g:7:7: ( ')' )
+            // src/parser/Music.g:7:9: ')'
             {
-            match('.'); 
+            match(')'); 
 
             }
 
@@ -209,10 +169,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:10:7: ( ':' )
-            // src/parser/Music.g:10:9: ':'
+            // src/parser/Music.g:8:7: ( ',' )
+            // src/parser/Music.g:8:9: ','
             {
-            match(':'); 
+            match(','); 
 
             }
 
@@ -230,10 +190,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:11:7: ( ';' )
-            // src/parser/Music.g:11:9: ';'
+            // src/parser/Music.g:9:7: ( '.' )
+            // src/parser/Music.g:9:9: '.'
             {
-            match(';'); 
+            match('.'); 
 
             }
 
@@ -251,10 +211,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:12:7: ( '{' )
-            // src/parser/Music.g:12:9: '{'
+            // src/parser/Music.g:10:7: ( ':' )
+            // src/parser/Music.g:10:9: ':'
             {
-            match('{'); 
+            match(':'); 
 
             }
 
@@ -272,6 +232,48 @@ public class MusicLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/parser/Music.g:11:7: ( ';' )
+            // src/parser/Music.g:11:9: ';'
+            {
+            match(';'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__96"
+
+    // $ANTLR start "T__97"
+    public final void mT__97() throws RecognitionException {
+        try {
+            int _type = T__97;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/parser/Music.g:12:7: ( '{' )
+            // src/parser/Music.g:12:9: '{'
+            {
+            match('{'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__97"
+
+    // $ANTLR start "T__98"
+    public final void mT__98() throws RecognitionException {
+        try {
+            int _type = T__98;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // src/parser/Music.g:13:7: ( '}' )
             // src/parser/Music.g:13:9: '}'
             {
@@ -286,15 +288,15 @@ public class MusicLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__96"
+    // $ANTLR end "T__98"
 
     // $ANTLR start "TONE"
     public final void mTONE() throws RecognitionException {
         try {
             int _type = TONE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:267:21: ( 'Tone' )
-            // src/parser/Music.g:267:23: 'Tone'
+            // src/parser/Music.g:279:21: ( 'Tone' )
+            // src/parser/Music.g:279:23: 'Tone'
             {
             match("Tone"); 
 
@@ -316,8 +318,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:268:21: ( '|' )
-            // src/parser/Music.g:268:23: '|'
+            // src/parser/Music.g:280:21: ( '|' )
+            // src/parser/Music.g:280:23: '|'
             {
             match('|'); 
 
@@ -337,8 +339,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DOUBLE_BAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:269:22: ( '||' )
-            // src/parser/Music.g:269:24: '||'
+            // src/parser/Music.g:281:22: ( '||' )
+            // src/parser/Music.g:281:24: '||'
             {
             match("||"); 
 
@@ -360,8 +362,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = START_REPETITION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:270:21: ( '||:' )
-            // src/parser/Music.g:270:23: '||:'
+            // src/parser/Music.g:282:21: ( '||:' )
+            // src/parser/Music.g:282:23: '||:'
             {
             match("||:"); 
 
@@ -383,8 +385,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = END_REPETITION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:271:21: ( ':||' )
-            // src/parser/Music.g:271:23: ':||'
+            // src/parser/Music.g:283:21: ( ':||' )
+            // src/parser/Music.g:283:23: ':||'
             {
             match(":||"); 
 
@@ -406,8 +408,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = CHORD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:272:21: ( 'Chord' )
-            // src/parser/Music.g:272:23: 'Chord'
+            // src/parser/Music.g:284:21: ( 'Chord' )
+            // src/parser/Music.g:284:23: 'Chord'
             {
             match("Chord"); 
 
@@ -429,8 +431,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TRANSPORT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:273:21: ( 'Transport' )
-            // src/parser/Music.g:273:23: 'Transport'
+            // src/parser/Music.g:285:21: ( 'Transport' )
+            // src/parser/Music.g:285:23: 'Transport'
             {
             match("Transport"); 
 
@@ -452,8 +454,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MINOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:274:21: ( 'm' )
-            // src/parser/Music.g:274:23: 'm'
+            // src/parser/Music.g:286:21: ( 'm' )
+            // src/parser/Music.g:286:23: 'm'
             {
             match('m'); 
 
@@ -473,8 +475,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DIMINUTION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:275:21: ( 'º' )
-            // src/parser/Music.g:275:23: 'º'
+            // src/parser/Music.g:287:21: ( 'º' )
+            // src/parser/Music.g:287:23: 'º'
             {
             match("º"); 
 
@@ -496,8 +498,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MAJ7;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:276:21: ( 'maj7' )
-            // src/parser/Music.g:276:23: 'maj7'
+            // src/parser/Music.g:288:21: ( 'maj7' )
+            // src/parser/Music.g:288:23: 'maj7'
             {
             match("maj7"); 
 
@@ -519,8 +521,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SEVENTH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:277:21: ( '7th' )
-            // src/parser/Music.g:277:23: '7th'
+            // src/parser/Music.g:289:21: ( '7th' )
+            // src/parser/Music.g:289:23: '7th'
             {
             match("7th"); 
 
@@ -542,8 +544,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOTE_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:278:21: ( 'Note' )
-            // src/parser/Music.g:278:23: 'Note'
+            // src/parser/Music.g:290:21: ( 'Note' )
+            // src/parser/Music.g:290:23: 'Note'
             {
             match("Note"); 
 
@@ -565,8 +567,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DRUMS_NOTE_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:279:21: ( 'DrumsNote' )
-            // src/parser/Music.g:279:23: 'DrumsNote'
+            // src/parser/Music.g:291:21: ( 'DrumsNote' )
+            // src/parser/Music.g:291:23: 'DrumsNote'
             {
             match("DrumsNote"); 
 
@@ -588,10 +590,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:280:21: ( ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' ) )
-            // src/parser/Music.g:280:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' )
+            // src/parser/Music.g:292:21: ( ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' ) )
+            // src/parser/Music.g:292:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' )
             {
-            // src/parser/Music.g:280:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' )
+            // src/parser/Music.g:292:23: ( 'Do' | 'Re' | 'Mi' | 'Fa' | 'Sol' | 'La' | 'Si' | 'Silence' )
             int alt1=8;
             switch ( input.LA(1) ) {
             case 'D':
@@ -655,7 +657,7 @@ public class MusicLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // src/parser/Music.g:280:24: 'Do'
+                    // src/parser/Music.g:292:24: 'Do'
                     {
                     match("Do"); 
 
@@ -664,7 +666,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // src/parser/Music.g:280:29: 'Re'
+                    // src/parser/Music.g:292:29: 'Re'
                     {
                     match("Re"); 
 
@@ -673,7 +675,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // src/parser/Music.g:280:34: 'Mi'
+                    // src/parser/Music.g:292:34: 'Mi'
                     {
                     match("Mi"); 
 
@@ -682,7 +684,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // src/parser/Music.g:280:39: 'Fa'
+                    // src/parser/Music.g:292:39: 'Fa'
                     {
                     match("Fa"); 
 
@@ -691,7 +693,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // src/parser/Music.g:280:44: 'Sol'
+                    // src/parser/Music.g:292:44: 'Sol'
                     {
                     match("Sol"); 
 
@@ -700,7 +702,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // src/parser/Music.g:280:50: 'La'
+                    // src/parser/Music.g:292:50: 'La'
                     {
                     match("La"); 
 
@@ -709,7 +711,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // src/parser/Music.g:280:55: 'Si'
+                    // src/parser/Music.g:292:55: 'Si'
                     {
                     match("Si"); 
 
@@ -718,7 +720,7 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 8 :
-                    // src/parser/Music.g:280:60: 'Silence'
+                    // src/parser/Music.g:292:60: 'Silence'
                     {
                     match("Silence"); 
 
@@ -746,8 +748,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DRUMS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:281:21: ( 'Drums' )
-            // src/parser/Music.g:281:23: 'Drums'
+            // src/parser/Music.g:293:21: ( 'Drums' )
+            // src/parser/Music.g:293:23: 'Drums'
             {
             match("Drums"); 
 
@@ -769,8 +771,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SUSTAIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:282:21: ( '#' )
-            // src/parser/Music.g:282:23: '#'
+            // src/parser/Music.g:294:21: ( '#' )
+            // src/parser/Music.g:294:23: '#'
             {
             match('#'); 
 
@@ -790,8 +792,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BEMOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:283:21: ( '&' )
-            // src/parser/Music.g:283:23: '&'
+            // src/parser/Music.g:295:21: ( '&' )
+            // src/parser/Music.g:295:23: '&'
             {
             match('&'); 
 
@@ -811,8 +813,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ARMOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:284:21: ( '$' )
-            // src/parser/Music.g:284:23: '$'
+            // src/parser/Music.g:296:21: ( '$' )
+            // src/parser/Music.g:296:23: '$'
             {
             match('$'); 
 
@@ -832,10 +834,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FIGURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:285:21: ( ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' ) )
-            // src/parser/Music.g:285:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
+            // src/parser/Music.g:297:21: ( ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' ) )
+            // src/parser/Music.g:297:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
             {
-            // src/parser/Music.g:285:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
+            // src/parser/Music.g:297:23: ( 'r' | 'b' | 'n' | 'c' | 'sc' | 'f' | 'sf' )
             int alt2=7;
             switch ( input.LA(1) ) {
             case 'r':
@@ -892,35 +894,35 @@ public class MusicLexer extends Lexer {
 
             switch (alt2) {
                 case 1 :
-                    // src/parser/Music.g:285:24: 'r'
+                    // src/parser/Music.g:297:24: 'r'
                     {
                     match('r'); 
 
                     }
                     break;
                 case 2 :
-                    // src/parser/Music.g:285:28: 'b'
+                    // src/parser/Music.g:297:28: 'b'
                     {
                     match('b'); 
 
                     }
                     break;
                 case 3 :
-                    // src/parser/Music.g:285:32: 'n'
+                    // src/parser/Music.g:297:32: 'n'
                     {
                     match('n'); 
 
                     }
                     break;
                 case 4 :
-                    // src/parser/Music.g:285:36: 'c'
+                    // src/parser/Music.g:297:36: 'c'
                     {
                     match('c'); 
 
                     }
                     break;
                 case 5 :
-                    // src/parser/Music.g:285:40: 'sc'
+                    // src/parser/Music.g:297:40: 'sc'
                     {
                     match("sc"); 
 
@@ -929,14 +931,14 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // src/parser/Music.g:285:45: 'f'
+                    // src/parser/Music.g:297:45: 'f'
                     {
                     match('f'); 
 
                     }
                     break;
                 case 7 :
-                    // src/parser/Music.g:285:49: 'sf'
+                    // src/parser/Music.g:297:49: 'sf'
                     {
                     match("sf"); 
 
@@ -964,8 +966,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:286:21: ( '*' )
-            // src/parser/Music.g:286:23: '*'
+            // src/parser/Music.g:298:21: ( '*' )
+            // src/parser/Music.g:298:23: '*'
             {
             match('*'); 
 
@@ -985,8 +987,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TIE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:287:21: ( '~' )
-            // src/parser/Music.g:287:23: '~'
+            // src/parser/Music.g:299:21: ( '~' )
+            // src/parser/Music.g:299:23: '~'
             {
             match('~'); 
 
@@ -1006,8 +1008,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BEAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:288:21: ( 'Beat' )
-            // src/parser/Music.g:288:23: 'Beat'
+            // src/parser/Music.g:300:21: ( 'Beat' )
+            // src/parser/Music.g:300:23: 'Beat'
             {
             match("Beat"); 
 
@@ -1029,8 +1031,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SPEED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:289:21: ( 'Speed' )
-            // src/parser/Music.g:289:23: 'Speed'
+            // src/parser/Music.g:301:21: ( 'Speed' )
+            // src/parser/Music.g:301:23: 'Speed'
             {
             match("Speed"); 
 
@@ -1052,8 +1054,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = SONG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:290:21: ( 'Song' )
-            // src/parser/Music.g:290:23: 'Song'
+            // src/parser/Music.g:302:21: ( 'Song' )
+            // src/parser/Music.g:302:23: 'Song'
             {
             match("Song"); 
 
@@ -1075,8 +1077,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TRACK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:291:21: ( 'Track' )
-            // src/parser/Music.g:291:23: 'Track'
+            // src/parser/Music.g:303:21: ( 'Track' )
+            // src/parser/Music.g:303:23: 'Track'
             {
             match("Track"); 
 
@@ -1098,8 +1100,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DRUMS_TRACK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:292:21: ( 'Drums_Track' )
-            // src/parser/Music.g:292:23: 'Drums_Track'
+            // src/parser/Music.g:304:21: ( 'Drums_Track' )
+            // src/parser/Music.g:304:23: 'Drums_Track'
             {
             match("Drums_Track"); 
 
@@ -1121,8 +1123,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = INSTRUMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:293:21: ( 'Instrument' )
-            // src/parser/Music.g:293:23: 'Instrument'
+            // src/parser/Music.g:305:21: ( 'Instrument' )
+            // src/parser/Music.g:305:23: 'Instrument'
             {
             match("Instrument"); 
 
@@ -1144,8 +1146,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = LETTER_X;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:296:9: ( 'x' )
-            // src/parser/Music.g:296:13: 'x'
+            // src/parser/Music.g:308:9: ( 'x' )
+            // src/parser/Music.g:308:13: 'x'
             {
             match('x'); 
 
@@ -1165,8 +1167,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FRAGMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:297:9: ( 'fragment' )
-            // src/parser/Music.g:297:11: 'fragment'
+            // src/parser/Music.g:309:9: ( 'fragment' )
+            // src/parser/Music.g:309:11: 'fragment'
             {
             match("fragment"); 
 
@@ -1188,8 +1190,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = VOID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:298:9: ( 'void' )
-            // src/parser/Music.g:298:11: 'void'
+            // src/parser/Music.g:310:9: ( 'void' )
+            // src/parser/Music.g:310:11: 'void'
             {
             match("void"); 
 
@@ -1211,8 +1213,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:299:7: ( '==' )
-            // src/parser/Music.g:299:9: '=='
+            // src/parser/Music.g:311:7: ( '==' )
+            // src/parser/Music.g:311:9: '=='
             {
             match("=="); 
 
@@ -1234,8 +1236,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOT_EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:300:10: ( '!=' )
-            // src/parser/Music.g:300:12: '!='
+            // src/parser/Music.g:312:10: ( '!=' )
+            // src/parser/Music.g:312:12: '!='
             {
             match("!="); 
 
@@ -1257,8 +1259,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:301:6: ( '=' )
-            // src/parser/Music.g:301:9: '='
+            // src/parser/Music.g:313:6: ( '=' )
+            // src/parser/Music.g:313:9: '='
             {
             match('='); 
 
@@ -1278,8 +1280,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = PLUS_ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:302:11: ( '+=' )
-            // src/parser/Music.g:302:13: '+='
+            // src/parser/Music.g:314:11: ( '+=' )
+            // src/parser/Music.g:314:13: '+='
             {
             match("+="); 
 
@@ -1301,8 +1303,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MINUS_ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:303:12: ( '-=' )
-            // src/parser/Music.g:303:14: '-='
+            // src/parser/Music.g:315:12: ( '-=' )
+            // src/parser/Music.g:315:14: '-='
             {
             match("-="); 
 
@@ -1324,8 +1326,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = PROD_ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:304:11: ( '*=' )
-            // src/parser/Music.g:304:13: '*='
+            // src/parser/Music.g:316:11: ( '*=' )
+            // src/parser/Music.g:316:13: '*='
             {
             match("*="); 
 
@@ -1347,8 +1349,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DIVIDE_ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:305:13: ( '/=' )
-            // src/parser/Music.g:305:15: '/='
+            // src/parser/Music.g:317:13: ( '/=' )
+            // src/parser/Music.g:317:15: '/='
             {
             match("/="); 
 
@@ -1370,8 +1372,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MOD_ASSIG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:306:10: ( '%=' )
-            // src/parser/Music.g:306:12: '%='
+            // src/parser/Music.g:318:10: ( '%=' )
+            // src/parser/Music.g:318:12: '%='
             {
             match("%="); 
 
@@ -1393,8 +1395,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:307:8: ( '<' )
-            // src/parser/Music.g:307:10: '<'
+            // src/parser/Music.g:319:8: ( '<' )
+            // src/parser/Music.g:319:10: '<'
             {
             match('<'); 
 
@@ -1414,8 +1416,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = LE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:308:8: ( '<=' )
-            // src/parser/Music.g:308:10: '<='
+            // src/parser/Music.g:320:8: ( '<=' )
+            // src/parser/Music.g:320:10: '<='
             {
             match("<="); 
 
@@ -1437,8 +1439,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:309:8: ( '>' )
-            // src/parser/Music.g:309:10: '>'
+            // src/parser/Music.g:321:8: ( '>' )
+            // src/parser/Music.g:321:10: '>'
             {
             match('>'); 
 
@@ -1458,8 +1460,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = GE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:310:8: ( '>=' )
-            // src/parser/Music.g:310:10: '>='
+            // src/parser/Music.g:322:8: ( '>=' )
+            // src/parser/Music.g:322:10: '>='
             {
             match(">="); 
 
@@ -1481,8 +1483,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:311:6: ( '+' )
-            // src/parser/Music.g:311:8: '+'
+            // src/parser/Music.g:323:6: ( '+' )
+            // src/parser/Music.g:323:8: '+'
             {
             match('+'); 
 
@@ -1502,8 +1504,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = INCR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:312:9: ( '++' )
-            // src/parser/Music.g:312:11: '++'
+            // src/parser/Music.g:324:9: ( '++' )
+            // src/parser/Music.g:324:11: '++'
             {
             match("++"); 
 
@@ -1525,8 +1527,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:313:7: ( '-' )
-            // src/parser/Music.g:313:9: '-'
+            // src/parser/Music.g:325:7: ( '-' )
+            // src/parser/Music.g:325:9: '-'
             {
             match('-'); 
 
@@ -1546,8 +1548,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DECR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:314:9: ( '--' )
-            // src/parser/Music.g:314:11: '--'
+            // src/parser/Music.g:326:9: ( '--' )
+            // src/parser/Music.g:326:11: '--'
             {
             match("--"); 
 
@@ -1569,8 +1571,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:315:9: ( '/' )
-            // src/parser/Music.g:315:11: '/'
+            // src/parser/Music.g:327:9: ( '/' )
+            // src/parser/Music.g:327:11: '/'
             {
             match('/'); 
 
@@ -1590,8 +1592,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:316:9: ( '%' )
-            // src/parser/Music.g:316:11: '%'
+            // src/parser/Music.g:328:9: ( '%' )
+            // src/parser/Music.g:328:11: '%'
             {
             match('%'); 
 
@@ -1611,8 +1613,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:317:9: ( 'not' )
-            // src/parser/Music.g:317:11: 'not'
+            // src/parser/Music.g:329:9: ( 'not' )
+            // src/parser/Music.g:329:11: 'not'
             {
             match("not"); 
 
@@ -1634,8 +1636,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:318:9: ( 'and' )
-            // src/parser/Music.g:318:11: 'and'
+            // src/parser/Music.g:330:9: ( 'and' )
+            // src/parser/Music.g:330:11: 'and'
             {
             match("and"); 
 
@@ -1657,8 +1659,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:319:8: ( 'or' )
-            // src/parser/Music.g:319:10: 'or'
+            // src/parser/Music.g:331:8: ( 'or' )
+            // src/parser/Music.g:331:10: 'or'
             {
             match("or"); 
 
@@ -1680,8 +1682,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:320:6: ( 'if' )
-            // src/parser/Music.g:320:8: 'if'
+            // src/parser/Music.g:332:6: ( 'if' )
+            // src/parser/Music.g:332:8: 'if'
             {
             match("if"); 
 
@@ -1703,8 +1705,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:321:6: ( 'else' )
-            // src/parser/Music.g:321:8: 'else'
+            // src/parser/Music.g:333:6: ( 'else' )
+            // src/parser/Music.g:333:8: 'else'
             {
             match("else"); 
 
@@ -1726,8 +1728,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:322:7: ( 'while' )
-            // src/parser/Music.g:322:9: 'while'
+            // src/parser/Music.g:334:7: ( 'while' )
+            // src/parser/Music.g:334:9: 'while'
             {
             match("while"); 
 
@@ -1749,8 +1751,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:323:9: ( 'for' )
-            // src/parser/Music.g:323:11: 'for'
+            // src/parser/Music.g:335:9: ( 'for' )
+            // src/parser/Music.g:335:11: 'for'
             {
             match("for"); 
 
@@ -1772,8 +1774,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = RETURN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:324:8: ( 'return' )
-            // src/parser/Music.g:324:10: 'return'
+            // src/parser/Music.g:336:8: ( 'return' )
+            // src/parser/Music.g:336:10: 'return'
             {
             match("return"); 
 
@@ -1795,8 +1797,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:325:9: ( 'true' )
-            // src/parser/Music.g:325:11: 'true'
+            // src/parser/Music.g:337:9: ( 'true' )
+            // src/parser/Music.g:337:11: 'true'
             {
             match("true"); 
 
@@ -1818,8 +1820,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:326:9: ( 'false' )
-            // src/parser/Music.g:326:11: 'false'
+            // src/parser/Music.g:338:9: ( 'false' )
+            // src/parser/Music.g:338:11: 'false'
             {
             match("false"); 
 
@@ -1841,8 +1843,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:327:9: ( 'int' )
-            // src/parser/Music.g:327:11: 'int'
+            // src/parser/Music.g:339:9: ( 'int' )
+            // src/parser/Music.g:339:11: 'int'
             {
             match("int"); 
 
@@ -1864,8 +1866,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:328:9: ( 'bool' )
-            // src/parser/Music.g:328:11: 'bool'
+            // src/parser/Music.g:340:9: ( 'bool' )
+            // src/parser/Music.g:340:11: 'bool'
             {
             match("bool"); 
 
@@ -1887,8 +1889,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = STRING_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:329:13: ( 'string' )
-            // src/parser/Music.g:329:15: 'string'
+            // src/parser/Music.g:341:13: ( 'string' )
+            // src/parser/Music.g:341:15: 'string'
             {
             match("string"); 
 
@@ -1910,8 +1912,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:330:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // src/parser/Music.g:330:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/parser/Music.g:342:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // src/parser/Music.g:342:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1923,7 +1925,7 @@ public class MusicLexer extends Lexer {
             }
 
 
-            // src/parser/Music.g:330:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/parser/Music.g:342:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop3:
             do {
                 int alt3=2;
@@ -1973,10 +1975,10 @@ public class MusicLexer extends Lexer {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:331:6: ( ( '-' )? ( '0' .. '9' )+ )
-            // src/parser/Music.g:331:8: ( '-' )? ( '0' .. '9' )+
+            // src/parser/Music.g:343:6: ( ( '-' )? ( '0' .. '9' )+ )
+            // src/parser/Music.g:343:8: ( '-' )? ( '0' .. '9' )+
             {
-            // src/parser/Music.g:331:8: ( '-' )?
+            // src/parser/Music.g:343:8: ( '-' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1985,7 +1987,7 @@ public class MusicLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // src/parser/Music.g:331:8: '-'
+                    // src/parser/Music.g:343:8: '-'
                     {
                     match('-'); 
 
@@ -1995,7 +1997,7 @@ public class MusicLexer extends Lexer {
             }
 
 
-            // src/parser/Music.g:331:13: ( '0' .. '9' )+
+            // src/parser/Music.g:343:13: ( '0' .. '9' )+
             int cnt5=0;
             loop5:
             do {
@@ -2050,7 +2052,7 @@ public class MusicLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:334:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/parser/Music.g:346:9: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2080,13 +2082,13 @@ public class MusicLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // src/parser/Music.g:334:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // src/parser/Music.g:346:11: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // src/parser/Music.g:334:16: (~ ( '\\n' | '\\r' ) )*
+                    // src/parser/Music.g:346:16: (~ ( '\\n' | '\\r' ) )*
                     loop6:
                     do {
                         int alt6=2;
@@ -2120,7 +2122,7 @@ public class MusicLexer extends Lexer {
                     } while (true);
 
 
-                    // src/parser/Music.g:334:30: ( '\\r' )?
+                    // src/parser/Music.g:346:30: ( '\\r' )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -2129,7 +2131,7 @@ public class MusicLexer extends Lexer {
                     }
                     switch (alt7) {
                         case 1 :
-                            // src/parser/Music.g:334:30: '\\r'
+                            // src/parser/Music.g:346:30: '\\r'
                             {
                             match('\r'); 
 
@@ -2146,13 +2148,13 @@ public class MusicLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // src/parser/Music.g:335:5: '/*' ( options {greedy=false; } : . )* '*/'
+                    // src/parser/Music.g:347:5: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // src/parser/Music.g:335:10: ( options {greedy=false; } : . )*
+                    // src/parser/Music.g:347:10: ( options {greedy=false; } : . )*
                     loop8:
                     do {
                         int alt8=2;
@@ -2177,7 +2179,7 @@ public class MusicLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // src/parser/Music.g:335:38: .
+                    	    // src/parser/Music.g:347:38: .
                     	    {
                     	    matchAny(); 
 
@@ -2214,12 +2216,12 @@ public class MusicLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:339:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // src/parser/Music.g:339:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // src/parser/Music.g:351:9: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // src/parser/Music.g:351:12: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // src/parser/Music.g:339:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // src/parser/Music.g:351:16: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop10:
             do {
                 int alt10=3;
@@ -2235,7 +2237,7 @@ public class MusicLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // src/parser/Music.g:339:18: ESC_SEQ
+            	    // src/parser/Music.g:351:18: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -2243,7 +2245,7 @@ public class MusicLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // src/parser/Music.g:339:28: ~ ( '\\\\' | '\"' )
+            	    // src/parser/Music.g:351:28: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -2280,8 +2282,8 @@ public class MusicLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // src/parser/Music.g:345:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // src/parser/Music.g:345:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // src/parser/Music.g:357:2: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // src/parser/Music.g:357:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             match('\\'); 
 
@@ -2310,8 +2312,8 @@ public class MusicLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/parser/Music.g:348:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // src/parser/Music.g:348:8: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // src/parser/Music.g:360:6: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // src/parser/Music.g:360:8: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -2337,70 +2339,70 @@ public class MusicLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // src/parser/Music.g:1:8: ( T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | DRUMS_NOTE_TYPE | NOTE | DRUMS | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | DRUMS_TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS )
+        // src/parser/Music.g:1:8: ( T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | DRUMS_NOTE_TYPE | NOTE | DRUMS | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | DRUMS_TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS )
         int alt11=74;
         alt11 = dfa11.predict(input);
         switch (alt11) {
             case 1 :
-                // src/parser/Music.g:1:10: T__89
-                {
-                mT__89(); 
-
-
-                }
-                break;
-            case 2 :
-                // src/parser/Music.g:1:16: T__90
-                {
-                mT__90(); 
-
-
-                }
-                break;
-            case 3 :
-                // src/parser/Music.g:1:22: T__91
+                // src/parser/Music.g:1:10: T__91
                 {
                 mT__91(); 
 
 
                 }
                 break;
-            case 4 :
-                // src/parser/Music.g:1:28: T__92
+            case 2 :
+                // src/parser/Music.g:1:16: T__92
                 {
                 mT__92(); 
 
 
                 }
                 break;
-            case 5 :
-                // src/parser/Music.g:1:34: T__93
+            case 3 :
+                // src/parser/Music.g:1:22: T__93
                 {
                 mT__93(); 
 
 
                 }
                 break;
-            case 6 :
-                // src/parser/Music.g:1:40: T__94
+            case 4 :
+                // src/parser/Music.g:1:28: T__94
                 {
                 mT__94(); 
 
 
                 }
                 break;
-            case 7 :
-                // src/parser/Music.g:1:46: T__95
+            case 5 :
+                // src/parser/Music.g:1:34: T__95
                 {
                 mT__95(); 
 
 
                 }
                 break;
-            case 8 :
-                // src/parser/Music.g:1:52: T__96
+            case 6 :
+                // src/parser/Music.g:1:40: T__96
                 {
                 mT__96(); 
+
+
+                }
+                break;
+            case 7 :
+                // src/parser/Music.g:1:46: T__97
+                {
+                mT__97(); 
+
+
+                }
+                break;
+            case 8 :
+                // src/parser/Music.g:1:52: T__98
+                {
+                mT__98(); 
 
 
                 }
@@ -3278,7 +3280,7 @@ public class MusicLexer extends Lexer {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | DRUMS_NOTE_TYPE | NOTE | DRUMS | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | DRUMS_TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS );";
+            return "1:1: Tokens : ( T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | TONE | BAR | DOUBLE_BAR | START_REPETITION | END_REPETITION | CHORD | TRANSPORT | MINOR | DIMINUTION | MAJ7 | SEVENTH | NOTE_TYPE | DRUMS_NOTE_TYPE | NOTE | DRUMS | SUSTAIN | BEMOL | ARMOR | FIGURE | DOT | TIE | BEAT | SPEED | SONG | TRACK | DRUMS_TRACK | INSTRUMENT | LETTER_X | FRAGMENT | VOID | EQUAL | NOT_EQUAL | ASSIG | PLUS_ASSIG | MINUS_ASSIG | PROD_ASSIG | DIVIDE_ASSIG | MOD_ASSIG | LT | LE | GT | GE | PLUS | INCR | MINUS | DECR | DIV | MOD | NOT | AND | OR | IF | ELSE | WHILE | FOR | RETURN | TRUE | FALSE | INT | BOOL | STRING_TYPE | ID | NUM | COMMENT | STRING | WS );";
         }
     }
  

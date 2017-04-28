@@ -23,14 +23,14 @@ public class AmlTrack {
     public static final int SiPos = 6;
 
 
-    private int currentTick;
+    protected int currentTick;
 
-    private int metric;
+    int metric;
+    int channel;
+    AmlNote lastNote;
+    Track track;
     private ArrayList<Integer> toneAccidents;
     private String tone;
-    private int channel;
-    private AmlNote lastNote;
-    private Track track;
 
     private ArrayList<Integer> computeTone(int tone) {
         ArrayList<Integer> toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
@@ -48,6 +48,8 @@ public class AmlTrack {
         }
         return toneAccidents;
     }
+
+    public AmlTrack(){}
 
     public AmlTrack(Track track, int channel, int metric, int tone) {
         this.track = track;
@@ -91,7 +93,7 @@ public class AmlTrack {
         }
     }
 
-    private void addOnMessage(AmlNote note) {
+    void addOnMessage(AmlNote note) {
         if (lastNote.isTied()) {
             return;
         }
@@ -100,7 +102,7 @@ public class AmlTrack {
         }
     }
 
-    private void addOffMessage(AmlNote note) {
+    void addOffMessage(AmlNote note) {
         if (note.isTied()) {
             return;
         }

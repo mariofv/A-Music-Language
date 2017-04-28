@@ -81,7 +81,7 @@ public class Interpreter {
         //TODO: THIS
     }
 
-    public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException, IOException {
+    public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException, IOException, InvalidMidiDataException {
         AmlTree function = functionMap.get(functionName);
         if (function == null) {
             throw new AmlRunTimeException("The function " + functionName + " is not declared.");
@@ -91,13 +91,13 @@ public class Interpreter {
         executeListInstruction(function.getChild(2));
     }
 
-    public void executeListInstruction(AmlTree tree) throws AmlException, IOException {
+    public void executeListInstruction(AmlTree tree) throws AmlException, IOException,InvalidMidiDataException {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
         }
     }
 
-    public void executeInstruction(AmlTree tree) throws AmlException, IOException {
+    public void executeInstruction(AmlTree tree) throws AmlException, IOException, InvalidMidiDataException {
         switch(tree.getType()) {
             case MusicLexer.SONG:
                 //TODO: Crear secuencia
@@ -168,10 +168,15 @@ public class Interpreter {
                 AmlNote note = createNote(tree);
                 compas.addNote(note);
                 break;
+            case MusicLexer.DRUMSNOTES:
+                AmlNote drumNote = createNote(tree);
+                compas.addNote((AmlDrumNote) drumNote);
+
+                break;
         }
     }
 
-    private void createSong(AmlTree tree) throws IOException, AmlException {
+    private void createSong(AmlTree tree) throws IOException, AmlException, InvalidMidiDataException {
         int[] metric = {4,4};
         int bpm = 120;
         int tone = 0;
@@ -199,7 +204,12 @@ public class Interpreter {
         AmlSequence sequence = new AmlSequence(bpm, metric, tone);
 
         for(i = i-1; i < tree.getChildCount(); ++i) {
-            createTrack(tree.getChild(i), sequence);
+            if (tree.getChild(i).getType() == MusicLexer.TRACK) {
+                createTrack(tree.getChild(i), sequence);
+            }
+            else {
+                createDrumsTrack(tree.getChild(i), sequence);
+            }
         }
 
         File f = new File("midifile.mid");
@@ -228,6 +238,21 @@ public class Interpreter {
 
     private int createBPM(AmlTree tree) {
         return tree.getChild(0).getIntValue();
+    }
+
+    public void createDrumsTrack(AmlTree tree, AmlSequence sequence) throws AmlException, InvalidMidiDataException {
+        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack();
+        AmlTree listOfCompas = tree.getChild(0);
+        for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
+            switch (child.getType()) {
+                case MusicLexer.COMPAS:
+                    drumsTrack.addCompas(createCompas(child, drumsTrack));
+                    break;
+                case MusicLexer.REPETITION:
+                    repeat(child, drumsTrack);
+                    break;
+            }
+        }
     }
 
     public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
@@ -376,6 +401,15 @@ public class Interpreter {
                 }
             }
             return new AmlChord(rootNote, octave, semiToneModifier, quality, interval, figure, figureModifier, tie);
+        }
+        else if (noteList.getType() == MusicLexer.DRUMSNOTE_LIST) {
+            AmlDrumNote drumNote = new AmlDrumNote(figure, figureModifier, tie);
+
+            /* Loops over the list of notes */
+            for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
+                drumNote.addDrumNotePitch(noteChild.getIntValue());
+            }
+            return drumNote;
         }
         return null;
     }

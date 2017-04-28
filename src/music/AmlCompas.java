@@ -58,6 +58,16 @@ public class AmlCompas {
         notes.add(note);
     }
 
+    public void addNote(AmlDrumNote note) throws AmlMusicException {
+        if (!note.hasFigure()) note.setDuration(lastNoteDuration);
+        actualTicks += note.getDuration();
+        if (actualTicks > ticksPerCompas) {
+            throw new AmlMusicException("The compass is incorrect because you are overflowing the metric.\n" + toString());
+        }
+        lastNoteDuration = note.getDuration();
+        notes.add(note);
+    }
+
     public void changeTrackTone(int tone) {
         track.setToneAccidents(tone);
     }

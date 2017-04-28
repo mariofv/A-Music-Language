@@ -86,12 +86,12 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-    ArrayList<Integer> pitches;
-    ArrayList<AmlNoteInfo> notes;
-    private Figure figure;
-    private int figureModifier;
-    private int duration;
-    private boolean tie;
+     ArrayList<Integer> pitches;
+    private ArrayList<AmlNoteInfo> notes;
+    Figure figure;
+    int figureModifier;
+    int duration;
+    boolean tie;
 
     AmlNote(){}
 
@@ -162,7 +162,7 @@ public class AmlNote {
 
 
 
-    private void mapDuration() {
+    void mapDuration() {
         int value;
         switch (figure) {
             case Redonda:
