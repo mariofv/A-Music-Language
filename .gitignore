@@ -17,5 +17,5 @@ hs_err_pid*
 *.dot
 *.pdf
 src/parser/Music.tokens
-src/parser/MusicLexer
-src/parser/MusicParser
+src/parser/MusicLexer.java
+src/parser/MusicParser.java
