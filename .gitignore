@@ -14,3 +14,8 @@ hs_err_pid*
 
 *.idea
 *.iml
+*.dot
+*.pdf
+src/parser/Music.tokens
+src/parser/MusicLexer
+src/parser/MusicParser

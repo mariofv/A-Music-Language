@@ -3,6 +3,7 @@ void main() {
         Beat 4:4;
         Speed 120;
         Tone 2#;
-        Drums || Fa.n Fa.n Fa.n Fa.n| Tone 1&;| Fa.n Fa.n Fa.n $Fa.n ||
+        Track "Ocarina" || Fa.n Fa.n Fa.n Fa.n| Tone 1&;| Fa.n Fa.n Fa.n $Fa.n ||
+        Drums || DrumsNote(49).n DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n| Tone 1&;| DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n DrumsNote(42).n ||
     }
 }

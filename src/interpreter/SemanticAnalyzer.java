@@ -20,7 +20,7 @@ public class SemanticAnalyzer {
     }
 
     public void analyze(AmlTree tree) throws AmlSemanticException {
-        scope.addFirst(new HashMap<>());
+        scope.addFirst(new HashMap<String, Integer>());
         analyze(tree, 0);
         scope.removeFirst();
     }
@@ -112,7 +112,7 @@ public class SemanticAnalyzer {
         }
 
         if (tree.getChildren() == null || !analyzeChilds) return;
-        if (newScope) scope.addFirst(new HashMap<>());
+        if (newScope) scope.addFirst(new HashMap<String, Integer>());
         for (AmlTree child : (List<AmlTree>)tree.getChildren()) {
             analyze(child, depth+1);
         }
