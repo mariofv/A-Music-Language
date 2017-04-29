@@ -24,8 +24,7 @@ public class AmlSequence {
         try {
             sequence = new Sequence(Sequence.PPQ, AmlNote.PPQ);
         } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-            throw new Error();
+            throw new Error(e);
         }
     }
 
@@ -38,8 +37,7 @@ public class AmlSequence {
                 tempo = new MetaMessage(0x51, number, 3);
             }
             catch (Exception e) {
-                e.printStackTrace();
-                throw new Error();
+                throw new Error(e);
             }
             track.add(new MidiEvent(tempo, 0));
         first = false;
@@ -49,9 +47,13 @@ public class AmlSequence {
         return new AmlTrack(track, actualChannel, metric[0]*AmlNote.PPQ*4/metric[1], tone);
     }
 
-    public AmlDrumsTrack addDrumsTrack() throws InvalidMidiDataException{
+    public AmlDrumsTrack addDrumsTrack() {
         Track track = sequence.createTrack();
-        return new AmlDrumsTrack(track, metric[0]*AmlNote.PPQ*4/metric[1]);
+        try {
+            return new AmlDrumsTrack(track, metric[0]*AmlNote.PPQ*4/metric[1]);
+        } catch (InvalidMidiDataException e) {
+            throw new Error(e);
+        }
     }
 
     public Sequence getSequence() {

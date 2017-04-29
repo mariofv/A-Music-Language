@@ -225,9 +225,10 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createDrumsTrack(AmlTree tree, AmlSequence sequence) throws AmlException, InvalidMidiDataException {
+    public void createDrumsTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
         AmlDrumsTrack drumsTrack = sequence.addDrumsTrack();
         AmlTree listOfCompas = tree.getChild(0);
+        //TODO: esto se puede hacer en una función
         for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:

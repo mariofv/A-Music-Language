@@ -33,6 +33,8 @@ import music.AmlNote;
 import org.antlr.runtime.tree.*;
 import org.antlr.runtime.Token;
 
+import java.util.ArrayList;
+
 import static music.AmlNote.Figure.*;
 import static music.AmlNote.Note.*;
 
@@ -64,6 +66,10 @@ public class AmlTree extends CommonTree {
     /** Function to get the child of the node. */
     public AmlTree getChild(int i) {
         return (AmlTree) super.getChild(i);
+    }
+
+    public ArrayList<AmlTree> getArrayChildren() {
+        return (ArrayList<AmlTree>) children;
     }
 
     /** Get the integer value of the node. */
