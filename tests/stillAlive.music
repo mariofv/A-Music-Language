@@ -39,15 +39,26 @@ void main() {
                                  La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
                                  La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c ||
 
-        Track "Electric Bass (finger)" 23x||: Silence.r :|| 2x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
-                     Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 | Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+        Track "Electric Bass (finger)" 23x||: Silence.r :||
+                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
                      4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
                      Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3.n |
                      Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 | Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
                      4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
                      Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3 La-2 |
-                     &Si.n &Si &Si.c &Si &Si &Si||
-
+                     &Si-2.n &Si-2 &Si-2.c &Si-2 &Si-2 &Si-2
+                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | &Si-2.n* &Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
+                     &Si-2.n* &Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | &Si-2.n Fa-3 La-2 Mi-3
+                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     8x||: Silence.r :|| 4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
+                     Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3 La-2 |
+                     &Si-2.n &Si-2 &Si-2.c &Si-2 &Si-2 &Si-2
+                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | &Si-2.n* &Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
+                     &Si-2.n* &Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | &Si-2.n Fa-3 La-2 Mi-3
+                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3 //Esto es un for
+                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     | Silence.r ||
 
         Drums       9x||: DN(-1).r :||  6x||: DN(69).c DN(69).c DN(69).c DN(69).c DN(69).c DN(69).c DN(69).c DN(69).c :|| DN(69).c DN(69).c DN(69).c DN(69).c DN(-1).b
                     7x||:  (DN(36) DN(69)).c  DN(69).c DN(69).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).c DN(69).c DN(69).c :||
@@ -57,6 +68,44 @@ void main() {
                                              DN(69).c (DN(38) DN(69)).c DN(69).c :||
                     (DN(36) DN(69) DN(46)).c DN(69).c (DN(38) DN(69) DN(46)).c (DN(36) DN(69)).c (DN(36) DN(69) DN(46)).c DN(69).sc DN(36).sc (DN(38) DN(69) DN(46)).c (DN(36) DN(69)).c
                     7x||: if (Time == 1) { (DN(36) DN(57) DN(69) DN(59)).c} else { (DN(36) DN(69) DN(59)).c }  DN(69).c (DN(38) DN(69) DN(59)).c (DN(36) DN(69)).c (DN(36) DN(69) DN(59)).c
-                                                    if (Time != 7) {  DN(69).c (DN(38) DN(69) DN(59)).c DN(69).c } else { DN(69).sc DN(36).sc (DN(38) DN(69) DN(59)).c (DN(36) DN(69)).c }  :|| ||
-    }
+                          if (Time != 7) {  DN(69).c (DN(38) DN(69) DN(59)).c DN(69).c } else { DN(69).sc DN(36).sc (DN(38) DN(69) DN(59)).c (DN(36) DN(69)).c }  :||
+                    //CHORUS 2
+                    (DN(36) DN(57) DN(69) DN(59)).c (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69)).sc  DN(-1)  (DN(38) DN(69) DN(59)).c DN(69)
+                    3x||: (DN(36) DN(69) DN(59)).c  (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69))
+                            if (Time != 3) { (DN(38) DN(69) DN(59)) DN(69) }
+                            else { (DN(38) DN(69) DN(59))  (DN(38) DN(69)).sc DN(38) }:||
+                    (DN(36) DN(57) DN(69) DN(59)).c (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69)).sc  DN(-1)  (DN(38) DN(69) DN(59)).c DN(69)
+                    2x||: (DN(36) DN(69) DN(59)).c  (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69)
+                            if (Time != 2) { (DN(36) DN(69) DN(59)) (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) }
+                            else {(DN(36) DN(38) DN(69) DN(59)).sc DN(38) (DN(36) DN(69)).c (DN(38) DN(69) DN(59)) (DN(36) DN(38) DN(69)).sc DN(38)} :||
+                    //PRE-VERSE 3
+                    2x ||: if (Time == 1) { (DN(36) DN(69) DN(57)).c } else { (DN(36) DN(69)).c }
+                           DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c DN(69).c |
+                           (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).sc DN(36).sc
+                           if (Time == 1) { (DN(38) DN(69)).c DN(69).c } else { (DN(38) DN(69) DN(57)).c (DN(36) DN(69)).c }:||
+                    //BRIDGE-VERSE 3
+                     8x||: if (Time == 1) {(DN(69) DN(49)).c} else { DN(69).c } DN(69) DN(69) DN(69) DN(69)
+                           if (Time != 8) { DN(69) DN(69) DN(69) } else { (DN(69) DN(36)) (DN(69) DN(38)).sc DN(-1) DN(69) DN(38) }:||
+                     7x||: (DN(36) DN(69)).c DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c DN(69).c :||
+                     //CHORUS 3
+                     (DN(36) DN(57) DN(69) DN(59)).c (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69)).sc  DN(-1)  (DN(38) DN(69) DN(59)).c DN(69)
+                     3x||: (DN(36) DN(69) DN(59)).c  (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69))
+                             if (Time != 3) { (DN(38) DN(69) DN(59)) DN(69) }
+                             else { (DN(38) DN(69) DN(59))  (DN(38) DN(69)).sc DN(38) }:||
+                     (DN(36) DN(57) DN(69) DN(59)).c (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) (DN(36) DN(69) DN(59)) (DN(36) DN(69)).sc  DN(-1)  (DN(38) DN(69) DN(59)).c DN(69)
+                     2x||: (DN(36) DN(69) DN(59)).c  (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69)
+                             if (Time != 2) { (DN(36) DN(69) DN(59)) (DN(36) DN(69)) (DN(38) DN(69) DN(59)) DN(69) }
+                             else {(DN(36) DN(38) DN(69) DN(59)).sc DN(38) (DN(36) DN(69)).c (DN(38) DN(69) DN(59)) (DN(36) DN(38) DN(69)).sc DN(38)} :||
+                     //OUTRO tambien es un for
+                     2x ||: if (Time == 1) { (DN(36) DN(69) DN(57)).c } else { (DN(36) DN(69)).c }
+                           DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c DN(69).c |
+                           (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).sc DN(36).sc
+                           if (Time == 1) { (DN(38) DN(69)).c DN(69).c } else { (DN(38) DN(69) DN(57)).c (DN(36) DN(69)).c }:||
+                     3x||: if (Time == 1) { (DN(36) DN(57) DN(69)).c} else { (DN(36) DN(69)).c }  DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c
+                           DN(69).c (DN(38) DN(69)).c DN(69).c  :||
+                           (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c  DN(69).sc DN(36).sc (DN(38) DN(69) DN(57)).c (DN(36) DN(69)).c
+                     3x||: if (Time == 1) { (DN(36) DN(57) DN(69)).c } else { (DN(36) DN(69)).c }  DN(69).c (DN(38) DN(69)).c (DN(36) DN(69)).c (DN(36) DN(69)).c
+                           DN(69).c (DN(38) DN(69)).c DN(69).c  :||
+                     (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c  DN(69).c  DN(69).c DN(-1).n* | DN(-1).r ||
+        }
 }

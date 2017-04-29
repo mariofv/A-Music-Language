@@ -242,7 +242,7 @@ notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
 drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUMSNOTE_LIST drums+)
             ;
 
-drums       :   DRUMS_NOTE_TYPE! '('! num_expr^ ')'!
+drums       :   DN! '('! num_expr^ ')'!
             ;
 
 note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NUM)?
@@ -289,6 +289,7 @@ MAJ7                : 'maj7';
 SEVENTH             : '7th';
 NOTE_TYPE           : 'Note';
 DRUMS_NOTE_TYPE     : 'DrumsNote';
+DN                  :  'DN';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 DRUMS               : 'Drums';
 SUSTAIN             : '#';
