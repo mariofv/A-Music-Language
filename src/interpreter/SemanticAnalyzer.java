@@ -12,10 +12,16 @@ public class SemanticAnalyzer {
     private class SymbolInfo {
         private int line;
         private int type;
+        private int index;
 
-        public SymbolInfo(int line, int type) {
+        public SymbolInfo(int line, int type, int index) {
             this.line = line;
             this.type = type;
+            this.index = index;
+        }
+
+        public int getIndex() {
+            return index;
         }
 
         public int getLine() {
@@ -216,7 +222,10 @@ public class SemanticAnalyzer {
         String id = tree.getText();
         for (HashMap<String, SymbolInfo> scope : symbolTable) {
             SymbolInfo data = scope.get(id);
-            if (data != null) return data;
+            if (data != null) {
+                tree.setIndex(data.getIndex());
+                return data;
+            }
         }
         throw new AmlSemanticException("Variable " + id + " not declared", tree.getLine());
     }
@@ -530,8 +539,7 @@ public class SemanticAnalyzer {
     private void insertId(AmlTree tree, int type) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
-        tree.setIndex(index++);
-        SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(),type));
+        SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index++));
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
         }
