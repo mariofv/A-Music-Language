@@ -5,16 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import javax.sound.midi.*;
 
 import data.Data;
 import data.Int;
-import exceptions.AmlSemanticException;
 import exceptions.AmlException;
 import exceptions.AmlMusicException;
-import exceptions.AmlRunTimeException;
 import music.*;
 import parser.MusicLexer;
 
@@ -24,39 +21,28 @@ public class Interpreter {
     HashMap<String, AmlTree> fragmentMap;
     HashMap<String, AmlTree> songMap;
     private int currentIteration;
+    private AmlStack stack;
 
     public Interpreter() {
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
+        stack = new AmlStack();
     }
 
-    public void checkParams(AmlTree params, ArrayList<Data> arguments) {
-        //Stub!
-        //TODO: THIS
-    }
-
-    public void setParams(AmlTree params, ArrayList<Data> arguments) {
-        //Stub!
-        //TODO: THIS
-    }
-
-    public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException, IOException, InvalidMidiDataException {
+    public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException {
         AmlTree function = functionMap.get(functionName);
-        if (function == null) {
-            throw new AmlRunTimeException("The function " + functionName + " is not declared.");
-        }
-        checkParams(function.getChild(1), arguments);
-        setParams(function.getChild(1), arguments);
+        stack.push(function);
         executeListInstruction(function.getChild(2));
+        stack.pop();
     }
 
-    public void executeListInstruction(AmlTree tree) throws AmlException, IOException,InvalidMidiDataException {
+    public void executeListInstruction(AmlTree tree) throws AmlException {
         for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
             executeInstruction(child);
         }
     }
 
-    public void executeInstruction(AmlTree tree) throws AmlException, IOException, InvalidMidiDataException {
+    public void executeInstruction(AmlTree tree) throws AmlException {
         switch(tree.getType()) {
             case MusicLexer.SONG:
                 //TODO: Crear secuencia
@@ -66,18 +52,19 @@ public class Interpreter {
                 break;
         }
     }
+
     private Data evaluateExpression(AmlTree tree) {
         switch (tree.getType()) {
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
             case MusicLexer.ATTR_ACCESS:
-
                 break;
             case MusicLexer.ID:
                 if(tree.getText().equals("Time")) {
                     return new Int(currentIteration);
-                } //TODO: ESTO DEBERIA SER UN SWITCH
-                break;
+                }
+                int index = tree.getVariableIndex();
+                return stack.getLocalVariables().get(index);
         }
         return null;
     }
@@ -161,7 +148,7 @@ public class Interpreter {
         }
     }
 
-    private void createSong(AmlTree tree) throws IOException, AmlException, InvalidMidiDataException {
+    private void createSong(AmlTree tree) throws AmlException {
         int[] metric = {4,4};
         int bpm = 120;
         int tone = 0;
@@ -198,7 +185,11 @@ public class Interpreter {
         }
 
         File f = new File("midifile.mid");
-        MidiSystem.write(sequence.getSequence(),1,f);
+        try {
+            MidiSystem.write(sequence.getSequence(),1,f);
+        } catch (IOException e) {
+            throw new AmlException(e.getMessage());
+        }
     }
 
     private int createTone(AmlTree tree) throws AmlMusicException {

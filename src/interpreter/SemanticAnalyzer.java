@@ -31,6 +31,7 @@ public class SemanticAnalyzer {
     private HashMap<String, AmlTree> fragmentMap;
     private HashMap<String, AmlTree> songMap;
     private LinkedList<HashMap<String, SymbolInfo>> symbolTable;
+    private int index;
 
     private static String mapType(int type) {
         switch (type) {
@@ -480,14 +481,17 @@ public class SemanticAnalyzer {
                         throw new AmlSemanticException("The function " + functionName + " has already been declared.", globalStatement.getLine());
                     }
                     AmlTree arguments = globalStatement.getChild(1);
+                    index = 0;
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
+                            child.getChild(0).setIndex(index++);
                             insertId(child.getChild(0), child.getType());
                         }
                     }
                     symbolTable.addFirst(new HashMap<>());
                     analyzeListInstructions(globalStatement.getChild(2));
                     symbolTable.removeFirst();
+                    globalStatement.setNumVariables(index);
                     break;
                 }
                 case FRAGMENT: {
@@ -509,7 +513,7 @@ public class SemanticAnalyzer {
                 }
                 case SONG: {
                     AmlTree firstChild = globalStatement.getChild(0);
-                    if (firstChild.getType() != MusicLexer.ID)
+                    if (firstChild.getType() != ID)
                         throw new AmlSemanticException("Global song must have a name", globalStatement.getLine());
                     AmlTree previousValue = songMap.put(firstChild.getText(), globalStatement);
                     if (previousValue != null)
@@ -526,6 +530,7 @@ public class SemanticAnalyzer {
     private void insertId(AmlTree tree, int type) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
+        tree.setIndex(index++);
         SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(),type));
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());

@@ -27,6 +27,7 @@
 
 package interpreter;
 
+import data.Data;
 import exceptions.AmlSemanticException;
 import music.AmlInstrument;
 import music.AmlNote;
@@ -34,6 +35,7 @@ import org.antlr.runtime.tree.*;
 import org.antlr.runtime.Token;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static music.AmlNote.Figure.*;
 import static music.AmlNote.Note.*;
@@ -57,6 +59,33 @@ public class AmlTree extends CommonTree {
     private AmlNote.Note noteValue;
     private AmlNote.Figure figureValue;
     private AmlInstrument.Instruments instrumentValue;
+    private ArrayList<Data> localVariables;
+    private int numVariables;
+    private int variableIndex;
+
+    public void setIndex(int index) {
+        variableIndex = index;
+    }
+
+    public void setNumVariables(int numVariables) {
+        this.numVariables = numVariables;
+    }
+
+    public int getVariableIndex() {
+        return variableIndex;
+    }
+
+    public void pushLocalVariables() {
+        localVariables = new ArrayList<>(Collections.nCopies(numVariables, new Data()));
+    }
+
+    public ArrayList<Data> getLocalVariables() {
+        return localVariables;
+    }
+
+    public void popLocalVariables() {
+        localVariables = null;
+    }
 
     /** Constructor of the class */
     public AmlTree(Token t) {
