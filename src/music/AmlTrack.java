@@ -93,7 +93,7 @@ public class AmlTrack {
         }
     }
 
-    void addOnMessage(AmlNote note) {
+    private void addOnMessage(AmlNote note) {
         if (lastNote.isTied()) {
             return;
         }
@@ -102,7 +102,7 @@ public class AmlTrack {
         }
     }
 
-    void addOffMessage(AmlNote note) {
+    private void addOffMessage(AmlNote note) {
         if (note.isTied()) {
             return;
         }

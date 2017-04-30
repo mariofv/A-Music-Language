@@ -11,14 +11,14 @@ void main() {
                          Fa-6.c Mi-6.c Re-6.c Do-6.c Silence.n La.c &Si.c| Do-6.n Fa-6.n Mi-6.c Re-6.c Re-6.c Do-6.c | Re-6.c Do-6.c Do-6.n Do-6.n La.c &Si.c |
                          Do-6.n Fa-6.n Sol-6.c Fa-6.c Mi-6.c Re-6.c | Re-6.c Mi-6.c Fa-6.n Fa-6.n Sol-6.c La-6.c | &Si-6.c &Si-6.c La-6.n Sol-6.n Fa-6.c Sol-6.c |
                          La-6.c La-6.c Sol-6.n Fa-6.n Re-6.c Do-6.c | Re-6.c Fa-6.c Fa-6.c Mi-6.c~ Mi-6.c Mi-6.c #Fa-6.c #Fa-6.c | Silence.r | Silence | Silence ||: //Aqui van notas que solo se deberían tocar en la segunda repetición
-                         Silence.n Silence.c if(Time==1) { La.c } else { Silence.c } Sol-6 #Fa-6 Mi-6 Mi-6~ | Mi-6.sc #Fa-6.c*~ #Fa-6.n Silence.b | Silence.n Silence.c La.c Sol-6 #Fa-6 Mi-6 Mi-6~ |
+                         Silence.n Silence.c if(Time==1) { La.c } else { Silence.c } Sol-6 #Fa-6 Mi-6 Mi-6~ | Mi-6.sc #Fa-6.c*~ #Fa-6.n Silence.b | Silence.n Silence.c if (Time == 2){La.c}else{Silence.c} Sol-6 #Fa-6 Mi-6 Mi-6~ |
                          Mi-6.n #Fa-6.c Re-6~ Re-6 Mi-6.n La.c~ | La.b Silence.b | Mi-6.n #Fa-6.c Sol-6~ Sol-6.n Mi-6 | #Do-6 Re-6.c Mi-6~ Mi-6.n La.c La~       |
-                         La #Fa-6.n*~ #Fa-6.n Silence | Silence Silence.c La (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6) | (La-6 #Fa-6).n Silence.n Silence.b |
-                         Silence.n Silence.c La (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6)~ | (Mi-6 Sol-6).n (La-6 #Fa-6).c (#Fa-6 Re-6).c~ (#Fa-6 Re-6).n (Sol-6 Mi-6).c (Re-6 La)~ |
+                         La #Fa-6.n*~ #Fa-6.n Silence | Silence Silence.c if (Time==1){La.c}else{Silence.c} (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6) | (La-6 #Fa-6).n Silence.n Silence.b |
+                         Silence.n Silence.c if (Time==1){La}else{Silence} (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6)~ | (Mi-6 Sol-6).n (La-6 #Fa-6).c (#Fa-6 Re-6).c~ (#Fa-6 Re-6).n (Sol-6 Mi-6).c (Re-6 La)~ |
                          (Re-6 La).b Silence.b | Mi-6.n #Fa-6.c Sol-6~ Sol-6.n Mi-6 | #Do-6 Re-6.c Mi-6~ Mi-6 La Re-6 Mi-6 |  Fa-6.c Mi-6 Re-6 Do-6~ Do-6.n La.c &Si.c |
                          Do-6.n Fa-6 Mi-6.c Re-6.c Re-6.c Do-6 | Re-6 Do-6 Do-6.n Do-6 La.c &Si | Do-6.n Fa-6 Sol-6.c Fa-6 Mi-6 Re-6 | Re-6 Mi-6 Fa-6.n Fa-6.n Sol-6.c La-6  |
-                         &Si-6 &Si-6 La-6 La-6 Sol-6.n Fa-6.c Sol-6 | La-6 La-6 Sol-6 Fa-6 Fa-6.n Re-6.c Do-6 | Re-6 Fa-6 Fa-6 Mi-6~ Mi-6 Mi-6 #Fa-6 if (Time == 1) {#Fa-6~} else {(La-6 #Fa-6)~} | if (Time == 1) { #Fa-6.b Silence } | if (Time == 1) {Silence.r}|
-                         if (Time == 1) { Silence.r } :|| 5x||: (La-6 #Fa-6).b Silence.c La-6.c La-6 La-6 | Si-6 La-6 #Fa-6 Re-6~ Re-6 (Sol-6 Mi-6) (La-6 #Fa-6) (La-6 #Fa-6)~ :|| (La-6 #Fa-6).n Silence Silence.c Sol-6 La-6 La-6~ |
+                         &Si-6 &Si-6 if(Time==2){La-6 La-6}else{La-6.n} Sol-6.n Fa-6.c Sol-6 | La-6 La-6 Sol-6 Fa-6 Fa-6.n Re-6.c Do-6 | Re-6 Fa-6 Fa-6 Mi-6~ Mi-6 Mi-6 #Fa-6 if (Time == 1) {#Fa-6~} else {(La-6 #Fa-6)~} | if (Time == 1) { #Fa-6.b Silence } | if (Time == 1) {Silence.r}|
+                         if (Time == 1) { Silence.r } :|| 5x||: (La-6 #Fa-6).b Silence.c if(Time == 1){Silence.c}else if (Time==4){Silence.c}else{La-6.c} La-6 La-6 | Si-6 La-6 #Fa-6 Re-6~ Re-6 (Sol-6 Mi-6) (La-6 #Fa-6) (La-6 #Fa-6)~ :|| (La-6 #Fa-6).n Silence Silence.c Sol-6 La-6 La-6~ |
                          La-6.n Silence Silence.c Sol-6 #Fa-6 #Fa-6~ | #Fa-6.b Silence.b ||
 
         Track "Orchestral Harp" || Silence.r | La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |

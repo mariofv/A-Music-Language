@@ -1,10 +1,7 @@
 package interpreter;
 
-import com.sun.org.apache.xerces.internal.util.SymbolTable;
-import exceptions.AmlException;
 import exceptions.AmlSemanticException;
 import parser.MusicLexer;
-import sun.awt.Symbol;
 
 import java.util.*;
 
@@ -35,8 +32,10 @@ public class SemanticAnalyzer {
     private HashMap<String, AmlTree> songMap;
     private LinkedList<HashMap<String, SymbolInfo>> symbolTable;
 
-    public static String mapType(int type) {
+    private static String mapType(int type) {
         switch (type) {
+            case VOID:
+                return "void";
             case BOOL:
                 return "bool";
             case INT:
@@ -53,8 +52,25 @@ public class SemanticAnalyzer {
                 return "+";
             case MINUS:
                 return "-";
+            case ASSIG:
+                return "=";
+            case PLUS_ASSIG:
+                return "+=";
+            case MINUS_ASSIG:
+                return "-=";
+            case PROD_ASSIG:
+                return "*=";
+            case DIVIDE_ASSIG:
+                return "/=";
+            case MOD_ASSIG:
+                return "%=";
+            case INCR:
+                return "++";
+            case DECR:
+                return "--";
+            default:
+                return "unknown";
         }
-        return "unknown";
     }
 
     public SemanticAnalyzer(Interpreter interpreter) {
@@ -79,12 +95,25 @@ public class SemanticAnalyzer {
 
     private void analyzeListMusicInstructions(AmlTree tree) throws AmlSemanticException {
         for (AmlTree musicInstruction : tree.getArrayChildren()) {
-            analyzeMusicInstrucion(musicInstruction);
+            analyzeMusicInstruction(musicInstruction);
         }
     }
 
-    private boolean analyzeCommonInstructions(AmlTree commonInstruction) throws AmlSemanticException {
+    private int getLType(AmlTree tree) throws AmlSemanticException {
+        switch (tree.getType()) {
+            case ID:
+                return getSymbol(tree).getType();
+            case ATTR_ACCESS:
+                return INT;
+            default:
+                throw new Error("This should never happen");
+        }
+    }
+
+    private boolean analyzeCommonInstruction(AmlTree commonInstruction) throws AmlSemanticException {
+        //TODO: var_funcall
         switch (commonInstruction.getType()) {
+            //Declaration
             case INT:
             case BOOL:
             case NOTE_TYPE:
@@ -94,7 +123,55 @@ public class SemanticAnalyzer {
                 for (AmlTree declaration : commonInstruction.getArrayChildren()) {
                     checkDeclaration(declaration, commonInstruction.getType());
                 }
-                break;
+                return true;
+            //Assignation
+            case ASSIG:
+            case PLUS_ASSIG:
+            case MINUS_ASSIG:
+            case PROD_ASSIG:
+            case DIVIDE_ASSIG:
+            case MOD_ASSIG:
+                int lType = getLType(commonInstruction.getChild(0));
+                int rType = getRType(commonInstruction.getChild(1));
+                if (lType != rType) {
+                    throw new AmlSemanticException("Type error in " + mapType(commonInstruction.getType()) +
+                            " operation: " + mapType(lType) + ", " + mapType(rType), commonInstruction.getLine());
+                }
+                return true;
+            case POST:
+            case PRE:
+                int type = getLType(commonInstruction.getChild(0));
+                if (type != INT)
+                    throw new AmlSemanticException("Type error in " + mapType(commonInstruction.getChild(1).getType()) +
+                            " operation: " + mapType(type) + ". Expected int", commonInstruction.getLine());
+                return true;
+            case TONE:
+                commonInstruction.getChild(0).setIntValue();
+                int tone = commonInstruction.getChild(0).getIntValue();
+                if (tone < 0) throw new AmlSemanticException("Tone value can't be negative: " + tone, commonInstruction.getLine());
+                return true;
+            case BEAT:
+                commonInstruction.getChild(0).setIntValue();
+                commonInstruction.getChild(1).setIntValue();
+                int beatLeft = commonInstruction.getChild(0).getIntValue();
+                int beatRight = commonInstruction.getChild(1).getIntValue();
+                if (beatLeft < 0 || beatRight < 0)
+                    throw new AmlSemanticException("Beat values can't be negative: " + beatLeft + ":" + beatRight, commonInstruction.getLine());
+                return true;
+            case SPEED:
+                commonInstruction.getChild(0).setIntValue();
+                int speed = commonInstruction.getChild(0).getIntValue();
+                if (speed < 0) throw new AmlSemanticException("Speed value can't be negative: " + speed, commonInstruction.getLine());
+                return true;
+            case INSTRUMENT:
+                commonInstruction.getChild(0).setInstrumentValue();
+                return true;
+            case FUNCALL:
+                AmlTree funcDeclaration = functionMap.get(commonInstruction.getText());
+                if (funcDeclaration == null) throw new AmlSemanticException(
+                        "Function " + commonInstruction.getText() + " not declared", commonInstruction.getLine());
+                checkArguments(funcDeclaration, commonInstruction);
+                return true;
         }
         return false;
     }
@@ -105,35 +182,32 @@ public class SemanticAnalyzer {
                 insertId(declaration, type);
                 break;
             case ASSIG:
-                checkTypes(type, declaration.getChild(1));
+                int rType = getRType(declaration.getChild(1));
+                if (type != rType) throw new AmlSemanticException(
+                        "Type error in declaration: " + mapType(type) + ", " + mapType(rType), declaration.getLine());
                 insertId(declaration.getChild(0), type);
                 break;
             default: throw new Error("This should never happen");
         }
     }
 
-    private void checkTypes(int type, AmlTree child) throws AmlSemanticException {
-        int returnType;
+    private int getRType(AmlTree child) throws AmlSemanticException {
         switch (child.getType()) {
             case DRUMSNOTES:
-                returnType = DRUMS_NOTE_TYPE;
-                break;
+                return DRUMS_NOTE_TYPE;
             case NOTES:
                 switch (child.getChild(0).getType()) {
                     case CHORD:
-                        returnType = CHORD;
-                        break;
+                        return CHORD;
                     case NOTE_LIST:
-                        returnType = NOTE_TYPE;
-                        break;
+                        return NOTE_TYPE;
                     default: throw new Error("This should never happen");
                 }
-                break;
+            case FIGURE:
+                return INT;
             default:
-                returnType = checkExpression(child);
+                return checkExpression(child);
         }
-        if (type != returnType) throw new AmlSemanticException(
-                "Type error: " + mapType(type) + ", " + mapType(returnType), child.getLine());
     }
 
     private SymbolInfo getSymbol(AmlTree tree) throws AmlSemanticException {
@@ -151,7 +225,8 @@ public class SemanticAnalyzer {
         switch (expression.getType()) {
             //var_access
             case ATTR_ACCESS:
-                break;
+                //TODO: THIS
+                return INT;
             //var_access
             case ID:
                 return getSymbol(expression).getType();
@@ -165,8 +240,10 @@ public class SemanticAnalyzer {
                 AmlTree funcDeclaration = functionMap.get(expression.getText());
                 if (funcDeclaration == null) throw new AmlSemanticException(
                         "Function " + expression.getText() + " not declared", expression.getLine());
-                break;
+                checkArguments(funcDeclaration, expression);
+                return funcDeclaration.getChild(0).getType();
             case BOOLEAN:
+                expression.setBooleanValue();
                 return BOOL;
         }
         //Unary operators
@@ -185,11 +262,10 @@ public class SemanticAnalyzer {
                 default: throw new Error("This should never happen");
             }
             int returnType = checkExpression(expression.getChild(0));
-            if (returnType != operatorType) {
+            if (returnType != operatorType)
                 throw new AmlSemanticException("Invalid type " + mapType(returnType) +
                         " applied to unary operator " + mapType(expression.getType()) +
                         ". Expected type: " + mapType(operatorType), expression.getLine());
-            }
             return operatorType;
         }
         //Binary operators
@@ -203,6 +279,7 @@ public class SemanticAnalyzer {
                 case GT:
                 case LT:
                 case EQUAL:
+                case MOD:
                     operatorType = INT;
                     break;
                 default: throw new Error("This should never happen");
@@ -218,14 +295,175 @@ public class SemanticAnalyzer {
         }
     }
 
-    private void analyzeInstruction(AmlTree instruction) throws AmlSemanticException {
-        if (analyzeCommonInstructions(instruction)) return;
-        switch (instruction.getType()) {
+    private void checkArguments(AmlTree funcDeclaration, AmlTree funcCall) throws AmlSemanticException {
+        int numParameters = funcDeclaration.getChild(1).getChildCount();
+        int numArguments = funcCall.getChildCount();
+        if (numParameters != numArguments)
+            throw new AmlSemanticException("Argument size does not match with parameters in function " +
+                    funcCall.getText() + " declaration. Expecting " +
+                    numParameters + ", provided " + numArguments, funcCall.getLine());
+        AmlTree parameters = funcDeclaration.getChild(1);
+        for (int i = 0; i < numArguments; ++i) {
+            AmlTree declaration = parameters.getChild(i);
+            AmlTree argumentExpr = funcCall.getChild(i);
+            int decType = declaration.getType();
+            int exprType = getRType(argumentExpr);
+            if (decType != exprType)
+                throw new AmlSemanticException("Type error. Argument " + i + " does not match with declaration of function" +
+                funcCall.getText() + ". Expecting " + mapType(decType) + ", provided " + mapType(exprType), funcCall.getLine());
         }
     }
 
-    private void analyzeMusicInstrucion(AmlTree musicInstruction) throws AmlSemanticException {
-        if (analyzeCommonInstructions(musicInstruction)) return;
+    private void analyzeInstruction(AmlTree instruction) throws AmlSemanticException {
+        if (analyzeCommonInstruction(instruction)) return;
+        switch (instruction.getType()) {
+            case IF: {
+                int type = checkExpression(instruction.getChild(0));
+                if (type != BOOL)
+                    throw new AmlSemanticException("If condition must have boolean type, but "
+                            + type + " was provided instead.", instruction.getLine());
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListInstructions(instruction.getChild(1));
+                symbolTable.removeFirst();
+                for (int i = 2; i < instruction.getChildCount(); ++i) {
+                    AmlTree child = instruction.getChild(i);
+                    if (child.getType() == ELSEIF) {
+                        type = checkExpression(child.getChild(0));
+                        if (type != BOOL)
+                            throw new AmlSemanticException("If condition must have boolean type, but "
+                                    + type + " was provided instead.", child.getLine());
+                        symbolTable.addFirst(new HashMap<>());
+                        analyzeListInstructions(child.getChild(1));
+                        symbolTable.removeFirst();
+                    } else if (child.getType() == ELSE) {
+                        symbolTable.addFirst(new HashMap<>());
+                        analyzeListInstructions(child.getChild(0));
+                        symbolTable.removeFirst();
+                    } else throw new Error("This should never happen");
+                }
+                break;
+            }
+            case WHILE: {
+                int type = checkExpression(instruction.getChild(0));
+                if (type != BOOL)
+                    throw new AmlSemanticException("While condition must have boolean type, but "
+                            + type + " was provided instead.", instruction.getLine());
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListInstructions(instruction.getChild(1));
+                symbolTable.removeFirst();
+                break;
+            }
+            case FOR:
+                AmlTree initial = instruction.getChild(0);
+                switch (initial.getType()) {
+                    case INT:
+                    case BOOL:
+                    case NOTE_TYPE:
+                    case DRUMS_NOTE_TYPE:
+                    case CHORD:
+                    case STRING_TYPE:
+                        for (AmlTree declaration : initial.getArrayChildren()) {
+                            checkDeclaration(declaration, initial.getType());
+                        }
+                        break;
+                    case LIST_ASSIG:
+                        for (AmlTree assignation : initial.getArrayChildren()) {
+                            analyzeCommonInstruction(assignation);
+                        }
+                        break;
+                    default:
+                        throw new Error("This should never happen");
+                }
+                AmlTree condition = instruction.getChild(1);
+                int type = checkExpression(condition);
+                if (type != BOOL)
+                    throw new AmlSemanticException("For condition must have boolean type, but "
+                            + type + " was provided instead.", condition.getLine());
+                AmlTree thirdChild = instruction.getChild(2);
+                for (AmlTree assignation : thirdChild.getArrayChildren()) {
+                    analyzeCommonInstruction(assignation);
+                }
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListInstructions(instruction.getChild(3));
+                symbolTable.removeFirst();
+                break;
+        }
+    }
+
+    private void analyzeMusicInstruction(AmlTree musicInstruction) throws AmlSemanticException {
+        if (analyzeCommonInstruction(musicInstruction)) return;
+        switch (musicInstruction.getType()) {
+            case IF: {
+                int type = checkExpression(musicInstruction.getChild(0));
+                if (type != BOOL)
+                    throw new AmlSemanticException("If condition must have boolean type, but "
+                            + type + " was provided instead.", musicInstruction.getLine());
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListMusicInstructions(musicInstruction.getChild(1));
+                symbolTable.removeFirst();
+                for (int i = 2; i < musicInstruction.getChildCount(); ++i) {
+                    AmlTree child = musicInstruction.getChild(i);
+                    if (child.getType() == ELSEIF) {
+                        type = checkExpression(child.getChild(0));
+                        if (type != BOOL)
+                            throw new AmlSemanticException("If condition must have boolean type, but "
+                                    + type + " was provided instead.", child.getLine());
+                        symbolTable.addFirst(new HashMap<>());
+                        analyzeListMusicInstructions(child.getChild(1));
+                        symbolTable.removeFirst();
+                    } else if (child.getType() == ELSE) {
+                        symbolTable.addFirst(new HashMap<>());
+                        analyzeListMusicInstructions(child.getChild(0));
+                        symbolTable.removeFirst();
+                    } else throw new Error("This should never happen");
+                }
+                break;
+            }
+            case WHILE: {
+                int type = checkExpression(musicInstruction.getChild(0));
+                if (type != BOOL)
+                    throw new AmlSemanticException("While condition must have boolean type, but "
+                            + type + " was provided instead.", musicInstruction.getLine());
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListMusicInstructions(musicInstruction.getChild(1));
+                symbolTable.removeFirst();
+                break;
+            }
+            case FOR:
+                AmlTree initial = musicInstruction.getChild(0);
+                switch (initial.getType()) {
+                    case INT:
+                    case BOOL:
+                    case NOTE_TYPE:
+                    case DRUMS_NOTE_TYPE:
+                    case CHORD:
+                    case STRING_TYPE:
+                        for (AmlTree declaration : initial.getArrayChildren()) {
+                            checkDeclaration(declaration, initial.getType());
+                        }
+                        break;
+                    case LIST_ASSIG:
+                        for (AmlTree assignation : initial.getArrayChildren()) {
+                            analyzeCommonInstruction(assignation);
+                        }
+                        break;
+                    default:
+                        throw new Error("This should never happen");
+                }
+                AmlTree condition = musicInstruction.getChild(1);
+                int type = checkExpression(condition);
+                if (type != BOOL)
+                    throw new AmlSemanticException("For condition must have boolean type, but "
+                            + type + " was provided instead.", condition.getLine());
+                AmlTree thirdChild = musicInstruction.getChild(2);
+                for (AmlTree assignation : thirdChild.getArrayChildren()) {
+                    analyzeCommonInstruction(assignation);
+                }
+                symbolTable.addFirst(new HashMap<>());
+                analyzeListMusicInstructions(musicInstruction.getChild(3));
+                symbolTable.removeFirst();
+                break;
+        }
     }
 
     private void analyzeSong(AmlTree tree) {

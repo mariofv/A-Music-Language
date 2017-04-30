@@ -1,16 +1,20 @@
-fragment fu () {
+fragment fu (int i) {
     while (true) { Re.n; rr = 42; if (ch) {tt = 3; La} else { Re.n } }
+}
+
+void lele(int de, int a) {
+    a = 3;
 }
 
 void main() {
      int du;
      3x||: La.c Do Re.c | if (d == 3) { La } :|| La Do.n ||
-     int du;
+     int du2;
      Song {
          Beat 4:8;
          Speed 60;
          Transport 5;
-         Track "Trumpet"   || &Do.c Do.c #Do.c Re.c | if (Times == 2) { La.n } else if (Time == !) { La.n} Re.n (Do Si); int ex = 3; } |
+         Track "Trumpet"   || &Do.c Do.c #Do.c Re.c | if (Times == 2) { La.n } else if (Time == 1) { La.n } Re.n (Do Si); int ex = 3; |
          fu(); ||
      }
 }
