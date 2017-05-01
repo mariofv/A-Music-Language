@@ -7,6 +7,8 @@ public class Int extends Data {
 
     int dataInt;
 
+    public Int() {};
+
     public Int(int valueDataInt){
         dataInt = valueDataInt;
     }

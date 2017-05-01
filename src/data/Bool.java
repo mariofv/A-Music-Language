@@ -7,6 +7,8 @@ public class Bool extends Data {
 
     boolean dataBool;
 
+    public Bool(){};
+
     public Bool(boolean dataBoolValue) {
         dataBool = dataBoolValue;
     }
@@ -14,4 +16,6 @@ public class Bool extends Data {
     public boolean getValue() {
         return dataBool;
     }
+
+    public void setValue(boolean value) { dataBool = value; }
 }
