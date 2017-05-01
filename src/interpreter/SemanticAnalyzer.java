@@ -305,12 +305,14 @@ public class SemanticAnalyzer {
                     break;
                 case GT:
                 case LT:
+                case GE:
+                case LE:
                 case EQUAL:
                 case NOT_EQUAL:
                     operatorType = INT;
                     returnType = BOOL;
                     break;
-                default: throw new Error("This should never happen");
+                default: throw new Error("This should never happen " + expression.getType());
             }
             int returnType1 = checkExpression(expression.getChild(0));
             int returnType2 = checkExpression(expression.getChild(1));

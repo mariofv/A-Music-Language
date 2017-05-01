@@ -1,9 +1,8 @@
 void main() {
-    int ba = 2, a = 2;
-    a+=5;
+     int a = 0;
      Song {
          Beat 4:8;
          Speed 120;
-         Track "Trumpet"   || while (a>3) { Si.c a -= 1;} | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
+         Track "Trumpet"   || for(int lmao;a<4;a+=1) { if(a >= 0) { Do.c } else { Si.c } } | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
      }
 }
