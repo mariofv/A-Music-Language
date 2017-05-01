@@ -493,8 +493,6 @@ public class SemanticAnalyzer {
                     index = 0;
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
-                            //Comento esta linea tras discutirlo con Juanmi
-                            //child.getChild(0).setIndex(index++);
                             insertId(child.getChild(0), child.getType());
                         }
                     }
@@ -541,6 +539,7 @@ public class SemanticAnalyzer {
         assert tree.getType() == ID;
         String id = tree.getText();
         SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index++));
+        tree.setIndex(index-1);
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
         }
