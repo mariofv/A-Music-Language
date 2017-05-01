@@ -261,9 +261,10 @@ public class SemanticAnalyzer {
                         "Function " + expression.getText() + " not declared", expression.getLine());
                 checkArguments(funcDeclaration, expression);
                 return funcDeclaration.getChild(0).getType();
-            case BOOLEAN:
-                expression.setBooleanValue();
+            case TRUE:
+            case FALSE:
                 return BOOL;
+
         }
         //Unary operators
         if (expression.getChildCount() == 1) {
