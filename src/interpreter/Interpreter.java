@@ -114,7 +114,6 @@ public class Interpreter {
                 if(currentVar instanceof Bool) {
                     boolean value = evaluateBooleanExpression(tree.getChild(1));
                     ((Bool) currentVar).setValue(value);
-                    System.out.println("Value is: " + value);
                 } else {
                     int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
                     ((Int) currentVar).setValue(value);
@@ -217,7 +216,6 @@ public class Interpreter {
 
     private boolean evaluateBooleanExpression(AmlTree tree) {
         Int leftSide, rightSide;
-        System.out.println("Type is: " + tree.getType());
         switch (tree.getType()){
             case MusicLexer.TRUE:
                 return true;
@@ -226,7 +224,6 @@ public class Interpreter {
             case MusicLexer.ID:
                 int index = tree.getVariableIndex();
                 Bool aux1 = ((Bool) stack.getLocalVariables().get(index));
-                System.out.println("Index is: " + index);
                 if(aux1 != null) {
                     boolean aux2 = aux1.getValue();
                 }
