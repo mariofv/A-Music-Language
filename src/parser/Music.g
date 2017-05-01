@@ -89,6 +89,7 @@ inst        :   declaration
             |   beat ';'!
             |   speed ';'!
             |   instrument ';'!
+            |   transport ';'!
             |   assignation
             |   while_stmt
             |   funcall ';'!
@@ -103,6 +104,7 @@ music_inst  :   declaration
             |   beat ';'!
             |   speed ';'!
             |   instrument ';'!
+            |   transport ';'!
             |   var_funcall
             |   assignation
             |   while_music_stmt
@@ -146,10 +148,10 @@ post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
 pre         :   (x=INCR | x=DECR) var_access  -> ^(PRE  var_access $x)
             ;
 
-beat        :   BEAT^ NUM ':'! NUM
+beat        :   BEAT^ expr ':'! expr
             ;
 
-speed       :   SPEED^ NUM
+speed       :   SPEED^ expr
             ;
 
 transport   :   TRANSPORT^ expr

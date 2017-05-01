@@ -41,6 +41,8 @@ public class SemanticAnalyzer {
 
     private static String mapType(int type) {
         switch (type) {
+            case SONG:
+                return "song";
             case VOID:
                 return "void";
             case BOOL:
@@ -153,30 +155,37 @@ public class SemanticAnalyzer {
                             " operation: " + mapType(type) + ". Expected int", commonInstruction.getLine());
                 return true;
             case TONE:
-                commonInstruction.getChild(0).setIntValue();
-                int tone = commonInstruction.getChild(0).getIntValue();
-                if (tone < 0) throw new AmlSemanticException("Tone value can't be negative: " + tone, commonInstruction.getLine());
+                int toneType = checkExpression(commonInstruction.getChild(0));
+                if (toneType != INT)
+                    throw new AmlSemanticException("Type error, tone argument must be int type, but " +
+                            mapType(toneType) + " was provided.", commonInstruction.getLine());
                 return true;
             case BEAT:
-                commonInstruction.getChild(0).setIntValue();
-                commonInstruction.getChild(1).setIntValue();
-                int beatLeft = commonInstruction.getChild(0).getIntValue();
-                int beatRight = commonInstruction.getChild(1).getIntValue();
-                if (beatLeft < 0 || beatRight < 0)
-                    throw new AmlSemanticException("Beat values can't be negative: " + beatLeft + ":" + beatRight, commonInstruction.getLine());
+                int beatLeftType = checkExpression(commonInstruction.getChild(0));
+                int beatRightType = checkExpression(commonInstruction.getChild(1));
+                if (beatLeftType != INT || beatRightType != INT)
+                    throw new AmlSemanticException("Type error, beat arguments must be int type, but " +
+                            mapType(beatLeftType) + ":" + mapType(beatRightType) +
+                            " was provided.", commonInstruction.getLine());
                 return true;
             case SPEED:
-                commonInstruction.getChild(0).setIntValue();
-                int speed = commonInstruction.getChild(0).getIntValue();
-                if (speed < 0) throw new AmlSemanticException("Speed value can't be negative: " + speed, commonInstruction.getLine());
+                int speedType = checkExpression(commonInstruction.getChild(0));
+                if (speedType != INT)
+                    throw new AmlSemanticException("Type error, speed argument must be int type, but " +
+                            mapType(speedType) + " was provided.", commonInstruction.getLine());
                 return true;
+            case TRANSPORT:
+                int transportType = checkExpression(commonInstruction.getChild(0));
+                if (transportType != INT)
+                    throw new AmlSemanticException("Type error, speed argument must be int type, but " +
+                            mapType(transportType) + " was provided.", commonInstruction.getLine());
             case INSTRUMENT:
                 commonInstruction.getChild(0).setInstrumentValue();
                 return true;
             case FUNCALL:
                 AmlTree funcDeclaration = functionMap.get(commonInstruction.getText());
                 if (funcDeclaration == null) throw new AmlSemanticException(
-                        "Function " + commonInstruction.getText() + " not declared", commonInstruction.getLine());
+                        "Function " + commonInstruction.getText() + " not declared.", commonInstruction.getLine());
                 checkArguments(funcDeclaration, commonInstruction);
                 return true;
         }
@@ -289,7 +298,7 @@ public class SemanticAnalyzer {
                 case GT:
                 case LT:
                 case EQUAL:
-                case MOD:
+                case NOT_EQUAL:
                     operatorType = INT;
                     break;
                 default: throw new Error("This should never happen");
@@ -301,7 +310,7 @@ public class SemanticAnalyzer {
                 " applied to binary operator " + mapType(expression.getType()) +
                 ". Expected type: " + mapType(operatorType), expression.getLine());
             }
-            return operatorType;
+            return BOOL;
         }
     }
 
@@ -364,6 +373,7 @@ public class SemanticAnalyzer {
                 break;
             }
             case FOR:
+                symbolTable.addFirst(new HashMap<>());
                 AmlTree initial = instruction.getChild(0);
                 switch (initial.getType()) {
                     case INT:
@@ -388,14 +398,16 @@ public class SemanticAnalyzer {
                 int type = checkExpression(condition);
                 if (type != BOOL)
                     throw new AmlSemanticException("For condition must have boolean type, but "
-                            + type + " was provided instead.", condition.getLine());
+                            + mapType(type) + " was provided instead.", condition.getLine());
                 AmlTree thirdChild = instruction.getChild(2);
                 for (AmlTree assignation : thirdChild.getArrayChildren()) {
                     analyzeCommonInstruction(assignation);
                 }
-                symbolTable.addFirst(new HashMap<>());
                 analyzeListInstructions(instruction.getChild(3));
                 symbolTable.removeFirst();
+                break;
+            case SONG:
+                analyzeSong(instruction);
                 break;
         }
     }
@@ -476,7 +488,20 @@ public class SemanticAnalyzer {
         }
     }
 
-    private void analyzeSong(AmlTree tree) {
+    private void analyzeSong(AmlTree song) throws AmlSemanticException {
+        int i = 0;
+        AmlTree songChild = song.getChild(i++);
+        while (songChild.getType() != TRACK) {
+            if (songChild.getType() == ID) insertId(songChild, SONG);
+            else if (!analyzeCommonInstruction(songChild)) throw new Error("This should never happen");
+            songChild = song.getChild(i++);
+        }
+        for(i = i-1; i < song.getChildCount(); ++i) {
+            analyzeTrack(song.getChild(i));
+        }
+    }
+
+    private void analyzeTrack(AmlTree child) {
 
     }
 
@@ -526,7 +551,9 @@ public class SemanticAnalyzer {
                     AmlTree previousValue = songMap.put(firstChild.getText(), globalStatement);
                     if (previousValue != null)
                         throw new AmlSemanticException("The global song " + firstChild.getText() + " has already been declared.", globalStatement.getLine());
+                    symbolTable.add(new HashMap<>());
                     analyzeSong(globalStatement);
+                    symbolTable.removeFirst();
                     break;
                 }
                 default:
@@ -539,10 +566,10 @@ public class SemanticAnalyzer {
         assert tree.getType() == ID;
         String id = tree.getText();
         SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index++));
-        tree.setIndex(index-1);
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
         }
+        tree.setIndex(index-1);
     }
 
     public boolean analyzeDeclaration(AmlTree tree) throws AmlSemanticException {
