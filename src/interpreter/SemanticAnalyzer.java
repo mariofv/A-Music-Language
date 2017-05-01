@@ -493,7 +493,8 @@ public class SemanticAnalyzer {
                     index = 0;
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
-                            child.getChild(0).setIndex(index++);
+                            //Comento esta linea tras discutirlo con Juanmi
+                            //child.getChild(0).setIndex(index++);
                             insertId(child.getChild(0), child.getType());
                         }
                     }

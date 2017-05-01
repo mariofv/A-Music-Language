@@ -1,0 +1,9 @@
+void main() {
+    int a = 2;
+    a+=5;
+     Song {
+         Beat 4:8;
+         Speed 120;
+         Track "Trumpet"   || while (a>7) { Si.c a -= 1;} | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
+     }
+}

@@ -44,10 +44,69 @@ public class Interpreter {
 
     public void executeInstruction(AmlTree tree) throws AmlException {
         switch(tree.getType()) {
+            case MusicLexer.INT:
+                for(AmlTree assigChild : tree.getArrayChildren()) {
+                    int index = assigChild.getChild(0).getVariableIndex();
+                    Int aux = (Int) evaluateExpression(assigChild.getChild(1));
+                    stack.getLocalVariables().set(index, evaluateExpression(assigChild.getChild(1)));
+                }
+                break;
+            case MusicLexer.ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(value);
+                break;
+            }
+            case MusicLexer.PLUS_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() + value);
+                break;
+            }
+            case MusicLexer.MINUS_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() - value);
+                break;
+            }
+            case MusicLexer.PROD_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() * value);
+                break;
+            }
+            case MusicLexer.DIVIDE_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() / value);
+                break;
+            }
+            case MusicLexer.MOD_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() % value);
+                break;
+            }
             case MusicLexer.SONG:
                 //TODO: Crear secuencia
                 createSong(tree);
                 break;
+            case MusicLexer.WHILE:
+                while(evaluateBooleanExpression(tree.getChild(0))) {
+                    executeListInstruction(tree.getChild(1));
+                }
+                break;
+            case MusicLexer.FOR: {
+
+                break;
+            }
+
             default:
                 break;
         }
@@ -130,6 +189,56 @@ public class Interpreter {
                     }
                 }
                 break;
+            case MusicLexer.WHILE:
+                while(evaluateBooleanExpression(tree.getChild(0))) {
+                    executeListMusicInstruction(tree.getChild(1),compas);
+                }
+                break;
+            case MusicLexer.FOR:
+
+                break;
+            case MusicLexer.ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(value);
+                break;
+            }
+            case MusicLexer.PLUS_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() + value);
+                break;
+            }
+            case MusicLexer.MINUS_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() - value);
+                break;
+            }
+            case MusicLexer.PROD_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() * value);
+                break;
+            }
+            case MusicLexer.DIVIDE_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() / value);
+                break;
+            }
+            case MusicLexer.MOD_ASSIG: {
+                int index = tree.getChild(0).getVariableIndex();
+                int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
+                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                currentVar.setValue(currentVar.getValue() % value);
+                break;
+            }
             case MusicLexer.NOTES:
                 AmlNote note = createNote(tree);
                 try {

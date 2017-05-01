@@ -15,4 +15,6 @@ public class Int extends Data {
         return dataInt;
     }
 
+    public void setValue(int value) { dataInt = value;}
+
 }
