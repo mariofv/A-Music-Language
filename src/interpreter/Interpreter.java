@@ -342,7 +342,6 @@ public class Interpreter {
     }
 
     public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
-        tree.getChild(0).setInstrumentValue();
         AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
 
         AmlTrack track = sequence.addTrack();

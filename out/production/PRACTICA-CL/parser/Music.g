@@ -89,13 +89,14 @@ inst        :   declaration
             |   beat ';'!
             |   speed ';'!
             |   instrument ';'!
+            |   transport ';'!
             |   assignation
             |   while_stmt
             |   funcall ';'!
             |   for_stmt
             |   if_stmt
             |   song
-            |   compas_list
+            |   compas_aux
             ;
 
 music_inst  :   declaration
@@ -103,13 +104,13 @@ music_inst  :   declaration
             |   beat ';'!
             |   speed ';'!
             |   instrument ';'!
+            |   transport ';'!
             |   var_funcall
             |   assignation
             |   while_music_stmt
             |   funcall ';'!
             |   for_music_stmt
             |   if_music_stmt
-            |   song
             | 	(options {greedy=true;} : notes_group)+ ';'!?
             | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
             ;
@@ -146,10 +147,10 @@ post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
 pre         :   (x=INCR | x=DECR) var_access  -> ^(PRE  var_access $x)
             ;
 
-beat        :   BEAT^ NUM ':'! NUM
+beat        :   BEAT^ expr ':'! expr
             ;
 
-speed       :   SPEED^ NUM
+speed       :   SPEED^ expr
             ;
 
 transport   :   TRANSPORT^ expr
@@ -194,7 +195,7 @@ else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
 song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
             ;
 
-track       :   TRACK^ id_rule? STRING? compas_aux
+track       :   TRACK^ id_rule!? STRING? compas_aux
             ;
 
 drums_track :   DRUMS^ compas_aux

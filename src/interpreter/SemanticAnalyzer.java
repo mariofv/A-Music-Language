@@ -90,7 +90,6 @@ public class SemanticAnalyzer {
     }
 
     public void analyze(AmlTree tree) throws AmlSemanticException {
-        analyze(tree, 0);
         symbolTable.addFirst(new HashMap<>());
         analyzeInitialScope(tree);
         symbolTable.removeFirst();
@@ -229,6 +228,7 @@ public class SemanticAnalyzer {
     private SymbolInfo getSymbol(AmlTree tree) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
+        if (id.equals("Time")) return new SymbolInfo(-1, INT, -1);
         for (HashMap<String, SymbolInfo> scope : symbolTable) {
             SymbolInfo data = scope.get(id);
             if (data != null) {
@@ -290,16 +290,25 @@ public class SemanticAnalyzer {
         //Binary operators
         else {
             int operatorType;
+            int returnType;
             switch (expression.getType()) {
                 case OR:
                 case AND:
-                    operatorType = BOOL;
+                    returnType = operatorType = BOOL;
+                    break;
+                case PLUS:
+                case MINUS:
+                case DOT:
+                case DIV:
+                case MOD:
+                    returnType = operatorType = INT;
                     break;
                 case GT:
                 case LT:
                 case EQUAL:
                 case NOT_EQUAL:
                     operatorType = INT;
+                    returnType = BOOL;
                     break;
                 default: throw new Error("This should never happen");
             }
@@ -310,7 +319,7 @@ public class SemanticAnalyzer {
                 " applied to binary operator " + mapType(expression.getType()) +
                 ". Expected type: " + mapType(operatorType), expression.getLine());
             }
-            return BOOL;
+            return returnType;
         }
     }
 
@@ -451,7 +460,7 @@ public class SemanticAnalyzer {
                 symbolTable.removeFirst();
                 break;
             }
-            case FOR:
+            case FOR: {
                 AmlTree initial = musicInstruction.getChild(0);
                 switch (initial.getType()) {
                     case INT:
@@ -485,6 +494,31 @@ public class SemanticAnalyzer {
                 analyzeListMusicInstructions(musicInstruction.getChild(3));
                 symbolTable.removeFirst();
                 break;
+            }
+            case NOTES:
+                if (musicInstruction.getChild(0).getType() == NOTE_LIST) {
+                    if (musicInstruction.getChildCount() > 1 && musicInstruction.getChild(1).getType() == FIGURE) {
+                        musicInstruction.getChild(1).setFigureValue();
+                    }
+                    for (AmlTree note : musicInstruction.getChild(0).getArrayChildren()) {
+                        note.setNoteValue();
+                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NUM) note.getChild(0).setIntValue();
+                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NUM) note.getChild(1).setIntValue();
+                    }
+                }
+                break;
+            case DRUMSNOTES: {
+                for (AmlTree drumNote : musicInstruction.getChild(0).getArrayChildren()) {
+                    if (musicInstruction.getChildCount() > 1 && musicInstruction.getChild(1).getType() == FIGURE) {
+                        musicInstruction.getChild(1).setFigureValue();
+                    }
+                    int type = checkExpression(drumNote);
+                    if (type != INT)
+                        throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
+                        " but " + mapType(type) + " was provided instead.", musicInstruction.getLine());
+                }
+                break;
+            }
         }
     }
 
@@ -501,8 +535,40 @@ public class SemanticAnalyzer {
         }
     }
 
-    private void analyzeTrack(AmlTree child) {
+    private void analyzeTrack(AmlTree track) throws AmlSemanticException {
+        AmlTree compasList;
+        if (track.getChildCount() > 1) {
+            track.getChild(0).setInstrumentValue();
+            compasList = track.getChild(1);
+        }
+        else compasList = track.getChild(0);
+        analyzeCompasList(compasList);
+    }
 
+    private void analyzeCompasList(AmlTree compasList) throws AmlSemanticException {
+        for(AmlTree child : compasList.getArrayChildren()) {
+            switch (child.getType()) {
+                case MusicLexer.COMPAS:
+                    analyzeCompas(child);
+                    break;
+                case MusicLexer.REPETITION:
+                    int i = 0;
+                    if (child.getChild(0).getType() == MusicLexer.NUM) {
+                        child.getChild(0).setIntValue();
+                        ++i;
+                    }
+                    for(; i < child.getChildCount(); ++i) {
+                        analyzeCompas(child.getChild(i));
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void analyzeCompas(AmlTree compas) throws AmlSemanticException {
+        for (AmlTree musicInst : compas.getArrayChildren()) {
+            analyzeMusicInstruction(musicInst);
+        }
     }
 
     private void analyzeInitialScope(AmlTree tree) throws AmlSemanticException {
@@ -570,105 +636,5 @@ public class SemanticAnalyzer {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
         }
         tree.setIndex(index-1);
-    }
-
-    public boolean analyzeDeclaration(AmlTree tree) throws AmlSemanticException {
-        switch (tree.getType()) {
-            case MusicLexer.INT:
-            case MusicLexer.BOOL:
-            case MusicLexer.NOTE_TYPE:
-            case MusicLexer.DRUMS_NOTE_TYPE:
-            case MusicLexer.CHORD:
-            case MusicLexer.STRING_TYPE:
-                break;
-            default:
-                return false;
-        }
-        for (AmlTree child : (ArrayList<AmlTree>) tree.getChildren()) {
-            switch (child.getType()) {
-                case MusicLexer.ASSIG:
-                    //TODO: check types
-                    switch (child.getChild(1).getType()) {
-                        case MusicLexer.DRUMSNOTES:
-                            if (tree.getType() != MusicLexer.DRUMSNOTES) throw new AmlSemanticException("Incompatible types", tree.getLine());
-                            break;
-                        case MusicLexer.NOTES:
-                            if (tree.getType() != MusicLexer.NOTES) throw new AmlSemanticException("Incompatible types", tree.getLine());
-                            break;
-                        default: //Expression
-
-                    }
-                    insertId(child.getChild(0), tree.getType());
-                    break;
-                case MusicLexer.ID:
-                    insertId(child, tree.getType());
-                    break;
-            }
-        }
-        return true;
-    }
-
-    private void analyze(AmlTree tree, int depth) throws AmlSemanticException {
-        //boolean newScope = false;
-        //boolean analyzeChilds = true;
-        switch (tree.getType()) {
-            case MusicLexer.FIGURE:
-                tree.setFigureValue();
-                break;
-            case MusicLexer.NOTE:
-                tree.setNoteValue();
-                break;
-            case MusicLexer.NUM:
-                tree.setIntValue();
-                break;
-            /*case MusicLexer.FUNCTION:
-            {
-                newScope = true;
-                String functionName = tree.getText();
-                AmlTree previousValue = functionMap.put(functionName, tree);
-                if (previousValue != null) {
-                    throw new AmlSemanticException("The function " + functionName + " has already been declared.", tree.getLine());
-                }
-                AmlTree arguments = tree.getChild(1);
-                if (arguments.getChildren() != null) {
-                    for (AmlTree child : (ArrayList<AmlTree>) arguments.getChildren()) {
-                        insertId(child.getChild(0), child.getType());
-                    }
-                }
-                break;
-            }
-            case MusicLexer.FRAGMENT: {
-                newScope = true;
-                String fragmentName = tree.getText();
-                AmlTree previousValue = fragmentMap.put(fragmentName, tree);
-                if (previousValue != null) {
-                    throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", tree.getLine());
-                }
-                AmlTree arguments = tree.getChild(1);
-                if (arguments.getChildren() != null) {
-                    for (AmlTree child : (ArrayList<AmlTree>) arguments.getChildren()) {
-                        insertId(child.getChild(0), child.getType());
-                    }
-                }
-                break;
-            }
-            case MusicLexer.SONG:
-                if (depth == 0) {
-                    AmlTree firstChild = tree.getChild(0);
-                    if (firstChild.getType() != MusicLexer.ID) throw new AmlSemanticException("Global song must have a name", tree.getLine());
-                    AmlTree previousValue = songMap.put(firstChild.getText(), tree);
-                    if (previousValue != null) throw new AmlSemanticException("The global song " + firstChild.getText() + " has already been declared.", tree.getLine());
-                }
-                break;
-            default:
-                analyzeChilds = !analyzeDeclaration(tree);*/
-        }
-
-        if (tree.getChildren() == null /*|| !analyzeChilds*/) return;
-        //if (newScope) symbolTable.addFirst(new HashMap<>());
-        for (AmlTree child : tree.getArrayChildren()) {
-            analyze(child, depth+1);
-        }
-        //if (newScope) symbolTable.removeFirst();
     }
 }

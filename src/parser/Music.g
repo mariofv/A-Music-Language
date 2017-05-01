@@ -96,7 +96,7 @@ inst        :   declaration
             |   for_stmt
             |   if_stmt
             |   song
-            |   compas_list
+            |   compas_aux
             ;
 
 music_inst  :   declaration
@@ -111,7 +111,6 @@ music_inst  :   declaration
             |   funcall ';'!
             |   for_music_stmt
             |   if_music_stmt
-            |   song
             | 	(options {greedy=true;} : notes_group)+ ';'!?
             | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
             ;
@@ -196,7 +195,7 @@ else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
 song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
             ;
 
-track       :   TRACK^ id_rule? STRING? compas_aux
+track       :   TRACK^ id_rule!? STRING? compas_aux
             ;
 
 drums_track :   DRUMS^ compas_aux
