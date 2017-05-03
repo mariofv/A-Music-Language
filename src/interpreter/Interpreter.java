@@ -38,7 +38,7 @@ public class Interpreter {
     }
 
     public void executeListInstruction(AmlTree tree) throws AmlException {
-        for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
+        for(AmlTree child : tree.getArrayChildren()) {
             executeInstruction(child);
         }
     }
@@ -223,10 +223,6 @@ public class Interpreter {
                 return false;
             case MusicLexer.ID:
                 int index = tree.getVariableIndex();
-                Bool aux1 = ((Bool) stack.getLocalVariables().get(index));
-                if(aux1 != null) {
-                    boolean aux2 = aux1.getValue();
-                }
                 return ((Bool) stack.getLocalVariables().get(index)).getValue();
             case MusicLexer.EQUAL:
                 leftSide = (Int) evaluateExpression(tree.getChild(0));
@@ -257,7 +253,7 @@ public class Interpreter {
     }
 
     public void executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlMusicException {
-        for(AmlTree child : (List<AmlTree>)tree.getChildren()) {
+        for(AmlTree child : tree.getArrayChildren()) {
             executeMusicInstruction(child, compas);
         }
     }
@@ -267,6 +263,11 @@ public class Interpreter {
         switch (tree.getType()) {
             case MusicLexer.TONE:
                 compas.changeTrackTone(createTone(tree));
+                break;
+            case MusicLexer.BEAT:
+                //TODO: mirar esto
+                int[] metric = createMetric(tree);
+                compas.changeTrackBeat(metric);
                 break;
             case MusicLexer.SONG:
                 break;
@@ -404,7 +405,7 @@ public class Interpreter {
         AmlDrumsTrack drumsTrack = sequence.addDrumsTrack();
         AmlTree listOfCompas = tree.getChild(0);
         //TODO: esto se puede hacer en una función
-        for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
+        for(AmlTree child : listOfCompas.getArrayChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:
                     drumsTrack.addCompas(createCompas(child, drumsTrack));
@@ -417,14 +418,24 @@ public class Interpreter {
     }
 
     public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
-        AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
+        AmlInstrument.Instruments instrumentEnum;
+        AmlTree listOfCompas;
+
+        if (tree.getChildCount() > 1) {
+            instrumentEnum = tree.getChild(0).getInstrumentValue();
+            listOfCompas = tree.getChild(1);
+        }
+        else {
+            instrumentEnum = AmlInstrument.Instruments.Acoustic_Grand_Piano;
+            listOfCompas = tree.getChild(0);
+        }
 
         AmlTrack track = sequence.addTrack();
         AmlInstrument instrument = new AmlInstrument(instrumentEnum);
         track.setInstrument(instrument);
 
-        AmlTree listOfCompas = tree.getChild(1);
-        for(AmlTree child : (List<AmlTree>) listOfCompas.getChildren()) {
+
+        for(AmlTree child : listOfCompas.getArrayChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:
                     track.addCompas(createCompas(child, track));
@@ -454,7 +465,7 @@ public class Interpreter {
 
     public AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlMusicException {
         AmlCompas compas = new AmlCompas(track);
-        for(AmlTree child : (List<AmlTree>) tree.getChildren()) {
+        for(AmlTree child : tree.getArrayChildren()) {
             executeMusicInstruction(child, compas);
         }
         try {

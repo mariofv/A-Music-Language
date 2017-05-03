@@ -72,6 +72,11 @@ public class AmlCompas {
         track.setToneAccidents(tone);
     }
 
+    public void changeTrackBeat(int[] beat) {
+        track.setMetric(beat);
+        ticksPerCompas = track.getMetric();
+    }
+
     public AmlNote getFirstNote() {
         return notes.get(0);
     }
@@ -86,7 +91,7 @@ public class AmlCompas {
 
     public void check() throws AmlMusicException {
         if (ticksPerCompas != actualTicks && actualTicks != 0) {
-            throw new AmlMusicException("The duration of the compas is incorrect beacuse it needs more figures.\n" + toString());
+            throw new AmlMusicException("The duration of the compas is incorrect beacuse it needs more figures. " + ticksPerCompas + " " + actualTicks +"\n" + toString());
         }
     }
 

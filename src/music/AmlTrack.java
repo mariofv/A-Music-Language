@@ -23,7 +23,7 @@ public class AmlTrack {
     public static final int SiPos = 6;
 
 
-    protected int currentTick;
+    int currentTick;
 
     int metric;
     int channel;
@@ -63,6 +63,10 @@ public class AmlTrack {
     public void setToneAccidents(int tone) {
         this.toneAccidents = computeTone(tone);
 
+    }
+
+    public void setMetric(int[] beat) {
+        metric = beat[0]*AmlNote.PPQ*4/beat[1];
     }
 
     public ArrayList<Integer> getToneAccidents() {

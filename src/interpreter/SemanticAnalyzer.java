@@ -545,7 +545,10 @@ public class SemanticAnalyzer {
             compasList = track.getChild(1);
         }
         else compasList = track.getChild(0);
+
+        symbolTable.addFirst(new HashMap<>());
         analyzeCompasList(compasList);
+        symbolTable.removeFirst();
     }
 
     private void analyzeCompasList(AmlTree compasList) throws AmlSemanticException {
