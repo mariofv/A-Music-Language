@@ -90,9 +90,66 @@ public class SemanticAnalyzer {
     }
 
     public void analyze(AmlTree tree) throws AmlSemanticException {
-        symbolTable.addFirst(new HashMap<>());
+        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
         analyzeInitialScope(tree);
         symbolTable.removeFirst();
+    }
+
+    private void analyzeInitialScope(AmlTree tree) throws AmlSemanticException {
+        for (AmlTree globalStatement : tree.getArrayChildren()) {
+            switch (globalStatement.getType()) {
+                case FUNCTION: {
+                    String functionName = globalStatement.getText();
+                    AmlTree previousValue = functionMap.put(functionName, globalStatement);
+                    if (previousValue != null) {
+                        throw new AmlSemanticException("The function " + functionName + " has already been declared.", globalStatement.getLine());
+                    }
+                    AmlTree arguments = globalStatement.getChild(1);
+                    index = 0;
+                    if (arguments.getChildren() != null) {
+                        for (AmlTree child : arguments.getArrayChildren()) {
+                            insertId(child.getChild(0), child.getType());
+                        }
+                    }
+                    symbolTable.addFirst(new HashMap<String, SymbolInfo>());
+                    analyzeListInstructions(globalStatement.getChild(2));
+                    symbolTable.removeFirst();
+                    globalStatement.setNumVariables(index);
+                    break;
+                }
+                case FRAGMENT: {
+                    String fragmentName = globalStatement.getText();
+                    AmlTree previousValue = fragmentMap.put(fragmentName, globalStatement);
+                    if (previousValue != null) {
+                        throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", globalStatement.getLine());
+                    }
+                    AmlTree arguments = globalStatement.getChild(0);
+                    if (arguments.getChildren() != null) {
+                        for (AmlTree child : arguments.getArrayChildren()) {
+                            insertId(child.getChild(0), child.getType());
+                        }
+                    }
+                    symbolTable.addFirst(new HashMap<String, SymbolInfo>());
+                    analyzeListMusicInstructions(globalStatement.getChild(1));
+                    symbolTable.removeFirst();
+                    break;
+                }
+                case SONG: {
+                    AmlTree firstChild = globalStatement.getChild(0);
+                    if (firstChild.getType() != ID)
+                        throw new AmlSemanticException("Global song must have a name", globalStatement.getLine());
+                    AmlTree previousValue = songMap.put(firstChild.getText(), globalStatement);
+                    if (previousValue != null)
+                        throw new AmlSemanticException("The global song " + firstChild.getText() + " has already been declared.", globalStatement.getLine());
+                    symbolTable.add(new HashMap<String, SymbolInfo>());
+                    analyzeSong(globalStatement);
+                    symbolTable.removeFirst();
+                    break;
+                }
+                default:
+                    throw new Error("This should never happen");
+            }
+        }
     }
 
     private void analyzeListInstructions(AmlTree tree) throws AmlSemanticException {
@@ -353,7 +410,7 @@ public class SemanticAnalyzer {
                 if (type != BOOL)
                     throw new AmlSemanticException("If condition must have boolean type, but "
                             + type + " was provided instead.", instruction.getLine());
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListInstructions(instruction.getChild(1));
                 symbolTable.removeFirst();
                 for (int i = 2; i < instruction.getChildCount(); ++i) {
@@ -363,11 +420,11 @@ public class SemanticAnalyzer {
                         if (type != BOOL)
                             throw new AmlSemanticException("If condition must have boolean type, but "
                                     + type + " was provided instead.", child.getLine());
-                        symbolTable.addFirst(new HashMap<>());
+                        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListInstructions(child.getChild(1));
                         symbolTable.removeFirst();
                     } else if (child.getType() == ELSE) {
-                        symbolTable.addFirst(new HashMap<>());
+                        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListInstructions(child.getChild(0));
                         symbolTable.removeFirst();
                     } else throw new Error("This should never happen");
@@ -379,13 +436,13 @@ public class SemanticAnalyzer {
                 if (type != BOOL)
                     throw new AmlSemanticException("While condition must have boolean type, but "
                             + type + " was provided instead.", instruction.getLine());
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListInstructions(instruction.getChild(1));
                 symbolTable.removeFirst();
                 break;
             }
             case FOR:
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 AmlTree initial = instruction.getChild(0);
                 switch (initial.getType()) {
                     case INT:
@@ -432,7 +489,7 @@ public class SemanticAnalyzer {
                 if (type != BOOL)
                     throw new AmlSemanticException("If condition must have boolean type, but "
                             + type + " was provided instead.", musicInstruction.getLine());
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListMusicInstructions(musicInstruction.getChild(1));
                 symbolTable.removeFirst();
                 for (int i = 2; i < musicInstruction.getChildCount(); ++i) {
@@ -442,11 +499,11 @@ public class SemanticAnalyzer {
                         if (type != BOOL)
                             throw new AmlSemanticException("If condition must have boolean type, but "
                                     + type + " was provided instead.", child.getLine());
-                        symbolTable.addFirst(new HashMap<>());
+                        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListMusicInstructions(child.getChild(1));
                         symbolTable.removeFirst();
                     } else if (child.getType() == ELSE) {
-                        symbolTable.addFirst(new HashMap<>());
+                        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListMusicInstructions(child.getChild(0));
                         symbolTable.removeFirst();
                     } else throw new Error("This should never happen");
@@ -458,7 +515,7 @@ public class SemanticAnalyzer {
                 if (type != BOOL)
                     throw new AmlSemanticException("While condition must have boolean type, but "
                             + type + " was provided instead.", musicInstruction.getLine());
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListMusicInstructions(musicInstruction.getChild(1));
                 symbolTable.removeFirst();
                 break;
@@ -493,7 +550,7 @@ public class SemanticAnalyzer {
                 for (AmlTree assignation : thirdChild.getArrayChildren()) {
                     analyzeCommonInstruction(assignation);
                 }
-                symbolTable.addFirst(new HashMap<>());
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListMusicInstructions(musicInstruction.getChild(3));
                 symbolTable.removeFirst();
                 break;
@@ -546,7 +603,7 @@ public class SemanticAnalyzer {
         }
         else compasList = track.getChild(0);
 
-        symbolTable.addFirst(new HashMap<>());
+        symbolTable.addFirst(new HashMap<String, SymbolInfo>());
         analyzeCompasList(compasList);
         symbolTable.removeFirst();
     }
@@ -574,63 +631,6 @@ public class SemanticAnalyzer {
     private void analyzeCompas(AmlTree compas) throws AmlSemanticException {
         for (AmlTree musicInst : compas.getArrayChildren()) {
             analyzeMusicInstruction(musicInst);
-        }
-    }
-
-    private void analyzeInitialScope(AmlTree tree) throws AmlSemanticException {
-        for (AmlTree globalStatement : tree.getArrayChildren()) {
-            switch (globalStatement.getType()) {
-                case FUNCTION: {
-                    String functionName = globalStatement.getText();
-                    AmlTree previousValue = functionMap.put(functionName, globalStatement);
-                    if (previousValue != null) {
-                        throw new AmlSemanticException("The function " + functionName + " has already been declared.", globalStatement.getLine());
-                    }
-                    AmlTree arguments = globalStatement.getChild(1);
-                    index = 0;
-                    if (arguments.getChildren() != null) {
-                        for (AmlTree child : arguments.getArrayChildren()) {
-                            insertId(child.getChild(0), child.getType());
-                        }
-                    }
-                    symbolTable.addFirst(new HashMap<>());
-                    analyzeListInstructions(globalStatement.getChild(2));
-                    symbolTable.removeFirst();
-                    globalStatement.setNumVariables(index);
-                    break;
-                }
-                case FRAGMENT: {
-                    String fragmentName = globalStatement.getText();
-                    AmlTree previousValue = fragmentMap.put(fragmentName, globalStatement);
-                    if (previousValue != null) {
-                        throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", globalStatement.getLine());
-                    }
-                    AmlTree arguments = globalStatement.getChild(0);
-                    if (arguments.getChildren() != null) {
-                        for (AmlTree child : arguments.getArrayChildren()) {
-                            insertId(child.getChild(0), child.getType());
-                        }
-                    }
-                    symbolTable.addFirst(new HashMap<>());
-                    analyzeListMusicInstructions(globalStatement.getChild(1));
-                    symbolTable.removeFirst();
-                    break;
-                }
-                case SONG: {
-                    AmlTree firstChild = globalStatement.getChild(0);
-                    if (firstChild.getType() != ID)
-                        throw new AmlSemanticException("Global song must have a name", globalStatement.getLine());
-                    AmlTree previousValue = songMap.put(firstChild.getText(), globalStatement);
-                    if (previousValue != null)
-                        throw new AmlSemanticException("The global song " + firstChild.getText() + " has already been declared.", globalStatement.getLine());
-                    symbolTable.add(new HashMap<>());
-                    analyzeSong(globalStatement);
-                    symbolTable.removeFirst();
-                    break;
-                }
-                default:
-                    throw new Error("This shouls never happen");
-            }
         }
     }
 

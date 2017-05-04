@@ -17,6 +17,27 @@ public class AmlChord extends AmlNote {
 
     private Note root;
     private int octave;
+
+    public void setRoot(Note root) {
+        this.root = root;
+    }
+
+    public void setOctave(int octave) {
+        this.octave = octave;
+    }
+
+    public void setSemiToneModifier(int semiToneModifier) {
+        this.semiToneModifier = semiToneModifier;
+    }
+
+    public void setQuality(Quality quality) {
+        this.quality = quality;
+    }
+
+    public void setInterval(Interval interval) {
+        this.interval = interval;
+    }
+
     private int semiToneModifier;
     private Quality quality;
     private Interval interval;
@@ -35,16 +56,11 @@ public class AmlChord extends AmlNote {
         constructChord();
     }
 
-    public AmlChord(Note root,  int octave, int semiToneModifier, Quality quality, Interval interval) {
-        this.root = root;
-        this.quality = quality;
-        this.octave = octave;
-        this.semiToneModifier = semiToneModifier;
-        this.interval = interval;
-        constructChord();
+    public AmlChord(Figure figure, int figureModifier, boolean tie) {
+        super(figure, figureModifier, tie);
     }
 
-    private void constructChord() {
+    public void constructChord() {
         rootPitch = mapNote(root, octave);
         pitches.add(rootPitch);
 

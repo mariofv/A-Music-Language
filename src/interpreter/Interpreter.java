@@ -33,6 +33,7 @@ public class Interpreter {
     public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException {
         AmlTree function = functionMap.get(functionName);
         stack.push(function);
+        //TODO: Tratar argumentos
         executeListInstruction(function.getChild(2));
         stack.pop();
     }
@@ -56,21 +57,11 @@ public class Interpreter {
                 }
                 break;
             case MusicLexer.FOR: {
-                //Parte izquierda del for: declaraciones/asignaciones
-                switch(tree.getChild(0).getType()) {
-                    case MusicLexer.LIST_ASSIG:
-                        for(AmlTree childAssig : tree.getChild(0).getArrayChildren()) {
-                            executeInstruction(childAssig);
-                        }
-                        break;
-                    default:
-                        executeInstruction(tree.getChild(0));
-                        break;
-                }
-
+                initializeFor(tree.getChild(0));
                 //Parte central del for:
                 while(evaluateBooleanExpression(tree.getChild(1))) {
                     executeListInstruction(tree.getChild(3));
+                    //increment For
                     for(AmlTree childAssig : tree.getChild(2).getArrayChildren()) {
                         executeInstruction(childAssig);
                     }
@@ -88,8 +79,8 @@ public class Interpreter {
                 for (AmlTree assigChild : tree.getArrayChildren()) {
                     if(assigChild.getType() == MusicLexer.ASSIG) {
                         int index = assigChild.getChild(0).getVariableIndex();
-                        Int aux = (Int) evaluateExpression(assigChild.getChild(1));
-                        stack.getLocalVariables().set(index, aux);
+                        Int value = (Int) evaluateExpression(assigChild.getChild(1));
+                        stack.getLocalVariables().set(index, value);
                     } else {
                         int index = assigChild.getVariableIndex();
                         stack.getLocalVariables().set(index, new Int());
@@ -100,8 +91,8 @@ public class Interpreter {
                 for (AmlTree assigChild : tree.getArrayChildren()) {
                     if(assigChild.getType() == MusicLexer.ASSIG) {
                         int index = assigChild.getChild(0).getVariableIndex();
-                        Bool aux = new Bool( evaluateBooleanExpression(assigChild.getChild(1)) );
-                        stack.getLocalVariables().set(index, aux);
+                        Bool value = new Bool( evaluateBooleanExpression(assigChild.getChild(1)) );
+                        stack.getLocalVariables().set(index, value);
                     } else {
                         int index = assigChild.getVariableIndex();
                         stack.getLocalVariables().set(index, new Bool());
@@ -265,11 +256,8 @@ public class Interpreter {
                 compas.changeTrackTone(createTone(tree));
                 break;
             case MusicLexer.BEAT:
-                //TODO: mirar esto
                 int[] metric = createMetric(tree);
                 compas.changeTrackBeat(metric);
-                break;
-            case MusicLexer.SONG:
                 break;
             case MusicLexer.IF:
                 if(evaluateBooleanExpression(tree.getChild(0))) {
@@ -327,13 +315,19 @@ public class Interpreter {
                 break;
             case MusicLexer.DRUMSNOTES:
                 AmlNote drumNote = createNote(tree);
-                compas.addNote((AmlDrumNote) drumNote);
-
+                try {
+                    compas.addNote((AmlDrumNote) drumNote);
+                }
+                catch (AmlMusicException exception) {
+                    exception.setLine(tree.getLine());
+                    throw exception;
+                }
                 break;
         }
     }
 
     private void createSong(AmlTree tree) throws AmlException {
+        //TODO: Heredar de track Main
         int[] metric = {4,4};
         int bpm = 120;
         int tone = 0;
@@ -368,7 +362,7 @@ public class Interpreter {
                 createDrumsTrack(tree.getChild(i), sequence);
             }
         }
-
+        //TODO: PASAR A AML
         File f = new File("midifile.mid");
         try {
             MidiSystem.write(sequence.getSequence(),1,f);
@@ -391,6 +385,7 @@ public class Interpreter {
     }
 
     private int[] createMetric(AmlTree tree) {
+        //TODO: COMPROBAR METRICAS
         int[] metric = new int[2];
         metric[0] = tree.getChild(0).getIntValue();
         metric[1] = tree.getChild(1).getIntValue();
@@ -398,43 +393,18 @@ public class Interpreter {
     }
 
     private int createBPM(AmlTree tree) {
+        //TODO COMPROBAR BPM
         return tree.getChild(0).getIntValue();
     }
 
     public void createDrumsTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
         AmlDrumsTrack drumsTrack = sequence.addDrumsTrack();
         AmlTree listOfCompas = tree.getChild(0);
-        //TODO: esto se puede hacer en una función
-        for(AmlTree child : listOfCompas.getArrayChildren()) {
-            switch (child.getType()) {
-                case MusicLexer.COMPAS:
-                    drumsTrack.addCompas(createCompas(child, drumsTrack));
-                    break;
-                case MusicLexer.REPETITION:
-                    repeat(child, drumsTrack);
-                    break;
-            }
-        }
+        addCompasList(listOfCompas, drumsTrack);
+
     }
 
-    public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
-        AmlInstrument.Instruments instrumentEnum;
-        AmlTree listOfCompas;
-
-        if (tree.getChildCount() > 1) {
-            instrumentEnum = tree.getChild(0).getInstrumentValue();
-            listOfCompas = tree.getChild(1);
-        }
-        else {
-            instrumentEnum = AmlInstrument.Instruments.Acoustic_Grand_Piano;
-            listOfCompas = tree.getChild(0);
-        }
-
-        AmlTrack track = sequence.addTrack();
-        AmlInstrument instrument = new AmlInstrument(instrumentEnum);
-        track.setInstrument(instrument);
-
-
+    private void addCompasList(AmlTree listOfCompas, AmlTrack track) throws AmlException  {
         for(AmlTree child : listOfCompas.getArrayChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:
@@ -447,10 +417,32 @@ public class Interpreter {
         }
     }
 
+
+    public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
+        AmlInstrument.Instruments instrumentEnum;
+        AmlTree listOfCompas;
+
+        if (tree.getChildCount() > 1) {
+            instrumentEnum = tree.getChild(0).getInstrumentValue();
+            listOfCompas = tree.getChild(1);
+        }
+        else {
+            //TODO: HEREDAR DEL TRACK PADRE
+            instrumentEnum = AmlInstrument.Instruments.Acoustic_Grand_Piano;
+            listOfCompas = tree.getChild(0);
+        }
+
+        AmlTrack track = sequence.addTrack();
+        AmlInstrument instrument = new AmlInstrument(instrumentEnum);
+        track.setInstrument(instrument);
+        addCompasList(listOfCompas, track);
+    }
+
     public void repeat(AmlTree tree, AmlTrack track) throws AmlMusicException {
         int iterations = 2;
         int init = 0;
         if (tree.getChild(0).getType() == MusicLexer.NUM) {
+            //TODO: COMPROBAR EL VALOR QUE NO SEA NEGATIVO
             iterations = tree.getChild(0).getIntValue();
             init = 1;
         }
@@ -503,91 +495,116 @@ public class Interpreter {
         }
 
         if (noteList.getType() == MusicLexer.NOTE_LIST) {
-
             AmlNote note = new AmlNote(figure, figureModifier, tie);
-
-            /* Loops over the list of notes */
-            for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
-                AmlNote.Note noteName = noteChild.getNoteValue();
-                int octave = 5;
-                AmlNote.Accident accident = AmlNote.Accident.Natural;
-
-                if (noteChild.getChildren() != null) {
-                    for (AmlTree pitchModifier : (List<AmlTree>) noteChild.getChildren()) {
-                        switch (pitchModifier.getType()) {
-                            case MusicLexer.NUM:
-                                octave = -pitchModifier.getIntValue();
-                                break;
-                            case MusicLexer.BEMOL:
-                                accident = AmlNote.Accident.Bemol;
-                                break;
-                            case MusicLexer.SUSTAIN:
-                                accident = AmlNote.Accident.Sustain;
-                                break;
-                            case MusicLexer.ARMOR:
-                                accident = AmlNote.Accident.Armor;
-                                break;
-                        }
-                    }
-                }
-                note.addNotePitch(noteName, octave, accident);
-            }
+            createNoteList(noteList, note);
             return note;
         }
         else if (noteList.getType() == MusicLexer.CHORD) {
-            AmlNote.Note rootNote = AmlNote.Note.Silence;
-            int octave = 5;
-            int semiToneModifier = 0;
-            AmlChord.Quality quality = AmlChord.Quality.Mayor;
-            AmlChord.Interval interval = AmlChord.Interval.NoInterval;
-            for (AmlTree child : (List<AmlTree>) noteList.getChildren()) {
-                switch (child.getType()) {
-                    case MusicLexer.NOTE:
-                        rootNote = child.getNoteValue();
-                        if (child.getChildren() != null) {
-                            for (AmlTree pitchModifier : (List<AmlTree>) child.getChildren()) {
-                                switch (pitchModifier.getType()) {
-                                    case MusicLexer.NUM:
-                                        octave = pitchModifier.getIntValue();
-                                        break;
-                                    case MusicLexer.BEMOL:
-                                        semiToneModifier = -1;
-                                        break;
-                                    case MusicLexer.SUSTAIN:
-                                        semiToneModifier = 1;
-                                        break;
-                                }
-                            }
-                        }
-                        break;
-                    case MusicLexer.MINOR:
-                        quality = AmlChord.Quality.Menor;
-                        break;
-                    case MusicLexer.PLUS:
-                        quality = AmlChord.Quality.Aumentado;
-                        break;
-                    case MusicLexer.DIMINUTION:
-                        quality = AmlChord.Quality.Disminuido;
-                        break;
-                    case MusicLexer.SEVENTH:
-                        interval = AmlChord.Interval.Septima;
-                        break;
-                    case MusicLexer.MAJ7:
-                        interval = AmlChord.Interval.Maj7;
-                        break;
-                }
-            }
-            return new AmlChord(rootNote, octave, semiToneModifier, quality, interval, figure, figureModifier, tie);
+            AmlChord chord = new AmlChord(figure, figureModifier, tie);
+            createChord(noteList, chord);
+            return chord;
         }
         else if (noteList.getType() == MusicLexer.DRUMSNOTE_LIST) {
             AmlDrumNote drumNote = new AmlDrumNote(figure, figureModifier, tie);
-
             /* Loops over the list of notes */
-            for (AmlTree noteChild : (List<AmlTree>) noteList.getChildren()) {
+            for (AmlTree noteChild : noteList.getArrayChildren()) {
                 drumNote.addDrumNotePitch(noteChild.getIntValue());
             }
             return drumNote;
         }
         return null;
+    }
+
+    private void initializeFor(AmlTree tree) throws AmlException{
+        switch(tree.getType()) {
+            case MusicLexer.LIST_ASSIG:
+                for(AmlTree childAssig : tree.getArrayChildren()) {
+                    executeInstruction(childAssig);
+                }
+                break;
+            default:
+                executeInstruction(tree);
+                break;
+        }
+    }
+
+    private void createNoteList(AmlTree noteList, AmlNote note) {
+         /* Loops over the list of notes */
+        for (AmlTree noteChild : noteList.getArrayChildren()) {
+            AmlNote.Note noteName = noteChild.getNoteValue();
+            int octave = 5;
+            AmlNote.Accident accident = AmlNote.Accident.Natural;
+
+            if (noteChild.getChildren() != null) {
+                for (AmlTree pitchModifier : noteChild.getArrayChildren()) {
+                    switch (pitchModifier.getType()) {
+                        case MusicLexer.NUM:
+                            octave = -pitchModifier.getIntValue();
+                            break;
+                        case MusicLexer.BEMOL:
+                            accident = AmlNote.Accident.Bemol;
+                            break;
+                        case MusicLexer.SUSTAIN:
+                            accident = AmlNote.Accident.Sustain;
+                            break;
+                        case MusicLexer.ARMOR:
+                            accident = AmlNote.Accident.Armor;
+                            break;
+                    }
+                }
+            }
+            note.addNotePitch(noteName, octave, accident);
+        }
+    }
+
+    private void createChord(AmlTree noteList, AmlChord chord) {
+        AmlNote.Note rootNote = AmlNote.Note.Silence;
+        int octave = 5;
+        int semiToneModifier = 0;
+        AmlChord.Quality quality = AmlChord.Quality.Mayor;
+        AmlChord.Interval interval = AmlChord.Interval.NoInterval;
+        for (AmlTree child : noteList.getArrayChildren()) {
+            switch (child.getType()) {
+                case MusicLexer.NOTE:
+                    rootNote = child.getNoteValue();
+                    if (child.getChildren() != null) {
+                        for (AmlTree pitchModifier : child.getArrayChildren()) {
+                            switch (pitchModifier.getType()) {
+                                case MusicLexer.NUM:
+                                    octave = pitchModifier.getIntValue();
+                                    break;
+                                case MusicLexer.BEMOL:
+                                    semiToneModifier = -1;
+                                    break;
+                                case MusicLexer.SUSTAIN:
+                                    semiToneModifier = 1;
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+                case MusicLexer.MINOR:
+                    quality = AmlChord.Quality.Menor;
+                    break;
+                case MusicLexer.PLUS:
+                    quality = AmlChord.Quality.Aumentado;
+                    break;
+                case MusicLexer.DIMINUTION:
+                    quality = AmlChord.Quality.Disminuido;
+                    break;
+                case MusicLexer.SEVENTH:
+                    interval = AmlChord.Interval.Septima;
+                    break;
+                case MusicLexer.MAJ7:
+                    interval = AmlChord.Interval.Maj7;
+                    break;
+            }
+        }
+        chord.setInterval(interval);
+        chord.setOctave(octave);
+        chord.setQuality(quality);
+        chord.setRoot(rootNote);
+        chord.setSemiToneModifier(semiToneModifier);
+        chord.constructChord();
     }
 }
