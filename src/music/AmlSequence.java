@@ -3,7 +3,7 @@ package music;
 import javax.sound.midi.*;
 
 public class AmlSequence {
-
+    //TODO: MAKE THIS SINGLETON
     private Sequence sequence;
     private boolean first;
     private int bpm;

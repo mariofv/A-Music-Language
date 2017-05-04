@@ -272,7 +272,8 @@ atom    :   var_access
 		|   NUM
 		|   STRING
 		|   funcall
-		|   (b=TRUE | b=FALSE)  -> ^(BOOLEAN[$b,$b.text])
+		|   TRUE
+		|   FALSE
 		|   '('! expr ')'!
 		;
 

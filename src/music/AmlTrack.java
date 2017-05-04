@@ -13,6 +13,7 @@ import java.util.Collections;
 import static music.AmlNote.Figure.*;
 
 public class AmlTrack {
+    //TODO: CREAR AMLTONE
 
     public static final int FaPos = 0;
     public static final int DoPos = 1;
@@ -115,6 +116,7 @@ public class AmlTrack {
         }
     }
 
+    //TODO: Meter Tick
     public void setInstrument(AmlInstrument instrument) {
         track.add(new MidiEvent(instrument.getMessage(channel), 0));
     }
