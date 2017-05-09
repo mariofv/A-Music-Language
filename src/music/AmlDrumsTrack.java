@@ -13,9 +13,13 @@ import static music.AmlNote.Figure.Negra;
  */
 public class AmlDrumsTrack extends AmlTrack {
 
-    public AmlDrumsTrack(Track track, int metric) throws InvalidMidiDataException {
+    public AmlDrumsTrack(Track track, int metric) {
         this.track = track;
-        track.add(new MidiEvent(new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0), 0));
+        try {
+            track.add(new MidiEvent(new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0), 0));
+        } catch (InvalidMidiDataException e) {
+            throw new Error(e);
+        }
         this.metric = metric;
         this.channel = 9;
         currentTick = 0;
@@ -23,4 +27,7 @@ public class AmlDrumsTrack extends AmlTrack {
     }
 
 
+    public AmlDrumsTrack(Track track, AmlTrack parentTrack) {
+        //TODO:
+    }
 }

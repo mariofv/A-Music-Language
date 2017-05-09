@@ -33,6 +33,10 @@ public class AmlTrack {
     private ArrayList<Integer> toneAccidents;
     private String tone;
 
+    public AmlTrack(Track track, int actualChannel, AmlTrack parentTrack) {
+
+    }
+
     private ArrayList<Integer> computeTone(int tone) {
         ArrayList<Integer> toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
         if (tone >= 0) {

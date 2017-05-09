@@ -417,7 +417,6 @@ public class Interpreter {
         }
     }
 
-
     public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
         AmlInstrument.Instruments instrumentEnum;
         AmlTree listOfCompas;
