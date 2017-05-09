@@ -26,18 +26,31 @@ public class AmlTrack {
 
     int currentTick;
 
+    int[] metricArray;
     int metric;
     int channel;
     AmlNote lastNote;
     Track track;
+    AmlInstrument instrument;
     private ArrayList<Integer> toneAccidents;
     private String tone;
+    private int toneNumber;
 
-    public AmlTrack(Track track, int actualChannel, AmlTrack parentTrack) {
+    public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
+        this.track = track;
+        metric = parentTrack.metric;
+        toneAccidents = (ArrayList<Integer>) parentTrack.toneAccidents.clone();
+        this.channel = channel;
+        instrument = parentTrack.instrument;
 
+        currentTick = parentTrack.currentTick;
+        lastNote = new AmlNote(Negra, 0, false);
+
+        setInstrument(instrument);
     }
 
     private ArrayList<Integer> computeTone(int tone) {
+        toneNumber = tone;
         ArrayList<Integer> toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
         if (tone >= 0) {
             for (int i = 0; i < tone; ++i) {
@@ -56,21 +69,23 @@ public class AmlTrack {
 
     public AmlTrack(){}
 
-    public AmlTrack(Track track, int channel, int metric, int tone) {
+    public AmlTrack(Track track, int tick, int channel, int metric, int tone, AmlInstrument instrument) {
         this.track = track;
         this.metric = metric;
         this.toneAccidents = computeTone(tone);
         this.channel = channel;
-        currentTick = 0;
+        this.instrument = instrument;
+        currentTick = tick;
         lastNote = new AmlNote(Negra, 0, false);
+        setInstrument(instrument);
     }
 
     public void setToneAccidents(int tone) {
         this.toneAccidents = computeTone(tone);
-
     }
 
     public void setMetric(int[] beat) {
+        metricArray = beat;
         metric = beat[0]*AmlNote.PPQ*4/beat[1];
     }
 
@@ -120,9 +135,9 @@ public class AmlTrack {
         }
     }
 
-    //TODO: Meter Tick
     public void setInstrument(AmlInstrument instrument) {
-        track.add(new MidiEvent(instrument.getMessage(channel), 0));
+        this.instrument = instrument;
+        track.add(new MidiEvent(instrument.getMessage(channel), currentTick));
     }
 
     public Track getTrack() {
@@ -133,6 +148,11 @@ public class AmlTrack {
         return metric;
     }
 
+    public int[] getMetricArray() {
+        return metricArray;
+    }
+
+
     @Override
     public String toString() {
         return  "Track Details:" + "\n" +
@@ -140,5 +160,13 @@ public class AmlTrack {
                 "CurrentTick = " + currentTick + "\n" +
                 "Metric = " + metric + "\n" +
                 "Tone = " + tone + "\n";
+    }
+
+    public AmlInstrument getInstrument() {
+        return instrument;
+    }
+
+    public int getToneNumber() {
+        return toneNumber;
     }
 }

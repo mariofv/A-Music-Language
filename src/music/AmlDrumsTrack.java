@@ -28,6 +28,15 @@ public class AmlDrumsTrack extends AmlTrack {
 
 
     public AmlDrumsTrack(Track track, AmlTrack parentTrack) {
-        //TODO:
+        this.track = track;
+        try {
+            track.add(new MidiEvent(new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0), 0));
+        } catch (InvalidMidiDataException e) {
+            throw new Error(e);
+        }
+        this.metric = parentTrack.getMetric();
+        this.channel = 9;
+        currentTick = parentTrack.currentTick;
+        lastNote = new AmlDrumNote(Negra, 0, false);
     }
 }

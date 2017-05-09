@@ -24,15 +24,23 @@ public class Interpreter {
     private int currentIteration;
     private AmlStack stack;
 
+    public AmlSequence getSequence() {
+        return sequence;
+    }
+
+    private AmlSequence sequence;
+
     public Interpreter() {
+        sequence = new AmlSequence(120);
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
-        stack = new AmlStack();
+        stack = new AmlStack(sequence.addFirstTrack());
     }
 
     public void executeFunction(String functionName, ArrayList<Data> arguments) throws AmlException {
         AmlTree function = functionMap.get(functionName);
-        stack.push(function);
+        AmlTrack copy = sequence.addTrack(stack.getTrack());
+        stack.push(function, copy);
         //TODO: Tratar argumentos
         executeListInstruction(function.getChild(2));
         stack.pop();
@@ -48,7 +56,6 @@ public class Interpreter {
         if(executeCommonInstruction(tree)) return;
         switch(tree.getType()) {
             case MusicLexer.SONG:
-                //TODO: Crear secuencia
                 createSong(tree);
                 break;
             case MusicLexer.WHILE:
@@ -202,7 +209,7 @@ public class Interpreter {
                 int index = tree.getVariableIndex();
                 return stack.getLocalVariables().get(index);
         }
-        return null;
+        throw new Error("This should never happen");
     }
 
     private boolean evaluateBooleanExpression(AmlTree tree) {
@@ -239,8 +246,9 @@ public class Interpreter {
                 leftSide = (Int) evaluateExpression(tree.getChild(0));
                 rightSide = (Int) evaluateExpression(tree.getChild(1));
                 return leftSide.getValue() < rightSide.getValue();
+            default:
+                throw new Error("This should never happen");
         }
-        return true;
     }
 
     public void executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlMusicException {
@@ -328,9 +336,10 @@ public class Interpreter {
 
     private void createSong(AmlTree tree) throws AmlException {
         //TODO: Heredar de track Main
-        int[] metric = {4,4};
-        int bpm = 120;
-        int tone = 0;
+        AmlTrack mainTrack =  stack.getTrack();
+        int[] metric = mainTrack.getMetricArray();
+        int bpm = -1;
+        int tone = mainTrack.getToneNumber();
 
         int i = 0;
         AmlTree songChild = tree.getChild(i++);
@@ -352,23 +361,54 @@ public class Interpreter {
             songChild = tree.getChild(i++);
         }
 
-        AmlSequence sequence = new AmlSequence(bpm, metric, tone);
+        if (bpm != -1) {
+            sequence.setSpeed(bpm);
+        }
 
         for(i = i-1; i < tree.getChildCount(); ++i) {
             if (tree.getChild(i).getType() == MusicLexer.TRACK) {
-                createTrack(tree.getChild(i), sequence);
+                createTrack(tree.getChild(i), metric, tone);
             }
             else {
-                createDrumsTrack(tree.getChild(i), sequence);
+                createDrumsTrack(tree.getChild(i), metric);
             }
         }
-        //TODO: PASAR A AML
-        File f = new File("midifile.mid");
-        try {
-            MidiSystem.write(sequence.getSequence(),1,f);
-        } catch (IOException e) {
-            throw new AmlException(e.getMessage());
+    }
+
+    private void createTrack(AmlTree child, int[] metric, int tone) throws AmlException {
+        AmlTree listOfCompas;
+        AmlInstrument instrument;
+        if (child.getChildCount() > 1) {
+            AmlInstrument.Instruments instrumentEnum = child.getChild(0).getInstrumentValue();
+            instrument = new AmlInstrument(instrumentEnum);
+            listOfCompas = child.getChild(1);
         }
+        else {
+            instrument = stack.getTrack().getInstrument();
+            listOfCompas = child.getChild(0);
+        }
+
+        AmlTrack track = sequence.addTrack(metric, tone, stack.getTrack());
+        track.setInstrument(instrument);
+        addCompasList(listOfCompas, track);
+    }
+
+    public void createTrack(AmlTree tree) throws AmlException {
+        AmlTree listOfCompas;
+        AmlInstrument instrument;
+        if (tree.getChildCount() > 1) {
+            AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
+            instrument = new AmlInstrument(instrumentEnum);
+            listOfCompas = tree.getChild(1);
+        }
+        else {
+            instrument = stack.getTrack().getInstrument();
+            listOfCompas = tree.getChild(0);
+        }
+
+        AmlTrack track = sequence.addTrack(stack.getTrack());
+        track.setInstrument(instrument);
+        addCompasList(listOfCompas, track);
     }
 
     private int createTone(AmlTree tree) throws AmlMusicException {
@@ -397,8 +437,8 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createDrumsTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
-        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack();
+    public void createDrumsTrack(AmlTree tree, int[] metric) throws AmlException {
+        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, stack.getTrack());
         AmlTree listOfCompas = tree.getChild(0);
         addCompasList(listOfCompas, drumsTrack);
 
@@ -417,31 +457,11 @@ public class Interpreter {
         }
     }
 
-    public void createTrack(AmlTree tree, AmlSequence sequence) throws AmlException {
-        AmlInstrument.Instruments instrumentEnum;
-        AmlTree listOfCompas;
-
-        if (tree.getChildCount() > 1) {
-            instrumentEnum = tree.getChild(0).getInstrumentValue();
-            listOfCompas = tree.getChild(1);
-        }
-        else {
-            //TODO: HEREDAR DEL TRACK PADRE
-            instrumentEnum = AmlInstrument.Instruments.Acoustic_Grand_Piano;
-            listOfCompas = tree.getChild(0);
-        }
-
-        AmlTrack track = sequence.addTrack();
-        AmlInstrument instrument = new AmlInstrument(instrumentEnum);
-        track.setInstrument(instrument);
-        addCompasList(listOfCompas, track);
-    }
-
     public void repeat(AmlTree tree, AmlTrack track) throws AmlMusicException {
         int iterations = 2;
         int init = 0;
         if (tree.getChild(0).getType() == MusicLexer.NUM) {
-            //TODO: COMPROBAR EL VALOR QUE NO SEA NEGATIVO
+            //TODO: COMPROVAR EL VALOR QUE NO SEA NEGATIBO
             iterations = tree.getChild(0).getIntValue();
             init = 1;
         }

@@ -28,6 +28,7 @@
 package aml;
 
 // Imports for ANTLR
+import exceptions.AmlException;
 import exceptions.AmlSemanticException;
 import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
@@ -47,6 +48,8 @@ import java.util.LinkedList;
 
 import parser.*;
 import sun.awt.image.ImageWatched;
+
+import javax.sound.midi.MidiSystem;
 
 /**
  * The class <code>aml</code> implement the main function of the
@@ -145,6 +148,12 @@ public class Aml {
                 System.err.println(exception.getMessage());
                 System.err.println();
                 exception.printStackTrace();
+            }
+            File f = new File("midifile.mid");
+            try {
+                MidiSystem.write(interpreter.getSequence().getSequence(),1,f);
+            } catch (IOException e) {
+                throw new AmlException(e.getMessage());
             }
         }
     }
