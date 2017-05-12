@@ -59,7 +59,6 @@ public class AmlTree extends CommonTree {
     private AmlNote.Note noteValue;
     private AmlNote.Figure figureValue;
     private AmlInstrument.Instruments instrumentValue;
-    private ArrayList<Data> localVariables;
     private int numVariables;
     private int variableIndex;
 
@@ -73,18 +72,6 @@ public class AmlTree extends CommonTree {
 
     public int getVariableIndex() {
         return variableIndex;
-    }
-
-    public void pushLocalVariables() {
-        localVariables = new ArrayList<>(Collections.nCopies(numVariables, new Data()));
-    }
-
-    public ArrayList<Data> getLocalVariables() {
-        return localVariables;
-    }
-
-    public void popLocalVariables() {
-        localVariables = null;
     }
 
     /** Constructor of the class */
@@ -619,5 +606,9 @@ public class AmlTree extends CommonTree {
         String s = getText();
         // Do not store the " at the extremes of the string
         strValue = s.substring(1,s.length()-1);
+    }
+
+    public int getNumVariables() {
+        return numVariables;
     }
 }

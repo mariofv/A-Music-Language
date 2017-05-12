@@ -5,10 +5,9 @@ import javax.sound.midi.*;
 import static music.AmlInstrument.Instruments.*;
 
 public class AmlSequence {
-    //TODO: MAKE THIS SINGLETON
+
     private Sequence sequence;
     private int bpm;
-    private boolean first;
     private int actualChannel;
 
     public static byte[] intToByteArray(int number) {
@@ -58,11 +57,6 @@ public class AmlSequence {
         ++actualChannel;
         if (actualChannel == 9) ++actualChannel;
         return track;
-    }
-
-    public AmlDrumsTrack addDrumsTrack(AmlTrack parentTrack) {
-        Track track = createTrack(parentTrack.currentTick);
-        return new AmlDrumsTrack(track, parentTrack);
     }
 
     public AmlDrumsTrack addDrumsTrack(int[] metric, AmlTrack parentTrack) {

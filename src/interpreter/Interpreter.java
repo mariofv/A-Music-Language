@@ -335,7 +335,6 @@ public class Interpreter {
     }
 
     private void createSong(AmlTree tree) throws AmlException {
-        //TODO: Heredar de track Main
         AmlTrack mainTrack =  stack.getTrack();
         int[] metric = mainTrack.getMetricArray();
         int bpm = -1;
@@ -389,24 +388,6 @@ public class Interpreter {
         }
 
         AmlTrack track = sequence.addTrack(metric, tone, stack.getTrack());
-        track.setInstrument(instrument);
-        addCompasList(listOfCompas, track);
-    }
-
-    public void createTrack(AmlTree tree) throws AmlException {
-        AmlTree listOfCompas;
-        AmlInstrument instrument;
-        if (tree.getChildCount() > 1) {
-            AmlInstrument.Instruments instrumentEnum = tree.getChild(0).getInstrumentValue();
-            instrument = new AmlInstrument(instrumentEnum);
-            listOfCompas = tree.getChild(1);
-        }
-        else {
-            instrument = stack.getTrack().getInstrument();
-            listOfCompas = tree.getChild(0);
-        }
-
-        AmlTrack track = sequence.addTrack(stack.getTrack());
         track.setInstrument(instrument);
         addCompasList(listOfCompas, track);
     }
