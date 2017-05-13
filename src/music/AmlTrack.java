@@ -152,6 +152,9 @@ public class AmlTrack {
         return metricArray;
     }
 
+    public int getCurrentTick() {
+        return currentTick;
+    }
 
     @Override
     public String toString() {

@@ -7,6 +7,11 @@ public class AmlException extends Exception {
         super(message);
     }
 
+    public AmlException(String message, int line) {
+        super(message);
+        this.line = line;
+    }
+
     public int getLine() {
         return line;
     }

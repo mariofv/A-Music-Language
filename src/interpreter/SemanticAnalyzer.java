@@ -618,6 +618,8 @@ public class SemanticAnalyzer {
                     int i = 0;
                     if (child.getChild(0).getType() == MusicLexer.NUM) {
                         child.getChild(0).setIntValue();
+                        if (child.getChild(0).getIntValue() < 0)
+                            throw new AmlSemanticException("The number of iterations of a repetition mus be positive", child.getChild(0).getLine());
                         ++i;
                     }
                     for(; i < child.getChildCount(); ++i) {

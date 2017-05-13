@@ -77,6 +77,8 @@ public class AmlCompas {
         ticksPerCompas = track.getMetric();
     }
 
+    public AmlTrack getTrack() { return track; }
+
     public AmlNote getFirstNote() {
         return notes.get(0);
     }

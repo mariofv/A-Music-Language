@@ -7,6 +7,7 @@ import static music.AmlInstrument.Instruments.*;
 public class AmlSequence {
 
     private Sequence sequence;
+    private Track referenceTrack;
     private int bpm;
     private int actualChannel;
 
@@ -24,43 +25,44 @@ public class AmlSequence {
         }
     }
 
-    public void setSpeed(int bpm) {
+    public void setSpeed(int bpm, int tick) {
         this.bpm = bpm;
-    }
-
-    public AmlTrack addFirstTrack() {
-        Track track = createTrack(0);
-        return new AmlTrack(track,0,  0, 64, 0, new AmlInstrument(Acoustic_Grand_Piano));
-    }
-
-    public AmlTrack addTrack(int[] metric, int tone, AmlTrack parentTrack) {
-        AmlTrack track = new AmlTrack(createTrack(parentTrack.currentTick), actualChannel, parentTrack);
-        track.setMetric(metric);
-        track.setToneAccidents(tone);
-        return track;
-    }
-
-    public AmlTrack addTrack(AmlTrack parentTrack) {
-        return new AmlTrack(createTrack(parentTrack.currentTick), actualChannel, parentTrack);
-    }
-
-    private Track createTrack(int tick) {
-        Track track = sequence.createTrack();
         MetaMessage tempo;
+        System.out.println("Setting tempo " + bpm + " in tick " + tick);
         try {
             byte[] number = intToByteArray(60000000 / bpm);
             tempo = new MetaMessage(0x51, number, 3);
         } catch (Exception e) {
             throw new Error(e);
         }
-        track.add(new MidiEvent(tempo, tick));
+        referenceTrack.add(new MidiEvent(tempo, tick));
+    }
+
+    public AmlTrack addFirstTrack() {
+        referenceTrack = createTrack();
+        return new AmlTrack(referenceTrack,0,  0, 64, 0, new AmlInstrument(Acoustic_Grand_Piano));
+    }
+
+    public AmlTrack addTrack(int[] metric, int tone, AmlTrack parentTrack) {
+        AmlTrack track = new AmlTrack(createTrack(), actualChannel, parentTrack);
+        track.setMetric(metric);
+        track.setToneAccidents(tone);
+        return track;
+    }
+
+    public AmlTrack addTrack(AmlTrack parentTrack) {
+        return new AmlTrack(createTrack(), actualChannel, parentTrack);
+    }
+
+    private Track createTrack() {
+        Track track = sequence.createTrack();
         ++actualChannel;
         if (actualChannel == 9) ++actualChannel;
         return track;
     }
 
     public AmlDrumsTrack addDrumsTrack(int[] metric, AmlTrack parentTrack) {
-        AmlDrumsTrack track = new AmlDrumsTrack(createTrack(parentTrack.currentTick), parentTrack);
+        AmlDrumsTrack track = new AmlDrumsTrack(createTrack(), parentTrack);
         track.setMetric(metric);
         return track;
     }
