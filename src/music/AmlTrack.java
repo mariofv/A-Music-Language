@@ -26,12 +26,12 @@ public class AmlTrack {
 
     int currentTick;
 
-    int[] metricArray;
+    private int[] metricArray;
     int metric;
     int channel;
     AmlNote lastNote;
     Track track;
-    AmlInstrument instrument;
+    private AmlInstrument instrument;
     private ArrayList<Integer> toneAccidents;
     private String tone;
     private int toneNumber;
@@ -42,6 +42,19 @@ public class AmlTrack {
         toneAccidents = (ArrayList<Integer>) parentTrack.toneAccidents.clone();
         this.channel = channel;
         instrument = parentTrack.instrument;
+
+        currentTick = parentTrack.currentTick;
+        lastNote = new AmlNote(Negra, 0, false);
+
+        setInstrument(instrument);
+    }
+
+    public AmlTrack(Track track, AmlInstrument instrument, int channel, AmlTrack parentTrack) {
+        this.track = track;
+        this.instrument = instrument;
+        metric = parentTrack.metric;
+        toneAccidents = (ArrayList<Integer>) parentTrack.toneAccidents.clone();
+        this.channel = channel;
 
         currentTick = parentTrack.currentTick;
         lastNote = new AmlNote(Negra, 0, false);

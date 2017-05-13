@@ -28,7 +28,6 @@ public class AmlSequence {
     public void setSpeed(int bpm, int tick) {
         this.bpm = bpm;
         MetaMessage tempo;
-        System.out.println("Setting tempo " + bpm + " in tick " + tick);
         try {
             byte[] number = intToByteArray(60000000 / bpm);
             tempo = new MetaMessage(0x51, number, 3);
@@ -43,8 +42,8 @@ public class AmlSequence {
         return new AmlTrack(referenceTrack,0,  0, 64, 0, new AmlInstrument(Acoustic_Grand_Piano));
     }
 
-    public AmlTrack addTrack(int[] metric, int tone, AmlTrack parentTrack) {
-        AmlTrack track = new AmlTrack(createTrack(), actualChannel, parentTrack);
+    public AmlTrack addTrack(AmlInstrument instrument, int[] metric, int tone, AmlTrack parentTrack) {
+        AmlTrack track = new AmlTrack(createTrack(), instrument, actualChannel, parentTrack);
         track.setMetric(metric);
         track.setToneAccidents(tone);
         return track;

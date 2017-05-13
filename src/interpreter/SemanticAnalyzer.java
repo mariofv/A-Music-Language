@@ -321,7 +321,6 @@ public class SemanticAnalyzer {
             case TRUE:
             case FALSE:
                 return BOOL;
-
         }
         //Unary operators
         if (expression.getChildCount() == 1) {
@@ -639,10 +638,11 @@ public class SemanticAnalyzer {
     private void insertId(AmlTree tree, int type) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
-        SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index++));
+        SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index));
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
         }
-        tree.setIndex(index-1);
+        tree.setIndex(index);
+        ++index;
     }
 }
