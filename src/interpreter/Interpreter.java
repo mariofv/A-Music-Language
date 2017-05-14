@@ -6,8 +6,6 @@ import java.util.HashMap;
 import data.Bool;
 import data.Data;
 import data.Int;
-import data.Void;
-import exceptions.AmlException;
 import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
 import music.*;
@@ -20,12 +18,11 @@ public class Interpreter {
     HashMap<String, AmlTree> songMap;
     private int currentIteration;
     private AmlStack stack;
+    private AmlSequence sequence;
 
     public AmlSequence getSequence() {
         return sequence;
     }
-
-    private AmlSequence sequence;
 
     public Interpreter() {
         sequence = new AmlSequence(120);
@@ -44,7 +41,7 @@ public class Interpreter {
         return ret;
     }
 
-    public Data executeListInstruction(AmlTree tree) throws AmlRunTimeException {
+    private Data executeListInstruction(AmlTree tree) throws AmlRunTimeException {
         for(AmlTree child : tree.getArrayChildren()) {
             Data returnData = executeInstruction(child);
             if (returnData != null) return returnData;
@@ -52,16 +49,15 @@ public class Interpreter {
         return null;
     }
 
-    public Data executeInstruction(AmlTree tree) throws AmlRunTimeException {
-        if(executeCommonInstruction(tree)) return Void.getInstance();
+    private Data executeInstruction(AmlTree tree) throws AmlRunTimeException {
+        if(executeCommonInstruction(tree)) return null;
         switch(tree.getType()) {
             case MusicLexer.FUNCALL:
                 ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {
-                    int i = 0;
                     for (AmlTree argument : tree.getArrayChildren()) {
                         Data expressionResult = evaluateExpression(argument);
-                        arguments.set(i, expressionResult);
+                        arguments.add(expressionResult);
                     }
                 }
                 executeFunction(tree.getText(), arguments);
@@ -71,23 +67,24 @@ public class Interpreter {
                 break;
             case MusicLexer.WHILE:
                 while(evaluateBooleanExpression(tree.getChild(0))) {
-                    executeListInstruction(tree.getChild(1));
+                    Data returnData = executeListInstruction(tree.getChild(1));
+                    if (returnData != null) return returnData;
                 }
                 break;
             case MusicLexer.FOR: {
                 initializeFor(tree.getChild(0));
                 //Parte central del for:
                 while(evaluateBooleanExpression(tree.getChild(1))) {
-                    executeListInstruction(tree.getChild(3));
+                    Data returnData = executeListInstruction(tree.getChild(3));
+                    if (returnData != null) return returnData;
                     //increment For
                     for(AmlTree childAssig : tree.getChild(2).getArrayChildren()) {
-                        executeInstruction(childAssig);
+                        executeCommonInstruction(childAssig);
                     }
                 }
                 break;
             }
             default:
-                break;
         }
         return null;
     }
@@ -282,7 +279,7 @@ public class Interpreter {
         }
     }
 
-    public Data executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
+    private Data executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
         for(AmlTree child : tree.getArrayChildren()) {
             Data returnData = executeMusicInstruction(child, compas);
             if (returnData != null) return returnData;
@@ -291,15 +288,14 @@ public class Interpreter {
     }
 
     private Data executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
-        if(executeCommonInstruction(tree)) return Void.getInstance();
+        if(executeCommonInstruction(tree)) return null;
         switch (tree.getType()) {
             case MusicLexer.FUNCALL:
                 ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {
-                    int i = 0;
                     for (AmlTree argument : tree.getArrayChildren()) {
                         Data expressionResult = evaluateExpression(argument);
-                        arguments.set(i, expressionResult);
+                        arguments.add(expressionResult);
                     }
                 }
                 executeFunction(tree.getText(), arguments);
@@ -319,38 +315,31 @@ public class Interpreter {
                         AmlTree child = tree.getChild(i);
                         if(child.getType() == MusicLexer.ELSEIF) {
                             if(evaluateBooleanExpression(child.getChild(0))) {
-                                executeListMusicInstruction(child.getChild(1), compas);
+                                Data returnData = executeListMusicInstruction(child.getChild(1), compas);
+                                if (returnData != null) return returnData;
                                 break;
                             }
                         } else {
-                            executeListMusicInstruction(child.getChild(0), compas);
+                            Data returnData = executeListMusicInstruction(child.getChild(0), compas);
+                            if (returnData != null) return returnData;
                         }
                     }
                 }
                 break;
             case MusicLexer.WHILE:
                 while(evaluateBooleanExpression(tree.getChild(0))) {
-                    executeListMusicInstruction(tree.getChild(1),compas);
+                    Data returnData = executeListMusicInstruction(tree.getChild(1),compas);
+                    if (returnData != null) return returnData;
                 }
                 break;
-
             case MusicLexer.FOR: {
-                //Parte izquierda del for: declaraciones/asignaciones
-                switch(tree.getChild(0).getType()) {
-                    case MusicLexer.LIST_ASSIG:
-                        for(AmlTree childAssig : tree.getChild(0).getArrayChildren()) {
-                            executeMusicInstruction(childAssig,compas);
-                        }
-                        break;
-                    default:
-                        executeMusicInstruction(tree.getChild(0),compas);
-                        break;
-                }
+                initializeFor(tree.getChild(0));
                 //Parte central del for:
                 while(evaluateBooleanExpression(tree.getChild(1))) {
-                    executeListMusicInstruction(tree.getChild(3),compas);
+                    Data returnData = executeListMusicInstruction(tree.getChild(3),compas);
+                    if (returnData != null) return returnData;
                     for(AmlTree childAssig : tree.getChild(2).getArrayChildren()) {
-                        executeMusicInstruction(childAssig,compas);
+                        executeCommonInstruction(childAssig);
                     }
                 }
                 break;
@@ -469,7 +458,7 @@ public class Interpreter {
         return tree.getChild(0).getIntValue();
     }
 
-    public void createDrumsTrack(AmlTree tree, int[] metric) throws AmlRunTimeException {
+    private void createDrumsTrack(AmlTree tree, int[] metric) throws AmlRunTimeException {
         AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, stack.getTrack());
         AmlTree listOfCompas = tree.getChild(0);
         addCompasList(listOfCompas, drumsTrack);
@@ -489,7 +478,7 @@ public class Interpreter {
         }
     }
 
-    public void repeat(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
+    private void repeat(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
         int iterations = 2;
         int init = 0;
         if (tree.getChild(0).getType() == MusicLexer.NUM) {
@@ -505,7 +494,7 @@ public class Interpreter {
         currentIteration = 1;
     }
 
-    public AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
+    private AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
         AmlCompas compas = new AmlCompas(track);
         for(AmlTree child : tree.getArrayChildren()) {
             executeMusicInstruction(child, compas);
@@ -520,7 +509,7 @@ public class Interpreter {
         return compas;
     }
 
-    public AmlNote createNote(AmlTree tree) {
+    private AmlNote createNote(AmlTree tree) {
         AmlTree noteList = tree.getChild(0);
 
         /* Loops over the metric modifiers */
@@ -569,11 +558,11 @@ public class Interpreter {
         switch(tree.getType()) {
             case MusicLexer.LIST_ASSIG:
                 for(AmlTree childAssig : tree.getArrayChildren()) {
-                    executeInstruction(childAssig);
+                    executeCommonInstruction(childAssig);
                 }
                 break;
             default:
-                executeInstruction(tree);
+                executeCommonInstruction(tree);
                 break;
         }
     }

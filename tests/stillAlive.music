@@ -3,7 +3,7 @@ void main() {
         Beat 4:4;
         Speed 120;
 
-        Track "Ocarina" || Silence.b Sol-6.c #Fa-6 Mi-6 Mi-6 | #Fa-6.b Silence | Silence.n* La.c Sol-6 #Fa-6 Mi-6 Mi-6~ |
+        Track "English Horn" || Silence.b Sol-6.c #Fa-6 Mi-6 Mi-6 | #Fa-6.b Silence | Silence.n* La.c Sol-6 #Fa-6 Mi-6 Mi-6~ |
                          Mi-6.c #Fa-6.n* Re-6.n Mi-6.c La.c~ | La.b* Silence.c La.c | Mi-6.n #Fa-6.c Sol-6.n* Mi-6.c #Do-6.c~ |
                          #Do-6.c Re-6.n* Mi-6.n La.c La.c~ | La.c #Fa-6.n*~ #Fa-6.b | Silence.b  Sol-6.c #Fa-6.c Mi-6.c Mi-6.c | #Fa-6.b Silence.b |
                          Silence.n Silence.c La.c Sol-6.c #Fa-6.c Mi-6.c Mi-6.c~ | Mi-6.n #Fa-6.c Re-6.c~ Re-6.n Mi-6.c La.c~ | La.b Silence.b |
