@@ -91,6 +91,9 @@ public class Interpreter {
                 }
                 break;
             }
+            case MusicLexer.COMPAS_LIST:
+                addCompasList(tree, stack.getTrack());
+                break;
             default:
         }
         return null;

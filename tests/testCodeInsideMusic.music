@@ -3,18 +3,17 @@ fragment fu (int i) {
 }
 
 void lele(int de, int a) {
-    a = 3;
+    a = 4;
 }
 
 void main() {
-     int du;
-     3x||: La.c Do Re.c | if (d == 3) { La } :|| La Do.n ||
+     int du, d = 3;
+     lele(3, d);
      int du2;
      Song {
          Beat 4:8;
          Speed 60;
          Transport 5;
-         Track "Trumpet"   || &Do.c Do.c #Do.c Re.c | if (Times == 2) { La.n } else if (Time == 1) { La.n } Re.n (Do Si); int ex = 3; |
-         fu(); ||
+         Track "Trumpet"   || if (d == 3) {&Do.c} Do.c #Do.c Re.c | if (Time == 2) { La.n } else if (Time == 1) { La.n } Re.n (Do Si); int ex = 3; ||
      }
 }

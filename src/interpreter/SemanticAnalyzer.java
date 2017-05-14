@@ -91,6 +91,7 @@ public class SemanticAnalyzer {
 
     public void analyze(AmlTree tree) throws AmlSemanticException {
         symbolTable.addFirst(new HashMap<String, SymbolInfo>());
+        symbolTable.getFirst().put("Time", new SymbolInfo(-1, INT, -1));
         analyzeInitialScope(tree);
         symbolTable.removeFirst();
     }
@@ -235,6 +236,7 @@ public class SemanticAnalyzer {
                 if (transportType != INT)
                     throw new AmlSemanticException("Type error, speed argument must be int type, but " +
                             mapType(transportType) + " was provided.", commonInstruction.getLine());
+                return true;
             case INSTRUMENT:
                 commonInstruction.getChild(0).setInstrumentValue();
                 return true;
@@ -476,6 +478,11 @@ public class SemanticAnalyzer {
                 break;
             case SONG:
                 analyzeSong(instruction);
+                break;
+            case COMPAS_LIST:
+                symbolTable.addFirst(new HashMap<String, SymbolInfo>());
+                analyzeCompasList(instruction);
+                symbolTable.removeFirst();
                 break;
         }
     }

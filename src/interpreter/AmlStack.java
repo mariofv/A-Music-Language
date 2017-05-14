@@ -35,7 +35,7 @@ public class AmlStack {
     }
 
     public ArrayList<Data> getLocalVariables() {
-        return stack.firstElement().localVariables;
+        return stack.peek().localVariables;
     }
 
     public AmlTrack getTrack() { return stack.firstElement().localTrack; }
