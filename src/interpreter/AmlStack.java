@@ -1,11 +1,11 @@
 package interpreter;
 
 import data.Data;
+import data.Void;
 import music.AmlTrack;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Queue;
 import java.util.Stack;
 
 public class AmlStack {
@@ -26,7 +26,7 @@ public class AmlStack {
     public void push(AmlTree function, AmlTrack track) {
         StackData data = new StackData();
         data.localTrack = track;
-        data.localVariables = new ArrayList<>(Collections.nCopies(function.getNumVariables(), new Data()));
+        data.localVariables = new ArrayList<>(Collections.nCopies(function.getNumVariables(), Void.getInstance()));
         stack.push(data);
     }
 

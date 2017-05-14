@@ -1,11 +1,8 @@
 package data;
 
-/**
- * Created by carlos.roldan on 25/04/2017.
- */
 public class Bool extends Data {
 
-    boolean dataBool;
+    private boolean dataBool;
 
     public Bool(){};
 
@@ -18,4 +15,9 @@ public class Bool extends Data {
     }
 
     public void setValue(boolean value) { dataBool = value; }
+
+    @Override
+    public Data clone() {
+        return new Bool(dataBool);
+    }
 }

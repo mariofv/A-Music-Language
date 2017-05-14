@@ -35,7 +35,14 @@ public class Interpreter {
         AmlTree function = functionMap.get(functionName);
         AmlTrack copy = sequence.addTrack(stack.getTrack());
         stack.push(function, copy);
-        //TODO: Tratar argumentos
+        if (arguments != null) {
+            ArrayList<Data> localVariables = stack.getLocalVariables();
+            int i = 0;
+            for (Data argument : arguments) {
+                localVariables.set(i, argument.clone());
+                ++i;
+            }
+        }
         Data ret = executeListInstruction(function.getChild(2));
         stack.pop();
         return ret;

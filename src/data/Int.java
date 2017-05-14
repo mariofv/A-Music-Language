@@ -1,11 +1,8 @@
 package data;
 
-/**
- * Created by carlos.roldan on 25/04/2017.
- */
 public class Int extends Data {
 
-    int dataInt;
+    private int dataInt;
 
     public Int() {};
 
@@ -19,4 +16,8 @@ public class Int extends Data {
 
     public void setValue(int value) { dataInt = value;}
 
+    @Override
+    public Data clone() {
+        return new Int(dataInt);
+    }
 }

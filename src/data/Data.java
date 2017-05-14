@@ -1,5 +1,6 @@
 package data;
 
-public class Data {
-
+public abstract class Data {
+    @Override
+    public abstract Data clone();
 }
