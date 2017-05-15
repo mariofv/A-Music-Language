@@ -18,6 +18,8 @@ public class AmlCompas {
     public AmlCompas(AmlTrack track) {
         this.track = track;
         tone = new AmlTone();
+        AmlTone trackTone = track.getTone();
+        if (trackTone != null && trackTone.isTransported()) tone.setTransportedSemitones(trackTone.getTransportedSemitones());
         lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();
         actualTicks = 0;
@@ -58,7 +60,13 @@ public class AmlCompas {
     }
 
     public void changeTrackTone(AmlTone tone) {
+        AmlTone oldTone = track.getTone();
+        if (oldTone.isTransported()) {
+            tone.transport(oldTone.getTransportedSemitones());
+        }
+
         track.setTone(tone);
+
     }
 
     public void changeTrackBeat(int[] beat) {

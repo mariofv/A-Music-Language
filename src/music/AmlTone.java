@@ -19,15 +19,17 @@ public class AmlTone {
     private ArrayList<Integer> toneAccidents;
     private String name;
     private int toneNumber;
+    private int transportedSemitones;
 
     public AmlTone(){
         toneAccidents = new ArrayList<>(Collections.nCopies(7,42));
+        transportedSemitones = 0;
     }
 
     public AmlTone(int tone) {
         toneNumber = tone;
-
         computeTone(tone);
+        transportedSemitones = 0;
     }
 
     private int mapNoteNameInTone(AmlNote.AmlNoteInfo noteInfo) {
@@ -72,13 +74,13 @@ public class AmlTone {
         int index = mapNoteNameInTone(noteInfo);
         switch (noteInfo.getAccident()) {
             case Sustain:
-                toneAccidents.set(index, 1);
+                toneAccidents.set(index, 1 + transportedSemitones);
                 break;
             case Bemol:
-                toneAccidents.set(index, -1);
+                toneAccidents.set(index, -1 + transportedSemitones);
                 break;
             case Armor:
-                toneAccidents.set(index, 0);
+                toneAccidents.set(index, 0 + transportedSemitones);
                 break;
         }
     }
@@ -87,14 +89,34 @@ public class AmlTone {
         return toneAccidents.get(mapNoteNameInTone(noteInfo)) != 42;
     }
 
+    public boolean isTransported() {
+        return transportedSemitones != 0;
+    }
+
+    public int getTransportedSemitones() {
+        return transportedSemitones;
+    }
+
+    public void setTransportedSemitones(int transportedSemitones) {
+        this.transportedSemitones = transportedSemitones;
+    }
+
     public int getAccident(AmlNote.AmlNoteInfo noteInfo) {
         return toneAccidents.get(mapNoteNameInTone(noteInfo));
+    }
+
+    public void transport(int semitones) {
+        transportedSemitones = semitones;
+        for (int i = 0; i < toneAccidents.size(); ++i) {
+            toneAccidents.set(i, toneAccidents.get(i) + transportedSemitones);
+        }
     }
 
     @Override
     public AmlTone clone() {
         AmlTone clone = new AmlTone(this.toneNumber);
         clone.toneAccidents = (ArrayList<Integer>) this.toneAccidents.clone();
+        clone.transport(transportedSemitones);
         return clone;
     }
 

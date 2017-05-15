@@ -153,7 +153,7 @@ beat        :   BEAT^ expr ':'! expr
 speed       :   SPEED^ expr
             ;
 
-transport   :   TRANSPORT^ expr
+transport   :   TRANSPORT^ num_expr
             ;
 
 instrument  :   INSTRUMENT^ STRING ';'

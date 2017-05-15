@@ -2,59 +2,85 @@ void main() {
     Song {
         Beat 4:4;
         Speed 120;
+        Tone 2#;
+        Transport -5;
+        Track "Ocarina"  // VERSE 1
+                        || Silence.b Sol-6.c Fa-6 Mi-6 Mi-6 | Fa-6.b Silence | Silence.n* La.c Sol-6 Fa-6 Mi-6 Mi-6~ |
+                         Mi-6.c Fa-6.n* Re-6.n Mi-6.c La.c~ | La.b* Silence.c La.c | Mi-6.n Fa-6.c Sol-6.n* Mi-6.c Do-6.c~ |
+                         Do-6.c Re-6.n* Mi-6.n La.c La.c~ | La.c Fa-6.n*~ Fa-6.b | Silence.b  Sol-6.c Fa-6.c Mi-6.c Mi-6.c | Fa-6.b Silence.b |
+                         Silence.n Silence.c La.c Sol-6.c Fa-6.c Mi-6.c Mi-6.c~ | Mi-6.n Fa-6.c Re-6.c~ Re-6.n Mi-6.c La.c~ | La.b Silence.b |
+                         Mi-6.n Fa-6.c Sol-6.c~ Sol-6.n Mi-6.c Do-6.c~ | Do-6.n Re-6.c Mi-6.c~ Mi-6.c La.c Re-6.c Mi-6.c  |
+                         Tone 1&; Fa-6.c Mi-6.c Re-6.c Do-6.c Silence.n La.c Si.c|
+                         //CHORUS 1
+                         Do-6.n Fa-6.n Mi-6.c Re-6.c Re-6.c Do-6.c | Re-6.c Do-6.c Do-6.n Do-6.n La.c Si.c |
+                         Do-6.n Fa-6.n Sol-6.c Fa-6.c Mi-6.c Re-6.c | Re-6.c Mi-6.c Fa-6.n Fa-6.n Sol-6.c La-6.c | Si-6.c Si-6.c La-6.n Sol-6.n Fa-6.c Sol-6.c |
+                         La-6.c La-6.c Sol-6.n Fa-6.n Re-6.c Do-6.c | Re-6.c Fa-6.c Fa-6.c Mi-6.c~ Mi-6.c Mi-6.c #Fa-6.c #Fa-6.c |
+                         //BRIDGE 1
+                         Silence.r | Silence | Silence
+                         //VERSE 2+3
+                         ||: Silence.n Silence.c Tone 2#; if(Time==1) { La.c } else { Silence.c } Sol-6 Fa-6 Mi-6 Mi-6~ | Mi-6.sc Fa-6.c*~ Fa-6.n Silence.b | Silence.n Silence.c if (Time == 2){La.c}else{Silence.c} Sol-6 Fa-6 Mi-6 Mi-6~ |
+                         Mi-6.n Fa-6.c Re-6~ Re-6 Mi-6.n La.c~ | La.b Silence.b | Mi-6.n Fa-6.c Sol-6~ Sol-6.n Mi-6 | Do-6 Re-6.c Mi-6~ Mi-6.n La.c La~ |
+                         La Fa-6.n*~ Fa-6.n Silence | Silence Silence.c if (Time==1){La.c}else{Silence.c} (Sol-6 Si-6).c (La-6 Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6) | (La-6 Fa-6).n Silence.n Silence.b |
+                         Silence.n Silence.c if (Time==1){La}else{Silence} (Sol-6 Si-6).c (La-6 Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6)~ | (Mi-6 Sol-6).n (La-6 Fa-6).c (Fa-6 Re-6).c~ (Fa-6 Re-6).n (Sol-6 Mi-6).c (Re-6 La)~ |
+                         (Re-6 La).b Silence.b | Mi-6.n Fa-6.c Sol-6~ Sol-6.n Mi-6 | Do-6 Re-6.c Mi-6~ Mi-6 La Re-6 Mi-6 | Tone 1&; Fa-6.c Mi-6 Re-6 Do-6~ Do-6.n La.c Si.c |
+                         // CHORUS 2+3
+                         Do-6.n Fa-6 Mi-6.c Re-6.c Re-6.c Do-6 | Re-6 Do-6 Do-6.n Do-6 La.c Si | Do-6.n Fa-6 Sol-6.c Fa-6 Mi-6 Re-6 | Re-6 Mi-6 Fa-6.n Fa-6.n Sol-6.c La-6  |
+                         Si-6 Si-6 if(Time==2){La-6 La-6}else{La-6.n} Sol-6.n Fa-6.c Sol-6 | La-6 La-6 Sol-6 Fa-6 Fa-6.n Re-6.c Do-6 | Re-6 Fa-6 Fa-6 Mi-6~ Mi-6 Mi-6 #Fa-6 if (Time == 1) {#Fa-6~} else {(La-6 #Fa-6)~} | if (Time == 1) { #Fa-6.b Silence } | if (Time == 1) {Silence.r}|
+                         if (Time == 1) { Silence.r } :||
+                         // OUTRO
+                         5x||: Tone 2#;(La-6  #Fa-6).b Silence.c if(Time == 1){Silence.c}else if (Time==4){Silence.c}else{La-6.c} La-6 La-6 | Si-6 La-6 Fa-6 Re-6~ Re-6 (Sol-6 Mi-6) (La-6 Fa-6) (La-6 #Fa-6)~ :|| (La-6 #Fa-6).n Silence Silence.c Sol-6 La-6 La-6~ |
+                         La-6.n Silence Silence.c Sol-6 Fa-6 Fa-6~ | Fa-6.b Silence.b ||
 
-        Track "Ocarina" || Silence.b Sol-6.c #Fa-6 Mi-6 Mi-6 | #Fa-6.b Silence | Silence.n* La.c Sol-6 #Fa-6 Mi-6 Mi-6~ |
-                         Mi-6.c #Fa-6.n* Re-6.n Mi-6.c La.c~ | La.b* Silence.c La.c | Mi-6.n #Fa-6.c Sol-6.n* Mi-6.c #Do-6.c~ |
-                         #Do-6.c Re-6.n* Mi-6.n La.c La.c~ | La.c #Fa-6.n*~ #Fa-6.b | Silence.b  Sol-6.c #Fa-6.c Mi-6.c Mi-6.c | #Fa-6.b Silence.b |
-                         Silence.n Silence.c La.c Sol-6.c #Fa-6.c Mi-6.c Mi-6.c~ | Mi-6.n #Fa-6.c Re-6.c~ Re-6.n Mi-6.c La.c~ | La.b Silence.b |
-                         Mi-6.n #Fa-6.c Sol-6.c~ Sol-6.n Mi-6.c #Do-6.c~ | #Do-6.n Re-6.c Mi-6.c~ Mi-6.c La.c Re-6.c Mi-6.c  |
-                         Fa-6.c Mi-6.c Re-6.c Do-6.c Silence.n La.c &Si.c| Do-6.n Fa-6.n Mi-6.c Re-6.c Re-6.c Do-6.c | Re-6.c Do-6.c Do-6.n Do-6.n La.c &Si.c |
-                         Do-6.n Fa-6.n Sol-6.c Fa-6.c Mi-6.c Re-6.c | Re-6.c Mi-6.c Fa-6.n Fa-6.n Sol-6.c La-6.c | &Si-6.c &Si-6.c La-6.n Sol-6.n Fa-6.c Sol-6.c |
-                         La-6.c La-6.c Sol-6.n Fa-6.n Re-6.c Do-6.c | Re-6.c Fa-6.c Fa-6.c Mi-6.c~ Mi-6.c Mi-6.c #Fa-6.c #Fa-6.c | Silence.r | Silence | Silence ||:
-                         Silence.n Silence.c if(Time==1) { La.c } else { Silence.c } Sol-6 #Fa-6 Mi-6 Mi-6~ | Mi-6.sc #Fa-6.c*~ #Fa-6.n Silence.b | Silence.n Silence.c if (Time == 2){La.c}else{Silence.c} Sol-6 #Fa-6 Mi-6 Mi-6~ |
-                         Mi-6.n #Fa-6.c Re-6~ Re-6 Mi-6.n La.c~ | La.b Silence.b | Mi-6.n #Fa-6.c Sol-6~ Sol-6.n Mi-6 | #Do-6 Re-6.c Mi-6~ Mi-6.n La.c La~       |
-                         La #Fa-6.n*~ #Fa-6.n Silence | Silence Silence.c if (Time==1){La.c}else{Silence.c} (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6) | (La-6 #Fa-6).n Silence.n Silence.b |
-                         Silence.n Silence.c if (Time==1){La}else{Silence} (Sol-6 Si-6).c (La-6 #Fa-6) (Sol-6 Mi-6) (Sol-6 Mi-6)~ | (Mi-6 Sol-6).n (La-6 #Fa-6).c (#Fa-6 Re-6).c~ (#Fa-6 Re-6).n (Sol-6 Mi-6).c (Re-6 La)~ |
-                         (Re-6 La).b Silence.b | Mi-6.n #Fa-6.c Sol-6~ Sol-6.n Mi-6 | #Do-6 Re-6.c Mi-6~ Mi-6 La Re-6 Mi-6 |  Fa-6.c Mi-6 Re-6 Do-6~ Do-6.n La.c &Si.c |
-                         Do-6.n Fa-6 Mi-6.c Re-6.c Re-6.c Do-6 | Re-6 Do-6 Do-6.n Do-6 La.c &Si | Do-6.n Fa-6 Sol-6.c Fa-6 Mi-6 Re-6 | Re-6 Mi-6 Fa-6.n Fa-6.n Sol-6.c La-6  |
-                         &Si-6 &Si-6 if(Time==2){La-6 La-6}else{La-6.n} Sol-6.n Fa-6.c Sol-6 | La-6 La-6 Sol-6 Fa-6 Fa-6.n Re-6.c Do-6 | Re-6 Fa-6 Fa-6 Mi-6~ Mi-6 Mi-6 #Fa-6 if (Time == 1) {#Fa-6~} else {(La-6 #Fa-6)~} | if (Time == 1) { #Fa-6.b Silence } | if (Time == 1) {Silence.r}|
-                         if (Time == 1) { Silence.r } :|| 5x||: (La-6 #Fa-6).b Silence.c if(Time == 1){Silence.c}else if (Time==4){Silence.c}else{La-6.c} La-6 La-6 | Si-6 La-6 #Fa-6 Re-6~ Re-6 (Sol-6 Mi-6) (La-6 #Fa-6) (La-6 #Fa-6)~ :|| (La-6 #Fa-6).n Silence Silence.c Sol-6 La-6 La-6~ |
-                         La-6.n Silence Silence.c Sol-6 #Fa-6 #Fa-6~ | #Fa-6.b Silence.b ||
+        Track "Orchestral Harp" || Silence.r
+                        //VERSE 1
+                        4x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6 | La Do-6 Mi-6 Do-6 La Do-6 Mi-6 Do-6
+                        6x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6  | La Mi-6 Sol-6 Mi-6 La Mi-6 Sol-6 Mi-6 |
+                        Tone 1&; Si Re-6 Fa-6 La-6 Silence.b
+                        //CHORUS
+                        7x||: Silence.r :||
+                        //BRIDGE 1
+                        Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 |  La Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c |
+                        La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c ||
 
-        Track "Orchestral Harp" || Silence.r | La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        Si.c Mi-6.c Sol-6.c Mi-6.c Si.c Mi-6.c Sol-6.c Mi-6.c | La.c #Do-6.c Mi-6.c #Do-6.c La.c #Do-6.c Mi-6.c #Do-6.c |
-                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        Si.c Mi-6.c Sol-6.c Mi-6.c Si.c Mi-6.c Sol-6.c Mi-6.c | La.c Mi-6.c Sol-6.c Mi-6.c La.c Mi-6.c Sol-6.c Mi-6.c |
-                        &Si.c Re-6.c Fa-6.c La-6.c Silence.b                  7x||: Silence.r :||
-                        La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                        La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c ||
+        Track "Celesta"
+                    // VERSE 1
+                    16x||:   Silence.r  :||
+                    //CHORUS 1
+                    Tone 1&; Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n Fa-6.n Fa-6.n | Si.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
+                    Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c |
+                    //BRIDGE 1
+                    Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 |  La Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c |
+                    La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c ||
 
-        Track "Celesta" 16x||:   Silence.r  :|| Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
-                                 Do-7.c #La-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
-                                 Do-7.c #La-6.c $La-6.n Fa-6.n Fa-6.n | #La.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
-                                 Fa.c Do-7.c Mi.c Do-7.c #La-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c |
-                                 La.c Re-6 #Fa-6 Re-6 Si Re-6 #Fa-6 Re-6 |  La Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c |
-                                 La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c | La.c Re-6.c #Fa-6.c Re-6.c Si.c Re-6.c #Fa-6.c Re-6.c ||
-
-        Track "Electric Bass (finger)" 23x||: Silence.r :||
+        Track "Electric Bass (finger)"
+                     // VERSE 1 + CHORUS 1
+                     23x||: Silence.r :||
+                     // BRIDGE 1
                      3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     // VERSE 2
                      4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
-                     Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3.n |
+                     Mi-3.n Silence.c Mi-3.c Mi-3 Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 Do-3.n |
                      Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 | Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
                      4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
-                     Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3 La-2 |
-                     &Si-2.n &Si-2 &Si-2.c &Si-2 &Si-2 &Si-2
-                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | &Si-2.n* &Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
-                     &Si-2.n* &Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | &Si-2.n Fa-3 La-2 Mi-3
-                     3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     Mi-3.n Silence.c Mi-3.c Mi-3 Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 Do-3 La-2 |
+                     Tone 1&; Si-2.n Si-2 Si-2.c Si-2 Si-2 Si-2
+                     // CHORUS 2
+                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | Si-2.n* Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
+                     Si-2.n* Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | Si-2.n Fa-3 La-2 Mi-3
+                     // BRIDGE 3
+                     Tone 2#; 3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
+                     // VERSE 3
                      8x||: Silence.r :|| 4x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :||
-                     Mi-3.n Silence.c Mi-3.c Mi-3 #Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 #Do-3 La-2 |
-                     &Si-2.n &Si-2 &Si-2.c &Si-2 &Si-2 &Si-2
-                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | &Si-2.n* &Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
-                     &Si-2.n* &Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | &Si-2.n Fa-3 La-2 Mi-3
+                     Mi-3.n Silence.c Mi-3.c Mi-3 Fa-3 Sol-3.n | La-2.n Silence.c La-2.c La-2 Si-2 Do-3 La-2 |
+                     Tone 1&; Si-2.n Si-2 Si-2.c Si-2 Si-2 Si-2
+                     2x||: Fa-3.n* Fa-3.c Do-3.n* Do-3.c | Si-2.n* Si-2.c if (Time == 1) {Fa-3.n* Fa-3.c} else {Fa-3.n Silence.c La-2.c }:||
+                     Si-2.n* Si-2.c Do-3.n* Do-3.c | Fa-3.n Mi-3.n Re-3.n Do-3.n | Si-2.n Fa-3 La-2 Mi-3
+                     // OUTRO
+                     Tone 2#;
                      3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3 //Esto es un for
                      3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3
                      3x||: Re-3.n Silence.c Re-3 Si-2.n Silence.c Si-2 :|| Re-3.n Silence.c Re-3 Si-3.c Si-3 Si-3 La-3

@@ -402,7 +402,7 @@ public class Interpreter {
         AmlTrack mainTrack =  stack.getTrack();
         int[] metric = mainTrack.getMetricArray();
         int bpm = -1;
-        AmlTone tone = mainTrack.getTone();
+        AmlTone tone = mainTrack.getTone().clone();
 
         int i = 0;
         AmlTree songChild = tree.getChild(i++);
@@ -418,7 +418,8 @@ public class Interpreter {
                     tone = createTone(songChild);
                     break;
                 case MusicLexer.TRANSPORT:
-                    /* TODO: THIS */
+                    Int num = (Int)evaluateExpression(songChild.getChild(0));
+                    tone.transport(num.getValue());
                     break;
             }
             songChild = tree.getChild(i++);
