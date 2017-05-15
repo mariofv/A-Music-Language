@@ -10,14 +10,14 @@ public class AmlCompas {
 
     private ArrayList<AmlNote> notes;
 
-    private ArrayList<Integer> toneAccidents;
+
+    private AmlTone tone;
 
     private int actualTicks, ticksPerCompas, lastNoteDuration;
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
-        //Se inicializa a 42 para tener un valor que indique que no hay accidente.
-        toneAccidents = new ArrayList<>(Collections.nCopies(7,42));
+        tone = new AmlTone();
         lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();
         actualTicks = 0;
@@ -27,24 +27,13 @@ public class AmlCompas {
     public void addNote(AmlNote note) throws AmlMusicException {
         for (int i = 0; i < note.getPitches().size(); ++i) {
             AmlNote.AmlNoteInfo noteInfo = note.getNotes().get(i);
-            int index = noteInfo.mapNoteNameInTone();
-            switch (noteInfo.getAccident()) {
-                case Sustain:
-                    toneAccidents.set(index, 1);
-                    break;
-                case Bemol:
-                    toneAccidents.set(index, -1);
-                    break;
-                case Armor:
-                    toneAccidents.set(index, 0);
-                    break;
-            }
+            tone.alterNote(noteInfo);
 
-            if (toneAccidents.get(index) != 42 ) {
-                note.getPitches().set(i, note.getPitches().get(i) + toneAccidents.get(index));
+            if (tone.isAltered(noteInfo)) {
+                note.getPitches().set(i, note.getPitches().get(i) + tone.getAccident(noteInfo));
             }
             else {
-                note.getPitches().set(i, note.getPitches().get(i) + track.getToneAccidents().get(index));
+                note.getPitches().set(i, note.getPitches().get(i) + track.getTone().getAccident(noteInfo));
             }
         }
 
@@ -68,8 +57,8 @@ public class AmlCompas {
         notes.add(note);
     }
 
-    public void changeTrackTone(int tone) {
-        track.setToneAccidents(tone);
+    public void changeTrackTone(AmlTone tone) {
+        track.setTone(tone);
     }
 
     public void changeTrackBeat(int[] beat) {

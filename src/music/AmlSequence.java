@@ -39,13 +39,13 @@ public class AmlSequence {
 
     public AmlTrack addFirstTrack() {
         referenceTrack = createTrack();
-        return new AmlTrack(referenceTrack,0,  0, 64, 0, new AmlInstrument(Acoustic_Grand_Piano));
+        return new AmlTrack(referenceTrack,0,  0, 64, new AmlTone(0), new AmlInstrument(Acoustic_Grand_Piano));
     }
 
-    public AmlTrack addTrack(AmlInstrument instrument, int[] metric, int tone, AmlTrack parentTrack) {
+    public AmlTrack addTrack(AmlInstrument instrument, int[] metric, AmlTone tone, AmlTrack parentTrack) {
         AmlTrack track = new AmlTrack(createTrack(), instrument, actualChannel, parentTrack);
         track.setMetric(metric);
-        track.setToneAccidents(tone);
+        track.setTone(tone);
         return track;
     }
 

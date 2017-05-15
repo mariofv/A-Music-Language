@@ -386,7 +386,7 @@ public class Interpreter {
         AmlTrack mainTrack =  stack.getTrack();
         int[] metric = mainTrack.getMetricArray();
         int bpm = -1;
-        int tone = mainTrack.getToneNumber();
+        AmlTone tone = mainTrack.getTone();
 
         int i = 0;
         AmlTree songChild = tree.getChild(i++);
@@ -422,7 +422,7 @@ public class Interpreter {
         }
     }
 
-    private void createTrack(AmlTree child, int[] metric, int tone) throws AmlRunTimeException {
+    private void createTrack(AmlTree child, int[] metric, AmlTone tone) throws AmlRunTimeException {
         AmlTree listOfCompas;
         AmlInstrument instrument;
         if (child.getChildCount() > 1) {
@@ -439,17 +439,17 @@ public class Interpreter {
         addCompasList(listOfCompas, track);
     }
 
-    private int createTone(AmlTree tree) throws AmlMusicException {
-        int tone = tree.getChild(0).getIntValue();
-        if (Math.abs(tone) >= 8) {
+    private AmlTone createTone(AmlTree tree) throws AmlMusicException {
+        int toneNumber = tree.getChild(0).getIntValue();
+        if (Math.abs(toneNumber) >= 8) {
             throw new AmlMusicException("Tone in song " /*TODO: Introducir nombre de song */ + " is not correct." +
                     "\n Tone must be between -7 and 7.", tree.getLine());
         }
         AmlTree typeOfAccident = tree.getChild(1);
         if (typeOfAccident.getType() == MusicLexer.BEMOL) {
-            tone = -tone;
+            toneNumber = -toneNumber;
         }
-        return tone;
+        return new AmlTone(toneNumber);
     }
 
     private int[] createMetric(AmlTree tree) throws AmlRunTimeException {

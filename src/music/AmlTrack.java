@@ -1,5 +1,6 @@
 package music;
 
+import aml.Aml;
 import exceptions.AmlMusicException;
 
 import javax.sound.midi.MidiEvent;
@@ -13,16 +14,6 @@ import java.util.Collections;
 import static music.AmlNote.Figure.*;
 
 public class AmlTrack {
-    //TODO: CREAR AMLTONE
-
-    public static final int FaPos = 0;
-    public static final int DoPos = 1;
-    public static final int SolPos = 2;
-    public static final int RePos = 3;
-    public static final int LaPos = 4;
-    public static final int MiPos = 5;
-    public static final int SiPos = 6;
-
 
     int currentTick;
 
@@ -32,14 +23,12 @@ public class AmlTrack {
     AmlNote lastNote;
     Track track;
     private AmlInstrument instrument;
-    private ArrayList<Integer> toneAccidents;
-    private String tone;
-    private int toneNumber;
+    private AmlTone tone;
 
     public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
         this.track = track;
         metric = parentTrack.metric;
-        toneAccidents = (ArrayList<Integer>) parentTrack.toneAccidents.clone();
+        tone =  parentTrack.getTone().clone();
         this.channel = channel;
         instrument = parentTrack.instrument;
 
@@ -53,7 +42,7 @@ public class AmlTrack {
         this.track = track;
         this.instrument = instrument;
         metric = parentTrack.metric;
-        toneAccidents = (ArrayList<Integer>) parentTrack.toneAccidents.clone();
+        tone =  parentTrack.getTone().clone();
         this.channel = channel;
 
         currentTick = parentTrack.currentTick;
@@ -62,39 +51,19 @@ public class AmlTrack {
         setInstrument(instrument);
     }
 
-    private ArrayList<Integer> computeTone(int tone) {
-        toneNumber = tone;
-        ArrayList<Integer> toneAccidents = new ArrayList<>(Collections.nCopies(7,0));
-        if (tone >= 0) {
-            for (int i = 0; i < tone; ++i) {
-                toneAccidents.set(i,1);
-            }
-            this.tone = tone + " #";
-        }
-        else {
-            for (int i = 0; i < -tone ; ++i) {
-                toneAccidents.set(6-i, -1);
-            }
-            this.tone = -tone + " &";
-        }
-        return toneAccidents;
-    }
+
 
     public AmlTrack(){}
 
-    public AmlTrack(Track track, int tick, int channel, int metric, int tone, AmlInstrument instrument) {
+    public AmlTrack(Track track, int tick, int channel, int metric, AmlTone tone, AmlInstrument instrument) {
         this.track = track;
         this.metric = metric;
-        this.toneAccidents = computeTone(tone);
         this.channel = channel;
         this.instrument = instrument;
         currentTick = tick;
         lastNote = new AmlNote(Negra, 0, false);
+        this.tone = tone;
         setInstrument(instrument);
-    }
-
-    public void setToneAccidents(int tone) {
-        this.toneAccidents = computeTone(tone);
     }
 
     public void setMetric(int[] beat) {
@@ -102,8 +71,8 @@ public class AmlTrack {
         metric = beat[0]*AmlNote.PPQ*4/beat[1];
     }
 
-    public ArrayList<Integer> getToneAccidents() {
-        return toneAccidents;
+    public AmlTone getTone() {
+        return tone;
     }
 
     public int getLastNoteDuration() {
@@ -153,6 +122,10 @@ public class AmlTrack {
         track.add(new MidiEvent(instrument.getMessage(channel), currentTick));
     }
 
+    public void setTone(AmlTone tone) {
+        this.tone = tone;
+    }
+
     public Track getTrack() {
         return track;
     }
@@ -175,14 +148,12 @@ public class AmlTrack {
                 "=============================" + "\n" +
                 "CurrentTick = " + currentTick + "\n" +
                 "Metric = " + metric + "\n" +
-                "Tone = " + tone + "\n";
+                "Instrument = " + instrument.toString() + "\n" +
+                "Tone = " + tone.toString() + "\n";
     }
 
     public AmlInstrument getInstrument() {
         return instrument;
     }
 
-    public int getToneNumber() {
-        return toneNumber;
-    }
 }

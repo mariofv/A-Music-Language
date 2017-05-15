@@ -594,4 +594,9 @@ public class AmlInstrument {
         }
         return index;
     }
+
+    @Override
+    public String toString() {
+        return name.toString();
+    }
 }

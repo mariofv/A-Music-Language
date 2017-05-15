@@ -26,7 +26,7 @@ public class AmlStack {
     public void push(AmlTree function, AmlTrack track) {
         StackData data = new StackData();
         data.localTrack = track;
-        data.localVariables = new ArrayList<>(Collections.nCopies(function.getNumVariables(), Void.getInstance()));
+        data.localVariables = new ArrayList<Data>(Collections.nCopies(function.getNumVariables(), Void.getInstance()));
         stack.push(data);
     }
 

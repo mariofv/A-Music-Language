@@ -27,27 +27,7 @@ public class AmlNote {
             return accident;
         }
 
-        public int mapNoteNameInTone() {
-            switch (noteName) {
-                case Do:
-                    return AmlTrack.DoPos;
-                case Re:
-                    return AmlTrack.RePos;
-                case Mi:
-                    return AmlTrack.MiPos;
-                case Fa:
-                    return AmlTrack.FaPos;
-                case Sol:
-                    return AmlTrack.SolPos;
-                case La:
-                    return AmlTrack.LaPos;
-                case Si:
-                    return AmlTrack.SiPos;
-                case Silence:
-                    return -1;
-            }
-            return 0;
-        }
+
 
         @Override
         public String toString() {
