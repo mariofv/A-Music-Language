@@ -250,10 +250,10 @@ public class AmlTree extends CommonTree {
                 break;
 
             // Ensemble Family:
-            case "String Ensemble 1":
+            case "TextVar Ensemble 1":
                 instrumentValue = AmlInstrument.Instruments.String_Ensemble_1;
                 break;
-            case "String Ensemble 2":
+            case "TextVar Ensemble 2":
                 instrumentValue = AmlInstrument.Instruments.String_Ensemble_2;
                 break;
             case "Synth Strings 1":

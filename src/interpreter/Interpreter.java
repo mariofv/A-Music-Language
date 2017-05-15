@@ -6,6 +6,7 @@ import java.util.HashMap;
 import data.Bool;
 import data.Data;
 import data.Int;
+import data.TextVar;
 import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
 import music.*;
@@ -125,6 +126,19 @@ public class Interpreter {
                     }
                 }
                 return true;
+            //TODO: Fix EvaluateExpression for Strings + Concat operation, change grammar
+            case MusicLexer.STRING_TYPE:
+                for (AmlTree assigChild : tree.getArrayChildren()) {
+                    if(assigChild.getType() == MusicLexer.ASSIG) {
+                        int index = assigChild.getChild(0).getVariableIndex();
+                        TextVar value = (TextVar) evaluateExpression(assigChild.getChild(1));
+                        stack.getLocalVariables().set(index, value);
+                    } else {
+                        int index = assigChild.getVariableIndex();
+                        stack.getLocalVariables().set(index, new TextVar());
+                    }
+                }
+                return true;
             case MusicLexer.ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
@@ -191,6 +205,8 @@ public class Interpreter {
 
     private Data evaluateExpression(AmlTree tree) throws AmlRunTimeException {
         switch (tree.getType()) {
+
+
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
             case MusicLexer.PLUS: {
