@@ -28,6 +28,7 @@ public class AmlTrack {
     public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
         this.track = track;
         metric = parentTrack.metric;
+        metricArray = parentTrack.metricArray;
         tone =  parentTrack.getTone().clone();
         this.channel = channel;
         instrument = parentTrack.instrument;
@@ -38,26 +39,10 @@ public class AmlTrack {
         setInstrument(instrument);
     }
 
-    public AmlTrack(Track track, AmlInstrument instrument, int channel, AmlTrack parentTrack) {
+    public AmlTrack(Track track, int tick, int channel, int[] metric, AmlTone tone, AmlInstrument instrument) {
         this.track = track;
-        this.instrument = instrument;
-        metric = parentTrack.metric;
-        tone =  parentTrack.getTone().clone();
-        this.channel = channel;
-
-        currentTick = parentTrack.currentTick;
-        lastNote = new AmlNote(Negra, 0, false);
-
-        setInstrument(instrument);
-    }
-
-
-
-    public AmlTrack(){}
-
-    public AmlTrack(Track track, int tick, int channel, int metric, AmlTone tone, AmlInstrument instrument) {
-        this.track = track;
-        this.metric = metric;
+        this.metric = codifyMetric(metric);
+        metricArray = metric;
         this.channel = channel;
         this.instrument = instrument;
         currentTick = tick;
@@ -66,9 +51,15 @@ public class AmlTrack {
         setInstrument(instrument);
     }
 
+    public AmlTrack(){}
+
+    public static int codifyMetric(int[] metric) {
+        return metric[0]*AmlNote.PPQ*4/metric[1];
+    }
+
     public void setMetric(int[] beat) {
         metricArray = beat;
-        metric = beat[0]*AmlNote.PPQ*4/beat[1];
+        metric = codifyMetric(beat);
     }
 
     public AmlTone getTone() {
