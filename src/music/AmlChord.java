@@ -106,6 +106,10 @@ public class AmlChord extends AmlNote {
         }
     }
 
-
+    @Override
+    public AmlChord clone() {
+        //TODO: Esto petara por lo mismo que el clone de drumNote
+        return (AmlChord) super.clone();
+    }
 
 }

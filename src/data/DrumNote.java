@@ -6,7 +6,7 @@ public class DrumNote extends Data {
 
     private AmlDrumNote dataDrumNote;
 
-    public DrumNote(){};
+    public DrumNote(){}
 
     public DrumNote(AmlDrumNote dataDrumNoteValue) {
         dataDrumNote = dataDrumNoteValue;
@@ -20,6 +20,6 @@ public class DrumNote extends Data {
 
     @Override
     public Data clone() {
-        return new DrumNote(dataDrumNote);
+        return new DrumNote(dataDrumNote.clone());
     }
 }

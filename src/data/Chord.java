@@ -2,11 +2,11 @@ package data;
 
 import music.AmlChord;
 
-public class Chord extends Data{
+public class Chord extends Data {
 
     private AmlChord dataChord;
 
-    public Chord(){};
+    public Chord(){}
 
     public Chord(AmlChord dataChordValue) {
         dataChord = dataChordValue;

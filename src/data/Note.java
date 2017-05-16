@@ -6,13 +6,18 @@ public class Note extends Data {
 
     private AmlNote dataNote;
 
-    public Note(){};
+    public Note() {
+        dataNote = null;
+    }
 
     public Note(AmlNote dataNoteValue) {
         dataNote = dataNoteValue;
     }
 
     public AmlNote getValue() {
+        if (dataNote == null) {
+            throw new NullPointerException();
+        }
         return dataNote;
     }
 
@@ -20,6 +25,6 @@ public class Note extends Data {
 
     @Override
     public Data clone() {
-        return new Note(dataNote);
+        return new Note(dataNote.clone());
     }
 }

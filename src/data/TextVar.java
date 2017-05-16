@@ -2,19 +2,19 @@ package data;
 
 public class TextVar extends Data{
 
-    private java.lang.String dataString;
+    private String dataString;
 
-    public TextVar(){};
+    public TextVar(){}
 
-    public TextVar(java.lang.String dataStringValue) {
+    public TextVar(String dataStringValue) {
         dataString = dataStringValue;
     }
 
-    public java.lang.String getValue() {
+    public String getValue() {
         return dataString;
     }
 
-    public void setValue(java.lang.String value) { dataString = value; }
+    public void setValue(String value) { dataString = value; }
 
     @Override
     public Data clone() {

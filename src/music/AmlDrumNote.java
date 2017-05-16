@@ -2,10 +2,8 @@ package music;
 
 import java.util.ArrayList;
 
-/**
- * Created by mario.fernandez on 28/04/2017.
- */
 public class AmlDrumNote extends AmlNote {
+
     public AmlDrumNote(Figure figure, int figureModifier, boolean tie) {
         this.figure = figure;
         this.figureModifier = figureModifier;
@@ -32,5 +30,11 @@ public class AmlDrumNote extends AmlNote {
         }
         if (tie) string.append("~");
         return string.toString();
+    }
+
+    @Override
+    public AmlDrumNote clone() {
+        //TODO: ESTO PETA
+        return (AmlDrumNote) super.clone();
     }
 }

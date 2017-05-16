@@ -1,5 +1,7 @@
 package music;
 
+import data.Data;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 import java.util.ArrayList;
@@ -27,8 +29,6 @@ public class AmlNote {
             return accident;
         }
 
-
-
         @Override
         public String toString() {
             String accidentSymbol;
@@ -42,8 +42,6 @@ public class AmlNote {
             return accidentSymbol + noteName.toString() + octaveString;
         }
     }
-
-
 
     public enum Note {
         Do,Re,Mi,Fa,Sol,La,Si,Silence
@@ -66,7 +64,7 @@ public class AmlNote {
 
     public final static  int PPQ = 16;
 
-     ArrayList<Integer> pitches;
+    ArrayList<Integer> pitches;
     private ArrayList<AmlNoteInfo> notes;
     Figure figure;
     int figureModifier;
@@ -242,5 +240,20 @@ public class AmlNote {
             case NoFigure:
         }
         return "";
+    }
+
+    @Override
+    public AmlNote clone() {
+        AmlNote clone = new AmlNote();
+        clone.figure = figure;
+        clone.duration = duration;
+        clone.figureModifier = figureModifier;
+        ArrayList<AmlNoteInfo> auxNotes = new ArrayList<>(notes.size());
+        for (AmlNoteInfo auxNote : notes) {
+            AmlNoteInfo auxNoteInfo = new AmlNoteInfo(auxNote.noteName,auxNote.octave,auxNote.accident);
+            auxNotes.add(auxNoteInfo);
+        }
+        clone.notes = auxNotes;
+        return clone;
     }
 }
