@@ -20,6 +20,7 @@ public class AmlTrack {
     private int[] metricArray;
     int metric;
     int channel;
+    private int transport;
     AmlNote lastNote;
     Track track;
     private AmlInstrument instrument;
@@ -32,14 +33,14 @@ public class AmlTrack {
         tone =  parentTrack.getTone().clone();
         this.channel = channel;
         instrument = parentTrack.instrument;
-
+        transport = parentTrack.transport;
         currentTick = parentTrack.currentTick;
         lastNote = new AmlNote(Negra, 0, false);
 
         setInstrument(instrument);
     }
 
-    public AmlTrack(Track track, int tick, int channel, int[] metric, AmlTone tone, AmlInstrument instrument) {
+    public AmlTrack(Track track, int tick, int channel, int[] metric, AmlTone tone, int transport, AmlInstrument instrument) {
         this.track = track;
         this.metric = codifyMetric(metric);
         metricArray = metric;
@@ -48,6 +49,7 @@ public class AmlTrack {
         currentTick = tick;
         lastNote = new AmlNote(Negra, 0, false);
         this.tone = tone;
+        this.transport = transport;
         setInstrument(instrument);
     }
 
@@ -147,4 +149,11 @@ public class AmlTrack {
         return instrument;
     }
 
+    public int getTransport() {
+        return transport;
+    }
+
+    public void setTransport(int transport) {
+        this.transport = transport;
+    }
 }

@@ -17,9 +17,7 @@ public class AmlCompas {
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
-        tone = new AmlTone();
-        AmlTone trackTone = track.getTone();
-        if (trackTone != null && trackTone.isTransported()) tone.setTransportedSemitones(trackTone.getTransportedSemitones());
+        if (track.getClass() != AmlDrumsTrack.class) tone = track.getTone().clone();
         lastNoteDuration = track.getLastNoteDuration();
         notes = new ArrayList<>();
         actualTicks = 0;
@@ -30,13 +28,7 @@ public class AmlCompas {
         for (int i = 0; i < note.getPitches().size(); ++i) {
             AmlNote.AmlNoteInfo noteInfo = note.getNotes().get(i);
             tone.alterNote(noteInfo);
-
-            if (tone.isAltered(noteInfo)) {
-                note.getPitches().set(i, note.getPitches().get(i) + tone.getAccident(noteInfo));
-            }
-            else {
-                note.getPitches().set(i, note.getPitches().get(i) + track.getTone().getAccident(noteInfo));
-            }
+            note.getPitches().set(i, note.getPitches().get(i) + tone.getAccident(noteInfo) + track.getTransport());
         }
 
 
@@ -60,13 +52,12 @@ public class AmlCompas {
     }
 
     public void changeTrackTone(AmlTone tone) {
-        AmlTone oldTone = track.getTone();
-        if (oldTone.isTransported()) {
-            tone.transport(oldTone.getTransportedSemitones());
-        }
-
+        this.tone = tone.clone();
         track.setTone(tone);
+    }
 
+    public void transportTrack(int transport) {
+        track.setTransport(transport);
     }
 
     public void changeTrackBeat(int[] beat) {

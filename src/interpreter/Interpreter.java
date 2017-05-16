@@ -11,6 +11,7 @@ import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
 import music.*;
 import parser.MusicLexer;
+import sun.nio.cs.ext.IBM037;
 
 public class Interpreter {
 
@@ -329,6 +330,10 @@ public class Interpreter {
             case MusicLexer.TONE:
                 compas.changeTrackTone(createTone(tree));
                 break;
+            case MusicLexer.TRANSPORT:
+                Int num = (Int)evaluateExpression(tree.getChild(0));
+                compas.transportTrack(num.getValue());
+                break;
             case MusicLexer.BEAT:
                 int[] metric = createMetric(tree);
                 compas.changeTrackBeat(metric);
@@ -402,6 +407,7 @@ public class Interpreter {
         AmlTrack mainTrack =  stack.getTrack();
         int[] metric = mainTrack.getMetricArray();
         int bpm = -1;
+        int transport = 0;
         AmlTone tone = mainTrack.getTone().clone();
 
         int i = 0;
@@ -419,7 +425,7 @@ public class Interpreter {
                     break;
                 case MusicLexer.TRANSPORT:
                     Int num = (Int)evaluateExpression(songChild.getChild(0));
-                    tone.transport(num.getValue());
+                    transport = num.getValue();
                     break;
             }
             songChild = tree.getChild(i++);
@@ -431,7 +437,7 @@ public class Interpreter {
 
         for(i = i-1; i < tree.getChildCount(); ++i) {
             if (tree.getChild(i).getType() == MusicLexer.TRACK) {
-                createTrack(tree.getChild(i), metric, tone);
+                createTrack(tree.getChild(i), metric, tone, transport);
             }
             else {
                 createDrumsTrack(tree.getChild(i), metric);
@@ -439,7 +445,7 @@ public class Interpreter {
         }
     }
 
-    private void createTrack(AmlTree child, int[] metric, AmlTone tone) throws AmlRunTimeException {
+    private void createTrack(AmlTree child, int[] metric, AmlTone tone, int transport) throws AmlRunTimeException {
         AmlTree listOfCompas;
         AmlInstrument instrument;
         if (child.getChildCount() > 1) {
@@ -452,7 +458,7 @@ public class Interpreter {
             listOfCompas = child.getChild(0);
         }
 
-        AmlTrack track = sequence.addTrack(instrument, metric, tone, stack.getTrack());
+        AmlTrack track = sequence.addTrack(instrument, metric, tone, transport, stack.getTrack());
         addCompasList(listOfCompas, track);
     }
 
