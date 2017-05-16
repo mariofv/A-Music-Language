@@ -16,6 +16,7 @@ tokens {
     LIST_ASSIG;
     FUNCTION;
     FUNCALL;
+    FRAGCALL;
     ATTR_ACCESS;
     VAR_FUNCALL;
     LIST_INSTRUCTIONS;
@@ -64,6 +65,9 @@ function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    -
 funcall     :   id=id_rule '(' params? ')' -> ^(FUNCALL[$id.text] params?)
             ;
 
+fragcall     :   'Frag->' id=id_rule '(' params? ')' -> ^(FRAGCALL[$id.text] params?)
+            ;
+
 frag    : FRAGMENT^ id_rule '('! list_arguments ')'! '{'! list_music_inst '}'!
         ;
 
@@ -109,6 +113,7 @@ music_inst  :   declaration
             |   assignation
             |   while_music_stmt
             |   funcall ';'!
+            |   fragcall ';'!
             |   for_music_stmt
             |   if_music_stmt
             | 	(options {greedy=true;} : notes_group)+ ';'!?
@@ -309,7 +314,7 @@ INSTRUMENT          : 'Instrument';
 
 // Programming tokens
 LETTER_X:   'x';
-FRAGMENT: 'fragment';
+FRAGMENT: 'Fragment';
 VOID    : 'void';
 EQUAL	: '==' ;
 NOT_EQUAL: '!=' ;

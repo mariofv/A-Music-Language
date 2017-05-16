@@ -50,6 +50,21 @@ public class Interpreter {
         return ret;
     }
 
+    public void executeFragment(String fragmentName, ArrayList<Data> arguments, AmlCompas compas) throws AmlRunTimeException {
+        AmlTree fragment = fragmentMap.get(fragmentName);
+        stack.push(fragment, compas.getTrack());
+        if (arguments != null) {
+            ArrayList<Data> localVariables = stack.getLocalVariables();
+            int i = 0;
+            for (Data argument : arguments) {
+                localVariables.set(i, argument.clone());
+                ++i;
+            }
+        }
+        Data ret = executeListMusicInstruction(fragment.getChild(2), compas);
+        stack.pop();
+    }
+
     private Data executeListInstruction(AmlTree tree) throws AmlRunTimeException {
         for(AmlTree child : tree.getArrayChildren()) {
             Data returnData = executeInstruction(child);
@@ -318,14 +333,24 @@ public class Interpreter {
         if(executeCommonInstruction(tree)) return null;
         switch (tree.getType()) {
             case MusicLexer.FUNCALL:
-                ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
+                ArrayList<Data> functionArguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {
                     for (AmlTree argument : tree.getArrayChildren()) {
                         Data expressionResult = evaluateExpression(argument);
-                        arguments.add(expressionResult);
+                        functionArguments.add(expressionResult);
                     }
                 }
-                executeFunction(tree.getText(), arguments);
+                executeFunction(tree.getText(), functionArguments);
+                break;
+            case MusicLexer.FRAGCALL:
+                ArrayList<Data> fragmentArguments = new ArrayList<>(tree.getChildCount());
+                if (tree.getChildren() != null) {
+                    for (AmlTree argument : tree.getArrayChildren()) {
+                        Data expressionResult = evaluateExpression(argument);
+                        fragmentArguments.add(expressionResult);
+                    }
+                }
+                executeFragment(tree.getText(), fragmentArguments, compas);
                 break;
             case MusicLexer.TONE:
                 compas.changeTrackTone(createTone(tree));

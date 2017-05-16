@@ -119,19 +119,19 @@ public class SemanticAnalyzer {
                     break;
                 }
                 case FRAGMENT: {
-                    String fragmentName = globalStatement.getText();
+                    String fragmentName = globalStatement.getChild(0).getText();
                     AmlTree previousValue = fragmentMap.put(fragmentName, globalStatement);
                     if (previousValue != null) {
                         throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", globalStatement.getLine());
                     }
-                    AmlTree arguments = globalStatement.getChild(0);
+                    AmlTree arguments = globalStatement.getChild(1);
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
                             insertId(child.getChild(0), child.getType());
                         }
                     }
                     symbolTable.addFirst(new HashMap<String, SymbolInfo>());
-                    analyzeListMusicInstructions(globalStatement.getChild(1));
+                    analyzeListMusicInstructions(globalStatement.getChild(2));
                     symbolTable.removeFirst();
                     break;
                 }
