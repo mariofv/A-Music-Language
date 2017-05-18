@@ -15,7 +15,7 @@ public class AmlList<E> {
     private Node last;
 
     public class Iterator {
-        Node n;
+        private Node n;
 
         private Iterator(Node n) {
             this.n = n;
@@ -32,6 +32,10 @@ public class AmlList<E> {
         public void next() {
             n = n.next;
         }
+
+        public boolean equals(Iterator it) {
+            return n == it.n;
+        }
     }
 
     public Iterator getFirst() {
@@ -39,31 +43,23 @@ public class AmlList<E> {
     }
 
     public void add(E element) {
-        if (first == null) {
-            first = new Node(element);
-            last = first;
-            return;
-        }
         Node node = new Node(element);
-        last.next = node;
-        node.previous = last;
+        if (first == null) first = node;
+        else {
+            last.next = node;
+            node.previous = last;
+        }
         last = node;
     }
 
     public void remove(Iterator iterator) {
         Node node = iterator.n;
         assert node != null;
-        if (first == node) {
-            first = node.next;
-        }
-        if (last == node) {
-            last = node.previous;
-        }
-        if (node.next != null) {
-            node.next.previous = node.previous;
-        }
-        if (node.previous != null) {
-            node.previous.next = node.next;
-        }
+
+        if (node == first) first = node.next;
+        else node.previous.next = node.next;
+
+        if (node == last) last = node.previous;
+        else node.next.previous = node.previous;
     }
 }

@@ -6,22 +6,23 @@ import javax.sound.midi.Track;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-/**
- * Created by juanm on 16/05/2017.
- */
 public class Node {
     private int start, end;
 
     private int channel;
 
-    private LinkedList<Node> children;
+    //private LinkedList<Node> children;
+    private AmlList<Node> children;
 
     public Node() {
-        children = new LinkedList<>();
+        //children = new LinkedList<>();
+        start = end = 0;
+        children = new AmlList<>();
     }
 
     public Node(int start, int end) {
-        children = new LinkedList<>();
+        //children = new LinkedList<>();
+        children = new AmlList<>();
         this.start = start;
         this.end = end;
     }
@@ -46,31 +47,25 @@ public class Node {
         this.channel = channel;
     }
 
-    public LinkedList<Node> getChildren() {
+    /*public LinkedList<Node> getChildren() {
         return children;
-    }
+    }*/
 
     public void addChildren(Node node) {
         LinkedList<Node> childNodes = new LinkedList<>();
-        boolean added = false;
         boolean partitioned = false;
-        ListIterator<Node> iterator = children.listIterator();
-        while (iterator.hasNext()) {
-            Node child = iterator.next();
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            Node child = iterator.getElement();
             if (node.start == node.end) return;
-            System.out.println("CHILD: " + child.start + "," + child.end);
-            System.out.println("NODE: " + node.start + "," + node.end);
+            //System.out.println("CHILD: " + child.start + "," + child.end);
+            //System.out.println("NODE: " + node.start + "," + node.end);
             if (child.intersect(node)) {
                 if (child.included(node)) {
                     child.addChildren(node);
                     return;
                 }
                 else if (node.included(child)) {
-                    iterator.remove();
-                    if (!added) {
-                        added = true;
-                        children.add(node);
-                    }
+                    children.remove(iterator);
                     childNodes.add(child);
                 }
                 else {
@@ -87,13 +82,30 @@ public class Node {
                         Node rest = new Node(child.end, node.end);
                         addChildren(rest);
                     }
+                    break;
                 }
             }
         }
+        if (!partitioned) children.add(node);
         for (Node node1 : childNodes) {
             addChildren(node1);
         }
-        if (!partitioned) children.add(node);
+    }
+
+    public void checkGraph() throws Exception {
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            Node child = iterator.getElement();
+            if ((start != 0 || end != 0) && !intersect(child)) {
+                throw new Exception("Node (" + start + "," + end +") has an invalid child: (" + child.start + "," + child.end + ")");
+            }
+            for (AmlList<Node>.Iterator iterator2 = children.getFirst(); !iterator2.equals(iterator); iterator2.next()) {
+                Node child2 = iterator2.getElement();
+                if (child.intersect(child2)) {
+                    throw new Exception("Node (" + start + "," + end+") has invalid brothers: (" + child.start + "," + child.end + ") (" + child2.start + "," + child2.end);
+                }
+            }
+            child.checkGraph();
+        }
     }
 
     @Override
@@ -103,7 +115,8 @@ public class Node {
 
     private String toStringGuay(String identation) {
         StringBuilder builder = new StringBuilder(identation + "NODE [" + start + "," + end + "] with children: \n");
-        for (Node n : children) {
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            Node n = iterator.getElement();
             builder.append(n.toStringGuay(identation + "    "));
             builder.append('\n');
         }
