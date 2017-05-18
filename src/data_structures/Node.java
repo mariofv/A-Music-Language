@@ -1,7 +1,10 @@
 package data_structures;
 
+import sun.awt.image.ImageWatched;
+
 import javax.sound.midi.Track;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Created by juanm on 16/05/2017.
@@ -24,7 +27,7 @@ public class Node {
     }
 
     public boolean intersect(Node node) {
-        return !(end < node.start || node.end < start);
+        return !(end <= node.start || node.end <= start);
     }
 
     public boolean included(Node node) {
@@ -48,24 +51,49 @@ public class Node {
     }
 
     public void addChildren(Node node) {
-        for (Node child: getChildren()) {
+        LinkedList<Node> childNodes = new LinkedList<>();
+        boolean added = false;
+        boolean partitioned = false;
+        ListIterator<Node> iterator = children.listIterator();
+        while (iterator.hasNext()) {
+            Node child = iterator.next();
+            if (node.start == node.end) return;
+            System.out.println("CHILD: " + child.start + "," + child.end);
+            System.out.println("NODE: " + node.start + "," + node.end);
             if (child.intersect(node)) {
                 if (child.included(node)) {
                     child.addChildren(node);
                     return;
                 }
                 else if (node.included(child)) {
-                    children.remove(child);
-                    children.add(node);
-                    node.children.add(child);
-                    return;
+                    iterator.remove();
+                    if (!added) {
+                        added = true;
+                        children.add(node);
+                    }
+                    childNodes.add(child);
                 }
                 else {
-
+                    partitioned = true;
+                    if (node.end < child.end) {
+                        Node partition = new Node(child.start, node.end);
+                        child.addChildren(partition);
+                        Node rest = new Node(node.start, child.start);
+                        addChildren(rest);
+                    }
+                    else {
+                        Node partition = new Node(node.start, child.end);
+                        child.addChildren(partition);
+                        Node rest = new Node(child.end, node.end);
+                        addChildren(rest);
+                    }
                 }
             }
         }
-        children.add(node);
+        for (Node node1 : childNodes) {
+            addChildren(node1);
+        }
+        if (!partitioned) children.add(node);
     }
 
     @Override
