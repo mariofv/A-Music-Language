@@ -95,7 +95,7 @@ public class Node {
     public void checkGraph() throws Exception {
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
-            if ((start != 0 || end != 0) && !intersect(child)) {
+            if ((start != 0 || end != 0) && !intersect(child) && !included(child)) {
                 throw new Exception("Node (" + start + "," + end +") has an invalid child: (" + child.start + "," + child.end + ")");
             }
             for (AmlList<Node>.Iterator iterator2 = children.getFirst(); !iterator2.equals(iterator); iterator2.next()) {

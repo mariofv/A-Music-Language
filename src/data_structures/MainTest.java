@@ -28,8 +28,8 @@ public class MainTest {
         Random random = new Random(seed);
         Node graph = new Node();
         for (int i = 0; i < numNodes; ++i) {
-            int one = random.nextInt(100);
-            int two = random.nextInt(100);
+            int one = random.nextInt(50);
+            int two = random.nextInt(50);
             assert one != two;
 
             int greater = Math.max(one, two);
