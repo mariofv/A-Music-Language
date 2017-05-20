@@ -24,4 +24,9 @@ public abstract class Data {
                 + getClass().toString() + " with " + secondTerm.getClass().toString());
     }
 
+    public Data modOperator(Data secondTerm) {
+        throw new Error("Mod operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
 }

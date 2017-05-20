@@ -9,6 +9,7 @@ import exceptions.AmlRunTimeException;
 import music.*;
 import parser.MusicLexer;
 import sun.nio.cs.ext.IBM037;
+import sun.plugin.dom.core.Text;
 
 public class Interpreter {
 
@@ -179,9 +180,12 @@ public class Interpreter {
                 if(currentVar instanceof Bool) {
                     boolean value = evaluateBooleanExpression(tree.getChild(1));
                     ((Bool) currentVar).setValue(value);
-                } else {
+                } else if(currentVar instanceof Int){
                     int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
                     ((Int) currentVar).setValue(value);
+                } else if(currentVar instanceof TextVar){
+                    String value = ((TextVar) evaluateExpression(tree.getChild(1))).getValue();
+                    ((TextVar) currentVar).setValue(value);
                 }
                 return true;
             }
@@ -243,30 +247,32 @@ public class Interpreter {
 
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
+            case MusicLexer.STRING:
+                return new TextVar(tree.getStringValue());
             case MusicLexer.PLUS: {
-                int ls = ((Int) evaluateExpression(tree.getChild(0))).getValue();
-                int rs = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                return new Int(ls + rs);
+                Data ls = evaluateExpression(tree.getChild(0));
+                Data rs = evaluateExpression(tree.getChild(1));
+                return ls.sumOperator(rs);
             }
             case MusicLexer.MINUS: {
-                int ls = ((Int) evaluateExpression(tree.getChild(0))).getValue();
-                int rs = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                return new Int(ls - rs);
+                Data ls = evaluateExpression(tree.getChild(0));
+                Data rs = evaluateExpression(tree.getChild(1));
+                return ls.substractOperator(rs);
             }
             case MusicLexer.DIV: {
-                int ls = ((Int) evaluateExpression(tree.getChild(0))).getValue();
-                int rs = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                return new Int(ls / rs);
+                Data ls = evaluateExpression(tree.getChild(0));
+                Data rs = evaluateExpression(tree.getChild(1));
+                return ls.quotientOperator(rs);
             }
             case MusicLexer.DOT: {
-                int ls = ((Int) evaluateExpression(tree.getChild(0))).getValue();
-                int rs = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                return new Int(ls * rs);
+                Data ls = evaluateExpression(tree.getChild(0));
+                Data rs = evaluateExpression(tree.getChild(1));
+                return ls.productOperator(rs);
             }
             case MusicLexer.MOD: {
-                int ls = ((Int) evaluateExpression(tree.getChild(0))).getValue();
-                int rs = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                return new Int(ls % rs);
+                Data ls = evaluateExpression(tree.getChild(0));
+                Data rs = evaluateExpression(tree.getChild(1));
+                return ls.modOperator(rs);
             }
             case MusicLexer.ATTR_ACCESS:
                 break;

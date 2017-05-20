@@ -61,8 +61,21 @@ public class Int extends Data {
             return new Int(dataInt / ((Int) secondTerm).getValue());
         } else if(secondTerm instanceof Bool) {
             int value = ((Bool) secondTerm).toInt();
-            return new Int(dataInt - value);
+            return new Int(dataInt / value);
         }
         throw new Error("Quotient operator is not defined for Int and " + secondTerm.getClass().toString());
     }
+
+    @Override
+    public Data modOperator(Data secondTerm) {
+        if(secondTerm instanceof Int) {
+            return new Int(dataInt % ((Int) secondTerm).getValue());
+        } else if(secondTerm instanceof Bool) {
+            int value = ((Bool) secondTerm).toInt();
+            return new Int(dataInt % value);
+        }
+        throw new Error("Quotient operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+
 }
