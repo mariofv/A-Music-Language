@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.*;
+import data.Void;
 import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
 import music.*;
@@ -71,9 +72,18 @@ public class Interpreter {
         return null;
     }
 
+    private Data returnInst(AmlTree tree) throws AmlRunTimeException {
+        if (tree.getChildCount() > 0) {
+            return evaluateExpression(tree.getChild(0));
+        }
+        return Void.getInstance();
+    }
+
     private Data executeInstruction(AmlTree tree) throws AmlRunTimeException {
         if(executeCommonInstruction(tree)) return null;
         switch(tree.getType()) {
+            case MusicLexer.RETURN:
+                return returnInst(tree);
             case MusicLexer.FUNCALL:
                 ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {
@@ -135,19 +145,46 @@ public class Interpreter {
         return null;
     }
 
+    private void defineLocalVariable(AmlTree tree) throws AmlRunTimeException {
+        for (AmlTree assigChild : tree.getArrayChildren()) {
+            if(assigChild.getType() == MusicLexer.ASSIG) {
+                int index = assigChild.getChild(0).getVariableIndex();
+                Data value =  evaluateExpression(assigChild.getChild(1));
+                stack.getLocalVariables().set(index, value);
+            } else {
+                int index = assigChild.getVariableIndex();
+                stack.getLocalVariables().set(index, createInstance(tree.getType()));
+            }
+        }
+    }
+
+    private Data createInstance(int type) {
+        switch (type) {
+            case MusicLexer.INT:
+                return new Int();
+            case MusicLexer.BOOL:
+                return new Bool();
+            case MusicLexer.CHORD:
+                return new Chord();
+            case MusicLexer.NOTE_TYPE:
+                return new Note();
+            case MusicLexer.DRUMS_NOTE_TYPE:
+                return new DrumNote();
+            case MusicLexer.STRING_TYPE:
+                return new TextVar();
+            default:
+                throw new Error("This should never happen");
+        }
+    }
+
     private boolean executeCommonInstruction(AmlTree tree) throws AmlRunTimeException {
         switch (tree.getType()) {
+            case MusicLexer.NOTE_TYPE:
             case MusicLexer.INT:
-                for (AmlTree assigChild : tree.getArrayChildren()) {
-                    if(assigChild.getType() == MusicLexer.ASSIG) {
-                        int index = assigChild.getChild(0).getVariableIndex();
-                        Int value = (Int) evaluateExpression(assigChild.getChild(1));
-                        stack.getLocalVariables().set(index, value);
-                    } else {
-                        int index = assigChild.getVariableIndex();
-                        stack.getLocalVariables().set(index, new Int());
-                    }
-                }
+            case MusicLexer.STRING_TYPE:
+            case MusicLexer.CHORD:
+            case MusicLexer.DRUMS_NOTE_TYPE:
+                defineLocalVariable(tree);
                 return true;
             case MusicLexer.BOOL:
                 for (AmlTree assigChild : tree.getArrayChildren()) {
@@ -162,18 +199,6 @@ public class Interpreter {
                 }
                 return true;
             //TODO: Fix EvaluateExpression for Strings + Concat operation, change grammar
-            case MusicLexer.STRING_TYPE:
-                for (AmlTree assigChild : tree.getArrayChildren()) {
-                    if(assigChild.getType() == MusicLexer.ASSIG) {
-                        int index = assigChild.getChild(0).getVariableIndex();
-                        TextVar value = (TextVar) evaluateExpression(assigChild.getChild(1));
-                        stack.getLocalVariables().set(index, value);
-                    } else {
-                        int index = assigChild.getVariableIndex();
-                        stack.getLocalVariables().set(index, new TextVar());
-                    }
-                }
-                return true;
             case MusicLexer.ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
@@ -243,12 +268,16 @@ public class Interpreter {
 
     private Data evaluateExpression(AmlTree tree) throws AmlRunTimeException {
         switch (tree.getType()) {
-
-
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
             case MusicLexer.STRING:
                 return new TextVar(tree.getStringValue());
+            case MusicLexer.NOTES:
+                return new Note(createNote(tree));
+            case MusicLexer.CHORD:
+                return new Chord((AmlChord) createNote(tree));
+            case MusicLexer.FIGURE:
+                return new Int(AmlNote.mapDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
                 Data ls = evaluateExpression(tree.getChild(0));
                 Data rs = evaluateExpression(tree.getChild(1));
@@ -356,6 +385,8 @@ public class Interpreter {
     private Data executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
         if(executeCommonInstruction(tree)) return null;
         switch (tree.getType()) {
+            case MusicLexer.RETURN:
+                return returnInst(tree);
             case MusicLexer.FUNCALL:
                 ArrayList<Data> functionArguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {

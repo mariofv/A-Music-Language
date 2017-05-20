@@ -280,6 +280,7 @@ public class SemanticAnalyzer {
                     default: throw new Error("This should never happen");
                 }
             case FIGURE:
+                child.setFigureValue();
                 return INT;
             default:
                 return checkExpression(child);
@@ -412,7 +413,7 @@ public class SemanticAnalyzer {
                 int type = checkExpression(instruction.getChild(0));
                 if (type != BOOL)
                     throw new AmlSemanticException("If condition must have boolean type, but "
-                            + type + " was provided instead.", instruction.getLine());
+                            + mapType(type) + " was provided instead.", instruction.getLine());
                 symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListInstructions(instruction.getChild(1));
                 symbolTable.removeFirst();
@@ -422,7 +423,7 @@ public class SemanticAnalyzer {
                         type = checkExpression(child.getChild(0));
                         if (type != BOOL)
                             throw new AmlSemanticException("If condition must have boolean type, but "
-                                    + type + " was provided instead.", child.getLine());
+                                    + mapType(type) + " was provided instead.", child.getLine());
                         symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListInstructions(child.getChild(1));
                         symbolTable.removeFirst();
@@ -496,7 +497,7 @@ public class SemanticAnalyzer {
                 int type = checkExpression(musicInstruction.getChild(0));
                 if (type != BOOL)
                     throw new AmlSemanticException("If condition must have boolean type, but "
-                            + type + " was provided instead.", musicInstruction.getLine());
+                            + mapType(type) + " was provided instead.", musicInstruction.getLine());
                 symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                 analyzeListMusicInstructions(musicInstruction.getChild(1));
                 symbolTable.removeFirst();
@@ -506,7 +507,7 @@ public class SemanticAnalyzer {
                         type = checkExpression(child.getChild(0));
                         if (type != BOOL)
                             throw new AmlSemanticException("If condition must have boolean type, but "
-                                    + type + " was provided instead.", child.getLine());
+                                    + mapType(type) + " was provided instead.", child.getLine());
                         symbolTable.addFirst(new HashMap<String, SymbolInfo>());
                         analyzeListMusicInstructions(child.getChild(1));
                         symbolTable.removeFirst();

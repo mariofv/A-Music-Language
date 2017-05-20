@@ -1,5 +1,6 @@
-fragment fu (int i) {
-    while (true) { Re.n; rr = 42; if (ch) {tt = 3; La} else { Re.n } }
+Fragment fu (int i) {
+    int rr, tt, ch;
+    while (true) { Re.n; rr = 42; if (ch == 3) {tt = 3; La} else { Re.n } }
 }
 
 void lele(int de, int a) {
@@ -8,6 +9,7 @@ void lele(int de, int a) {
 
 void main() {
      int du, d = 3;
+     du = "Hola";
      lele(3, d);
      int du2;
      Song {

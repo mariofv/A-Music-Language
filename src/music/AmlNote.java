@@ -138,9 +138,30 @@ public class AmlNote {
 
     public boolean isTied() { return tie; }
 
+    public static int mapDuration(Figure figure) {
+        switch (figure) {
+            case Redonda:
+                return PPQ*4;
+            case Blanca :
+                return PPQ*2;
+            case Negra :
+                return   PPQ;
+            case Corchera :
+                return   PPQ/2;
+            case Semicorchera:
+                return PPQ/4;
+            case Fusa:
+                return PPQ/8;
+            case SemiFusa:
+                return PPQ/16;
+            case NoFigure:
+                return -1;
+            default:
+                throw new Error("This is literally impossible");
+        }
+    }
 
-
-    void mapDuration() {
+    public void mapDuration() {
         int value;
         switch (figure) {
             case Redonda:
