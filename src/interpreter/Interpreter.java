@@ -270,11 +270,11 @@ public class Interpreter {
                 return new TextVar(tree.getStringValue());
             case MusicLexer.NOTES:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
-                    return new Chord((AmlChord) createNote(tree));
+                    /*return new Chord((AmlChord) createNote(tree))*/;
                 }
                 return new Note(createNote(tree));
             case MusicLexer.FIGURE:
-                return new Int(AmlNote.mapDuration(tree.getFigureValue()));
+                return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
                 Data ls = evaluateExpression(tree.getChild(0));
                 Data rs = evaluateExpression(tree.getChild(1));
@@ -452,31 +452,33 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.ID: {
-                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
-                AmlNote note;
-                if (dataNote instanceof Note) {
-                    note = ((Note)dataNote).getValue();
-                }
-                else if (dataNote instanceof Chord) {
-                    note = ((Chord)dataNote).getValue();
-                }
-                else if (dataNote instanceof DrumNote) {
-                    note = ((DrumNote)dataNote).getValue();
-                }
-                else throw new Error("This should never happen");
-                try {
-                    compas.addNote(note);
-                }
-                catch (AmlMusicException exception) {
-                    exception.setLine(tree.getLine());
-                    throw exception;
-                }
-                break;
+//
+//                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
+//                AmlNote note;
+//                if (dataNote instanceof Note) {
+//                    note = ((Note)dataNote).getValue();
+//                }
+//                else if (dataNote instanceof Chord) {
+//                    /*note = ((Chord)dataNote).getValue();*/
+//                }
+//                else if (dataNote instanceof DrumNote) {
+//                    note = ((DrumNote)dataNote).getValue();
+//                }
+//                else throw new Error("This should never happen");
+//                try {
+//
+//                    compas.addNote(note);
+//                }
+//                catch (AmlMusicException exception) {
+//                    exception.setLine(tree.getLine());
+//                    throw exception;
+//                }
+//                break;
             }
             case MusicLexer.NOTES:
-                AmlNote note = createNote(tree);
+                AmlFigure figure = createFigure(tree);
                 try {
-                    compas.addNote(note);
+                    compas.addFigure(figure);
                 }
                 catch (AmlMusicException exception) {
                     exception.setLine(tree.getLine());
@@ -484,9 +486,9 @@ public class Interpreter {
                 }
                 break;
             case MusicLexer.DRUMSNOTES:
-                AmlNote drumNote = createNote(tree);
+                AmlFigure drumFigure = createFigure(tree);
                 try {
-                    compas.addNote((AmlDrumNote) drumNote);
+                    compas.addFigure(drumFigure);
                 }
                 catch (AmlMusicException exception) {
                     exception.setLine(tree.getLine());
@@ -640,20 +642,20 @@ public class Interpreter {
         return compas;
     }
 
-    private AmlNote createNote(AmlTree tree) {
+    private AmlFigure createFigure(AmlTree tree) {
         AmlTree noteList = tree.getChild(0);
 
         /* Loops over the metric modifiers */
         int figureModifier = 0;
         boolean tie = false;
-        AmlNote.Figure figure = AmlNote.Figure.NoFigure;
+        AmlFigure.Figure figureType = AmlFigure.Figure.NoFigure;
 
         for (int i = 1; i < tree.getChildCount(); ++i) {
             AmlTree figureModifierNode = tree.getChild(i);
 
             switch (figureModifierNode.getType()) {
                 case MusicLexer.FIGURE:
-                    figure = figureModifierNode.getFigureValue();
+                    figureType = figureModifierNode.getFigureValue();
                     break;
                 case MusicLexer.DOT:
                     figureModifier = 1;
@@ -664,25 +666,26 @@ public class Interpreter {
             }
         }
 
+        AmlFigure figure = new AmlFigure(figureType, figureModifier, tie);
+
         if (noteList.getType() == MusicLexer.NOTE_LIST) {
-            AmlNote note = new AmlNote(figure, figureModifier, tie);
-            createNoteList(noteList, note);
-            return note;
+            for (AmlTree noteChild : noteList.getArrayChildren()) {
+                AmlNote note = createNote(noteChild);
+                figure.addNote(note);
+            }
         }
         else if (noteList.getType() == MusicLexer.CHORD) {
-            AmlChord chord = new AmlChord(figure, figureModifier, tie);
+            /*AmlChord chord = new AmlChord(figure, figureModifier, tie);
             createChord(noteList, chord);
-            return chord;
+            return chord;*/
         }
         else if (noteList.getType() == MusicLexer.DRUMSNOTE_LIST) {
-            AmlDrumNote drumNote = new AmlDrumNote(figure, figureModifier, tie);
             /* Loops over the list of notes */
             for (AmlTree noteChild : noteList.getArrayChildren()) {
-                drumNote.addDrumNotePitch(noteChild.getIntValue());
+                figure.addNote(new AmlDrumNote(noteChild.getIntValue()));
             }
-            return drumNote;
         }
-        return null;
+        return figure;
     }
 
     private void initializeFor(AmlTree tree) throws AmlRunTimeException {
@@ -698,35 +701,32 @@ public class Interpreter {
         }
     }
 
-    private void createNoteList(AmlTree noteList, AmlNote note) {
-         /* Loops over the list of notes */
-        for (AmlTree noteChild : noteList.getArrayChildren()) {
-            AmlNote.Note noteName = noteChild.getNoteValue();
-            int octave = 5;
-            AmlNote.Accident accident = AmlNote.Accident.Natural;
+    private AmlNote createNote(AmlTree noteTree) {
+        AmlNote.Note noteName = noteTree.getNoteValue();
+        int octave = 5;
+        AmlNote.Accident accident = AmlNote.Accident.Natural;
 
-            if (noteChild.getChildren() != null) {
-                for (AmlTree pitchModifier : noteChild.getArrayChildren()) {
-                    switch (pitchModifier.getType()) {
-                        case MusicLexer.NUM:
-                            octave = -pitchModifier.getIntValue();
-                            break;
-                        case MusicLexer.BEMOL:
-                            accident = AmlNote.Accident.Bemol;
-                            break;
-                        case MusicLexer.SUSTAIN:
-                            accident = AmlNote.Accident.Sustain;
-                            break;
-                        case MusicLexer.ARMOR:
-                            accident = AmlNote.Accident.Armor;
-                            break;
-                    }
+        if (noteTree.getChildren() != null) {
+            for (AmlTree pitchModifier : noteTree.getArrayChildren()) {
+                switch (pitchModifier.getType()) {
+                    case MusicLexer.NUM:
+                        octave = -pitchModifier.getIntValue();
+                        break;
+                    case MusicLexer.BEMOL:
+                        accident = AmlNote.Accident.Bemol;
+                        break;
+                    case MusicLexer.SUSTAIN:
+                        accident = AmlNote.Accident.Sustain;
+                        break;
+                    case MusicLexer.ARMOR:
+                        accident = AmlNote.Accident.Armor;
+                        break;
                 }
             }
-            note.addNotePitch(noteName, octave, accident);
         }
+        return new AmlNote(noteName, accident, octave);
     }
-
+/*
     private void createChord(AmlTree noteList, AmlChord chord) {
         AmlNote.Note rootNote = AmlNote.Note.Silence;
         int octave = 5;
@@ -778,4 +778,5 @@ public class Interpreter {
         chord.setAccident(accident);
         chord.constructChord();
     }
+    */
 }

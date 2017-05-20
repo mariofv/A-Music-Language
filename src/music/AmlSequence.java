@@ -19,7 +19,7 @@ public class AmlSequence {
         actualChannel = -1;
         this.bpm = bpm;
         try {
-            sequence = new Sequence(Sequence.PPQ, AmlNote.PPQ);
+            sequence = new Sequence(Sequence.PPQ, AmlFigure.PPQ);
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }

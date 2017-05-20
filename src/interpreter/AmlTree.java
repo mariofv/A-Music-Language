@@ -29,6 +29,7 @@ package interpreter;
 
 import data.Data;
 import exceptions.AmlSemanticException;
+import music.AmlFigure;
 import music.AmlInstrument;
 import music.AmlNote;
 import org.antlr.runtime.tree.*;
@@ -37,7 +38,7 @@ import org.antlr.runtime.Token;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static music.AmlNote.Figure.*;
+import static music.AmlFigure.Figure.*;
 import static music.AmlNote.Note.*;
 
 /**
@@ -57,7 +58,7 @@ public class AmlTree extends CommonTree {
     private String strValue;
 
     private AmlNote.Note noteValue;
-    private AmlNote.Figure figureValue;
+    private AmlFigure.Figure figureValue;
     private AmlInstrument.Instruments instrumentValue;
     private int numVariables;
     private int variableIndex;
@@ -590,7 +591,7 @@ public class AmlTree extends CommonTree {
         return noteValue;
     }
 
-    public AmlNote.Figure getFigureValue() {
+    public AmlFigure.Figure getFigureValue() {
         return figureValue;
     }
 

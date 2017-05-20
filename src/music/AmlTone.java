@@ -27,8 +27,8 @@ public class AmlTone {
         computeTone(tone);
     }
 
-    private int mapNoteNameInTone(AmlNote.AmlNoteInfo noteInfo) {
-        switch (noteInfo.getNoteName()) {
+    private int mapNoteNameInTone(AmlNote note) {
+        switch (note.getNoteName()) {
             case Do:
                 return DoPos;
             case Re:
@@ -65,9 +65,9 @@ public class AmlTone {
         }
     }
 
-    public void alterNote(AmlNote.AmlNoteInfo noteInfo) {
-        int index = mapNoteNameInTone(noteInfo);
-        switch (noteInfo.getAccident()) {
+    public void alterNote(AmlNote note) {
+        int index = mapNoteNameInTone(note);
+        switch (note.getAccident()) {
             case Sustain:
                 toneAccidents.set(index,  1);
                 break;
@@ -80,8 +80,8 @@ public class AmlTone {
         }
     }
 
-    public int getAccident(AmlNote.AmlNoteInfo noteInfo) {
-        int index = mapNoteNameInTone(noteInfo);
+    public int getAccident(AmlNote note) {
+        int index = mapNoteNameInTone(note);
         return toneAccidents.get(index);
     }
 

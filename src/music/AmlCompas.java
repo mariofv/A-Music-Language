@@ -8,47 +8,33 @@ import java.util.Collections;
 public class AmlCompas {
     private AmlTrack track;
 
-    private ArrayList<AmlNote> notes;
+    private ArrayList<AmlFigure> figures;
 
 
     private AmlTone tone;
 
-    private int actualTicks, ticksPerCompas, lastNoteDuration;
+    private int actualTicks, ticksPerCompas, lastFigureDuration;
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
         if (track.getClass() != AmlDrumsTrack.class) tone = track.getTone().clone();
-        lastNoteDuration = track.getLastNoteDuration();
-        notes = new ArrayList<>();
+        lastFigureDuration = track.getLastFigureDuration();
+        figures = new ArrayList<>();
         actualTicks = 0;
         ticksPerCompas = track.getMetric();
     }
 
-    public void addNote(AmlNote note) throws AmlMusicException {
-        for (int i = 0; i < note.getPitches().size(); ++i) {
-            AmlNote.AmlNoteInfo noteInfo = note.getNotes().get(i);
-            tone.alterNote(noteInfo);
-            note.getPitches().set(i, note.getPitches().get(i) + tone.getAccident(noteInfo) + track.getTransport());
+    public void addFigure(AmlFigure figure) throws AmlMusicException {
+        if (!figure.hasFigure()){
+            figure.setDuration(lastFigureDuration);
         }
-
-
-        if (!note.hasFigure()) note.setDuration(lastNoteDuration);
-        actualTicks += note.getDuration();
+        actualTicks += figure.getDuration();
         if (actualTicks > ticksPerCompas) {
             throw new AmlMusicException("The compass is incorrect because you are overflowing the metric.\n" + toString());
         }
-        lastNoteDuration = note.getDuration();
-        notes.add(note);
-    }
+        lastFigureDuration = figure.getDuration();
 
-    public void addNote(AmlDrumNote note) throws AmlMusicException {
-        if (!note.hasFigure()) note.setDuration(lastNoteDuration);
-        actualTicks += note.getDuration();
-        if (actualTicks > ticksPerCompas) {
-            throw new AmlMusicException("The compass is incorrect because you are overflowing the metric.\n" + toString());
-        }
-        lastNoteDuration = note.getDuration();
-        notes.add(note);
+        figures.add(figure);
     }
 
     public void changeTrackTone(AmlTone tone) {
@@ -67,16 +53,20 @@ public class AmlCompas {
 
     public AmlTrack getTrack() { return track; }
 
-    public AmlNote getFirstNote() {
-        return notes.get(0);
+    public AmlTone getTone(){
+        return tone;
     }
 
-    public AmlNote getLastNote() {
-        return notes.get(notes.size()-1);
+    public AmlFigure getFirstFigure() {
+        return figures.get(0);
     }
 
-    public ArrayList<AmlNote> getNotes() {
-        return notes;
+    public AmlFigure getLastFigure() {
+        return figures.get(figures.size()-1);
+    }
+
+    public ArrayList<AmlFigure> getFigures() {
+        return figures;
     }
 
     public void check() throws AmlMusicException {
@@ -89,8 +79,8 @@ public class AmlCompas {
     public String toString() {
         StringBuilder message = new StringBuilder("Compas notes: \n| ");
 
-        for (AmlNote note : notes) {
-            message.append(note.toString()).append(" ");
+        for (AmlFigure figure : figures) {
+            message.append(figure.toString()).append(" ");
         }
 
         return message.append(" |").toString();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static music.AmlNote.Figure.*;
+import static music.AmlFigure.Figure.*;
 
 public class AmlTrack {
 
@@ -21,7 +21,7 @@ public class AmlTrack {
     int metric;
     int channel;
     private int transport;
-    AmlNote lastNote;
+    AmlFigure lastFigure;
     Track track;
     private AmlInstrument instrument;
     private AmlTone tone;
@@ -35,7 +35,7 @@ public class AmlTrack {
         instrument = parentTrack.instrument;
         transport = parentTrack.transport;
         currentTick = parentTrack.currentTick;
-        lastNote = new AmlNote(Negra, 0, false);
+        lastFigure = new AmlFigure(Negra, 0, false);
 
         setInstrument(instrument);
     }
@@ -47,7 +47,7 @@ public class AmlTrack {
         this.channel = channel;
         this.instrument = instrument;
         currentTick = tick;
-        lastNote = new AmlNote(Negra, 0, false);
+        lastFigure = new AmlFigure(Negra, 0, false);
         this.tone = tone;
         this.transport = transport;
         setInstrument(instrument);
@@ -56,7 +56,7 @@ public class AmlTrack {
     public AmlTrack(){}
 
     public static int codifyMetric(int[] metric) {
-        return metric[0]*AmlNote.PPQ*4/metric[1];
+        return metric[0]*AmlFigure.PPQ*4/metric[1];
     }
 
     public void setMetric(int[] beat) {
@@ -68,44 +68,54 @@ public class AmlTrack {
         return tone;
     }
 
-    public int getLastNoteDuration() {
-        return lastNote.getDuration();
+    public int getLastFigureDuration() {
+        return lastFigure.getDuration();
     }
 
     public void addCompas(AmlCompas compas) throws AmlMusicException {
-        for(AmlNote note : compas.getNotes()) {
-            ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)note.getPitches().clone();
-            ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)lastNote.getPitches().clone();
+        for(AmlFigure figure : compas.getFigures()) {
+            ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
+            ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
             Collections.sort(lastNoteSortedPitches);
             Collections.sort(noteSortedPitches);
-            if (lastNote.isTied() && !Arrays.equals(noteSortedPitches.toArray(), lastNoteSortedPitches.toArray())){
+            if (lastFigure.isTied() && !Arrays.equals(noteSortedPitches.toArray(), lastNoteSortedPitches.toArray())){
                 throw new AmlMusicException(
-                        "The pitch of two tied notes is different. " +
-                        "The notes are:\n" + lastNote.toString() +
-                        "," + note.toString()
+                        "The pitch of two tied figures is different. " +
+                        "The notes are:\n" + lastFigure.toString() +
+                        "," + figure.toString()
                 );
             }
-            addOnMessage(note);
-            currentTick += note.getDuration();
-            addOffMessage(note);
-            lastNote = note;
+            alterNotePitches(figure, compas.getTone());
+            addOnMessages(figure);
+            currentTick += figure.getDuration();
+            addOffMessages(figure);
+            lastFigure = figure;
         }
     }
 
-    private void addOnMessage(AmlNote note) {
-        if (lastNote.isTied()) {
+    private void alterNotePitches(AmlFigure figure, AmlTone compasTone) {
+        for (AmlNote note : figure.getNotes()) {
+            if (!note.isSilence()) {
+                compasTone.alterNote(note);
+                note.setPitch(note.getPitch() + compasTone.getAccident(note) + transport);
+            }
+        }
+    }
+
+    void addOnMessages(AmlFigure figure) {
+        if (lastFigure.isTied()) {
             return;
         }
-        for (ShortMessage onMessage : note.getOnMessages(channel)) {
+        for (ShortMessage onMessage : figure.getOnMessages(channel)) {
             track.add(new MidiEvent(onMessage, currentTick));
         }
     }
 
-    private void addOffMessage(AmlNote note) {
-        if (note.isTied()) {
+    void addOffMessages(AmlFigure figure) {
+        if (figure.isTied()) {
             return;
         }
-        for (ShortMessage offMessage : note.getOffMessages(channel)) {
+        for (ShortMessage offMessage : figure.getOffMessages(channel)) {
             track.add(new MidiEvent(offMessage, currentTick));
         }
     }

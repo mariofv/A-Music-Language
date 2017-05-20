@@ -1,7 +1,9 @@
 package music;
 
-public class AmlChord extends AmlNote {
+import music.AmlNote;
 
+public class AmlChord  {
+/*
     public enum Quality {
         Mayor,
         Menor,
@@ -15,11 +17,14 @@ public class AmlChord extends AmlNote {
         NoInterval,
     }
 
-    private Note root;
+    private AmlNote root;
+    private AmlNote third;
+    private AmlNote fifth;
+
     private int octave;
 
-    public void setRoot(Note root) {
-        this.root = root;
+    public void setRoot(AmlNote.Note root) {
+        root = new AmlNote(note, );
     }
 
     public void setOctave(int octave) {
@@ -47,7 +52,7 @@ public class AmlChord extends AmlNote {
     private int fifthPitch;
     private int seventhPitch;
 
-    public AmlChord(Note root,  int octave, Accident accident, Quality quality, Interval interval, Figure figure, int figureModifier, boolean tie) {
+    public AmlChord(Note root, int octave, Accident accident, Quality quality, Interval interval, Figure figure, int figureModifier, boolean tie) {
         super(figure, figureModifier, tie);
         this.root = root;
         this.octave = octave;
@@ -68,8 +73,7 @@ public class AmlChord extends AmlNote {
 
         mapQuality();
         pitches.add(rootPitch+thirdPitch);
-        Note thirdNote = mapPitch(rootPitch+thirdPitch);
-        notes.add(new AmlNoteInfo(thirdNote, octave, accident));
+        notes.add(mapPitch(rootPitch+thirdPitch));
         pitches.add(rootPitch+fifthPitch);
         Note fifthNote = mapPitch(rootPitch+fifthPitch);
         notes.add(new AmlNoteInfo(fifthNote, octave, accident));
@@ -123,5 +127,5 @@ public class AmlChord extends AmlNote {
         //TODO: Esto petara por lo mismo que el clone de drumNote
         return (AmlChord) super.clone();
     }
-
+*/
 }
