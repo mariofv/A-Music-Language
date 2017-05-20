@@ -270,8 +270,10 @@ public class SemanticAnalyzer {
     private int getRType(AmlTree child) throws AmlSemanticException {
         switch (child.getType()) {
             case DRUMSNOTES:
+                analyzeNote(child);
                 return DRUMS_NOTE_TYPE;
             case NOTES:
+                analyzeNote(child);
                 switch (child.getChild(0).getType()) {
                     case CHORD:
                         return CHORD;
@@ -490,6 +492,37 @@ public class SemanticAnalyzer {
         }
     }
 
+    private void analyzeNote(AmlTree notes) throws AmlSemanticException {
+        switch (notes.getType()) {
+            case NOTES:
+                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE) {
+                    notes.getChild(1).setFigureValue();
+                }
+                if (notes.getChild(0).getType() == NOTE_LIST) {
+                    for (AmlTree note : notes.getChild(0).getArrayChildren()) {
+                        note.setNoteValue();
+                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NUM) note.getChild(0).setIntValue();
+                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NUM) note.getChild(1).setIntValue();
+                    }
+                }
+                else {
+                    notes.getChild(0).getChild(0).setNoteValue();
+                }
+                break;
+            case DRUMSNOTES:
+                for (AmlTree drumNote : notes.getChild(0).getArrayChildren()) {
+                    if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE) {
+                        notes.getChild(1).setFigureValue();
+                    }
+                    int type = checkExpression(drumNote);
+                    if (type != INT)
+                        throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
+                                " but " + mapType(type) + " was provided instead.", notes.getLine());
+                }
+                break;
+        }
+    }
+
     private void analyzeMusicInstruction(AmlTree musicInstruction) throws AmlSemanticException {
         if (analyzeCommonInstruction(musicInstruction)) return;
         switch (musicInstruction.getType()) {
@@ -565,29 +598,13 @@ public class SemanticAnalyzer {
                 break;
             }
             case NOTES:
-                if (musicInstruction.getChild(0).getType() == NOTE_LIST) {
-                    if (musicInstruction.getChildCount() > 1 && musicInstruction.getChild(1).getType() == FIGURE) {
-                        musicInstruction.getChild(1).setFigureValue();
-                    }
-                    for (AmlTree note : musicInstruction.getChild(0).getArrayChildren()) {
-                        note.setNoteValue();
-                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NUM) note.getChild(0).setIntValue();
-                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NUM) note.getChild(1).setIntValue();
-                    }
-                }
+            case DRUMSNOTES:
+                analyzeNote(musicInstruction);
                 break;
-            case DRUMSNOTES: {
-                for (AmlTree drumNote : musicInstruction.getChild(0).getArrayChildren()) {
-                    if (musicInstruction.getChildCount() > 1 && musicInstruction.getChild(1).getType() == FIGURE) {
-                        musicInstruction.getChild(1).setFigureValue();
-                    }
-                    int type = checkExpression(drumNote);
-                    if (type != INT)
-                        throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
-                        " but " + mapType(type) + " was provided instead.", musicInstruction.getLine());
-                }
-                break;
-            }
+            case ID:
+                int type = getSymbol(musicInstruction).getType();
+                if (type != NOTE_TYPE && type != CHORD && type != DRUMS_NOTE_TYPE)
+                    throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a note, but it has type: " + mapType(type), musicInstruction.getLine());
         }
     }
 

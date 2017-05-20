@@ -63,10 +63,13 @@ public class AmlChord extends AmlNote {
     public void constructChord() {
         rootPitch = mapNote(root, octave);
         pitches.add(rootPitch);
+        notes.add(new AmlNote());
 
         mapQuality();
         pitches.add(rootPitch+thirdPitch);
+        notes.add(new AmlNote());
         pitches.add(rootPitch+fifthPitch);
+        notes.add(new AmlNote());
 
         mapInterval();
     }

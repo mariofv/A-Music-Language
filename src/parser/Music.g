@@ -62,7 +62,7 @@ id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
             ;
 
-funcall     :   id=id_rule '(' params? ')' -> ^(FUNCALL[$id.text] params?)
+funcall     :  id=id_rule '(' params? ')' -> ^(FUNCALL[$id.text] params?)
             ;
 
 fragcall     :   'Frag->' id=id_rule '(' params? ')' -> ^(FRAGCALL[$id.text] params?)
@@ -87,7 +87,7 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
                 ;
 
 inst        :   declaration
-            |   'return'^ (expr | notes_group | drumsnotes_group) ';'!
+            |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
             |   var_funcall
             |   tone ';'!
             |   beat ';'!
@@ -228,12 +228,14 @@ drumsnotes_group : drumsnotes ('.' FIGURE DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes
             ;
 
 notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
+	        |  'N->'! id_rule
             ;
 
-drumsnotes_variable  :   drumsnotes ('.' FIGURE DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
-                ;
+drumsnotes_variable     :   drumsnotes ('.' FIGURE DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
+                        ;
 
 notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
+		        | 'N (' id_rule ')'
                 ;
 
 notes_type  :	chord | notes

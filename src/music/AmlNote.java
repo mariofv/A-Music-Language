@@ -65,7 +65,7 @@ public class AmlNote {
     public final static  int PPQ = 16;
 
     ArrayList<Integer> pitches;
-    private ArrayList<AmlNoteInfo> notes;
+    ArrayList<AmlNoteInfo> notes;
     Figure figure;
     int figureModifier;
     int duration;
