@@ -46,23 +46,4 @@ public class AmlDrumsTrack extends AmlTrack {
         lastFigure = new AmlFigure(Negra, 0, false);
     }
 
-    public void addCompas(AmlCompas compas) throws AmlMusicException {
-        for(AmlFigure figure : compas.getFigures()) {
-            ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
-            ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
-            Collections.sort(lastNoteSortedPitches);
-            Collections.sort(noteSortedPitches);
-            if (lastFigure.isTied() && !Arrays.equals(noteSortedPitches.toArray(), lastNoteSortedPitches.toArray())){
-                throw new AmlMusicException(
-                        "The pitch of two tied figures is different. " +
-                                "The notes are:\n" + lastFigure.toString() +
-                                "," + figure.toString()
-                );
-            }
-            addOnMessages(figure);
-            currentTick += figure.getDuration();
-            addOffMessages(figure);
-            lastFigure = figure;
-        }
-    }
 }

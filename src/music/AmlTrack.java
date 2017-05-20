@@ -85,7 +85,6 @@ public class AmlTrack {
                         "," + figure.toString()
                 );
             }
-            alterNotePitches(figure, compas.getTone());
             addOnMessages(figure);
             currentTick += figure.getDuration();
             addOffMessages(figure);
@@ -93,14 +92,6 @@ public class AmlTrack {
         }
     }
 
-    private void alterNotePitches(AmlFigure figure, AmlTone compasTone) {
-        for (AmlNote note : figure.getNotes()) {
-            if (!note.isSilence()) {
-                compasTone.alterNote(note);
-                note.setPitch(note.getPitch() + compasTone.getAccident(note) + transport);
-            }
-        }
-    }
 
     void addOnMessages(AmlFigure figure) {
         if (lastFigure.isTied()) {

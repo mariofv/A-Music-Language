@@ -24,10 +24,20 @@ public class AmlCompas {
         ticksPerCompas = track.getMetric();
     }
 
+    private void alterNotePitches(AmlFigure figure) {
+        for (AmlNote note : figure.getNotes()) {
+            if (!note.isSilence()) {
+                tone.alterNote(note);
+                note.setPitch(note.getPitch() + tone.getAccident(note) + track.getTransport());
+            }
+        }
+    }
+
     public void addFigure(AmlFigure figure) throws AmlMusicException {
         if (!figure.hasFigure()){
             figure.setDuration(lastFigureDuration);
         }
+        alterNotePitches(figure);
         actualTicks += figure.getDuration();
         if (actualTicks > ticksPerCompas) {
             throw new AmlMusicException("The compass is incorrect because you are overflowing the metric.\n" + toString());
