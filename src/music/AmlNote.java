@@ -241,7 +241,7 @@ public class AmlNote {
             case 11:
                 return Note.Si;
             default:
-                throw new Error("This is mathematically impossible.");
+                throw new Error("This is mathematically impossible: ");
         }
     }
 
