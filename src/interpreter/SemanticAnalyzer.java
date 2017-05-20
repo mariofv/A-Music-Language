@@ -77,6 +77,8 @@ public class SemanticAnalyzer {
                 return "++";
             case DECR:
                 return "--";
+            case STRING_TYPE:
+                return "string";
             default:
                 return "unknown";
         }
@@ -313,7 +315,7 @@ public class SemanticAnalyzer {
                 return INT;
             case STRING:
                 expression.setStringValue();
-                return STRING;
+                return STRING_TYPE;
             case FUNCALL:
                 AmlTree funcDeclaration = functionMap.get(expression.getText());
                 if (funcDeclaration == null) throw new AmlSemanticException(

@@ -95,7 +95,7 @@ public class Node {
     public void checkGraph() throws Exception {
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
-            if ((start != 0 || end != 0) && !intersect(child) && !included(child)) {
+            if ((start != 0 || end != 0) && (!intersect(child) || !included(child))) {
                 throw new Exception("Node (" + start + "," + end +") has an invalid child: (" + child.start + "," + child.end + ")");
             }
             for (AmlList<Node>.Iterator iterator2 = children.getFirst(); !iterator2.equals(iterator); iterator2.next()) {
@@ -106,6 +106,34 @@ public class Node {
             }
             child.checkGraph();
         }
+    }
+
+    public int numChildren() {
+        return children.size();
+    }
+
+    public int size() {
+        int sum = 1;
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            sum += iterator.getElement().size();
+        }
+        return sum;
+    }
+
+    public int getMaxNumChildren() {
+        int max = children.size();
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            max = Math.max(iterator.getElement().getMaxNumChildren(), max);
+        }
+        return max;
+    }
+
+    public int getDepth() {
+        int maxDepth = 0;
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            maxDepth = Math.max(iterator.getElement().getDepth(), maxDepth);
+        }
+        return maxDepth+1;
     }
 
     @Override

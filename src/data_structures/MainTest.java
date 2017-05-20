@@ -3,6 +3,7 @@ package data_structures;
 import services.ChannelManager;
 
 import java.util.Random;
+import java.util.Vector;
 
 public class MainTest {
 
@@ -28,8 +29,8 @@ public class MainTest {
         Random random = new Random(seed);
         Node graph = new Node();
         for (int i = 0; i < numNodes; ++i) {
-            int one = random.nextInt(50);
-            int two = random.nextInt(50);
+            int one = random.nextInt(50000);
+            int two = random.nextInt(50000);
             assert one != two;
 
             int greater = Math.max(one, two);
@@ -42,8 +43,12 @@ public class MainTest {
 
     public static void main(String[] args) throws Exception {
         ChannelManager channelManager = new ChannelManager();
-        channelManager.graph = createRandomGraph(6000, 505);
+        channelManager.graph = createRandomGraph(100, 1);
         //System.out.println(channelManager.graph.toString());
+        System.out.println(channelManager.graph.numChildren());
+        System.out.println(channelManager.graph.size());
+        System.out.println(channelManager.graph.getMaxNumChildren());
+        System.out.println(channelManager.graph.getDepth());
         channelManager.graph.checkGraph();
     }
 }

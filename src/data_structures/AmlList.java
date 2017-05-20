@@ -13,6 +13,7 @@ public class AmlList<E> {
 
     private Node first;
     private Node last;
+    private int size;
 
     public class Iterator {
         private Node n;
@@ -38,6 +39,10 @@ public class AmlList<E> {
         }
     }
 
+    public AmlList() {
+        size = 0;
+    }
+
     public Iterator getFirst() {
         return new Iterator(first);
     }
@@ -50,6 +55,7 @@ public class AmlList<E> {
             node.previous = last;
         }
         last = node;
+        ++size;
     }
 
     public void remove(Iterator iterator) {
@@ -61,5 +67,11 @@ public class AmlList<E> {
 
         if (node == last) last = node.previous;
         else node.next.previous = node.previous;
+
+        --size;
+    }
+
+    public int size() {
+        return size;
     }
 }
