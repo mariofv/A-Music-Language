@@ -675,9 +675,9 @@ public class Interpreter {
             }
         }
         else if (noteList.getType() == MusicLexer.CHORD) {
-            /*AmlChord chord = new AmlChord(figure, figureModifier, tie);
+            AmlChord chord = new AmlChord(figureType, figureModifier, tie);
             createChord(noteList, chord);
-            return chord;*/
+            return chord;
         }
         else if (noteList.getType() == MusicLexer.DRUMSNOTE_LIST) {
             /* Loops over the list of notes */
@@ -726,7 +726,7 @@ public class Interpreter {
         }
         return new AmlNote(noteName, accident, octave);
     }
-/*
+
     private void createChord(AmlTree noteList, AmlChord chord) {
         AmlNote.Note rootNote = AmlNote.Note.Silence;
         int octave = 5;
@@ -771,12 +771,12 @@ public class Interpreter {
                     break;
             }
         }
-        chord.setInterval(interval);
         chord.setOctave(octave);
-        chord.setQuality(quality);
-        chord.setRoot(rootNote);
         chord.setAccident(accident);
+        chord.setRoot(rootNote);
+        chord.setInterval(interval);
+        chord.setQuality(quality);
         chord.constructChord();
     }
-    */
+
 }

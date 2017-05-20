@@ -93,7 +93,7 @@ public class AmlNote {
         return pitch + (octave-5)*12;
     }
 
-    Note mapPitch(int pitch) {
+    public static Note mapPitch(int pitch) {
         switch(pitch%12) {
             case 0:
                 return Note.Do;

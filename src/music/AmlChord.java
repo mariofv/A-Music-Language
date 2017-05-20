@@ -1,8 +1,8 @@
 package music;
 
-import music.AmlNote;
+import music.AmlNote.Accident;
 
-public class AmlChord  {
+public class AmlChord  extends AmlFigure{
 /*
     public enum Quality {
         Mayor,
@@ -20,15 +20,17 @@ public class AmlChord  {
     private AmlNote root;
     private AmlNote third;
     private AmlNote fifth;
+    private AmlNote seventh;
+
 
     private int octave;
 
-    public void setRoot(AmlNote.Note root) {
-        root = new AmlNote(note, );
-    }
-
     public void setOctave(int octave) {
         this.octave = octave;
+    }
+
+    public void setRoot(AmlNote.Note root) {
+        this.root = new AmlNote(root, accident, octave);
     }
 
     public void setAccident(Accident accident) {
@@ -47,30 +49,15 @@ public class AmlChord  {
     private Quality quality;
     private Interval interval;
 
-    private int rootPitch;
-    private int thirdPitch;
-    private int fifthPitch;
-    private int seventhPitch;
 
-    public AmlChord(Note root, int octave, Accident accident, Quality quality, Interval interval, Figure figure, int figureModifier, boolean tie) {
-        super(figure, figureModifier, tie);
-        this.root = root;
-        this.octave = octave;
-        this.accident = accident;
-        this.quality = quality;
-        this.interval = interval;
-        constructChord();
-    }
 
     public AmlChord(Figure figure, int figureModifier, boolean tie) {
         super(figure, figureModifier, tie);
     }
 
     public void constructChord() {
-        rootPitch = mapNote(root, octave);
-        pitches.add(rootPitch);
-        notes.add(new AmlNoteInfo(root, octave, accident));
-
+        notes.add(root);
+        third = new AmlNote(root.pitch + );
         mapQuality();
         pitches.add(rootPitch+thirdPitch);
         notes.add(mapPitch(rootPitch+thirdPitch));
@@ -88,6 +75,7 @@ public class AmlChord  {
 
     private void mapQuality() {
         switch(quality) {
+
             case Mayor:
                 thirdPitch = 4;
                 fifthPitch = 7;

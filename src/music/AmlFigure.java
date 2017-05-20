@@ -22,10 +22,10 @@ public class AmlFigure {
 
     public final static  int PPQ = 16;
 
-    private Figure figure;
-    private int figureModifier;
-    private boolean tie;
-    private ArrayList<AmlNote> notes;
+    Figure figure;
+    int figureModifier;
+    boolean tie;
+    ArrayList<AmlNote> notes;
 
 
     private int duration;
