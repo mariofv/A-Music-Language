@@ -730,7 +730,8 @@ public class Interpreter {
     private void createChord(AmlTree noteList, AmlChord chord) {
         AmlNote.Note rootNote = AmlNote.Note.Silence;
         int octave = 5;
-        int semiToneModifier = 0;
+        AmlNote.Accident accident = AmlNote.Accident.Natural;
+
         AmlChord.Quality quality = AmlChord.Quality.Mayor;
         AmlChord.Interval interval = AmlChord.Interval.NoInterval;
         for (AmlTree child : noteList.getArrayChildren()) {
@@ -744,10 +745,10 @@ public class Interpreter {
                                     octave = pitchModifier.getIntValue();
                                     break;
                                 case MusicLexer.BEMOL:
-                                    semiToneModifier = -1;
+                                    accident = AmlNote.Accident.Bemol;
                                     break;
                                 case MusicLexer.SUSTAIN:
-                                    semiToneModifier = 1;
+                                    accident = AmlNote.Accident.Sustain;
                                     break;
                             }
                         }
@@ -774,7 +775,7 @@ public class Interpreter {
         chord.setOctave(octave);
         chord.setQuality(quality);
         chord.setRoot(rootNote);
-        chord.setSemiToneModifier(semiToneModifier);
+        chord.setAccident(accident);
         chord.constructChord();
     }
 }

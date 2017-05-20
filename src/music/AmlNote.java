@@ -224,6 +224,27 @@ public class AmlNote {
         return pitch + (octave-5)*12;
     }
 
+    Note mapPitch(int pitch) {
+        switch(pitch%12) {
+            case 0:
+                return Note.Do;
+            case 2:
+                return Note.Re;
+            case 4:
+                return Note.Mi;
+            case 5:
+                return Note.Fa;
+            case 7:
+                return Note.Sol;
+            case 9:
+                return Note.La;
+            case 11:
+                return Note.Si;
+            default:
+                throw new Error("This is mathematically impossible.");
+        }
+    }
+
     public boolean hasFigure() { return figure != Figure.NoFigure; }
 
     @Override
