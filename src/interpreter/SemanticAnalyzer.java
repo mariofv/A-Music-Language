@@ -80,7 +80,7 @@ public class SemanticAnalyzer {
             case STRING_TYPE:
                 return "string";
             default:
-                return "unknown";
+                return "unknown " + type;
         }
     }
 
@@ -388,7 +388,7 @@ public class SemanticAnalyzer {
                     operatorType = INT;
                     returnType = BOOL;
                     break;
-                default: throw new Error("This should never happen " + expression.getType());
+                default: throw new Error("This should never happen " + mapType(expression.getType()));
             }
             int returnType1 = checkExpression(expression.getChild(0));
             int returnType2 = checkExpression(expression.getChild(1));
@@ -513,15 +513,15 @@ public class SemanticAnalyzer {
                 if (notes.getChild(0).getType() == NOTE_LIST) {
                     for (AmlTree note : notes.getChild(0).getArrayChildren()) {
                         note.setNoteValue();
-                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NUM) note.getChild(0).setIntValue();
-                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NUM) note.getChild(1).setIntValue();
+                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
                     }
                 }
                 else {
                     AmlTree note = notes.getChild(0).getChild(0);
                     note.setNoteValue();
-                    if (note.getChildCount() > 0 && note.getChild(0).getType() == NUM) note.getChild(0).setIntValue();
-                    else if (note.getChildCount() > 1 && note.getChild(1).getType() == NUM) note.getChild(1).setIntValue();
+                    if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+                    else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
                 }
                 break;
             case DRUMSNOTES:
@@ -657,7 +657,7 @@ public class SemanticAnalyzer {
                     break;
                 case MusicLexer.REPETITION:
                     int i = 0;
-                    if (child.getChild(0).getType() == MusicLexer.NUM) {
+                    if (child.getChild(0).getType() == POS_NUM) {
                         child.getChild(0).setIntValue();
                         if (child.getChild(0).getIntValue() < 0)
                             throw new AmlSemanticException("The number of iterations of a repetition mus be positive", child.getChild(0).getLine());

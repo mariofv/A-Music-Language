@@ -269,10 +269,11 @@ public class Interpreter {
             case MusicLexer.STRING:
                 return new TextVar(tree.getStringValue());
             case MusicLexer.NOTES:
+            case MusicLexer.DRUMSNOTES:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
-                return new Note(createNote(tree));
+                return new Note(createFigure(tree));
             case MusicLexer.FIGURE:
                 return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
@@ -452,28 +453,27 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.ID: {
-//
-//                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
-//                AmlNote note;
-//                if (dataNote instanceof Note) {
-//                    note = ((Note)dataNote).getValue();
-//                }
-//                else if (dataNote instanceof Chord) {
-//                    /*note = ((Chord)dataNote).getValue();*/
-//                }
-//                else if (dataNote instanceof DrumNote) {
-//                    note = ((DrumNote)dataNote).getValue();
-//                }
-//                else throw new Error("This should never happen");
-//                try {
-//
-//                    compas.addNote(note);
-//                }
-//                catch (AmlMusicException exception) {
-//                    exception.setLine(tree.getLine());
-//                    throw exception;
-//                }
-//                break;
+
+                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
+                AmlFigure note;
+                if (dataNote instanceof Note) {
+                    note = ((Note)dataNote).getValue();
+                }
+                else if (dataNote instanceof Chord) {
+                    note = ((Chord)dataNote).getValue();
+                }
+                else if (dataNote instanceof DrumNote) {
+                    note = ((DrumNote)dataNote).getValue();
+                }
+                else throw new Error("This should never happen");
+                try {
+                    compas.addFigure(note);
+                }
+                catch (AmlMusicException exception) {
+                    exception.setLine(tree.getLine());
+                    throw exception;
+                }
+                break;
             }
             case MusicLexer.NOTES:
                 AmlFigure figure = createFigure(tree);
@@ -562,11 +562,11 @@ public class Interpreter {
         addCompasList(listOfCompas, track);
     }
 
-    private AmlTone createTone(AmlTree tree) throws AmlMusicException {
-        int toneNumber = tree.getChild(0).getIntValue();
+    private AmlTone createTone(AmlTree tree) throws AmlRunTimeException {
+        int toneNumber = ((Int)evaluateExpression(tree.getChild(0))).getValue();
         if (Math.abs(toneNumber) >= 8) {
             throw new AmlMusicException("Tone in song " /*TODO: Introducir nombre de song */ + " is not correct." +
-                    "\n Tone must be between -7 and 7.", tree.getLine());
+                    "\nTone must be between -7 and 7, actual tone is " + toneNumber + ".", tree.getLine());
         }
         AmlTree typeOfAccident = tree.getChild(1);
         if (typeOfAccident.getType() == MusicLexer.BEMOL) {
@@ -577,15 +577,15 @@ public class Interpreter {
 
     private int[] createMetric(AmlTree tree) throws AmlRunTimeException {
         int[] metric = new int[2];
-        metric[0] = tree.getChild(0).getIntValue();
-        metric[1] = tree.getChild(1).getIntValue();
+        metric[0] = ((Int)evaluateExpression(tree.getChild(0))).getValue();
+        metric[1] = ((Int)evaluateExpression(tree.getChild(1))).getValue();
         if (metric[0] < 0 || metric[1] < 0)
             throw new AmlRunTimeException("Metric values must be positive: " + metric[0] + ":" + metric[1], tree.getLine());
         return metric;
     }
 
     private int createBPM(AmlTree tree) throws AmlRunTimeException {
-        int bpm = tree.getChild(0).getIntValue();
+        int bpm = ((Int)evaluateExpression(tree.getChild(0))).getValue();
         if (bpm < 0)
             throw new AmlRunTimeException("Bpm value must be positive: " + bpm, tree.getLine());
         return tree.getChild(0).getIntValue();
@@ -614,7 +614,7 @@ public class Interpreter {
     private void repeat(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
         int iterations = 2;
         int init = 0;
-        if (tree.getChild(0).getType() == MusicLexer.NUM) {
+        if (tree.getChild(0).getType() == MusicLexer.POS_NUM) {
             iterations = tree.getChild(0).getIntValue();
             init = 1;
         }
@@ -709,7 +709,7 @@ public class Interpreter {
         if (noteTree.getChildren() != null) {
             for (AmlTree pitchModifier : noteTree.getArrayChildren()) {
                 switch (pitchModifier.getType()) {
-                    case MusicLexer.NUM:
+                    case MusicLexer.NEG_NUM:
                         octave = -pitchModifier.getIntValue();
                         break;
                     case MusicLexer.BEMOL:
@@ -741,7 +741,7 @@ public class Interpreter {
                     if (child.getChildren() != null) {
                         for (AmlTree pitchModifier : child.getArrayChildren()) {
                             switch (pitchModifier.getType()) {
-                                case MusicLexer.NUM:
+                                case MusicLexer.NEG_NUM:
                                     octave = -pitchModifier.getIntValue();
                                     break;
                                 case MusicLexer.BEMOL:

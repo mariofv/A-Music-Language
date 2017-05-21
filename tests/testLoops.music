@@ -1,5 +1,5 @@
 void main() {
-    Chord note = Chord(Do m maj7);
+    Chord note = Chord(Do m maj7).c;
      Song {
          Beat 4:8;
          Speed 120;
