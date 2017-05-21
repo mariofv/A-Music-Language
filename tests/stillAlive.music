@@ -37,11 +37,33 @@ void main() {
                         6x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
                         Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6  | La Mi-6 Sol-6 Mi-6 La Mi-6 Sol-6 Mi-6 |
                         Tone 1&; Si Re-6 Fa-6 La-6 Silence.b
-                        //CHORUS
+                        //CHORUS 1
                         7x||: Silence.r :||
                         //BRIDGE 1
                         Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 |  La Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c |
-                        La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c ||
+                        La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c
+                        //VERSE 2
+                        4x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6 | La Do-6 Mi-6 Do-6 La Do-6 Mi-6 Do-6
+                        6x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6  | La Mi-6 Sol-6 Mi-6 La Mi-6 Sol-6 Mi-6 |
+                        Tone 1&; Si Re-6 Fa-6 La-6 Silence.b
+                        //CHORUS 2
+                        7x||: Silence.r :||
+                        //BRIDGE 2
+                        Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 |  La Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c |
+                        La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c
+                        //VERSE 3
+                        4x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6 | La Do-6 Mi-6 Do-6 La Do-6 Mi-6 Do-6
+                        6x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6  | La Mi-6 Sol-6 Mi-6 La Mi-6 Sol-6 Mi-6 |
+                        Tone 1&; Si Re-6 Fa-6 La-6 Silence.b
+                        //CHORUS 3
+                        7x||: Silence.r :||
+                        //OUTRO
+                        12x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                        ||
 
         Track "Celesta"
                     // VERSE 1
@@ -50,10 +72,71 @@ void main() {
                     Tone 1&; Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
                     Do-7.c Si-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
                     Do-7.c Si-6.c $La-6.n Fa-6.n Fa-6.n | Si.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
-                    Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c |
+                    Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c
                     //BRIDGE 1
-                    Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 |  La Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c |
-                    La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c | La.c Re-6.c Fa-6.c Re-6.c Si.c Re-6.c Fa-6.c Re-6.c ||
+                    4x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                    //VERSE 2
+                    15x||: Silence.r :||
+                    //CHORUS 2
+                    Tone 1&; Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n Fa-6.n Fa-6.n | Si.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
+                    Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c
+                    //BRIDGE 2 + VERSE 3
+                    12x||: Silence.r :|| 4x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                    //CHORUS 3
+                    Tone 1&; Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
+                    Do-7.c Si-6.c $La-6.n Fa-6.n Fa-6.n | Si.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
+                    Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c
+                    12x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                    ||
+
+        Track "Acoustic Guitar (nylon)"
+                    //VERSE 1
+                     16x||: Silence.r :||
+                     //CHORUS 1
+                     2x||:Tone 1&; (Do-6 Fa-6).n (La Do-6) (La Do-6).c Sol-6 (La Mi-6).n | (Si Re-6) (Si Re-6).c (Si Mi-6) (Do-6 Fa-6).n (La Fa-6) :||
+                     (La Re-6).c (La Si-6) Re Silence Do-6 Fa-6 Si Fa-6 | Fa-6 La-6 Mi-6 La-6 Re-6 La-6 La La-6 |
+                     Si La-6 Si La-6 La La-6 La La-6 |
+                     //BRIDGE
+                     Tone 2#; Silence.b Silence.c Sol-6 Fa-6 Re-6 3x||: La.n Silence.n* Sol-6.c Fa-6 Re-6 :||
+                     //VERSE 2
+                     4x||: La.n Fa-6 Silence.c Sol-6 Fa-6 Re-6 :|| 2x||: Silence.r :||
+                     6x||: La.n Fa-6 Silence.c Sol-6 Fa-6 Re-6 :|| 3x||: Silence.r :||
+                     //CHORUS 2
+                     2x||:Tone 1&; (Do-6 Fa-6).n (La Do-6) (La Do-6).c Sol-6 (La Mi-6).n | (Si Re-6) (Si Re-6).c (Si Mi-6) (Do-6 Fa-6).n (La Fa-6) :||
+                      (La Re-6).c (La Si-6) Re Silence Do-6 Fa-6 Si Fa-6 | Fa-6 La-6 Mi-6 La-6 Re-6 La-6 La La-6 |
+                      Si La-6 Si La-6 La La-6 La La-6
+                      //VERSE 3
+                     10x||: Silence.r :|| 2x||: Tone 2#;La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                     4x||: La.n Fa-6 Silence.c Sol-6 Fa-6 Re-6 :|| 3x||: Silence.r :||
+                     //CHORUS 3
+                     2x||:Tone 1&; (Do-6 Fa-6).n (La Do-6) (La Do-6).c Sol-6 (La Mi-6).n | (Si Re-6) (Si Re-6).c (Si Mi-6) (Do-6 Fa-6).n (La Fa-6) :||
+                     (La Re-6).c (La Si-6) Re Silence Do-6 Fa-6 Si Fa-6 | Fa-6 La-6 Mi-6 La-6 Re-6 La-6 La La-6 |
+                     Si La-6 Si La-6 La La-6 La La-6
+                     //OUTRO
+                     12x||: Tone 2#; La.n Fa-6 Silence.c Sol-6 Fa-6 Re-6 :||
+                     ||
+
+        Track "Overdriven Guitar"
+                    //VERSE 1 + CHORUS 1 + BRIDGE + VERSE 2
+                    41x||: Silence.r :|| Silence.n* Tone 1&; (Si-4 Fa-4).c (Si-4 Fa-4)(Si-4 Fa-4)(Si-4 Fa-4)(Si-4 Fa-4)
+                    //CHORUS 2
+                    ||: (Fa-3 Do-4 Fa-4).n  Silence (Do-4 Sol-4 Do) Silence | (Si-4 Fa-4)  Silence (Fa-3 Do-4 Fa-4).n Silence :||
+                    (Sol-3 Re-4)  (Sol-3 Re-4) (Do-4 Sol-4) (Do-4 Sol-4) |
+                    (Fa-4 Do-5) (Fa-4 Do-5) (Re-4 La-4) (Re-4 La-4 ) |(Si-4 Fa-4) (Si-4 Fa-4) Tone 2#; (La-4 Mi-4) (La-4 Mi-4) |
+                    //BRIDGE 2
+                    (Re-4 La-4).b Silence | Silence (Sol-4 Re Sol).c* (Fa Re).c* (Mi Re).c | (La-4 Re).b Silence | Silence.r |
+                    //VERSE 2
+                    (Re-4 La-4).r 13x||: Silence :|| Silence.n* Tone 1&; (Si-4 Fa-4).c (Si-4 Fa-4)(Si-4 Fa-4)(Si-4 Fa-4)(Si-4 Fa-4)
+                    //CHORUS 3
+                    ||: (Fa-3 Do-4 Fa-4).n  Silence (Do-4 Sol-4 Do) Silence | (Si-4 Fa-4)  Silence (Fa-3 Do-4 Fa-4).n Silence :||
+                    (Sol-3 Re-4)  (Sol-3 Re-4) (Do-4 Sol-4) (Do-4 Sol-4) |
+                    (Fa-4 Do-5) (Fa-4 Do-5) (Re-4 La-4) (Re-4 La-4 ) |(Si-4 Fa-4) (Si-4 Fa-4) Tone 2#; (La-4 Mi-4) (La-4 Mi-4) |
+                    //OUTRO
+                    (Re-4 La-4).b Silence ||: Silence (Sol-4 Re Sol).c* (Fa Re).c* (Mi Re).c | (La-4 Re).b Silence | (Re-4 La-4).b Silence :||
+                    ||
 
         Track "Electric Bass (finger)"
                      // VERSE 1 + CHORUS 1
