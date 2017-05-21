@@ -235,7 +235,6 @@ drumsnotes_variable     :   drumsnotes ('.' FIGURE DOT?)? -> ^(DRUMSNOTES drumsn
                         ;
 
 notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
-		        | 'N (' id_rule ')'
                 ;
 
 notes_type  :	chord | notes
