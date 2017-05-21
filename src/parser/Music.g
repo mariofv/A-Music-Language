@@ -30,6 +30,7 @@ tokens {
     NOTES;
     REPETITION;
     ID;
+    NUM;
 }
 
 @header {
@@ -215,13 +216,13 @@ compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
 compasses   :   compas (BAR! compas)*
             ;
 
-repetition  :   (NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION NUM? compasses)
+repetition  :   (POS_NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION POS_NUM? compasses)
             ;
 
 compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+)
             ;
 
-tone        :   TONE^ NUM (SUSTAIN | BEMOL)
+tone        :   TONE^ expr (SUSTAIN | BEMOL)
             ;
 
 drumsnotes_group : drumsnotes ('.' FIGURE DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT? TIE?)
@@ -252,7 +253,7 @@ drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUMSNOTE_LIST drums+)
 drums       :   DN! '('! num_expr^ ')'!
             ;
 
-note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NUM)?
+note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -275,13 +276,16 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 		;
 
 atom    :   var_access
-		|   NUM
+		|   nnum
 		|   STRING
 		|   funcall
 		|   TRUE
 		|   FALSE
 		|   '('! expr ')'!
 		;
+
+nnum     :   (x=POS_NUM | x=NEG_NUM) -> ^(NUM[$x])
+        ;
 
 // Music tokens
 TONE                : 'Tone';
@@ -349,7 +353,8 @@ INT     : 'int';
 BOOL    : 'bool';
 STRING_TYPE : 'string';
 ID_  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
-NUM 	:	'-'? '0'..'9'+;
+POS_NUM :	'0'..'9'+;
+NEG_NUM :   '-' '0'..'9'+;
 
 // C-style comments
 COMMENT	: '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
