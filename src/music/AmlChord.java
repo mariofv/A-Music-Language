@@ -44,30 +44,37 @@ public class AmlChord  extends AmlFigure{
             case Do:
                 third = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
                 fifth = new AmlNote(AmlNote.Note.Sol, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Si, Accident.Natural, octave);
                 break;
             case Re:
                 third = new AmlNote(AmlNote.Note.Fa, Accident.Sustain, octave);
                 fifth = new AmlNote(AmlNote.Note.La, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Do, Accident.Sustain, octave);
                 break;
             case Mi:
                 third = new AmlNote(AmlNote.Note.Sol, Accident.Sustain, octave);
                 fifth = new AmlNote(AmlNote.Note.Si, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Re, Accident.Sustain, octave);
                 break;
             case Fa:
                 third = new AmlNote(AmlNote.Note.La, Accident.Natural, octave);
                 fifth = new AmlNote(AmlNote.Note.Do, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
                 break;
             case Sol:
                 third = new AmlNote(AmlNote.Note.Si, Accident.Natural, octave);
                 fifth = new AmlNote(AmlNote.Note.Re, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Fa, Accident.Sustain, octave);
                 break;
             case La:
                 third = new AmlNote(AmlNote.Note.Do, Accident.Sustain, octave);
                 fifth = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
+                seventh = new AmlNote(AmlNote.Note.Sol, Accident.Sustain, octave);
                 break;
             case Si:
                 third = new AmlNote(AmlNote.Note.Re, Accident.Sustain, octave);
                 fifth = new AmlNote(AmlNote.Note.Fa, Accident.Sustain, octave);
+                seventh = new AmlNote(AmlNote.Note.La, Accident.Sustain, octave);
                 break;
             default:
                 throw new Error("A chord cannot be a silence.");
@@ -103,9 +110,9 @@ public class AmlChord  extends AmlFigure{
     private void mapInterval() {
         switch (interval) {
             case Septima:
+                seventh.lowerAccident();
                 break;
             case Maj7:
-                seventh.raiseAccident();
                 break;
             case NoInterval:
                 return;
