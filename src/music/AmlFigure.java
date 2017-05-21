@@ -38,6 +38,8 @@ public class AmlFigure {
         computeDuration();
     }
 
+    private AmlFigure(){}
+
     public int getDuration() {
         return duration;
     }
@@ -148,6 +150,15 @@ public class AmlFigure {
         }
         builder.append(") ]");
         return builder.toString();
+    }
+
+    public AmlFigure clone() {
+        AmlFigure clone = new AmlFigure();
+        clone.figure = figure;
+        clone.figureModifier = figureModifier;
+        clone.tie = tie;
+        notes = (ArrayList<AmlNote>) notes.clone();
+        return clone;
     }
 
 }

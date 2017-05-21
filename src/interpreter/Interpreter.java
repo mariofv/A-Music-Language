@@ -269,10 +269,11 @@ public class Interpreter {
             case MusicLexer.STRING:
                 return new TextVar(tree.getStringValue());
             case MusicLexer.NOTES:
+            case MusicLexer.DRUMSNOTES:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
-                return new Note(createNote(tree));
+                return new Note(createFigure(tree));
             case MusicLexer.FIGURE:
                 return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
@@ -452,28 +453,27 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.ID: {
-//
-//                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
-//                AmlNote note;
-//                if (dataNote instanceof Note) {
-//                    note = ((Note)dataNote).getValue();
-//                }
-//                else if (dataNote instanceof Chord) {
-//                    /*note = ((Chord)dataNote).getValue();*/
-//                }
-//                else if (dataNote instanceof DrumNote) {
-//                    note = ((DrumNote)dataNote).getValue();
-//                }
-//                else throw new Error("This should never happen");
-//                try {
-//
-//                    compas.addNote(note);
-//                }
-//                catch (AmlMusicException exception) {
-//                    exception.setLine(tree.getLine());
-//                    throw exception;
-//                }
-//                break;
+
+                Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
+                AmlFigure note;
+                if (dataNote instanceof Note) {
+                    note = ((Note)dataNote).getValue();
+                }
+                else if (dataNote instanceof Chord) {
+                    note = ((Chord)dataNote).getValue();
+                }
+                else if (dataNote instanceof DrumNote) {
+                    note = ((DrumNote)dataNote).getValue();
+                }
+                else throw new Error("This should never happen");
+                try {
+                    compas.addFigure(note);
+                }
+                catch (AmlMusicException exception) {
+                    exception.setLine(tree.getLine());
+                    throw exception;
+                }
+                break;
             }
             case MusicLexer.NOTES:
                 AmlFigure figure = createFigure(tree);

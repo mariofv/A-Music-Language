@@ -1,22 +1,23 @@
 package data;
 
 import music.AmlDrumNote;
+import music.AmlFigure;
 
 public class DrumNote extends Data {
 
-    private AmlDrumNote dataDrumNote;
+    private AmlFigure dataDrumNote;
 
     public DrumNote(){}
 
-    public DrumNote(AmlDrumNote dataDrumNoteValue) {
+    public DrumNote(AmlFigure dataDrumNoteValue) {
         dataDrumNote = dataDrumNoteValue;
     }
 
-    public AmlDrumNote getValue() {
+    public AmlFigure getValue() {
         return dataDrumNote;
     }
 
-    public void setValue(AmlDrumNote value) { dataDrumNote = value; }
+    public void setValue(AmlFigure value) { dataDrumNote = value; }
 
     @Override
     public Data clone() {
