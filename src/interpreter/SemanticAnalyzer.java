@@ -255,9 +255,10 @@ public class SemanticAnalyzer {
                 commonInstruction.getChild(0).setInstrumentValue();
                 return true;
             case FUNCALL:
-                AmlTree funcDeclaration = functionMap.get(commonInstruction.getText());
+            case FRAGCALL:
+                AmlTree funcDeclaration = commonInstruction.getType() == FUNCALL ? functionMap.get(commonInstruction.getText()) : fragmentMap.get(commonInstruction.getText());
                 if (funcDeclaration == null) throw new AmlSemanticException(
-                        "Function " + commonInstruction.getText() + " not declared.", commonInstruction.getLine());
+                        (commonInstruction.getType() == FUNCALL ? "Function " : "Fragment ") + commonInstruction.getText() + " not declared.", commonInstruction.getLine());
                 checkArguments(funcDeclaration, commonInstruction);
                 return true;
         }

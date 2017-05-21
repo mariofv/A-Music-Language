@@ -1,0 +1,14 @@
+Fragment sameNote(Note note) {
+    N->note N->note N->note N->note
+}
+
+void main() {
+    Song {
+        Beat 2:4;
+        Speed 180;
+        Tone 4&;
+        Track "Trumpet" || Silence.b 2x||: Frag->sameNote(Fa-7.c); :|| Fa-7 Fa-7 Do-7 Mi-7 | #Fa-7 $Fa-7 Mi-7 #Fa-7 | Frag->sameNote(Fa-7.c); ||
+        Track "Trombone" || Silence.b 2x||: Frag->sameNote(Fa-6.c); :|| Fa-6 Fa-6 Do Mi-6   | #Fa-6 $Fa-6 Mi-6 #Fa-6 | Frag->sameNote(Fa-6.c); ||
+        Track "Piccolo" || Silence.b 3x||: Frag->sameNote((Mi-6 Fa-4).c); :|| (Mi-6 Fa-4) (Mi-6 Fa-4) (#Mi-6 #Fa-4) (Mi-6 Fa-4) 2x||: Frag->sameNote((Mi-6 Fa-4).c); :||  ||
+    }
+}
