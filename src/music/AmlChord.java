@@ -2,8 +2,11 @@ package music;
 
 import music.AmlNote.Accident;
 
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
 public class AmlChord  extends AmlFigure{
-/*
+
     public enum Quality {
         Mayor,
         Menor,
@@ -21,99 +24,122 @@ public class AmlChord  extends AmlFigure{
     private AmlNote third;
     private AmlNote fifth;
     private AmlNote seventh;
-
-
     private int octave;
-
-    public void setOctave(int octave) {
-        this.octave = octave;
-    }
-
-    public void setRoot(AmlNote.Note root) {
-        this.root = new AmlNote(root, accident, octave);
-    }
-
-    public void setAccident(Accident accident) {
-        this.accident = accident;
-    }
-
-    public void setQuality(Quality quality) {
-        this.quality = quality;
-    }
-
-    public void setInterval(Interval interval) {
-        this.interval = interval;
-    }
-
     private Accident accident;
     private Quality quality;
     private Interval interval;
-
-
 
     public AmlChord(Figure figure, int figureModifier, boolean tie) {
         super(figure, figureModifier, tie);
     }
 
     public void constructChord() {
-        notes.add(root);
-        third = new AmlNote(root.pitch + );
+        setChordNotes();
         mapQuality();
-        pitches.add(rootPitch+thirdPitch);
-        notes.add(mapPitch(rootPitch+thirdPitch));
-        pitches.add(rootPitch+fifthPitch);
-        Note fifthNote = mapPitch(rootPitch+fifthPitch);
-        notes.add(new AmlNoteInfo(fifthNote, octave, accident));
-
         mapInterval();
-        if (seventhPitch != -1) {
-            pitches.add(rootPitch + seventhPitch);
-            Note seventhNote = mapPitch(rootPitch+seventhPitch);
-            notes.add(new AmlNoteInfo(seventhNote, octave, accident));
+    }
+
+    private void setChordNotes() {
+        switch (root.getNoteName()) {
+            case Do:
+                third = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
+                fifth = new AmlNote(AmlNote.Note.Sol, Accident.Natural, octave);
+                break;
+            case Re:
+                third = new AmlNote(AmlNote.Note.Fa, Accident.Sustain, octave);
+                fifth = new AmlNote(AmlNote.Note.La, Accident.Natural, octave);
+                break;
+            case Mi:
+                third = new AmlNote(AmlNote.Note.Sol, Accident.Sustain, octave);
+                fifth = new AmlNote(AmlNote.Note.Si, Accident.Natural, octave);
+                break;
+            case Fa:
+                third = new AmlNote(AmlNote.Note.La, Accident.Natural, octave);
+                fifth = new AmlNote(AmlNote.Note.Do, Accident.Natural, octave);
+                break;
+            case Sol:
+                third = new AmlNote(AmlNote.Note.Si, Accident.Natural, octave);
+                fifth = new AmlNote(AmlNote.Note.Re, Accident.Natural, octave);
+                break;
+            case La:
+                third = new AmlNote(AmlNote.Note.Do, Accident.Sustain, octave);
+                fifth = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
+                break;
+            case Si:
+                third = new AmlNote(AmlNote.Note.Re, Accident.Sustain, octave);
+                fifth = new AmlNote(AmlNote.Note.Fa, Accident.Sustain, octave);
+                break;
+            default:
+                throw new Error("A chord cannot be a silence.");
+        }
+        if (accident == Accident.Sustain) {
+            third.raiseAccident();
+            fifth.raiseAccident();
+        }
+        else if (accident == Accident.Bemol) {
+            third.lowerAccident();
+            fifth.lowerAccident();
         }
     }
 
     private void mapQuality() {
         switch(quality) {
-
-            case Mayor:
-                thirdPitch = 4;
-                fifthPitch = 7;
-                break;
             case Aumentado:
-                thirdPitch = 4;
-                fifthPitch = 8;
+                fifth.raiseAccident();
                 break;
             case Menor:
-                thirdPitch = 3;
-                fifthPitch = 7;
+                third.lowerAccident();
                 break;
             case Disminuido:
-                thirdPitch = 3;
-                fifthPitch = 6;
+                third.lowerAccident();
+                fifth.lowerAccident();
                 break;
             default:
         }
+        notes.add(third);
+        notes.add(fifth);
     }
 
     private void mapInterval() {
         switch (interval) {
             case Septima:
-                seventhPitch = 10;
                 break;
             case Maj7:
-                seventhPitch = 11;
+                seventh.raiseAccident();
                 break;
             case NoInterval:
-                seventhPitch  = -1;
-                break;
+                return;
         }
+        notes.add(seventh);
+    }
+
+    public void setOctave(int octave) {
+        this.octave = octave;
+    }
+    public void setRoot(AmlNote.Note root) {
+        this.root = new AmlNote(root, accident, octave);
+        notes.add(this.root);
+    }
+    public void setAccident(Accident accident) {
+        this.accident = accident;
+    }
+    public void setQuality(Quality quality) {
+        this.quality = quality;
+    }
+    public void setInterval(Interval interval) {
+        this.interval = interval;
     }
 
     @Override
     public AmlChord clone() {
-        //TODO: Esto petara por lo mismo que el clone de drumNote
-        return (AmlChord) super.clone();
+        AmlChord clone = new AmlChord(figure, figureModifier, tie);
+        clone.root = root.clone();
+        clone.third = third.clone();
+        clone.fifth = fifth.clone();
+        clone.octave = octave;
+        clone.accident = accident;
+        clone.quality = quality;
+        clone.interval = interval;
+        return clone;
     }
-*/
 }

@@ -10,7 +10,7 @@ public class AmlNote {
     }
 
     public enum Accident {
-        Sustain, Bemol, Natural, Armor
+        Sustain, DoubleSustain, Bemol, DoubleBemol, Natural, Armor
     }
 
     int pitch;
@@ -114,15 +114,62 @@ public class AmlNote {
         }
     }
 
+    public void raiseAccident() {
+        switch (accident) {
+            case Natural:
+                accident = Accident.Sustain;
+                return;
+            case Bemol:
+                accident = Accident.Natural;
+                return;
+            case DoubleBemol:
+                accident = Accident.Bemol;
+                return;
+            case Sustain:
+                accident = Accident.DoubleSustain;
+                return;
+            default:
+                throw new Error("The accident is over 9000!");
+        }
+    }
+
+    public void lowerAccident() {
+        switch (accident) {
+            case Natural:
+                accident = Accident.Bemol;
+                return;
+            case Bemol:
+                accident = Accident.DoubleBemol;
+                return;
+            case Sustain:
+                accident = Accident.Natural;
+                return;
+            case DoubleSustain:
+                accident = Accident.Sustain;
+                return;
+            default:
+                throw new Error("The accident is too low!");
+        }
+    }
 
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Note " + note.toString());
-        if (accident != Accident.Natural) {
-            builder.append(' ' + accident.toString());
+        builder.append(note.toString());
+        if (accident == Accident.Sustain) {
+            builder.append('#');
         }
+        else if (accident == Accident.DoubleSustain) {
+            builder.append("##");
+        }
+        else if (accident == Accident.Bemol) {
+            builder.append('&');
+        }
+        else if (accident == Accident.DoubleBemol) {
+            builder.append("&&");
+        }
+        builder.append("-" + octave);
         return builder.toString();
     }
 

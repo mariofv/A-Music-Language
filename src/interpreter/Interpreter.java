@@ -270,7 +270,7 @@ public class Interpreter {
                 return new TextVar(tree.getStringValue());
             case MusicLexer.NOTES:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
-                    /*return new Chord((AmlChord) createNote(tree))*/;
+                    return new Chord((AmlChord) createFigure(tree));
                 }
                 return new Note(createNote(tree));
             case MusicLexer.FIGURE:
@@ -742,7 +742,7 @@ public class Interpreter {
                         for (AmlTree pitchModifier : child.getArrayChildren()) {
                             switch (pitchModifier.getType()) {
                                 case MusicLexer.NUM:
-                                    octave = pitchModifier.getIntValue();
+                                    octave = -pitchModifier.getIntValue();
                                     break;
                                 case MusicLexer.BEMOL:
                                     accident = AmlNote.Accident.Bemol;

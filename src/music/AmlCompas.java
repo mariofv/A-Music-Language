@@ -26,7 +26,7 @@ public class AmlCompas {
 
     private void alterNotePitches(AmlFigure figure) {
         for (AmlNote note : figure.getNotes()) {
-            if (!note.isSilence()) {
+            if (!note.isSilence() && note.getClass() != AmlDrumNote.class) {
                 tone.alterNote(note);
                 note.setPitch(note.getPitch() + tone.getAccident(note) + track.getTransport());
             }

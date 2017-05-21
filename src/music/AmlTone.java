@@ -71,8 +71,14 @@ public class AmlTone {
             case Sustain:
                 toneAccidents.set(index,  1);
                 break;
+            case DoubleSustain:
+                toneAccidents.set(index, 2);
+                break;
             case Bemol:
                 toneAccidents.set(index,  -1);
+                break;
+            case DoubleBemol:
+                toneAccidents.set(index, -2);
                 break;
             case Armor:
                 toneAccidents.set(index, 0);

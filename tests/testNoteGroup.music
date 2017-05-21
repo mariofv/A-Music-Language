@@ -1,7 +1,7 @@
-main() {
+void main() {
     Song Mario {
-        Beat 4:8
-        Speed 60
-        Track Main "TT"  ||3# Sol-1.c (#Sol-2 &La-2).c Chord(Do m maj7) Chord(Re+ 7th) ||
+        Beat 4:2;
+        Speed 60;
+        Track Main || Do-3.r |Chord(La m).b Chord(Do-3).b  | Chord(Sol).b Chord(Fa).b ||
     }
 }
