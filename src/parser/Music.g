@@ -210,14 +210,18 @@ drums_track :   DRUMS^ compas_aux
 compas_aux  :   compas_list -> ^(COMPAS_LIST compas_list)
             ;
 
-compas_list : (DOUBLE_BAR! | repetition) (compasses | repetition)* (DOUBLE_BAR!)
+compas_list : (DOUBLE_BAR! | repetition) compas_or_repetition (DOUBLE_BAR!)
             ;
 
 compasses   :   compas (BAR! compas)*
             ;
 
-repetition  :   (POS_NUM LETTER_X)? START_REPETITION compasses END_REPETITION    -> ^(REPETITION POS_NUM? compasses)
+repetition  :   (POS_NUM LETTER_X)? START_REPETITION repetition_aux END_REPETITION    -> ^(REPETITION POS_NUM? repetition_aux)
             ;
+
+repetition_aux : compas_or_repetition -> ^(COMPAS_LIST compas_or_repetition);
+
+compas_or_repetition : (compasses | repetition)*;
 
 compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+)
             ;

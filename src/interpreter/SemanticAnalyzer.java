@@ -664,9 +664,10 @@ public class SemanticAnalyzer {
                             throw new AmlSemanticException("The number of iterations of a repetition mus be positive", child.getChild(0).getLine());
                         ++i;
                     }
-                    for(; i < child.getChildCount(); ++i) {
+                    analyzeCompasList(child.getChild(i));
+                    /*for(; i < child.getChildCount(); ++i) {
                         analyzeCompas(child.getChild(i));
-                    }
+                    }*/
                     break;
             }
         }
