@@ -157,6 +157,7 @@ public class AmlFigure {
         clone.figure = figure;
         clone.figureModifier = figureModifier;
         clone.tie = tie;
+        clone.duration = duration;
         notes = (ArrayList<AmlNote>) notes.clone();
         return clone;
     }
