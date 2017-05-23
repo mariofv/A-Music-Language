@@ -81,6 +81,10 @@ public class AmlTrack {
         return lastFigure.getDuration();
     }
 
+    public void addEvent(MidiEvent event) throws AmlMusicException {
+        events.add(event);
+    }
+
     public void addCompas(AmlCompas compas) throws AmlMusicException {
         for(AmlFigure figure : compas.getFigures()) {
             ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();

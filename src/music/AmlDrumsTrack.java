@@ -2,6 +2,7 @@ package music;
 
 
 import exceptions.AmlMusicException;
+import midi.AmlShortMessage;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
@@ -20,9 +21,11 @@ import static music.AmlFigure.Figure.Negra;
 public class AmlDrumsTrack extends AmlTrack {
 
     public AmlDrumsTrack(Track track, int metric) {
+        events = new ArrayList<>();
+
         this.track = track;
         try {
-            track.add(new MidiEvent(new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0), 0));
+            events.add(new MidiEvent(new AmlShortMessage(ShortMessage.PROGRAM_CHANGE,  0, 0), 0));
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }
@@ -30,14 +33,14 @@ public class AmlDrumsTrack extends AmlTrack {
         this.channel = 9;
         currentTick = 0;
         lastFigure = new AmlFigure(Negra, 0, false);
-        events = new ArrayList<>();
     }
 
 
     public AmlDrumsTrack(Track track, AmlTrack parentTrack) {
+        events = new ArrayList<>();
         this.track = track;
         try {
-            track.add(new MidiEvent(new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0), 0));
+            events.add(new MidiEvent(new AmlShortMessage(ShortMessage.PROGRAM_CHANGE,  0, 0), 0));
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }
@@ -45,7 +48,6 @@ public class AmlDrumsTrack extends AmlTrack {
         this.channel = 9;
         currentTick = parentTrack.currentTick;
         lastFigure = new AmlFigure(Negra, 0, false);
-        events = new ArrayList<>();
 
     }
 

@@ -3,6 +3,7 @@ package music;
 
 import data_structures.AmlList;
 import data_structures.Node;
+import exceptions.AmlRunTimeException;
 
 import javax.sound.midi.*;
 
@@ -19,6 +20,8 @@ public class AmlSequence {
     private int bpm;
     private int actualChannel;
     private Node tracks;
+    private Node drumTracks;
+
 
     public static byte[] intToByteArray(int number) {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
@@ -32,8 +35,17 @@ public class AmlSequence {
 
     }
 
+    public void saveDrumsTrack(AmlDrumsTrack track) {
+        Node n = new  Node(track);
+        if (n.isCorrect()) {
+            drumTracks.addChildren(n);
+        }
+
+    }
+
     public AmlSequence(int bpm) {
         tracks = new Node();
+        drumTracks = new Node();
         actualChannel = -1;
         this.bpm = bpm;
         try {
@@ -81,9 +93,7 @@ public class AmlSequence {
         return track;
     }
 
-    public Sequence getSequence() {
-        int channel = 0;
-        System.out.print(tracks);
+    public Sequence getSequence() throws  AmlRunTimeException{
         LinkedList<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
@@ -93,15 +103,28 @@ public class AmlSequence {
         }
         while (!queue.isEmpty()) {
             Node n = queue.pop();
-            System.out.println(n.getDepth());
             n.getTrack().addEvents(n.getDepth(), n.getStart(), n.getEnd());
             children = n.getChildren();
             for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
                 Node child = iterator.getElement();
                 child.setDepth( n.getDepth() == 8 ? n.getDepth() + 2 : n.getDepth()+1);
+                if (child.getDepth() >= 16) {
+                    throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
+                }
                 queue.push(child);
             }
         }
+
+
+        AmlList<Node> childrenDrums = drumTracks.getChildren();
+        for (AmlList<Node>.Iterator iterator = childrenDrums.getFirst(); !iterator.end(); iterator.next()) {
+            Node child = iterator.getElement();
+            child.getTrack().addEvents(9, child.getStart(), child.getEnd());
+            if (child.getChildren().size() != 0) {
+                throw new AmlRunTimeException("The recursion level of drum tracks is too damn high!");
+            }
+        }
+
         return sequence;
     }
 

@@ -269,7 +269,7 @@ public class Interpreter {
                 return true;
             case MusicLexer.VOLUME:
                 Int volumeValue = (Int)evaluateExpression(tree.getChild(0));
-                ControlChange.setVolume(currentTrack, currentTrack.getChannel(), volumeValue.getValue());
+                ControlChange.setVolume(currentTrack, volumeValue.getValue());
                 return true;
         }
         return false;
@@ -587,6 +587,7 @@ public class Interpreter {
         currentTrack = drumsTrack;
         AmlTree listOfCompas = tree.getChild(0);
         addCompasList(listOfCompas, drumsTrack);
+        sequence.saveDrumsTrack(drumsTrack);
         currentTrack = lastTrack;
         return drumsTrack.getCurrentTick();
 
