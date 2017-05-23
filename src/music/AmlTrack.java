@@ -170,7 +170,8 @@ public class AmlTrack {
     }
 
     public void setCurrentTick(int tick) {
-        this.currentTick =  tick;
+        firstTick = currentTick;
+        currentTick =  tick;
     }
 
 
