@@ -92,7 +92,7 @@ public class AmlSequence {
             queue.push(iterator.getElement());
         }
         while (!queue.isEmpty()) {
-            Node n = queue.removeFirst();
+            Node n = queue.pop();
             System.out.println(n.getDepth());
             n.getTrack().addEvents(n.getDepth(), n.getStart(), n.getEnd());
             children = n.getChildren();
