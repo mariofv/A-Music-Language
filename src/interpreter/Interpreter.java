@@ -30,6 +30,7 @@ public class Interpreter {
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
         stack = new AmlStack(sequence.addFirstTrack());
+        currentIteration = 1;
     }
 
     public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
@@ -618,13 +619,15 @@ public class Interpreter {
             iterations = tree.getChild(0).getIntValue();
             init = 1;
         }
+        int lastCurretnIteration = currentIteration;
         for (int i = 0; i < iterations; ++i) {
             currentIteration = i+1;
-            for(int j = init; j < tree.getChildCount(); ++j) {
+            addCompasList(tree.getChild(init), track);
+            /*for(int j = init; j < tree.getChildCount(); ++j) {
                 track.addCompas(createCompas(tree.getChild(j), track));
-            }
+            }*/
         }
-        currentIteration = 1;
+        currentIteration = lastCurretnIteration;
     }
 
     private AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlRunTimeException {

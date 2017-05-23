@@ -83,7 +83,7 @@ void main() {
                     Do-7.c Si-6.c $La-6.n Fa-6.n Fa-6.n | Si.c La-6.n Sol-6.c Sol.c Fa-6.c Sol-6.c Do-7.c |
                     Fa.c Do-7.c Mi.c Do-7.c Si-4.c Fa-6.c La-6.n | Fa.c Re-6.c Silence.c Re-6.c Mi.c Re-6.c Silence.c Re-6.c
                     //BRIDGE 2 + VERSE 3
-                    12x||: Silence.r :|| 4x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
+                    12x||: Silence.r :|| 6x||: Tone 2#; La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
                     //CHORUS 3
                     Tone 1&; Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |
                     Do-7.c Si-6.c $La-6.n La-6.n Fa-6.n | Fa.c Fa-6.c Do-7.c Fa-6.c Mi-6.c Fa-6.c Do-7.c Fa-6.c |

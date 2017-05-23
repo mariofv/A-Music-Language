@@ -255,9 +255,10 @@ public class SemanticAnalyzer {
                 commonInstruction.getChild(0).setInstrumentValue();
                 return true;
             case FUNCALL:
-                AmlTree funcDeclaration = functionMap.get(commonInstruction.getText());
+            case FRAGCALL:
+                AmlTree funcDeclaration = commonInstruction.getType() == FUNCALL ? functionMap.get(commonInstruction.getText()) : fragmentMap.get(commonInstruction.getText());
                 if (funcDeclaration == null) throw new AmlSemanticException(
-                        "Function " + commonInstruction.getText() + " not declared.", commonInstruction.getLine());
+                        (commonInstruction.getType() == FUNCALL ? "Function " : "Fragment ") + commonInstruction.getText() + " not declared.", commonInstruction.getLine());
                 checkArguments(funcDeclaration, commonInstruction);
                 return true;
         }
@@ -663,9 +664,10 @@ public class SemanticAnalyzer {
                             throw new AmlSemanticException("The number of iterations of a repetition mus be positive", child.getChild(0).getLine());
                         ++i;
                     }
-                    for(; i < child.getChildCount(); ++i) {
+                    analyzeCompasList(child.getChild(i));
+                    /*for(; i < child.getChildCount(); ++i) {
                         analyzeCompas(child.getChild(i));
-                    }
+                    }*/
                     break;
             }
         }
