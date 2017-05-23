@@ -131,6 +131,19 @@ public class AmlTrack {
         }
     }
 
+    public void addEvents(int channel, int start, int end) {
+        for (MidiEvent event: events) {
+            if (event.getTick() >= start && event.getTick() < end) {
+                try {
+                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
+                } catch (InvalidMidiDataException e) {
+                    throw new Error(e);
+                }
+                track.add(event);
+            }
+        }
+    }
+
     public void setInstrument(AmlInstrument instrument) {
         this.instrument = instrument;
         events.add(new MidiEvent(instrument.getMessage(), currentTick));
@@ -155,6 +168,11 @@ public class AmlTrack {
     public int getCurrentTick() {
         return currentTick;
     }
+
+    public void setCurrentTick(int tick) {
+        this.currentTick =  tick;
+    }
+
 
     @Override
     public String toString() {

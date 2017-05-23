@@ -31,6 +31,7 @@ tokens {
     REPETITION;
     ID;
     NUM;
+    TRIPLET;
 }
 
 @header {
@@ -121,6 +122,7 @@ music_inst  :   declaration
             |   if_music_stmt
             | 	(options {greedy=true;} : notes_group)+ ';'!?
             | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
+            |   triplet
             ;
 
 declaration :   type^ assig_opt (','! assig_opt)* ';'!
@@ -233,17 +235,17 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ expr (SUSTAIN | BEMOL)
             ;
 
-drumsnotes_group : drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes (FIGURE POS_NUM?)? DOT? TIE?)
+drumsnotes_group : drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT? TIE?)
             ;
 
-notes_group :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(NOTES notes_type (FIGURE POS_NUM?)? DOT? TIE?)
+notes_group :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
 	        |  'N->'! id_rule
             ;
 
-drumsnotes_variable     :   drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? -> ^(DRUMSNOTES drumsnotes (FIGURE POS_NUM?)? DOT?)
+drumsnotes_variable     :   drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
                         ;
 
-notes_variable  :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? -> ^(NOTES notes_type (FIGURE POS_NUM?)? DOT?)
+notes_variable  :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
                 ;
 
 notes_type  :	chord | notes
@@ -255,7 +257,8 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
             ;
 
-tuplet      :   '[' notes_group notes_group notes_group ']'
+triplet     :   '[' notes_type notes_type notes_type ']' FIGURE? -> ^(TRIPLET FIGURE? notes_type notes_type notes_type)
+            ;
 
 drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUMSNOTE_LIST drums+)
             ;

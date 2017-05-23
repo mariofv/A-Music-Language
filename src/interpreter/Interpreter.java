@@ -546,18 +546,20 @@ public class Interpreter {
         if (bpm != -1) {
             sequence.setSpeed(bpm, stack.getTrack().getCurrentTick());
         }
-
+        int lastTick = 0;
+        sequence.saveTrack(currentTrack);
         for(i = i-1; i < tree.getChildCount(); ++i) {
             if (tree.getChild(i).getType() == MusicLexer.TRACK) {
-                createTrack(tree.getChild(i), metric, tone, transport);
+                lastTick = Math.max(createTrack(tree.getChild(i), metric, tone, transport), lastTick);
             }
             else {
-                createDrumsTrack(tree.getChild(i), metric);
+                lastTick =  Math.max(createDrumsTrack(tree.getChild(i), metric), lastTick);
             }
         }
+        currentTrack.setCurrentTick(lastTick);
     }
 
-    private void createTrack(AmlTree child, int[] metric, AmlTone tone, int transport) throws AmlRunTimeException {
+    private int createTrack(AmlTree child, int[] metric, AmlTone tone, int transport) throws AmlRunTimeException {
         AmlTree listOfCompas;
         AmlInstrument instrument;
         if (child.getChildCount() > 1) {
@@ -576,6 +578,18 @@ public class Interpreter {
         addCompasList(listOfCompas, track);
         sequence.saveTrack(track);
         currentTrack = lastTrack;
+        return track.getCurrentTick();
+    }
+
+    private int createDrumsTrack(AmlTree tree, int[] metric) throws AmlRunTimeException {
+        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, stack.getTrack());
+        AmlTrack lastTrack = currentTrack;
+        currentTrack = drumsTrack;
+        AmlTree listOfCompas = tree.getChild(0);
+        addCompasList(listOfCompas, drumsTrack);
+        currentTrack = lastTrack;
+        return drumsTrack.getCurrentTick();
+
     }
 
     private AmlTone createTone(AmlTree tree) throws AmlRunTimeException {
@@ -605,13 +619,6 @@ public class Interpreter {
         if (bpm < 0)
             throw new AmlRunTimeException("Bpm value must be positive: " + bpm, tree.getLine());
         return tree.getChild(0).getIntValue();
-    }
-
-    private void createDrumsTrack(AmlTree tree, int[] metric) throws AmlRunTimeException {
-        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, stack.getTrack());
-        AmlTree listOfCompas = tree.getChild(0);
-        addCompasList(listOfCompas, drumsTrack);
-
     }
 
     private void addCompasList(AmlTree listOfCompas, AmlTrack track) throws AmlRunTimeException {

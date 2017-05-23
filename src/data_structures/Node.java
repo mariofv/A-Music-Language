@@ -29,6 +29,11 @@ public class Node {
         children = new AmlList<>();
     }
 
+    public Node (AmlTrack track, int start, int end) {
+        this.track = track;
+        this.start = start;
+        this.end = end;
+    }
 
     public boolean isCorrect() {
         return end-start != 0;
@@ -76,22 +81,22 @@ public class Node {
                     children.remove(iterator);
                     childNodes.add(child);
                 }
-//                else {
-//                    partitioned = true;
-//                    if (node.end < child.end) {
-//                        Node partition = new Node(child.start, node.end);
-//                        child.addChildren(partition);
-//                        Node rest = new Node(node.start, child.start);
-//                        addChildren(rest);
-//                    }
-//                    else {
-//                        Node partition = new Node(node.start, child.end);
-//                        child.addChildren(partition);
-//                        Node rest = new Node(child.end, node.end);
-//                        addChildren(rest);
-//                    }
-//                    break;
-//                }
+                else {
+                    partitioned = true;
+                    if (node.end < child.end) {
+                        Node partition = new Node(node.track, child.start, node.end);
+                        child.addChildren(partition);
+                        Node rest = new Node(node.track, node.start, child.start);
+                        addChildren(rest);
+                    }
+                    else {
+                        Node partition = new Node(node.track, node.start, child.end);
+                        child.addChildren(partition);
+                        Node rest = new Node(node.track, child.end, node.end);
+                        addChildren(rest);
+                    }
+                    break;
+                }
             }
         }
         if (!partitioned) children.add(node);

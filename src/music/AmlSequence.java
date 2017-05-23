@@ -83,6 +83,7 @@ public class AmlSequence {
 
     public Sequence getSequence() {
         int channel = 0;
+        System.out.print(tracks);
         LinkedList<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
@@ -91,9 +92,9 @@ public class AmlSequence {
             queue.push(iterator.getElement());
         }
         while (!queue.isEmpty()) {
-            Node n = queue.pop();
-            if (n.getTrack() == null) System.out.println("getFirsr");
-            n.getTrack().addEvents(n.getDepth());
+            Node n = queue.removeFirst();
+            System.out.println(n.getDepth());
+            n.getTrack().addEvents(n.getDepth(), n.getStart(), n.getEnd());
             children = n.getChildren();
             for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
                 Node child = iterator.getElement();

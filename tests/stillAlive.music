@@ -1,4 +1,5 @@
 void main() {
+    || La La La La ||
     Song {
         Beat 4:4;
         Speed 120;
@@ -216,4 +217,5 @@ void main() {
                            DN(69).c (DN(38) DN(69)).c DN(69).c  :||
                      (DN(36) DN(69)).c  DN(69).c (DN(38) DN(69)).c  DN(69).c  DN(69).c DN(-1).n* | DN(-1).r ||
         }
+        || Do Do Do Do ||
 }
