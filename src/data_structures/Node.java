@@ -149,6 +149,10 @@ public class Node {
         return maxDepth+1;
     }
 
+    public int getLocalDepth() {
+        return depth;
+    }
+
     @Override
     public String toString() {
         return toStringGuay("");

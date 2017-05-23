@@ -106,7 +106,7 @@ public class AmlTrack {
     }
 
 
-    void addOnMessages(AmlFigure figure) {
+    private void addOnMessages(AmlFigure figure) {
         if (lastFigure.isTied()) {
             return;
         }
@@ -115,7 +115,7 @@ public class AmlTrack {
         }
     }
 
-    void addOffMessages(AmlFigure figure) {
+    private void addOffMessages(AmlFigure figure) {
         if (figure.isTied()) {
             return;
         }

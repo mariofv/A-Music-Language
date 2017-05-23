@@ -30,7 +30,7 @@ void main() {
                          5x||: Tone 2#;(La-6  Fa-6).b Silence.c if(Time == 1){Silence.c}else if (Time==4){Silence.c}else{La-6.c} La-6 La-6 | Si-6 La-6 Fa-6 Re-6~ Re-6 (Sol-6 Mi-6) (La-6 Fa-6) (La-6 Fa-6)~ :|| (La-6 #Fa-6).n Silence Silence.c Sol-6 La-6 La-6~ |
                          La-6.n Silence Silence.c Sol-6 Fa-6 Fa-6~ | Fa-6.b Silence.b ||
 
-        Track "Orchestral Harp" ||  Silence.r
+        Track "Orchestral Harp" || Silence.r
                         //VERSE 1
                         4x||: La.c Re-6 Fa-6 Re-6 Si Re-6 Fa-6 Re-6 :||
                         Si.c Mi-6 Sol-6 Mi-6 Si Mi-6 Sol-6 Mi-6 | La Do-6 Mi-6 Do-6 La Do-6 Mi-6 Do-6

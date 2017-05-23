@@ -94,27 +94,27 @@ public class AmlSequence {
     }
 
     public Sequence getSequence() throws  AmlRunTimeException{
-        LinkedList<Node> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
             child.setDepth(0);
-            queue.push(iterator.getElement());
+            queue.add(child);
         }
+        System.out.print(tracks);
         while (!queue.isEmpty()) {
-            Node n = queue.pop();
-            n.getTrack().addEvents(n.getDepth(), n.getStart(), n.getEnd());
-            children = n.getChildren();
+            Node n = queue.remove();
+            System.out.println(n.getLocalDepth());
+            n.getTrack().addEvents(n.getLocalDepth(), n.getStart(), n.getEnd());
             for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
                 Node child = iterator.getElement();
-                child.setDepth( n.getDepth() == 8 ? n.getDepth() + 2 : n.getDepth()+1);
-                if (child.getDepth() >= 16) {
+                child.setDepth( n.getLocalDepth() == 8 ? n.getLocalDepth() + 2 : n.getLocalDepth()+1);
+                if (child.getLocalDepth() >= 16) {
                     throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
                 }
-                queue.push(child);
+                queue.add(child);
             }
         }
-
 
         AmlList<Node> childrenDrums = drumTracks.getChildren();
         for (AmlList<Node>.Iterator iterator = childrenDrums.getFirst(); !iterator.end(); iterator.next()) {
