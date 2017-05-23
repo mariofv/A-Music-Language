@@ -31,6 +31,7 @@ tokens {
     REPETITION;
     ID;
     NUM;
+    TRIPLET;
 }
 
 @header {
@@ -88,6 +89,7 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
                 ;
 
 inst        :   declaration
+            |   volume ';'
             |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
             |   var_funcall
             |   tone ';'!
@@ -105,6 +107,7 @@ inst        :   declaration
             ;
 
 music_inst  :   declaration
+            |   volume ';'!
             |   tone ';'!
             |   beat ';'!
             |   speed ';'!
@@ -119,6 +122,7 @@ music_inst  :   declaration
             |   if_music_stmt
             | 	(options {greedy=true;} : notes_group)+ ';'!?
             | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
+            |   triplet
             ;
 
 declaration :   type^ assig_opt (','! assig_opt)* ';'!
@@ -153,11 +157,13 @@ post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
 pre         :   (x=INCR | x=DECR) var_access  -> ^(PRE  var_access $x)
             ;
 
-beat        :   BEAT^ expr ':'! expr
+beat        :   BEAT^ num_expr ':'! num_expr
             ;
 
-speed       :   SPEED^ expr
+speed       :   SPEED^ num_expr
             ;
+
+volume      :   VOLUME^ num_expr;
 
 transport   :   TRANSPORT^ num_expr
             ;
@@ -229,17 +235,17 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ expr (SUSTAIN | BEMOL)
             ;
 
-drumsnotes_group : drumsnotes ('.' FIGURE DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT? TIE?)
+drumsnotes_group : drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT? TIE?)
             ;
 
-notes_group :   notes_type ('.' FIGURE DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
+notes_group :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? TIE? -> ^(NOTES notes_type FIGURE? DOT? TIE?)
 	        |  'N->'! id_rule
             ;
 
-drumsnotes_variable     :   drumsnotes ('.' FIGURE DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
+drumsnotes_variable     :   drumsnotes ('.' (FIGURE POS_NUM?) DOT?)? -> ^(DRUMSNOTES drumsnotes FIGURE? DOT?)
                         ;
 
-notes_variable  :   notes_type ('.' FIGURE DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
+notes_variable  :   notes_type ('.' (FIGURE POS_NUM?) DOT?)? -> ^(NOTES notes_type FIGURE? DOT?)
                 ;
 
 notes_type  :	chord | notes
@@ -249,6 +255,9 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
             ;
 
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTE_LIST note+)
+            ;
+
+triplet     :   '[' notes_type notes_type notes_type ']' FIGURE? -> ^(TRIPLET FIGURE? notes_type notes_type notes_type)
             ;
 
 drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUMSNOTE_LIST drums+)
@@ -299,6 +308,7 @@ START_REPETITION    : '||:';
 END_REPETITION      : ':||';
 CHORD               : 'Chord';
 TRANSPORT           : 'Transport';
+VOLUME              : 'Volume';
 MINOR               : 'm';
 DIMINUTION          : 'º';
 MAJ7                : 'maj7';

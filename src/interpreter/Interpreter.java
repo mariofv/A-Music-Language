@@ -9,6 +9,7 @@ import exceptions.AmlMusicException;
 import exceptions.AmlRunTimeException;
 import music.*;
 import parser.MusicLexer;
+import services.ControlChange;
 import sun.nio.cs.ext.IBM037;
 import sun.plugin.dom.core.Text;
 
@@ -20,6 +21,7 @@ public class Interpreter {
     private int currentIteration;
     private AmlStack stack;
     private AmlSequence sequence;
+    private AmlTrack currentTrack;
 
     public AmlSequence getSequence() {
         return sequence;
@@ -30,6 +32,7 @@ public class Interpreter {
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
         stack = new AmlStack(sequence.addFirstTrack());
+        currentTrack = stack.getTrack();
         currentIteration = 1;
     }
 
@@ -45,7 +48,10 @@ public class Interpreter {
                 ++i;
             }
         }
+        AmlTrack lastTrack = currentTrack;
+        currentTrack = stack.getTrack();
         Data ret = executeListInstruction(function.getChild(2));
+        currentTrack = lastTrack;
         stack.pop();
         return ret;
     }
@@ -259,6 +265,10 @@ public class Interpreter {
                         break;
                 }
                 return true;
+            case MusicLexer.VOLUME:
+                Int volumeValue = (Int)evaluateExpression(tree.getChild(0));
+                ControlChange.setVolume(currentTrack, currentTrack.getChannel(), volumeValue.getValue());
+                return true;
         }
         return false;
     }
@@ -454,7 +464,6 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.ID: {
-
                 Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
                 AmlFigure note;
                 if (dataNote instanceof Note) {
@@ -560,7 +569,10 @@ public class Interpreter {
         }
 
         AmlTrack track = sequence.addTrack(instrument, metric, tone, transport, stack.getTrack());
+        AmlTrack lastTrack = currentTrack;
+        currentTrack = track;
         addCompasList(listOfCompas, track);
+        currentTrack = lastTrack;
     }
 
     private AmlTone createTone(AmlTree tree) throws AmlRunTimeException {
@@ -706,7 +718,7 @@ public class Interpreter {
 
     private AmlNote createNote(AmlTree noteTree) {
         AmlNote.Note noteName = noteTree.getNoteValue();
-        int octave = 5;
+        int octave = 6;
         AmlNote.Accident accident = AmlNote.Accident.Natural;
 
         if (noteTree.getChildren() != null) {

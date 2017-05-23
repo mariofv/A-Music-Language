@@ -19,6 +19,7 @@ public class AmlTrack {
 
     private int[] metricArray;
     int metric;
+
     int channel;
     private int transport;
     AmlFigure lastFigure;
@@ -156,5 +157,9 @@ public class AmlTrack {
 
     public void setTransport(int transport) {
         this.transport = transport;
+    }
+
+    public int getChannel() {
+        return channel;
     }
 }

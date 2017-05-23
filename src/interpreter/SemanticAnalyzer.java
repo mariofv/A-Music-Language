@@ -254,6 +254,12 @@ public class SemanticAnalyzer {
             case INSTRUMENT:
                 commonInstruction.getChild(0).setInstrumentValue();
                 return true;
+            case VOLUME:
+                int volumeType = checkExpression(commonInstruction.getChild(0));
+                if (volumeType != INT)
+                    throw new AmlSemanticException("Type error, volume argument must be int type, but " +
+                            mapType(volumeType) + " was provided.", commonInstruction.getLine());
+                return true;
             case FUNCALL:
             case FRAGCALL:
                 AmlTree funcDeclaration = commonInstruction.getType() == FUNCALL ? functionMap.get(commonInstruction.getText()) : fragmentMap.get(commonInstruction.getText());
@@ -616,6 +622,8 @@ public class SemanticAnalyzer {
             case NOTES:
             case DRUMSNOTES:
                 analyzeNote(musicInstruction);
+                break;
+            case TRIPLET:
                 break;
             case ID:
                 int type = getSymbol(musicInstruction).getType();
