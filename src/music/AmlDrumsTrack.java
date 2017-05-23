@@ -30,6 +30,7 @@ public class AmlDrumsTrack extends AmlTrack {
         this.channel = 9;
         currentTick = 0;
         lastFigure = new AmlFigure(Negra, 0, false);
+        events = new ArrayList<>();
     }
 
 
@@ -44,6 +45,8 @@ public class AmlDrumsTrack extends AmlTrack {
         this.channel = 9;
         currentTick = parentTrack.currentTick;
         lastFigure = new AmlFigure(Negra, 0, false);
+        events = new ArrayList<>();
+
     }
 
 }

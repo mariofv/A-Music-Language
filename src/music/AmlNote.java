@@ -1,5 +1,7 @@
 package music;
 
+import midi.AmlShortMessage;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
@@ -28,20 +30,20 @@ public class AmlNote {
 
     }
 
-    public ShortMessage getOffMessage(int channel) {
-        ShortMessage offMessage;
+    public AmlShortMessage getOffMessage(int channel) {
+        AmlShortMessage offMessage;
         try {
-            offMessage = new ShortMessage(ShortMessage.NOTE_OFF, channel, pitch, 100);
+            offMessage = new AmlShortMessage(ShortMessage.NOTE_OFF, pitch, 100);
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }
         return offMessage;
     }
 
-    public ShortMessage getOnMessage(int channel) {
-        ShortMessage onMessage;
+    public AmlShortMessage getOnMessage(int channel) {
+        AmlShortMessage onMessage;
         try {
-            onMessage = new ShortMessage(ShortMessage.NOTE_ON, channel, pitch, 100);
+            onMessage = new AmlShortMessage(ShortMessage.NOTE_ON, pitch, 100);
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }

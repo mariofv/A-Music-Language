@@ -2,10 +2,9 @@ package music;
 
 import aml.Aml;
 import exceptions.AmlMusicException;
+import midi.AmlShortMessage;
 
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.ShortMessage;
-import javax.sound.midi.Track;
+import javax.sound.midi.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +14,7 @@ import static music.AmlFigure.Figure.*;
 
 public class AmlTrack {
 
+    int firstTick;
     int currentTick;
 
     private int[] metricArray;
@@ -26,8 +26,11 @@ public class AmlTrack {
     Track track;
     private AmlInstrument instrument;
     private AmlTone tone;
+    ArrayList<MidiEvent> events;
+
 
     public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
+        events = new ArrayList<>();
         this.track = track;
         metric = parentTrack.metric;
         metricArray = parentTrack.metricArray;
@@ -35,19 +38,20 @@ public class AmlTrack {
         this.channel = channel;
         instrument = parentTrack.instrument;
         transport = parentTrack.transport;
-        currentTick = parentTrack.currentTick;
+        firstTick = currentTick = parentTrack.currentTick;
         lastFigure = new AmlFigure(Negra, 0, false);
 
         setInstrument(instrument);
     }
 
     public AmlTrack(Track track, int tick, int channel, int[] metric, AmlTone tone, int transport, AmlInstrument instrument) {
+        events = new ArrayList<>();
         this.track = track;
         this.metric = codifyMetric(metric);
         metricArray = metric;
         this.channel = channel;
         this.instrument = instrument;
-        currentTick = tick;
+        firstTick = currentTick = tick;
         lastFigure = new AmlFigure(Negra, 0, false);
         this.tone = tone;
         this.transport = transport;
@@ -63,6 +67,10 @@ public class AmlTrack {
     public void setMetric(int[] beat) {
         metricArray = beat;
         metric = codifyMetric(beat);
+    }
+
+    public int getFirstTick() {
+        return firstTick;
     }
 
     public AmlTone getTone() {
@@ -99,7 +107,7 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage onMessage : figure.getOnMessages(channel)) {
-            track.add(new MidiEvent(onMessage, currentTick));
+            events.add(new MidiEvent(onMessage, currentTick));
         }
     }
 
@@ -108,13 +116,24 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage offMessage : figure.getOffMessages(channel)) {
-            track.add(new MidiEvent(offMessage, currentTick));
+            events.add(new MidiEvent(offMessage, currentTick));
+        }
+    }
+
+    public void addEvents(int channel) {
+        for (MidiEvent event: events) {
+            try {
+                ((AmlShortMessage)event.getMessage()).setChannel(channel);
+            } catch (InvalidMidiDataException e) {
+                throw new Error(e);
+            }
+            track.add(event);
         }
     }
 
     public void setInstrument(AmlInstrument instrument) {
         this.instrument = instrument;
-        track.add(new MidiEvent(instrument.getMessage(channel), currentTick));
+        events.add(new MidiEvent(instrument.getMessage(), currentTick));
     }
 
     public void setTone(AmlTone tone) {

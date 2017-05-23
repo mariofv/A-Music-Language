@@ -23,6 +23,7 @@ public class Interpreter {
     private AmlSequence sequence;
     private AmlTrack currentTrack;
 
+
     public AmlSequence getSequence() {
         return sequence;
     }
@@ -51,6 +52,7 @@ public class Interpreter {
         AmlTrack lastTrack = currentTrack;
         currentTrack = stack.getTrack();
         Data ret = executeListInstruction(function.getChild(2));
+        sequence.saveTrack(currentTrack);
         currentTrack = lastTrack;
         stack.pop();
         return ret;
@@ -572,6 +574,7 @@ public class Interpreter {
         AmlTrack lastTrack = currentTrack;
         currentTrack = track;
         addCompasList(listOfCompas, track);
+        sequence.saveTrack(track);
         currentTrack = lastTrack;
     }
 
@@ -718,7 +721,7 @@ public class Interpreter {
 
     private AmlNote createNote(AmlTree noteTree) {
         AmlNote.Note noteName = noteTree.getNoteValue();
-        int octave = 6;
+        int octave = 5;
         AmlNote.Accident accident = AmlNote.Accident.Natural;
 
         if (noteTree.getChildren() != null) {

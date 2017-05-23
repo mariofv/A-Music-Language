@@ -1,5 +1,7 @@
 package data_structures;
 
+import aml.Aml;
+import music.AmlTrack;
 import sun.awt.image.ImageWatched;
 
 import javax.sound.midi.Track;
@@ -9,22 +11,27 @@ import java.util.ListIterator;
 public class Node {
     private int start, end;
 
-    private int channel;
+    private AmlTrack track;
 
+    private int depth;
     //private LinkedList<Node> children;
     private AmlList<Node> children;
 
-    public Node() {
-        //children = new LinkedList<>();
-        start = end = 0;
+    public Node(){
         children = new AmlList<>();
     }
 
-    public Node(int start, int end) {
+    public Node(AmlTrack track) {
         //children = new LinkedList<>();
+        this.track = track;
+        start = track.getFirstTick();
+        end = track.getCurrentTick();
         children = new AmlList<>();
-        this.start = start;
-        this.end = end;
+    }
+
+
+    public boolean isCorrect() {
+        return end-start != 0;
     }
 
     public boolean intersect(Node node) {
@@ -39,13 +46,16 @@ public class Node {
 
     public int getEnd(){return end;}
 
-    public int getChannel() {
-        return channel;
+    public AmlTrack getTrack() {
+        return track;
     }
 
-    public void setChannel(int channel) {
-        this.channel = channel;
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
+
+    public  AmlList<Node> getChildren(){ return children;}
+
 
     /*public LinkedList<Node> getChildren() {
         return children;
@@ -57,8 +67,6 @@ public class Node {
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
             if (node.start == node.end) return;
-            //System.out.println("CHILD: " + child.start + "," + child.end);
-            //System.out.println("NODE: " + node.start + "," + node.end);
             if (child.intersect(node)) {
                 if (child.included(node)) {
                     child.addChildren(node);
@@ -68,22 +76,22 @@ public class Node {
                     children.remove(iterator);
                     childNodes.add(child);
                 }
-                else {
-                    partitioned = true;
-                    if (node.end < child.end) {
-                        Node partition = new Node(child.start, node.end);
-                        child.addChildren(partition);
-                        Node rest = new Node(node.start, child.start);
-                        addChildren(rest);
-                    }
-                    else {
-                        Node partition = new Node(node.start, child.end);
-                        child.addChildren(partition);
-                        Node rest = new Node(child.end, node.end);
-                        addChildren(rest);
-                    }
-                    break;
-                }
+//                else {
+//                    partitioned = true;
+//                    if (node.end < child.end) {
+//                        Node partition = new Node(child.start, node.end);
+//                        child.addChildren(partition);
+//                        Node rest = new Node(node.start, child.start);
+//                        addChildren(rest);
+//                    }
+//                    else {
+//                        Node partition = new Node(node.start, child.end);
+//                        child.addChildren(partition);
+//                        Node rest = new Node(child.end, node.end);
+//                        addChildren(rest);
+//                    }
+//                    break;
+//                }
             }
         }
         if (!partitioned) children.add(node);

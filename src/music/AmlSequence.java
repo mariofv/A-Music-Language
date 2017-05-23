@@ -1,6 +1,14 @@
 package music;
 
+
+import data_structures.AmlList;
+import data_structures.Node;
+
 import javax.sound.midi.*;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import static music.AmlInstrument.Instruments.*;
 
@@ -10,12 +18,22 @@ public class AmlSequence {
     private Track referenceTrack;
     private int bpm;
     private int actualChannel;
+    private Node tracks;
 
     public static byte[] intToByteArray(int number) {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
     }
 
+    public void saveTrack(AmlTrack track) {
+        Node n = new  Node(track);
+        if (n.isCorrect()) {
+            tracks.addChildren(n);
+        }
+
+    }
+
     public AmlSequence(int bpm) {
+        tracks = new Node();
         actualChannel = -1;
         this.bpm = bpm;
         try {
@@ -64,6 +82,25 @@ public class AmlSequence {
     }
 
     public Sequence getSequence() {
+        int channel = 0;
+        LinkedList<Node> queue = new LinkedList<>();
+        AmlList<Node> children = tracks.getChildren();
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            Node child = iterator.getElement();
+            child.setDepth(0);
+            queue.push(iterator.getElement());
+        }
+        while (!queue.isEmpty()) {
+            Node n = queue.pop();
+            if (n.getTrack() == null) System.out.println("getFirsr");
+            n.getTrack().addEvents(n.getDepth());
+            children = n.getChildren();
+            for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+                Node child = iterator.getElement();
+                child.setDepth( n.getDepth() == 8 ? n.getDepth() + 2 : n.getDepth()+1);
+                queue.push(child);
+            }
+        }
         return sequence;
     }
 

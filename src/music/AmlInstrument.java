@@ -1,5 +1,7 @@
 package music;
 
+import midi.AmlShortMessage;
+
 import javax.sound.midi.*;
 
 public class AmlInstrument {
@@ -166,38 +168,17 @@ public class AmlInstrument {
         Gunshot
     }
 
-    //private Soundbank soundBank;
-    //private static Instrument[] instrumentSet;
     private Instruments name;
     private int program;
 
     public AmlInstrument(Instruments instrument) {
         program = mapInstrument(instrument);
         name = instrument;
-        /*
-        try {
-            soundBank = MidiSystem.getSynthesizer().getDefaultSoundbank();
-            instrumentSet = MidiSystem.getSynthesizer().getAvailableInstruments();
-            Instrument instrument = instrumentSet[index];
-            System.out.println(instrument.getName());
-        } catch(Exception e){
-
-        }
-        */
     }
 
-    public static ShortMessage getDrums() {
+    public AmlShortMessage getMessage() {
         try {
-            return new ShortMessage(ShortMessage.PROGRAM_CHANGE, 9, 0, 0);
-        } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-            throw new Error();
-        }
-    }
-
-    public ShortMessage getMessage(int channel) {
-        try {
-            return new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, program, 0);
+            return new AmlShortMessage(ShortMessage.PROGRAM_CHANGE, program, 0);
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
             throw new Error();
