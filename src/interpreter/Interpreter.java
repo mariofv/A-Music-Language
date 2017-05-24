@@ -22,7 +22,7 @@ public class Interpreter {
     private AmlStack stack;
     private AmlSequence sequence;
     private AmlTrack currentTrack;
-
+    private AmlCompas currentCompas;
 
     public AmlSequence getSequence() {
         return sequence;
@@ -35,7 +35,34 @@ public class Interpreter {
         stack = new AmlStack(sequence.addFirstTrack());
         currentTrack = stack.getTrack();
         currentIteration = 1;
+        currentCompas = null;
     }
+
+    /*public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
+        AmlTree function = functionMap.get(functionName);
+        AmlTrack copy = sequence.addTrack(currentTrack);
+        stack.push(function, copy);
+        if (arguments != null) {
+            ArrayList<Data> localVariables = stack.getLocalVariables();
+            int i = 0;
+            for (Data argument : arguments) {
+                localVariables.set(i, argument.clone());
+                ++i;
+            }
+        }
+        System.out.println("Function call reached, i'm in " + currentTrack.getFirstTick() + ", " + currentTrack.getCurrentTick());
+        AmlTrack lastTrack = currentTrack;
+        currentTrack = stack.getTrack();
+
+        sequence.saveTrack(lastTrack);
+        Data ret = executeListInstruction(function.getChild(2));
+        sequence.saveTrack(currentTrack);
+        System.out.println("Function finished, setting tick to " + currentTrack.getCurrentTick());
+        lastTrack.setCurrentTick(currentTrack.getCurrentTick());
+        currentTrack = lastTrack;
+        stack.pop();
+        return ret;
+    }*/
 
     public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
         AmlTree function = functionMap.get(functionName);
@@ -49,11 +76,20 @@ public class Interpreter {
                 ++i;
             }
         }
+        AmlCompas lastCompas = currentCompas;
+        int currentTrackTick = currentTrack.getCurrentTick()+(currentCompas != null ? currentCompas.getCurrentTicks() : 0);
+        System.out.println("Function call reached, i'm in " + currentTrack.getFirstTick() + ", " + currentTrackTick);
         AmlTrack lastTrack = currentTrack;
         currentTrack = stack.getTrack();
+        currentCompas = null;
+
+        sequence.saveTrack(lastTrack);
         Data ret = executeListInstruction(function.getChild(2));
         sequence.saveTrack(currentTrack);
+        System.out.println("Function finished, setting tick to " + currentTrack.getCurrentTick());
+        lastTrack.setCurrentTick(currentTrack.getCurrentTick());
         currentTrack = lastTrack;
+        currentCompas = lastCompas;
         stack.pop();
         return ret;
     }
@@ -659,7 +695,9 @@ public class Interpreter {
     }
 
     private AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
+        AmlCompas lastCompas = currentCompas;
         AmlCompas compas = new AmlCompas(track);
+        currentCompas = compas;
         for(AmlTree child : tree.getArrayChildren()) {
             executeMusicInstruction(child, compas);
         }
@@ -670,6 +708,7 @@ public class Interpreter {
             exception.setLine(tree.getLine());
             throw exception;
         }
+        currentCompas = lastCompas;
         return compas;
     }
 

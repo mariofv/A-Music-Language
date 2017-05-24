@@ -1,6 +1,11 @@
-void main() {
-    Instrument "String Ensemble 1";
-    || La La La La ||
+void myFunc() {
     Instrument "Trumpet";
-    || Do Do Do Do ||
+    2x||: Do Do Do Do :|| ||
+}
+
+void main() {
+    Song {
+        Track "String Ensemble 1" || La La myFunc(); La La ||
+        //Track "Trombone" || Do Do Do Do | Do Do Do Do ||
+    }
 }

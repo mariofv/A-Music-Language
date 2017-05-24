@@ -32,7 +32,13 @@ public class AmlSequence {
         if (n.isCorrect()) {
             tracks.addChildren(n);
         }
+    }
 
+    public void saveTrack(AmlTrack track, int end) {
+        Node n = new  Node(track, track.getFirstTick(), end);
+        if (n.isCorrect()) {
+            tracks.addChildren(n);
+        }
     }
 
     public void saveDrumsTrack(AmlDrumsTrack track) {

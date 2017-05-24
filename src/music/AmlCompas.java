@@ -61,6 +61,10 @@ public class AmlCompas {
         ticksPerCompas = track.getMetric();
     }
 
+    public int getCurrentTicks() {
+        return actualTicks;
+    }
+
     public AmlTrack getTrack() { return track; }
 
     public AmlTone getTone(){
