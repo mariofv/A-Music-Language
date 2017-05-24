@@ -11,8 +11,9 @@ public class AmlMidiEvent extends MidiEvent {
     private String info;
     public final static int Instrument = 0;
     public final static int Volume = 1;
-    public final static int Other = 2;
-    public final static int mustSaveTypes = Other;
+    public final static int OnMessage = 2;
+    public final static int OffMessage = 3;
+    public final static int mustSaveTypes = 3;
     private int type;
 
     public AmlMidiEvent(MidiMessage message, long tick, boolean inclusive, int type) {

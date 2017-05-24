@@ -1,6 +1,5 @@
 package music;
 
-import aml.Aml;
 import data_structures.Interval;
 import exceptions.AmlMusicException;
 import midi.AmlMidiEvent;
@@ -26,7 +25,7 @@ public class AmlTrack {
     private AmlInstrument instrument;
     private AmlTone tone;
     ArrayList<AmlMidiEvent> events;
-    private Deque<Interval> intervals;
+    //private ArrayList<Interval> intervals;
 
     public AmlTrack(Track track, AmlTrack parentTrack) {
         events = new ArrayList<>();
@@ -37,7 +36,7 @@ public class AmlTrack {
         instrument = parentTrack.instrument;
         transport = parentTrack.transport;
         lastFigure = new AmlFigure(Negra, 0, false);
-        intervals = new LinkedList<>();
+        //intervals = new LinkedList<>();
 
         setCurrentTick(parentTrack.currentTick);
         setInstrument(instrument);
@@ -52,7 +51,7 @@ public class AmlTrack {
         lastFigure = new AmlFigure(Negra, 0, false);
         this.tone = tone;
         this.transport = transport;
-        intervals = new LinkedList<>();
+        //intervals = new LinkedList<>();
 
         setCurrentTick(tick);
         setInstrument(instrument);
@@ -85,12 +84,6 @@ public class AmlTrack {
         events.add(event);
     }
 
-    public void addCompas(AmlCompas compas) throws AmlMusicException {
-        for(AmlFigure figure : compas.getFigures()) {
-            addFigure(figure);
-        }
-    }
-
     public void addFigure(AmlFigure figure) throws AmlMusicException {
         ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
         ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
@@ -114,7 +107,7 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage onMessage : figure.getOnMessages()) {
-            events.add(new AmlMidiEvent(onMessage, currentTick, false, "OnMessage", AmlMidiEvent.Other));
+            events.add(new AmlMidiEvent(onMessage, currentTick, false, "OnMessage", AmlMidiEvent.OnMessage));
         }
     }
 
@@ -123,17 +116,17 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage offMessage : figure.getOffMessages()) {
-            events.add(new AmlMidiEvent(offMessage, currentTick, true, "OffMessage", AmlMidiEvent.Other));
+            events.add(new AmlMidiEvent(offMessage, currentTick, true, "OffMessage", AmlMidiEvent.OffMessage));
         }
     }
 
     private ArrayList<AmlMidiEvent> lastEvent = createDefault();
 
-    private ArrayList<AmlMidiEvent> createDefault() {
+    private static ArrayList<AmlMidiEvent> createDefault() {
         ArrayList<AmlMidiEvent> defaultValues = new ArrayList<>(AmlMidiEvent.mustSaveTypes);
 
         for (int i = 0; i < AmlMidiEvent.mustSaveTypes; ++i) {
-            switch (i) {
+            /*switch (i) {
                 case AmlMidiEvent.Instrument:
                     defaultValues.add(new AmlMidiEvent(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage(), 0, false, i));
                     break;
@@ -146,7 +139,8 @@ public class AmlTrack {
                     break;
                 default:
                     throw new Error("This should never happen");
-            }
+            }*/
+            defaultValues.add(null);
         }
         return defaultValues;
     }
@@ -157,7 +151,6 @@ public class AmlTrack {
 
     public void addEvents(int channel, int start, int end) {
         System.out.println("Adding events in interval " + start + " " + end + " on channel " + channel);
-        //Interval firstInterval = intervals.getFirst();
         for (AmlMidiEvent event : lastEvent) {
             if (event != null) {
                 try {
@@ -249,6 +242,7 @@ public class AmlTrack {
             while (events.get(indexFound).getTick() > start) --indexFound;
             System.out.println(events.get(indexFound));
         }
+        while (events.get(indexFound).getType() != AmlMidiEvent.OnMessage) --indexFound;
         return (int)events.get(indexFound).getTick();
     }
 
@@ -256,14 +250,17 @@ public class AmlTrack {
         Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
         dummy.setTick(end);
         int indexFound = Collections.binarySearch(events, dummy, comparator);
-        if (indexFound < 0) indexFound = -indexFound;
+        if (indexFound < 0) {
+            indexFound = -indexFound;
+        }
+        while (events.get(indexFound).getType() != AmlMidiEvent.OffMessage) ++indexFound;
         return (int)events.get(indexFound).getTick();
     }
 
     void newInterval() {
-        Interval lastInterval;
+        /*Interval lastInterval;
         if (!intervals.isEmpty()) lastInterval = intervals.getLast();
         else lastInterval = new Interval(0,0);
-        intervals.add(new Interval(lastInterval.getEnd(), events.size()-1));
+        intervals.add(new Interval(lastInterval.getEnd(), events.size()-1));*/
     }
 }
