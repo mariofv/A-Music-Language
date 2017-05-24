@@ -7,10 +7,7 @@ import midi.AmlShortMessage;
 
 import javax.sound.midi.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 import static music.AmlFigure.Figure.*;
 
@@ -111,13 +108,12 @@ public class AmlTrack {
         lastFigure = figure;
     }
 
-
     private void addOnMessages(AmlFigure figure) {
         if (lastFigure.isTied()) {
             return;
         }
         for (ShortMessage onMessage : figure.getOnMessages(channel)) {
-            events.add(new AmlMidiEvent(onMessage, currentTick, false, "OnMessage"));
+            events.add(new AmlMidiEvent(onMessage, currentTick, false, "OnMessage", AmlMidiEvent.Other));
         }
     }
 
@@ -126,7 +122,7 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage offMessage : figure.getOffMessages(channel)) {
-            events.add(new AmlMidiEvent(offMessage, currentTick, true, "OffMessage"));
+            events.add(new AmlMidiEvent(offMessage, currentTick, true, "OffMessage", AmlMidiEvent.Other));
         }
     }
 
@@ -141,32 +137,28 @@ public class AmlTrack {
         }
     }
 
+    private ArrayList<AmlMidiEvent> lastEvent = new ArrayList<>(Collections.nCopies(AmlMidiEvent.mustSaveTypes, null));
+
+    private static boolean isInsideInterval(AmlMidiEvent event, int start, int end) {
+        return (event.getTick() == start && !event.isInclusive()) || (event.getTick() > start && event.getTick() < end) || (event.getTick() == end && event.isInclusive());
+    }
+
     public void addEvents(int channel, int start, int end) {
         System.out.println("Adding events in interval " + start + " " + end + " on channel " + channel);
-        for (AmlMidiEvent event : events) {
-            if (event.getTick() == start && !event.isInclusive()) {
-                try {
-                    System.out.println("Setting start event " + event);
-                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
-                } catch (InvalidMidiDataException e) {
-                    throw new Error(e);
-                }
+        /*for (AmlMidiEvent event : lastEvent) {
+            if (event != null) {
+                event.setTick(start);
+                System.out.println("Setting initial event " + event);
                 track.add(event);
             }
-
-            if (event.getTick() > start && event.getTick() < end) {
+        }*/
+        for (AmlMidiEvent event : events) {
+            if (isInsideInterval(event, start, end)) {
+                if (event.mustSave()) {
+                    lastEvent.set(event.getType(), event);
+                }
                 try {
                     System.out.println("Setting event " + event);
-                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
-                } catch (InvalidMidiDataException e) {
-                    throw new Error(e);
-                }
-                track.add(event);
-            }
-
-            if (event.getTick() == end && event.isInclusive()) {
-                try {
-                    System.out.println("Setting ending event " + event);
                     ((AmlShortMessage) event.getMessage()).setChannel(channel);
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);
@@ -178,7 +170,7 @@ public class AmlTrack {
 
     public void setInstrument(AmlInstrument instrument) {
         this.instrument = instrument;
-        events.add(new AmlMidiEvent(instrument.getMessage(), currentTick, false, "Instrument"));
+        events.add(new AmlMidiEvent(instrument.getMessage(), currentTick, false, "Instrument", AmlMidiEvent.Instrument));
     }
 
     public void setTone(AmlTone tone) {
@@ -205,7 +197,6 @@ public class AmlTrack {
         firstTick = tick;
         currentTick =  tick;
     }
-
 
     @Override
     public String toString() {
@@ -238,12 +229,7 @@ public class AmlTrack {
     public int getClosest(int start) {
         Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
         dummy.setTick(start);
-        System.out.println("I'm getting the closest " + start);
-        for (AmlMidiEvent event : events) {
-            System.out.println(event);
-        }
         int indexFound = Collections.binarySearch(events, dummy, comparator);
-        System.out.println("Found " + indexFound);
         if (indexFound < 0) {
             indexFound = -indexFound;
             while (events.get(indexFound).getTick() > start) --indexFound;

@@ -99,7 +99,7 @@ public class AmlSequence {
         return track;
     }
 
-    public Sequence getSequence() throws  AmlRunTimeException{
+    public Sequence getSequence() throws  AmlRunTimeException {
         Queue<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
@@ -110,7 +110,6 @@ public class AmlSequence {
         System.out.print(tracks);
         while (!queue.isEmpty()) {
             Node n = queue.remove();
-            System.out.println(n.getLocalDepth());
             n.getTrack().addEvents(n.getLocalDepth(), n.getStart(), n.getEnd());
             children = n.getChildren();
             for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {

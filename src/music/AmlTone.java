@@ -3,9 +3,6 @@ package music;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by mario.fernandez on 15/05/2017.
- */
 public class AmlTone {
 
     private static final int FaPos = 0;

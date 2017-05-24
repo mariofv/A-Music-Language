@@ -10,7 +10,6 @@ public class AmlCompas {
 
     private ArrayList<AmlFigure> figures;
 
-
     private AmlTone tone;
 
     private int actualTicks, ticksPerCompas, lastFigureDuration;
@@ -44,7 +43,7 @@ public class AmlCompas {
         }
         lastFigureDuration = figure.getDuration();
 
-        //figures.add(figure);
+        figures.add(figure);
         track.addFigure(figure);
     }
 
