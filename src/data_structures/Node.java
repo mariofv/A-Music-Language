@@ -22,7 +22,6 @@ public class Node {
     }
 
     public Node(AmlTrack track) {
-        //children = new LinkedList<>();
         this.track = track;
         start = track.getFirstTick();
         end = track.getCurrentTick();
@@ -61,11 +60,6 @@ public class Node {
 
     public  AmlList<Node> getChildren(){ return children;}
 
-
-    /*public LinkedList<Node> getChildren() {
-        return children;
-    }*/
-
     public void addChildren(Node node) {
         LinkedList<Node> childNodes = new LinkedList<>();
         boolean partitioned = false;
@@ -84,15 +78,17 @@ public class Node {
                 else {
                     partitioned = true;
                     if (node.end < child.end) {
-                        Node partition = new Node(node.track, child.start, node.end);
+                        int start = node.track.getClosest(child.start);
+                        Node partition = new Node(node.track, start, node.end);
                         child.addChildren(partition);
-                        Node rest = new Node(node.track, node.start, child.start);
+                        Node rest = new Node(node.track, node.start, start);
                         addChildren(rest);
                     }
                     else {
-                        Node partition = new Node(node.track, node.start, child.end);
+                        int end = node.track.getNextClosest(child.end);
+                        Node partition = new Node(node.track, node.start, end);
                         child.addChildren(partition);
-                        Node rest = new Node(node.track, child.end, node.end);
+                        Node rest = new Node(node.track, end, node.end);
                         addChildren(rest);
                     }
                     break;

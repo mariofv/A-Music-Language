@@ -168,7 +168,7 @@ volume      :   VOLUME^ num_expr;
 transport   :   TRANSPORT^ num_expr
             ;
 
-instrument  :   INSTRUMENT^ STRING ';'
+instrument  :   INSTRUMENT^ STRING
             ;
 
 while_stmt  :   WHILE^ '('! expr ')'! '{'! listInst '}'!

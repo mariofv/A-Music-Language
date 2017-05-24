@@ -10,6 +10,7 @@ import javax.sound.midi.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 import static music.AmlFigure.Figure.*;
 
@@ -137,9 +138,9 @@ public class AmlTrack {
     }
 
     public void addEvents(int channel, int start, int end) {
-        System.out.println("Adding events in interval " + start + " " + end);
+        //System.out.println("Adding events in interval " + start + " " + end);
         for (AmlMidiEvent event : events) {
-            System.out.println("Event is " + (event.isInclusive() ? "inclusive" : "not inclusive"));
+            //System.out.println("Event is " + (event.isInclusive() ? "inclusive" : "not inclusive"));
             if (event.getTick() == start && !event.isInclusive()) {
                 try {
                     ((AmlShortMessage) event.getMessage()).setChannel(channel);
@@ -224,5 +225,32 @@ public class AmlTrack {
 
     public int getChannel() {
         return channel;
+    }
+
+    private static MidiEvent dummy = new MidiEvent(null, 0);
+
+    public int getClosest(int start) {
+        Comparator<MidiEvent> comparator = new Comparator<MidiEvent>() {
+            @Override
+            public int compare(MidiEvent o1, MidiEvent o2) {
+                return Long.compareUnsigned(o1.getTick(), o2.getTick());
+            }
+        };
+        dummy.setTick(start);
+        int indexFound = Collections.binarySearch(events, dummy, comparator);
+        return (int)events.get(indexFound).getTick();
+    }
+
+    public int getNextClosest(int end) {
+        Comparator<MidiEvent> comparator = new Comparator<MidiEvent>() {
+            @Override
+            public int compare(MidiEvent o1, MidiEvent o2) {
+                return Long.compareUnsigned(o1.getTick(), o2.getTick());
+            }
+        };
+        dummy.setTick(end);
+        int indexFound = Collections.binarySearch(events, dummy, comparator);
+        if (events.get(indexFound).getTick() != end) ++indexFound;
+        return (int)events.get(indexFound).getTick();
     }
 }
