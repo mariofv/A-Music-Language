@@ -2,6 +2,7 @@ package music;
 
 import aml.Aml;
 import exceptions.AmlMusicException;
+import midi.AmlMidiEvent;
 import midi.AmlShortMessage;
 
 import javax.sound.midi.*;
@@ -14,7 +15,7 @@ import static music.AmlFigure.Figure.*;
 
 public class AmlTrack {
 
-    int firstTick;
+    private int firstTick;
     int currentTick;
 
     private int[] metricArray;
@@ -26,7 +27,7 @@ public class AmlTrack {
     Track track;
     private AmlInstrument instrument;
     private AmlTone tone;
-    ArrayList<MidiEvent> events;
+    ArrayList<AmlMidiEvent> events;
 
 
     public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
@@ -81,7 +82,7 @@ public class AmlTrack {
         return lastFigure.getDuration();
     }
 
-    public void addEvent(MidiEvent event) throws AmlMusicException {
+    public void addEvent(AmlMidiEvent event) throws AmlMusicException {
         events.add(event);
     }
 
@@ -111,7 +112,7 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage onMessage : figure.getOnMessages(channel)) {
-            events.add(new MidiEvent(onMessage, currentTick));
+            events.add(new AmlMidiEvent(onMessage, currentTick, false));
         }
     }
 
@@ -120,7 +121,7 @@ public class AmlTrack {
             return;
         }
         for (ShortMessage offMessage : figure.getOffMessages(channel)) {
-            events.add(new MidiEvent(offMessage, currentTick));
+            events.add(new AmlMidiEvent(offMessage, currentTick, true));
         }
     }
 
@@ -136,7 +137,9 @@ public class AmlTrack {
     }
 
     public void addEvents(int channel, int start, int end) {
-        for (MidiEvent event: events) {
+        for (AmlMidiEvent event : events) {
+            //if (event.getTick() == start && !event.isInclusive()) track.add(event);
+
             if (event.getTick() >= start && event.getTick() < end) {
                 try {
                     ((AmlShortMessage) event.getMessage()).setChannel(channel);
@@ -145,12 +148,14 @@ public class AmlTrack {
                 }
                 track.add(event);
             }
+
+            //if (event.getTick() == end && event.isInclusive()) track.add(event);
         }
     }
 
     public void setInstrument(AmlInstrument instrument) {
         this.instrument = instrument;
-        events.add(new MidiEvent(instrument.getMessage(), currentTick));
+        events.add(new AmlMidiEvent(instrument.getMessage(), currentTick, false));
     }
 
     public void setTone(AmlTone tone) {

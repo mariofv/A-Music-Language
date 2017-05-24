@@ -47,6 +47,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 import parser.*;
+import parser.MusicLexer;
+import parser.MusicParser;
 import sun.awt.image.ImageWatched;
 
 import javax.sound.midi.MidiSystem;

@@ -20,7 +20,7 @@ import static music.AmlFigure.Figure.Negra;
  */
 public class AmlDrumsTrack extends AmlTrack {
 
-    public AmlDrumsTrack(Track track, int metric) {
+    /*public AmlDrumsTrack(Track track, int metric) {
         events = new ArrayList<>();
 
         this.track = track;
@@ -33,22 +33,16 @@ public class AmlDrumsTrack extends AmlTrack {
         this.channel = 9;
         currentTick = 0;
         lastFigure = new AmlFigure(Negra, 0, false);
-    }
+    }*/
 
 
     public AmlDrumsTrack(Track track, AmlTrack parentTrack) {
         events = new ArrayList<>();
         this.track = track;
-        try {
-            events.add(new MidiEvent(new AmlShortMessage(ShortMessage.PROGRAM_CHANGE,  0, 0), 0));
-        } catch (InvalidMidiDataException e) {
-            throw new Error(e);
-        }
         this.metric = parentTrack.getMetric();
         this.channel = 9;
         currentTick = parentTrack.currentTick;
         lastFigure = new AmlFigure(Negra, 0, false);
-
     }
 
 }

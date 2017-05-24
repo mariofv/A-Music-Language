@@ -106,6 +106,7 @@ public class AmlSequence {
             Node n = queue.remove();
             System.out.println(n.getLocalDepth());
             n.getTrack().addEvents(n.getLocalDepth(), n.getStart(), n.getEnd());
+            children = n.getChildren();
             for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
                 Node child = iterator.getElement();
                 child.setDepth( n.getLocalDepth() == 8 ? n.getLocalDepth() + 2 : n.getLocalDepth()+1);
