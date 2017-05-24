@@ -2,6 +2,7 @@ package midi;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
+import java.util.Arrays;
 
 public class AmlShortMessage extends ShortMessage {
 
@@ -21,5 +22,9 @@ public class AmlShortMessage extends ShortMessage {
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }
+    }
+
+    public boolean equals(AmlShortMessage shortMessage) {
+        return Arrays.equals(getMessage(), shortMessage.getMessage());
     }
 }
