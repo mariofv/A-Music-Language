@@ -119,21 +119,21 @@ public class AmlFigure {
         return pitches;
     }
 
-    public ArrayList<ShortMessage> getOffMessages(int channel) {
+    public ArrayList<ShortMessage> getOffMessages() {
         ArrayList<ShortMessage> offMessages = new ArrayList<>();
         for (AmlNote note : notes) {
             if (!note.isSilence()) {
-                offMessages.add(note.getOffMessage(channel));
+                offMessages.add(note.getOffMessage());
             }
         }
         return offMessages;
     }
 
-    public ArrayList<ShortMessage> getOnMessages(int channel) {
+    public ArrayList<ShortMessage> getOnMessages() {
         ArrayList<ShortMessage> onMessages = new ArrayList<>();
         for (AmlNote note : notes) {
             if (!note.isSilence()) {
-                onMessages.add(note.getOnMessage(channel));
+                onMessages.add(note.getOnMessage());
             }
         }
         return onMessages;

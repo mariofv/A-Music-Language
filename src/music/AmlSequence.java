@@ -18,7 +18,6 @@ public class AmlSequence {
     private Sequence sequence;
     private Track referenceTrack;
     private int bpm;
-    private int actualChannel;
     private Node tracks;
     private Node drumTracks;
 
@@ -30,13 +29,7 @@ public class AmlSequence {
     public void saveTrack(AmlTrack track) {
         Node n = new  Node(track);
         if (n.isCorrect()) {
-            tracks.addChildren(n);
-        }
-    }
-
-    public void saveTrack(AmlTrack track, int end) {
-        Node n = new  Node(track, track.getFirstTick(), end);
-        if (n.isCorrect()) {
+            track.newInterval();
             tracks.addChildren(n);
         }
     }
@@ -46,13 +39,11 @@ public class AmlSequence {
         if (n.isCorrect()) {
             drumTracks.addChildren(n);
         }
-
     }
 
     public AmlSequence(int bpm) {
         tracks = new Node();
         drumTracks = new Node();
-        actualChannel = -1;
         this.bpm = bpm;
         try {
             sequence = new Sequence(Sequence.PPQ, AmlFigure.PPQ);
@@ -75,22 +66,19 @@ public class AmlSequence {
 
     public AmlTrack addFirstTrack() {
         referenceTrack = createTrack();
-        return new AmlTrack(referenceTrack,0,  0, new int[]{4,4}, new AmlTone(0), 0, new AmlInstrument(Acoustic_Grand_Piano));
+        return new AmlTrack(referenceTrack,0, new int[]{4,4}, new AmlTone(0), 0, new AmlInstrument(Acoustic_Grand_Piano));
     }
 
     public AmlTrack addTrack(AmlInstrument instrument, int[] metric, AmlTone tone, int transport, int tick) {
-        return new AmlTrack(createTrack(), tick, actualChannel, metric, tone, transport, instrument);
+        return new AmlTrack(createTrack(), tick, metric, tone, transport, instrument);
     }
 
     public AmlTrack addTrack(AmlTrack parentTrack) {
-        return new AmlTrack(createTrack(), actualChannel, parentTrack);
+        return new AmlTrack(createTrack(), parentTrack);
     }
 
     private Track createTrack() {
-        Track track = sequence.createTrack();
-        ++actualChannel;
-        if (actualChannel == 9) ++actualChannel;
-        return track;
+        return sequence.createTrack();
     }
 
     public AmlDrumsTrack addDrumsTrack(int[] metric, AmlTrack parentTrack) {
@@ -102,12 +90,12 @@ public class AmlSequence {
     public Sequence getSequence() throws  AmlRunTimeException {
         Queue<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
+        System.out.print(tracks);
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
             child.setDepth(0);
             queue.add(child);
         }
-        System.out.print(tracks);
         while (!queue.isEmpty()) {
             Node n = queue.remove();
             n.getTrack().addEvents(n.getLocalDepth(), n.getStart(), n.getEnd());

@@ -1,6 +1,7 @@
 package music;
 
 import aml.Aml;
+import data_structures.Interval;
 import exceptions.AmlMusicException;
 import midi.AmlMidiEvent;
 import midi.AmlShortMessage;
@@ -19,45 +20,45 @@ public class AmlTrack {
     private int[] metricArray;
     int metric;
 
-    int channel;
     private int transport;
     AmlFigure lastFigure;
     Track track;
     private AmlInstrument instrument;
     private AmlTone tone;
     ArrayList<AmlMidiEvent> events;
+    private Deque<Interval> intervals;
 
-
-    public AmlTrack(Track track, int channel, AmlTrack parentTrack) {
+    public AmlTrack(Track track, AmlTrack parentTrack) {
         events = new ArrayList<>();
         this.track = track;
         metric = parentTrack.metric;
         metricArray = parentTrack.metricArray;
         tone =  parentTrack.getTone().clone();
-        this.channel = channel;
         instrument = parentTrack.instrument;
         transport = parentTrack.transport;
-        firstTick = currentTick = parentTrack.currentTick;
         lastFigure = new AmlFigure(Negra, 0, false);
+        intervals = new LinkedList<>();
 
+        setCurrentTick(parentTrack.currentTick);
         setInstrument(instrument);
     }
 
-    public AmlTrack(Track track, int tick, int channel, int[] metric, AmlTone tone, int transport, AmlInstrument instrument) {
+    public AmlTrack(Track track, int tick, int[] metric, AmlTone tone, int transport, AmlInstrument instrument) {
         events = new ArrayList<>();
         this.track = track;
         this.metric = codifyMetric(metric);
         metricArray = metric;
-        this.channel = channel;
         this.instrument = instrument;
-        firstTick = currentTick = tick;
         lastFigure = new AmlFigure(Negra, 0, false);
         this.tone = tone;
         this.transport = transport;
+        intervals = new LinkedList<>();
+
+        setCurrentTick(tick);
         setInstrument(instrument);
     }
 
-    public AmlTrack(){}
+    AmlTrack(){}
 
     public static int codifyMetric(int[] metric) {
         return metric[0]*AmlFigure.PPQ*4/metric[1];
@@ -112,7 +113,7 @@ public class AmlTrack {
         if (lastFigure.isTied()) {
             return;
         }
-        for (ShortMessage onMessage : figure.getOnMessages(channel)) {
+        for (ShortMessage onMessage : figure.getOnMessages()) {
             events.add(new AmlMidiEvent(onMessage, currentTick, false, "OnMessage", AmlMidiEvent.Other));
         }
     }
@@ -121,19 +122,8 @@ public class AmlTrack {
         if (figure.isTied()) {
             return;
         }
-        for (ShortMessage offMessage : figure.getOffMessages(channel)) {
+        for (ShortMessage offMessage : figure.getOffMessages()) {
             events.add(new AmlMidiEvent(offMessage, currentTick, true, "OffMessage", AmlMidiEvent.Other));
-        }
-    }
-
-    public void addEvents(int channel) {
-        for (MidiEvent event: events) {
-            try {
-                ((AmlShortMessage)event.getMessage()).setChannel(channel);
-            } catch (InvalidMidiDataException e) {
-                throw new Error(e);
-            }
-            track.add(event);
         }
     }
 
@@ -145,13 +135,14 @@ public class AmlTrack {
 
     public void addEvents(int channel, int start, int end) {
         System.out.println("Adding events in interval " + start + " " + end + " on channel " + channel);
-        /*for (AmlMidiEvent event : lastEvent) {
+        //Interval firstInterval = intervals.getFirst();
+        for (AmlMidiEvent event : lastEvent) {
             if (event != null) {
                 event.setTick(start);
                 System.out.println("Setting initial event " + event);
                 track.add(event);
             }
-        }*/
+        }
         for (AmlMidiEvent event : events) {
             if (isInsideInterval(event, start, end)) {
                 if (event.mustSave()) {
@@ -220,10 +211,6 @@ public class AmlTrack {
         this.transport = transport;
     }
 
-    public int getChannel() {
-        return channel;
-    }
-
     private static MidiEvent dummy = new MidiEvent(null, 0);
 
     public int getClosest(int start) {
@@ -244,5 +231,12 @@ public class AmlTrack {
         int indexFound = Collections.binarySearch(events, dummy, comparator);
         if (indexFound < 0) indexFound = -indexFound;
         return (int)events.get(indexFound).getTick();
+    }
+
+    void newInterval() {
+        Interval lastInterval;
+        if (!intervals.isEmpty()) lastInterval = intervals.getLast();
+        else lastInterval = new Interval(0,0);
+        intervals.add(new Interval(lastInterval.getEnd(), events.size()-1));
     }
 }

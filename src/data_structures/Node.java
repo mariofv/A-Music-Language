@@ -36,7 +36,7 @@ public class Node {
     }
 
     public boolean isCorrect() {
-        return end-start != 0;
+        return end-start > 0;
     }
 
     public boolean intersect(Node node) {

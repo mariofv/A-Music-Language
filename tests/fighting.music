@@ -2,6 +2,10 @@ Fragment sameNote(Note note) {
     N->note N->note N->note N->note
 }
 
+void myFunc() {
+    || Frag->sameNote(La.n); ||
+}
+
 void main() {
     Song {
         Beat 2:4;

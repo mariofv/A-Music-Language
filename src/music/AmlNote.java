@@ -30,7 +30,7 @@ public class AmlNote {
 
     }
 
-    public AmlShortMessage getOffMessage(int channel) {
+    public AmlShortMessage getOffMessage() {
         AmlShortMessage offMessage;
         try {
             offMessage = new AmlShortMessage(ShortMessage.NOTE_OFF, pitch, 100);
@@ -40,7 +40,7 @@ public class AmlNote {
         return offMessage;
     }
 
-    public AmlShortMessage getOnMessage(int channel) {
+    public AmlShortMessage getOnMessage() {
         AmlShortMessage onMessage;
         try {
             onMessage = new AmlShortMessage(ShortMessage.NOTE_ON, pitch, 100);
