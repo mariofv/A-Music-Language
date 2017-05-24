@@ -71,6 +71,23 @@ public class AmlList<E> {
         --size;
     }
 
+    public void addLeft(E data, Iterator iterator) {
+        Node node = iterator.n;
+        assert node != null;
+
+        Node newNode = new Node(data);
+
+        newNode.next = node;
+
+        if (node == first) first = newNode;
+        else {
+            node.previous.next = newNode;
+            newNode.previous = node.previous;
+        }
+
+        node.previous = newNode;
+    }
+
     public int size() {
         return size;
     }

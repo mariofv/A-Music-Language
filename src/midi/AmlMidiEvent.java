@@ -44,4 +44,9 @@ public class AmlMidiEvent extends MidiEvent {
     public String toString() {
         return "MidiEvent info: " + info + ". It is " + (inclusive ? "":"not ") + "inclusive. Tick: " + getTick();
     }
+
+    @Override
+    public AmlMidiEvent clone() {
+        return new AmlMidiEvent((MidiMessage) getMessage().clone(), getTick(), inclusive, info, type);
+    }
 }

@@ -87,8 +87,18 @@ public class AmlSequence {
         return track;
     }
 
+    public void DFS(Node node, int depth) throws AmlRunTimeException {
+        if (depth >= 16) throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
+
+        node.getTrack().addEvents(depth, node.getStart(), node.getEnd());
+        AmlList<Node> children = node.getChildren();
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            DFS(iterator.getElement(), depth == 8 ? depth+2 : depth+1);
+        }
+    }
+
     public Sequence getSequence() throws  AmlRunTimeException {
-        Queue<Node> queue = new LinkedList<>();
+        /*Queue<Node> queue = new LinkedList<>();
         AmlList<Node> children = tracks.getChildren();
         System.out.print(tracks);
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
@@ -108,6 +118,12 @@ public class AmlSequence {
                 }
                 queue.add(child);
             }
+        }*/
+
+        AmlList<Node> children = tracks.getChildren();
+        System.out.print(tracks);
+        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+            DFS(iterator.getElement(), 0);
         }
 
         AmlList<Node> childrenDrums = drumTracks.getChildren();

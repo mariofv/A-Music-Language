@@ -63,10 +63,10 @@ public class Node {
 
     public void addChildren(Node node) {
         LinkedList<Node> childNodes = new LinkedList<>();
-        boolean partitioned = false;
+        boolean addAtEnd = true;
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
-            if (node.start == node.end) return;
+            if (node.start == node.end) throw new Error("Invalid interval " + node.start + " " + node.end);
             if (child.intersect(node)) {
                 if (child.included(node)) {
                     child.addChildren(node);
@@ -77,7 +77,7 @@ public class Node {
                     childNodes.add(child);
                 }
                 else {
-                    partitioned = true;
+                    addAtEnd = false;
                     if (node.end < child.end) {
                         int start = node.track.getClosest(child.start);
                         Node partition = new Node(node.track, start, node.end);
@@ -95,8 +95,13 @@ public class Node {
                     break;
                 }
             }
+            else if (node.end <= child.start) {
+                addAtEnd = false;
+                children.addLeft(node, iterator);
+                break;
+            }
         }
-        if (!partitioned) children.add(node);
+        if (addAtEnd) children.add(node);
         for (Node node1 : childNodes) {
             addChildren(node1);
         }

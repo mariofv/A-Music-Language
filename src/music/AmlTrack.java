@@ -138,15 +138,20 @@ public class AmlTrack {
         //Interval firstInterval = intervals.getFirst();
         for (AmlMidiEvent event : lastEvent) {
             if (event != null) {
+                try {
+                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
+                } catch (InvalidMidiDataException e) {
+                    throw new Error(e);
+                }
                 event.setTick(start);
                 System.out.println("Setting initial event " + event);
-                track.add(event);
+                if (!track.add(event)) throw new Error("Event " + event + " is repeated");
             }
         }
         for (AmlMidiEvent event : events) {
             if (isInsideInterval(event, start, end)) {
                 if (event.mustSave()) {
-                    lastEvent.set(event.getType(), event);
+                    lastEvent.set(event.getType(), event.clone());
                 }
                 try {
                     System.out.println("Setting event " + event);

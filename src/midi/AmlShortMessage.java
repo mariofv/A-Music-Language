@@ -14,4 +14,12 @@ public class AmlShortMessage extends ShortMessage {
         setMessage(getCommand(), channel, getData1(), getData2());
     }
 
+    @Override
+    public AmlShortMessage clone() {
+        try {
+            return new AmlShortMessage(getCommand(), getData1(), getData2());
+        } catch (InvalidMidiDataException e) {
+            throw new Error(e);
+        }
+    }
 }
