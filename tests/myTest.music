@@ -1,0 +1,6 @@
+void main() {
+    Instrument "String Ensemble 1";
+    || La La La La ||
+    Instrument "Trumpet";
+    || Do Do Do Do ||
+}

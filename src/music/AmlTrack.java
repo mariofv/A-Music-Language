@@ -137,10 +137,10 @@ public class AmlTrack {
     }
 
     public void addEvents(int channel, int start, int end) {
+        System.out.println("Adding events in interval " + start + " " + end);
         for (AmlMidiEvent event : events) {
-            //if (event.getTick() == start && !event.isInclusive()) track.add(event);
-
-            if (event.getTick() >= start && event.getTick() < end) {
+            System.out.println("Event is " + (event.isInclusive() ? "inclusive" : "not inclusive"));
+            if (event.getTick() == start && !event.isInclusive()) {
                 try {
                     ((AmlShortMessage) event.getMessage()).setChannel(channel);
                 } catch (InvalidMidiDataException e) {
@@ -149,7 +149,23 @@ public class AmlTrack {
                 track.add(event);
             }
 
-            //if (event.getTick() == end && event.isInclusive()) track.add(event);
+            if (event.getTick() > start && event.getTick() < end) {
+                try {
+                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
+                } catch (InvalidMidiDataException e) {
+                    throw new Error(e);
+                }
+                track.add(event);
+            }
+
+            if (event.getTick() == end && event.isInclusive()) {
+                try {
+                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
+                } catch (InvalidMidiDataException e) {
+                    throw new Error(e);
+                }
+                track.add(event);
+            }
         }
     }
 

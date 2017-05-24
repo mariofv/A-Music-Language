@@ -39,7 +39,7 @@ public class Interpreter {
 
     public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
         AmlTree function = functionMap.get(functionName);
-        AmlTrack copy = sequence.addTrack(stack.getTrack());
+        AmlTrack copy = sequence.addTrack(currentTrack);
         stack.push(function, copy);
         if (arguments != null) {
             ArrayList<Data> localVariables = stack.getLocalVariables();
@@ -271,6 +271,26 @@ public class Interpreter {
                 Int volumeValue = (Int)evaluateExpression(tree.getChild(0));
                 ControlChange.setVolume(currentTrack, volumeValue.getValue());
                 return true;
+            case MusicLexer.TONE:
+                AmlTone tone = createTone(tree);
+                currentTrack.setTone(tone);
+                return true;
+            case MusicLexer.TRANSPORT:
+                Int num = (Int)evaluateExpression(tree.getChild(0));
+                currentTrack.setTransport(num.getValue());
+                return true;
+            case MusicLexer.BEAT:
+                int[] metric = createMetric(tree);
+                currentTrack.setMetric(metric);
+                return true;
+            case MusicLexer.SPEED:
+                int bpm = createBPM(tree);
+                sequence.setSpeed(bpm, currentTrack.getCurrentTick());
+                return true;
+            case MusicLexer.INSTRUMENT:
+                AmlInstrument.Instruments instrument = tree.getChild(0).getInstrumentValue();
+                currentTrack.setInstrument(new AmlInstrument(instrument));
+                return true;
         }
         return false;
     }
@@ -416,17 +436,6 @@ public class Interpreter {
                 }
                 executeFragment(tree.getText(), fragmentArguments, compas);
                 break;
-            case MusicLexer.TONE:
-                compas.changeTrackTone(createTone(tree));
-                break;
-            case MusicLexer.TRANSPORT:
-                Int num = (Int)evaluateExpression(tree.getChild(0));
-                compas.transportTrack(num.getValue());
-                break;
-            case MusicLexer.BEAT:
-                int[] metric = createMetric(tree);
-                compas.changeTrackBeat(metric);
-                break;
             case MusicLexer.IF: {
                 Data returnData = null;
                 if (evaluateBooleanExpression(tree.getChild(0))) {
@@ -506,10 +515,6 @@ public class Interpreter {
                     exception.setLine(tree.getLine());
                     throw exception;
                 }
-                break;
-            case MusicLexer.SPEED:
-                int bpm = createBPM(tree);
-                sequence.setSpeed(bpm, compas.getTrack().getCurrentTick());
                 break;
         }
         return null;
