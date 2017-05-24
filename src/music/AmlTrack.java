@@ -127,7 +127,29 @@ public class AmlTrack {
         }
     }
 
-    private ArrayList<AmlMidiEvent> lastEvent = new ArrayList<>(Collections.nCopies(AmlMidiEvent.mustSaveTypes, null));
+    private ArrayList<AmlMidiEvent> lastEvent = createDefault();
+
+    private ArrayList<AmlMidiEvent> createDefault() {
+        ArrayList<AmlMidiEvent> defaultValues = new ArrayList<>(AmlMidiEvent.mustSaveTypes);
+
+        for (int i = 0; i < AmlMidiEvent.mustSaveTypes; ++i) {
+            switch (i) {
+                case AmlMidiEvent.Instrument:
+                    defaultValues.add(new AmlMidiEvent(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage(), 0, false, i));
+                    break;
+                case AmlMidiEvent.Volume:
+                    try {
+                        defaultValues.add(new AmlMidiEvent(new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100), 0, false, i));
+                    } catch (InvalidMidiDataException e) {
+                        throw new Error(e);
+                    }
+                    break;
+                default:
+                    throw new Error("This should never happen");
+            }
+        }
+        return defaultValues;
+    }
 
     private static boolean isInsideInterval(AmlMidiEvent event, int start, int end) {
         return (event.getTick() == start && !event.isInclusive()) || (event.getTick() > start && event.getTick() < end) || (event.getTick() == end && event.isInclusive());
@@ -145,7 +167,7 @@ public class AmlTrack {
                 }
                 event.setTick(start);
                 System.out.println("Setting initial event " + event);
-                if (!track.add(event)) throw new Error("Event " + event + " is repeated");
+                track.add(event.clone());
             }
         }
         for (AmlMidiEvent event : events) {

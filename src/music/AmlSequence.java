@@ -87,7 +87,7 @@ public class AmlSequence {
         return track;
     }
 
-    public void DFS(Node node, int depth) throws AmlRunTimeException {
+    private void DFS(Node node, int depth) throws AmlRunTimeException {
         if (depth >= 16) throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
 
         node.getTrack().addEvents(depth, node.getStart(), node.getEnd());

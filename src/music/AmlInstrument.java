@@ -6,6 +6,8 @@ import javax.sound.midi.*;
 
 public class AmlInstrument {
 
+    public static final Instruments defaultInstrument = Instruments.Acoustic_Grand_Piano;
+
     public enum Instruments {
         // Piano Family
         Acoustic_Grand_Piano,
