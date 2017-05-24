@@ -78,8 +78,8 @@ public class AmlSequence {
         return new AmlTrack(referenceTrack,0,  0, new int[]{4,4}, new AmlTone(0), 0, new AmlInstrument(Acoustic_Grand_Piano));
     }
 
-    public AmlTrack addTrack(AmlInstrument instrument, int[] metric, AmlTone tone, int transport, AmlTrack parentTrack) {
-        return new AmlTrack(createTrack(), parentTrack.getCurrentTick(), actualChannel, metric, tone, transport, instrument);
+    public AmlTrack addTrack(AmlInstrument instrument, int[] metric, AmlTone tone, int transport, int tick) {
+        return new AmlTrack(createTrack(), tick, actualChannel, metric, tone, transport, instrument);
     }
 
     public AmlTrack addTrack(AmlTrack parentTrack) {

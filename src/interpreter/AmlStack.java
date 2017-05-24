@@ -11,21 +11,16 @@ import java.util.Stack;
 public class AmlStack {
     private class StackData {
         ArrayList<Data> localVariables;
-        AmlTrack localTrack;
     }
 
     private Stack<StackData> stack;
 
-    public AmlStack(AmlTrack initialTrack) {
+    public AmlStack() {
         stack = new Stack<>();
-        StackData firstData = new StackData();
-        firstData.localTrack = initialTrack;
-        stack.push(firstData);
     }
 
     public void push(AmlTree function, AmlTrack track) {
         StackData data = new StackData();
-        data.localTrack = track;
         data.localVariables = new ArrayList<Data>(Collections.nCopies(function.getNumVariables(), Void.getInstance()));
         stack.push(data);
     }
@@ -37,6 +32,4 @@ public class AmlStack {
     public ArrayList<Data> getLocalVariables() {
         return stack.peek().localVariables;
     }
-
-    public AmlTrack getTrack() { return stack.firstElement().localTrack; }
 }

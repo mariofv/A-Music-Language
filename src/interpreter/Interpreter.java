@@ -22,7 +22,6 @@ public class Interpreter {
     private AmlStack stack;
     private AmlSequence sequence;
     private AmlTrack currentTrack;
-    private AmlCompas currentCompas;
 
     public AmlSequence getSequence() {
         return sequence;
@@ -32,42 +31,15 @@ public class Interpreter {
         sequence = new AmlSequence(120);
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
-        stack = new AmlStack(sequence.addFirstTrack());
-        currentTrack = stack.getTrack();
+        stack = new AmlStack();
+        currentTrack = sequence.addFirstTrack();
         currentIteration = 1;
-        currentCompas = null;
     }
-
-    /*public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
-        AmlTree function = functionMap.get(functionName);
-        AmlTrack copy = sequence.addTrack(currentTrack);
-        stack.push(function, copy);
-        if (arguments != null) {
-            ArrayList<Data> localVariables = stack.getLocalVariables();
-            int i = 0;
-            for (Data argument : arguments) {
-                localVariables.set(i, argument.clone());
-                ++i;
-            }
-        }
-        System.out.println("Function call reached, i'm in " + currentTrack.getFirstTick() + ", " + currentTrack.getCurrentTick());
-        AmlTrack lastTrack = currentTrack;
-        currentTrack = stack.getTrack();
-
-        sequence.saveTrack(lastTrack);
-        Data ret = executeListInstruction(function.getChild(2));
-        sequence.saveTrack(currentTrack);
-        System.out.println("Function finished, setting tick to " + currentTrack.getCurrentTick());
-        lastTrack.setCurrentTick(currentTrack.getCurrentTick());
-        currentTrack = lastTrack;
-        stack.pop();
-        return ret;
-    }*/
 
     public Data executeFunction(String functionName, ArrayList<Data> arguments) throws AmlRunTimeException {
         AmlTree function = functionMap.get(functionName);
-        AmlTrack copy = sequence.addTrack(currentTrack);
-        stack.push(function, copy);
+        AmlTrack newTrack = sequence.addTrack(currentTrack);
+        stack.push(function, newTrack);
         if (arguments != null) {
             ArrayList<Data> localVariables = stack.getLocalVariables();
             int i = 0;
@@ -76,20 +48,15 @@ public class Interpreter {
                 ++i;
             }
         }
-        AmlCompas lastCompas = currentCompas;
-        int currentTrackTick = currentTrack.getCurrentTick()+(currentCompas != null ? currentCompas.getCurrentTicks() : 0);
-        System.out.println("Function call reached, i'm in " + currentTrack.getFirstTick() + ", " + currentTrackTick);
         AmlTrack lastTrack = currentTrack;
-        currentTrack = stack.getTrack();
-        currentCompas = null;
+        currentTrack = newTrack;
 
         sequence.saveTrack(lastTrack);
         Data ret = executeListInstruction(function.getChild(2));
         sequence.saveTrack(currentTrack);
-        System.out.println("Function finished, setting tick to " + currentTrack.getCurrentTick());
-        lastTrack.setCurrentTick(currentTrack.getCurrentTick());
+
         currentTrack = lastTrack;
-        currentCompas = lastCompas;
+        currentTrack.setCurrentTick(newTrack.getCurrentTick());
         stack.pop();
         return ret;
     }
@@ -105,7 +72,7 @@ public class Interpreter {
                 ++i;
             }
         }
-        Data ret = executeListMusicInstruction(fragment.getChild(2), compas);
+        executeListMusicInstruction(fragment.getChild(2), compas);
         stack.pop();
     }
 
@@ -137,6 +104,10 @@ public class Interpreter {
                 break;
             case MusicLexer.SONG:
                 createSong(tree);
+                break;
+            case MusicLexer.TONE:
+                AmlTone tone = createTone(tree);
+                currentTrack.setTone(tone);
                 break;
             case MusicLexer.WHILE:
                 while(evaluateBooleanExpression(tree.getChild(0))) {
@@ -178,7 +149,7 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.COMPAS_LIST:
-                addCompasList(tree, stack.getTrack());
+                addCompasList(tree, currentTrack);
                 break;
             default:
 
@@ -306,10 +277,6 @@ public class Interpreter {
             case MusicLexer.VOLUME:
                 Int volumeValue = (Int)evaluateExpression(tree.getChild(0));
                 ControlChange.setVolume(currentTrack, volumeValue.getValue());
-                return true;
-            case MusicLexer.TONE:
-                AmlTone tone = createTone(tree);
-                currentTrack.setTone(tone);
                 return true;
             case MusicLexer.TRANSPORT:
                 Int num = (Int)evaluateExpression(tree.getChild(0));
@@ -552,12 +519,16 @@ public class Interpreter {
                     throw exception;
                 }
                 break;
+            case MusicLexer.TONE:
+                AmlTone tone = createTone(tree);
+                compas.changeTrackTone(tone);
+                break;
         }
         return null;
     }
 
     private void createSong(AmlTree tree) throws AmlRunTimeException {
-        AmlTrack mainTrack =  stack.getTrack();
+        AmlTrack mainTrack =  currentTrack;
         int[] metric = mainTrack.getMetricArray();
         int bpm = -1;
         int transport = 0;
@@ -585,9 +556,9 @@ public class Interpreter {
         }
 
         if (bpm != -1) {
-            sequence.setSpeed(bpm, stack.getTrack().getCurrentTick());
+            sequence.setSpeed(bpm, currentTrack.getCurrentTick());
         }
-        int lastTick = 0;
+        int lastTick = currentTrack.getCurrentTick();
         sequence.saveTrack(currentTrack);
         for(i = i-1; i < tree.getChildCount(); ++i) {
             if (tree.getChild(i).getType() == MusicLexer.TRACK) {
@@ -609,11 +580,11 @@ public class Interpreter {
             listOfCompas = child.getChild(1);
         }
         else {
-            instrument = stack.getTrack().getInstrument();
+            instrument = currentTrack.getInstrument();
             listOfCompas = child.getChild(0);
         }
 
-        AmlTrack track = sequence.addTrack(instrument, metric, tone, transport, stack.getTrack());
+        AmlTrack track = sequence.addTrack(instrument, metric, tone, transport, currentTrack.getCurrentTick());
         AmlTrack lastTrack = currentTrack;
         currentTrack = track;
         addCompasList(listOfCompas, track);
@@ -623,15 +594,14 @@ public class Interpreter {
     }
 
     private int createDrumsTrack(AmlTree tree, int[] metric) throws AmlRunTimeException {
-        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, stack.getTrack());
+        AmlTree listOfCompas = tree.getChild(0);
+        AmlDrumsTrack drumsTrack = sequence.addDrumsTrack(metric, currentTrack);
         AmlTrack lastTrack = currentTrack;
         currentTrack = drumsTrack;
-        AmlTree listOfCompas = tree.getChild(0);
         addCompasList(listOfCompas, drumsTrack);
         sequence.saveDrumsTrack(drumsTrack);
         currentTrack = lastTrack;
         return drumsTrack.getCurrentTick();
-
     }
 
     private AmlTone createTone(AmlTree tree) throws AmlRunTimeException {
@@ -667,7 +637,8 @@ public class Interpreter {
         for(AmlTree child : listOfCompas.getArrayChildren()) {
             switch (child.getType()) {
                 case MusicLexer.COMPAS:
-                    track.addCompas(createCompas(child, track));
+                    //track.addCompas(createCompas(child, track));
+                    createCompas(child, track);
                     break;
                 case MusicLexer.REPETITION:
                     repeat(child, track);
@@ -695,9 +666,7 @@ public class Interpreter {
     }
 
     private AmlCompas createCompas(AmlTree tree, AmlTrack track) throws AmlRunTimeException {
-        AmlCompas lastCompas = currentCompas;
         AmlCompas compas = new AmlCompas(track);
-        currentCompas = compas;
         for(AmlTree child : tree.getArrayChildren()) {
             executeMusicInstruction(child, compas);
         }
@@ -708,7 +677,6 @@ public class Interpreter {
             exception.setLine(tree.getLine());
             throw exception;
         }
-        currentCompas = lastCompas;
         return compas;
     }
 

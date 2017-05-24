@@ -32,6 +32,7 @@ public class Node {
         this.track = track;
         this.start = start;
         this.end = end;
+        children = new AmlList<>();
     }
 
     public boolean isCorrect() {

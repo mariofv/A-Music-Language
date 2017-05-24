@@ -14,7 +14,7 @@ public abstract class ControlChange {
     public static void setVolume(AmlTrack track,  int volume) throws AmlMusicException {
         try {
             AmlShortMessage message = new AmlShortMessage(ShortMessage.CONTROL_CHANGE,  7, volume);
-            track.addEvent(new AmlMidiEvent(message, track.getCurrentTick(), false));
+            track.addEvent(new AmlMidiEvent(message, track.getCurrentTick(), false, "Volume"));
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }

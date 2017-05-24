@@ -131,6 +131,12 @@ public class Aml {
                 SemanticAnalyzer analyzer = new SemanticAnalyzer(interpreter);
                 analyzer.analyze(t);
                 interpreter.executeFunction("main", null);
+                File f = new File("midifile.mid");
+                try {
+                    MidiSystem.write(interpreter.getSequence().getSequence(),1,f);
+                } catch (IOException e) {
+                    throw new AmlException(e.getMessage());
+                }
             }
             catch (AmlSemanticException error) {
                 System.err.println("Error found during semantic analysis, line " + error.getLine() + ":");
@@ -150,12 +156,6 @@ public class Aml {
                 System.err.println(exception.getMessage());
                 System.err.println();
                 exception.printStackTrace();
-            }
-            File f = new File("midifile.mid");
-            try {
-                MidiSystem.write(interpreter.getSequence().getSequence(),1,f);
-            } catch (IOException e) {
-                throw new AmlException(e.getMessage());
             }
         }
     }

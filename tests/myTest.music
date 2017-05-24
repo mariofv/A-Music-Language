@@ -6,6 +6,6 @@ void myFunc() {
 void main() {
     Song {
         Track "String Ensemble 1" || La La myFunc(); La La ||
-        //Track "Trombone" || Do Do Do Do | Do Do Do Do ||
+        Track "Trombone" || Re-5.n Re-5.n* Re-5.n Re-5.c | Re-5.n Re-5 Re-5 Re-5 ||
     }
 }
