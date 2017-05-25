@@ -29,12 +29,12 @@ public class AmlSequence {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
     }
 
-    public void saveTrack(AmlTrack track) {
+    public void saveTrack(AmlTrack track) throws AmlRunTimeException {
         Node n = new  Node(track);
         IntervalTrack i = new IntervalTrack(track);
         if (n.isCorrect()) {
             track.newInterval();
-            tracks.addChildren(n);
+//            tracks.addChildren(n);
             channelManager.addTrack(0, i);
         }
     }
@@ -42,12 +42,12 @@ public class AmlSequence {
     public void saveDrumsTrack(AmlDrumsTrack track) {
         Node n = new  Node(track);
         if (n.isCorrect()) {
-            drumTracks.addChildren(n);
+           // drumTracks.addChildren(n);
         }
     }
 
     public AmlSequence(int bpm) {
-        channelManager = new ChannelManager();
+        channelManager = new ChannelManager(16);
         tracks = new Node();
         drumTracks = new Node();
         this.bpm = bpm;
@@ -124,22 +124,24 @@ public class AmlSequence {
                 }
                 queue.add(child);
             }
-        }*/
+        }
 
         AmlList<Node> children = tracks.getChildren();
         System.out.print(tracks);
         for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
             DFS(iterator.getElement(), 0);
-        }
+        }*/
+        System.out.println(channelManager);
+        channelManager.dispatchEvents();
 
-        AmlList<Node> childrenDrums = drumTracks.getChildren();
+        /*AmlList<Node> childrenDrums = drumTracks.getChildren();
         for (AmlList<Node>.Iterator iterator = childrenDrums.getFirst(); !iterator.end(); iterator.next()) {
             Node child = iterator.getElement();
             child.getTrack().addEvents(9, child.getStart(), child.getEnd());
             if (child.getChildren().size() != 0) {
                 throw new AmlRunTimeException("The recursion level of drum tracks is too damn high!");
             }
-        }
+        }*/
 
         return sequence;
     }

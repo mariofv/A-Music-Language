@@ -8,10 +8,16 @@ public class IntervalTrack {
     int end;
 
     private AmlTrack track;
+    private int channel;
 
     public IntervalTrack(AmlTrack track) {
         start = track.getFirstTick();
         end = track.getCurrentTick();
+        this.track = track;
+    }
+
+    public void setChannel(int channel) {
+        this.channel = channel;
     }
 
     public boolean isCorrect() {
@@ -30,4 +36,12 @@ public class IntervalTrack {
         return track;
     }
 
+    public void dispatchTrackEvents() {
+        track.addEvents(channel, start, end);
+    }
+
+    @Override
+    public String toString() {
+        return channel +"[" + start + "," + end + "]";
+    }
 }
