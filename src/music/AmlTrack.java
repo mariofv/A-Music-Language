@@ -27,6 +27,19 @@ public class AmlTrack {
     ArrayList<AmlMidiEvent> events;
     //private ArrayList<Interval> intervals;
 
+    private void setDefaultMessages() {
+        try {
+            if (channelInstrument == null) {
+                channelInstrument = new ArrayList<>(16);
+                for (int i = 0; i < 16; ++i) channelInstrument.add(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage());
+                channelVolume = new ArrayList<>(Collections.nCopies(16, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
+            }
+            lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
+        } catch (InvalidMidiDataException e) {
+            throw new Error();
+        }
+    }
+
     public AmlTrack(Track track, AmlTrack parentTrack) {
         events = new ArrayList<>();
         this.track = track;
@@ -40,16 +53,7 @@ public class AmlTrack {
 
         setCurrentTick(parentTrack.currentTick);
         setInstrument(instrument);
-        try {
-            if (channelInstrument == null) {
-                channelInstrument = new ArrayList<>(16);
-                for (int i = 0; i < 16; ++i) channelInstrument.add(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage());
-                channelVolume = new ArrayList<>(Collections.nCopies(16, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
-            }
-            lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
-        } catch (InvalidMidiDataException e) {
-            throw new Error();
-        }
+        setDefaultMessages();
     }
 
     public AmlTrack(Track track, int tick, int[] metric, AmlTone tone, int transport, AmlInstrument instrument) {
@@ -65,29 +69,11 @@ public class AmlTrack {
 
         setCurrentTick(tick);
         setInstrument(instrument);
-        try {
-            if (channelInstrument == null) {
-                channelInstrument = new ArrayList<>(16);
-                for (int i = 0; i < 16; ++i) channelInstrument.add(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage());
-                channelVolume = new ArrayList<>(Collections.nCopies(16, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
-            }
-            lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
-        } catch (InvalidMidiDataException e) {
-            throw new Error();
-        }
+        setDefaultMessages();
     }
 
     AmlTrack() {
-        try {
-            if (channelInstrument == null) {
-                channelInstrument = new ArrayList<>(16);
-                for (int i = 0; i < 16; ++i) channelInstrument.add(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage());
-                channelVolume = new ArrayList<>(Collections.nCopies(16, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
-            }
-            lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
-        } catch (InvalidMidiDataException e) {
-            throw new Error();
-        }
+        setDefaultMessages();
     }
 
     public static int codifyMetric(int[] metric) {

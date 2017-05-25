@@ -2,6 +2,8 @@ package music;
 
 
 import data_structures.AmlList;
+import data_structures.ChannelManager;
+import data_structures.IntervalTrack;
 import data_structures.Node;
 import exceptions.AmlRunTimeException;
 
@@ -20,6 +22,7 @@ public class AmlSequence {
     private int bpm;
     private Node tracks;
     private Node drumTracks;
+    private ChannelManager channelManager;
 
 
     public static byte[] intToByteArray(int number) {
@@ -28,9 +31,11 @@ public class AmlSequence {
 
     public void saveTrack(AmlTrack track) {
         Node n = new  Node(track);
+        IntervalTrack i = new IntervalTrack(track);
         if (n.isCorrect()) {
             track.newInterval();
             tracks.addChildren(n);
+            channelManager.addTrack(0, i);
         }
     }
 
@@ -42,6 +47,7 @@ public class AmlSequence {
     }
 
     public AmlSequence(int bpm) {
+        channelManager = new ChannelManager();
         tracks = new Node();
         drumTracks = new Node();
         this.bpm = bpm;
