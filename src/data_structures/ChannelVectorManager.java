@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class ChannelVectorManager implements ChannelManager{
+public class ChannelVectorManager extends ChannelManager {
 
     private ArrayList<LinkedList<IntervalTrack>> channels;
     private AmlList<IntervalTrack> tracks;
 
     public ChannelVectorManager(int numChannels) {
+        super(numChannels);
         channels = new ArrayList<>(numChannels);
         for (int i = 0; i < numChannels; ++i) channels.add(new LinkedList<>());
         tracks = new AmlList<>();
@@ -40,7 +41,8 @@ public class ChannelVectorManager implements ChannelManager{
     }
 
     private void addTrack(int channel, IntervalTrack node) throws AmlRunTimeException {
-        if (channel > channels.size()) throw new AmlRunTimeException("Channel usage limit reached");
+        if (channel >= maxChannels) throw new AmlRunTimeException("Channel usage limit reached");
+
         ListIterator<IntervalTrack> iterator = channels.get(channel).listIterator();
         while(iterator.hasNext()) {
             IntervalTrack child = iterator.next();

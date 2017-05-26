@@ -3,22 +3,18 @@ package data_structures;
 import exceptions.AmlRunTimeException;
 import music.AmlTrack;
 
-import java.util.ArrayList;
-//TODO:  VECTOR 16(channels) WITH INTERVALS, IF SOLAPED PONES SI No NO
-
-public class ChannelGraphManager implements ChannelManager {
+public class ChannelGraphManager extends ChannelManager {
     private Node root;
-    private int maxDepth;
 
-    public ChannelGraphManager(int maxDepth) {
+    public ChannelGraphManager(int maxChannels) {
+        super(maxChannels);
         root = new Node();
-        this.maxDepth = maxDepth;
     }
 
     @Override
     public void addTrack(IntervalTrack track) throws AmlRunTimeException {
         Node node = new Node(track.getTrack(), track.start, track.end);
-        root.addChildren(node, -1, maxDepth);
+        root.addChildren(node, 0, maxChannels);
     }
 
     private void DFS(Node node, int depth) {
