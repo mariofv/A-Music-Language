@@ -22,12 +22,13 @@ public class ChannelManager {
         System.out.println("I want to insert " + node + " into");
         System.out.println(toString());
         AmlList<IntervalTrack>.AmlIterator tracksIterator = tracks.listIterator();
-        for (; !tracksIterator.isLast(); tracksIterator.next()) {
+        while (!tracksIterator.isLast()) {
             IntervalTrack interval = tracksIterator.getElement();
             if (node.start <= interval.start) {
                 System.out.println("Stopped at " + interval + " because " + node.start + "<=" + interval.start);
                 break;
             }
+            tracksIterator.next();
         }
         tracksIterator.addLeft(node);
         System.out.println("Result:");

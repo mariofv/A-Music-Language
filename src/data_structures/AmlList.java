@@ -1,6 +1,5 @@
 package data_structures;
 
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
@@ -9,9 +8,7 @@ public class AmlList<E> implements Iterable<E> {
 
     @Override
     public java.util.Iterator<E> iterator() {
-        ListData node = new ListData(null);
-        node.next = first;
-        return new AmlIterator(node);
+        return new AmlIterator(first);
     }
 
     @Override
@@ -121,19 +118,20 @@ public class AmlList<E> implements Iterable<E> {
 
         private ListData node;
 
-        public AmlIterator(ListData node) {
+        private AmlIterator(ListData node) {
             this.node = node;
         }
 
         @Override
         public boolean hasNext() {
-            return node.next != last;
+            return node != last;
         }
 
         @Override
         public E next() {
+            E element = node.element;
             node = node.next;
-            return node.element;
+            return element;
         }
 
         @Override
@@ -181,6 +179,7 @@ public class AmlList<E> implements Iterable<E> {
         }
 
         public void addLeft(E e) {
+            System.out.println("Inserting in " + node.element);
             ListData newNode = new ListData(e);
             System.out.println("Adding at the left");
             newNode.next = node;
