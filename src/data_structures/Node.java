@@ -14,7 +14,6 @@ public class Node {
 
     private AmlTrack track;
 
-    private int depth;
     //private LinkedList<Node> children;
     private AmlList<Node> children;
 
@@ -56,13 +55,11 @@ public class Node {
         return track;
     }
 
-    public void setDepth(int depth) {
-        this.depth = depth;
-    }
-
     public  AmlList<Node> getChildren(){ return children;}
 
-    public void addChildren(Node node) {
+    public void addChildren(Node node, int depth, int maxDepth) throws AmlRunTimeException {
+        if (depth > maxDepth) throw new AmlRunTimeException("Channel usage limit reached");
+
         LinkedList<Node> childNodes = new LinkedList<>();
         boolean addAtEnd = true;
         AmlList<Node>.AmlIterator iterator = children.listIterator();
@@ -71,7 +68,7 @@ public class Node {
             if (node.start == node.end) throw new Error("Invalid interval " + node.start + " " + node.end);
             if (child.intersect(node)) {
                 if (child.included(node)) {
-                    child.addChildren(node);
+                    child.addChildren(node, depth+1, maxDepth);
                     return;
                 }
                 else if (node.included(child)) {
@@ -84,16 +81,16 @@ public class Node {
                     if (node.end < child.end) {
                         int start = node.track.getClosest(child.start);
                         Node partition = new Node(node.track, start, node.end);
-                        child.addChildren(partition);
+                        child.addChildren(partition, depth+1, maxDepth);
                         Node rest = new Node(node.track, node.start, start);
-                        addChildren(rest);
+                        addChildren(rest, depth, maxDepth);
                     }
                     else {
                         int end = node.track.getNextClosest(child.end);
                         Node partition = new Node(node.track, node.start, end);
-                        child.addChildren(partition);
+                        child.addChildren(partition, depth+1, maxDepth);
                         Node rest = new Node(node.track, end, node.end);
-                        addChildren(rest);
+                        addChildren(rest, depth, maxDepth);
                     }
                     break;
                 }
@@ -107,7 +104,7 @@ public class Node {
         }
         if (addAtEnd) children.add(node);
         for (Node node1 : childNodes) {
-            addChildren(node1);
+            addChildren(node1, depth, maxDepth);
         }
     }
 
@@ -152,10 +149,6 @@ public class Node {
             maxDepth = Math.max(node.getDepth(), maxDepth);
         }
         return maxDepth+1;
-    }
-
-    public int getLocalDepth() {
-        return depth;
     }
 
     @Override
