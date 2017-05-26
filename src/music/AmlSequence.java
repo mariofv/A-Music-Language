@@ -20,36 +20,32 @@ public class AmlSequence {
     private Sequence sequence;
     private Track referenceTrack;
     private int bpm;
-    private Node tracks;
-    private Node drumTracks;
     private ChannelManager channelManager;
-
+    private ChannelManager drumChannelManager;
 
     public static byte[] intToByteArray(int number) {
         return new byte[]{(byte)(number >>> 16), (byte)(number >>> 8), (byte)number};
     }
 
     public void saveTrack(AmlTrack track) throws AmlRunTimeException {
-        Node n = new  Node(track);
-        IntervalTrack i = new IntervalTrack(track);
-        if (n.isCorrect()) {
+        IntervalTrack interval = new IntervalTrack(track);
+        if (interval.isCorrect()) {
             track.newInterval();
-//            tracks.addChildren(n);
-            channelManager.addTrack(0, i);
+            channelManager.addTrack(interval);
         }
     }
 
-    public void saveDrumsTrack(AmlDrumsTrack track) {
-        Node n = new  Node(track);
-        if (n.isCorrect()) {
-           // drumTracks.addChildren(n);
+    public void saveDrumsTrack(AmlDrumsTrack track) throws AmlRunTimeException {
+        IntervalTrack interval = new IntervalTrack(track);
+        if (interval.isCorrect()) {
+            track.newInterval();
+            drumChannelManager.addTrack(interval);
         }
     }
 
     public AmlSequence(int bpm) {
-        channelManager = new ChannelManager(16);
-        tracks = new Node();
-        drumTracks = new Node();
+        channelManager = new ChannelManager(15);
+        drumChannelManager = new ChannelManager(1);
         this.bpm = bpm;
         try {
             sequence = new Sequence(Sequence.PPQ, AmlFigure.PPQ);
@@ -61,10 +57,10 @@ public class AmlSequence {
     public void setSpeed(int bpm, int tick) {
         this.bpm = bpm;
         MetaMessage tempo;
-        try {
             byte[] number = intToByteArray(60000000 / bpm);
+        try {
             tempo = new MetaMessage(0x51, number, 3);
-        } catch (Exception e) {
+        } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }
         referenceTrack.add(new MidiEvent(tempo, tick));
@@ -93,55 +89,11 @@ public class AmlSequence {
         return track;
     }
 
-    private void DFS(Node node, int depth) throws AmlRunTimeException {
-        if (depth >= 16) throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
-
-        node.getTrack().addEvents(depth, node.getStart(), node.getEnd());
-        AmlList<Node> children = node.getChildren();
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            DFS(iterator.getElement(), depth == 8 ? depth+2 : depth+1);
-        }
-    }
-
     public Sequence getSequence() throws  AmlRunTimeException {
-        /*Queue<Node> queue = new LinkedList<>();
-        AmlList<Node> children = tracks.getChildren();
-        System.out.print(tracks);
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            Node child = iterator.getElement();
-            child.setDepth(0);
-            queue.add(child);
-        }
-        while (!queue.isEmpty()) {
-            Node n = queue.remove();
-            n.getTrack().addEvents(n.getLocalDepth(), n.getStart(), n.getEnd());
-            children = n.getChildren();
-            for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-                Node child = iterator.getElement();
-                child.setDepth( n.getLocalDepth() == 8 ? n.getLocalDepth() + 2 : n.getLocalDepth()+1);
-                if (child.getLocalDepth() >= 16) {
-                    throw new AmlRunTimeException("The recursion level of tracks is too damn high!");
-                }
-                queue.add(child);
-            }
-        }
-
-        AmlList<Node> children = tracks.getChildren();
-        System.out.print(tracks);
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            DFS(iterator.getElement(), 0);
-        }*/
         System.out.println(channelManager);
+        System.out.println(drumChannelManager);
         channelManager.dispatchEvents();
-
-        /*AmlList<Node> childrenDrums = drumTracks.getChildren();
-        for (AmlList<Node>.Iterator iterator = childrenDrums.getFirst(); !iterator.end(); iterator.next()) {
-            Node child = iterator.getElement();
-            child.getTrack().addEvents(9, child.getStart(), child.getEnd());
-            if (child.getChildren().size() != 0) {
-                throw new AmlRunTimeException("The recursion level of drum tracks is too damn high!");
-            }
-        }*/
+        drumChannelManager.dispatchEvents();
 
         return sequence;
     }

@@ -14,7 +14,7 @@ import static music.AmlFigure.Figure.*;
 public class AmlTrack {
 
     private int firstTick;
-    int currentTick;
+    private int currentTick;
 
     private int[] metricArray;
     int metric;
@@ -30,9 +30,8 @@ public class AmlTrack {
     private void setDefaultMessages() {
         try {
             if (channelInstrument == null) {
-                channelInstrument = new ArrayList<>(16);
-                for (int i = 0; i < 16; ++i) channelInstrument.add(new AmlInstrument(AmlInstrument.defaultInstrument).getMessage());
-                channelVolume = new ArrayList<>(Collections.nCopies(16, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
+                channelInstrument = new ArrayList<>(Collections.nCopies(15, new AmlInstrument(AmlInstrument.defaultInstrument).getMessage()));
+                channelVolume = new ArrayList<>(Collections.nCopies(15, new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100)));
             }
             lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
         } catch (InvalidMidiDataException e) {
@@ -138,17 +137,21 @@ public class AmlTrack {
     }
 
     private AmlShortMessage lastInstrument = new AmlInstrument(AmlInstrument.defaultInstrument).getMessage();
-    private AmlShortMessage lastVolume;
+    AmlShortMessage lastVolume;
 
     private static ArrayList<AmlShortMessage> channelInstrument;
-    private static ArrayList<AmlShortMessage> channelVolume;
+    static ArrayList<AmlShortMessage> channelVolume;
 
-    private static boolean isInsideInterval(AmlMidiEvent event, int start, int end) {
+    static boolean isInsideInterval(AmlMidiEvent event, int start, int end) {
         return (event.getTick() == start && !event.isInclusive()) || (event.getTick() > start && event.getTick() < end) || (event.getTick() == end && event.isInclusive());
     }
 
+    int mapChannel(int channel) {
+        return channel >= 9 ? channel+1 : channel;
+    }
+
     public void addEvents(int channel, int start, int end) {
-        System.out.println("Adding events in interval " + start + " " + end + " on channel " + channel);
+        System.out.println("Adding events in interval " + start + " " + end + " on channel " + mapChannel(channel));
 
         check(channel, start, lastInstrument, channelInstrument);
         check(channel, start, lastVolume, channelVolume);
@@ -165,7 +168,7 @@ public class AmlTrack {
                 }
                 try {
                     System.out.println("Setting event " + event);
-                    ((AmlShortMessage) event.getMessage()).setChannel(channel);
+                    ((AmlShortMessage) event.getMessage()).setChannel(mapChannel(channel));
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);
                 }
@@ -174,13 +177,14 @@ public class AmlTrack {
         }
     }
 
-    private void check(int channel, int start, AmlShortMessage lastMessage, ArrayList<AmlShortMessage> channelMessage) {
+    void check(int channel, int start, AmlShortMessage lastMessage, ArrayList<AmlShortMessage> channelMessage) {
         if (lastMessage.equals(channelMessage.get(channel))) return;
-        channelMessage.set(channel, lastMessage.clone());
+        channelMessage.set(channel, lastMessage);
+
         System.out.println("Setting initial event");
         AmlShortMessage message = lastMessage.clone();
         try {
-            message.setChannel(channel);
+            message.setChannel(mapChannel(channel));
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
         }

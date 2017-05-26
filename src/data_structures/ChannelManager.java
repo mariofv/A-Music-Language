@@ -14,12 +14,8 @@ public class ChannelManager {
 
     public ChannelManager(int numChannels) {
         channels = new ArrayList<>(numChannels);
-        for (int i = 0; i < 16; ++i) channels.add(new LinkedList<>());
+        for (int i = 0; i < numChannels; ++i) channels.add(new LinkedList<>());
         tracks = new AmlList<>();
-    }
-
-    private static int nextChannel(int channel) {
-        return channel == 8 ? channel+2 : channel+1;
     }
 
     private void insertTrack(IntervalTrack node) {
@@ -39,13 +35,17 @@ public class ChannelManager {
         System.out.println("-------------------------------------------");
     }
 
-    public void addTrack(int channel, IntervalTrack node) throws AmlRunTimeException {
+    public void addTrack(IntervalTrack node) throws AmlRunTimeException {
+        addTrack(0, node);
+    }
+
+    private void addTrack(int channel, IntervalTrack node) throws AmlRunTimeException {
         if (channel > channels.size()) throw new AmlRunTimeException("Channel usage limit reached");
         ListIterator<IntervalTrack> iterator = channels.get(channel).listIterator();
         while(iterator.hasNext()) {
             IntervalTrack child = iterator.next();
             if (child.intersect(node)) {
-                addTrack(nextChannel(channel), node);
+                addTrack(channel+1, node);
                 return;
             }
             else if (node.end <= child.start) {
