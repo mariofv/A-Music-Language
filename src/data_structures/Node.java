@@ -64,7 +64,8 @@ public class Node {
     public void addChildren(Node node) {
         LinkedList<Node> childNodes = new LinkedList<>();
         boolean addAtEnd = true;
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
+        AmlList<Node>.AmlIterator iterator = children.listIterator();
+        while (!iterator.isEnd()) {
             Node child = iterator.getElement();
             if (node.start == node.end) throw new Error("Invalid interval " + node.start + " " + node.end);
             if (child.intersect(node)) {
@@ -73,8 +74,9 @@ public class Node {
                     return;
                 }
                 else if (node.included(child)) {
-                    children.remove(iterator);
+                    iterator.remove();
                     childNodes.add(child);
+                    continue;
                 }
                 else {
                     addAtEnd = false;
@@ -97,9 +99,10 @@ public class Node {
             }
             else if (node.end <= child.start) {
                 addAtEnd = false;
-                children.addLeft(node, iterator);
+                iterator.addLeft(node);
                 break;
             }
+            iterator.next();
         }
         if (addAtEnd) children.add(node);
         for (Node node1 : childNodes) {
@@ -108,13 +111,12 @@ public class Node {
     }
 
     public void checkGraph() throws Exception {
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            Node child = iterator.getElement();
+        for (Node child : children) {
             if ((start != 0 || end != 0) && (!intersect(child) || !included(child))) {
                 throw new Exception("Node (" + start + "," + end +") has an invalid child: (" + child.start + "," + child.end + ")");
             }
-            for (AmlList<Node>.Iterator iterator2 = children.getFirst(); !iterator2.equals(iterator); iterator2.next()) {
-                Node child2 = iterator2.getElement();
+            for (AmlList<Node>.AmlIterator iterator = children.listIterator(); child != iterator.getElement(); iterator.next()) {
+                Node child2 = iterator.getElement();
                 if (child.intersect(child2)) {
                     throw new Exception("Node (" + start + "," + end+") has invalid brothers: (" + child.start + "," + child.end + ") (" + child2.start + "," + child2.end);
                 }
@@ -129,24 +131,24 @@ public class Node {
 
     public int size() {
         int sum = 1;
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            sum += iterator.getElement().size();
+        for (Node node : children) {
+            sum += node.size();
         }
         return sum;
     }
 
     public int getMaxNumChildren() {
         int max = children.size();
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            max = Math.max(iterator.getElement().getMaxNumChildren(), max);
+        for (Node node : children) {
+            max = Math.max(node.getMaxNumChildren(), max);
         }
         return max;
     }
 
     public int getDepth() {
         int maxDepth = 0;
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            maxDepth = Math.max(iterator.getElement().getDepth(), maxDepth);
+        for (Node node : children) {
+            maxDepth = Math.max(node.getDepth(), maxDepth);
         }
         return maxDepth+1;
     }
@@ -162,8 +164,7 @@ public class Node {
 
     private String toStringGuay(String identation) {
         StringBuilder builder = new StringBuilder(identation + "NODE [" + start + "," + end + "] with children: \n");
-        for (AmlList<Node>.Iterator iterator = children.getFirst(); !iterator.end(); iterator.next()) {
-            Node n = iterator.getElement();
+        for (Node n : children) {
             builder.append(n.toStringGuay(identation + "    "));
             builder.append('\n');
         }

@@ -35,37 +35,9 @@ public class AmlList<E> implements Iterable<E> {
     private ListData last;
     private int size;
 
-    public class Iterator {
-        private ListData n;
-
-        private Iterator(ListData n) {
-            this.n = n;
-        }
-
-        public E getElement() {
-            return n.element;
-        }
-
-        public boolean end() {
-            return n == null;
-        }
-
-        public void next() {
-            n = n.next;
-        }
-
-        public boolean equals(Iterator it) {
-            return n == it.n;
-        }
-    }
-
     public AmlList() {
         size = 0;
         first = last = new ListData(null);
-    }
-
-    public Iterator getFirst() {
-        return new Iterator(first);
     }
 
     public AmlIterator listIterator() {
@@ -81,33 +53,6 @@ public class AmlList<E> implements Iterable<E> {
         }
         last = node;
         ++size;
-    }
-
-    public void remove(Iterator iterator) {
-        ListData node = iterator.n;
-        assert node != last;
-
-        if (node == first) first = node.next;
-        else node.previous.next = node.next;
-        node.next.previous = node.previous;
-
-        --size;
-    }
-
-    public void addLeft(E data, Iterator iterator) {
-        ListData node = iterator.n;
-
-        ListData newNode = new ListData(data);
-
-        newNode.next = node;
-
-        if (node == first) first = newNode;
-        else {
-            node.previous.next = newNode;
-            newNode.previous = node.previous;
-        }
-
-        node.previous = newNode;
     }
 
     public int size() {
@@ -136,13 +81,12 @@ public class AmlList<E> implements Iterable<E> {
 
         @Override
         public boolean hasPrevious() {
-            return node != first;
+            throw new UnsupportedOperationException();
         }
 
         @Override
         public E previous() {
-            node = node.previous;
-            return node.element;
+            throw new UnsupportedOperationException();
         }
 
         @Override
@@ -157,15 +101,14 @@ public class AmlList<E> implements Iterable<E> {
 
         @Override
         public void remove() {
-            assert node != null;
+            assert node != last;
 
             if (node == first) first = node.next;
             else node.previous.next = node.next;
-            if (node == last) last = node.previous;
-            else node.next.previous = node.previous;
+            node.next.previous = node.previous;
 
             --size;
-            node = null;
+            node = node.next;
         }
 
         @Override
@@ -197,7 +140,7 @@ public class AmlList<E> implements Iterable<E> {
             node.previous = newNode;
         }
 
-        public boolean isLast() {
+        public boolean isEnd() {
             return node == last;
         }
 
