@@ -6,7 +6,7 @@ void myFunc() {
 void main() {
     || Re Re Mi La ||
     Song {
-        Track "String Ensemble 1" || La La myFunc(); La La ||
+        Track "String Ensemble 1" || La La myFunc(); La Volume 30; La ||
         Track "Trombone" || Volume 120; Re-5.n Re-5.n* Re-5.n Re-5.c | Re-5.n Re-5 Re-5 Re-5 ||
     }
     || La La La La ||

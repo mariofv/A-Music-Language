@@ -154,6 +154,7 @@ public class AmlTrack {
         System.out.println("Adding events in interval " + start + " " + end + " on channel " + mapChannel(channel));
 
         check(channel, start, lastInstrument, channelInstrument);
+        System.out.println("Channel volume " + channelVolume.get(channel).getData2() + " track volume " + lastVolume.getData2());
         check(channel, start, lastVolume, channelVolume);
 
         for (AmlMidiEvent event : events) {
@@ -161,9 +162,11 @@ public class AmlTrack {
                 switch (event.getType()) {
                     case AmlMidiEvent.Instrument:
                         lastInstrument = ((AmlShortMessage) event.getMessage()).clone();
+                        channelInstrument.set(channel, (AmlShortMessage) event.getMessage().clone());
                         break;
                     case AmlMidiEvent.Volume:
                         lastVolume = ((AmlShortMessage) event.getMessage()).clone();
+                        channelVolume.set(channel, (AmlShortMessage) event.getMessage().clone());
                         break;
                 }
                 try {
