@@ -48,6 +48,8 @@ public class AmlFigure {
         this.duration = duration;
     }
 
+    public void setFigure(Figure figure) { this.figure = figure; }
+
     public ArrayList<AmlNote> getNotes(){return notes;}
 
     public boolean isTied() { return tie; }

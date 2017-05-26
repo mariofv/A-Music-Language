@@ -310,7 +310,7 @@ public class Interpreter {
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
-                return new Note(createFigure(tree));
+                return new Figure(createFigure(tree));
             case MusicLexer.FIGURE:
                 return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
@@ -481,15 +481,17 @@ public class Interpreter {
             case MusicLexer.ID: {
                 Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
                 AmlFigure note;
-                if (dataNote instanceof Note) {
+                /*if (dataNote instanceof Note) {
                     note = ((Note)dataNote).getValue();
-                }
-                else if (dataNote instanceof Chord) {
+                }*/
+                if(dataNote instanceof Figure) {
+                    note = ((Figure)dataNote).getValue();
+                } else if (dataNote instanceof Chord) {
                     note = ((Chord)dataNote).getValue();
                 }
-                else if (dataNote instanceof DrumNote) {
+                /*else if (dataNote instanceof DrumNote) {
                     note = ((DrumNote)dataNote).getValue();
-                }
+                }*/
                 else throw new Error("This should never happen");
                 try {
                     compas.addFigure(note);

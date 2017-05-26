@@ -1,8 +1,9 @@
 package data;
 
 import music.AmlChord;
+import music.AmlFigure;
 
-public class Chord extends Data {
+public class Chord extends AttributeData {
 
     private AmlChord dataChord;
 
@@ -18,16 +19,17 @@ public class Chord extends Data {
 
     public void setValue(AmlChord value) { dataChord = value; }
 
-    /*@Override
+    @Override
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
-            case :
-
+            case "figure" :
+                dataChord.setFigure(AmlFigure.Figure.valueOf((String) value));
+                break;
             default:
                 throw new Error("This should never happen!");
 
         }
-    }*/
+    }
 
     @Override
     public Data clone() {

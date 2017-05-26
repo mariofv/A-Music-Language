@@ -62,6 +62,8 @@ public class AmlNote {
 
     public Accident getAccident() { return  accident;}
 
+    public void setOctave(int octave) { this.octave = octave; }
+
     public boolean isSilence(){return note == Note.Silence;}
 
     int mapNote(Note note, int octave) {
@@ -152,6 +154,10 @@ public class AmlNote {
             default:
                 throw new Error("The accident is too low!");
         }
+    }
+
+    public void setAccident(String value) {
+        accident = Accident.valueOf(value);
     }
 
 

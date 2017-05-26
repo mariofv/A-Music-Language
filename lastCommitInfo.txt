@@ -1,0 +1,19 @@
+Viernes 26 de Mayo, 20:15:
+
+    ATRIBUTOS
+    ------------------------------------------------------------------------------------------------
+
+    - Creada la clase AttributeData. Hereda de Data y contiene el método setAttribute.
+    Note, DrumNote, Chord y Figure heredan de esta e implementan el método setAttribute.
+    Éste dispone de dos parámetros, una String que identifica el atributo y un Object que
+    es el valor. Realizo un cast de este objecto a los tipos adecuados. Puede que sea mejor opción
+    que el valor sea un Data en lugar de un Object.
+
+    - Creada la clase Figure del paquete Data. Note ya no contiene un AmlFigure, sino un AmlNote.
+    DrumNote ya no contiene un AmlFigure, sino un AmlDrumNote.
+
+    - Cambios menores en el Interprete para adaptarlo a la aparición de Figure.
+
+    TODO:
+    - Terminar el método Assig del Interprete para que controle Note, DrumNote, Chord y Figure.
+    - Testear
