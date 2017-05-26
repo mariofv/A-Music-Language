@@ -1,6 +1,7 @@
 package data_structures;
 
 import aml.Aml;
+import exceptions.AmlRunTimeException;
 import music.AmlTrack;
 import sun.awt.image.ImageWatched;
 

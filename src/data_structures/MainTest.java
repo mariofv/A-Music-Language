@@ -39,7 +39,7 @@ public class MainTest {
 //    }
 //
 //    public static void main(String[] args) throws Exception {
-//        ChannelManager channelManager = new ChannelManager();
+//        ChannelVectorManager channelManager = new ChannelVectorManager();
 //        channelManager.graph = createRandomGraph(100, 1);
 //        //System.out.println(channelManager.graph.toString());
 //        System.out.println(channelManager.graph.numChildren());

@@ -122,17 +122,13 @@ public class AmlList<E> implements Iterable<E> {
         }
 
         public void addLeft(E e) {
-            System.out.println("Inserting in " + node.element);
             ListData newNode = new ListData(e);
-            System.out.println("Adding at the left");
             newNode.next = node;
 
             if (node == first) {
                 first = newNode;
-                System.out.println("New first");
             }
             else {
-                System.out.println("Node is not first");
                 node.previous.next = newNode;
                 newNode.previous = node.previous;
             }

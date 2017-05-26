@@ -1,17 +1,12 @@
 package music;
 
 
-import data_structures.AmlList;
 import data_structures.ChannelManager;
+import data_structures.ChannelVectorManager;
 import data_structures.IntervalTrack;
-import data_structures.Node;
 import exceptions.AmlRunTimeException;
 
 import javax.sound.midi.*;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import static music.AmlInstrument.Instruments.*;
 
@@ -44,8 +39,8 @@ public class AmlSequence {
     }
 
     public AmlSequence(int bpm) {
-        channelManager = new ChannelManager(15);
-        drumChannelManager = new ChannelManager(1);
+        channelManager = new ChannelVectorManager(15);
+        drumChannelManager = new ChannelVectorManager(1);
         this.bpm = bpm;
         try {
             sequence = new Sequence(Sequence.PPQ, AmlFigure.PPQ);
