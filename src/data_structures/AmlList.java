@@ -1,16 +1,17 @@
 package data_structures;
 
 import java.util.ListIterator;
+/*
 import java.util.Spliterator;
 import java.util.function.Consumer;
-
+*/
 public class AmlList<E> implements Iterable<E> {
 
     @Override
     public java.util.Iterator<E> iterator() {
         return new AmlIterator(first);
     }
-
+/*
     @Override
     public void forEach(Consumer<? super E> action) {
         throw new UnsupportedOperationException();
@@ -20,7 +21,7 @@ public class AmlList<E> implements Iterable<E> {
     public Spliterator<E> spliterator() {
         throw new UnsupportedOperationException();
     }
-
+*/
     private class ListData {
         E element;
         ListData next;

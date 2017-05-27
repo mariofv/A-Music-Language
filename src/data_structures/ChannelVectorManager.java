@@ -14,7 +14,7 @@ public class ChannelVectorManager extends ChannelManager {
     public ChannelVectorManager(int numChannels) {
         super(numChannels);
         channels = new ArrayList<>(numChannels);
-        for (int i = 0; i < numChannels; ++i) channels.add(new LinkedList<>());
+        for (int i = 0; i < numChannels; ++i) channels.add(new LinkedList<IntervalTrack>());
         tracks = new AmlList<>();
     }
 

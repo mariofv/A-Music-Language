@@ -12,6 +12,7 @@ import music.*;
 import parser.MusicLexer;
 import services.ControlChange;
 import sun.nio.cs.ext.IBM037;
+import sun.plugin.dom.core.NamedNodeMap;
 import sun.plugin.dom.core.Text;
 
 public class Interpreter {
@@ -224,6 +225,18 @@ public class Interpreter {
                 } else if(currentVar instanceof TextVar){
                     String value = ((TextVar) evaluateExpression(tree.getChild(1))).getValue();
                     ((TextVar) currentVar).setValue(value);
+                } else if (currentVar instanceof Figure) {
+                    AmlFigure figure = createFigure(tree.getChild(1));
+                    ((Figure) currentVar).setValue(figure);
+                } else if (currentVar instanceof Chord) {
+                    AmlChord chord = (AmlChord)createFigure(tree.getChild(1));
+                    ((Chord) currentVar).setValue(chord);
+                } else if (currentVar instanceof Note) {
+                    AmlNote note = createNote(tree.getChild(1).getChild(0).getChild(0));
+                    ((Note) currentVar).setValue(note);
+                } else if (currentVar instanceof DrumNote) {
+                    AmlDrumNote drumNote = (AmlDrumNote) createNote(tree.getChild(1).getChild(0).getChild(0));
+                    ((DrumNote) currentVar).setValue(drumNote);
                 }
                 return true;
             }
@@ -305,13 +318,13 @@ public class Interpreter {
                 return new Int(tree.getIntValue());
             case MusicLexer.STRING:
                 return new TextVar(tree.getStringValue());
-            case MusicLexer.NOTES:
-            case MusicLexer.DRUMSNOTES:
+            case MusicLexer.FIGURE:
+            case MusicLexer.DRUM_FIGURE:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
                 return new Figure(createFigure(tree));
-            case MusicLexer.FIGURE:
+            case MusicLexer.FIGURE_NAME:
                 return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
                 Data ls = evaluateExpression(tree.getChild(0));
@@ -481,17 +494,12 @@ public class Interpreter {
             case MusicLexer.ID: {
                 Data dataNote = stack.getLocalVariables().get(tree.getVariableIndex());
                 AmlFigure note;
-                /*if (dataNote instanceof Note) {
-                    note = ((Note)dataNote).getValue();
-                }*/
                 if(dataNote instanceof Figure) {
                     note = ((Figure)dataNote).getValue();
                 } else if (dataNote instanceof Chord) {
                     note = ((Chord)dataNote).getValue();
                 }
-                /*else if (dataNote instanceof DrumNote) {
-                    note = ((DrumNote)dataNote).getValue();
-                }*/
+
                 else throw new Error("This should never happen");
                 try {
                     compas.addFigure(note);
@@ -502,7 +510,7 @@ public class Interpreter {
                 }
                 break;
             }
-            case MusicLexer.NOTES:
+            case MusicLexer.FIGURE:
                 AmlFigure figure = createFigure(tree);
                 try {
                     compas.addFigure(figure);
@@ -512,7 +520,7 @@ public class Interpreter {
                     throw exception;
                 }
                 break;
-            case MusicLexer.DRUMSNOTES:
+            case MusicLexer.DRUM_FIGURE:
                 AmlFigure drumFigure = createFigure(tree);
                 try {
                     compas.addFigure(drumFigure);
@@ -695,7 +703,7 @@ public class Interpreter {
             AmlTree figureModifierNode = tree.getChild(i);
 
             switch (figureModifierNode.getType()) {
-                case MusicLexer.FIGURE:
+                case MusicLexer.FIGURE_NAME:
                     figureType = figureModifierNode.getFigureValue();
                     break;
                 case MusicLexer.DOT:
@@ -709,7 +717,7 @@ public class Interpreter {
 
         AmlFigure figure = new AmlFigure(figureType, figureModifier, tie);
 
-        if (noteList.getType() == MusicLexer.NOTE_LIST) {
+        if (noteList.getType() == MusicLexer.NOTES) {
             for (AmlTree noteChild : noteList.getArrayChildren()) {
                 AmlNote note = createNote(noteChild);
                 figure.addNote(note);
@@ -720,7 +728,7 @@ public class Interpreter {
             createChord(noteList, chord);
             return chord;
         }
-        else if (noteList.getType() == MusicLexer.DRUMSNOTE_LIST) {
+        else if (noteList.getType() == MusicLexer.DRUM_NOTES) {
             /* Loops over the list of notes */
             for (AmlTree noteChild : noteList.getArrayChildren()) {
                 figure.addNote(new AmlDrumNote(noteChild.getIntValue()));

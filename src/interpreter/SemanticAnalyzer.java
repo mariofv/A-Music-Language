@@ -288,19 +288,19 @@ public class SemanticAnalyzer {
 
     private int getRType(AmlTree child) throws AmlSemanticException {
         switch (child.getType()) {
-            case DRUMSNOTES:
+            case DRUM_FIGURE:
                 analyzeNote(child);
                 return DRUMS_NOTE_TYPE;
-            case NOTES:
+            case FIGURE:
                 analyzeNote(child);
                 switch (child.getChild(0).getType()) {
                     case CHORD:
                         return CHORD;
-                    case NOTE_LIST:
+                    case NOTES:
                         return NOTE_TYPE;
                     default: throw new Error("This should never happen");
                 }
-            case FIGURE:
+            case FIGURE_NAME:
                 child.setFigureValue();
                 return INT;
             default:
@@ -513,11 +513,11 @@ public class SemanticAnalyzer {
 
     private void analyzeNote(AmlTree notes) throws AmlSemanticException {
         switch (notes.getType()) {
-            case NOTES:
-                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE) {
+            case FIGURE:
+                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
                     notes.getChild(1).setFigureValue();
                 }
-                if (notes.getChild(0).getType() == NOTE_LIST) {
+                if (notes.getChild(0).getType() == NOTES) {
                     for (AmlTree note : notes.getChild(0).getArrayChildren()) {
                         note.setNoteValue();
                         if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
@@ -531,9 +531,9 @@ public class SemanticAnalyzer {
                     else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
                 }
                 break;
-            case DRUMSNOTES:
+            case DRUM_FIGURE:
                 for (AmlTree drumNote : notes.getChild(0).getArrayChildren()) {
-                    if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE) {
+                    if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
                         notes.getChild(1).setFigureValue();
                     }
                     int type = checkExpression(drumNote);
@@ -619,8 +619,8 @@ public class SemanticAnalyzer {
                 popSoce(lastIndex);
                 break;
             }
-            case NOTES:
-            case DRUMSNOTES:
+            case FIGURE:
+            case DRUM_FIGURE:
                 analyzeNote(musicInstruction);
                 break;
             case TRIPLET:
@@ -673,9 +673,6 @@ public class SemanticAnalyzer {
                         ++i;
                     }
                     analyzeCompasList(child.getChild(i));
-                    /*for(; i < child.getChildCount(); ++i) {
-                        analyzeCompas(child.getChild(i));
-                    }*/
                     break;
             }
         }

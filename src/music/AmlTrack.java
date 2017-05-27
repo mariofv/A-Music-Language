@@ -249,7 +249,7 @@ public class AmlTrack {
     private static MidiEvent dummy = new MidiEvent(null, 0);
 
     public int getClosest(int start) {
-        Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
+       /* Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
         dummy.setTick(start);
         int indexFound = Collections.binarySearch(events, dummy, comparator);
         if (indexFound < 0) {
@@ -258,18 +258,20 @@ public class AmlTrack {
             System.out.println(events.get(indexFound));
         }
         while (events.get(indexFound).getType() != AmlMidiEvent.OnMessage && events.get(indexFound).getType() != AmlMidiEvent.OffMessage) --indexFound;
-        return (int)events.get(indexFound).getTick();
+        return (int)events.get(indexFound).getTick();*/
+        return 0;
     }
 
     public int getNextClosest(int end) {
-        Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
+       /* Comparator<MidiEvent> comparator = (o1, o2) -> Long.compareUnsigned(o1.getTick(), o2.getTick());
         dummy.setTick(end);
         int indexFound = Collections.binarySearch(events, dummy, comparator);
         if (indexFound < 0) {
             indexFound = -indexFound;
         }
         while (events.get(indexFound).getType() != AmlMidiEvent.OnMessage && events.get(indexFound).getType() != AmlMidiEvent.OffMessage) ++indexFound;
-        return (int)events.get(indexFound).getTick();
+        return (int)events.get(indexFound).getTick();*/
+        return 0;
     }
 
     void newInterval() {
