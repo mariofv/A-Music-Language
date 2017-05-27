@@ -25,9 +25,20 @@ public class Figure extends AttributeData {
     @Override
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
-            case "figure":
-                dataFigure.setFigure((Integer) value);
+            case "duration":
+                dataFigure.setDuration((Integer) value);
                 break;
+            default:
+                throw new Error("This should never happen!");
+
+        }
+    }
+
+    @Override
+    public Data getAttributeValue(String attribute) {
+        switch (attribute) {
+            case "duration":
+                return new Int(dataFigure.getDuration());
             default:
                 throw new Error("This should never happen!");
 

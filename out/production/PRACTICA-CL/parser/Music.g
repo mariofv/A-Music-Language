@@ -52,16 +52,6 @@ global_stmt :   function
             |   song
             ;
 
-var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
-            ;
-
-var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
-            |   id_rule
-            ;
-
-id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
-            ;
-
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
             ;
 
@@ -92,6 +82,8 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
 inst        :   declaration
             |   volume ';'
             |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
+            |   READ^ var_access ';'
+            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
             |   var_funcall
             |   tone ';'!
             |   beat ';'!
@@ -108,6 +100,8 @@ inst        :   declaration
             ;
 
 music_inst  :   declaration
+            |   READ^ var_access ';'
+            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
             |   volume ';'!
             |   tone ';'!
             |   beat ';'!
@@ -135,6 +129,7 @@ type        :   INT
             |   DRUMS_NOTE_TYPE
             |   CHORD
             |   STRING_TYPE
+            |   FIGURE_TYPE
             ;
 
 type_void   :   type
@@ -151,6 +146,17 @@ assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG
             |   post
             |   pre
             ;
+
+var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
+            ;
+
+var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
+            |   id_rule
+            ;
+
+id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
+            ;
+
 
 post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
             ;
@@ -317,6 +323,7 @@ MAJ7                : 'maj7';
 SEVENTH             : '7th';
 NOTE_TYPE           : 'Note';
 DRUMS_NOTE_TYPE     : 'DrumsNote';
+FIGURE_TYPE         : 'Figure';
 DN                  :  'DN';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 DRUMS               : 'Drums';
@@ -334,6 +341,8 @@ DRUMS_TRACK         : 'Drums_Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
+READ    : 'Read';
+WRITE   : 'Write';
 LETTER_X:   'x';
 FRAGMENT: 'Fragment';
 VOID    : 'void';

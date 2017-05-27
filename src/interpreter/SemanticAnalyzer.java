@@ -51,6 +51,8 @@ public class SemanticAnalyzer {
                 return "bool";
             case INT:
                 return "int";
+            case FIGURE_TYPE:
+                return "figure";
             case CHORD:
                 return "chord";
             case NOTE_TYPE:
@@ -327,7 +329,7 @@ public class SemanticAnalyzer {
                     case CHORD:
                         return CHORD;
                     case NOTES:
-                        return NOTE_TYPE;
+                        return FIGURE_TYPE;
                     default: throw new Error("This should never happen");
                 }
             case FIGURE_NAME:
@@ -354,7 +356,7 @@ public class SemanticAnalyzer {
 
     private static int attrType(int type, String attr) {
         switch (type) {
-            case FIGURE:
+            case FIGURE_TYPE:
                 switch (attr) {
                     case "duration":
                         return INT;
@@ -364,8 +366,6 @@ public class SemanticAnalyzer {
                     case "pitch":
                         return INT;
                     case "octave":
-                        return INT;
-                    case "accident":
                         return INT;
                 }
             case DRUMS_NOTE_TYPE:
@@ -388,10 +388,10 @@ public class SemanticAnalyzer {
             //var_access
             case ATTR_ACCESS:
                 int type = getSymbol(expression).getType();
-                int attrType = attrType(type, expression.getChild(1).getText());
+                int attrType = attrType(type, expression.getChild(0).getText());
                 if (attrType == -1)
                     throw new AmlSemanticException("Variable " + expression.getText() + " of type " + mapType(type) +
-                            " does not have attribute " + expression.getChild(1).getText(), expression.getLine());
+                            " does not have attribute " + expression.getChild(0).getText(), expression.getLine());
                 return attrType;
             //var_access
             case ID:
@@ -691,7 +691,7 @@ public class SemanticAnalyzer {
                 break;
             case ID:
                 int type = getSymbol(musicInstruction).getType();
-                if (type != NOTE_TYPE && type != CHORD && type != DRUMS_NOTE_TYPE)
+                if (type != FIGURE_TYPE && type != CHORD )
                     throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a note, but it has type: " + mapType(type), musicInstruction.getLine());
         }
     }

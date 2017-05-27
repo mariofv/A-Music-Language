@@ -52,16 +52,6 @@ global_stmt :   function
             |   song
             ;
 
-var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
-            ;
-
-var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
-            |   id_rule
-            ;
-
-id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
-            ;
-
 function    :  type_void id=id_rule '(' list_arguments ')' '{' listInst '}'    ->   ^(FUNCTION[$id.text] type_void list_arguments listInst)
             ;
 
@@ -156,6 +146,17 @@ assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG
             |   post
             |   pre
             ;
+
+var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
+            ;
+
+var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
+            |   id_rule
+            ;
+
+id_rule     :   (id=ID_ |   id=LETTER_X) -> ^(ID[$id])
+            ;
+
 
 post        :   var_access (x=INCR | x=DECR) ->  ^(POST var_access $x)
             ;

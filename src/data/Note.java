@@ -45,6 +45,18 @@ public class Note extends AttributeData {
     }
 
     @Override
+    public Data getAttributeValue(String attribute) {
+        switch (attribute) {
+            case "pitch":
+                return new Int(dataNote.getPitch());
+            case "octave":
+                return new Int(dataNote.getOctave());
+            default:
+                throw new Error("This should never happen!");
+        }
+    }
+
+    @Override
     public void setValue(Object value) { dataNote = (AmlNote)value; }
 
     @Override

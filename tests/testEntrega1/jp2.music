@@ -1,9 +1,10 @@
-void main() {
-    Note note = La.n, notes;
-    notes = (Do Re #Mi Fa Sol).c;
+Fragment frag(Figure noteLa, Figure noteRe) {
+    :noteLa :noteRe
+ }
 
-    note.raiseTone(2);
-    notes.isQuiet();
-    notes.figure = 2 + 3;
-    note.tone = 2 + notes.figure;
+void main() {
+    Figure noteLa = La.n;
+    Figure noteRe = Re.n;
+    noteLa = noteRe;
+    || for(int i = 0; i < 2; ++i) {F:frag(noteLa, noteRe);}||
 }

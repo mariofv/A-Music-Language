@@ -24,12 +24,21 @@ public class Chord extends AttributeData {
     @Override
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
-            case "figure" :
-                dataChord.setFigure((Integer) value);
+            case "duration" :
+                dataChord.setDuration((Integer) value);
                 break;
             default:
                 throw new Error("This should never happen!");
+        }
+    }
 
+    @Override
+    public Data getAttributeValue(String attribute) {
+        switch (attribute) {
+            case "duration" :
+                return new Int(dataChord.getDuration());
+            default:
+                throw new Error("This should never happen!");
         }
     }
 

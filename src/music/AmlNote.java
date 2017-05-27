@@ -65,10 +65,6 @@ public class AmlNote {
 
     public void setPitch(int pitch) {this.pitch = pitch;}
 
-    public Note getNoteName() {
-        return note;
-    }
-
     public Accident getAccident() { return  accident;}
 
     public void setOctave(int octave) { this.octave = octave; }

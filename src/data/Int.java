@@ -1,5 +1,7 @@
 package data;
 
+import exceptions.AmlRunTimeException;
+
 public class Int extends Data {
 
     private int dataInt;
@@ -56,10 +58,10 @@ public class Int extends Data {
         throw new Error("Product operator is not defined for Int and " + secondTerm.getClass().toString());
     }
 
-    //TODO: Añadir excepcion division por cero
     @Override
-    public Data quotientOperator(Data secondTerm) {
+    public Data quotientOperator(Data secondTerm) throws AmlRunTimeException {
         if(secondTerm instanceof Int) {
+            if (secondTerm.getValue() == 0) throw new AmlRunTimeException("Floating point exception: Division by 0.");
             return new Int(dataInt / ((Int) secondTerm).getValue());
         } else if(secondTerm instanceof Bool) {
             int value = ((Bool) secondTerm).toInt();

@@ -25,7 +25,7 @@ public class AmlTone {
     }
 
     private int mapNoteNameInTone(AmlNote note) {
-        switch (note.getNoteName()) {
+        switch (note.getNote()) {
             case Do:
                 return DoPos;
             case Re:

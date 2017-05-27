@@ -1,5 +1,7 @@
 package data;
 
+import exceptions.AmlRunTimeException;
+
 public class Bool extends Data {
 
     private boolean dataBool;
@@ -62,8 +64,9 @@ public class Bool extends Data {
     }
 
     @Override
-    public Data quotientOperator(Data secondTerm) {
+    public Data quotientOperator(Data secondTerm)  throws AmlRunTimeException {
         if(secondTerm instanceof Int) {
+            if (secondTerm.getValue() == 0) throw new AmlRunTimeException("Floating point exception: Division by 0.");
             return new Int(toInt() / ((Int) secondTerm).getValue());
         } else if(secondTerm instanceof Bool) {
             int value = ((Bool) secondTerm).toInt();

@@ -40,7 +40,7 @@ public class AmlChord  extends AmlFigure{
     }
 
     private void setChordNotes() {
-        switch (root.getNoteName()) {
+        switch (root.getNote()) {
             case Do:
                 third = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
                 fifth = new AmlNote(AmlNote.Note.Sol, Accident.Natural, octave);
@@ -147,6 +147,7 @@ public class AmlChord  extends AmlFigure{
         clone.accident = accident;
         clone.quality = quality;
         clone.interval = interval;
+        clone.notes = (ArrayList<AmlNote>)notes.clone();
         return clone;
     }
 }

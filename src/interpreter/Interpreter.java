@@ -1,8 +1,11 @@
 package interpreter;
 
 import java.lang.reflect.Field;
+import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 import data.*;
 import data.Void;
@@ -20,6 +23,7 @@ public class Interpreter {
     HashMap<String, AmlTree> functionMap;
     HashMap<String, AmlTree> fragmentMap;
     HashMap<String, AmlTree> songMap;
+    private Scanner scanner;
     private int currentIteration;
     private AmlStack stack;
     private AmlSequence sequence;
@@ -30,6 +34,7 @@ public class Interpreter {
     }
 
     public Interpreter() {
+        scanner = new Scanner(System.in);
         sequence = new AmlSequence(120);
         functionMap = new HashMap<>();
         fragmentMap = new HashMap<>();
@@ -196,9 +201,54 @@ public class Interpreter {
             case MusicLexer.NOTE_TYPE:
             case MusicLexer.INT:
             case MusicLexer.STRING_TYPE:
+            case MusicLexer.FIGURE_TYPE:
             case MusicLexer.CHORD:
             case MusicLexer.DRUMS_NOTE_TYPE:
                 defineLocalVariable(tree);
+                return true;
+            case MusicLexer.READ: {
+                int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
+                AmlTree attribute = null;
+                Object value = null;
+                try {
+                    if (tree.getChild(0).getType() == MusicLexer.ATTR_ACCESS) {
+                        String attributeName = attribute.getText();
+                        if (((AttributeData)currentVar).getAttributeValue(attributeName) instanceof Int) {
+                            value = scanner.nextInt();
+                        }
+                        else if (((AttributeData)currentVar).getAttributeValue(attributeName)instanceof TextVar) {
+                            value = scanner.next();
+                        }
+                        else if (((AttributeData)currentVar).getAttributeValue(attributeName) instanceof Bool) {
+                            value = scanner.nextBoolean();
+                        }
+                        ((AttributeData)currentVar).setAttribute(attributeName, value);
+                    }
+                    else {
+                        if (currentVar instanceof Int) {
+                            value = scanner.nextInt();
+                        }
+                        else if (currentVar instanceof TextVar) {
+                            value = scanner.next();
+                        }
+                        else if (currentVar instanceof Bool) {
+                            value = scanner.nextBoolean();
+                        }
+                        currentVar.setValue(value);
+                    }
+                }
+                catch (InputMismatchException e) {
+                    throw new AmlRunTimeException("Input mismatch.", tree.getLine());
+                }
+                //TODO: ESTUDIAR IMPLEMENTAR MAS TIPOS.
+
+                return true;
+            }
+            case MusicLexer.WRITE:
+                Data valueToPrint = evaluateExpression(tree.getChild(0));
+                //TODO: HACER QUE SE PUEDAN CONCATENAR COSAS QUE NO SON STRING CON STRING PARA EVITAR ESTE NEW LINE.
+                System.out.println(valueToPrint);
                 return true;
             case MusicLexer.BOOL:
                 for (AmlTree assigChild : tree.getArrayChildren()) {
@@ -215,55 +265,124 @@ public class Interpreter {
             case MusicLexer.ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
-                Object value = evaluateExpression(tree.getChild(1));
-                currentVar.setValue(value);
+                Object value = evaluateExpression(tree.getChild(1)).clone().getValue();
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(attribute.getText(), value);
+                }
+                else {
+                    currentVar.setValue(value);
+                }
                 return true;
             }
             case MusicLexer.PLUS_ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
                 int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                Int currentVar = ((Int) stack.getLocalVariables().get(index));
-                currentVar.setValue(currentVar.getValue() + value);
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(
+                            attribute.getText(),
+                            (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() + value
+                    );
+                }
+                else {
+                    currentVar.setValue(((Int)currentVar).getValue() + value);
+                }
                 return true;
             }
             case MusicLexer.MINUS_ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
                 int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                Int currentVar = (Int) stack.getLocalVariables().get(index);
-                currentVar.setValue(currentVar.getValue() - value);
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(
+                            attribute.getText(),
+                            (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() - value
+                    );
+                }
+                else {
+                    currentVar.setValue(((Int)currentVar).getValue() - value);
+                }
                 return true;
             }
             case MusicLexer.PROD_ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
                 int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                Int currentVar = ((Int) stack.getLocalVariables().get(index));
-                currentVar.setValue(currentVar.getValue() * value);
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(
+                            attribute.getText(),
+                            (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() * value
+                    );
+                }
+                else {
+                    currentVar.setValue(((Int)currentVar).getValue() * value);
+                }
                 return true;
             }
             case MusicLexer.DIVIDE_ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
                 int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                Int currentVar = ((Int) stack.getLocalVariables().get(index));
-                currentVar.setValue(currentVar.getValue() / value);
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(
+                            attribute.getText(),
+                            (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() / value
+                    );
+                }
+                else {
+                    currentVar.setValue(((Int)currentVar).getValue() / value);
+                }
                 return true;
             }
             case MusicLexer.MOD_ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
+                Data currentVar = stack.getLocalVariables().get(index);
                 int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                Int currentVar = ((Int) stack.getLocalVariables().get(index));
-                currentVar.setValue(currentVar.getValue() % value);
+                if (tree.getChild(0).getChildCount() > 0) {
+                    AmlTree attribute = tree.getChild(0).getChild(0);
+                    ((AttributeData)currentVar).setAttribute(
+                            attribute.getText(),
+                            (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() % value
+                    );
+                }
+                else {
+                    currentVar.setValue(((Int)currentVar).getValue() % value);
+                }
                 return true;
             }
             case MusicLexer.PRE:
             case MusicLexer.POST:
                 int index = tree.getChild(0).getVariableIndex();
-                Int currentVar = ((Int) stack.getLocalVariables().get(index));
+                Data currentVar = stack.getLocalVariables().get(index);
+                AmlTree attribute = null;
+                if (tree.getChild(0).getChildCount() > 0) attribute = tree.getChild(0).getChild(0);
                 switch (tree.getChild(1).getType()) {
                     case MusicLexer.DECR:
-                        currentVar.setValue(currentVar.getValue()-1);
+                        if (attribute != null) {
+                            ((AttributeData)currentVar).setAttribute(
+                                    attribute.getText(),
+                                    (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() - 1
+                            );
+                        }
+                        else {
+                            currentVar.setValue((int)currentVar.getValue()-1);
+                        }
                         break;
                     case MusicLexer.INCR:
-                        currentVar.setValue(currentVar.getValue()+1);
+                        if (attribute != null) {
+                            ((AttributeData)currentVar).setAttribute(
+                                    attribute.getText(),
+                                    (int)(((AttributeData)currentVar).getAttributeValue(attribute.getText())).getValue() + 1
+                            );
+                        }
+                        else {
+                            currentVar.setValue(((Int)currentVar).getValue() + 1);
+                        }
                         break;
                 }
                 return true;
@@ -336,7 +455,9 @@ public class Interpreter {
                 return ls.modOperator(rs);
             }
             case MusicLexer.ATTR_ACCESS:
-                break;
+                AttributeData currentVar = (AttributeData) stack.getLocalVariables().get(tree.getVariableIndex());
+                String attributeName = tree.getChild(0).getText();
+                return  currentVar.getAttributeValue(attributeName);
             case MusicLexer.ID:
                 if(tree.getText().equals("Time")) {
                     return new Int(currentIteration);
@@ -346,10 +467,9 @@ public class Interpreter {
             case MusicLexer.FUNCALL:
                 ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {
-                    int i = 0;
                     for (AmlTree argument : tree.getArrayChildren()) {
                         Data expressionResult = evaluateExpression(argument);
-                        arguments.set(i, expressionResult);
+                        arguments.add(expressionResult);
                     }
                 }
                 return executeFunction(tree.getText(), arguments);
@@ -464,8 +584,7 @@ public class Interpreter {
                 } else if (dataNote instanceof Chord) {
                     note = ((Chord)dataNote).getValue();
                 }
-
-                else throw new Error("This should never happen");
+                else throw new Error("This should never happen, the type is: " + dataNote.getClass());
                 try {
                     compas.addFigure(note);
                 }

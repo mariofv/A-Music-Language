@@ -1,5 +1,6 @@
 package data;
 
+import com.sun.corba.se.spi.ior.ObjectKey;
 import music.AmlDrumNote;
 
 public class DrumNote extends AttributeData {
@@ -26,6 +27,17 @@ public class DrumNote extends AttributeData {
             case "pitch" :
                 dataDrumNote.setPitch((Integer) value);
                 break;
+            default:
+                throw new Error("This should never happen!");
+
+        }
+    }
+
+    @Override
+    public Data getAttributeValue(String attribute) {
+        switch (attribute) {
+            case "pitch" :
+                return new Int(dataDrumNote.getPitch());
             default:
                 throw new Error("This should never happen!");
 

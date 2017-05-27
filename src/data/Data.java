@@ -1,5 +1,7 @@
 package data;
 
+import exceptions.AmlRunTimeException;
+
 public abstract class Data {
 
     @Override
@@ -24,7 +26,7 @@ public abstract class Data {
                 + getClass().toString() + " with " + secondTerm.getClass().toString());
     }
 
-    public Data quotientOperator(Data secondTerm) {
+    public Data quotientOperator(Data secondTerm)  throws AmlRunTimeException {
         throw new Error("Quotient operator is not implemented for "
                 + getClass().toString() + " with " + secondTerm.getClass().toString());
     }
@@ -32,6 +34,11 @@ public abstract class Data {
     public Data modOperator(Data secondTerm) {
         throw new Error("Mod operator is not implemented for "
                 + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public String toString() {
+        return getValue().toString();
     }
 
 }
