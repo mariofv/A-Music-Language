@@ -38,6 +38,7 @@ public class SemanticAnalyzer {
     private HashMap<String, AmlTree> songMap;
     private LinkedList<HashMap<String, SymbolInfo>> symbolTable;
     private int index, numVars;
+    private AmlTree currentFunction;
 
     private static String mapType(int type) {
         switch (type) {
@@ -126,6 +127,7 @@ public class SemanticAnalyzer {
                         }
                     }
                     int lastIndex = pushScope();
+                    currentFunction = globalStatement;
                     analyzeListInstructions(globalStatement.getChild(2));
                     popSoce(lastIndex);
                     globalStatement.setNumVariables(numVars);
@@ -193,6 +195,17 @@ public class SemanticAnalyzer {
     private boolean analyzeCommonInstruction(AmlTree commonInstruction) throws AmlSemanticException {
         //TODO: var_funcall
         switch (commonInstruction.getType()) {
+            case RETURN: {
+                int type = VOID;
+                if (commonInstruction.getChildCount() > 0) {
+                    type = checkExpression(commonInstruction.getChild(0));
+                }
+                if (type != currentFunction.getChild(0).getType()) throw new AmlSemanticException(
+                        "Return type does not match with the function declaration, found " + mapType(type) + " but "
+                        + mapType(currentFunction.getChild(0).getType()) + " expected", commonInstruction.getLine()
+                );
+                return true;
+            }
             //Declaration
             case INT:
             case BOOL:
