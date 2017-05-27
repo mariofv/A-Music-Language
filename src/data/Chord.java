@@ -25,7 +25,7 @@ public class Chord extends AttributeData {
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
             case "figure" :
-                dataChord.setFigure(AmlFigure.Figure.valueOf((String) value));
+                dataChord.setFigure((Integer) value);
                 break;
             default:
                 throw new Error("This should never happen!");

@@ -17,6 +17,15 @@ public class AmlNote {
 
     int pitch;
     private Note note;
+
+    public Note getNote() {
+        return note;
+    }
+
+    public int getOctave() {
+        return octave;
+    }
+
     private Accident accident;
     private int octave;
 
