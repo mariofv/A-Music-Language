@@ -10,11 +10,13 @@ public class Int extends Data {
         dataInt = valueDataInt;
     }
 
-    public int getValue() {
+    @Override
+    public Integer getValue() {
         return dataInt;
     }
 
-    public void setValue(int value) { dataInt = value;}
+    @Override
+    public void setValue(Object value) { dataInt = (Integer)value;}
 
     @Override
     public Data clone() {

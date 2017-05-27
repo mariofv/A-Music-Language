@@ -17,6 +17,7 @@ public class Figure extends AttributeData {
         dataFigure = dataFigureValue;
     }
 
+    @Override
     public AmlFigure getValue() {
         if (dataFigure == null) {
             throw new NullPointerException();
@@ -36,7 +37,8 @@ public class Figure extends AttributeData {
         }
     }
 
-    public void setValue(AmlFigure value) { dataFigure = value; }
+    @Override
+    public void setValue(Object value) { dataFigure = (AmlFigure)value; }
 
     @Override
     public Data clone() {

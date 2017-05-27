@@ -10,11 +10,13 @@ public class TextVar extends Data{
         dataString = dataStringValue;
     }
 
+    @Override
     public String getValue() {
         return dataString;
     }
 
-    public void setValue(String value) { dataString = value; }
+    @Override
+    public void setValue(Object value) { dataString = (String)value; }
 
     @Override
     public Data clone() {

@@ -13,11 +13,13 @@ public class Chord extends AttributeData {
         dataChord = dataChordValue;
     }
 
+    @Override
     public AmlChord getValue() {
         return dataChord;
     }
 
-    public void setValue(AmlChord value) { dataChord = value; }
+    @Override
+    public void setValue(Object value) { dataChord = (AmlChord)value; }
 
     @Override
     public void setAttribute(String attribute, Object value) {

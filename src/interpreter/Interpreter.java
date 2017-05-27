@@ -112,7 +112,7 @@ public class Interpreter {
                 currentTrack.setTone(tone);
                 break;
             case MusicLexer.WHILE:
-                while(evaluateBooleanExpression(tree.getChild(0))) {
+                while((boolean)evaluateExpression(tree.getChild(0)).getValue()) {
                     Data returnData = executeListInstruction(tree.getChild(1));
                     if (returnData != null) return returnData;
                 }
@@ -120,7 +120,7 @@ public class Interpreter {
             case MusicLexer.FOR: {
                 initializeFor(tree.getChild(0));
                 //Parte central del for:
-                while(evaluateBooleanExpression(tree.getChild(1))) {
+                while((boolean)evaluateExpression(tree.getChild(1)).getValue()) {
                     Data returnData = executeListInstruction(tree.getChild(3));
                     if (returnData != null) return returnData;
                     //increment For
@@ -132,13 +132,13 @@ public class Interpreter {
             }
             case MusicLexer.IF: {
                 Data returnData = null;
-                if (evaluateBooleanExpression(tree.getChild(0))) {
+                if ((boolean)evaluateExpression(tree.getChild(0)).getValue()) {
                     returnData = executeListInstruction(tree.getChild(1));
                 } else {
                     for (int i = 2; i < tree.getChildCount(); ++i) {
                         AmlTree child = tree.getChild(i);
                         if (child.getType() == MusicLexer.ELSEIF) {
-                            if (evaluateBooleanExpression(child.getChild(0))) {
+                            if ((boolean)evaluateExpression(child.getChild(0)).getValue()) {
                                 returnData = executeListInstruction(child.getChild(1));
                                 break;
                             }
@@ -204,7 +204,7 @@ public class Interpreter {
                 for (AmlTree assigChild : tree.getArrayChildren()) {
                     if(assigChild.getType() == MusicLexer.ASSIG) {
                         int index = assigChild.getChild(0).getVariableIndex();
-                        Bool value = new Bool( evaluateBooleanExpression(assigChild.getChild(1)) );
+                        Bool value = (Bool)evaluateExpression(assigChild.getChild(1));
                         stack.getLocalVariables().set(index, value);
                     } else {
                         int index = assigChild.getVariableIndex();
@@ -215,28 +215,8 @@ public class Interpreter {
             case MusicLexer.ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
-                if(currentVar instanceof Bool) {
-                    boolean value = evaluateBooleanExpression(tree.getChild(1));
-                    ((Bool) currentVar).setValue(value);
-                } else if(currentVar instanceof Int){
-                    int value = ((Int) evaluateExpression(tree.getChild(1))).getValue();
-                    ((Int) currentVar).setValue(value);
-                } else if(currentVar instanceof TextVar){
-                    String value = ((TextVar) evaluateExpression(tree.getChild(1))).getValue();
-                    ((TextVar) currentVar).setValue(value);
-                } else if (currentVar instanceof Figure) {
-                    AmlFigure figure = ((Figure) evaluateExpression(tree.getChild(1))).getValue();
-                    ((Figure) currentVar).setValue(figure);
-                } else if (currentVar instanceof Chord) {
-                    AmlChord chord = ((Chord) evaluateExpression(tree.getChild(1))).getValue();
-                    ((Chord) currentVar).setValue(chord);
-                } else if (currentVar instanceof Note) {
-                    AmlNote note = ((Note) evaluateExpression(tree.getChild(1))).getValue();
-                    ((Note) currentVar).setValue(note);
-                } else if (currentVar instanceof DrumNote) {
-                    AmlDrumNote drumNote = ((DrumNote) evaluateExpression(tree.getChild(1))).getValue();
-                    ((DrumNote) currentVar).setValue(drumNote);
-                }
+                Object value = evaluateExpression(tree.getChild(1));
+                currentVar.setValue(value);
                 return true;
             }
             case MusicLexer.PLUS_ASSIG: {
@@ -312,6 +292,7 @@ public class Interpreter {
     }
 
     private Data evaluateExpression(AmlTree tree) throws AmlRunTimeException {
+        Int leftSide, rightSide;
         switch (tree.getType()) {
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
@@ -372,58 +353,39 @@ public class Interpreter {
                     }
                 }
                 return executeFunction(tree.getText(), arguments);
+            case MusicLexer.TRUE:
+                return new Bool(true);
+            case MusicLexer.FALSE:
+                return new Bool(false);
+            case MusicLexer.EQUAL:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() == rightSide.getValue());
+            case MusicLexer.NOT_EQUAL:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() != rightSide.getValue());
+            case MusicLexer.GE:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() >= rightSide.getValue());
+            case MusicLexer.GT:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() > rightSide.getValue());
+            case MusicLexer.LE:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() <= rightSide.getValue());
+            case MusicLexer.LT:
+                leftSide = (Int) evaluateExpression(tree.getChild(0));
+                rightSide = (Int) evaluateExpression(tree.getChild(1));
+                return new Bool(leftSide.getValue() < rightSide.getValue());
+
         }
         throw new Error("This should never happen");
     }
 
-    private boolean evaluateBooleanExpression(AmlTree tree) throws AmlRunTimeException {
-        Int leftSide, rightSide;
-        switch (tree.getType()){
-            case MusicLexer.TRUE:
-                return true;
-            case MusicLexer.FALSE:
-                return false;
-            case MusicLexer.ID:
-                int index = tree.getVariableIndex();
-                return ((Bool) stack.getLocalVariables().get(index)).getValue();
-            case MusicLexer.EQUAL:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() == rightSide.getValue();
-            case MusicLexer.NOT_EQUAL:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() != rightSide.getValue();
-            case MusicLexer.GE:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() >= rightSide.getValue();
-            case MusicLexer.GT:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() > rightSide.getValue();
-            case MusicLexer.LE:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() <= rightSide.getValue();
-            case MusicLexer.LT:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return leftSide.getValue() < rightSide.getValue();
-            case MusicLexer.FUNCALL:
-                ArrayList<Data> arguments = new ArrayList<>(tree.getChildCount());
-                if (tree.getChildren() != null) {
-                    int i = 0;
-                    for (AmlTree argument : tree.getArrayChildren()) {
-                        Data expressionResult = evaluateExpression(argument);
-                        arguments.set(i, expressionResult);
-                    }
-                }
-                return ((Bool)executeFunction(tree.getText(), arguments)).getValue();
-            default:
-                throw new Error("This should never happen");
-        }
-    }
 
     private Data executeListMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
         for(AmlTree child : tree.getArrayChildren()) {
@@ -458,13 +420,13 @@ public class Interpreter {
                 break;
             case MusicLexer.IF: {
                 Data returnData = null;
-                if (evaluateBooleanExpression(tree.getChild(0))) {
+                if ((boolean)evaluateExpression(tree.getChild(0)).getValue()) {
                     returnData = executeListMusicInstruction(tree.getChild(1), compas);
                 } else {
                     for (int i = 2; i < tree.getChildCount(); ++i) {
                         AmlTree child = tree.getChild(i);
                         if (child.getType() == MusicLexer.ELSEIF) {
-                            if (evaluateBooleanExpression(child.getChild(0))) {
+                            if ((boolean)evaluateExpression(child.getChild(0)).getValue()) {
                                 returnData = executeListMusicInstruction(child.getChild(1), compas);
                                 break;
                             }
@@ -477,7 +439,7 @@ public class Interpreter {
                 break;
             }
             case MusicLexer.WHILE:
-                while(evaluateBooleanExpression(tree.getChild(0))) {
+                while((boolean)evaluateExpression(tree.getChild(0)).getValue()) {
                     Data returnData = executeListMusicInstruction(tree.getChild(1),compas);
                     if (returnData != null) return returnData;
                 }
@@ -485,7 +447,7 @@ public class Interpreter {
             case MusicLexer.FOR: {
                 initializeFor(tree.getChild(0));
                 //Parte central del for:
-                while(evaluateBooleanExpression(tree.getChild(1))) {
+                while((boolean)evaluateExpression(tree.getChild(1)).getValue()) {
                     Data returnData = executeListMusicInstruction(tree.getChild(3),compas);
                     if (returnData != null) return returnData;
                     for(AmlTree childAssig : tree.getChild(2).getArrayChildren()) {
@@ -741,7 +703,7 @@ public class Interpreter {
     }
 
     public AmlDrumNote createDrumNote(AmlTree tree){
-        return new AmlDrumNote(tree.getIntValue());
+        return new AmlDrumNote(tree.getChild(0).getIntValue());
     }
 
     private void initializeFor(AmlTree tree) throws AmlRunTimeException {

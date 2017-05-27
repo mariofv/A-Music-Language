@@ -15,6 +15,7 @@ public class Note extends AttributeData {
         dataNote = dataNoteValue;
     }
 
+    @Override
     public AmlNote getValue() {
         if (dataNote == null) {
             throw new NullPointerException();
@@ -43,7 +44,8 @@ public class Note extends AttributeData {
         }
     }
 
-    public void setValue(AmlNote value) { dataNote = value; }
+    @Override
+    public void setValue(Object value) { dataNote = (AmlNote)value; }
 
     @Override
     public Data clone() {
