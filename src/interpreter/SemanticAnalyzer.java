@@ -309,7 +309,7 @@ public class SemanticAnalyzer {
     }
 
     private SymbolInfo getSymbol(AmlTree tree) throws AmlSemanticException {
-        assert tree.getType() == ID;
+        assert tree.getType() == ID || tree.getType() == ATTR_ACCESS;
         String id = tree.getText();
         if (id.equals("Time")) return new SymbolInfo(-1, INT, -1);
         for (HashMap<String, SymbolInfo> scope : symbolTable) {
@@ -322,13 +322,21 @@ public class SemanticAnalyzer {
         throw new AmlSemanticException("Variable " + id + " not declared", tree.getLine());
     }
 
+    private static int attrType(int type, String attr) {
+        return 1;
+    }
+
     private int checkExpression(AmlTree expression) throws AmlSemanticException {
         //Atoms
         switch (expression.getType()) {
             //var_access
             case ATTR_ACCESS:
-                //TODO: THIS
-                return INT;
+                int type = getSymbol(expression).getType();
+                int attrType = attrType(type, expression.getChild(1).getText());
+                if (attrType == -1)
+                    throw new AmlSemanticException("Variable " + expression.getText() + " of type " + mapType(type) +
+                            " does not have attribute " + expression.getChild(1).getText(), expression.getLine());
+                return attrType;
             //var_access
             case ID:
                 return getSymbol(expression).getType();
@@ -532,11 +540,11 @@ public class SemanticAnalyzer {
                 }
                 break;
             case DRUM_FIGURE:
+                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
+                    notes.getChild(1).setFigureValue();
+                }
                 for (AmlTree drumNote : notes.getChild(0).getArrayChildren()) {
-                    if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
-                        notes.getChild(1).setFigureValue();
-                    }
-                    int type = checkExpression(drumNote);
+                    int type = checkExpression(drumNote.getChild(0));
                     if (type != INT)
                         throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
                                 " but " + mapType(type) + " was provided instead.", notes.getLine());
