@@ -9,8 +9,6 @@ import static parser.MusicParser.*;
 
 public class SemanticAnalyzer {
 
-    public final static int ACCIDENT_TYPE = 112;
-
     private class SymbolInfo {
         private int line;
         private int type;
@@ -344,7 +342,7 @@ public class SemanticAnalyzer {
                     case "octave":
                         return INT;
                     case "accident":
-                        return ACCIDENT_TYPE;
+                        return INT;
                 }
             case DRUMS_NOTE_TYPE:
                 switch (attr) {
