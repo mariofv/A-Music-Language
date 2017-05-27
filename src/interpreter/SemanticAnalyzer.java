@@ -9,6 +9,8 @@ import static parser.MusicParser.*;
 
 public class SemanticAnalyzer {
 
+    public final static int ACCIDENT_TYPE = 112;
+
     private class SymbolInfo {
         private int line;
         private int type;
@@ -184,7 +186,7 @@ public class SemanticAnalyzer {
             case ID:
                 return getSymbol(tree).getType();
             case ATTR_ACCESS:
-                return INT;
+                return checkExpression(tree);
             default:
                 throw new Error("This should never happen");
         }
@@ -200,6 +202,7 @@ public class SemanticAnalyzer {
             case DRUMS_NOTE_TYPE:
             case CHORD:
             case STRING_TYPE:
+            case FIGURE_TYPE:
                 for (AmlTree declaration : commonInstruction.getArrayChildren()) {
                     checkDeclaration(declaration, commonInstruction.getType());
                 }
@@ -216,6 +219,11 @@ public class SemanticAnalyzer {
                 if (lType != rType) {
                     throw new AmlSemanticException("Type error in " + mapType(commonInstruction.getType()) +
                             " operation: " + mapType(lType) + ", " + mapType(rType), commonInstruction.getLine());
+                }
+                else if (commonInstruction.getType() != ASSIG && lType != INT) {
+                    throw new AmlSemanticException("Type error, operation " + mapType(commonInstruction.getType()) +
+                            " can only be applied with integer type, but found " + mapType(lType) + ", " + mapType(rType)
+                            , commonInstruction.getLine());
                 }
                 return true;
             case POST:
@@ -323,7 +331,33 @@ public class SemanticAnalyzer {
     }
 
     private static int attrType(int type, String attr) {
-        return 1;
+        switch (type) {
+            case FIGURE:
+                switch (attr) {
+                    case "duration":
+                        return INT;
+                }
+            case NOTE_TYPE:
+                switch (attr) {
+                    case "pitch":
+                        return INT;
+                    case "octave":
+                        return INT;
+                    case "accident":
+                        return ACCIDENT_TYPE;
+                }
+            case DRUMS_NOTE_TYPE:
+                switch (attr) {
+                    case "pitch":
+                        return INT;
+                }
+            case CHORD:
+                switch (attr) {
+                    case "duration":
+                        return INT;
+                }
+        }
+        return -1;
     }
 
     private int checkExpression(AmlTree expression) throws AmlSemanticException {

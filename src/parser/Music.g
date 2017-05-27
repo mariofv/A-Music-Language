@@ -135,6 +135,7 @@ type        :   INT
             |   DRUMS_NOTE_TYPE
             |   CHORD
             |   STRING_TYPE
+            |   FIGURE_TYPE
             ;
 
 type_void   :   type
@@ -317,6 +318,7 @@ MAJ7                : 'maj7';
 SEVENTH             : '7th';
 NOTE_TYPE           : 'Note';
 DRUMS_NOTE_TYPE     : 'DrumsNote';
+FIGURE_TYPE         : 'Figure';
 DN                  :  'DN';
 NOTE                : ('Do'|'Re'|'Mi'|'Fa'|'Sol'|'La'|'Si'|'Silence');
 DRUMS               : 'Drums';
