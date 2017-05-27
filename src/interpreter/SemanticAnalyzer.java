@@ -1,5 +1,6 @@
 package interpreter;
 
+import exceptions.AmlException;
 import exceptions.AmlSemanticException;
 import parser.MusicLexer;
 
@@ -206,6 +207,16 @@ public class SemanticAnalyzer {
                 );
                 return true;
             }
+            case READ: {
+                int type = getSymbol(commonInstruction.getChild(0)).getType();
+                if (type != INT && type != STRING_TYPE && type != BOOL) {
+                    throw new AmlSemanticException("Read instruction can only read integers, strings and booleans, but " + mapType(type) + " was provided", commonInstruction.getLine());
+                }
+                return true;
+            }
+            case WRITE:
+                checkExpression(commonInstruction.getChild(0));
+                return true;
             //Declaration
             case INT:
             case BOOL:

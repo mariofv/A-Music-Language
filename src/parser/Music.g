@@ -92,6 +92,8 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
 inst        :   declaration
             |   volume ';'
             |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
+            |   READ^ var_access ';'
+            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
             |   var_funcall
             |   tone ';'!
             |   beat ';'!
@@ -108,6 +110,8 @@ inst        :   declaration
             ;
 
 music_inst  :   declaration
+            |   READ^ var_access ';'
+            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
             |   volume ';'!
             |   tone ';'!
             |   beat ';'!
@@ -336,6 +340,8 @@ DRUMS_TRACK         : 'Drums_Track';
 INSTRUMENT          : 'Instrument';
 
 // Programming tokens
+READ    : 'Read';
+WRITE   : 'Write';
 LETTER_X:   'x';
 FRAGMENT: 'Fragment';
 VOID    : 'void';
