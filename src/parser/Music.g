@@ -27,6 +27,7 @@ tokens {
     DRUM_FIGURE;
     FIGURE;
     DRUM_NOTES;
+    DRUM_NOTE;
     NOTES;
     REPETITION;
     ID;
@@ -261,10 +262,10 @@ notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
 triplet     :   '[' notes_type notes_type notes_type ']' FIGURE_NAME? -> ^(TRIPLET FIGURE_NAME? notes_type notes_type notes_type)
             ;
 
-drumsnotes  :   ( '(' (drums)+ ')'  | drums) -> ^(DRUM_NOTES drums+)
+drumsnotes  :   ( '(' (drum_note)+ ')'  | drum_note) -> ^(DRUM_NOTES drum_note+)
             ;
 
-drums       :   DN! '('! num_expr^ ')'!
+drum_note   :   DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr)
             ;
 
 note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?

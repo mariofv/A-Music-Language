@@ -212,7 +212,6 @@ public class Interpreter {
                     }
                 }
                 return true;
-            //TODO: Fix EvaluateExpression for Strings + Concat operation, change grammar
             case MusicLexer.ASSIG: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
@@ -226,16 +225,16 @@ public class Interpreter {
                     String value = ((TextVar) evaluateExpression(tree.getChild(1))).getValue();
                     ((TextVar) currentVar).setValue(value);
                 } else if (currentVar instanceof Figure) {
-                    AmlFigure figure = createFigure(tree.getChild(1));
+                    AmlFigure figure = ((Figure) evaluateExpression(tree.getChild(1))).getValue();
                     ((Figure) currentVar).setValue(figure);
                 } else if (currentVar instanceof Chord) {
-                    AmlChord chord = (AmlChord)createFigure(tree.getChild(1));
+                    AmlChord chord = ((Chord) evaluateExpression(tree.getChild(1))).getValue();
                     ((Chord) currentVar).setValue(chord);
                 } else if (currentVar instanceof Note) {
-                    AmlNote note = createNote(tree.getChild(1).getChild(0).getChild(0));
+                    AmlNote note = ((Note) evaluateExpression(tree.getChild(1))).getValue();
                     ((Note) currentVar).setValue(note);
                 } else if (currentVar instanceof DrumNote) {
-                    AmlDrumNote drumNote = (AmlDrumNote) createNote(tree.getChild(1).getChild(0).getChild(0));
+                    AmlDrumNote drumNote = ((DrumNote) evaluateExpression(tree.getChild(1))).getValue();
                     ((DrumNote) currentVar).setValue(drumNote);
                 }
                 return true;
@@ -319,11 +318,15 @@ public class Interpreter {
             case MusicLexer.STRING:
                 return new TextVar(tree.getStringValue());
             case MusicLexer.FIGURE:
-            case MusicLexer.DRUM_FIGURE:
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
+            case MusicLexer.DRUM_FIGURE:
                 return new Figure(createFigure(tree));
+            case MusicLexer.NOTE:
+                return new Note(createNote(tree));
+            case MusicLexer.DRUM_NOTE:
+                return new DrumNote(createDrumNote(tree));
             case MusicLexer.FIGURE_NAME:
                 return new Int(AmlFigure.mapFigureDuration(tree.getFigureValue()));
             case MusicLexer.PLUS: {
@@ -731,10 +734,14 @@ public class Interpreter {
         else if (noteList.getType() == MusicLexer.DRUM_NOTES) {
             /* Loops over the list of notes */
             for (AmlTree noteChild : noteList.getArrayChildren()) {
-                figure.addNote(new AmlDrumNote(noteChild.getIntValue()));
+                figure.addNote(createDrumNote(noteChild));
             }
         }
         return figure;
+    }
+
+    public AmlDrumNote createDrumNote(AmlTree tree){
+        return new AmlDrumNote(tree.getIntValue());
     }
 
     private void initializeFor(AmlTree tree) throws AmlRunTimeException {
