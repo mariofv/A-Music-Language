@@ -10,11 +10,13 @@ public class Bool extends Data {
         dataBool = dataBoolValue;
     }
 
-    public boolean getValue() {
+    @Override
+    public Boolean getValue() {
         return dataBool;
     }
 
-    public void setValue(boolean value) { dataBool = value; }
+    @Override
+    public void setValue(Object value) { dataBool = (Boolean)value; }
 
     public int toInt() {
         return dataBool ? 1 : 0;
@@ -24,6 +26,7 @@ public class Bool extends Data {
     public Data clone() {
         return new Bool(dataBool);
     }
+
 
     @Override
     public Data sumOperator(Data secondTerm) {

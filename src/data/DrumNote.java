@@ -12,11 +12,13 @@ public class DrumNote extends AttributeData {
         dataDrumNote = dataDrumNoteValue;
     }
 
+    @Override
     public AmlDrumNote getValue() {
         return dataDrumNote;
     }
 
-    public void setValue(AmlDrumNote value) { dataDrumNote = value; }
+    @Override
+    public void setValue(Object value) { dataDrumNote = (AmlDrumNote)value; }
 
     @Override
     public void setAttribute(String attribute, Object value) {

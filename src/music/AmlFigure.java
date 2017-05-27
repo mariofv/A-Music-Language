@@ -23,10 +23,10 @@ public class AmlFigure {
     public final static  int PPQ = 16;
 
     Figure figure;
+
     int figureModifier;
     boolean tie;
     ArrayList<AmlNote> notes;
-
 
     private int duration;
 
@@ -40,6 +40,8 @@ public class AmlFigure {
 
     private AmlFigure(){}
 
+    public int getFigureModifier() {return figureModifier; }
+
     public int getDuration() {
         return duration;
     }
@@ -48,7 +50,7 @@ public class AmlFigure {
         this.duration = duration;
     }
 
-    public void setFigure(Figure figure) { this.figure = figure; }
+    public void setFigure(int figure) { duration = figure; }
 
     public ArrayList<AmlNote> getNotes(){return notes;}
 

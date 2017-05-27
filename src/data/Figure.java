@@ -2,9 +2,6 @@ package data;
 
 import music.AmlFigure;
 
-/**
- * Created by Carlos on 26/05/2017.
- */
 public class Figure extends AttributeData {
 
     private AmlFigure dataFigure;
@@ -17,6 +14,7 @@ public class Figure extends AttributeData {
         dataFigure = dataFigureValue;
     }
 
+    @Override
     public AmlFigure getValue() {
         if (dataFigure == null) {
             throw new NullPointerException();
@@ -28,7 +26,7 @@ public class Figure extends AttributeData {
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
             case "figure":
-                dataFigure.setFigure(AmlFigure.Figure.valueOf((String) value));
+                dataFigure.setFigure((Integer) value);
                 break;
             default:
                 throw new Error("This should never happen!");
@@ -36,7 +34,8 @@ public class Figure extends AttributeData {
         }
     }
 
-    public void setValue(AmlFigure value) { dataFigure = value; }
+    @Override
+    public void setValue(Object value) { dataFigure = (AmlFigure)value; }
 
     @Override
     public Data clone() {

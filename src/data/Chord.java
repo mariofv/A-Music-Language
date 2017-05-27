@@ -13,17 +13,19 @@ public class Chord extends AttributeData {
         dataChord = dataChordValue;
     }
 
+    @Override
     public AmlChord getValue() {
         return dataChord;
     }
 
-    public void setValue(AmlChord value) { dataChord = value; }
+    @Override
+    public void setValue(Object value) { dataChord = (AmlChord)value; }
 
     @Override
     public void setAttribute(String attribute, Object value) {
         switch (attribute) {
             case "figure" :
-                dataChord.setFigure(AmlFigure.Figure.valueOf((String) value));
+                dataChord.setFigure((Integer) value);
                 break;
             default:
                 throw new Error("This should never happen!");
