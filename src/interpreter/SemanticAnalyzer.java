@@ -496,10 +496,10 @@ public class SemanticAnalyzer {
             //var_access
             case ATTR_ACCESS:
                 int type = getSymbol(expression).getType();
-                int attrType = attrType(type, expression.getChild(1).getText());
+                int attrType = attrType(type, expression.getChild(0).getText());
                 if (attrType == -1)
                     throw new AmlSemanticException("Variable " + expression.getText() + " of type " + mapType(type) +
-                            " does not have attribute " + expression.getChild(1).getText(), expression.getLine());
+                            " does not have attribute " + expression.getChild(0).getText(), expression.getLine());
                 return attrType;
             //var_access
             case ID:
@@ -519,6 +519,11 @@ public class SemanticAnalyzer {
             case TRUE:
             case FALSE:
                 return BOOL;
+            case NOTE:
+                expression.setNoteValue();
+                if (expression.getChildCount() > 0 && expression.getChild(0).getType() == NEG_NUM) expression.getChild(0).setIntValue();
+                else if (expression.getChildCount() > 1 && expression.getChild(1).getType() == NEG_NUM) expression.getChild(1).setIntValue();
+                return NOTE_TYPE;
         }
         //Unary operators
         if (expression.getChildCount() == 1) {

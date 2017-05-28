@@ -24,6 +24,7 @@ public class AmlChord  extends AmlFigure{
     private AmlNote third;
     private AmlNote fifth;
     private AmlNote seventh;
+    private AmlNote.Note rootName;
     private int octave;
     private Accident accident;
     private Quality quality;
@@ -40,6 +41,9 @@ public class AmlChord  extends AmlFigure{
     }
 
     private void setChordNotes() {
+        notes = new ArrayList<AmlNote>();
+        root = new AmlNote(rootName, accident, octave);
+        notes.add(this.root);
         switch (root.getNote()) {
             case Do:
                 third = new AmlNote(AmlNote.Note.Mi, Accident.Natural, octave);
@@ -125,12 +129,11 @@ public class AmlChord  extends AmlFigure{
     }
 
     public AmlNote.Note getRoot() {
-       return root.getNote();
+       return rootName;
     }
 
     public void setRoot(AmlNote.Note root) {
-        this.root = new AmlNote(root, accident, octave);
-        notes.add(this.root);
+      rootName = root;
     }
     public void setAccident(Accident accident) {
         this.accident = accident;
