@@ -526,7 +526,7 @@ public class Interpreter {
         ArrayList<Data> arguments = new ArrayList<>();
         for (int i = 1; i < tree.getChildCount(); ++i) {
             AmlTree argument = tree.getChild(1);
-            Data expressionResult = evaluateExpression(argument);
+            Data expressionResult = evaluateExpression(argument).clone();
             arguments.add(expressionResult);
         }
         return  currentVar.method(funcName, arguments);

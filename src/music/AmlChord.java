@@ -123,6 +123,11 @@ public class AmlChord  extends AmlFigure{
     public void setOctave(int octave) {
         this.octave = octave;
     }
+
+    public AmlNote.Note getRoot() {
+       return root.getNote();
+    }
+
     public void setRoot(AmlNote.Note root) {
         this.root = new AmlNote(root, accident, octave);
         notes.add(this.root);

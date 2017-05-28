@@ -56,6 +56,11 @@ public class AmlFigure {
 
     public boolean isTied() { return tie; }
 
+    public void setTie(boolean tie) {
+        this.tie = tie;
+        computeDuration();
+    }
+
     public static int mapFigureDuration(Figure figure) {
         switch (figure) {
             case Redonda:

@@ -12,8 +12,8 @@ public class Chord extends AttributeData {
 
     public static final String alterQuality =  "alterQuality";
     public static final String alterInterval =  "alterInterval";
-    public static final String setAccident = "setAccident";
     public static final String setRoot =  "setRoot";
+    public static final String setAccident = "setAccident";
     public static final String setOctave =  "setOctave";
     public static final String tie =  "tie";
     public static final String untie =  "untie";
@@ -45,9 +45,25 @@ public class Chord extends AttributeData {
                 String interval  = ((TextVar)arguments.get(0)).getValue();
                 return alterInterval(interval);
             case setRoot:
-
-                break;
-
+                AmlNote rootNote = ((Note)arguments.get(0)).getValue();
+                return setRoot(rootNote);
+            case setAccident:
+                String accident = ((TextVar)arguments.get(0)).getValue();
+                return setAccident(accident);
+            case setOctave:
+                int octave = ((Int)arguments.get(0)).getValue();
+                if (octave <= 0) throw new AmlRunTimeException("The octave must be a positive integer");
+                dataChord.setOctave(octave);
+                dataChord.setRoot(dataChord.getRoot());
+                return Void.getInstance();
+            case tie:
+                dataChord.setTie(true);
+                return Void.getInstance();
+            case untie:
+                dataChord.setTie(false);
+                return Void.getInstance();
+            case isTied:
+                return new Bool(dataChord.isTied());
         }
         return null;
     }
@@ -92,6 +108,9 @@ public class Chord extends AttributeData {
             case "Diminuted":
                 dataChord.setQuality(AmlChord.Quality.Disminuido);
                 break;
+            default:
+                throw new AmlRunTimeException("The given parameter is not correct. Please give one of this parameters:\n" +
+                                            "[Major, Minor, Augmented, Diminuted]");
         }
         dataChord.constructChord();
         return Void.getInstance();
@@ -108,7 +127,41 @@ public class Chord extends AttributeData {
             case "NoInterval":
                 dataChord.setInterval(AmlChord.Interval.NoInterval);
                 break;
+            default:
+                throw new AmlRunTimeException("The given parameter is not correct. Please give one of this parameters:\n" +
+                        "[Seventh, Maj7, NoInterval]");
         }
+        dataChord.constructChord();
+        return Void.getInstance();
+    }
+
+    private Void setRoot(AmlNote rootNote) {
+        dataChord.setOctave(rootNote.getOctave());
+        dataChord.setAccident(rootNote.getAccident());
+        dataChord.setRoot(rootNote.getNote());
+        dataChord.constructChord();
+        return Void.getInstance();
+    }
+
+    private Void setAccident(String accident) throws AmlRunTimeException {
+        switch (accident) {
+            case "#":
+                dataChord.setAccident(AmlNote.Accident.Sustain);
+                break;
+            case "&":
+                dataChord.setAccident(AmlNote.Accident.Bemol);
+                break;
+            case "$":
+                dataChord.setAccident(AmlNote.Accident.Armor);
+                break;
+            case "Natural":
+                dataChord.setAccident(AmlNote.Accident.Natural);
+                break;
+            default:
+                throw new AmlRunTimeException("The given parameter is not correct. Please give one of this parameters:\n" +
+                        "[#, &, $, Natural]");
+        }
+        dataChord.setRoot(dataChord.getRoot());
         dataChord.constructChord();
         return Void.getInstance();
     }
