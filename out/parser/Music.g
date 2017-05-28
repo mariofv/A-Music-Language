@@ -253,7 +253,6 @@ drumsnotes_variable     :   drumsnotes ('.' (FIGURE_NAME POS_NUM?) DOT?)? -> ^(D
                         ;
 
 notes_variable  :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
-                |   'N:'! note
                 ;
 
 notes_type  :	chord | notes
@@ -274,7 +273,11 @@ drumsnotes  :   ( '(' (drum_note)+ ')'  | drum_note) -> ^(DRUM_NOTES drum_note+)
 drum_note   :   DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr)
             ;
 
-note        :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
+note_aux    :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
+            ;
+
+note        :   note_aux
+            |   'N:'! id_rule
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -298,6 +301,8 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 
 atom    :   var_access
 		|   nnum
+		|   'N:'! note_aux
+		|   'DN:'! drum_note
 		|   STRING
 		|   funcall
 		|   var_funcall

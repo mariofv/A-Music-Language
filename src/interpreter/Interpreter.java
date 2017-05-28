@@ -838,7 +838,17 @@ public class Interpreter {
 
         if (noteList.getType() == MusicLexer.NOTES) {
             for (AmlTree noteChild : noteList.getArrayChildren()) {
-                AmlNote note = createNote(noteChild);
+                AmlNote note;
+                if (noteChild.getType() == MusicLexer.NOTE) {
+                    note = createNote(noteChild);
+                }
+                else if (noteChild.getType() == MusicLexer.ID) {
+                    int index = noteChild.getVariableIndex();
+                    note = ((AmlNote)stack.getLocalVariables().get(index).getValue()).clone();
+                }
+                else {
+                    throw new Error("This should never happen");
+                }
                 figure.addNote(note);
             }
         }
@@ -850,8 +860,18 @@ public class Interpreter {
         else if (noteList.getType() == MusicLexer.DRUM_NOTES) {
             /* Loops over the list of notes */
             for (AmlTree noteChild : noteList.getArrayChildren()) {
-                figure.addNote(createDrumNote(noteChild));
-            }
+                AmlNote drumNote;
+                if (noteChild.getType() == MusicLexer.NOTE) {
+                    drumNote = createDrumNote(noteChild);
+                }
+                else if (noteChild.getType() == MusicLexer.ID) {
+                    int index = noteChild.getVariableIndex();
+                    drumNote = ((AmlNote)stack.getLocalVariables().get(index).getValue()).clone();
+                }
+                else {
+                    throw new Error("This should never happen");
+                }
+                figure.addNote(drumNote);            }
         }
         return figure;
     }
