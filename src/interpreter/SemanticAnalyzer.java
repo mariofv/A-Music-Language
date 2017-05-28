@@ -560,6 +560,7 @@ public class SemanticAnalyzer {
                     compatiblePairs.add(new int[]{INT,BOOL});
                     compatiblePairs.add(new int[]{BOOL,INT});
                     compatiblePairs.add(new int[]{INT,INT});
+                    compatiblePairs.add(new int[]{BOOL,BOOL});
                     returnType = INT;
                     break;
                 case GT:
