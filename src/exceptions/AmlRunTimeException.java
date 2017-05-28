@@ -14,7 +14,7 @@ public class AmlRunTimeException extends AmlException {
         System.err.println("Stack trace:");
         while(!stack.isEmpty()) {
             AmlTree function = stack.topFunction();
-            System.out.println(function.getText() + ": line " + function.getLine());
+            System.err.println(function.getText() + ": line " + function.getLine());
             stack.pop();
         }
     }
