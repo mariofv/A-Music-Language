@@ -606,7 +606,7 @@ public class Interpreter {
                 }
                 else throw new Error("This should never happen, the type is: " + dataNote.getClass());
                 try {
-                    compas.addFigure(note);
+                    compas.addFigure(note.clone());
                 }
                 catch (AmlMusicException exception) {
                     exception.setLine(tree.getLine());

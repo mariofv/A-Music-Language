@@ -1,0 +1,6 @@
+void main() {
+    Beat 2:4;
+    Tone 4&;
+    || Silence.b 2x||: 2x||: Fa-7.c Fa-7 Fa-7 Fa-7 :|| Fa-7 Fa-7 Do-7 Mi-7 | #Fa-7 $Fa-7 Mi-7 #Fa-7 2x||: Fa-7.c Fa-7 Fa-7 Fa-7 :||
+       if(Time==1){Fa-7 La-7 Mi-7.n} else {Fa-7 Fa-7 Do-7.n} | if (Time == 1) {Mi-7.n Mi-7.n} else {Mi-7.n #Fa-7} :|| ||
+}

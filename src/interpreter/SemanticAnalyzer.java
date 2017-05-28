@@ -85,6 +85,8 @@ public class SemanticAnalyzer {
                 return "--";
             case STRING_TYPE:
                 return "string";
+            case FIGURE_TYPE:
+                return "figure";
             default:
                 return "unknown " + type;
         }
@@ -427,7 +429,7 @@ public class SemanticAnalyzer {
                     case CHORD:
                         return CHORD;
                     case NOTES:
-                        return NOTE_TYPE;
+                        return FIGURE_TYPE;
                     default: throw new Error("This should never happen");
                 }
             case FIGURE_NAME:
@@ -590,7 +592,7 @@ public class SemanticAnalyzer {
             int decType = declaration.getType();
             int exprType = getRType(argumentExpr);
             if (decType != exprType)
-                throw new AmlSemanticException("Type error. Argument " + i + " does not match with declaration of function" +
+                throw new AmlSemanticException("Type error. Argument " + i + " does not match with declaration of function " +
                 funcCall.getText() + ". Expecting " + mapType(decType) + ", provided " + mapType(exprType), funcCall.getLine());
         }
     }
@@ -795,7 +797,7 @@ public class SemanticAnalyzer {
                 break;
             case ID:
                 int type = getSymbol(musicInstruction).getType();
-                if (type != NOTE_TYPE && type != CHORD && type != DRUMS_NOTE_TYPE)
+                if (type != FIGURE_TYPE && type != CHORD)
                     throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a note, but it has type: " + mapType(type), musicInstruction.getLine());
         }
     }
