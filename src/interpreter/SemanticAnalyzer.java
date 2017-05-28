@@ -87,6 +87,8 @@ public class SemanticAnalyzer {
                 return "string";
             case FIGURE_TYPE:
                 return "figure";
+            case DOT:
+                return "*";
             default:
                 return "unknown " + type;
         }
@@ -552,14 +554,11 @@ public class SemanticAnalyzer {
                     break;
                 case PLUS:
                 case MINUS:
-                    compatiblePairs.add(new int[]{INT,BOOL});
-                    compatiblePairs.add(new int[]{BOOL,INT});
-                    compatiblePairs.add(new int[]{INT,INT});
-                    returnType = INT;
-                    break;
                 case DOT:
                 case DIV:
                 case MOD:
+                    compatiblePairs.add(new int[]{INT,BOOL});
+                    compatiblePairs.add(new int[]{BOOL,INT});
                     compatiblePairs.add(new int[]{INT,INT});
                     returnType = INT;
                     break;
