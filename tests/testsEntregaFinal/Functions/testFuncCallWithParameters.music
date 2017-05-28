@@ -4,5 +4,5 @@ void myFunc(Note note, Figure figure, int count) {
 }
 
 void main() {
-    || Do.n Re Mi Fa | Sol La myFunc(N:#La, La.n, 3); La Do-6 ||
+    || Do.n Re Mi Fa | Sol La myFunc(N:#La, La.n, 3); #La Do-6 ||
 }

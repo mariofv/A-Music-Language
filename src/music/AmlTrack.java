@@ -177,7 +177,7 @@ public class AmlTrack {
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);
                 }
-                track.add(event);
+                if (!track.add(event)) System.out.println("Event not added");
             }
         }
     }
