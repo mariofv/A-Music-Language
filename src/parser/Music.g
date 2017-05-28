@@ -210,7 +210,7 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
+song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)* drums_track? '}'!
             ;
 
 track       :   TRACK^ id_rule!? STRING? compas_aux
@@ -249,7 +249,7 @@ notes_group :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE n
 notes_variable  :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
                 ;
 
-notes_type  :	chord | notes | drumsnotes
+notes_type  :	chord | notes
             ;
 
 chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
@@ -261,20 +261,16 @@ notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
 triplet     :   '[' notes_type notes_type notes_type ']' FIGURE_NAME? -> ^(TRIPLET FIGURE_NAME? notes_type notes_type notes_type)
             ;
 
-drumsnotes  :   ( '(' (drum_note)+ ')'  | drum_note) -> ^(DRUM_NOTES drum_note+)
-            ;
-
 drum_note_aux : DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr);
 
-drum_note   :  drum_note_aux
-            |   'DN:'! id_rule
-            ;
 
 note_aux    :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
             ;
 
 note        :   note_aux
             |   'N:'! id_rule
+            | drum_note_aux
+            |   'DN:'! id_rule
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators

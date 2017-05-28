@@ -22,7 +22,7 @@ public class AmlTrack {
     AmlFigure lastFigure;
     Track track;
     private AmlInstrument instrument;
-    private AmlTone tone;
+    AmlTone tone;
     ArrayList<AmlMidiEvent> events;
     //private ArrayList<Interval> intervals;
 

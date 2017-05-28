@@ -16,7 +16,7 @@ public class AmlCompas {
 
     public AmlCompas(AmlTrack track) {
         this.track = track;
-        if (track.getClass() != AmlDrumsTrack.class) tone = track.getTone().clone();
+        tone = track.getTone().clone();
         lastFigureDuration = track.getLastFigureDuration();
         figures = new ArrayList<>();
         actualTicks = 0;
@@ -25,7 +25,7 @@ public class AmlCompas {
 
     private void alterNotePitches(AmlFigure figure) {
         for (AmlNote note : figure.getNotes()) {
-            if (!note.isSilence() && note.getClass() != AmlDrumNote.class) {
+            if (!note.isSilence() && !(note instanceof AmlDrumNote)) {
                 tone.alterNote(note);
                 note.setPitch(note.getPitch() + tone.getAccident(note) + track.getTransport());
             }
@@ -52,35 +52,10 @@ public class AmlCompas {
         track.setTone(tone);
     }
 
-    public void transportTrack(int transport) {
-        track.setTransport(transport);
-    }
-
-    public void changeTrackBeat(int[] beat) {
-        track.setMetric(beat);
-        ticksPerCompas = track.getMetric();
-    }
-
-    public int getCurrentTicks() {
-        return actualTicks;
-    }
-
     public AmlTrack getTrack() { return track; }
 
     public AmlTone getTone(){
         return tone;
-    }
-
-    public AmlFigure getFirstFigure() {
-        return figures.get(0);
-    }
-
-    public AmlFigure getLastFigure() {
-        return figures.get(figures.size()-1);
-    }
-
-    public ArrayList<AmlFigure> getFigures() {
-        return figures;
     }
 
     public void check() throws AmlMusicException {

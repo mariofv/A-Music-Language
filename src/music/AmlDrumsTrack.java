@@ -20,7 +20,7 @@ public class AmlDrumsTrack extends AmlTrack {
         this.metric = parentTrack.getMetric();
         setCurrentTick(parentTrack.getCurrentTick());
         lastFigure = new AmlFigure(Negra, 0, false);
-
+        tone = new AmlTone(0);
         try {
             lastVolume = new AmlShortMessage(ShortMessage.CONTROL_CHANGE, 7, 100);
             if (channelVolume == null) {

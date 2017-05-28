@@ -727,7 +727,7 @@ public class SemanticAnalyzer {
                         throw new AmlSemanticException("Type error, figure notes must have Note type, but variable " +
                                 note.getText() + " has type " + mapType(type), notes.getLine());
                 }
-                else if (note.getType() == DRUM_NOTES) {
+                else if (note.getType() == DRUM_NOTE) {
                     int type = checkExpression(note.getChild(0));
                     if (type != INT)
                         throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
@@ -740,6 +740,12 @@ public class SemanticAnalyzer {
                 }
                 else throw new Error("This should never happen");
             }
+        }
+        else if (notes.getChild(0).getType() == CHORD){
+            AmlTree note = notes.getChild(0).getChild(0);
+            note.setNoteValue();
+            if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+            else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
         }
         else throw new Error("This should never happen");
     }
@@ -820,7 +826,6 @@ public class SemanticAnalyzer {
                 break;
             }
             case FIGURE:
-            case DRUM_FIGURE:
                 analyzeNote(musicInstruction);
                 break;
             case TRIPLET:
@@ -835,7 +840,7 @@ public class SemanticAnalyzer {
     private void analyzeSong(AmlTree song) throws AmlSemanticException {
         int i = 0;
         AmlTree songChild = song.getChild(i++);
-        while (songChild.getType() != TRACK) {
+        while (songChild.getType() != TRACK && songChild.getType() !=  DRUMS) {
             if (songChild.getType() == ID) insertId(songChild, SONG);
             else if (!analyzeCommonInstruction(songChild)) throw new Error("This should never happen");
             songChild = song.getChild(i++);

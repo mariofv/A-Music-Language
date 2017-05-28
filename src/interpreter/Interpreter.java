@@ -655,7 +655,7 @@ public class Interpreter {
 
         int i = 0;
         AmlTree songChild = tree.getChild(i++);
-        while (songChild.getType() != MusicLexer.TRACK) {
+        while (songChild.getType() != MusicLexer.TRACK && songChild.getType() != MusicLexer.DRUMS) {
             switch (songChild.getType()) {
                 case MusicLexer.BEAT:
                     metric = createMetric(songChild);
@@ -831,6 +831,9 @@ public class Interpreter {
                 if (noteChild.getType() == MusicLexer.NOTE) {
                     note = createNote(noteChild);
                 }
+                else if (noteChild.getType() == MusicLexer.DRUM_NOTE) {
+                    note = createDrumNote(noteChild);
+                }
                 else if (noteChild.getType() == MusicLexer.ID) {
                     int index = noteChild.getVariableIndex();
                     note = ((AmlNote)stack.getLocalVariables().get(index).getValue()).clone();
@@ -845,22 +848,6 @@ public class Interpreter {
             AmlChord chord = new AmlChord(figureType, figureModifier, tie);
             createChord(noteList, chord);
             return chord;
-        }
-        else if (noteList.getType() == MusicLexer.DRUM_NOTES) {
-            /* Loops over the list of notes */
-            for (AmlTree noteChild : noteList.getArrayChildren()) {
-                AmlNote drumNote;
-                if (noteChild.getType() == MusicLexer.NOTE) {
-                    drumNote = createDrumNote(noteChild);
-                }
-                else if (noteChild.getType() == MusicLexer.ID) {
-                    int index = noteChild.getVariableIndex();
-                    drumNote = ((AmlNote)stack.getLocalVariables().get(index).getValue()).clone();
-                }
-                else {
-                    throw new Error("This should never happen");
-                }
-                figure.addNote(drumNote);            }
         }
         return figure;
     }

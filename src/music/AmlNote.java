@@ -16,7 +16,7 @@ public class AmlNote {
     }
 
     int pitch;
-    private Note note;
+    Note note;
 
     public void setNote(Note note) {
         this.note = note;
@@ -30,7 +30,7 @@ public class AmlNote {
         return octave;
     }
 
-    private Accident accident;
+    Accident accident;
     private int octave;
 
     AmlNote(){}
