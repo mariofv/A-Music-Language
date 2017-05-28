@@ -18,6 +18,10 @@ public class AmlNote {
     int pitch;
     private Note note;
 
+    public void setNote(Note note) {
+        this.note = note;
+    }
+
     public Note getNote() {
         return note;
     }
@@ -71,7 +75,7 @@ public class AmlNote {
 
     public boolean isSilence(){return note == Note.Silence;}
 
-    int mapNote(Note note, int octave) {
+    public int mapNote(Note note, int octave) {
         int pitch;
         switch(note) {
             case Do:
@@ -163,6 +167,10 @@ public class AmlNote {
 
     public void setAccident(String value) {
         accident = Accident.valueOf(value);
+    }
+
+    public void setAccident(Accident value) {
+        accident = value;
     }
 
 
