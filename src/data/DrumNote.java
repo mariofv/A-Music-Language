@@ -44,6 +44,7 @@ public class DrumNote extends AttributeData {
                 Random r = new Random(System.currentTimeMillis());
                 int random = r.nextInt(44) + 36;
                 dataDrumNote.setPitch(random);
+                return Void.getInstance();
             case pam:
                 dataDrumNote.setPitch(47);
                 return Void.getInstance();

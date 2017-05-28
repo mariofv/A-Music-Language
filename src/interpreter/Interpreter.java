@@ -543,7 +543,8 @@ public class Interpreter {
             Data expressionResult = evaluateExpression(argument).clone();
             arguments.add(expressionResult);
         }
-        return  currentVar.method(funcName, arguments);
+        return currentVar.method(funcName, arguments);
+
     }
 
     private Data executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {

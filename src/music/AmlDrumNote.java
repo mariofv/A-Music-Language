@@ -14,4 +14,9 @@ public class AmlDrumNote extends AmlNote {
     public AmlDrumNote clone() {
         return new AmlDrumNote(pitch);
     }
+
+    @Override
+    public String toString() {
+        return "DN(" + pitch + ')';
+    }
 }
