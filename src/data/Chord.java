@@ -64,8 +64,9 @@ public class Chord extends AttributeData {
                 return Void.getInstance();
             case isTied:
                 return new Bool(dataChord.isTied());
+            default:
+                throw new Error("This should never happen.");
         }
-        return null;
     }
 
     @Override

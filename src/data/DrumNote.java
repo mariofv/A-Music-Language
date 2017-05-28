@@ -1,9 +1,11 @@
 package data;
 
 import com.sun.corba.se.spi.ior.ObjectKey;
+import exceptions.AmlRunTimeException;
 import music.AmlDrumNote;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DrumNote extends AttributeData {
 
@@ -34,8 +36,32 @@ public class DrumNote extends AttributeData {
 
     @Override
     public Data method(String funcName, ArrayList<Data> arguments) {
-
-        return null;
+        switch (funcName) {
+            case makeSilence:
+                dataDrumNote.setPitch(-1);
+                return Void.getInstance();
+            case randomize:
+                Random r = new Random(System.currentTimeMillis());
+                int random = r.nextInt(44) + 36;
+                dataDrumNote.setPitch(random);
+            case pam:
+                dataDrumNote.setPitch(47);
+                return Void.getInstance();
+            case bom:
+                dataDrumNote.setPitch(36);
+                return Void.getInstance();
+            case bum:
+                dataDrumNote.setPitch(43);
+                return Void.getInstance();
+            case cling:
+                dataDrumNote.setPitch(51);
+                return Void.getInstance();
+            case tsss:
+                dataDrumNote.setPitch(42);
+                return Void.getInstance();
+            default:
+                throw new Error("This should never happen.");
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package data;
 
+import exceptions.AmlRunTimeException;
 import music.AmlFigure;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Figure extends AttributeData {
     }
 
     @Override
-    public Data method(String funcName, ArrayList<Data> arguments) {
+    public Data method(String funcName, ArrayList<Data> arguments) throws AmlRunTimeException{
         switch (funcName) {
             case tie:
                 dataFigure.setTie(true);
@@ -39,7 +40,8 @@ public class Figure extends AttributeData {
                 return Void.getInstance();
             case isTied:
                 return new Bool(dataFigure.isTied());
-        }
+            default:
+                throw new Error("This should never happen.");
         }
     }
 
