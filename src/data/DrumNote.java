@@ -7,6 +7,15 @@ import java.util.ArrayList;
 
 public class DrumNote extends AttributeData {
 
+    public static final String makeSilence = "makeSilence";
+    public static final String randomize = "randomize";
+    public static final String pam = "pam";
+    public static final String bom = "bom";
+    public static final String bum = "bum";
+    public static final String cling = "cling";
+    public static final String tsss = "tsss";
+
+
     private AmlDrumNote dataDrumNote;
 
     public DrumNote(){}
@@ -24,8 +33,9 @@ public class DrumNote extends AttributeData {
     public void setValue(Object value) { dataDrumNote = (AmlDrumNote)value; }
 
     @Override
-    public void method(String funcName, ArrayList<Data> arguments) {
+    public Data method(String funcName, ArrayList<Data> arguments) {
 
+        return null;
     }
 
     @Override

@@ -1,11 +1,21 @@
 package data;
 
+import exceptions.AmlRunTimeException;
 import music.AmlFigure;
 import music.AmlNote;
 
 import java.util.ArrayList;
 
 public class Note extends AttributeData {
+
+    public static final String isSilence = "isSilence";
+    public static final String isSustain = "isSustain";
+    public static final String isBemol = "isBemol";
+    public static final String isArmor = "isArmor";
+    public static final String isNatural = "isNatural";
+    public static final String makeSilence = "makeSilence";
+    public static final String randomize = "randomize";
+
 
     private AmlNote dataNote;
 
@@ -26,8 +36,26 @@ public class Note extends AttributeData {
     }
 
     @Override
-    public void method(String funcName, ArrayList<Data> arguments) {
+    public Data method(String funcName, ArrayList<Data> arguments) throws AmlRunTimeException {
+        switch (funcName) {
+            case isSilence:
+                return new Bool(dataNote.isSilence());
+            case isBemol:
 
+                break;
+            case isSustain:
+                break;
+            case isArmor:
+                break;
+            case isNatural:
+                break;
+            case makeSilence:
+                break;
+            case randomize:
+                break;
+
+        }
+        return null;
     }
 
     @Override
