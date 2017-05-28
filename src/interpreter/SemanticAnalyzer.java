@@ -553,7 +553,7 @@ public class SemanticAnalyzer {
                     compatiblePairs.add(new int[]{BOOL, BOOL});
                     break;
                 case PLUS:
-                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{INT,BOOL});
                     compatiblePairs.add(new int[]{BOOL,INT});
                     compatiblePairs.add(new int[]{INT,INT});
@@ -574,14 +574,14 @@ public class SemanticAnalyzer {
                 case LT:
                 case GE:
                 case LE:
-                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{INT,INT});
                     returnType = BOOL;
                     break;
                 case EQUAL:
                 case NOT_EQUAL:
                     compatiblePairs.add(new int[]{INT,INT});
-                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{BOOL,BOOL});
                     returnType = BOOL;
                     break;

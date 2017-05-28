@@ -1,0 +1,15 @@
+void main() {
+    int w = 10;
+    int x = 3;
+
+    Write (w + x);                      //Should write 13
+    Write (w - x);                      //Should write 7
+    Write (w * x);                      //Should write 30
+    Write (w / x);                      //Should write 3
+
+    int first = w + 5;                  //Should be 15
+    int second = first * true;          //Should be 15
+    Write (first == second) + false;    //Should write 1
+    int errorCause = first - second;
+    Write second / errorCause;          //Should give an error due to division by zero
+}

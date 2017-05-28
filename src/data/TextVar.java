@@ -53,7 +53,7 @@ public class TextVar extends Data{
     public Data lesserThanOperator(Data secondTerm) {
         if (secondTerm instanceof TextVar) {
             int value = dataString.compareTo((String) secondTerm.getValue());
-            return new Bool(value == -1);
+            return new Bool(value < 0);
         }
         throw new Error("lesserThan operator is not defined for TextVar and " + secondTerm.getClass().toString());
     }
@@ -62,7 +62,7 @@ public class TextVar extends Data{
     public Data lesserEqualOperator(Data secondTerm) {
         if (secondTerm instanceof TextVar) {
             int value = dataString.compareTo((String) secondTerm.getValue());
-            return new Bool(value == -1 || value == 0);
+            return new Bool(value <= 0);
         }
         throw new Error("lesserOrEqualThan operator is not defined for TextVar and " + secondTerm.getClass().toString());
     }
@@ -71,7 +71,7 @@ public class TextVar extends Data{
     public Data greaterThanOperator(Data secondTerm) {
         if (secondTerm instanceof TextVar) {
             int value = dataString.compareTo((String) secondTerm.getValue());
-            return new Bool(value == 1);
+            return new Bool(value > 0);
         }
         throw new Error("greaterThan operator is not defined for TextVar and " + secondTerm.getClass().toString());
     }
@@ -80,7 +80,7 @@ public class TextVar extends Data{
     public Data greaterEqualOperator(Data secondTerm) {
         if (secondTerm instanceof TextVar) {
             int value = dataString.compareTo((String) secondTerm.getValue());
-            return new Bool(value == 1 || value == 0);
+            return new Bool(value >= 0);
         }
         throw new Error("greaterOrEqualThan operator is not defined for TextVar and " + secondTerm.getClass().toString());
     }
