@@ -242,20 +242,15 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ expr (SUSTAIN | BEMOL)
             ;
 
-drumsnotes_group : drumsnotes ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(DRUM_FIGURE drumsnotes FIGURE_NAME? DOT? TIE?)
-            ;
 
 notes_group :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
 	        |  ':'! id_rule
             ;
 
-drumsnotes_variable     :   drumsnotes ('.' (FIGURE_NAME POS_NUM?) DOT?)? -> ^(DRUM_FIGURE drumsnotes FIGURE_NAME? DOT?)
-                        ;
-
 notes_variable  :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
                 ;
 
-notes_type  :	chord | notes
+notes_type  :	chord | notes | drumsnotes
             ;
 
 chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
@@ -270,7 +265,10 @@ triplet     :   '[' notes_type notes_type notes_type ']' FIGURE_NAME? -> ^(TRIPL
 drumsnotes  :   ( '(' (drum_note)+ ')'  | drum_note) -> ^(DRUM_NOTES drum_note+)
             ;
 
-drum_note   :   DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr)
+drum_note_aux : DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr);
+
+drum_note   :  drum_note_aux
+            |   'DN:'! id_rule
             ;
 
 note_aux    :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
@@ -302,7 +300,7 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 atom    :   var_access
 		|   nnum
 		|   'N:'! note_aux
-		|   'DN:'! drum_note
+		|   'DN:'! drum_note_aux
 		|   STRING
 		|   funcall
 		|   var_funcall

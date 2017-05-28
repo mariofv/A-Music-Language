@@ -427,7 +427,6 @@ public class Interpreter {
                 if (tree.getChild(0).getType() == MusicLexer.CHORD) {
                     return new Chord((AmlChord) createFigure(tree));
                 }
-            case MusicLexer.DRUM_FIGURE:
                 return new Figure(createFigure(tree));
             case MusicLexer.NOTE:
                 return new Note(createNote(tree));
@@ -633,16 +632,6 @@ public class Interpreter {
                 AmlFigure figure = createFigure(tree);
                 try {
                     compas.addFigure(figure);
-                }
-                catch (AmlMusicException exception) {
-                    exception.setLine(tree.getLine());
-                    throw exception;
-                }
-                break;
-            case MusicLexer.DRUM_FIGURE:
-                AmlFigure drumFigure = createFigure(tree);
-                try {
-                    compas.addFigure(drumFigure);
                 }
                 catch (AmlMusicException exception) {
                     exception.setLine(tree.getLine());

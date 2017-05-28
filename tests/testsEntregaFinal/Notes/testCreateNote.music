@@ -1,4 +1,3 @@
-//Aqui se han de crear notas tanto como data types como directamente
 void main() {
 
     //Note mySi = N:Si.c;
