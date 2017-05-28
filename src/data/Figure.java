@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class Figure extends AttributeData {
 
+    public static final String tie =  "tie";
+    public static final String untie =  "untie";
+    public static final String isTied =  "isTied";
+
     private AmlFigure dataFigure;
 
     public Figure() {
@@ -25,8 +29,8 @@ public class Figure extends AttributeData {
     }
 
     @Override
-    public void method(String funcName, ArrayList<Data> arguments) {
-
+    public Data method(String funcName, ArrayList<Data> arguments) {
+        return null;
     }
 
     @Override
