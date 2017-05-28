@@ -1,0 +1,13 @@
+void main() {
+    bool w = true;
+    bool x = false;
+
+    Write (w and w);    //Should write true
+    Write (w or x);      //Should write true
+    Write (w and x);    //Should write false
+    Write (not (w and (x or x))); //Should write true
+
+    int first = w + 5;
+
+
+}

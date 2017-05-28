@@ -74,4 +74,20 @@ public class Bool extends Data {
         }
         throw new Error("Quotient operator is not defined for Int and " + secondTerm.getClass().toString());
     }
+
+    @Override
+    public Data equalOperator(Data secondTerm) {
+        if (secondTerm instanceof Bool) {
+            return new Bool(dataBool == (boolean) secondTerm.getValue());
+        }
+        throw new Error("equalOperator operator is not defined for Bool and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data notEqualOperator(Data secondTerm) {
+        if (secondTerm instanceof Bool) {
+            return new Bool(dataBool != (boolean) secondTerm.getValue());
+        }
+        throw new Error("equalOperator operator is not defined for Bool and " + secondTerm.getClass().toString());
+    }
 }
