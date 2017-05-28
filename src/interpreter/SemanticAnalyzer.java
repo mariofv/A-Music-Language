@@ -553,6 +553,13 @@ public class SemanticAnalyzer {
                     compatiblePairs.add(new int[]{BOOL, BOOL});
                     break;
                 case PLUS:
+                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{INT,BOOL});
+                    compatiblePairs.add(new int[]{BOOL,INT});
+                    compatiblePairs.add(new int[]{INT,INT});
+                    compatiblePairs.add(new int[]{BOOL,BOOL});
+                    returnType = INT;
+                    break;
                 case MINUS:
                 case DOT:
                 case DIV:
