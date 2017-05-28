@@ -458,7 +458,7 @@ public class SemanticAnalyzer {
 
     private static int attrType(int type, String attr) {
         switch (type) {
-            case FIGURE:
+            case FIGURE_TYPE:
                 switch (attr) {
                     case "duration":
                         return INT;
