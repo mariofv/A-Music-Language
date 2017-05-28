@@ -1,0 +1,16 @@
+void main() {
+    int selection = 2;
+
+    if (selection == 0) {
+        || Do Do Do Do ||
+    }
+    else if (selection == 1) {
+        || Re Re Re Re ||
+    }
+    else if (selection == 2) {
+        || Mi Mi Mi Mi ||
+    }
+    else {
+        || Fa Fa Fa Fa ||
+    }
+}
