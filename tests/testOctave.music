@@ -1,7 +1,0 @@
-main() {
-    Song {
-        Beat 4:8
-        Speed 60
-        Track TT        || Sol-1.c Sol-2.c Sol-3.c Sol-4.c ||
-    }
-}
