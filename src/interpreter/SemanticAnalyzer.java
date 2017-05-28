@@ -716,9 +716,17 @@ public class SemanticAnalyzer {
                 }
                 if (notes.getChild(0).getType() == NOTES) {
                     for (AmlTree note : notes.getChild(0).getArrayChildren()) {
-                        note.setNoteValue();
-                        if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
-                        else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
+                        if (note.getType() == ID) {
+                            int type = getSymbol(note).getType();
+                            if (type != NOTE_TYPE)
+                                throw new AmlSemanticException("Type error, figure notes must have Note type, but variable " +
+                                        note.getText() + " has type " + mapType(type), notes.getLine());
+                        }
+                        else {
+                            note.setNoteValue();
+                            if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+                            else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
+                        }
                     }
                 }
                 else {
