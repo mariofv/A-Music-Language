@@ -96,7 +96,8 @@ public class Interpreter {
         if(executeCommonInstruction(tree)) return null ;
         switch(tree.getType()) {
             case MusicLexer.VAR_FUNCALL:
-                return executeVarFunCall(tree);
+                executeVarFunCall(tree);
+                break;
             case MusicLexer.RETURN:
                 if (tree.getChildCount() > 0) {
                     return evaluateExpression(tree.getChild(0));
@@ -478,6 +479,8 @@ public class Interpreter {
                     }
                 }
                 return executeFunction(tree.getText(), arguments);
+            case MusicLexer.VAR_FUNCALL:
+                return executeVarFunCall(tree);
             case MusicLexer.TRUE:
                 return new Bool(true);
             case MusicLexer.FALSE:

@@ -300,6 +300,7 @@ atom    :   var_access
 		|   nnum
 		|   STRING
 		|   funcall
+		|   var_funcall
 		|   TRUE
 		|   FALSE
 		|   '('! expr ')'!
