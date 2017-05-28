@@ -1,1 +1,10 @@
-//Aqui se han de crear notas tanto como data types como directamente
+void main() {
+    || Do Re Mi Fa ||
+    Figure noteDo = Do-6.n;
+    Figure notes  = (Re-6 Mi-6).n;
+
+    || :noteDo Do-6.n noteDo = Re-6.n; :noteDo Re-6.n ||
+
+    noteDo = Do-6.n;
+    || :notes :noteDo Figure aux = notes; notes = noteDo; noteDo = aux; :notes :aux ||
+}

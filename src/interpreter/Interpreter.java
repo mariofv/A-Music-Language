@@ -172,7 +172,7 @@ public class Interpreter {
         for (AmlTree assigChild : tree.getArrayChildren()) {
             if(assigChild.getType() == MusicLexer.ASSIG) {
                 int index = assigChild.getChild(0).getVariableIndex();
-                Data value =  evaluateExpression(assigChild.getChild(1));
+                Data value =  evaluateExpression(assigChild.getChild(1)).clone();
                 stack.getLocalVariables().set(index, value);
             } else {
                 int index = assigChild.getVariableIndex();

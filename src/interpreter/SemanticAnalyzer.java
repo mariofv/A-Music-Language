@@ -542,37 +542,56 @@ public class SemanticAnalyzer {
         }
         //Binary operators
         else {
-            int operatorType;
+            LinkedList<int[]> compatiblePairs = new LinkedList<>();
             int returnType;
             switch (expression.getType()) {
                 case OR:
                 case AND:
-                    returnType = operatorType = BOOL;
+                    returnType = BOOL;
+                    compatiblePairs.add(new int[]{BOOL, BOOL});
                     break;
                 case PLUS:
                 case MINUS:
+                    compatiblePairs.add(new int[]{INT,BOOL});
+                    compatiblePairs.add(new int[]{BOOL,INT});
+                    compatiblePairs.add(new int[]{INT,INT});
+                    returnType = INT;
+                    break;
                 case DOT:
                 case DIV:
                 case MOD:
-                    returnType = operatorType = INT;
+                    compatiblePairs.add(new int[]{INT,INT});
+                    returnType = INT;
                     break;
                 case GT:
                 case LT:
                 case GE:
                 case LE:
+                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{INT,INT});
+                    returnType = BOOL;
+                    break;
                 case EQUAL:
                 case NOT_EQUAL:
-                    operatorType = INT;
+                    compatiblePairs.add(new int[]{INT,INT});
+                    compatiblePairs.add(new int[]{STRING,STRING});
+                    compatiblePairs.add(new int[]{BOOL,BOOL});
                     returnType = BOOL;
                     break;
                 default: throw new Error("This should never happen " + mapType(expression.getType()));
             }
-            int returnType1 = checkExpression(expression.getChild(0));
-            int returnType2 = checkExpression(expression.getChild(1));
-            if (returnType1 != operatorType || returnType2 != operatorType) {
-                throw new AmlSemanticException("Invalid types: " + mapType(returnType1) + ", " + mapType(returnType2) +
-                " applied to binary operator " + mapType(expression.getType()) +
-                ". Expected type: " + mapType(operatorType), expression.getLine());
+            int returnTypeLeft = checkExpression(expression.getChild(0));
+            int returnTypeRight = checkExpression(expression.getChild(1));
+            boolean found = false;
+            for(int[] pair : compatiblePairs) {
+                if (returnTypeLeft == pair[0] && returnTypeRight == pair[1]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                throw new AmlSemanticException("Invalid types: " + mapType(returnTypeLeft) + ", " + mapType(returnTypeRight) +
+                " applied to binary operator " + mapType(expression.getType()), expression.getLine());
             }
             return returnType;
         }
