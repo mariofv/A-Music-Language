@@ -545,54 +545,50 @@ public class SemanticAnalyzer {
         //Binary operators
         else {
             LinkedList<int[]> compatiblePairs = new LinkedList<>();
-            int returnType;
             switch (expression.getType()) {
                 case OR:
                 case AND:
-                    returnType = BOOL;
-                    compatiblePairs.add(new int[]{BOOL, BOOL});
+                    compatiblePairs.add(new int[]{BOOL, BOOL, BOOL});
                     break;
                 case PLUS:
-                    compatiblePairs.add(new int[]{STRING,STRING});
-                    compatiblePairs.add(new int[]{INT,BOOL});
-                    compatiblePairs.add(new int[]{BOOL,INT});
-                    compatiblePairs.add(new int[]{INT,INT});
-                    compatiblePairs.add(new int[]{BOOL,BOOL});
-                    returnType = INT;
+                    compatiblePairs.add(new int[]{STRING,STRING, STRING});
+                    compatiblePairs.add(new int[]{INT,BOOL,INT});
+                    compatiblePairs.add(new int[]{BOOL,INT,INT});
+                    compatiblePairs.add(new int[]{INT,INT,INT});
+                    compatiblePairs.add(new int[]{BOOL,BOOL,INT});
                     break;
                 case MINUS:
                 case DOT:
                 case DIV:
                 case MOD:
-                    compatiblePairs.add(new int[]{INT,BOOL});
-                    compatiblePairs.add(new int[]{BOOL,INT});
-                    compatiblePairs.add(new int[]{INT,INT});
-                    compatiblePairs.add(new int[]{BOOL,BOOL});
-                    returnType = INT;
+                    compatiblePairs.add(new int[]{INT,BOOL,INT});
+                    compatiblePairs.add(new int[]{BOOL,INT,INT});
+                    compatiblePairs.add(new int[]{INT,INT,INT});
+                    compatiblePairs.add(new int[]{BOOL,BOOL,INT});
                     break;
                 case GT:
                 case LT:
                 case GE:
                 case LE:
-                    compatiblePairs.add(new int[]{STRING,STRING});
-                    compatiblePairs.add(new int[]{INT,INT});
-                    returnType = BOOL;
+                    compatiblePairs.add(new int[]{STRING,STRING,STRING});
+                    compatiblePairs.add(new int[]{INT,INT,INT});
                     break;
                 case EQUAL:
                 case NOT_EQUAL:
-                    compatiblePairs.add(new int[]{INT,INT});
-                    compatiblePairs.add(new int[]{STRING,STRING});
-                    compatiblePairs.add(new int[]{BOOL,BOOL});
-                    returnType = BOOL;
+                    compatiblePairs.add(new int[]{INT,INT,INT});
+                    compatiblePairs.add(new int[]{STRING,STRING,STRING});
+                    compatiblePairs.add(new int[]{BOOL,BOOL,INT});
                     break;
                 default: throw new Error("This should never happen " + mapType(expression.getType()));
             }
             int returnTypeLeft = checkExpression(expression.getChild(0));
             int returnTypeRight = checkExpression(expression.getChild(1));
             boolean found = false;
+            int returnType = -1;
             for(int[] pair : compatiblePairs) {
                 if (returnTypeLeft == pair[0] && returnTypeRight == pair[1]) {
                     found = true;
+                    returnType = pair[2];
                     break;
                 }
             }
