@@ -716,45 +716,32 @@ public class SemanticAnalyzer {
     }
 
     private void analyzeNote(AmlTree notes) throws AmlSemanticException {
-        switch (notes.getType()) {
-            case FIGURE:
-                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
-                    notes.getChild(1).setFigureValue();
+        if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
+            notes.getChild(1).setFigureValue();
+        }
+        if (notes.getChild(0).getType() == NOTES) {
+            for (AmlTree note : notes.getChild(0).getArrayChildren()) {
+                if (note.getType() == ID) {
+                    int type = getSymbol(note).getType();
+                    if (type != NOTE_TYPE && type != DRUMS_NOTE_TYPE)
+                        throw new AmlSemanticException("Type error, figure notes must have Note type, but variable " +
+                                note.getText() + " has type " + mapType(type), notes.getLine());
                 }
-                if (notes.getChild(0).getType() == NOTES) {
-                    for (AmlTree note : notes.getChild(0).getArrayChildren()) {
-                        if (note.getType() == ID) {
-                            int type = getSymbol(note).getType();
-                            if (type != NOTE_TYPE)
-                                throw new AmlSemanticException("Type error, figure notes must have Note type, but variable " +
-                                        note.getText() + " has type " + mapType(type), notes.getLine());
-                        }
-                        else {
-                            note.setNoteValue();
-                            if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
-                            else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
-                        }
-                    }
-                }
-                else {
-                    AmlTree note = notes.getChild(0).getChild(0);
-                    note.setNoteValue();
-                    if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
-                    else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
-                }
-                break;
-            case DRUM_FIGURE:
-                if (notes.getChildCount() > 1 && notes.getChild(1).getType() == FIGURE_NAME) {
-                    notes.getChild(1).setFigureValue();
-                }
-                for (AmlTree drumNote : notes.getChild(0).getArrayChildren()) {
-                    int type = checkExpression(drumNote.getChild(0));
+                else if (note.getType() == DRUM_NOTES) {
+                    int type = checkExpression(note.getChild(0));
                     if (type != INT)
                         throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
                                 " but " + mapType(type) + " was provided instead.", notes.getLine());
                 }
-                break;
+                else if (note.getType() == NOTE) {
+                    note.setNoteValue();
+                    if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+                    else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
+                }
+                else throw new Error("This should never happen");
+            }
         }
+        else throw new Error("This should never happen");
     }
 
     private void analyzeMusicInstruction(AmlTree musicInstruction) throws AmlSemanticException {

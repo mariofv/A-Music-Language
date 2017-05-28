@@ -70,7 +70,7 @@ list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
 argument  :   type^ id_rule
           ;
 
-params      :   (expr | notes_variable | drumsnotes_variable) (','! (expr | notes_variable | drumsnotes_variable))*
+params      :   (expr | notes_variable) (','! (expr | notes_variable))*
             ;
 
 listInst    :  inst+  -> ^(LIST_INSTRUCTIONS inst+)
@@ -81,9 +81,9 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
 
 inst        :   declaration
             |   volume ';'
-            |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
+            |   'return'^ (expr | notes_variable) ';'!
             |   READ^ var_access ';'
-            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
+            |   WRITE^ (expr | notes_variable) ';'
             |   var_funcall ';'
             |   tone ';'!
             |   beat ';'!
@@ -101,7 +101,7 @@ inst        :   declaration
 
 music_inst  :   declaration
             |   READ^ var_access ';'
-            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
+            |   WRITE^ (expr | notes_variable) ';'
             |   volume ';'!
             |   tone ';'!
             |   beat ';'!
@@ -116,7 +116,6 @@ music_inst  :   declaration
             |   for_music_stmt
             |   if_music_stmt
             | 	(options {greedy=true;} : notes_group)+ ';'!?
-            | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
             |   triplet
             ;
 
@@ -136,13 +135,13 @@ type_void   :   type
             |   VOID
             ;
 
-assig_opt   :   id_rule (ASSIG^ (expr | notes_variable | drumsnotes_variable))?
+assig_opt   :   id_rule (ASSIG^ (expr | notes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | drumsnotes_variable | FIGURE_NAME)
+assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | FIGURE_NAME)
             |   post
             |   pre
             ;
