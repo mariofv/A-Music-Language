@@ -2,6 +2,8 @@ package data;
 
 import exceptions.AmlRunTimeException;
 
+import java.util.ArrayList;
+
 public abstract class Data {
 
     @Override
@@ -40,5 +42,4 @@ public abstract class Data {
     public String toString() {
         return getValue().toString();
     }
-
 }

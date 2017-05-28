@@ -3,6 +3,8 @@ package data;
 import com.sun.corba.se.spi.ior.ObjectKey;
 import music.AmlDrumNote;
 
+import java.util.ArrayList;
+
 public class DrumNote extends AttributeData {
 
     private AmlDrumNote dataDrumNote;
@@ -20,6 +22,11 @@ public class DrumNote extends AttributeData {
 
     @Override
     public void setValue(Object value) { dataDrumNote = (AmlDrumNote)value; }
+
+    @Override
+    public void method(String funcName, ArrayList<Data> arguments) {
+
+    }
 
     @Override
     public void setAttribute(String attribute, Object value) {

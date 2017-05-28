@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.AttributeSetMethodGenerator;
 import data.*;
 import data.Void;
 import exceptions.AmlMusicException;
@@ -197,6 +198,7 @@ public class Interpreter {
     }
 
     private boolean executeCommonInstruction(AmlTree tree) throws AmlRunTimeException {
+
         switch (tree.getType()) {
             case MusicLexer.NOTE_TYPE:
             case MusicLexer.INT:
@@ -206,6 +208,21 @@ public class Interpreter {
             case MusicLexer.DRUMS_NOTE_TYPE:
                 defineLocalVariable(tree);
                 return true;
+            case MusicLexer.VAR_FUNCALL: {
+                int index = tree.getVariableIndex();
+                AttributeData currentVar = (AttributeData)stack.getLocalVariables().get(index);
+                String funcName  = tree.getChild(0).getText();
+                ArrayList<Data> arguments = new ArrayList<>();
+                if (tree.getChildCount() > 1) {
+                    for (int i = 1; i < tree.getChildCount(); ++i) {
+                        AmlTree argument = tree.getChild(1);
+                        Data expressionResult = evaluateExpression(argument);
+                        arguments.add(expressionResult);
+                    }
+                }
+                currentVar.method(funcName, arguments);
+                return true;
+            }
             case MusicLexer.READ: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);

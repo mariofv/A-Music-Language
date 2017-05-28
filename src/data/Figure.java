@@ -2,6 +2,8 @@ package data;
 
 import music.AmlFigure;
 
+import java.util.ArrayList;
+
 public class Figure extends AttributeData {
 
     private AmlFigure dataFigure;
@@ -20,6 +22,11 @@ public class Figure extends AttributeData {
             throw new NullPointerException();
         }
         return dataFigure;
+    }
+
+    @Override
+    public void method(String funcName, ArrayList<Data> arguments) {
+
     }
 
     @Override

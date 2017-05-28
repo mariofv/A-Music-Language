@@ -3,6 +3,8 @@ package data;
 import music.AmlChord;
 import music.AmlFigure;
 
+import java.util.ArrayList;
+
 public class Chord extends AttributeData {
 
     private AmlChord dataChord;
@@ -20,6 +22,16 @@ public class Chord extends AttributeData {
 
     @Override
     public void setValue(Object value) { dataChord = (AmlChord)value; }
+
+    @Override
+    public void method(String funcName, ArrayList<Data> arguments) {
+        switch (funcName) {
+            case "alterMode":
+
+            break;
+
+        }
+    }
 
     @Override
     public void setAttribute(String attribute, Object value) {
@@ -47,3 +59,5 @@ public class Chord extends AttributeData {
         return new Chord(dataChord);
     }
 }
+
+
