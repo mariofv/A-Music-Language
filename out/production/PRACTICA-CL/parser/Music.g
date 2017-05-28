@@ -70,7 +70,7 @@ list_arguments  : (argument (',' argument)*)? -> ^(LIST_ARGUMENTS argument*)
 argument  :   type^ id_rule
           ;
 
-params      :   (expr | notes_variable | drumsnotes_variable) (','! (expr | notes_variable | drumsnotes_variable))*
+params      :   (expr | notes_variable) (','! (expr | notes_variable))*
             ;
 
 listInst    :  inst+  -> ^(LIST_INSTRUCTIONS inst+)
@@ -81,9 +81,9 @@ list_music_inst :   music_inst+ -> ^(LIST_MUSIC_INST music_inst+)
 
 inst        :   declaration
             |   volume ';'
-            |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
+            |   'return'^ (expr | notes_variable) ';'!
             |   READ^ var_access ';'
-            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
+            |   WRITE^ (expr | notes_variable) ';'
             |   var_funcall ';'
             |   tone ';'!
             |   beat ';'!
@@ -101,7 +101,7 @@ inst        :   declaration
 
 music_inst  :   declaration
             |   READ^ var_access ';'
-            |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
+            |   WRITE^ (expr | notes_variable) ';'
             |   volume ';'!
             |   tone ';'!
             |   beat ';'!
@@ -116,7 +116,6 @@ music_inst  :   declaration
             |   for_music_stmt
             |   if_music_stmt
             | 	(options {greedy=true;} : notes_group)+ ';'!?
-            | 	(options {greedy=true;} : drumsnotes_group)+ ';'!?
             |   triplet
             ;
 
@@ -136,13 +135,13 @@ type_void   :   type
             |   VOID
             ;
 
-assig_opt   :   id_rule (ASSIG^ (expr | notes_variable | drumsnotes_variable))?
+assig_opt   :   id_rule (ASSIG^ (expr | notes_variable))?
             ;
 
 assignation :   assig ';'!
             ;
 
-assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | drumsnotes_variable | FIGURE_NAME)
+assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG|MOD_ASSIG)^ (expr | notes_variable | FIGURE_NAME)
             |   post
             |   pre
             ;
@@ -211,7 +210,7 @@ elseif_music_stmt   :   ELSE IF '(' expr ')' '{' list_music_inst '}' -> ^(ELSEIF
 else_music_stmt :   ELSE^ '{'! list_music_inst '}'!
                 ;
 
-song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)+ drums_track? '}'!
+song        :   SONG^ id_rule? '{'! (beat ';'!)? (speed ';'!)? (tone ';'!)? (transport ';'!)?  (track)* drums_track? '}'!
             ;
 
 track       :   TRACK^ id_rule!? STRING? compas_aux
@@ -242,15 +241,10 @@ compas      :  (options {greedy=true;} : music_inst)+    -> ^(COMPAS music_inst+
 tone        :   TONE^ expr (SUSTAIN | BEMOL)
             ;
 
-drumsnotes_group : drumsnotes ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(DRUM_FIGURE drumsnotes FIGURE_NAME? DOT? TIE?)
-            ;
 
 notes_group :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
 	        |  ':'! id_rule
             ;
-
-drumsnotes_variable     :   drumsnotes ('.' (FIGURE_NAME POS_NUM?) DOT?)? -> ^(DRUM_FIGURE drumsnotes FIGURE_NAME? DOT?)
-                        ;
 
 notes_variable  :   notes_type ('.' (FIGURE_NAME POS_NUM?) DOT?)? TIE? -> ^(FIGURE notes_type FIGURE_NAME? DOT? TIE?)
                 ;
@@ -267,17 +261,16 @@ notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
 triplet     :   '[' notes_type notes_type notes_type ']' FIGURE_NAME? -> ^(TRIPLET FIGURE_NAME? notes_type notes_type notes_type)
             ;
 
-drumsnotes  :   ( '(' (drum_note)+ ')'  | drum_note) -> ^(DRUM_NOTES drum_note+)
-            ;
+drum_note_aux : DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr);
 
-drum_note   :   DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr)
-            ;
 
 note_aux    :   (BEMOL | SUSTAIN | ARMOR)? NOTE^ (NEG_NUM)?
             ;
 
 note        :   note_aux
             |   'N:'! id_rule
+            | drum_note_aux
+            |   'DN:'! id_rule
             ;
 
 // Grammar for expressions with boolean, relational and aritmetic operators
@@ -302,7 +295,7 @@ factor  :   (NOT^ | PLUS^ | MINUS^)? atom
 atom    :   var_access
 		|   nnum
 		|   'N:'! note_aux
-		|   'DN:'! drum_note
+		|   'DN:'! drum_note_aux
 		|   STRING
 		|   funcall
 		|   var_funcall

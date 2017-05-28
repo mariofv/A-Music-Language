@@ -1,3 +1,7 @@
+void myFunc() {
+    || La La La La ||
+}
+
 void main() {
-    || Do.n Re Mi Fa | Sol La Si Do-6 ||
+    || Do.n Re Mi Fa | Sol La myFunc(); Si Do-6 ||
 }

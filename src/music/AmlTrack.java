@@ -168,7 +168,11 @@ public class AmlTrack {
                         break;
                 }
                 try {
-                    System.out.println("Setting event " + event);
+                    System.out.print("Setting event " + event + "  ");
+                    if (event.getType() == AmlMidiEvent.OnMessage || event.getType() == AmlMidiEvent.OffMessage) {
+                        System.out.print("Pitch is " + ((ShortMessage)event.getMessage()).getData1());
+                    }
+                    System.out.println();
                     ((AmlShortMessage) event.getMessage()).setChannel(mapChannel(channel));
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);
