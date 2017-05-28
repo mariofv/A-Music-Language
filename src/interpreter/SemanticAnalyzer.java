@@ -1,5 +1,9 @@
 package interpreter;
 
+import data.Chord;
+import data.DrumNote;
+import data.Figure;
+import data.Note;
 import exceptions.AmlException;
 import exceptions.AmlSemanticException;
 import parser.MusicLexer;
@@ -51,8 +55,6 @@ public class SemanticAnalyzer {
                 return "bool";
             case INT:
                 return "int";
-            case FIGURE_TYPE:
-                return "figure";
             case CHORD:
                 return "chord";
             case NOTE_TYPE:
@@ -195,9 +197,105 @@ public class SemanticAnalyzer {
         }
     }
 
+    private int checkVarFuncall(int type, AmlTree funcall) throws AmlSemanticException {
+        LinkedList<Integer> parameters = null;
+        int returnType = -1;
+        switch (type) {
+            case NOTE_TYPE:
+                switch (funcall.getChild(0).getText()) {
+                    case Note.isSilence:
+                    case Note.isBemol:
+                    case Note.isNatural:
+                    case Note.isSustain:
+                    case Note.isArmor:
+                        parameters = new LinkedList<>();
+                        returnType = BOOL;
+                        break;
+                    case Note.randomize:
+                    case Note.makeSilence:
+                        parameters = new LinkedList<>();
+                        returnType = VOID;
+                        break;
+                }
+                break;
+            case FIGURE_TYPE:
+                switch (funcall.getChild(0).getText()) {
+                    case Figure.isTied:
+                    case Figure.tie:
+                    case Figure.untie:
+                        parameters = new LinkedList<>();
+                        returnType = BOOL;
+                        break;
+                }
+                break;
+            case CHORD:
+                switch (funcall.getChild(0).getText()) {
+                    case Chord.isTied:
+                        parameters = new LinkedList<>();
+                        returnType = BOOL;
+                        break;
+                    case Chord.setAccident:
+                    case Chord.alterInterval:
+                    case Chord.alterQuality:
+                        parameters = new LinkedList<>();
+                        parameters.add(STRING_TYPE);
+                        returnType = VOID;
+                        break;
+                    case Chord.setOctave:
+                        parameters = new LinkedList<>();
+                        parameters.add(INT);
+                        returnType = VOID;
+                        break;
+                    case Chord.setRoot:
+                        parameters = new LinkedList<>();
+                        parameters.add(NOTE_TYPE);
+                        returnType = VOID;
+                        break;
+                    case Chord.tie:
+                    case Chord.untie:
+                        parameters = new LinkedList<>();
+                        returnType = VOID;
+                        break;
+                }
+            case DRUMS_NOTE_TYPE:
+                switch (funcall.getChild(0).getText()) {
+                    case DrumNote.makeSilence:
+                    case DrumNote.bom:
+                    case DrumNote.bum:
+                    case DrumNote.cling:
+                    case DrumNote.pam:
+                    case DrumNote.randomize:
+                    case DrumNote.tsss:
+                        parameters = new LinkedList<>();
+                        returnType = VOID;
+                        break;
+                }
+        }
+        if (parameters == null)
+            throw new AmlSemanticException("Type " + mapType(type) + " does not have method called " + funcall.getChild(0).getText(), funcall.getLine());
+        if (parameters.size() != funcall.getChildCount() - 1)
+            throw new AmlSemanticException("Argument size does not match with parameters in function " +
+                    funcall.getChild(0).getText() + ". Expecting " +
+                    (funcall.getChildCount() - 1) + ", provided " + (funcall.getChildCount() - 1), funcall.getLine());
+        int i = 1;
+        for (int parameterType : parameters) {
+            int argumentType = checkExpression(funcall.getChild(i));
+            if (parameterType != argumentType)
+                throw new AmlSemanticException("Type error. Argument " + (i-1) + " does not match with declaration of function" +
+                        funcall.getChild(0).getText() + ". Expecting " + mapType(parameterType) + ", provided " + mapType(argumentType), funcall.getLine());
+            ++i;
+        }
+        return returnType;
+    }
+
     private boolean analyzeCommonInstruction(AmlTree commonInstruction) throws AmlSemanticException {
         //TODO: var_funcall
         switch (commonInstruction.getType()) {
+            case VAR_FUNCALL: {
+                int type = getSymbol(commonInstruction).getType();
+                checkVarFuncall(type, commonInstruction);
+                return true;
+            }
             case RETURN: {
                 int type = VOID;
                 if (commonInstruction.getChildCount() > 0) {
@@ -329,7 +427,7 @@ public class SemanticAnalyzer {
                     case CHORD:
                         return CHORD;
                     case NOTES:
-                        return FIGURE_TYPE;
+                        return NOTE_TYPE;
                     default: throw new Error("This should never happen");
                 }
             case FIGURE_NAME:
@@ -341,7 +439,7 @@ public class SemanticAnalyzer {
     }
 
     private SymbolInfo getSymbol(AmlTree tree) throws AmlSemanticException {
-        assert tree.getType() == ID || tree.getType() == ATTR_ACCESS;
+        assert tree.getType() == ID || tree.getType() == ATTR_ACCESS || tree.getType() == VAR_FUNCALL;
         String id = tree.getText();
         if (id.equals("Time")) return new SymbolInfo(-1, INT, -1);
         for (HashMap<String, SymbolInfo> scope : symbolTable) {
@@ -356,7 +454,7 @@ public class SemanticAnalyzer {
 
     private static int attrType(int type, String attr) {
         switch (type) {
-            case FIGURE_TYPE:
+            case FIGURE:
                 switch (attr) {
                     case "duration":
                         return INT;
@@ -366,6 +464,8 @@ public class SemanticAnalyzer {
                     case "pitch":
                         return INT;
                     case "octave":
+                        return INT;
+                    case "accident":
                         return INT;
                 }
             case DRUMS_NOTE_TYPE:
@@ -385,13 +485,17 @@ public class SemanticAnalyzer {
     private int checkExpression(AmlTree expression) throws AmlSemanticException {
         //Atoms
         switch (expression.getType()) {
+            case VAR_FUNCALL: {
+                int type = getSymbol(expression).getType();
+                return checkVarFuncall(type, expression);
+            }
             //var_access
             case ATTR_ACCESS:
                 int type = getSymbol(expression).getType();
-                int attrType = attrType(type, expression.getChild(0).getText());
+                int attrType = attrType(type, expression.getChild(1).getText());
                 if (attrType == -1)
                     throw new AmlSemanticException("Variable " + expression.getText() + " of type " + mapType(type) +
-                            " does not have attribute " + expression.getChild(0).getText(), expression.getLine());
+                            " does not have attribute " + expression.getChild(1).getText(), expression.getLine());
                 return attrType;
             //var_access
             case ID:
@@ -691,7 +795,7 @@ public class SemanticAnalyzer {
                 break;
             case ID:
                 int type = getSymbol(musicInstruction).getType();
-                if (type != FIGURE_TYPE && type != CHORD )
+                if (type != NOTE_TYPE && type != CHORD && type != DRUMS_NOTE_TYPE)
                     throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a note, but it has type: " + mapType(type), musicInstruction.getLine());
         }
     }
