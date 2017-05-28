@@ -55,7 +55,7 @@ public class Chord extends AttributeData {
                 int octave = ((Int)arguments.get(0)).getValue();
                 if (octave <= 0) throw new AmlRunTimeException("The octave must be a positive integer");
                 dataChord.setOctave(octave);
-                dataChord.setRoot(dataChord.getRoot());
+                dataChord.constructChord();
                 return Void.getInstance();
             case tie:
                 dataChord.setTie(true);
@@ -163,7 +163,6 @@ public class Chord extends AttributeData {
                 throw new AmlRunTimeException("The given parameter is not correct. Please give one of this parameters:\n" +
                         "[#, &, $, Natural]");
         }
-        dataChord.setRoot(dataChord.getRoot());
         dataChord.constructChord();
         return Void.getInstance();
     }
