@@ -30,7 +30,17 @@ public class Figure extends AttributeData {
 
     @Override
     public Data method(String funcName, ArrayList<Data> arguments) {
-        return null;
+        switch (funcName) {
+            case tie:
+                dataFigure.setTie(true);
+                return Void.getInstance();
+            case untie:
+                dataFigure.setTie(false);
+                return Void.getInstance();
+            case isTied:
+                return new Bool(dataFigure.isTied());
+        }
+        }
     }
 
     @Override
