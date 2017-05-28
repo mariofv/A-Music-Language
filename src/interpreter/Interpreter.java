@@ -936,4 +936,8 @@ public class Interpreter {
         chord.constructChord();
     }
 
+    public AmlStack getStack() {
+        return stack;
+    }
+
 }

@@ -134,7 +134,8 @@ public class Aml {
                 File f = new File("midifile.mid");
                 try {
                     MidiSystem.write(interpreter.getSequence().getSequence(),1,f);
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     throw new AmlException(e.getMessage());
                 }
             }
@@ -148,14 +149,14 @@ public class Aml {
                 System.err.println();
                 System.err.println(exception.getMessage());
                 System.err.println();
-                exception.printStackTrace();
+                exception.printStackTrace(interpreter.getStack());
             }
             catch (AmlRunTimeException exception) {
                 System.err.println("Runtime exception caught during execution, line " + exception.getLine() + ":");
                 System.err.println();
                 System.err.println(exception.getMessage());
                 System.err.println();
-                exception.printStackTrace();
+                exception.printStackTrace(interpreter.getStack());
             }
         }
     }
