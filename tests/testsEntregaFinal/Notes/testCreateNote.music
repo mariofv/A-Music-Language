@@ -7,6 +7,6 @@ void main() {
      Song {
          Beat 4:8;
          Speed 120;
-         Track "Trumpet"   || Si.c Si.c Do-6.c Re-6.c | Re-6 Do-6 Si :myLa | Sol Sol :myLa Si | Si.n La.c La~ | :myLa Silence.n*||
+         Track "Trumpet"   || Si.c Si.c Do-6.c Re-6.c | Re-6 Do-6 Si N:myLa | Sol Sol N:myLa Si | Si.n La.c La~ | N:myLa Silence.n*||
      }
 }
