@@ -551,7 +551,7 @@ public class SemanticAnalyzer {
                     compatiblePairs.add(new int[]{BOOL, BOOL, BOOL});
                     break;
                 case PLUS:
-                    compatiblePairs.add(new int[]{STRING,STRING, STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{INT,BOOL,INT});
                     compatiblePairs.add(new int[]{BOOL,INT,INT});
                     compatiblePairs.add(new int[]{INT,INT,INT});
@@ -570,13 +570,13 @@ public class SemanticAnalyzer {
                 case LT:
                 case GE:
                 case LE:
-                    compatiblePairs.add(new int[]{STRING,STRING,STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{INT,INT,INT});
                     break;
                 case EQUAL:
                 case NOT_EQUAL:
                     compatiblePairs.add(new int[]{INT,INT,INT});
-                    compatiblePairs.add(new int[]{STRING,STRING,STRING});
+                    compatiblePairs.add(new int[]{STRING_TYPE,STRING_TYPE,STRING_TYPE});
                     compatiblePairs.add(new int[]{BOOL,BOOL,INT});
                     break;
                 default: throw new Error("This should never happen " + mapType(expression.getType()));
