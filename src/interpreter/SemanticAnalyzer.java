@@ -424,7 +424,7 @@ public class SemanticAnalyzer {
         switch (child.getType()) {
             case DRUM_FIGURE:
                 analyzeNote(child);
-                return DRUMS_NOTE_TYPE;
+                return FIGURE_TYPE;
             case FIGURE:
                 analyzeNote(child);
                 switch (child.getChild(0).getType()) {
@@ -494,13 +494,14 @@ public class SemanticAnalyzer {
                 return checkVarFuncall(type, expression);
             }
             //var_access
-            case ATTR_ACCESS:
+            case ATTR_ACCESS: {
                 int type = getSymbol(expression).getType();
                 int attrType = attrType(type, expression.getChild(0).getText());
                 if (attrType == -1)
                     throw new AmlSemanticException("Variable " + expression.getText() + " of type " + mapType(type) +
                             " does not have attribute " + expression.getChild(0).getText(), expression.getLine());
                 return attrType;
+            }
             //var_access
             case ID:
                 return getSymbol(expression).getType();
@@ -524,6 +525,12 @@ public class SemanticAnalyzer {
                 if (expression.getChildCount() > 0 && expression.getChild(0).getType() == NEG_NUM) expression.getChild(0).setIntValue();
                 else if (expression.getChildCount() > 1 && expression.getChild(1).getType() == NEG_NUM) expression.getChild(1).setIntValue();
                 return NOTE_TYPE;
+            case DRUM_NOTE:
+                int type = checkExpression(expression.getChild(0));
+                if (type != INT)
+                    throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
+                            " but " + mapType(type) + " was provided instead.", expression.getLine());
+                return DRUMS_NOTE_TYPE;
         }
         //Unary operators
         if (expression.getChildCount() == 1) {
@@ -796,6 +803,7 @@ public class SemanticAnalyzer {
                     case BOOL:
                     case NOTE_TYPE:
                     case DRUMS_NOTE_TYPE:
+                    case FIGURE_TYPE:
                     case CHORD:
                     case STRING_TYPE:
                         for (AmlTree declaration : initial.getArrayChildren()) {
