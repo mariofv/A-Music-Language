@@ -1,0 +1,10 @@
+void main() {
+    Chord C = Chord(Do).r;
+    || :C C.alterQuality("Minor"); | :C C.alterQuality("Augmented"); | :C C.alterQuality("Diminuted");| :C ||
+
+    Chord D = Chord(Re).r;
+    || :D D.alterInterval("Seventh"); | :D D.alterInterval("Maj7");| :D D.alterInterval("NoInterval"); ||
+
+    Note E = N:Mi-4;
+    || D.setRoot(E); :D ||
+}

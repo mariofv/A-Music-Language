@@ -6,6 +6,7 @@ import data.Int;
 import javax.sound.midi.ShortMessage;
 import java.util.ArrayList;
 
+import static music.AmlFigure.Figure.Negra;
 import static music.AmlFigure.Figure.NoFigure;
 
 public class AmlFigure {
@@ -48,9 +49,8 @@ public class AmlFigure {
 
     public void setDuration(int duration) {
         this.duration = duration;
+        figure = Negra;
     }
-
-    public void setFigure(int figure) { duration = figure; }
 
     public ArrayList<AmlNote> getNotes(){return notes;}
 

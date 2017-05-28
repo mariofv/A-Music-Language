@@ -1,0 +1,6 @@
+void main() {
+    Chord C = Chord(Do);
+    C.duration = 64;
+    Chord D = Chord(Re m).b;
+    || :C C.duration = D.duration;| :C :C ||
+}
