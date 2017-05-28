@@ -833,7 +833,7 @@ public class SemanticAnalyzer {
             case ID:
                 int type = getSymbol(musicInstruction).getType();
                 if (type != FIGURE_TYPE && type != CHORD)
-                    throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a note, but it has type: " + mapType(type), musicInstruction.getLine());
+                    throw new AmlSemanticException("Variable " + musicInstruction.getText() + " must be a figure, but it has type: " + mapType(type), musicInstruction.getLine());
         }
     }
 
