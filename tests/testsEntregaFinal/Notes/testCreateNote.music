@@ -1,1 +1,12 @@
 //Aqui se han de crear notas tanto como data types como directamente
+void main() {
+
+    //Note mySi = N:Si.c;
+     Note myLa = N:La;
+
+     Song {
+         Beat 4:8;
+         Speed 120;
+         Track "Trumpet"   || Si.c Si.c Do-6.c Re-6.c | Re-6 Do-6 Si :myLa | Sol Sol :myLa Si | Si.n La.c La~ | :myLa Silence.n*||
+     }
+}
