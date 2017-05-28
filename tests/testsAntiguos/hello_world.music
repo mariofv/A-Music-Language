@@ -1,0 +1,8 @@
+main() {
+     Song {
+         Beat 4:8
+         Speed 120
+         Track "Trumpet"   || Mi.c Mi.c Fa.c Sol.c  | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
+         Track "TT"        || Sol.c Sol.c La.c Si.c  | Si.c La.c Sol.c Fa.c | Mi.c Mi.c Fa.c Sol.c  | Sol.n Fa.c Fa.c||
+     }
+ }

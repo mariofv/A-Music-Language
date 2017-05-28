@@ -1,0 +1,15 @@
+void main() {
+
+     Beat 4:8;
+     3x||: La.c Do Re.c | if (d == 3) { La } :|| La Do.n ||
+
+     Song song {
+         Beat 4:8;
+         Speed 60;
+         Transport 5;
+         Track "Trumpet" || &Do.c Do.c #Do.c Re.c | if (Times == 2) { La.n }
+         else if (Time == 2) { La.n Re.n (Do Si); int ex = 3; }||
+     }
+
+     song.play();
+}

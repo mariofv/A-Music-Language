@@ -1,0 +1,8 @@
+void main() {
+    Song {
+        Beat 4:4;
+        Speed 120;
+        [La Si ].figure
+        Track "Ocarina" 4x||: La-6.b Sol-6.c #Fa-6 Mi-6 Mi-6 :|| #Fa-6.b Silence ||
+    }
+}

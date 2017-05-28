@@ -1,0 +1,7 @@
+void main() {
+    Song {
+        Beat 4:8;
+        Speed 30;
+        Track "Ocarina"  || Do.c Do.c Do.c Do.c |Sol.c Silence.c Sol-3.c Sol-4.c ||
+    }
+}
