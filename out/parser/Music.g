@@ -84,7 +84,7 @@ inst        :   declaration
             |   'return'^ (expr | notes_variable | drumsnotes_variable) ';'!
             |   READ^ var_access ';'
             |   WRITE^ (expr | notes_variable | drumsnotes_variable) ';'
-            |   var_funcall
+            |   var_funcall ';'
             |   tone ';'!
             |   beat ';'!
             |   speed ';'!
@@ -108,7 +108,7 @@ music_inst  :   declaration
             |   speed ';'!
             |   instrument ';'!
             |   transport ';'!
-            |   var_funcall
+            |   var_funcall ';'
             |   assignation
             |   while_music_stmt
             |   funcall ';'!
@@ -147,7 +147,7 @@ assig       :   var_access (ASSIG|PLUS_ASSIG|MINUS_ASSIG|PROD_ASSIG|DIVIDE_ASSIG
             |   pre
             ;
 
-var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')' ';'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
+var_funcall :   id=id_rule '.' id2=id_rule '(' params? ')'  ->  ^(VAR_FUNCALL[$id.text] $id2 params?)
             ;
 
 var_access  :   id1=id_rule ('.' id2=id_rule) -> ^(ATTR_ACCESS[$id1.text] $id2)
