@@ -24,11 +24,14 @@ public class Chord extends AttributeData {
     public void setValue(Object value) { dataChord = (AmlChord)value; }
 
     @Override
-    public void method(String funcName, ArrayList<Data> arguments) {
+    public Data method(String funcName, ArrayList<Data> arguments) {
         switch (funcName) {
             case "alterMode":
 
             break;
+
+            case "setRoot":
+                break;
 
         }
     }

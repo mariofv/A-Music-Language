@@ -93,8 +93,10 @@ public class Interpreter {
     }
 
     private Data executeInstruction(AmlTree tree) throws AmlRunTimeException {
-        if(executeCommonInstruction(tree)) return null;
+        if(executeCommonInstruction(tree)) return null ;
         switch(tree.getType()) {
+            case MusicLexer.VAR_FUNCALL:
+                return executeVarFunCall(tree);
             case MusicLexer.RETURN:
                 if (tree.getChildCount() > 0) {
                     return evaluateExpression(tree.getChild(0));
@@ -208,21 +210,6 @@ public class Interpreter {
             case MusicLexer.DRUMS_NOTE_TYPE:
                 defineLocalVariable(tree);
                 return true;
-            case MusicLexer.VAR_FUNCALL: {
-                int index = tree.getVariableIndex();
-                AttributeData currentVar = (AttributeData)stack.getLocalVariables().get(index);
-                String funcName  = tree.getChild(0).getText();
-                ArrayList<Data> arguments = new ArrayList<>();
-                if (tree.getChildCount() > 1) {
-                    for (int i = 1; i < tree.getChildCount(); ++i) {
-                        AmlTree argument = tree.getChild(1);
-                        Data expressionResult = evaluateExpression(argument);
-                        arguments.add(expressionResult);
-                    }
-                }
-                currentVar.method(funcName, arguments);
-                return true;
-            }
             case MusicLexer.READ: {
                 int index = tree.getChild(0).getVariableIndex();
                 Data currentVar = stack.getLocalVariables().get(index);
@@ -532,9 +519,25 @@ public class Interpreter {
         return null;
     }
 
+    private Data executeVarFunCall(AmlTree tree) throws AmlRunTimeException {
+        int index = tree.getVariableIndex();
+        AttributeData currentVar = (AttributeData)stack.getLocalVariables().get(index);
+        String funcName  = tree.getChild(0).getText();
+        ArrayList<Data> arguments = new ArrayList<>();
+        for (int i = 1; i < tree.getChildCount(); ++i) {
+            AmlTree argument = tree.getChild(1);
+            Data expressionResult = evaluateExpression(argument);
+            arguments.add(expressionResult);
+        }
+        return  currentVar.method(funcName, arguments);
+    }
+
     private Data executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
         if(executeCommonInstruction(tree)) return null;
         switch (tree.getType()) {
+            case MusicLexer.VAR_FUNCALL:
+                return executeVarFunCall(tree);
+
             case MusicLexer.FUNCALL:
                 ArrayList<Data> functionArguments = new ArrayList<>(tree.getChildCount());
                 if (tree.getChildren() != null) {

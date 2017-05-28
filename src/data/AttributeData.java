@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public abstract class AttributeData extends Data {
 
-    public abstract void method(String funcName, ArrayList<Data> arguments);
+    public abstract Data method(String funcName, ArrayList<Data> arguments);
 
     public abstract void setAttribute(String attribute, Object value);
 
