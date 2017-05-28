@@ -38,6 +38,35 @@ public abstract class Data {
                 + getClass().toString() + " with " + secondTerm.getClass().toString());
     }
 
+    public Data equalOperator(Data secondTerm) {
+        throw new Error("Equal operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    public Data notEqualOperator(Data secondTerm) {
+        throw new Error("Equal operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    public Data greaterThanOperator(Data secondTerm) {
+        throw new Error("Greater than operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    public Data greaterEqualOperator(Data secondTerm) {
+        throw new Error("Greater or equal than operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    public Data lesserThanOperator(Data secondTerm) {
+        throw new Error("Lesser than operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
+
+    public Data lesserEqualOperator(Data secondTerm) {
+        throw new Error("Lesser or Equal than operator is not implemented for "
+                + getClass().toString() + " with " + secondTerm.getClass().toString());
+    }
     @Override
     public String toString() {
         return getValue().toString();

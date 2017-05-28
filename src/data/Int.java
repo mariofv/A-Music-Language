@@ -81,5 +81,53 @@ public class Int extends Data {
         throw new Error("Quotient operator is not defined for Int and " + secondTerm.getClass().toString());
     }
 
+    @Override
+    public Data equalOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt == (int) secondTerm.getValue());
+        }
+        throw new Error("equalOperator operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data notEqualOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt != (int) secondTerm.getValue());
+        }
+        throw new Error("notEqualOperator operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data lesserThanOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt < (int) secondTerm.getValue());
+        }
+        throw new Error("lesserThan operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data lesserEqualOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt <= (int) secondTerm.getValue());
+        }
+        throw new Error("lesserOrEqualThan operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data greaterThanOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt > (int) secondTerm.getValue());
+        }
+        throw new Error("greaterThan operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
+    @Override
+    public Data greaterEqualOperator(Data secondTerm) {
+        if (secondTerm instanceof Int) {
+            return new Bool(dataInt >= (int) secondTerm.getValue());
+        }
+        throw new Error("greaterOrEqualThan operator is not defined for Int and " + secondTerm.getClass().toString());
+    }
+
 
 }

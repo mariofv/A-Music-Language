@@ -415,7 +415,8 @@ public class Interpreter {
     }
 
     private Data evaluateExpression(AmlTree tree) throws AmlRunTimeException {
-        Int leftSide, rightSide;
+        Data leftSide, rightSide;
+        Data leftBool, rightBool;
         switch (tree.getType()) {
             case MusicLexer.NUM:
                 return new Int(tree.getIntValue());
@@ -482,29 +483,40 @@ public class Interpreter {
             case MusicLexer.FALSE:
                 return new Bool(false);
             case MusicLexer.EQUAL:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() == rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.equalOperator(rightSide).getValue());
             case MusicLexer.NOT_EQUAL:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() != rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.notEqualOperator(rightSide).getValue());
             case MusicLexer.GE:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() >= rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.greaterEqualOperator(rightSide).getValue());
             case MusicLexer.GT:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() > rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.greaterThanOperator(rightSide).getValue());
             case MusicLexer.LE:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() <= rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.lesserEqualOperator(rightSide).getValue());
             case MusicLexer.LT:
-                leftSide = (Int) evaluateExpression(tree.getChild(0));
-                rightSide = (Int) evaluateExpression(tree.getChild(1));
-                return new Bool(leftSide.getValue() < rightSide.getValue());
+                leftSide = evaluateExpression(tree.getChild(0));
+                rightSide = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean)leftSide.lesserThanOperator(rightSide).getValue());
+            case MusicLexer.AND:
+                leftBool = evaluateExpression(tree.getChild(0));
+                rightBool = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean) leftBool.getValue() && (boolean) rightBool.getValue());
+            case MusicLexer.OR:
+                leftBool = evaluateExpression(tree.getChild(0));
+                rightBool = evaluateExpression(tree.getChild(1));
+                return new Bool((boolean) leftBool.getValue() || (boolean) rightBool.getValue());
+            case MusicLexer.NOT:
+                leftBool = evaluateExpression(tree.getChild(0));
+                return new Bool(!(boolean) leftBool.getValue());
 
         }
         throw new Error("This should never happen");
