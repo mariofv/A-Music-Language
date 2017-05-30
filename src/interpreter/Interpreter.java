@@ -462,7 +462,10 @@ public class Interpreter {
             case MusicLexer.ATTR_ACCESS:
                 AttributeData currentVar = (AttributeData) stack.getLocalVariables().get(tree.getVariableIndex());
                 String attributeName = tree.getChild(0).getText();
-                return  currentVar.getAttributeValue(attributeName);
+                try { return currentVar.getAttributeValue(attributeName); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable " + tree.getText() + " not initialized.", tree.getLine());
+                }
             case MusicLexer.ID:
                 if(tree.getText().equals("Time")) {
                     return new Int(currentIteration);
@@ -479,7 +482,10 @@ public class Interpreter {
                 }
                 return executeFunction(tree.getText(), arguments);
             case MusicLexer.VAR_FUNCALL:
-                return executeVarFunCall(tree);
+                try { return executeVarFunCall(tree); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable " + tree.getText() + " not initialized.", tree.getLine());
+                }
             case MusicLexer.TRUE:
                 return new Bool(true);
             case MusicLexer.FALSE:
@@ -487,27 +493,45 @@ public class Interpreter {
             case MusicLexer.EQUAL:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.equalOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.equalOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.NOT_EQUAL:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.notEqualOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.notEqualOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.GE:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.greaterEqualOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.greaterEqualOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.GT:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.greaterThanOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.greaterThanOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.LE:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.lesserEqualOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.lesserEqualOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.LT:
                 leftSide = evaluateExpression(tree.getChild(0));
                 rightSide = evaluateExpression(tree.getChild(1));
-                return new Bool((boolean)leftSide.lesserThanOperator(rightSide).getValue());
+                try { return new Bool((boolean) leftSide.lesserThanOperator(rightSide).getValue()); }
+                catch (java.lang.NullPointerException e) {
+                    throw new AmlRunTimeException("Variable not initialized.", tree.getLine());
+                }
             case MusicLexer.AND:
                 leftBool = evaluateExpression(tree.getChild(0));
                 rightBool = evaluateExpression(tree.getChild(1));

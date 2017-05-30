@@ -4,5 +4,7 @@ int fib(int num) {
 }
 
 void main() {
+    Note note;
+    Write note.isSilence();
     Write fib(18);
 }
