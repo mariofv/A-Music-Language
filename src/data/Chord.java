@@ -104,10 +104,10 @@ public class Chord extends AttributeData {
             case "Minor":
                 dataChord.setQuality(AmlChord.Quality.Menor);
                 break;
-            case "Augmented":
+            case "+":
                 dataChord.setQuality(AmlChord.Quality.Aumentado);
                 break;
-            case "Diminuted":
+            case "º":
                 dataChord.setQuality(AmlChord.Quality.Disminuido);
                 break;
             default:
@@ -120,10 +120,10 @@ public class Chord extends AttributeData {
 
     private Void alterInterval(String invertal) throws AmlRunTimeException {
         switch (invertal) {
-            case "Seventh":
+            case "7th":
                 dataChord.setInterval(AmlChord.Interval.Septima);
                 break;
-            case "Maj7":
+            case "maj7":
                 dataChord.setInterval(AmlChord.Interval.Maj7);
                 break;
             case "NoInterval":

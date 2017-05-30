@@ -1,5 +1,5 @@
 void myFunc(Note note, Figure figure, int count) {
-    || N:note.n :figure N:note.n :figure ||
+    || N:note.n :figure N:note.n :figure  ||
     Write count;
 }
 
