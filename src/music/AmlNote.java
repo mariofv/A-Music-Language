@@ -46,6 +46,7 @@ public class AmlNote {
     public AmlShortMessage getOffMessage() {
         AmlShortMessage offMessage;
         try {
+            System.out.println("Sending pitch of note " + toString() + " " + pitch);
             offMessage = new AmlShortMessage(ShortMessage.NOTE_OFF, pitch, 100);
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
@@ -67,7 +68,10 @@ public class AmlNote {
         return pitch;
     }
 
-    public void setPitch(int pitch) {this.pitch = pitch;}
+    public void setPitch(int pitch) {
+        System.out.println("Changin pitch from " + this.pitch + " to " + pitch);
+        this.pitch = pitch;
+    }
 
     public Accident getAccident() { return  accident;}
 
@@ -76,6 +80,7 @@ public class AmlNote {
     public boolean isSilence(){return note == Note.Silence;}
 
     public int mapNote(Note note, int octave) {
+        System.out.println(note + " " + octave);
         int pitch;
         switch(note) {
             case Do:
@@ -103,6 +108,7 @@ public class AmlNote {
             default:
                  return -1;
         }
+        System.out.println("Default pitch " + pitch + ", returning " + (pitch + (octave-5)*12));
         return pitch + (octave-5)*12;
     }
 

@@ -49,7 +49,6 @@ public class AmlFigure {
 
     public void setDuration(int duration) {
         this.duration = duration;
-        figure = Negra;
     }
 
     public ArrayList<AmlNote> getNotes(){return notes;}

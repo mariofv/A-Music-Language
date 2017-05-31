@@ -33,7 +33,7 @@ public class AmlCompas {
     }
 
     public void addFigure(AmlFigure figure) throws AmlMusicException {
-        if (!figure.hasFigure()){
+        if (!figure.hasFigure()) {
             figure.setDuration(lastFigureDuration);
         }
         alterNotePitches(figure);
