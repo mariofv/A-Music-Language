@@ -32,14 +32,33 @@ Fragment repeatN(Figure figure, int times) {
     }
 }
 
+Fragment compas9() {
+    (Fa-4 Do-4).n* ($Sol-4 Si-3).c~ (Sol-4 Si-3).n (La-4 Do-4).n~
+}
+
+Fragment compas10() {
+    (La-4 Do-4).c (Si-4 Mi-4).n* (Do La-4).n (Mi $Sol-4)
+}
+
+Fragment compas13() {
+    (Si Fa Re).n* (Sol $Fa Do).c~ (Sol Fa Do).n (La Fa Si-4).n~
+}
+
+Fragment compas14() {
+    (La Fa Si-4).c F:repeatN((Sol $Fa Si-4).c, 7);
+}
+
+Fragment compas18() {
+    (Fa Mi &Do).n* ($Do &Sol-4 Mi-4).c Silence.c (Do Sol-4 Mi-4).c (&Do Sol-4 Mi-4).n
+}
+
 void main() {
     Song {
         Beat 4:4;
         Speed 180;
         Tone 4&;
-        //Trasnport -12;
         Track "String Ensemble 1" || Transport -12; Silence.r 2x||:  F:sameNote(Fa-7.c); | Fa-7 Fa-7 Do-7 Mi-7 #Fa-7 $Fa-7 Mi-7 #Fa-7 | F:sameNote(Fa-7.c); |
-                                     if(Time==1){Fa-7.c La-7 Mi-7.n} else {Fa-7.c Fa-7 Do-7.n} if (Time == 1) {Mi-7.n Mi-7.n} else {Mi-7.n #Fa-7} :||
+                                     if(Time==1){Fa-7.c La-6 Mi-7.n} else {Fa-7.c Fa-7 Do-7.n} if (Time == 1) {Mi-7.n Mi-7.n} else {Mi-7.n #Fa-7} :||
                                      2x||: Fa.c Fa Fa Sol Sol Sol La La | La Si Si Si Do-6 Do-6 Mi-6 Mi-6 | Fa-6 Fa-6 Fa-6 Sol-6 Sol-6 Sol-6  La-6 La-6 |
                                      La-6 Si-6 Si-6 Si-6 Do-7 Do-7 Mi-7 Mi-7 | Fa-7.n* Sol-7.c~ Sol-7.n La-7 | La-7.c Si-7.n* Do-8.b | F:compas15(); |
                                      F:compas16(); | F:compas17(); |
@@ -57,9 +76,14 @@ void main() {
                                      Silence.c Do-7 &Do-7 $Do-7 Si-6 La-6 Fa-6 Sol-6 | La-6.n Re-6.c Do-6~ Do-6 Re-6 Fa-6.n~ | Fa-6.r~ | Fa-6.r |
                                      Silence.c La-6 $Mi-6 Fa-6 Sol-6 Fa-6 &Mi-6 Re-6 | Fa-6 Si Do-6 Re-6 Mi-6 Re-6 Fa-6 Re-6 | Si.r~ |
                                      Si.c Si.sc Si Do-6 Do-6 Re-6 Re-6 Mi-6 Mi-6 Fa-6 Fa-6 Sol-6 Sol-6 La-6 La-6 ||
+
         Track "French Horn"       3x||: Silence.r | (Fa Do).n Silence.c (Fa Do) Silence.n (Fa Do) :|| Silence.c (Do Fa-4).c (Do Fa-4).c (Do Fa-4).c (Mi Si-4).n (Do La-4) |
-                                        (Si-4 $Sol-4).n (La-4 Fa-4) (Sol-4 Mi-4) (Fa-4 Do-4)~ | (Fa-4 Do-4).b* Silence.n | (Fa-4 Do-4).n* ($Sol-4 Si-3).c~ (Sol-4 Si-3).n (La-4 Do-4).n~ |
-                                        (La-4 Do-4).c (Si-4 Mi-4).n* (Do La-4).n (Mi $Sol-4) | (Fa Fa-4).r~ | (Fa Fa-4).b* Silence.n | (Si Fa Re).n* (Sol $Fa Do).c~ (Sol Fa Do).n (La Fa Si-4).n~ |
-                                        (La Fa Si-4).c F:repeatN((Sol $Fa Si-4).c, 7); | (La Fa Do).n* (Fa Mi &Do).c Silence.b | Silence.r ||
+                                        (Si-4 $Sol-4).n (La-4 Fa-4) (Sol-4 Mi-4) (Fa-4 Do-4)~ | (Fa-4 Do-4).b* Silence.n | F:compas9(); | F:compas10(); |
+                                        (Fa Fa-4).r~ | (Fa Fa-4).b* Silence.n | F:compas13(); | F:compas14(); |
+                                        (La Fa Do).n* (Fa Mi &Do).c Silence.b | Silence.r | Silence.c F:repeatN((Fa Mi &Do).c, 7); |
+                                        F:compas18(); | F:compas9(); | F:compas10(); | (Fa Fa-4).r~ | (Fa Fa-4).b* Silence.n |
+                                        F:compas13(); | F:compas14(); | (La Fa Do).n* (Fa Mi &Do).c Silence.b | Silence.r | Silence.c F:repeatN((Fa Mi &Do).c, 7); | F:compas18();
+                                        5x||: Silence.r :|| Silence.n (Re Fa-4) (Mi La) (Fa Re) | (La Fa).r~ | (La Fa).r 2x||: Silence.r :|| (Re Si).n* (Do Fa).c~ (Do Fa).n (Re-4 Si-4).n~ |
+                                        (Si-4 Re-4).c (La-4 Re-4).n* (Sol-4 Re-4).n (Mi-4 Re-4) | Silence.r ||
     }
 }
