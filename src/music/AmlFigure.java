@@ -120,7 +120,7 @@ public class AmlFigure {
     }
 
     public ArrayList<Integer> getPitches() {
-        ArrayList<Integer> pitches = new ArrayList<>();
+        ArrayList<Integer> pitches = new ArrayList<>(notes.size());
         for (AmlNote note: notes) {
             pitches.add(note.getPitch());
         }

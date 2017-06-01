@@ -101,7 +101,8 @@ public class AmlTrack {
 
     public void addFigure(AmlFigure figure) throws AmlMusicException {
         ArrayList<Integer> noteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
-        ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)figure.getPitches().clone();
+        ArrayList<Integer> lastNoteSortedPitches = (ArrayList<Integer>)lastFigure.getPitches().clone();
+
         Collections.sort(lastNoteSortedPitches);
         Collections.sort(noteSortedPitches);
         if (lastFigure.isTied() && !Arrays.equals(noteSortedPitches.toArray(), lastNoteSortedPitches.toArray())){

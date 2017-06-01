@@ -8,6 +8,7 @@ import exceptions.AmlException;
 import exceptions.AmlSemanticException;
 import parser.MusicLexer;
 
+import java.security.KeyPair;
 import java.util.*;
 
 import static parser.MusicParser.*;
@@ -129,13 +130,13 @@ public class SemanticAnalyzer {
                     if (previousValue != null) {
                         throw new AmlSemanticException("The function " + functionName + " has already been declared.", globalStatement.getLine());
                     }
+                    int lastIndex = pushScope();
                     AmlTree arguments = globalStatement.getChild(1);
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
                             insertId(child.getChild(0), child.getType());
                         }
                     }
-                    int lastIndex = pushScope();
                     currentFunction = globalStatement;
                     analyzeListInstructions(globalStatement.getChild(2));
                     popSoce(lastIndex);
@@ -148,13 +149,13 @@ public class SemanticAnalyzer {
                     if (previousValue != null) {
                         throw new AmlSemanticException("The fragment " + fragmentName + " has already been declared.", globalStatement.getLine());
                     }
+                    int lastIndex = pushScope();
                     AmlTree arguments = globalStatement.getChild(1);
                     if (arguments.getChildren() != null) {
                         for (AmlTree child : arguments.getArrayChildren()) {
                             insertId(child.getChild(0), child.getType());
                         }
                     }
-                    int lastIndex = pushScope();
                     analyzeListMusicInstructions(globalStatement.getChild(2));
                     popSoce(lastIndex);
                     globalStatement.setNumVariables(numVars);
@@ -174,6 +175,15 @@ public class SemanticAnalyzer {
                 }
                 default:
                     throw new Error("This should never happen");
+            }
+        }
+    }
+
+    private void printScope() {
+        for (HashMap<String, SymbolInfo> map : symbolTable) {
+            System.out.println("Scope has this elements:");
+            for (Map.Entry<String, SymbolInfo> entry : map.entrySet()) {
+                System.out.println(entry.getKey() + "/" + entry.getValue());
             }
         }
     }
@@ -892,6 +902,7 @@ public class SemanticAnalyzer {
     private void insertId(AmlTree tree, int type) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
+        printScope();
         SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index));
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());
