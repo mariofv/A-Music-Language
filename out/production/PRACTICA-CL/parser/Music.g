@@ -258,7 +258,7 @@ chord       :   CHORD^ '('! note (MINOR|PLUS|DIMINUTION)? (SEVENTH | MAJ7)? ')'!
 notes       :   ( '(' (note)+ ')'  | note) -> ^(NOTES note+)
             ;
 
-triplet     :   '[' notes_type notes_type notes_type ']' FIGURE_NAME? -> ^(TRIPLET FIGURE_NAME? notes_type notes_type notes_type)
+triplet     :   '[' notes_type notes_type notes_type ']' ('.' FIGURE_NAME) -> ^(TRIPLET FIGURE_NAME notes_type notes_type notes_type)
             ;
 
 drum_note_aux : DN '(' num_expr ')' -> ^(DRUM_NOTE num_expr);
