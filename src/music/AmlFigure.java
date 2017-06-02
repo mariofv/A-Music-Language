@@ -18,7 +18,8 @@ public class AmlFigure {
         Semicorchera,
         Fusa,
         SemiFusa,
-        NoFigure
+        NoFigure,
+        Triplet
     }
 
     public final static  int PPQ = 16;
@@ -77,6 +78,7 @@ public class AmlFigure {
             case SemiFusa:
                 return PPQ/16;
             case NoFigure:
+            case Triplet:
                 return -1;
             default:
                 throw new Error("This is literally impossible");

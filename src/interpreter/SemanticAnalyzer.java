@@ -839,6 +839,30 @@ public class SemanticAnalyzer {
                 analyzeNote(musicInstruction);
                 break;
             case TRIPLET:
+                musicInstruction.getChild(0).setFigureValue();
+                for (int i = 1; i < 4; ++i) {
+                    AmlTree notes = musicInstruction.getChild(i);
+                    for (AmlTree note : notes.getArrayChildren()) {
+                        if (note.getType() == ID) {
+                            int type = getSymbol(note).getType();
+                            if (type != NOTE_TYPE && type != DRUMS_NOTE_TYPE)
+                                throw new AmlSemanticException("Type error, figure notes must have Note type, but variable " +
+                                        note.getText() + " has type " + mapType(type), notes.getLine());
+                        }
+                        else if (note.getType() == DRUM_NOTE) {
+                            int type = checkExpression(note.getChild(0));
+                            if (type != INT)
+                                throw new AmlSemanticException("Type error, drum note expressions mus be int type, " +
+                                        " but " + mapType(type) + " was provided instead.", notes.getLine());
+                        }
+                        else if (note.getType() == NOTE) {
+                            note.setNoteValue();
+                            if (note.getChildCount() > 0 && note.getChild(0).getType() == NEG_NUM) note.getChild(0).setIntValue();
+                            else if (note.getChildCount() > 1 && note.getChild(1).getType() == NEG_NUM) note.getChild(1).setIntValue();
+                        }
+                        else throw new Error("This should never happen");
+                    }
+                }
                 break;
             case ID:
                 int type = getSymbol(musicInstruction).getType();

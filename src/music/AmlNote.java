@@ -46,7 +46,6 @@ public class AmlNote {
     public AmlShortMessage getOffMessage() {
         AmlShortMessage offMessage;
         try {
-            System.out.println("Sending pitch of note " + toString() + " " + pitch);
             offMessage = new AmlShortMessage(ShortMessage.NOTE_OFF, pitch, 100);
         } catch (InvalidMidiDataException e) {
             throw new Error(e);
@@ -69,7 +68,6 @@ public class AmlNote {
     }
 
     public void setPitch(int pitch) {
-        System.out.println("Changin pitch from " + this.pitch + " to " + pitch);
         this.pitch = pitch;
     }
 

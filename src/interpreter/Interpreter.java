@@ -574,6 +574,18 @@ public class Interpreter {
     private Data executeMusicInstruction(AmlTree tree, AmlCompas compas) throws AmlRunTimeException {
         if(executeCommonInstruction(tree)) return null;
         switch (tree.getType()) {
+            case MusicLexer.TRIPLET:
+                int figureDuration = AmlFigure.mapFigureDuration(tree.getChild(0).getFigureValue())*2;
+                for (int i = 1; i < 4; ++i) {
+                    AmlFigure figure = new AmlFigure(AmlFigure.Figure.Triplet, 0, false);
+                    for (AmlTree noteChild : tree.getChild(i).getArrayChildren()) {
+                        AmlNote note = createNote(noteChild);
+                        figure.addNote(note);
+                    }
+                    figure.setDuration(figureDuration/3 + (i-1 < figureDuration % 3 ? 1 : 0));
+                    compas.addFigure(figure);
+                }
+                break;
             case MusicLexer.VAR_FUNCALL:
                 return executeVarFunCall(tree);
 
