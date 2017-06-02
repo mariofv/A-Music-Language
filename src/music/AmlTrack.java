@@ -151,7 +151,7 @@ public class AmlTrack {
     }
 
     public void addEvents(int channel, int start, int end) {
-        System.out.println("Adding events in interval " + start + " " + end + " on channel " + mapChannel(channel));
+        //System.out.println("Adding events in interval " + start + " " + end + " on channel " + mapChannel(channel));
 
         check(channel, start, lastInstrument, channelInstrument);
         check(channel, start, lastVolume, channelVolume);
@@ -169,16 +169,16 @@ public class AmlTrack {
                         break;
                 }
                 try {
-                    System.out.print("Setting event " + event + "  ");
-                    if (event.getType() == AmlMidiEvent.OnMessage || event.getType() == AmlMidiEvent.OffMessage) {
+                    //System.out.print("Setting event " + event + "  ");
+                    /*if (event.getType() == AmlMidiEvent.OnMessage || event.getType() == AmlMidiEvent.OffMessage) {
                         System.out.print("Pitch is " + ((ShortMessage)event.getMessage()).getData1());
                     }
-                    System.out.println();
+                    System.out.println();*/
                     ((AmlShortMessage) event.getMessage()).setChannel(mapChannel(channel));
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);
                 }
-                if (!track.add(event)) System.out.println("Event not added");
+                if (!track.add(event)) System.out.println("Event " + event + " not added");
             }
         }
     }
@@ -187,7 +187,7 @@ public class AmlTrack {
         if (lastMessage.equals(channelMessage.get(channel))) return;
         channelMessage.set(channel, lastMessage);
 
-        System.out.println("Setting initial event");
+        //System.out.println("Setting initial event");
         AmlShortMessage message = lastMessage.clone();
         try {
             message.setChannel(mapChannel(channel));

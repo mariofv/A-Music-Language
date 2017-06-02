@@ -1,8 +1,0 @@
-void main() {
-    || Do.n Re.n Mi.n Fa.n | Sol.n La.n Si.n Do-6.n | Silence.r ||
-
-    Instrument "Celesta";
-    || Do.n Re.n Mi.n Fa.n | Sol.n La.n Si.n Do-6.n | Silence.r ||
-
-    || Do.n Re.n Mi.n Fa.n Instrument "Banjo" ;| Sol.n La.n Si.n Do-6.n | Silence.r ||
-}

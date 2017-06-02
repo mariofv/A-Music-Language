@@ -78,7 +78,6 @@ public class AmlNote {
     public boolean isSilence(){return note == Note.Silence;}
 
     public int mapNote(Note note, int octave) {
-        System.out.println(note + " " + octave);
         int pitch;
         switch(note) {
             case Do:
@@ -106,7 +105,6 @@ public class AmlNote {
             default:
                  return -1;
         }
-        System.out.println("Default pitch " + pitch + ", returning " + (pitch + (octave-5)*12));
         return pitch + (octave-5)*12;
     }
 

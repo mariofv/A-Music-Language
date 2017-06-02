@@ -72,7 +72,9 @@ public class Aml {
     private static String tracefile = null;
     /** Flag to indicate whether the program must be executed after parsing. */
     private static boolean execute = true;
-      
+
+    private static String outputFile = null;
+
     /** Main program that invokes the parser and the interpreter. */
     
     public static void main(String[] args) throws Exception {
@@ -131,7 +133,7 @@ public class Aml {
                 SemanticAnalyzer analyzer = new SemanticAnalyzer(interpreter);
                 analyzer.analyze(t);
                 interpreter.executeFunction("main", null);
-                File f = new File("midifile.mid");
+                File f = new File((outputFile != null ? outputFile : "midifile.mid"));
                 try {
                     MidiSystem.write(interpreter.getSequence().getSequence(),1,f);
                 }
@@ -172,6 +174,11 @@ public class Aml {
         Option help = new Option("help", "print this message");
         Option noexec = new Option("noexec", "do not execute the program");
         Option dot = new Option("dot", "dump the AST in dot format");
+        Option output = OptionBuilder
+                .withArgName ("output")
+                .hasArg()
+                .withDescription ("output MIDI file")
+                .create ("o");
         Option ast = OptionBuilder
                         .withArgName ("file")
                         .hasArg()
@@ -189,8 +196,9 @@ public class Aml {
         options.addOption(ast);
         options.addOption(trace);
         options.addOption(noexec);
+        options.addOption(output);
         CommandLineParser clp = new GnuParser();
-        CommandLine line = null;
+        CommandLine line;
 
         String cmdline = "aml [options] file";
         
@@ -224,6 +232,8 @@ public class Aml {
         
         // Option -noexec
         if (line.hasOption ("noexec")) execute = false;
+
+        if (line.hasOption("o")) outputFile = line.getOptionValue("o");
 
         // Remaining arguments (the input file)
         String[] files = line.getArgs();

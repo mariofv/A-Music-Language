@@ -100,9 +100,9 @@ void main() {
                                       F:sameNote((Fa-3 Fa-2).c); | F:sameNote2((Fa-3 Fa-2).c, (Sol-3 Sol-2).c); | F:sameNote((Fa-3 Fa-2).c); |
                                       (Fa-3 Fa-2).c (Fa-3 Fa-2)(Fa-3 Fa-2).n (&Fa-3 &Fa-2) (Mi-3 Mi-2) ||
 
-        Track "Flute"               38x||: Silence.r :|| Re-6.n* Do-6.c~ Do-6.n Si.n~ | Si.c Si Do-6 Re-6 Mi-6 Fa-6 Sol-6 La-6 12x||: Silence.r :||
+        Track "Flute"               39x||: Silence.r :|| Re-6.n* Do-6.c~ Do-6.n Si.n~ | Si.c Si Do-6 Re-6 Mi-6 Fa-6 Sol-6 La-6 12x||: Silence.r :||
                                     Silence.c Fa-6.c La-6.n Mi-6.c Sol-6 Silence Fa-6 | Silence.c Fa-6 La-6.n Mi-6.c &Sol-6 Silence Mi-6 ||
-        Track "Flute"               38x||: Silence.r :|| Si.n* Fa.c~ Fa.n Re.n~ | Re.c Re Fa Si Do-6 Re-6 Mi-6 Fa-6 12x||: Silence.r :||
+        Track "Flute"               39x||: Silence.r :|| Si.n* Fa.c~ Fa.n Re.n~ | Re.c Re Fa Si Do-6 Re-6 Mi-6 Fa-6 12x||: Silence.r :||
                                     Silence.c La.c Do-6.n Sol.c Si Silence La | Silence La Do-6.n Sol.c Si Silence &Sol ||
     }
 }

@@ -1,7 +1,7 @@
 void main() {
     Song {
         Beat 4:4;
-        Speed 150;
+        Speed 160;
         Tone 3&;
         Track || Si-6.b Silence.sc Silence Si-6.c [Si-6 Si-6 Si-6].c | Si-6.c* La-6.sc Si-6.n Silence.sc Silence Si-6.c [Si-6 Si-6 Si-6].c |
                  Si-6.c* La-6.sc Si-6.n Silence.sc Silence Si-6.c Si-6.sc Si-6 Si-6.c | Si-6.c Fa-6.sc Fa-6 Fa-6.c Fa-6.sc Fa-6 Fa-6.c Fa-6.sc Fa-6 Fa-6.c Fa-6 |

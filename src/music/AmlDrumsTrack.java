@@ -37,7 +37,7 @@ public class AmlDrumsTrack extends AmlTrack {
     }
 
     public void addEvents(int channel, int start, int end) {
-        System.out.println("Adding drum events in interval " + start + " " + end + " on channel " + mapChannel(channel));
+        //System.out.println("Adding drum events in interval " + start + " " + end + " on channel " + mapChannel(channel));
 
         check(channel, start, lastVolume, channelVolume);
 
@@ -49,7 +49,7 @@ public class AmlDrumsTrack extends AmlTrack {
                         break;
                 }
                 try {
-                    System.out.println("Setting event " + event);
+                    //System.out.println("Setting event " + event);
                     ((AmlShortMessage) event.getMessage()).setChannel(mapChannel(channel));
                 } catch (InvalidMidiDataException e) {
                     throw new Error(e);

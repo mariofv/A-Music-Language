@@ -1,8 +1,0 @@
-void myFunc(Note note, Figure figure, int count) {
-    || N:note.n :figure N:note.n :figure  ||
-    Write count;
-}
-
-void main() {
-    || Do.n Re Mi Fa | Sol La myFunc(N:#La, La.n, 3); #La Do-6 ||
-}

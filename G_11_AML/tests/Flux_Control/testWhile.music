@@ -1,8 +1,0 @@
-void main() {
-    int i = 0;
-    while (i < 5) {
-        || Do Do Do Do ||
-        Write i;
-        ++i;
-    }
-}

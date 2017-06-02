@@ -1,7 +1,0 @@
-Fragment semiLadder() {
-   Sol La Si Do-6
-}
-
-void main() {
-    || Do.n Re Mi Fa | F:semiLadder();  ||
-}

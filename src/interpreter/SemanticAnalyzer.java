@@ -926,7 +926,6 @@ public class SemanticAnalyzer {
     private void insertId(AmlTree tree, int type) throws AmlSemanticException {
         assert tree.getType() == ID;
         String id = tree.getText();
-        printScope();
         SymbolInfo previousValue = symbolTable.getFirst().put(id, new SymbolInfo(tree.getLine(), type, index));
         if (previousValue != null) {
             throw new AmlSemanticException("Variable " + id + " already declared in line " + previousValue.getLine(), tree.getLine());

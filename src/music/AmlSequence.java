@@ -85,8 +85,8 @@ public class AmlSequence {
     }
 
     public Sequence getSequence() throws  AmlRunTimeException {
-        System.out.println(channelManager);
-        System.out.println(drumChannelManager);
+        //System.out.println(channelManager);
+        //System.out.println(drumChannelManager);
 
         channelManager.dispatchEvents();
         drumChannelManager.dispatchEvents();
