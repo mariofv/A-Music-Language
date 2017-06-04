@@ -8,3 +8,4 @@ void main() {
     Chord A = Chord(La º);
     || :C :Dm :E :F | :G :A Chord(Si m maj7).b; ||
 }
+
