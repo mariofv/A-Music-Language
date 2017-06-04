@@ -1,0 +1,19 @@
+void main() {
+    Chord note = Chord(Do).c;
+     Song {
+         Beat 4:8;
+         Speed 120;
+         Track "Trumpet"
+         || for(int a = 0; a < 4; ++a) {
+                if(a%2 == 0) {
+                    Do.c
+                }
+                else {
+                     :note
+                }
+             }
+             | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c
+         ||
+     }
+}
+
