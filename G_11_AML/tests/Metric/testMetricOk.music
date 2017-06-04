@@ -1,0 +1,7 @@
+void main() {
+     Song {
+         Beat 4:8;
+         Speed 120;
+         Track "Trumpet"   || Si.c Si.c Do-6.c Re-6.c | Re-6 Do-6 Si La | Sol Sol La Si | Si.n La.c La~ | La Silence.n*||
+     }
+}

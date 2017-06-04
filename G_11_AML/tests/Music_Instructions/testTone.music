@@ -1,0 +1,8 @@
+void main() {
+    || Do Re Mi Fa | Sol La Si Do-6 ||
+    Tone 4#;
+    || Do Re Mi Fa | Sol La Si Do-6 ||
+    Tone 4&;
+    || Do Re Mi Fa | Sol La Si Do-6 ||
+    || Do Re Mi Fa | Tone 4#; Sol La Si Do-6 ||
+}

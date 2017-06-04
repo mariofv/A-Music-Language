@@ -1,0 +1,15 @@
+void main() {
+    || Do Re Mi Fa ||
+    Figure noteDo = Do-6.c;
+    noteDo.duration = n;
+    Figure notes  = (Re-6 Mi-6).c;
+    notes.duration = noteDo.duration;
+
+    noteDo.duration = c;
+    noteDo.duration += 16/2;
+
+    || :noteDo Do-6.n noteDo = Re-6.n; :noteDo Re-6.n ||
+
+    noteDo = Do-6.n;
+    || :notes :noteDo Figure aux = notes; notes = noteDo; noteDo = aux; :notes :aux ||
+}

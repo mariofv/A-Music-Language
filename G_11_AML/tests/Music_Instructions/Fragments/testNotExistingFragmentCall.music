@@ -1,0 +1,3 @@
+void main() {
+    || Do.n Re Mi Fa | F:fourTimes(Sol, 4);  | F:fourTimes(La, 2); F:fourTimes(Si, 2); | F:fourTimes(Do-6, 4); ||
+}

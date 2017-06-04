@@ -1,0 +1,16 @@
+void main() {
+    string w = "Hello";
+    string x = "World";
+
+    Write w;                            //Should write Hello
+    Write x;                            //Should write World
+    Write w + x;                        //Should write Hello World
+    Write w == x;                       //Should write False
+    string z = (w + x);
+    Write z == "HelloWorld";            //Should write True
+    Write x <= z;                       //Should write False
+    Write x <= z;                       //Should write False
+    Write w >= z;                       //Should write False
+    Write z <= x;                       //Should write True
+    Write w != x;                       //Should write True
+}

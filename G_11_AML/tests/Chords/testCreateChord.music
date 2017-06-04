@@ -1,0 +1,10 @@
+void main() {
+    Speed 60;
+    Chord C = Chord(Do);
+    Chord Dm = Chord(Re m);
+    Chord E = Chord(Mi 7th);
+    Chord F = Chord(Fa maj7);
+    Chord G = Chord(Sol +);
+    Chord A = Chord(La º);
+    || :C :Dm :E :F | :G :A Chord(Si m maj7).b; ||
+}

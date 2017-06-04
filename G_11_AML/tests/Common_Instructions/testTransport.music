@@ -1,0 +1,8 @@
+void main() {
+    || Do.n Re.n Mi.n Fa.n | Sol.n La.n Si.n Do-6.n | Silence.r ||
+
+    Transport 2;
+    || Do.n Re.n Mi.n Fa.n | Sol.n La.n Si.n Do-6.n | Silence.r ||
+
+    || Do.n Re.n Mi.n Fa.n Transport 10; | Sol.n La.n Si.n Do-6.n | Silence.r ||
+}
