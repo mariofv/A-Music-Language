@@ -1,5 +1,15 @@
 fragment frag () {
-    while (true) { Re.n; rr = 42; if (ch) {tt = 3; La} else { Re.n } }
+    while (true) {
+         Re.n;
+         rr = 42;
+         if (ch) {
+            tt = 3;
+            La
+         }
+         else {
+            Re.n
+         }
+     }
 }
 void main() {
      3x||: La.c Do Re.c | if (d == 3) { La } :|| La Do.n ||

@@ -1,8 +1,0 @@
-void main() {
-    Chord note = Chord(Do m maj7).c;
-     Song {
-         Beat 4:8;
-         Speed 120;
-         Track "Trumpet"   || for(int a = 2+1;a<7;++a) { if(a%2 == 0) { Do.c } else { N->note }  } | Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c  | Mi.n Re.c Re.c||
-     }
-}
