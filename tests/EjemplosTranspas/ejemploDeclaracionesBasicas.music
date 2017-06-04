@@ -1,0 +1,14 @@
+void main() {
+    bool w = true;
+    bool x = false;
+
+    int first = w + 5;
+    int second = first * w;
+
+    string w = "Hello";
+    string x = "World";
+}
+
+
+
+
