@@ -147,5 +147,12 @@ void main() {
                                           Si-6.r~ | Si-6 | Silence | Silence | Silence | F:firstSilence(La); | Silence.r | F:firstSilence(La); | Silence.r | F:firstSilence(Si); | Silence.r |
                                           F:firstSilence(La); | Silence.r | F:firstSilence(La); | Silence.r | F:firstSilence(Si); | Silence.r | Silence | Silence | Silence.n Mi-6 Mi-6 Mi-6 |
                                           Fa-6.r~ | Fa-6 | Silence | Silence.c Do-6 Mi-6.n Mi-6.c Mi-6 Silence Mi-6 ||
+
+        Track "Trumpet"             4x||: Tone 2&; Silence.r :|| Silence.n Do-6 $Si &Si | &La.r~ | &La.r | Silence.r | Silence.c &La.c #Fa.n Fa.c Fa Silence.c Fa | Silence.r | Silence
+                                      ||: &Re.n* Mi.c~ Mi.n Fa~ | Fa.c Sol.n* &La.n Si | &Re-6.r~ | &Re-6.r | Silence | Silence | F:firstSilence($Si); | $Si.n* Do-6.c Silence Do-6 Si.n |
+                                          Silence.r | Silence.r :|| Silence.r | Do-6.n &La Si Do-6 | Fa.r | Silence | Fa.n Mi.c Fa~ Fa Sol &La Si | Do-6.n Si.c Do-6~ Do-6 &Re-6 Mi-6 Fa-6 |
+                                          Fa-6.r~ | Fa-6 | Silence | Silence | Silence | F:firstSilence(Fa); | Silence.r | F:firstSilence(Fa); | Silence.r | F:firstSilence(Sol); | Silence.r |
+                                          F:firstSilence(Fa); | Silence.r | F:firstSilence(Fa); | Silence.r | F:firstSilence(Sol); | Silence.r | Silence | Silence | Silence.n Do-6 $Si &Si |
+                                          La.r~ | La | Silence | Silence.c &La #Fa.n Fa.c Fa Silence Fa ||
     }
 }
