@@ -66,6 +66,10 @@ void repeat(Figure figure, int count) {
     }
 }
 
+Fragment firstSilence(Figure figure) {
+    Silence.c F:repeatN(figure, 7);
+}
+
 void main() {
     Song {
         Beat 4:4;
@@ -128,5 +132,13 @@ void main() {
                                         F:sameNote2(Re-3.c,Do-3.c); | F:sameNote(Si-2.c); | F:sameNote(Si-2.c); | F:sameNote(Fa-3.c); | Fa-3 Fa-3 Fa-3 Fa-3 Fa-3.n &Sol-3 | F:sameNote(Fa-3.c); |
                                         Fa-3 Fa-3 &Sol-3.n Sol-3 Sol-3 :|| F:sameNote(Fa-3.c); | Fa-3 Fa-3 Fa-3 Fa-3 Fa-3.n &Sol-3 | F:sameNote(Fa-3.c); | Fa-3 Fa-3 Fa-3.n &Fa-3 Mi-3 |
                                         repeat(Re-3.c, 3); | F:sameNote2(Re-3.c,Do-3.c); | repeat(Si-2.c, 4); ||
+
+        Track "Timpani"             || Silence.r | Fa-3.r | Silence.b* Do-4.n | Fa-3.r | F:firstSilence(Do-4); | Fa-3.r | Silence.b Silence.c Fa-3.c Fa-3 Fa-3 | Fa-3.r | Silence.r | Fa-3.r |
+                                       Silence.b* Do-4.n | Re-4.r | Silence.b* La-3.n | Si-3.r | F:firstSilence(Si-3); | Fa-4.r | Silence.b* Do-4.n | Fa-4.r | F:firstSilence(Do-4); |
+                                       Fa-3.r | Silence.b* Do-4.n | Re-4.r | Silence.b* La-3.n | Si-3.r | F:firstSilence(Si-3); | Fa-4.r | Silence.b* Do-4.n | Fa-4.r | F:firstSilence(Do-4); |
+                                       Fa-4.r | Silence.b* Do-4.n | Fa-4.r | Silence.r | Silence.r | F:firstSilence(Re-4); | Re-4.r | Silence | Silence | F:firstSilence(Si-3); |
+                                       Si-3.n* Si-3.c~ Si-3.n Si-3~ | Si-3.c Si-3.n* Do-4.sc Do-4 Do-4 Do-4 Do-4 Do-4 Do-4 Do-4 | Fa-3.r | F:firstSilence(Fa-3); | Re-4.r |
+                                       F:firstSilence(Re-4); | Mi-4.r | F:firstSilence(Mi-4); | Fa-3.b Do-4.b | Fa-3.b Do-4.n Fa-3 | Re-4.r | Re-4.b La-3 | Mi-4.r | F:firstSilence(Mi-4); |
+                                       Fa-3.r | Silence.b* Do-4.n | Fa-3.r | F:firstSilence(Do-4); | Fa-3.r | Silence.b Silence.c Fa-3.c Fa-3 Fa-3 | Fa-3.r ||
     }
 }
