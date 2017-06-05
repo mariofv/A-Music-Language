@@ -1,0 +1,12 @@
+void main() {
+    Beat 4:8;
+    Speed 120;
+    Volume 100;
+    ||  Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c ||
+
+    Speed 60;
+    Volume 50;
+    Transport 4;
+    Tone 4#;
+    ||  Sol.c Fa.c Mi.c Re.c | Do.c Do.c Re.c Mi.c ||
+}
