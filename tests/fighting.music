@@ -155,6 +155,10 @@ void main() {
                                           F:firstSilence(Fa); | Silence.r | F:firstSilence(Fa); | Silence.r | F:firstSilence(Sol); | Silence.r | Silence | Silence | Silence.n Do-6 $Si &Si |
                                           La.r~ | La | Silence | Silence.c &La #Fa.n Fa.c Fa Silence Fa ||
 
-        Track "Acoustic Guitar (steel)" 9x||: Silence.r :|| Tone 0#; Silence.b #Do-4.n Silence.n | Silence.r | Silence.b #Do-4.n Silence 7x||: Silence.r :|| Silence.b #Do-4.n Silence | Silence.r | Silence.b #Do-4.n Silence ||
+        Track "Acoustic Guitar (steel)" 9x||: Silence.r :|| Tone 2#; Silence.b #Do-4.n Silence.n | Silence.r | Silence.b #Do-4.n Silence 7x||: Silence.r :|| Silence.b #Do-4.n Silence | Silence.r | Silence.b #Do-4.n Silence ||
+
+        /*Drums                         || Silence.r | Tone 1#; (La-4 Re-3 Mi-3).c (Fa-4 Mi-3) (Fa-4 Mi-3) (Re-3 Mi-3) (Fa-4 Mi-3) (Fa-4 Mi-3) (Re-3 Mi-3) (Fa-4 Mi-3) |
+                                         (Fa-4 Mi-3) (Mi-3) (Fa-4 Mi-3 Re-3) (Fa-4 Mi-3) (Mi-3) (Fa-4 Mi-3) (Re-3 Mi-3) (Mi-3 Fa-4) | (Re-3 Mi-3) (Fa-4 Mi-3) (Fa-4 Mi-3) (Re-3 Mi-3) (Fa-4 Mi-3) (Fa-4 Mi-3) (Re-3 Mi-3) (Fa-4 Mi-3) |
+                                         (Fa-4 Mi-3).f Mi-3.sc Mi-3.f Mi-3 Mi-3.sc Mi-3.f (Re-3 Mi-3) Mi-3 Silence.f Mi-3 Mi-3 Mi-3 Silence Mi-3 F:repeatN(Mi-3,6); (Re-3 Mi-3) Mi-3.sc Mi-3.f Mi-3.sc Mi-3.sc Mi-3.sc ||*/
     }
 }
