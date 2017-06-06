@@ -1,0 +1,28 @@
+Fragment riff(bool param) {
+    Figure x;
+    if (param) {
+        x = (La Do).c;
+    }
+    else {
+        x = Silence.c;
+    }
+    (La Do).n (Do Sol) (Re La).n* :x
+}
+
+Fragment drum(bool param) {
+    for (int i = 0; i < 4; ++i) {
+        if (param) {
+            DN(-1)
+        }
+        else {
+            DN(42)
+        }
+    }
+}
+
+void main() {
+    Song smoke {
+        Track "Overdriven Guitar" ||: F:riff(Time == 0); | Do.n* Fa.c Mi.n Silence :|| ||
+        Drums ||: F:drum(Time < 2); :|| ||
+    }
+}
