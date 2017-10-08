@@ -1,9 +1,0 @@
-void main() {
-     Song hola {
-        Beat 4:8;
-        Speed 60;
-        Tone 3#;
-        Transport 5;
-        Track "Sitar"  || Sol-1.c Sol-2.c Sol-3.c Sol-4.c | #Fa.c Silence ||
-    }
-}
