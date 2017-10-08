@@ -1,12 +1,13 @@
 # A Music Language
 
-A Music Language es un lenguaje de programación musical creado para la asignatura de Compiladores del Grado en Ingenieria Informática de la Facultad de Informática de Barcelona de la Universidad Politécnica de Cataluña.
+A Music Language is a musical programming language created during the subject Compilers in the Bachelor's Degree in Computer's Engineering of the Computer School of Barcelona of the Politechnical University of Catalonia.
 
-# Pasos para compilación de archivos .music
- - Compilar la gramática escrita en el archivo Music.g
- - Compilar el intérprete.
- - Ejecutar la clase principal localizada en Aml.java pasando como argumento el archivo a compilar.
+# Steps to compile .music files
+ - Compile the grammar in Music.g
+ - Compile the interpreter.
+ - Run the main class located in Aml.java with the .music file name as argument.
+ - Enjoy!
 
 # Tests
 
-Los tests de la aplicacion están localizados en la carpeta `tests`. Esta carpeta esta organizada en una estructura de subdirectorios con nombres autoexplicativos sobre lo que se está testeando.
+The application tests are located in the `tests` folder. This folder is organized into a subdirectory structure with self-explanatory names about what is being tested.
