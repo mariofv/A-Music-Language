@@ -1,6 +1,6 @@
 # A Music Language
 
-A Music Language is a musical programming language created during the subject Compilers in the Bachelor's Degree in Computer's Ingenieeing of the Computer School of Barcelona of the Politechnical University of Catalonia.
+A Music Language is a musical programming language created during the subject Compilers in the Bachelor's Degree in Computer's Engineering of the Computer School of Barcelona of the Politechnical University of Catalonia.
 
 # Steps to compile .music files
  - Compile the grammar in Music.g
