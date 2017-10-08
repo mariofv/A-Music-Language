@@ -12,4 +12,4 @@ A Music Language is a musical programming language created during the subject Co
 The application tests are located in the `tests` folder. This folder is organized into a subdirectory structure with self-explanatory names about what is being tested.
 
 # Documentation
-Language documentation is located in `Documentación CL.pdf`.
+Documentation of the language is located in `Documentación CL.pdf`.
